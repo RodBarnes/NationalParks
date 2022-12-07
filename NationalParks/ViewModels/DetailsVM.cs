@@ -1,6 +1,6 @@
-﻿namespace NationalParks.ViewModel;
+﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Model.Park), "Park")]
+[QueryProperty(nameof(Models.Park), "Park")]
 public partial class DetailsVM : BaseVM
 {
     IMap map;

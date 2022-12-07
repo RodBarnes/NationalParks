@@ -2,10 +2,10 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodel="clr-namespace:NationalParks.ViewModel"
-    x:Class="NationalParks.DetailsPage"
+    xmlns:vm="clr-namespace:NationalParks.ViewModels"
+    x:Class="NationalParks.Views.DetailsPage"
     Title="{Binding Park.Name}"
-    x:DataType="viewmodel:DetailsVM">
+    x:DataType="vm:DetailsVM">
     <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <Grid RowDefinitions="Auto,Auto,*">
             <BoxView

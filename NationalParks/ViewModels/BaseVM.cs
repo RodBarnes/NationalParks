@@ -1,4 +1,4 @@
-﻿namespace NationalParks.ViewModel;
+﻿namespace NationalParks.ViewModels;
 
 public partial class BaseVM : ObservableObject
 {

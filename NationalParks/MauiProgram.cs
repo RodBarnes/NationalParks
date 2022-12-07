@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using NationalParks.Services;
-using NationalParks.View;
+using NationalParks.Views;
 
 namespace NationalParks;
 

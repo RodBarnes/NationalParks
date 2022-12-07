@@ -1,4 +1,4 @@
-﻿namespace NationalParks.Model
+﻿namespace NationalParks.Models
 {
     public class Fee
     {

@@ -1,3 +1,5 @@
+using NationalParks.Views;
+
 namespace NationalParks;
 
 public partial class AppShell : Shell

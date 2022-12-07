@@ -1,6 +1,6 @@
 ﻿using NationalParks.Services;
 
-namespace NationalParks.ViewModel;
+namespace NationalParks.ViewModels;
 
 public partial class MainVM : BaseVM
 {
