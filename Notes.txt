@@ -1,3 +1,8 @@
 If user taps "Get Data" button, should this always start over from 0 so that, in case the data has been updated, it is reflected?
 Or, does that only happen with a pull down?
 It should probably get the first set of data automatically upon display rather than even having a "Get Data" button.
+
+TODO
+----
+Need to add getting the list of Topics and Activites since these are referenced in the parks JSON.
+Need to find schema for Fee and EntrancePass.  Look in Park or...?
