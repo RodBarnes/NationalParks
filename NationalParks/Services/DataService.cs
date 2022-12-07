@@ -4,11 +4,11 @@ namespace NationalParks.Services;
 
 public class DataService
 {
-    HttpClient httpClient;
+    private static HttpClient httpClient;
 
     public DataService()
     {
-        this.httpClient = new HttpClient();
+        httpClient = new HttpClient();
     }
 
     Result result;
