@@ -1,10 +1,10 @@
 ﻿namespace NationalParks.Models
 {
-    public class Result
+    public class ResultActivities
     {
         public string Total { get; set; }
         public string Limit { get; set; }
         public string Start { get; set; }
-        public List<Park> Data { get; set; }
+        public List<Activity> Data { get; set; }
     }
 }
