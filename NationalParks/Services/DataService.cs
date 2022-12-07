@@ -13,7 +13,7 @@ public class DataService
 
     Result result;
 
-    public async Task<Result> GetData(int start = 0)
+    public async Task<Result> GetData(int start = 0, int limit = 20)
     {
         /*      // Read data from test file
                 var basepath = AppDomain.CurrentDomain.BaseDirectory;
@@ -24,7 +24,7 @@ public class DataService
         */
 
         // Get list of parks from position
-        var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}";
+        var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}&limit={limit}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
