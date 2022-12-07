@@ -15,14 +15,14 @@
         BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <RefreshView
             Grid.ColumnSpan="2"
-            Command="{Binding GetDataCommand}"
+            Command="{Binding GetParksCommand}"
             IsRefreshing="{Binding IsRefreshing}">
             <ContentView>
                 <CollectionView
                     ItemsSource="{Binding Parks}"
                     SelectionMode="None"
                     RemainingItemsThreshold="2"
-                    RemainingItemsThresholdReachedCommand="{Binding GetDataCommand}">
+                    RemainingItemsThresholdReachedCommand="{Binding GetParksCommand}">
                     <CollectionView.EmptyView>
                         <StackLayout Padding="100">
                             <Image
@@ -80,7 +80,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-            Command="{Binding GetClosestCommand}"
+            Command="{Binding GetClosestParkCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
             Text="Find Closest" />

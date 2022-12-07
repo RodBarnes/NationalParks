@@ -24,7 +24,7 @@ public partial class MainVM : BaseVM
     
     private async void LoadDataAsync()
     {
-        await GetDataAsync();
+        await GetParksAsync();
     }
 
     [RelayCommand]
@@ -43,7 +43,7 @@ public partial class MainVM : BaseVM
     bool isRefreshing;
 
     [RelayCommand]
-    async Task GetDataAsync()
+    async Task GetParksAsync()
     {
         if (IsBusy)
             return;
@@ -58,7 +58,7 @@ public partial class MainVM : BaseVM
             }
 
             IsBusy = true;
-            var result = await dataService.GetData(_start);
+            var result = await dataService.GetParksAsync(_start);
 
             _start += result.Data.Count;
             foreach (var park in result.Data)
@@ -78,7 +78,7 @@ public partial class MainVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetClosestAsync()
+    async Task GetClosestParkAsync()
     {
         if (IsBusy || Parks.Count == 0)
             return;
