@@ -18,8 +18,17 @@ public partial class MainVM : BaseVM
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
+
+        LoadDataAsync();
     }
     
+    private async void LoadDataAsync()
+    {
+        IsBusy = true;
+        await GetDataAsync();
+        IsBusy = false;
+    }
+
     [RelayCommand]
     async Task GoToDetails(Park park)
     {
