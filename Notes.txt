@@ -5,4 +5,3 @@ It should probably get the first set of data automatically upon display rather t
 TODO
 ----
 Need to add getting the list of Topics and Activites since these are referenced in the parks JSON.
-Need to find schema for Fee and EntrancePass.  Look in Park or...?
