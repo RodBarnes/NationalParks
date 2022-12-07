@@ -6,7 +6,7 @@ The app relies upon data from the National Park Service (NPS) via its API and us
 
 **For security purposes, an API Key is not included in this repository.  You must obtain your own if forking this code.**
 
-After forking the code, a ```Config.cs``` class needs to be created with the following structure and containing the API Key obtained from the NPS.  (This file is set to be isgnored in the .gitignore and will not be pushed to the repository.)  The data service expects to find this static class exposing a static member of ApiKey.  
+After forking the code, a ```Config.cs``` class needs to be created with the following structure and containing the API Key.  (This file is set to be isgnored in the .gitignore and will not be pushed to the repository.)  The data service expects to find this static class exposing a static member of ApiKey.  
 
 ```
 namespace NationalParks
