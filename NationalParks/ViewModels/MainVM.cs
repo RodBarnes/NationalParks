@@ -98,7 +98,7 @@ public partial class MainVM : BaseVM
 
             // Find closest item to us
             var first = Parks.OrderBy(m => location.CalculateDistance(
-                new Location(m.dLatitude, m.dLongitude), DistanceUnits.Miles))
+                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
             await Shell.Current.DisplayAlert("", first.Name + " " +

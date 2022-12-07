@@ -28,7 +28,7 @@
 
         public string Location { get => $"{Latitude},{Longitude}"; }
 
-        public double dLatitude
+        public double DLatitude
         {
             get
             {
@@ -43,7 +43,7 @@
             }
         }
 
-        public double dLongitude
+        public double DLongitude
         {
             get
             {
