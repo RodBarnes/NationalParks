@@ -1,0 +1,3 @@
+If user taps "Get Data" button, should this always start over from 0 so that, in case the data has been updated, it is reflected?
+Or, does that only happen with a pull down?
+It should probably get the first set of data automatically upon display rather than even having a "Get Data" button.

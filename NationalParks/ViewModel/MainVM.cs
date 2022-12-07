@@ -9,7 +9,9 @@ public partial class MainVM : BaseVM
     DataService dataService;
     IConnectivity connectivity;
     IGeolocation geolocation;
-    
+
+    private int _start = 0;
+
     public MainVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
         Title = "Parks";
@@ -49,14 +51,11 @@ public partial class MainVM : BaseVM
             }
 
             IsBusy = true;
-            var data = await dataService.GetData();
+            var result = await dataService.GetData(_start);
 
-            if(Parks.Count != 0)
-                Parks.Clear();
-
-            foreach(var park in data)
+            _start += result.Data.Count;
+            foreach (var park in result.Data)
                 Parks.Add(park);
-
         }
         catch (Exception ex)
         {
