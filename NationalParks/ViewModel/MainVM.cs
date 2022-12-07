@@ -24,9 +24,7 @@ public partial class MainVM : BaseVM
     
     private async void LoadDataAsync()
     {
-        IsBusy = true;
         await GetDataAsync();
-        IsBusy = false;
     }
 
     [RelayCommand]
