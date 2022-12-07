@@ -6,9 +6,9 @@ public partial class MainVM : BaseVM
 {
     public ObservableCollection<Park> Parks { get; } = new();
 
-    DataService dataService;
-    IConnectivity connectivity;
-    IGeolocation geolocation;
+    readonly DataService dataService;
+    readonly IConnectivity connectivity;
+    readonly IGeolocation geolocation;
 
     private int _start = 0;
 
