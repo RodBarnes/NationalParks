@@ -1,8 +1,8 @@
 namespace NationalParks.Views;
 
-public partial class DetailsPage : ContentPage
+public partial class ParkPage : ContentPage
 {
-	public DetailsPage(DetailsVM vm)
+	public ParkPage(ParkVM vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

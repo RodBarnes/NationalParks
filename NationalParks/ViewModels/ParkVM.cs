@@ -1,10 +1,10 @@
 ﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Park), "Park")]
-public partial class DetailsVM : BaseVM
+public partial class ParkVM : BaseVM
 {
     IMap map;
-    public DetailsVM(IMap map)
+    public ParkVM(IMap map)
     {
         this.map = map;
     }

@@ -27,8 +27,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainVM>();
 		builder.Services.AddSingleton<MainPage>();
 
-		builder.Services.AddTransient<DetailsVM>();
-		builder.Services.AddTransient<DetailsPage>();
+		builder.Services.AddTransient<ParkVM>();
+		builder.Services.AddTransient<ParkPage>();
 
 		return builder.Build();
 	}

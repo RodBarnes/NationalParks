@@ -37,7 +37,7 @@ public partial class MainVM : BaseVM
         if (park == null)
         return;
 
-        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(ParkPage), true, new Dictionary<string, object>
         {
             {"Park", park }
         });
