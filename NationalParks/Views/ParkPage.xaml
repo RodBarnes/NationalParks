@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:NationalParks.ViewModels"
     x:Class="NationalParks.Views.ParkPage"
-    Title="{Binding Park.Name}"
-    x:DataType="vm:ParkVM">
+    x:DataType="vm:ParkVM"
+    Title="{Binding Park.Name}">
     <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <Grid RowDefinitions="Auto,Auto,*">
             <BoxView

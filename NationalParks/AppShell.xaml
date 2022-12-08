@@ -5,8 +5,6 @@
              xmlns:view="clr-namespace:NationalParks.Views"
              FlyoutBehavior="Disabled">
 
-
-
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">

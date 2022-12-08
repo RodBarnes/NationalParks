@@ -48,4 +48,10 @@
 	    <DependentUpon>ParkPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\SearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
 </Project>

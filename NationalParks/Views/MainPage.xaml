@@ -8,13 +8,13 @@
     Title="National Parks"
     x:DataType="vm:MainVM">
     <Grid
-        ColumnDefinitions="*,*,*"
+        ColumnDefinitions="*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0"
         BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <RefreshView
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="2"
             Command="{Binding GetParksCommand}"
             IsRefreshing="{Binding IsRefreshing}">
             <ContentView>
@@ -80,19 +80,9 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-            Command="{Binding GetTopicsCommand}"
-            IsEnabled="{Binding IsNotBusy}"
+            Command="{Binding GoToSearchCommand}"
             Style="{StaticResource ButtonOutline}"
-            Text="Topics" />
-
-        <Button
-            Grid.Row="1"
-            Grid.Column="2"
-            Margin="8"
-            Command="{Binding GetActivitiesCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}"
-            Text="Activities" />
+            Text="Search" />
 
         <ActivityIndicator
             Grid.RowSpan="2"

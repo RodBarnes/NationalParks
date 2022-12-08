@@ -1,5 +1,3 @@
-using NationalParks.Views;
-
 namespace NationalParks;
 
 public partial class AppShell : Shell
@@ -9,5 +7,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
 		Routing.RegisterRoute(nameof(ParkPage), typeof(ParkPage));
-	}
+        Routing.RegisterRoute(nameof(SearchPage), typeof(SearchPage));
+    }
 }
