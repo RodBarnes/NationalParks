@@ -32,10 +32,17 @@ namespace NationalParks.ViewModels
         Filter search;
 
         [RelayCommand]
-        async Task FilterParksAsync()
+        public void ApplyFilter()
         {
-            await Shell.Current.DisplayAlert("Filter",
+            Shell.Current.DisplayAlert("Filter",
                 "This will go back to the main page with the list filtered.", "OK");
+        }
+
+        [RelayCommand]
+        public void ClearFilter()
+        {
+            Shell.Current.DisplayAlert("Filter",
+                "This will clear all selections and reset the filter.", "OK");
         }
 
         [RelayCommand]

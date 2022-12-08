@@ -7,63 +7,72 @@
     x:Class="NationalParks.Views.FilterPage"
     x:DataType="vm:FilterVM"
     Title="{Binding Title}">
-        <Grid
-            RowDefinitions="*,*,60"
-            RowSpacing="0"
-            VerticalOptions="FillAndExpand">
-            <Frame 
-                Grid.Row="0"
-                Style="{StaticResource FrameRounded}">
-                <VerticalStackLayout>
-                    <Label Text="Topics"
-                        Style="{StaticResource LabelLargeBold}"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"/>
-                    <CollectionView
-                        ItemsSource="{Binding Topics}"
-                        SelectionMode="Multiple">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="model:Topic">
-                                <VerticalStackLayout>
-                                    <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                                </VerticalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </Frame>
-
-            <Frame 
-                Grid.Row="1"
-                Style="{StaticResource FrameRounded}">
-                <VerticalStackLayout>
-                    <Label Text="Activities" 
-                        Style="{StaticResource LabelLargeBold}"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"/>
-                    <CollectionView
-                        ItemsSource="{Binding Activities}"
-                        SelectionMode="Multiple">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="model:Topic">
-                                <VerticalStackLayout>
-                                    <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                                </VerticalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </Frame>
-
-            <Button
-                Text="Apply"
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="8"
-                VerticalOptions="End"
-                Command="{Binding FilterParksCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Style="{StaticResource ButtonOutline}"/>
-
-        </Grid>
+    <Grid
+        ColumnDefinitions="*,*"
+        RowDefinitions="*,*,60"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+        <Frame 
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource FrameRounded}">
+            <StackLayout>
+                <Label Text="Topics"
+                    Style="{StaticResource LabelLargeBold}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"/>
+                <CollectionView
+                    ItemsSource="{Binding Topics}"
+                    SelectionMode="Multiple">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Topic">
+                            <VerticalStackLayout>
+                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+        <Frame 
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource FrameRounded}">
+            <VerticalStackLayout>
+                <Label Text="Activities" 
+                    Style="{StaticResource LabelLargeBold}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"/>
+                <CollectionView
+                    ItemsSource="{Binding Activities}"
+                    SelectionMode="Multiple">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Topic">
+                            <VerticalStackLayout>
+                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Frame>
+        <Button
+            Text="Apply"
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="8"
+            VerticalOptions="End"
+            Command="{Binding ApplyFilterCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"/>
+        <Button
+            Text="Clear"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="8"
+            VerticalOptions="End"
+            Command="{Binding ClearFilterCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"/>
+    </Grid>
 </ContentPage>
