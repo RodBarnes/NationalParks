@@ -1,8 +1,8 @@
 namespace NationalParks.Views;
 
-public partial class SearchPage : ContentPage
+public partial class FilterPage : ContentPage
 {
-	public SearchPage(SearchVM vm)
+	public FilterPage(FilterVM vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

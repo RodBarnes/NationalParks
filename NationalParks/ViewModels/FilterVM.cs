@@ -2,7 +2,7 @@
 
 namespace NationalParks.ViewModels
 {
-    public partial class SearchVM : BaseVM
+    public partial class FilterVM : BaseVM
     {
         public ObservableCollection<Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
@@ -13,7 +13,7 @@ namespace NationalParks.ViewModels
         private int startTopics = 0;
         private int startActivities = 0;
 
-        public SearchVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+        public FilterVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
         {
             Title = "Search";
             this.dataService = dataService;
@@ -29,7 +29,14 @@ namespace NationalParks.ViewModels
         }
 
         [ObservableProperty]
-        Search search;
+        Filter search;
+
+        [RelayCommand]
+        async Task FilterParksAsync()
+        {
+            await Shell.Current.DisplayAlert("Filter",
+                "This will go back to the main page with the list filtered.", "OK");
+        }
 
         [RelayCommand]
         async Task GetTopicsAsync()
@@ -42,7 +49,7 @@ namespace NationalParks.ViewModels
                 if (connectivity.NetworkAccess != NetworkAccess.Internet)
                 {
                     await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
+                        "Please check internet and try again.", "OK");
                     return;
                 }
 
@@ -86,7 +93,7 @@ namespace NationalParks.ViewModels
                 if (connectivity.NetworkAccess != NetworkAccess.Internet)
                 {
                     await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
+                        "Please check internet and try again.", "OK");
                     return;
                 }
 
