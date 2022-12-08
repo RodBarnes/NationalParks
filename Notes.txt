@@ -6,5 +6,8 @@ TODO
 ----
 ?Do I need to add getting the list of Topics and Activites since these are referenced in the parks JSON.  The parks include all the data for its own Topics and Activities so these would only be needed as the universe of each in order to select from to trim the list of parks in a query.
 
-!It'd be nice if, clickin on [Get Closest] actually went to the Details page for that Park.
+There should be a [Search] that brings up a page that allows selecting multiple Topics, Activities, States -- what else?  Maybe partial name match?  This would then result in a list of Parks that match the query.  While in effect, the [Search] button becomes [Clear] (or maybe [All]?).
 
+The [Closest Park] button should go to the detail page for that park, not just show a message with the name.
+
+What about allowing a setting that determines a max distance and finding all Parks within that radius?
