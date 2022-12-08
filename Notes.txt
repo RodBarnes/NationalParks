@@ -4,4 +4,7 @@ It should probably get the first set of data automatically upon display rather t
 
 TODO
 ----
-Need to add getting the list of Topics and Activites since these are referenced in the parks JSON.
+?Do I need to add getting the list of Topics and Activites since these are referenced in the parks JSON.  The parks include all the data for its own Topics and Activities so these would only be needed as the universe of each in order to select from to trim the list of parks in a query.
+
+!It'd be nice if, clickin on [Get Closest] actually went to the Details page for that Park.
+

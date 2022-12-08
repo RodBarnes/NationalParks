@@ -49,6 +49,24 @@ public class DataService
         return result;
     }
 
+    public async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
+    {
+        ResultActivities result = new ResultActivities();
+
+        // Read data from test file
+        //var json = ReadJsonFile("Topics.json");
+        //result = JsonSerializer.Deserialize<ResultTopics>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        var url = $"https://developer.nps.gov/api/v1/activities?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultActivities>();
+        }
+
+        return result;
+    }
+
     private string ReadJsonFile(string filename)
     {
         // Read data from test file
