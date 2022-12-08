@@ -7,54 +7,56 @@
     x:Class="NationalParks.Views.FilterPage"
     x:DataType="vm:FilterVM"
     Title="{Binding Title}">
-    <VerticalStackLayout>
         <Grid
-            RowDefinitions="300,300,*"
+            RowDefinitions="*,*,60"
             RowSpacing="0"
-            Background="Red"
             VerticalOptions="FillAndExpand">
-            <VerticalStackLayout
+            <Frame 
                 Grid.Row="0"
-                Margin="5"
-                Padding="10"
-                Background="LightBlue">
-                <Label Text="Topics"
-                   Style="{StaticResource LabelLarge}"/>
-                <!--<CollectionView
-                ItemsSource="{Binding Topics}"
-                SelectionMode="Multiple"
-                RemainingItemsThreshold="2"
-                RemainingItemsThresholdReachedCommand="{Binding GetTopicsCommand}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Topic">
-                            <VerticalStackLayout HeightRequest="70">
-                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>-->
-            </VerticalStackLayout>
+                Style="{StaticResource FrameRounded}">
+                <VerticalStackLayout
+                    Grid.Row="0"
+                    Background="LightBlue">
+                    <Label Text="Topics"
+                        Style="{StaticResource LabelLargeBold}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"/>
+                    <CollectionView
+                        ItemsSource="{Binding Topics}"
+                        SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Topic">
+                                <VerticalStackLayout>
+                                    <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
 
-            <VerticalStackLayout
+            <Frame 
                 Grid.Row="1"
-                Margin="5"
-                Padding="10"
-                Background="Salmon">
-                <Label Text="Activities" Style="{StaticResource LabelLarge}"/>
-                <!--<CollectionView
-                    ItemsSource="{Binding Activities}"
-                    SelectionMode="Multiple"
-                    RemainingItemsThreshold="2"
-                    RemainingItemsThresholdReachedCommand="{Binding GetActivitiesCommand}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Topic">
-                            <VerticalStackLayout HeightRequest="70">
-                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>-->
-            </VerticalStackLayout>
+                Style="{StaticResource FrameRounded}">
+                <VerticalStackLayout
+                    Background="Salmon">
+                    <Label Text="Activities" 
+                        Style="{StaticResource LabelLargeBold}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"/>
+                    <CollectionView
+                        ItemsSource="{Binding Activities}"
+                        SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Topic">
+                                <VerticalStackLayout>
+                                    <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
 
             <Button
                 Text="Apply"
@@ -67,5 +69,4 @@
                 Style="{StaticResource ButtonOutline}"/>
 
         </Grid>
-    </VerticalStackLayout>
 </ContentPage>

@@ -44,6 +44,9 @@ namespace NationalParks.ViewModels
             if (IsBusy)
                 return;
 
+            if (Topics?.Count > 0)
+                return;
+
             try
             {
                 if (connectivity.NetworkAccess != NetworkAccess.Internet)
@@ -86,6 +89,9 @@ namespace NationalParks.ViewModels
         async Task GetActivitiesAsync()
         {
             if (IsBusy)
+                return;
+
+            if (Activities?.Count > 0)
                 return;
 
             try

@@ -17,7 +17,6 @@
             Grid.ColumnSpan="2"
             Command="{Binding GetParksCommand}"
             IsRefreshing="{Binding IsRefreshing}">
-            <ContentView>
                 <CollectionView
                     ItemsSource="{Binding Parks}"
                     SelectionMode="None"
@@ -35,7 +34,7 @@
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Park">
-                            <Grid Padding="10" HorizontalOptions="Fill">
+                            <Grid Padding="10,5" HorizontalOptions="Fill">
                                 <Frame HeightRequest="125" Style="{StaticResource ViewCard}">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer 
@@ -61,7 +60,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </ContentView>
         </RefreshView>
 
         <Button
