@@ -1,4 +1,5 @@
 ﻿using NationalParks.Services;
+using System.Text.Json;
 
 namespace NationalParks.ViewModels
 {
@@ -6,6 +7,7 @@ namespace NationalParks.ViewModels
     {
         public ObservableCollection<Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
+        public ObservableCollection<State> States { get; } = new();
 
         readonly DataService dataService;
         readonly IConnectivity connectivity;
@@ -13,9 +15,9 @@ namespace NationalParks.ViewModels
         private int startTopics = 0;
         private int startActivities = 0;
 
-        public FilterVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+        public FilterVM(DataService dataService, IConnectivity connectivity)
         {
-            Title = "Search";
+            Title = "Filter";
             this.dataService = dataService;
             this.connectivity = connectivity;
 
@@ -24,8 +26,16 @@ namespace NationalParks.ViewModels
 
         private async void LoadDataAsync()
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("No connectivity!",
+                    "Please check internet and try again.", "OK");
+                return;
+            }
+            
             await GetTopicsAsync();
             await GetActivitiesAsync();
+            await LoadStates();
         }
 
         [ObservableProperty]
@@ -45,7 +55,6 @@ namespace NationalParks.ViewModels
                 "This will clear all selections and reset the filter.", "OK");
         }
 
-        [RelayCommand]
         async Task GetTopicsAsync()
         {
             if (IsBusy)
@@ -56,13 +65,6 @@ namespace NationalParks.ViewModels
 
             try
             {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        "Please check internet and try again.", "OK");
-                    return;
-                }
-
                 IsBusy = true;
 
                 startActivities = 0;
@@ -92,7 +94,6 @@ namespace NationalParks.ViewModels
 
         }
 
-        [RelayCommand]
         async Task GetActivitiesAsync()
         {
             if (IsBusy)
@@ -103,13 +104,6 @@ namespace NationalParks.ViewModels
 
             try
             {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        "Please check internet and try again.", "OK");
-                    return;
-                }
-
                 IsBusy = true;
 
                 startActivities = 0;
@@ -135,6 +129,20 @@ namespace NationalParks.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        async Task LoadStates()
+        {
+            using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
+            var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            if (result != null)
+            {
+                foreach (var item in result.List)
+                {
+                    States.Add(item);
+                }
             }
         }
     }
