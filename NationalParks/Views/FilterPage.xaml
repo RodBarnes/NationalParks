@@ -9,7 +9,7 @@
     Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*,*"
-        RowDefinitions="*,*,60"
+        RowDefinitions="*,*,*,60"
         RowSpacing="0"
         VerticalOptions="FillAndExpand">
         <Frame 
@@ -56,9 +56,31 @@
                 </CollectionView>
             </VerticalStackLayout>
         </Frame>
+        <Frame 
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource FrameRounded}">
+            <VerticalStackLayout>
+                <Label Text="States" 
+                    Style="{StaticResource LabelLargeBold}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"/>
+                <CollectionView
+                    ItemsSource="{Binding States}"
+                    SelectionMode="Multiple">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:State">
+                            <VerticalStackLayout>
+                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Frame>
         <Button
             Text="Apply"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             Margin="8"
             VerticalOptions="End"
@@ -67,7 +89,7 @@
             Style="{StaticResource ButtonOutline}"/>
         <Button
             Text="Clear"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="1"
             Margin="8"
             VerticalOptions="End"
