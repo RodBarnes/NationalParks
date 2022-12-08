@@ -8,13 +8,13 @@
     Title="National Parks"
     x:DataType="vm:MainVM">
     <Grid
-        ColumnDefinitions="*,*"
+        ColumnDefinitions="*,*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0"
         BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <RefreshView
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Command="{Binding GetParksCommand}"
             IsRefreshing="{Binding IsRefreshing}">
             <ContentView>
@@ -67,24 +67,32 @@
             </ContentView>
         </RefreshView>
 
-        <!--<Button
+        <Button
             Grid.Row="1"
             Grid.Column="0"
             Margin="8"
-            Command="{Binding GetDataCommand}"
+            Command="{Binding GetClosestParkCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Get Data Items" />-->
+            Text="Closest Park" />
 
         <Button
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-            Command="{Binding GetClosestParkCommand}"
+            Command="{Binding GetTopicsCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Find Closest" />
+            Text="Topics" />
 
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="8"
+            Command="{Binding GetActivitiesCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"
+            Text="Activities" />
 
         <ActivityIndicator
             Grid.RowSpan="2"

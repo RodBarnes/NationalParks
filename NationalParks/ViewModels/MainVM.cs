@@ -12,9 +12,9 @@ public partial class MainVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    private int _startParks = 0;
-    private int _startTopics = 0;
-    private int _startActivities = 0;
+    private int startParks = 0;
+    private int startTopics = 0;
+    private int startActivities = 0;
 
     public MainVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
@@ -29,8 +29,6 @@ public partial class MainVM : BaseVM
     private async void LoadDataAsync()
     {
         await GetParksAsync();
-        await GetTopicsAsync();
-        await GetActivitiesAsync();
     }
 
     [RelayCommand]
@@ -64,9 +62,9 @@ public partial class MainVM : BaseVM
             }
 
             IsBusy = true;
-            var result = await dataService.GetParksAsync(_startParks);
+            var result = await dataService.GetParksAsync(startParks);
 
-            _startParks += result.Data.Count;
+            startParks += result.Data.Count;
             foreach (var park in result.Data)
                 Parks.Add(park);
         }
@@ -99,11 +97,21 @@ public partial class MainVM : BaseVM
             }
 
             IsBusy = true;
-            var result = await dataService.GetTopicsAsync(_startTopics);
 
-            _startTopics += result.Data.Count;
-            foreach (var topic in result.Data)
-                Topics.Add(topic);
+            startActivities = 0;
+            int totalTopics = 1;
+
+            while (totalTopics > startTopics)
+            {
+                var result = await dataService.GetTopicsAsync(startTopics);
+
+                if (!int.TryParse(result.Total, out totalTopics))
+                    totalTopics = 0;
+
+                startTopics += result.Data.Count;
+                foreach (var topic in result.Data)
+                    Topics.Add(topic);
+            }
         }
         catch (Exception ex)
         {
@@ -134,11 +142,21 @@ public partial class MainVM : BaseVM
             }
 
             IsBusy = true;
-            var result = await dataService.GetActivitiesAsync(_startActivities);
 
-            _startActivities += result.Data.Count;
-            foreach (var activity in result.Data)
-                Activities.Add(activity);
+            startActivities = 0;
+            int totalActivities = 1;
+
+            while (totalActivities > startActivities)
+            {
+                var result = await dataService.GetActivitiesAsync(startActivities);
+
+                if (!int.TryParse(result.Total, out totalActivities))
+                    totalActivities = 0;
+
+                startActivities += result.Data.Count;
+                foreach (var activity in result.Data)
+                    Activities.Add(activity);
+            }
         }
         catch (Exception ex)
         {
