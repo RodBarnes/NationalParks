@@ -14,9 +14,7 @@
             <Frame 
                 Grid.Row="0"
                 Style="{StaticResource FrameRounded}">
-                <VerticalStackLayout
-                    Grid.Row="0"
-                    Background="LightBlue">
+                <VerticalStackLayout>
                     <Label Text="Topics"
                         Style="{StaticResource LabelLargeBold}"
                         HorizontalOptions="FillAndExpand"
@@ -38,8 +36,7 @@
             <Frame 
                 Grid.Row="1"
                 Style="{StaticResource FrameRounded}">
-                <VerticalStackLayout
-                    Background="Salmon">
+                <VerticalStackLayout>
                     <Label Text="Activities" 
                         Style="{StaticResource LabelLargeBold}"
                         HorizontalOptions="FillAndExpand"
