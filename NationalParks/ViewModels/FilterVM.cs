@@ -12,9 +12,6 @@ namespace NationalParks.ViewModels
         readonly DataService dataService;
         readonly IConnectivity connectivity;
 
-        private int startTopics = 0;
-        private int startActivities = 0;
-
         public FilterVM(DataService dataService, IConnectivity connectivity)
         {
             Title = "Filter";
@@ -66,8 +63,7 @@ namespace NationalParks.ViewModels
             try
             {
                 IsBusy = true;
-
-                startActivities = 0;
+                int startTopics = 0;
                 int totalTopics = 1;
 
                 while (totalTopics > startTopics)
@@ -106,7 +102,7 @@ namespace NationalParks.ViewModels
             {
                 IsBusy = true;
 
-                startActivities = 0;
+                int startActivities = 0;
                 int totalActivities = 1;
 
                 while (totalActivities > startActivities)
