@@ -76,7 +76,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-            Command="{Binding GoToSearchCommand}"
+            Command="{Binding GoToFilterCommand}"
             Style="{StaticResource ButtonOutline}"/>
 
         <ActivityIndicator

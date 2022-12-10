@@ -43,7 +43,7 @@ public partial class MainVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToSearch()
+    async Task GoToFilter()
     {
         await Shell.Current.GoToAsync(nameof(FilterPage), true);
     }
