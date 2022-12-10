@@ -9,78 +9,72 @@
     Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*,*"
-        RowDefinitions="*,*,*,60"
+        RowDefinitions="25,*,25,*,25,*,60"
         RowSpacing="0"
         VerticalOptions="FillAndExpand">
-        <Frame 
-            Grid.Row="0"
-            Grid.ColumnSpan="2"
-            Style="{StaticResource FrameRounded}">
-            <StackLayout>
-                <Label Text="Topics"
-                    Style="{StaticResource LabelLargeBold}"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"/>
-                <CollectionView
-                    ItemsSource="{Binding Topics}"
-                    SelectionMode="Multiple">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Topic">
-                            <VerticalStackLayout>
-                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+        <Label Text="Topics"
+               Grid.Row="0" Grid.ColumnSpan="2"
+               Style="{StaticResource LabelLargeBold}"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"/>
+        <Frame BorderColor="{StaticResource Primary}"
+               Grid.Row="1" Grid.ColumnSpan="2"
+               CornerRadius="12">
+            <CollectionView
+            ItemsSource="{Binding Topics}"
+            SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Topic">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Frame>
-        <Frame 
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Style="{StaticResource FrameRounded}">
-            <VerticalStackLayout>
-                <Label Text="Activities" 
-                    Style="{StaticResource LabelLargeBold}"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"/>
-                <CollectionView
-                    ItemsSource="{Binding Activities}"
-                    SelectionMode="Multiple">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Topic">
-                            <VerticalStackLayout>
-                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+        <Label Text="Activities"
+               Grid.Row="2" Grid.ColumnSpan="2"
+               Style="{StaticResource LabelLargeBold}"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"/>
+        <Frame BorderColor="{StaticResource Primary}"
+               Grid.Row="3" Grid.ColumnSpan="2"
+               CornerRadius="12">
+            <CollectionView
+            ItemsSource="{Binding Activities}"
+            SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Topic">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Frame>
-        <Frame 
-            Grid.Row="2"
-            Grid.ColumnSpan="2"
-            Style="{StaticResource FrameRounded}">
-            <VerticalStackLayout>
-                <Label Text="States" 
-                    Style="{StaticResource LabelLargeBold}"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"/>
-                <CollectionView
-                    ItemsSource="{Binding States}"
-                    SelectionMode="Multiple">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:State">
-                            <VerticalStackLayout>
-                                <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+        <Label Text="States"
+               Grid.Row ="4" Grid.ColumnSpan="2"
+               Style="{StaticResource LabelLargeBold}"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"/>
+        <Frame BorderColor="{StaticResource Primary}"
+               Grid.Row="5" Grid.ColumnSpan="2"
+               CornerRadius="12">
+            <CollectionView
+            ItemsSource="{Binding States}"
+            SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:State">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Frame>
         <Button
             Text="Apply"
-            Grid.Row="3"
+            Grid.Row="6"
             Grid.Column="0"
             Margin="8"
             VerticalOptions="End"
@@ -89,7 +83,7 @@
             Style="{StaticResource ButtonOutline}"/>
         <Button
             Text="Clear"
-            Grid.Row="3"
+            Grid.Row="6"
             Grid.Column="1"
             Margin="8"
             VerticalOptions="End"
