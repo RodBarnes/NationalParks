@@ -1,10 +1,15 @@
 ﻿using NationalParks.Services;
+using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
 public partial class MainVM : BaseVM
 {
     public ObservableCollection<Park> Parks { get; } = new();
+
+    private Collection<Models.Topic> Topics { get; } = new();
+    private Collection<Models.Activity> Activities { get; } = new();
+    private Collection<Models.State> States { get; } = new();
 
     readonly DataService dataService;
     readonly IConnectivity connectivity;
@@ -19,12 +24,15 @@ public partial class MainVM : BaseVM
         this.connectivity = connectivity;
         this.geolocation = geolocation;
 
-        LoadDataAsync();
+        LoadMainDataAsync();
     }
     
-    private async void LoadDataAsync()
+    private async void LoadMainDataAsync()
     {
         await GetParksAsync();
+        await GetTopicsAsync();
+        await GetActivitiesAsync();
+        await LoadStates();
     }
 
     [ObservableProperty]
@@ -45,7 +53,12 @@ public partial class MainVM : BaseVM
     [RelayCommand]
     async Task GoToFilter()
     {
-        await Shell.Current.GoToAsync(nameof(FilterPage), true);
+        await Shell.Current.GoToAsync(nameof(FilterPage), true, new Dictionary<string, object>
+        {
+            {"Topics", Topics },
+            {"Activities", Activities },
+            {"States", States}
+        });
     }
 
     [RelayCommand]
@@ -115,6 +128,95 @@ public partial class MainVM : BaseVM
         {
             Debug.WriteLine($"Unable to query location: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+    }
+
+    async Task GetTopicsAsync()
+    {
+        if (IsBusy)
+            return;
+
+        if (Topics?.Count > 0)
+            return;
+
+        try
+        {
+            IsBusy = true;
+            int startTopics = 0;
+            int totalTopics = 1;
+
+            while (totalTopics > startTopics)
+            {
+                var result = await dataService.GetTopicsAsync(startTopics);
+
+                if (!int.TryParse(result.Total, out totalTopics))
+                    totalTopics = 0;
+
+                startTopics += result.Data.Count;
+                foreach (var topic in result.Data)
+                    Topics.Add(topic);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get data items: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    async Task GetActivitiesAsync()
+    {
+        if (IsBusy)
+            return;
+
+        if (Activities?.Count > 0)
+            return;
+
+        try
+        {
+            IsBusy = true;
+
+            int startActivities = 0;
+            int totalActivities = 1;
+
+            while (totalActivities > startActivities)
+            {
+                var result = await dataService.GetActivitiesAsync(startActivities);
+
+                if (!int.TryParse(result.Total, out totalActivities))
+                    totalActivities = 0;
+
+                startActivities += result.Data.Count;
+                foreach (var activity in result.Data)
+                    Activities.Add(activity);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get data items: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    async Task LoadStates()
+    {
+        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
+        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        if (result != null)
+        {
+            foreach (var item in result.List)
+            {
+                States.Add(item);
+            }
         }
     }
 }

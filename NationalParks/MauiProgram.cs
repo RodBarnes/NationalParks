@@ -24,6 +24,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IMap>(Map.Default);
 
 		builder.Services.AddSingleton<DataService>();
+
 		builder.Services.AddSingleton<MainVM>();
 		builder.Services.AddSingleton<MainPage>();
 

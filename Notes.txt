@@ -7,3 +7,5 @@ TODO
 The [Closest Park] button should go to the detail page for that park, not just show a message with the name.
 
 What about allowing a setting that determines a max distance and finding all Parks within that radius?
+
+I have the MainVM gathering the Topics, Activities, and States for use by FilterVM.  But how do I set it so these only get acquired behind the scenes after the initial page is displayed? If the user goes to the filter page before those are loaded, some of the lists will be empty.
