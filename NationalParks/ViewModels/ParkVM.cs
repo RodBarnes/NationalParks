@@ -3,14 +3,15 @@
 [QueryProperty(nameof(Models.Park), "Park")]
 public partial class ParkVM : BaseVM
 {
+    [ObservableProperty]
+    Park park;
+
     IMap map;
+
     public ParkVM(IMap map)
     {
         this.map = map;
     }
-
-    [ObservableProperty]
-    Park park;
 
     [RelayCommand]
     async Task OpenMap()

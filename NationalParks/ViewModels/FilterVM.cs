@@ -3,12 +3,9 @@
     [QueryProperty(nameof(TopicsCol), "Topics")]
     [QueryProperty(nameof(ActivitiesCol), "Activities")]
     [QueryProperty(nameof(StatesCol), "States")]
+    [QueryProperty(nameof(MainVM), "VM")]
     public partial class FilterVM : BaseVM
     {
-        public ObservableCollection<Models.Topic> Topics { get; } = new();
-        public ObservableCollection<Models.Activity> Activities { get; } = new();
-        public ObservableCollection<Models.State> States { get; } = new();
-
         [ObservableProperty]
         Collection<Models.Topic> topicsCol;
 
@@ -18,6 +15,13 @@
         [ObservableProperty]
         Collection<Models.State> statesCol;
 
+        [ObservableProperty]
+        MainVM mainVM;
+
+        public ObservableCollection<Models.Topic> Topics { get; } = new();
+        public ObservableCollection<Models.Activity> Activities { get; } = new();
+        public ObservableCollection<Models.State> States { get; } = new();
+
         public FilterVM()
         {
             Title = "Filter";
@@ -26,8 +30,8 @@
         public void PopulateCollections()
         {
             // This is not preferred but it is faster to do this than
-            // to acquire the lists in main (one time) and then pass them in
-            // rather than to get them from the server each time
+            // to acquire them everytime from the server.
+            // Currently, the lists are acquired (one time) and stored in main, then passed in upon navigation.
             foreach (var topic in topicsCol)
                 Topics.Add(topic);
 

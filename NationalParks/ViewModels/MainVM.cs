@@ -5,7 +5,7 @@ namespace NationalParks.ViewModels;
 
 public partial class MainVM : BaseVM
 {
-    public ObservableCollection<Park> Parks { get; } = new();
+    public ObservableCollection<Models.Park> Parks { get; } = new();
 
     private Collection<Models.Topic> Topics { get; } = new();
     private Collection<Models.Activity> Activities { get; } = new();
@@ -38,6 +38,9 @@ public partial class MainVM : BaseVM
     [ObservableProperty]
     bool isRefreshing;
 
+    [ObservableProperty]
+    Filter filter;
+
     [RelayCommand]
     async Task GoToDetails(Park park)
     {
@@ -57,7 +60,8 @@ public partial class MainVM : BaseVM
         {
             {"Topics", Topics },
             {"Activities", Activities },
-            {"States", States}
+            {"States", States},
+            {"VM", this }
         });
     }
 
