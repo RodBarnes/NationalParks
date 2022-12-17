@@ -2,9 +2,9 @@
 
 namespace NationalParks.ViewModels
 {
-    [QueryProperty("TopicsFromMain", "Topics")]
-    [QueryProperty("ActivitiesFromMain", "Activities")]
-    [QueryProperty("StatesFromMain", "States")]
+    [QueryProperty(nameof(TopicsCol), "Topics")]
+    [QueryProperty(nameof(ActivitiesCol), "Activities")]
+    [QueryProperty(nameof(StatesCol), "States")]
     public partial class FilterVM : BaseVM
     {
         public ObservableCollection<Topic> Topics { get; } = new();
@@ -12,13 +12,13 @@ namespace NationalParks.ViewModels
         public ObservableCollection<State> States { get; } = new();
 
         [ObservableProperty]
-        Collection<Models.Topic> topicsFromMain;
+        Collection<Models.Topic> topicsCol;
 
         [ObservableProperty]
-        Collection<Models.Activity> activitiesFromMain;
+        Collection<Models.Activity> activitiesCol;
 
         [ObservableProperty]
-        Collection<Models.State> statesFromMain;
+        Collection<Models.State> statesCol;
 
         public FilterVM()
         {
@@ -27,13 +27,13 @@ namespace NationalParks.ViewModels
 
         public void PopulateCollections()
         {
-            foreach (var topic in topicsFromMain)
+            foreach (var topic in topicsCol)
                 Topics.Add(topic);
 
-            foreach (var activity in activitiesFromMain)
+            foreach (var activity in activitiesCol)
                 Activities.Add(activity);
 
-            foreach (var state in statesFromMain)
+            foreach (var state in statesCol)
                 States.Add(state);
         }
 
