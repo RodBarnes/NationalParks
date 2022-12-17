@@ -25,6 +25,9 @@
 
         public void PopulateCollections()
         {
+            // This is not preferred but it is faster to do this than
+            // to acquire the lists in main (one time) and then pass them in
+            // rather than to get them from the server each time
             foreach (var topic in topicsCol)
                 Topics.Add(topic);
 
