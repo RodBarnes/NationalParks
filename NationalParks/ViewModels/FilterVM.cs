@@ -1,15 +1,13 @@
-﻿using NationalParks.Services;
-
-namespace NationalParks.ViewModels
+﻿namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(TopicsCol), "Topics")]
     [QueryProperty(nameof(ActivitiesCol), "Activities")]
     [QueryProperty(nameof(StatesCol), "States")]
     public partial class FilterVM : BaseVM
     {
-        public ObservableCollection<Topic> Topics { get; } = new();
+        public ObservableCollection<Models.Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
-        public ObservableCollection<State> States { get; } = new();
+        public ObservableCollection<Models.State> States { get; } = new();
 
         [ObservableProperty]
         Collection<Models.Topic> topicsCol;
@@ -42,8 +40,6 @@ namespace NationalParks.ViewModels
         {
             Shell.Current.DisplayAlert("Filter",
                 "This will go back to the main page with the list filtered.", "OK");
-
-            PopulateCollections();
         }
 
         [RelayCommand]
