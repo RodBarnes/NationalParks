@@ -40,14 +40,28 @@
             <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
                 <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.Description}" />
                 <!--<Label Style="{StaticResource LabelSmall}" Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" />-->
-                <Button Text="Show on Map" 
+                <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.WeatherInfo}" />
+                <HorizontalStackLayout
+                    HorizontalOptions="Center">
+                    <Button Text="Location" 
                         Command="{Binding OpenMapCommand}"
                         HorizontalOptions="Center" 
-                        WidthRequest="200" 
+                        WidthRequest="100" 
                         Margin="8"
                         Style="{StaticResource ButtonOutline}"/>
-                <Label Style="{StaticResource LabelSmall}" Text="{Binding Park.OperatingHours, StringFormat='Hours: {0}'}" />
-                <Label Style="{StaticResource LabelSmall}" Text="{Binding Park.WeatherInfo, StringFormat='Weather: {0}'}" />
+                    <Button Text="Hours" 
+                        Command="{Binding GoToHoursCommand}"
+                        HorizontalOptions="Center" 
+                        WidthRequest="100" 
+                        Margin="8"
+                        Style="{StaticResource ButtonOutline}"/>
+                    <Button Text="Images" 
+                        Command="{Binding GoToImagesCommand}"
+                        HorizontalOptions="Center" 
+                        WidthRequest="100" 
+                        Margin="8"
+                        Style="{StaticResource ButtonOutline}"/>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>

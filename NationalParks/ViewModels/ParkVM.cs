@@ -34,8 +34,20 @@ public partial class ParkVM : BaseVM
     }
 
     [RelayCommand]
-    async Task ShowLocation()
+    async Task GoToHours()
     {
-        await Shell.Current.DisplayAlert("Map", "Show the map", "OK");
+        await Shell.Current.GoToAsync(nameof(HoursPage), true, new Dictionary<string, object>
+        {
+            {"Hours", park.OperatingHours }
+        });
+    }
+
+    [RelayCommand]
+    async Task GoToImages()
+    {
+        await Shell.Current.GoToAsync(nameof(ImagesPage), true, new Dictionary<string, object>
+        {
+            {"Images", park.Images }
+        });
     }
 }
