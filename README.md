@@ -6,7 +6,7 @@ The app relies upon data from the National Park Service (NPS) via its API and us
 
 **For security purposes, an API Key is not included in this repository.  You must obtain your own if building or forking this code.**
 
-After cloning the repository, create a ```Config.cs``` file in the project root folder that contains the code (below) and insert your API Key in place of the token "YOUR_API_KEY".  *This file is set as ignored in the .gitignore and will not be pushed to the repository.*
+After cloning the repository, create a ```Config.cs``` file in the local project root folder that contains the code (below) and insert your API Key in place of the token "YOUR_API_KEY".  *This file is set as ignored in the .gitignore and will not be pushed to the repository.*
 
 ```
 namespace NationalParks
