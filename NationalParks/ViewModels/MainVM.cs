@@ -19,7 +19,7 @@ public partial class MainVM : BaseVM
 
     public MainVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
-        Title = "Parks";
+        Title = "National Parks";
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;

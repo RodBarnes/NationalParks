@@ -1,15 +1,13 @@
-If user taps "Get Data" button, should this always start over from 0 so that, in case the data has been updated, it is reflected?
-Or, does that only happen with a pull down?
-It should probably get the first set of data automatically upon display rather than even having a "Get Data" button.
-
 TODO
 ----
-The [Closest Park] button should go to the detail page for that park, not just show a message with the name.
+Allow setting radious in miles and presenting list of Parks within that radius.
 
-What about allowing a setting that determines a max distance and finding all Parks within that radius?
-
-I have the MainVM gathering the Topics, Activities, and States for use by FilterVM.  But how do I set it so these only get acquired behind the scenes after the initial page is displayed? If the user goes to the filter page before those are loaded, some of the lists will be empty.
+I have the MainVM gathering the Topics, Activities, and States for use by FilterVM.  If the user goes to the filter page before those are loaded, some of the lists will be empty so I need to disable the Filter button until these are populated.
 
 Is there a way to pass in the observable collection so it doesn't have to be populated when displaying FilterVM?  Or can the observable collection reference the internal collection that is passed in?
 
 The API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
+
+Since OperatingHours can have more than one entry, this probably needs to bring up a separate page that is a CollectionView so the user can scroll through them?
+
+Need to add a page that displays all the available images -- probably by clicking the image?  Or is that too subtle?

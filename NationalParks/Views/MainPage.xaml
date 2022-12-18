@@ -5,7 +5,7 @@
     xmlns:model="clr-namespace:NationalParks.Models"
     xmlns:vm="clr-namespace:NationalParks.ViewModels"
     x:Class="NationalParks.Views.MainPage"
-    Title="National Parks"
+    Title="{Binding Title}"
     x:DataType="vm:MainVM">
     <Grid
         ColumnDefinitions="*,*"
@@ -64,13 +64,13 @@
         </RefreshView>
 
         <Button
+            Text="Closest Park"
             Grid.Row="1"
             Grid.Column="0"
             Margin="8"
             Command="{Binding GetClosestParkCommand}"
             IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}"
-            Text="Closest Park" />
+            Style="{StaticResource ButtonOutline}" />
 
         <Button
             Text="Filter" 
@@ -78,6 +78,7 @@
             Grid.Column="1"
             Margin="8"
             Command="{Binding GoToFilterCommand}"
+            IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"/>
 
         <ActivityIndicator
