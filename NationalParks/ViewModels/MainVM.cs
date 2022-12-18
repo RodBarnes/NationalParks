@@ -124,8 +124,7 @@ public partial class MainVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await Shell.Current.DisplayAlert("", first.FullName, "OK");
-
+            await GoToDetails(first);
         }
         catch (Exception ex)
         {
