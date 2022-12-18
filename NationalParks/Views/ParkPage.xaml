@@ -14,19 +14,19 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
 
-            <Border StrokeShape="RoundRectangle 80"
+            <Border StrokeShape="RoundRectangle 10"
                     Stroke="White"
                     StrokeThickness="6"
                     HeightRequest="175"
                     WidthRequest="175"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">
-                <Image Aspect="AspectFill"
+                <Image Source="{Binding Park.MainImage}"
+                       Aspect="AspectFill"
                        HeightRequest="160"
+                       WidthRequest="160"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Source="{Binding Park.MainImage}"
-                       WidthRequest="160"/>
+                       VerticalOptions="Center"/>
             </Border>
 
             <Label Style="{StaticResource LabelLarge}" 

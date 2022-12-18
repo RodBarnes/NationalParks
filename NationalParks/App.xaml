@@ -61,7 +61,7 @@
                 <Setter Property="RefreshColor" Value="{StaticResource Primary}" />
             </Style>
 
-            <Style TargetType="Button" x:Key="ButtonOutline">
+            <Style x:Key="ButtonOutline" TargetType="Button">
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ButtonBackground}, Dark={StaticResource ButtonBackgroundDark}}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="BorderColor" Value="{StaticResource Primary}" />
@@ -69,8 +69,8 @@
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="CornerRadius" Value="12" />
             </Style>
-            
-            <Style TargetType="Frame" x:Key="ViewCard">
+
+            <Style x:Key="ViewCard" TargetType="Frame">
                 <Setter Property="BorderColor" Value="#DDDDDD" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
                 <Setter Property="Padding" Value="0" />
