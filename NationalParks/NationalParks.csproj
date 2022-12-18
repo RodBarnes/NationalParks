@@ -44,6 +44,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\HoursPage.xaml.cs">
+	    <DependentUpon>HoursPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ParkPage.xaml.cs">
 	    <DependentUpon>ParkPage.xaml</DependentUpon>
 	  </Compile>
@@ -54,6 +57,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\FilterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ImagesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HoursPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

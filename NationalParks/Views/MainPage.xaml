@@ -5,8 +5,8 @@
     xmlns:model="clr-namespace:NationalParks.Models"
     xmlns:vm="clr-namespace:NationalParks.ViewModels"
     x:Class="NationalParks.Views.MainPage"
-    Title="{Binding Title}"
-    x:DataType="vm:MainVM">
+    x:DataType="vm:MainVM"
+    Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
