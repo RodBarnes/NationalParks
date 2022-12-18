@@ -20,6 +20,7 @@ public class DataService
         //var json = ReadJsonFile("Parks.json");
         //result = JsonSerializer.Deserialize<ResultParks>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
+        // States: Comma-delimited list -- stateCode=OR%2CWA
 
         var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}&limit={limit}";
         var response = await httpClient.GetAsync(url);
