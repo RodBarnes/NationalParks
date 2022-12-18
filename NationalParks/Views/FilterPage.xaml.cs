@@ -13,6 +13,6 @@ public partial class FilterPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-		_vm.PopulateCollections();
+		_vm.PopulateData();
     }
 }

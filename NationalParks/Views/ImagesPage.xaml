@@ -7,7 +7,7 @@
              Title="{Binding Title}">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="{Binding Park.Name, StringFormat='Images for {0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

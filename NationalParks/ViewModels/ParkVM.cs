@@ -3,8 +3,6 @@
 [QueryProperty(nameof(Models.Park), "Park")]
 public partial class ParkVM : BaseVM
 {
-    public ObservableCollection<Models.Image> Images { get; set; }
-
     [ObservableProperty]
     Park park;
 
@@ -38,7 +36,7 @@ public partial class ParkVM : BaseVM
     {
         await Shell.Current.GoToAsync(nameof(HoursPage), true, new Dictionary<string, object>
         {
-            {"Hours", park.OperatingHours }
+            {"Park", Park }
         });
     }
 
@@ -47,7 +45,7 @@ public partial class ParkVM : BaseVM
     {
         await Shell.Current.GoToAsync(nameof(ImagesPage), true, new Dictionary<string, object>
         {
-            {"Images", park.Images }
+            {"Park", Park }
         });
     }
 }

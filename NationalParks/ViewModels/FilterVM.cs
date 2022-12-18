@@ -27,7 +27,7 @@
             Title = "Filter";
         }
 
-        public void PopulateCollections()
+        public void PopulateData()
         {
             // This is not preferred but it is faster to do this than to acquire them everytime from the server.
             // Currently, the lists are acquired (one time) and stored in main, then passed in upon navigation.
