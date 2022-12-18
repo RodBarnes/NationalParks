@@ -85,7 +85,10 @@ public partial class MainVM : BaseVM
 
             startParks += result.Data.Count;
             foreach (var park in result.Data)
+            {
+                park.MainImage = ImageSource.FromUri(new Uri(park.Images.FirstOrDefault().Url));
                 Parks.Add(park);
+            }
         }
         catch (Exception ex)
         {
