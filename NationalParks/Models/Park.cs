@@ -21,13 +21,11 @@
         public string DirectionsUrl { get; set; }
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
-        public ImageSource MainImage { get; set; }
+        public ImageSource MainImage { get => ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url)); }
         public List<Image> Images { get; set; }
         public string WeatherInfo { get; set; }
         public string Name { get; set; }
         public string Designation { get; set; }
-
-        public string Location { get => $"{Latitude},{Longitude}"; }
 
         public double DLatitude
         {
