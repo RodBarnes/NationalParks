@@ -23,14 +23,12 @@
                     RemainingItemsThreshold="2"
                     RemainingItemsThresholdReachedCommand="{Binding GetParksCommand}">
                     <CollectionView.EmptyView>
-                        <StackLayout Padding="100">
-                            <Image
-                                HorizontalOptions="Center"
-                                HeightRequest="160"
-                                WidthRequest="160"
-                                Source="data_loading.png"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+                        <Image
+                            HeightRequest="160"
+                            WidthRequest="160"
+                            Source="data_loading.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Park">
