@@ -10,5 +10,8 @@
             Text="{Binding Park.Name, StringFormat='Images for {0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <CollectionView
+            ItemsSource="{Binding Park.Images}">
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

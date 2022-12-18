@@ -10,5 +10,8 @@
             Text="{Binding Park.Name, StringFormat='Hours for {0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <CollectionView
+            ItemsSource="{Binding Park.OperatingHours}">
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
