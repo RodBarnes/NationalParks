@@ -6,17 +6,10 @@
     [QueryProperty(nameof(MainVM), "VM")]
     public partial class FilterVM : BaseVM
     {
-        [ObservableProperty]
-        Collection<Models.Topic> topicsCol;
-
-        [ObservableProperty]
-        Collection<Models.Activity> activitiesCol;
-
-        [ObservableProperty]
-        Collection<Models.State> statesCol;
-
-        [ObservableProperty]
-        MainVM mainVM;
+        public Collection<Models.Topic> TopicsCol { get; set; }
+        public Collection<Models.Activity> ActivitiesCol { get; set; }
+        public Collection<Models.State> StatesCol { get; set; }
+        public MainVM MainVM { get; set; }
 
         public ObservableCollection<Models.Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
@@ -31,13 +24,13 @@
         {
             // This is not preferred but it is faster to do this than to acquire them everytime from the server.
             // Currently, the lists are acquired (one time) and stored in main, then passed in upon navigation.
-            foreach (var topic in topicsCol)
+            foreach (var topic in TopicsCol)
                 Topics.Add(topic);
 
-            foreach (var activity in activitiesCol)
+            foreach (var activity in ActivitiesCol)
                 Activities.Add(activity);
 
-            foreach (var state in statesCol)
+            foreach (var state in StatesCol)
                 States.Add(state);
         }
 

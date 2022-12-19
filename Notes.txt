@@ -8,6 +8,4 @@ Is there a way to pass in the observable collection so it doesn't have to be pop
 
 The API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
 
-Since OperatingHours can have more than one entry, this probably needs to bring up a separate page that is a CollectionView so the user can scroll through them?
-
-Need to add a page that displays all the available images -- probably by clicking the image?  Or is that too subtle?
+Can I do a swipe gesture to go to a new page?  Thinking of making Hours and Images part of a swipe set of Park like we did with FE Connect.  But in the FE Connect case, they were truly extensions of the same object to collect additional data.
