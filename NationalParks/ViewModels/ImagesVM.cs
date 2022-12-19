@@ -24,9 +24,9 @@
         }
 
         [RelayCommand]
-        async Task GoToImage()
+        async Task GoToImage(Models.Image image)
         {
-            await Shell.Current.DisplayAlert("Image", $"Image to display", "OK");
+            await Shell.Current.DisplayAlert($"Copied to clipboard", $"{image.Title}", "OK");
         }
     }
 }

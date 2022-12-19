@@ -17,17 +17,25 @@
         </CollectionView.EmptyView>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Image">
-                <Image Source="{Binding Url}"
-                       Aspect="AspectFill"
-                       WidthRequest="400"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer 
+                <VerticalStackLayout>
+                    <Label Text="{Binding Title}"
+                           HorizontalOptions="Center"
+                           Padding="0,10,0,0"
+                           Style="{StaticResource LabelMediumBold}"/>
+                    <Frame Style="{StaticResource ViewCard}">
+                        <VerticalStackLayout>
+                            <Image Source="{Binding Url}"
+                               Aspect="AspectFill"
+                               HorizontalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImagesVM}}, Path=GoToImageCommand}"
                             CommandParameter="{Binding .}"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
