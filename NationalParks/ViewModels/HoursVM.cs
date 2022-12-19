@@ -3,6 +3,7 @@
     [QueryProperty(nameof(Park), "Park")]
     public partial class HoursVM : BaseVM
     {
+        // Query properties
         [ObservableProperty]
         Park park;
 
@@ -16,9 +17,7 @@
         public void PopulateData()
         {
             foreach (var hour in Park.OperatingHours)
-            {
                 Hours.Add(hour);
-            }
         }
     }
 }

@@ -3,6 +3,7 @@
     [QueryProperty(nameof(Park), "Park")]
     public partial class ImagesVM: BaseVM
     {
+        // Query properties
         [ObservableProperty]
         Park park;
 
