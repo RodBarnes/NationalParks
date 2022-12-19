@@ -22,5 +22,11 @@
                 Images.Add(image);
             }
         }
+
+        [RelayCommand]
+        async Task GoToImage()
+        {
+            await Shell.Current.DisplayAlert("Image", $"Image to display", "OK");
+        }
     }
 }

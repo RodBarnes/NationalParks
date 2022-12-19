@@ -19,11 +19,16 @@
             <DataTemplate x:DataType="model:Image">
                 <Image Source="{Binding Url}"
                        Aspect="AspectFill"
-                       HeightRequest="300"
                        WidthRequest="400"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-                </DataTemplate>
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImagesVM}}, Path=GoToImageCommand}"
+                            CommandParameter="{Binding .}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
 </ContentPage>
