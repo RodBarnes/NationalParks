@@ -19,3 +19,5 @@ WebCam images are the same as Park images but they include two additional proper
 And maybe Activity should be ParkActivity to eliminate the ambiguity with System...Activity?
 
 What about Amenities, Campgrounds, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
+
+How can I hide the string Lat/Long properties and only expose the double Lat/Long properties?  The names have to be that was because of the JSON parsing -- unless I do something custom for this.  This is also an issue for some of the bool and other numeric values which are being passed as strings.
