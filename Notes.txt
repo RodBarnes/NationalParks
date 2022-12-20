@@ -2,8 +2,6 @@ TODO
 ----
 Allow setting radious in miles and presenting list of Parks within that radius.
 
-I have the MainVM gathering the Topics, Activities, and States for use by FilterVM.  If the user goes to the filter page before those are loaded, some of the lists will be empty so I need to disable the Filter button until these are populated.
-
 The API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
 
 Can I do a swipe gesture to go to a new page?  Thinking of making Hours and Images part of a swipe set of Park like we did with FE Connect.  But in the FE Connect case, they were truly extensions of the same object to collect additional data.
