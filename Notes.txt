@@ -5,3 +5,17 @@ Allow setting radious in miles and presenting list of Parks within that radius.
 The API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
 
 Can I do a swipe gesture to go to a new page?  Thinking of making Hours and Images part of a swipe set of Park like we did with FE Connect.  But in the FE Connect case, they were truly extensions of the same object to collect additional data.
+
+Maybe need a string handler that recognizes URLs in text (e.g., weather descriptions) and turns those into clickable links.
+
+Still unsure what to do with the ExceptionHours and whether to display the StandardHours since they are often (alway?) included as text in the description.
+
+Need to add an app icon that the user sees for the app in the apps list.
+
+Webcams are probably a list just like the images but they are indepent of parks.  From where should they be accessed?  Maybe there is a toolbar at the bottom with Parks and WebCams?
+
+WebCam images are the same as Park images but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
+
+And maybe Activity should be ParkActivity to eliminate the ambiguity with System...Activity?
+
+What about Amenities, Campgrounds, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
