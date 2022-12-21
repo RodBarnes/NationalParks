@@ -56,7 +56,7 @@ public partial class ParkListVM : BaseVM
     [RelayCommand]
     async Task GoToFilter()
     {
-        await Shell.Current.GoToAsync(nameof(FilterPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
         {
             {"Topics", Topics },
             {"Activities", Activities },

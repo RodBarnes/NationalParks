@@ -4,7 +4,7 @@
     [QueryProperty(nameof(ActivitiesCol), "Activities")]
     [QueryProperty(nameof(StatesCol), "States")]
     [QueryProperty(nameof(ParentVM), "VM")]
-    public partial class FilterVM : BaseVM
+    public partial class ParkFilterVM : BaseVM
     {
         // Query properties
         public Collection<Models.Topic> TopicsCol { get; set; }
@@ -16,7 +16,7 @@
         public ObservableCollection<Models.Activity> Activities { get; } = new();
         public ObservableCollection<Models.State> States { get; } = new();
 
-        public FilterVM()
+        public ParkFilterVM()
         {
             Title = "Filter";
         }

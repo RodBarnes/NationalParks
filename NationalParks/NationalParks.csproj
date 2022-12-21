@@ -56,13 +56,13 @@
 	  <Compile Update="Views\ParkDetailPage.xaml.cs">
 	    <DependentUpon>ParkDetailPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\FilterPage.xaml.cs">
-	    <DependentUpon>FilterPage.xaml</DependentUpon>
+	  <Compile Update="Views\ParkFilterPage.xaml.cs">
+	    <DependentUpon>ParkFilterPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\FilterPage.xaml">
+	  <MauiXaml Update="Views\ParkFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ParkImageListPage.xaml">

@@ -31,8 +31,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<ParkDetailVM>();
 		builder.Services.AddTransient<ParkDetailPage>();
 
-        builder.Services.AddTransient<FilterVM>();
-        builder.Services.AddTransient<FilterPage>();
+        builder.Services.AddTransient<ParkFilterVM>();
+        builder.Services.AddTransient<ParkFilterPage>();
 
         builder.Services.AddTransient<ParkHoursVM>();
         builder.Services.AddTransient<ParkHoursPage>();

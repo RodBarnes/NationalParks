@@ -1,10 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class FilterPage : ContentPage
+public partial class ParkFilterPage : ContentPage
 {
-	readonly FilterVM _vm;
+	readonly ParkFilterVM _vm;
 
-	public FilterPage(FilterVM vm)
+	public ParkFilterPage(ParkFilterVM vm)
 	{
 		InitializeComponent();
 		BindingContext = _vm = vm;
