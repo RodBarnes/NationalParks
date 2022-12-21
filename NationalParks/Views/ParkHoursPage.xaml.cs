@@ -1,10 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class HoursPage : ContentPage
+public partial class ParkHoursPage : ContentPage
 {
-	HoursVM _vm;
+	ParkHoursVM _vm;
 
-	public HoursPage(HoursVM vm)
+	public ParkHoursPage(ParkHoursVM vm)
 	{
 		InitializeComponent();
 		BindingContext = _vm = vm;

@@ -1,7 +1,7 @@
 ﻿namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(Park), "Park")]
-    public partial class HoursVM : BaseVM
+    public partial class ParkHoursVM : BaseVM
     {
         // Query properties
         [ObservableProperty]
@@ -9,7 +9,7 @@
 
         public ObservableCollection<Models.OperatingHours> Hours { get; } = new();
 
-        public HoursVM()
+        public ParkHoursVM()
         {
             Title = "Operating Hours";
         }

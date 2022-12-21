@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:Class="NationalParks.Views.HoursPage"
-             x:DataType="vm:HoursVM"
+             x:Class="NationalParks.Views.ParkHoursPage"
+             x:DataType="vm:ParkHoursVM"
              Title="{Binding Title}">
     <CollectionView ItemsSource="{Binding Hours}"
                     SelectionMode="None">
