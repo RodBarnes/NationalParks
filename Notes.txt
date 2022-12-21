@@ -1,3 +1,7 @@
+State
+-----
+Commit 248d09fd everything is working for Park (Detail, Hours, Images, Filter) and have initial Flyout.
+
 TODO
 ----
 Allow setting radious in miles and presenting list of Parks within that radius.
