@@ -19,7 +19,7 @@ public partial class ParkListVM : BaseVM
 
     public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
-        Title = "National Parks";
+        Title = "Parks";
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;

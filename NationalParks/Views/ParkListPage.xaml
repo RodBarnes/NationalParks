@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:NationalParks.ViewModels"
-    xmlns:model="clr-namespace:NationalParks.Models"
-    x:Class="NationalParks.Views.ParkListPage"
-    x:DataType="vm:ParkListVM"
-    Title="{Binding Title}">
-    <Grid
-        ColumnDefinitions="*,*"
-        ColumnSpacing="5"
-        RowDefinitions="*,Auto"
-        RowSpacing="0"
-        BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <RefreshView
-            Grid.ColumnSpan="2"
-            Command="{Binding GetParksCommand}"
-            IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView
-                ItemsSource="{Binding Parks}"
-                SelectionMode="None"
-                RemainingItemsThreshold="2"
-                RemainingItemsThresholdReachedCommand="{Binding GetParksCommand}">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:model="clr-namespace:NationalParks.Models"
+             x:Class="NationalParks.Views.ParkListPage"
+             x:DataType="vm:ParkListVM"
+             Title="{Binding Title}">
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0"
+          BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
+        <RefreshView Command="{Binding GetParksCommand}"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Grid.ColumnSpan="2">
+            <CollectionView ItemsSource="{Binding Parks}"
+                            SelectionMode="None"
+                            RemainingItemsThreshold="2"
+                            RemainingItemsThresholdReachedCommand="{Binding GetParksCommand}">
                 <CollectionView.EmptyView>
                 <Image Source="data_loading_green.png"
                         HeightRequest="160"
@@ -60,31 +56,24 @@
             </CollectionView>
         </RefreshView>
 
-        <Button
-            Text="Closest Park"
-            Grid.Row="1"
-            Grid.Column="0"
-            Margin="8"
-            Command="{Binding GetClosestParkCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}" />
+        <Button Text="Closest Park"
+                Grid.Row="1" Grid.Column="0"
+                Margin="8"
+                Command="{Binding GetClosestParkCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}" />
 
-        <Button
-            Text="Filter" 
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8"
-            Command="{Binding GoToFilterCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}"/>
+        <Button Text="Filter" 
+                Grid.Row="1" Grid.Column="1"
+                Margin="8"
+                Command="{Binding GoToFilterCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
 
-        <ActivityIndicator
-            Grid.RowSpan="2"
-            Grid.ColumnSpan="2"
-            HorizontalOptions="Fill"
-            IsRunning="{Binding IsBusy}"
-            IsVisible="{Binding IsBusy}"
-            Color="{StaticResource Primary}"
-            VerticalOptions="Center" />
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           Grid.RowSpan="2" Grid.ColumnSpan="2"
+                           HorizontalOptions="Fill"
+                           Color="{StaticResource Primary}"
+                           VerticalOptions="Center" />
     </Grid>
 </ContentPage>

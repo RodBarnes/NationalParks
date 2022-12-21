@@ -29,9 +29,19 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="NPS" Icon="tree.png">
-        <ShellContent Title="NationalParks"
+    <FlyoutItem Title="Parks">
+        <ShellContent Icon="tree.png"
                       ContentTemplate="{DataTemplate views:ParkListPage}"
                       Route="ParkListPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Campgrounds">
+        <ShellContent Icon="tree.png"
+                      ContentTemplate="{DataTemplate views:CampgroundListPage}"
+                      Route="CampgroundListPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Webcams">
+        <ShellContent Icon="tree.png"
+                      ContentTemplate="{DataTemplate views:WebcamListPage}"
+                      Route="WebcamListPage" />
     </FlyoutItem>
 </Shell>

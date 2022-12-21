@@ -40,6 +40,12 @@ public static class MauiProgram
         builder.Services.AddTransient<ParkImageListVM>();
         builder.Services.AddTransient<ParkImageListPage>();
 
+        builder.Services.AddSingleton<CampgroundListVM>();
+        builder.Services.AddSingleton<CampgroundListPage>();
+
+        builder.Services.AddSingleton<WebcamListVM>();
+        builder.Services.AddSingleton<WebcamListPage>();
+
         return builder.Build();
 	}
 }
