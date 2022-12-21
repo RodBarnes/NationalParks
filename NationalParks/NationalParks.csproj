@@ -47,8 +47,11 @@
 	  <Compile Update="Views\HoursPage.xaml.cs">
 	    <DependentUpon>HoursPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ParkPage.xaml.cs">
-	    <DependentUpon>ParkPage.xaml</DependentUpon>
+	  <Compile Update="Views\ParkListPage.xaml.cs">
+	    <DependentUpon>ParkListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ParkDetailPage.xaml.cs">
+	    <DependentUpon>ParkDetailPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\FilterPage.xaml.cs">
 	    <DependentUpon>FilterPage.xaml</DependentUpon>

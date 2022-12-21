@@ -31,7 +31,7 @@
 
     <FlyoutItem Title="NPS" Icon="tree.png">
         <ShellContent Title="NationalParks"
-                      ContentTemplate="{DataTemplate views:MainPage}"
-                      Route="MainPage" />
+                      ContentTemplate="{DataTemplate views:ParkListPage}"
+                      Route="ParkListPage" />
     </FlyoutItem>
 </Shell>

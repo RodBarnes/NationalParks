@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
-public partial class MainVM : BaseVM
+public partial class ParkListVM : BaseVM
 {
     public ObservableCollection<Models.Park> Parks { get; } = new();
 
@@ -17,7 +17,7 @@ public partial class MainVM : BaseVM
 
     private int startParks = 0;
 
-    public MainVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
         Title = "National Parks";
         this.dataService = dataService;
@@ -47,7 +47,7 @@ public partial class MainVM : BaseVM
         if (park == null)
         return;
 
-        await Shell.Current.GoToAsync(nameof(ParkPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
         {
             {"Park", park }
         });

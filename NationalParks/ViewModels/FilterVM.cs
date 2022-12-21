@@ -10,7 +10,7 @@
         public Collection<Models.Topic> TopicsCol { get; set; }
         public Collection<Models.Activity> ActivitiesCol { get; set; }
         public Collection<Models.State> StatesCol { get; set; }
-        public MainVM ParentVM { get; set; }
+        public ParkListVM ParentVM { get; set; }
 
         public ObservableCollection<Models.Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
