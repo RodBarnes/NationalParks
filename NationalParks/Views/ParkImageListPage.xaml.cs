@@ -1,10 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class ImagesPage : ContentPage
+public partial class ParkImageListPage : ContentPage
 {
-    ImagesVM _vm;
+    ParkImageListVM _vm;
 
-	public ImagesPage(ImagesVM vm)
+	public ParkImageListPage(ParkImageListVM vm)
 	{
 		InitializeComponent();
 		BindingContext = _vm = vm;

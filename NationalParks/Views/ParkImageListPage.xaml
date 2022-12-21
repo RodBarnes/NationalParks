@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:Class="NationalParks.Views.ImagesPage"
-             x:DataType="vm:ImagesVM"
+             x:Class="NationalParks.Views.ParkImageListPage"
+             x:DataType="vm:ParkImageListVM"
              Title="{Binding Title}">
     <CollectionView ItemsSource="{Binding Images}"
                     SelectionMode="None">
@@ -29,7 +29,7 @@
                                HorizontalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer 
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImagesVM}}, Path=GoToImageCommand}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkImageListVM}}, Path=GoToImageCommand}"
                             CommandParameter="{Binding .}"/>
                                 </Image.GestureRecognizers>
                             </Image>

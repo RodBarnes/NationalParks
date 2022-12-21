@@ -1,7 +1,7 @@
 ﻿namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(Park), "Park")]
-    public partial class ImagesVM: BaseVM
+    public partial class ParkImageListVM: BaseVM
     {
         // Query properties
         [ObservableProperty]
@@ -9,7 +9,7 @@
 
         public ObservableCollection<Models.Image> Images { get; } = new();
 
-        public ImagesVM()
+        public ParkImageListVM()
         {
             Title = "Images";
         }
