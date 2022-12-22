@@ -32,7 +32,7 @@
                                     Style="{StaticResource ViewCard}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkListVM}}, Path=GoToDetailsCommand}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkListVM}}, Path=GoToParkCommand}"
                                         CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">

@@ -42,7 +42,7 @@ public partial class ParkListVM : BaseVM
     Filter filter;
 
     [RelayCommand]
-    async Task GoToDetails(Park park)
+    async Task GoToPark(Park park)
     {
         if (park == null)
         return;
@@ -124,7 +124,7 @@ public partial class ParkListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetails(first);
+            await GoToPark(first);
         }
         catch (Exception ex)
         {
