@@ -14,7 +14,7 @@ public class DataService
 
     public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20)
     {
-        ResultParks result = new ResultParks();
+        var result = new ResultParks();
 
         // Read data from test file
         //var json = ReadJsonFile("Parks.json");
@@ -34,7 +34,7 @@ public class DataService
 
     public async Task<ResultTopics> GetTopicsAsync(int start = 0, int limit = 20)
     {
-        ResultTopics result = new ResultTopics();
+        var result = new ResultTopics();
 
         // Read data from test file
         //var json = ReadJsonFile("Topics.json");
@@ -52,7 +52,7 @@ public class DataService
 
     public async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
     {
-        ResultActivities result = new ResultActivities();
+        var result = new ResultActivities();
 
         // Read data from test file
         //var json = ReadJsonFile("Topics.json");
@@ -67,6 +67,27 @@ public class DataService
 
         return result;
     }
+
+    public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
+    {
+        var result = new ResultWebcams();
+
+        // Read data from test file
+        //var json = ReadJsonFile("Parks.json");
+        //result = JsonSerializer.Deserialize<ResultParks>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        // States: Comma-delimited list -- stateCode=OR%2CWA
+
+        var url = $"https://developer.nps.gov/api/v1/webcams?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultWebcams>();
+        }
+
+        return result;
+    }
+
 
     private string ReadJsonFile(string filename)
     {
