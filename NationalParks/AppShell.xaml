@@ -2,8 +2,7 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NationalParks.AppShell"
-             xmlns:views="clr-namespace:NationalParks.Views"
-             FlyoutIcon="tree.png">
+             xmlns:views="clr-namespace:NationalParks.Views">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -29,19 +28,16 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Parks">
-        <ShellContent Icon="tree.png"
-                      ContentTemplate="{DataTemplate views:ParkListPage}"
+    <FlyoutItem Title="Parks" Icon="tree.png">
+        <ShellContent ContentTemplate="{DataTemplate views:ParkListPage}"
                       Route="ParkListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Campgrounds">
-        <ShellContent Icon="tree.png"
-                      ContentTemplate="{DataTemplate views:CampgroundListPage}"
+    <FlyoutItem Title="Campgrounds" Icon="tree.png">
+        <ShellContent ContentTemplate="{DataTemplate views:CampgroundListPage}"
                       Route="CampgroundListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Webcams">
-        <ShellContent Icon="tree.png"
-                      ContentTemplate="{DataTemplate views:WebcamListPage}"
+    <FlyoutItem Title="Webcams" Icon="tree.png">
+        <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
                       Route="WebcamListPage" />
     </FlyoutItem>
 </Shell>
