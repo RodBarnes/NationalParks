@@ -24,20 +24,24 @@
 
     <Shell.FlyoutHeader>
         <Grid HeightRequest="100" BackgroundColor="{StaticResource Primary}">
-            <Image Source="tree.png"/>
+            <Image Source="nps.png"/>
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Parks" Icon="tree.png">
+    <FlyoutItem Title="Parks" Icon="tree_green.png">
         <ShellContent ContentTemplate="{DataTemplate views:ParkListPage}"
                       Route="ParkListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Campgrounds" Icon="tree.png">
+    <FlyoutItem Title="Campgrounds" Icon="campfire_green.png">
         <ShellContent ContentTemplate="{DataTemplate views:CampgroundListPage}"
                       Route="CampgroundListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Webcams" Icon="tree.png">
+    <FlyoutItem Title="Webcams" Icon="camera_green.png">
         <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
                       Route="WebcamListPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="About" Icon="info_fancy_green.png">
+        <ShellContent ContentTemplate="{DataTemplate views:AboutPage}"
+                      Route="AboutPage" />
     </FlyoutItem>
 </Shell>
