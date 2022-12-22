@@ -7,9 +7,38 @@
              x:DataType="vm:AboutVM"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Frame Style="{StaticResource ViewCard}"
+               Padding="10"
+               HeightRequest="150">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToNpsSiteCommand}" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="100,*">
+                <Image Source="nps.png"
+                       Grid.Column="0"
+                       Aspect="AspectFill" />
+                <VerticalStackLayout Grid.Column="1"
+                                     VerticalOptions="Center">
+                    <Label Text="This app uses the API provided by the National Park Service."
+                           Style="{StaticResource LabelMedium}"/>
+                    <Label Text="https://www.nps.gov/subjects/developer/"
+                           Style="{StaticResource LabelMedium}"
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Frame Style="{StaticResource ViewCard}"
+               Padding="10">
+            <VerticalStackLayout>
+                <Label Text="Advanced Applications"
+               Style="{StaticResource LabelMediumBold}"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+                <Label Text="Copyright © 2022"
+               Style="{StaticResource LabelSmall}"
+               HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>
