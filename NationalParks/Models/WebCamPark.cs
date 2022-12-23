@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public class WebCamPark
+    public class WebcamPark
     {
         public string States { get; set; }
         public string ParkCode { get; set; }
