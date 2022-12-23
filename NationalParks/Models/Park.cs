@@ -7,8 +7,8 @@
         public string FullName { get; set; }
         public string ParkCode { get; set; }
         public string Description { get; set; }
-        private string Latitude { get; set; }
-        private string Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public string LatLong { get; set; }
         public List<Activity> Activities { get; set; }
         public List<Topic> Topics { get; set; }

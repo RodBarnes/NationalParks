@@ -1,10 +1,6 @@
 State
 -----
-Park Closest seems to be broken.  It brings up the Abraham Lincoln Birthplace instead of Alcatraz as it used to.  Maybe a result of all the switching around I did when adding the Campground and Webcam buttons and commands.
-
-Park Location seems to also be broken.  Probably need to go to an earlier commit (before merging Campground branch) to test.
-
-Everything is working for Park (Detail, Hours, Images, Filter) and have initial Flyout, WebcamList and CampgroundList, and WebcamDetail and CampgoundDetail (though neither of the latter yet displays data).
+At Working tag: Everything is working for Park (Detail, Hours, Images, Filter) and have initial Flyout, WebcamList and CampgroundList, and WebcamDetail and CampgoundDetail (though neither of the latter yet displays data).
 
 TODO
 ----
