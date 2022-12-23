@@ -2,6 +2,6 @@
 {
     public partial class ResultWebcams : Result
     {
-        public List<WebCam> Data { get; set; }
+        public List<Webcam> Data { get; set; }
     }
 }
