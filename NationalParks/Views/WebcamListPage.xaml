@@ -6,49 +6,72 @@
              x:DataType="vm:WebcamListVM"
              x:Class="NationalParks.Views.WebcamListPage"
              Title="{Binding Title}">
-    <RefreshView Command="{Binding GetWebcamsCommand}"
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0"
+          BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
+        <RefreshView Command="{Binding GetWebcamsCommand}"
                      IsRefreshing="{Binding IsRefreshing}"
                      Grid.ColumnSpan="2">
-        <CollectionView ItemsSource="{Binding Webcams}"
+            <CollectionView ItemsSource="{Binding Webcams}"
                             SelectionMode="None"
                             RemainingItemsThreshold="2"
                             RemainingItemsThresholdReachedCommand="{Binding GetWebcamsCommand}">
-            <CollectionView.EmptyView>
-                <Image Source="data_loading_green.png"
+                <CollectionView.EmptyView>
+                    <Image Source="data_loading_green.png"
                         HeightRequest="160"
                         WidthRequest="160"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:WebCam">
-                    <Grid Padding="10,5" HorizontalOptions="Fill">
-                        <Frame HeightRequest="125" 
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Webcam">
+                        <Grid Padding="10,5" HorizontalOptions="Fill">
+                            <Frame HeightRequest="125" 
                                     Style="{StaticResource ViewCard}">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WebcamListVM}}, Path=GoToWebcamCommand}"
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WebcamListVM}}, Path=GoToDetailCommand}"
                                         CommandParameter="{Binding .}"/>
-                            </Frame.GestureRecognizers>
-                            <Grid Padding="0" ColumnDefinitions="125,*">
-                                <Image
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image
                                         Aspect="AspectFill"
                                         HeightRequest="125"
                                         Source="data_loading_green.png"
                                         WidthRequest="125" />
-                                <VerticalStackLayout
+                                    <VerticalStackLayout
                                         VerticalOptions="Center"
                                         Grid.Column="1"
                                         Padding="10">
-                                    <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
-                                    <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
-                                    <Label Text="{Binding Url}" Style="{StaticResource LabelMedium}" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                                        <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
+                                        <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
+                                        <Label Text="{Binding Url}" Style="{StaticResource LabelMedium}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Text="Closest"
+                Grid.Row="1" Grid.Column="0"
+                Margin="8"
+                Command="{Binding GetClosestCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}" />
+        <Button Text="Filter" 
+                Grid.Row="1" Grid.Column="1"
+                Margin="8"
+                Command="{Binding GoToFilterCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           Grid.RowSpan="2" Grid.ColumnSpan="2"
+                           HorizontalOptions="Fill"
+                           Color="{StaticResource Primary}"
+                           VerticalOptions="Center" />
+    </Grid>
 </ContentPage>

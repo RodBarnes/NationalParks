@@ -10,6 +10,7 @@ public partial class ParkDetailVM : BaseVM
 
     public ParkDetailVM(IMap map)
     {
+        Title = "Park";
         this.map = map;
     }
 

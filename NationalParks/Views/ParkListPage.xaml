@@ -32,7 +32,7 @@
                                     Style="{StaticResource ViewCard}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkListVM}}, Path=GoToParkCommand}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkListVM}}, Path=GoToDetailCommand}"
                                         CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
@@ -55,21 +55,18 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-
-        <Button Text="Closest Park"
+        <Button Text="Closest"
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"
-                Command="{Binding GetClosestParkCommand}"
+                Command="{Binding GetClosestCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}" />
-
         <Button Text="Filter" 
                 Grid.Row="1" Grid.Column="1"
                 Margin="8"
                 Command="{Binding GoToFilterCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}"/>
-
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
                            Grid.RowSpan="2" Grid.ColumnSpan="2"
                            HorizontalOptions="Fill"

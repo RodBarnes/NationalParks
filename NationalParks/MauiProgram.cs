@@ -25,17 +25,13 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<DataService>();
 
+
         builder.Services.AddSingleton<AboutVM>();
         builder.Services.AddSingleton<AboutPage>();
+
         
 		builder.Services.AddSingleton<ParkListVM>();
 		builder.Services.AddSingleton<ParkListPage>();
-
-        builder.Services.AddSingleton<CampgroundListVM>();
-        builder.Services.AddSingleton<CampgroundListPage>();
-
-        builder.Services.AddSingleton<WebcamListVM>();
-        builder.Services.AddSingleton<WebcamListPage>();
 
         builder.Services.AddTransient<ParkDetailVM>();
 		builder.Services.AddTransient<ParkDetailPage>();
@@ -48,6 +44,20 @@ public static class MauiProgram
 
         builder.Services.AddTransient<ParkImageListVM>();
         builder.Services.AddTransient<ParkImageListPage>();
+
+
+        builder.Services.AddSingleton<CampgroundListVM>();
+        builder.Services.AddSingleton<CampgroundListPage>();
+
+        builder.Services.AddTransient<CampgroundDetailVM>();
+        builder.Services.AddTransient<CampgroundDetailPage>();
+
+
+        builder.Services.AddSingleton<WebcamListVM>();
+        builder.Services.AddSingleton<WebcamListPage>();
+
+        builder.Services.AddTransient<WebcamDetailVM>();
+        builder.Services.AddTransient<WebcamDetailPage>();
 
         return builder.Build();
 	}

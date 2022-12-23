@@ -42,7 +42,7 @@ public partial class ParkListVM : BaseVM
     Filter filter;
 
     [RelayCommand]
-    async Task GoToPark(Park park)
+    async Task GoToDetail(Park park)
     {
         if (park == null)
         return;
@@ -63,6 +63,39 @@ public partial class ParkListVM : BaseVM
             {"States", States},
             {"VM", this }
         });
+    }
+
+    [RelayCommand]
+    async Task GetClosestAsync()
+    {
+        if (IsBusy || Parks.Count == 0)
+            return;
+
+        try
+        {
+            // Get cached location, else get real location.
+            var location = await geolocation.GetLastKnownLocationAsync();
+            if (location == null)
+            {
+                location = await geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
+            }
+
+            // Find closest item to us
+            var first = Parks.OrderBy(m => location.CalculateDistance(
+                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
+                .FirstOrDefault();
+
+            await GoToDetail(first);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to query location: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
     }
 
     [RelayCommand]
@@ -98,39 +131,6 @@ public partial class ParkListVM : BaseVM
             IsRefreshing = false;
         }
 
-    }
-
-    [RelayCommand]
-    async Task GetClosestParkAsync()
-    {
-        if (IsBusy || Parks.Count == 0)
-            return;
-
-        try
-        {
-            // Get cached location, else get real location.
-            var location = await geolocation.GetLastKnownLocationAsync();
-            if (location == null)
-            {
-                location = await geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-            }
-
-            // Find closest item to us
-            var first = Parks.OrderBy(m => location.CalculateDistance(
-                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
-                .FirstOrDefault();
-
-            await GoToPark(first);
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Unable to query location: {ex.Message}");
-            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-        }
     }
 
     async Task GetTopicsAsync()

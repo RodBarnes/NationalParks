@@ -22,9 +22,27 @@ namespace NationalParks.ViewModels
         bool isRefreshing;
 
         [RelayCommand]
-        async Task GoToCampground(Campground campground)
+        async Task GoToDetail(Campground campground)
         {
-            await Shell.Current.DisplayAlert("Campground", $"Go to campground {campground.Name}", "OK");
+            if (campground == null)
+                return;
+
+            await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
+            {
+                {"Campground", campground }
+            });
+        }
+
+        [RelayCommand]
+        async Task GoToFilter()
+        {
+            await Shell.Current.DisplayAlert("Filter", $"How would GoToFilter() work for {this}?", "OK");
+        }
+
+        [RelayCommand]
+        async Task GetClosestAsync()
+        {
+            await Shell.Current.DisplayAlert("Filter", $"How would GetClosest() work for {this}?", "OK");
         }
 
         [RelayCommand]

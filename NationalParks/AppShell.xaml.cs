@@ -7,9 +7,14 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
         Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
+
         Routing.RegisterRoute(nameof(ParkDetailPage), typeof(ParkDetailPage));
         Routing.RegisterRoute(nameof(ParkFilterPage), typeof(ParkFilterPage));
         Routing.RegisterRoute(nameof(ParkImageListPage), typeof(ParkImageListPage));
         Routing.RegisterRoute(nameof(ParkHoursPage), typeof(ParkHoursPage));
+
+        Routing.RegisterRoute(nameof(CampgroundDetailPage), typeof(CampgroundDetailPage));
+
+        Routing.RegisterRoute(nameof(WebcamDetailPage), typeof(WebcamDetailPage));
     }
 }

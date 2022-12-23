@@ -4,7 +4,7 @@ namespace NationalParks.ViewModels
 {
     public partial class WebcamListVM : BaseVM
     {
-        public ObservableCollection<Models.WebCam> Webcams { get; } = new();
+        public ObservableCollection<Models.Webcam> Webcams { get; } = new();
 
         readonly DataService dataService;
         readonly IConnectivity connectivity;
@@ -22,9 +22,27 @@ namespace NationalParks.ViewModels
         bool isRefreshing;
 
         [RelayCommand]
-        async Task GoToWebcam(WebCam webcam)
+        async Task GoToDetail(Webcam webcam)
         {
-            await Shell.Current.DisplayAlert("Webcam", $"Go to webcam {webcam.Title}", "OK");
+            if (webcam == null)
+                return;
+
+            await Shell.Current.GoToAsync(nameof(WebcamDetailPage), true, new Dictionary<string, object>
+            {
+                {"Webcam", webcam }
+            });
+        }
+
+        [RelayCommand]
+        async Task GoToFilter()
+        {
+            await Shell.Current.DisplayAlert("Filter", $"How would GoToFilter() work for {this}?", "OK");
+        }
+
+        [RelayCommand]
+        async Task GetClosestAsync()
+        {
+            await Shell.Current.DisplayAlert("Filter", $"How would GetClosest() work for {this}?", "OK");
         }
 
         [RelayCommand]
