@@ -22,9 +22,9 @@ namespace NationalParks.ViewModels
         bool isRefreshing;
 
         [RelayCommand]
-        async Task GoToWebcam(Park park)
+        async Task GoToWebcam(WebCam webcam)
         {
-            await Shell.Current.DisplayAlert("Webcam", "Show the webcam", "OK");
+            await Shell.Current.DisplayAlert("Webcam", $"Go to webcam {webcam.Title}", "OK");
         }
 
         [RelayCommand]

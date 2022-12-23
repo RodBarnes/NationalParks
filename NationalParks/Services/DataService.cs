@@ -17,7 +17,7 @@ public class DataService
         var result = new ResultParks();
 
         // Read data from test file
-        //var json = ReadJsonFile("Parks.json");
+        //var json = ReadJsonFile("parks.json");
         //result = JsonSerializer.Deserialize<ResultParks>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
         // States: Comma-delimited list -- stateCode=OR%2CWA
@@ -37,7 +37,7 @@ public class DataService
         var result = new ResultTopics();
 
         // Read data from test file
-        //var json = ReadJsonFile("Topics.json");
+        //var json = ReadJsonFile("topics.json");
         //result = JsonSerializer.Deserialize<ResultTopics>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
         var url = $"https://developer.nps.gov/api/v1/topics?api_key={Config.ApiKey}&start={start}&limit={limit}";
@@ -55,7 +55,7 @@ public class DataService
         var result = new ResultActivities();
 
         // Read data from test file
-        //var json = ReadJsonFile("Topics.json");
+        //var json = ReadJsonFile("activities.json");
         //result = JsonSerializer.Deserialize<ResultTopics>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
         var url = $"https://developer.nps.gov/api/v1/activities?api_key={Config.ApiKey}&start={start}&limit={limit}";
@@ -73,16 +73,32 @@ public class DataService
         var result = new ResultWebcams();
 
         // Read data from test file
-        //var json = ReadJsonFile("Parks.json");
+        //var json = ReadJsonFile("webcams.json");
         //result = JsonSerializer.Deserialize<ResultParks>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-        // States: Comma-delimited list -- stateCode=OR%2CWA
 
         var url = $"https://developer.nps.gov/api/v1/webcams?api_key={Config.ApiKey}&start={start}&limit={limit}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultWebcams>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20)
+    {
+        var result = new ResultCampgrounds();
+
+        // Read data from test file
+        //var json = ReadJsonFile("campgrounds.json");
+        //result = JsonSerializer.Deserialize<ResultCampgrounds>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        var url = $"https://developer.nps.gov/api/v1/campgrounds?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultCampgrounds>();
         }
 
         return result;

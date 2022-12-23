@@ -6,10 +6,49 @@
              x:Class="NationalParks.Views.CampgroundListPage"
              x:DataType="vm:CampgroundListVM"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <RefreshView Command="{Binding GetCampgroundsCommand}"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Grid.ColumnSpan="2">
+        <CollectionView ItemsSource="{Binding Campgrounds}"
+                            SelectionMode="None"
+                            RemainingItemsThreshold="2"
+                            RemainingItemsThresholdReachedCommand="{Binding GetCampgroundsCommand}">
+            <CollectionView.EmptyView>
+                <Image Source="data_loading_green.png"
+                        HeightRequest="160"
+                        WidthRequest="160"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Campground">
+                    <Grid Padding="10,5" HorizontalOptions="Fill">
+                        <Frame HeightRequest="125" 
+                                    Style="{StaticResource ViewCard}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CampgroundListVM}}, Path=GoToCampgroundCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="125"
+                                        Source="data_loading_green.png"
+                                        WidthRequest="125" />
+                                <VerticalStackLayout
+                                        VerticalOptions="Center"
+                                        Grid.Column="1"
+                                        Padding="10">
+                                    <Label Text="{Binding Name}" Style="{StaticResource LabelLargeBold}" />
+                                    <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
+                                    <Label Text="{Binding Url}" Style="{StaticResource LabelMedium}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>
