@@ -30,8 +30,8 @@
         public string NumberOfSitesReservable { get; set; }
         public string NumberOfSitesFirstComeFirstServe { get; set; }
         public Campsite Campsites { get; set; }
-        public List<Accessibility> Accessibility { get; set; }
-        public List<object> Multimedia { get; set; }
+        public Accessibility Accessibility { get; set; }
+        public List<Multimedia> Multimedia { get; set; }
         public string LastIndexDate { get; set; }
 
         public double DLatitude

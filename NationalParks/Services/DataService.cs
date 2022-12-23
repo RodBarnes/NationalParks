@@ -104,7 +104,6 @@ public class DataService
         return result;
     }
 
-
     private string ReadJsonFile(string filename)
     {
         // Read data from test file
