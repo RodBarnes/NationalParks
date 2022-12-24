@@ -26,6 +26,15 @@
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
         public List<Image> Images { get; set; }
+        public ImageSource MainImage {
+            get
+            {
+                if (Images.Count > 0)
+                    return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
+                else
+                    return ImageSource.FromFile("no_image_green.png");
+            }
+        }
         public string WeatherOverview { get; set; }
         public string NumberOfSitesReservable { get; set; }
         public string NumberOfSitesFirstComeFirstServe { get; set; }

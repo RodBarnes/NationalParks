@@ -37,9 +37,9 @@
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <Image
+                                        Source="{Binding MainImage}"
                                         Aspect="AspectFill"
                                         HeightRequest="125"
-                                        Source="data_loading_green.png"
                                         WidthRequest="125" />
                                     <VerticalStackLayout
                                         VerticalOptions="Center"

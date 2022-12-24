@@ -21,7 +21,16 @@
         public string DirectionsUrl { get; set; }
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
-        public ImageSource MainImage { get => ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url)); }
+        public ImageSource MainImage
+        {
+            get
+            {
+                if (Images.Count > 0)
+                    return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
+                else
+                    return ImageSource.FromFile("no_image_green.png");
+            }
+        }
         public List<Image> Images { get; set; }
         public string WeatherInfo { get; set; }
         public string Name { get; set; }
