@@ -4,7 +4,7 @@ At Working tag: Everything is working for Park (Detail, Hours, Images, Filter) a
 
 TODO
 ----
-Add the app icon using the AdvApp logo.
+Changed the app icon background to green and foreground color to white but the .NET is still the text.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
 
