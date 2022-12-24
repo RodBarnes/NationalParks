@@ -61,6 +61,18 @@ namespace NationalParks.ViewModels
                 }
 
                 IsBusy = true;
+
+                //using var stream = await FileSystem.OpenAppPackageFileAsync("webcams.json");
+                //var result = System.Text.Json.JsonSerializer.Deserialize<ResultWebcams>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+                //if (result != null)
+                //{
+                //    foreach (var item in result.Data)
+                //    {
+                //        Webcams.Add(item);
+                //    }
+                //}
+
                 var result = await dataService.GetWebcamsAsync(startWebcams);
 
                 startWebcams += result.Data.Count;

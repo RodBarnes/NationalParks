@@ -66,7 +66,7 @@ namespace NationalParks.ViewModels
                     .FirstOrDefault();
 
                 await GoToDetail(first);
-        }
+            }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Unable to query location: {ex.Message}");
@@ -90,6 +90,18 @@ namespace NationalParks.ViewModels
                 }
 
                 IsBusy = true;
+
+                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds.json");
+                //var result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+                //if (result != null)
+                //{
+                //    foreach (var item in result.Data)
+                //    {
+                //        Campgrounds.Add(item);
+                //    }
+                //}
+
                 var result = await dataService.GetCampgroundsAsync(startCampgrounds);
 
                 startCampgrounds += result.Data.Count;
