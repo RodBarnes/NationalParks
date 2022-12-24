@@ -44,6 +44,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\CampgroundImageListPage.xaml.cs">
+	    <DependentUpon>CampgroundImageListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ParkImageListPage.xaml.cs">
 	    <DependentUpon>ParkImageListPage.xaml</DependentUpon>
 	  </Compile>
@@ -68,7 +71,13 @@
 	  <MauiXaml Update="Views\CampgroundDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CampgroundHoursPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CampgroundListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CampgroundImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ParkFilterPage.xaml">

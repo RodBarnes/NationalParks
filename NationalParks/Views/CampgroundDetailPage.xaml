@@ -5,10 +5,63 @@
              x:Class="NationalParks.Views.CampgroundDetailPage"
              x:DataType="vm:CampgroundDetailVM"
              Title="{Binding Campground.Name}">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Campground.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
+        <Grid RowDefinitions="Auto,Auto,*">
+            <BoxView
+                BackgroundColor="{StaticResource Primary}"
+                Grid.RowSpan="2"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+            <Border StrokeShape="RoundRectangle 10"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    HeightRequest="175"
+                    WidthRequest="175"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                <Image Source="{Binding Campground.MainImage}"
+                       Aspect="AspectFill"
+                       HeightRequest="160"
+                       WidthRequest="160"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </Border>
+
+            <Label Style="{StaticResource LabelLarge}" 
+                   Grid.Row="1"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Text="{Binding Campground.ParkCode}" 
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,8"/>
+
+            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+                <Label Style="{StaticResource LabelMedium}" Text="{Binding Campground.Description}" />
+                <!--<Label Style="{StaticResource LabelSmall}" Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" />-->
+                <Label Style="{StaticResource LabelMedium}" Text="{Binding Campground.WeatherOverview}" />
+                <HorizontalStackLayout
+                    HorizontalOptions="Center">
+                    <Button Text="Location" 
+                        Command="{Binding OpenMapCommand}"
+                        HorizontalOptions="Center" 
+                        WidthRequest="100" 
+                        Margin="8"
+                        Style="{StaticResource ButtonOutline}"/>
+                    <Button Text="Hours" 
+                        Command="{Binding GoToHoursCommand}"
+                        HorizontalOptions="Center" 
+                        WidthRequest="100" 
+                        Margin="8"
+                        Style="{StaticResource ButtonOutline}"/>
+                    <Button Text="Images" 
+                        Command="{Binding GoToImagesCommand}"
+                        HorizontalOptions="Center" 
+                        WidthRequest="100" 
+                        Margin="8"
+                        Style="{StaticResource ButtonOutline}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

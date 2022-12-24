@@ -30,5 +30,23 @@
                 await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
             }
         }
+
+        [RelayCommand]
+        async Task GoToHours()
+        {
+            await Shell.Current.GoToAsync(nameof(ParkHoursPage), true, new Dictionary<string, object>
+            {
+                {"Campground", Campground }
+            });
+        }
+
+        [RelayCommand]
+        async Task GoToImages()
+        {
+            await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>
+            {
+                {"Campground", Campground }
+            });
+        }
     }
 }
