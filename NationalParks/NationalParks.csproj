@@ -23,7 +23,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" TintColor="White" />
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_nps.svg" TintColor="White" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\nps_splash.png" Color="Green" />
