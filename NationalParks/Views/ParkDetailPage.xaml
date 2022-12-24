@@ -20,7 +20,8 @@
                     HeightRequest="175"
                     WidthRequest="175"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center">
+                    VerticalOptions="Center"
+                    Margin="0,0,0,8">
                 <Image Source="{Binding Park.MainImage}"
                        Aspect="AspectFill"
                        HeightRequest="160"
@@ -29,15 +30,10 @@
                        VerticalOptions="Center"/>
             </Border>
 
-            <Label Style="{StaticResource LabelLarge}" 
-                   Grid.Row="1"
-                   TextColor="White"
-                   FontAttributes="Bold"
-                   Text="{Binding Park.FullName}" 
-                   HorizontalOptions="Center"
-                   Margin="0,0,0,8"/>
-
             <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+                <Label Text="{Binding Park.FullName}"
+                       Grid.Row="1"
+                       Style="{StaticResource LabelLarge}"/>
                 <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.Description}" />
                 <!--<Label Style="{StaticResource LabelSmall}" Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" />-->
                 <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.WeatherInfo}" />
