@@ -18,7 +18,7 @@
         public string ReservationUrl { get; set; }
         public string RegulationsUrl { get; set; }
         public string RegulationsOverview { get; set; }
-        public List<CampgroundAmenity> Amentities { get; set; }
+        public CampgroundAmenities Amenities { get; set; }
         public Contact Contacts { get; set; }
         public List<Fee> Fees { get; set; }
         public string DirectionsOverview { get; set; }

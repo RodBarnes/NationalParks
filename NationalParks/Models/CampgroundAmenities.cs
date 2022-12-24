@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public class CampgroundAmenity
+    public class CampgroundAmenities
     {
         public string TrashRecyclingCollection { get; set; }
         public List<string> Toilets { get; set; }
