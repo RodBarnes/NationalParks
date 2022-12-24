@@ -2,6 +2,6 @@
 {
     public class ResultStates
     {
-        public List<State> List { get; set; }
+        public List<State> Data { get; set; }
     }
 }

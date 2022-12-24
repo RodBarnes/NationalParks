@@ -215,7 +215,7 @@ public partial class ParkListVM : BaseVM
 
         if (result != null)
         {
-            foreach (var item in result.List)
+            foreach (var item in result.Data)
             {
                 States.Add(item);
             }
