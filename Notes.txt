@@ -4,7 +4,7 @@ At Working tag: Everything is working for Park (Detail, Hours, Images, Filter) a
 
 TODO
 ----
-Change splash screen to remove the .NET splash and replace with the NPS logo.
+Add the app icon using the AdvApp logo.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
 
