@@ -94,8 +94,8 @@ namespace NationalParks.ViewModels
 
                 //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds.json");
                 //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                //foreach (var item in result.Data)
-                //    Campgrounds.Add(item);
+                //foreach (var campground in result.Data)
+                //    Campgrounds.Add(campground);
 
                 result = await dataService.GetCampgroundsAsync(startCampgrounds);
                 startCampgrounds += result.Data.Count;
