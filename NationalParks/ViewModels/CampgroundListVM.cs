@@ -90,20 +90,14 @@ namespace NationalParks.ViewModels
                 }
 
                 IsBusy = true;
+                ResultCampgrounds result;
 
                 //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds.json");
-                //var result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                //foreach (var item in result.Data)
+                //    Campgrounds.Add(item);
 
-                //if (result != null)
-                //{
-                //    foreach (var item in result.Data)
-                //    {
-                //        Campgrounds.Add(item);
-                //    }
-                //}
-
-                var result = await dataService.GetCampgroundsAsync(startCampgrounds);
-
+                result = await dataService.GetCampgroundsAsync(startCampgrounds);
                 startCampgrounds += result.Data.Count;
                 foreach (var campground in result.Data)
                     Campgrounds.Add(campground);
