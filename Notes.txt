@@ -1,6 +1,5 @@
 State
 -----
-
 	
 TODO
 ----
@@ -20,14 +19,10 @@ Maybe need a string handler that recognizes URLs in text (e.g., weather descript
 
 Still unsure what to do with the ExceptionHours and whether to display the StandardHours since they are often (alway?) included as text in the description.
 
-Need to add an app icon that the user sees for the app in the apps list.
-
-Webcams are probably a list just like the images but they are indepent of parks.  From where should they be accessed?  Maybe there is a toolbar at the bottom with Parks and WebCams?
-
-WebCam images are the same as Park images but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
+WebCam image model is the same as Park image model but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
 
 And maybe Activity should be ParkActivity to eliminate the ambiguity with System...Activity?
 
-What about Amenities, Campgrounds, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
+What about Amenities, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
 
-How can I hide the string Lat/Long properties and only expose the double Lat/Long properties?  The names have to be that was because of the JSON parsing -- unless I do something custom for this.  This is also an issue for some of the bool and other numeric values which are being passed as strings.
+What is the best way to handle the string Lat/Long?  Ideally, they'd be private and only expose the double values?

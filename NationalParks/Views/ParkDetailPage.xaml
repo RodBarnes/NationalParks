@@ -6,59 +6,63 @@
     x:Class="NationalParks.Views.ParkDetailPage"
     x:DataType="vm:ParkDetailVM"
     Title="{Binding Park.Name}">
-    <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <Grid RowDefinitions="Auto,Auto,*">
-            <BoxView
-                BackgroundColor="{StaticResource Primary}"
-                Grid.RowSpan="2"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"/>
-
-            <Border StrokeShape="RoundRectangle 10"
-                    Stroke="White"
-                    StrokeThickness="6"
-                    HeightRequest="175"
-                    WidthRequest="175"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Margin="0,0,0,8">
-                <Image Source="{Binding Park.MainImage}"
-                       Aspect="AspectFill"
-                       HeightRequest="160"
-                       WidthRequest="160"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-            </Border>
-
-            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
-                <Label Text="{Binding Park.FullName}"
-                       Grid.Row="1"
-                       Style="{StaticResource LabelLarge}"/>
-                <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.Description}" />
-                <!--<Label Style="{StaticResource LabelSmall}" Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" />-->
-                <Label Style="{StaticResource LabelMedium}" Text="{Binding Park.WeatherInfo}" />
-                <HorizontalStackLayout
-                    HorizontalOptions="Center">
-                    <Button Text="Location" 
-                        Command="{Binding OpenMapCommand}"
-                        HorizontalOptions="Center" 
-                        WidthRequest="100" 
-                        Margin="8"
-                        Style="{StaticResource ButtonOutline}"/>
-                    <Button Text="Hours" 
-                        Command="{Binding GoToHoursCommand}"
-                        HorizontalOptions="Center" 
-                        WidthRequest="100" 
-                        Margin="8"
-                        Style="{StaticResource ButtonOutline}"/>
-                    <Button Text="Images" 
-                        Command="{Binding GoToImagesCommand}"
-                        HorizontalOptions="Center" 
-                        WidthRequest="100" 
-                        Margin="8"
-                        Style="{StaticResource ButtonOutline}"/>
-                </HorizontalStackLayout>
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto,*,Auto">
+        <BoxView BackgroundColor="{StaticResource Primary}"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+        <Border StrokeShape="RoundRectangle 10"
+                Grid.Row="0"
+                Grid.Column="1"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="175"
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,0,0,8">
+            <Image Source="{Binding Park.MainImage}"
+                   Aspect="AspectFill"
+                   HeightRequest="160"
+                   WidthRequest="160"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
+                <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Park.WeatherInfo}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" Style="{StaticResource LabelMedium}" />
             </VerticalStackLayout>
-        </Grid>
-    </ScrollView>
-</ContentPage>
+        </ScrollView>
+        <Button Text="Location" 
+                Command="{Binding OpenMapCommand}"
+                Grid.Row="2"
+                Grid.Column="0"
+                HorizontalOptions="Start" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+        <Button Text="Hours" 
+                Command="{Binding GoToHoursCommand}"
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="Center" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+        <Button Text="Images" 
+                Command="{Binding GoToImagesCommand}"
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalOptions="End" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+    </Grid>
+    </ContentPage>
