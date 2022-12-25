@@ -1,7 +1,7 @@
 State
 -----
-At Working tag: Everything is working for Park (Detail, Hours, Images, Filter) and have initial Flyout, WebcamList and CampgroundList, and WebcamDetail and CampgoundDetail (though neither of the latter yet displays data).
 
+	
 TODO
 ----
 There is an appicon.svg under /Resources/Raw.  Is that needed?
