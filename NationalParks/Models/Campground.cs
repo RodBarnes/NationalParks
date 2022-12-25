@@ -7,8 +7,8 @@
         public string Name { get; set; }
         public string ParkCode { get; set; }
         public string Description { get; set; }
-        private string Latitude { get; set; }
-        private string Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public string AudioDescription { get; set; }
         public string IsPassportStampLocation { get; set; }
         public string PassportStampLocationDescription { get; set; }

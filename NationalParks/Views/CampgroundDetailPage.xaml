@@ -30,7 +30,7 @@
             </Border>
 
             <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
-                <Label Text="{Binding Campground.ParkCode, StringFormat='Parkcode: {0}'}"
+                <Label Text="{Binding Campground}"
                        Grid.Row="1"
                        Style="{StaticResource LabelLarge}"/>
                 <Label Style="{StaticResource LabelMedium}" Text="{Binding Campground.Description}" />
