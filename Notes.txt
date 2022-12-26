@@ -5,8 +5,6 @@ What is the webcam image list going to do since most (all?) don't have any image
 
 TODO
 ----
-There is an appicon.svg under /Resources/Raw.  Is that needed?
-
 Change the splash icon to the AdvApp icon.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
