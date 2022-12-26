@@ -2,9 +2,16 @@ namespace NationalParks.Views;
 
 public partial class CampgroundHoursPage : ContentPage
 {
-	public CampgroundHoursPage(CampgroundHoursVM vm)
+    CampgroundHoursVM _vm;
+    
+    public CampgroundHoursPage(CampgroundHoursVM vm)
 	{
-		InitializeComponent();
-		BindingContext = vm;
+        InitializeComponent();
+		BindingContext = _vm = vm;
 	}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _vm.PopulateData();
+    }
 }

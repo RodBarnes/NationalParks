@@ -22,7 +22,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 Margin="0,0,0,8">
-            <Image Source="{Binding Park.MainImage}"
+            <Image Source="{Binding Campground.MainImage}"
                    Aspect="AspectFill"
                    HeightRequest="160"
                    WidthRequest="160"
@@ -35,7 +35,7 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Campground}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Campground.Description}" Style="{StaticResource LabelMedium}" />
-                <Label Text="{Binding Campground.DirectionsOverview, StringFormat='Directions: {0}'}" Style="{StaticResource LabelSmall}" />
+                <Label Text="{Binding Campground.DirectionsOverview, StringFormat='Directions: {0}'}" Style="{StaticResource LabelMedium}" />
                 <Label Text="{Binding Campground.WeatherOverview}" Style="{StaticResource LabelMedium}" />
             </VerticalStackLayout>
         </ScrollView>

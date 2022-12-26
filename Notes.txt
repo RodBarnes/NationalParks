@@ -1,6 +1,9 @@
 State
 -----
-	
+Find a campground with images and get the CampgroundImageList working.
+Determine how to get an image of the webcam and display that in the webcam list.
+What is the webcam image list going to do since most (all?) don't have any images.
+
 TODO
 ----
 There is an appicon.svg under /Resources/Raw.  Is that needed?
