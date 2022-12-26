@@ -13,6 +13,7 @@
             Title = "Campground";
             this.map = map;
         }
+
         [RelayCommand]
         async Task OpenMap()
         {

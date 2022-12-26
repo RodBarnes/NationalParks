@@ -5,10 +5,63 @@
              x:Class="NationalParks.Views.WebcamDetailPage"
              x:DataType="vm:WebcamDetailVM"
              Title="{Binding Webcam.Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Webcam.Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto,*,Auto">
+        <BoxView BackgroundColor="{StaticResource Primary}"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+        <Border StrokeShape="RoundRectangle 10"
+                Grid.Row="0"
+                Grid.Column="1"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="175"
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,0,0,8">
+            <Image Source="{Binding Webcam.MainImage}"
+                   Aspect="AspectFill"
+                   HeightRequest="160"
+                   WidthRequest="160"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="{Binding Webcam.Title}" Style="{StaticResource LabelLarge}"/>
+                <Label Text="{Binding Webcam.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Webcam.Status, StringFormat='Status: {0}'}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Webcam.StatusMessage, StringFormat='StatusMessage: {0}'}" Style="{StaticResource LabelMedium}" />
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Text="Location" 
+                Command="{Binding OpenMapCommand}"
+                Grid.Row="2"
+                Grid.Column="0"
+                HorizontalOptions="Start" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+        <!--<Button Text="Hours" 
+                Command="{Binding GoToHoursCommand}"
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="Center" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+        <Button Text="Images" 
+                Command="{Binding GoToImagesCommand}"
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalOptions="End" 
+                WidthRequest="100" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>-->
+    </Grid>
 </ContentPage>
