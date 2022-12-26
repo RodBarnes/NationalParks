@@ -18,6 +18,8 @@ Change the splash icon to the AdvApp icon.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
 
+The parks and campgrounds come in sorted order.  Webcams are not -- at least, no order is determined.
+
 Allow setting radious in miles and presenting list of Parks within that radius.
 
 The NPS API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
