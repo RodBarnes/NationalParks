@@ -114,8 +114,14 @@ public partial class ParkListVM : BaseVM
             }
 
             IsBusy = true;
-            var result = await dataService.GetParksAsync(startParks);
+            ResultParks result;
 
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
+            //result = System.Text.Json.JsonSerializer.Deserialize<ResultParks>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            //foreach (var park in result.Data)
+            //    Parks.Add(park);
+
+            result = await dataService.GetParksAsync(startParks);
             startParks += result.Data.Count;
             foreach (var park in result.Data)
                 Parks.Add(park);

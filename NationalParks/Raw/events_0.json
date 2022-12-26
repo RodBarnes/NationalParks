@@ -1,0 +1,782 @@
+﻿{
+  "total": "642",
+  "errors": [],
+  "data": [
+    {
+      "location": "8523 West St. HWY 4 Beatrice NE 68310",
+      "updateuser": "",
+      "contactname": "",
+      "contacttelephonenumber": "402-223-3514",
+      "recurrencedateend": "",
+      "longitude": "",
+      "datestart": "2022-11-25",
+      "isrecurring": "false",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Festival"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "home_information@nps.gov",
+      "regresurl": "",
+      "description": "<p>The Winter Festival of Prairie Cultures features decorated trees and tabletop displays featuring ornaments and hand-made crafts that reflect the spirit of hope, humor, traditions, and generosity which characterized winter celebrations on the Great Plains. </p>",
+      "images": [],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "797D39D8-A89A-EACB-641C94E7D58EE812",
+      "isallday": "false",
+      "dateend": "2022-12-31",
+      "sitecode": "home",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "09:00 AM",
+          "timeend": "05:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "NA",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Homestead National Historical Park",
+      "recurrencedatestart": "2022-11-25",
+      "date": "2022-11-25",
+      "sitetype": "park",
+      "feeinfo": "Free",
+      "recurrencerule": "",
+      "dates": [
+        "2022-11-25"
+      ],
+      "datetimecreated": "",
+      "title": "Winter Festival Displays",
+      "latitude": "",
+      "subjectname": "",
+      "tags": []
+    },
+    {
+      "location": "",
+      "updateuser": "",
+      "contactname": "Jim Lewis",
+      "contacttelephonenumber": "615-893-9501",
+      "recurrencedateend": "2022-12-30",
+      "longitude": "-86.434891",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Guided Tour",
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "jim_b_lewis@nps.gov",
+      "regresurl": "",
+      "description": "<p><span class=\"x_xdj266r x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs\">Explore part of the battlefield with a ranger and learn about the critical events that shaped the Battle of Stones River. Each day will feature a different location and phase of the battle.</span></p>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\">All programs will begin at the visitor center. Some walks will require a short drive to the starting point.</div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong><u>SCHEDULE</u></strong></div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong>Monday December 26th</strong> - The Slaughter Pen (Drive to Tour Stop #2)</div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong>Tuesday December 27th</strong> - Hell's Half Acre (Drive to Tour Stop #1)</div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong>Wednesday December 28th</strong> - The Cotton Field</div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong>Thursday December 29th</strong> - The Pioneer Brigade &amp; Chicago Board of Trade Battery</div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"> </div>\n<div class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><span class=\"x_x11i5rnm x_xat24cr x_x1mh8g0r x_x1vvkbs x_xtlvy1s\"><strong>Friday December 30th</strong> - The Banks of the Stones River (Drive to Tour Stop 6 - Program may last up to 90 minutes with driving time)</span></div>",
+      "images": [
+        {
+          "path": "/stri/planyourvisit/images/travis_panel12_2_1.jpg",
+          "credit": "",
+          "imageId": "12237",
+          "altText": "Painting of Union and Confederate soldiers fighting along a river.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "",
+          "url": "/stri/planyourvisit/images/travis_panel12_2_1.jpg"
+        }
+      ],
+      "category": "Special Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "357E6948-AB4C-3754-0BBC5A016CBE9264",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "stri",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "02:00 PM",
+          "timeend": "03:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Stones River National Battlefield",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "DTSTART=20221226T060000Z;UNTIL=20221230T060000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30"
+      ],
+      "datetimecreated": "",
+      "title": "160th Anniversary of the Battle of Stones River - Battlefield Walks",
+      "latitude": "35.881989",
+      "subjectname": "",
+      "tags": [
+        "Civil War",
+        "ranger walk"
+      ]
+    },
+    {
+      "location": "",
+      "updateuser": "",
+      "contactname": "Jim Lewis",
+      "contacttelephonenumber": "6158939501",
+      "recurrencedateend": "2022-12-30",
+      "longitude": "-86.434891",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Guided Tour",
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "jim_b_lewis@nps.gov",
+      "regresurl": "",
+      "description": "<p>Listen as a ranger tells the tale of a soldier or unit that fought in the Battle of Stones River. This 30-minute talk will take place in the field adjacent to the park's visitor center.</p>",
+      "images": [
+        {
+          "path": "/stri/planyourvisit/images/travis_panel12_2_1.jpg",
+          "credit": "",
+          "imageId": "12237",
+          "altText": "Painting of Union and Confederate soldiers fighting along a river.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "",
+          "url": "/stri/planyourvisit/images/travis_panel12_2_1.jpg"
+        }
+      ],
+      "category": "Special Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "3566B0D9-E525-8422-ABAB91E66EF18577",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "stri",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "01:00 PM",
+          "timeend": "01:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Stones River National Battlefield",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "DTSTART=20221226T060000Z;UNTIL=20221230T060000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30"
+      ],
+      "datetimecreated": "",
+      "title": "160th Anniversary of the Battle of Stones River - Stones River Stories",
+      "latitude": "35.881989",
+      "subjectname": "",
+      "tags": [
+        "Civil War",
+        "Ranger Talk"
+      ]
+    },
+    {
+      "location": "Rutherford County Chamber of Commerce Visitor Center",
+      "updateuser": "",
+      "contactname": "Jim Lewis",
+      "contacttelephonenumber": "6158939501",
+      "recurrencedateend": "2022-12-30",
+      "longitude": "",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Guided Tour",
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "jim_b_lewis@nps.gov",
+      "regresurl": "",
+      "description": "<p>Join a ranger at the Rutherford County Chamber of Commerce visitor center (3050 Medical Center Parkway, Murfreesboro, TN) and use the outdoor map to learn about the Stones River Campaign events that played out 160 years ago to the day.</p>",
+      "images": [
+        {
+          "path": "/stri/planyourvisit/images/travis_panel12_2_1.jpg",
+          "credit": "",
+          "imageId": "12237",
+          "altText": "Painting of Union and Confederate soldiers fighting along a river.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "",
+          "url": "/stri/planyourvisit/images/travis_panel12_2_1.jpg"
+        }
+      ],
+      "category": "Special Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "352CC7C8-06DB-174D-9E850DFCA5D86386",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "stri",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "11:00 AM",
+          "timeend": "11:30 AM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Stones River National Battlefield",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "DTSTART=20221226T060000Z;UNTIL=20221230T060000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30"
+      ],
+      "datetimecreated": "",
+      "title": "160th Anniversary of the Battle of Stones River - The Approaching Thunder",
+      "latitude": "",
+      "subjectname": "",
+      "tags": [
+        "Civil War",
+        "Ranger Talk"
+      ]
+    },
+    {
+      "location": "From the South Entrance Station, continue following the road you are on for 5 miles, and it will lead you to the Visitor Center. Just before the parking areas, the road curves to the left. You can park your vehicle in one of four parking areas and find your way to the Visitor Center, in the center of the open plaza where restroom buildings, the park store, and the bicycle rental are also located. View the map below.",
+      "updateuser": "",
+      "contactname": "Park Information",
+      "contacttelephonenumber": "",
+      "recurrencedateend": "2022-12-31",
+      "longitude": "-112.109074",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "grca_information@nps.gov",
+      "regresurl": "",
+      "description": "<ul>\n<li><strong>3 pm: Ranger's Choice Program. </strong>Join us for a surprise program. Topics change daily. Come curious, leave inspired! Meet inside Visitor Center at 3 pm. The ranger will make an announcement then assemble the group. The program will take place indoors, or outside, depending upon the weather. Program duration: 30 minutes. Presented daily between Monday, December 26, through Sunday, December 31. 2022.    <strong><br /><br /></strong></li>\n<li>We all have our favorites - favorite restaurants, favorite music, favorite parks; and we've incorporated personal interests into our Ranger's Choice programs.  Join a ranger, or a park volunteer, for a program that is geared towards that individual's \"favorite\" topic or theme here at Grand Canyon! </li>\n</ul>\n<ul>\n<li>Some of our recent Ranger's Choice talks have featured programs about: Geology, Wildlife, History, Grand Canyon's Trails, Astronomy, and California Condors —to name a few. </li>\n</ul>\n<ul>\n<li>You can park in one of the 4 parking lots surrounding the Visitor Center Plaza.</li>\n</ul>\n<ul>\n<li>If you parked at the Visitor Center earlier in the day, a ranger program is the perfect way to conclude your visit to the South Rim of Grand Canyon. </li>\n</ul>",
+      "images": [
+        {
+          "path": "/common/uploads/event_calendar/5DA671A8-CCA5-574D-9E4844FA453BBB23.jpg",
+          "credit": "NPS",
+          "imageId": "36932",
+          "altText": "Map shows location of 4 public parking lots in relation to and surrounding the Visitor Center Plaza.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "Meet by the flagpole in front of the Visitor Center Building (in the center of the map).",
+          "url": "/common/uploads/event_calendar/5DA671A8-CCA5-574D-9E4844FA453BBB23.jpg"
+        },
+        {
+          "path": "/common/uploads/event_calendar/5DD286A1-D7DD-BEFE-A8BEB22BDD735907.jpg",
+          "credit": "NPS Photo/M. Quinn",
+          "imageId": "36933",
+          "altText": "view down and across a concrete plaza with a long narrow building with a gabled roof on the right",
+          "title": "",
+          "ordinal": "0",
+          "caption": "Grand Canyon Visitor Center on the South Rim of the Park",
+          "url": "/common/uploads/event_calendar/5DD286A1-D7DD-BEFE-A8BEB22BDD735907.jpg"
+        },
+        {
+          "path": "/common/uploads/event_calendar/5DDAA2D9-0317-A2AA-7D489915193391C7.jpg",
+          "credit": "NPS Photo/M. Quinn",
+          "imageId": "36934",
+          "altText": "A park ranger is waiting at a flagpole for park visitors who will be attending her program.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "Meet the ranger in front of the Visitor Center flagpole for the 3 pm Ranger's Choice program.",
+          "url": "/common/uploads/event_calendar/5DDAA2D9-0317-A2AA-7D489915193391C7.jpg"
+        }
+      ],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "6214F1F4-CD15-D3F2-65C30371D9C32C70",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "grca",
+      "infourl": "https://www.nps.gov/grca/planyourvisit/sr-programs.htm",
+      "times": [
+        {
+          "timestart": "03:00 PM",
+          "timeend": "03:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Grand Canyon National Park",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "DTSTART=20221225T070000Z;UNTIL=20221231T070000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30",
+        "2022-12-31"
+      ],
+      "datetimecreated": "",
+      "title": "3 pm: Ranger Talk: Ranger’s Choice —Meet inside the Visitor Center.",
+      "latitude": "36.058926",
+      "subjectname": "",
+      "tags": [
+        "ranger activity",
+        "Ranger Talk",
+        "ranger program",
+        "Grand Canyon",
+        "Outdoor activities",
+        "visitor center",
+        "Visitor Activities",
+        "visitor"
+      ]
+    },
+    {
+      "location": "Point Reyes Lighthouse",
+      "updateuser": "",
+      "contactname": "Point Reyes Lighthouse Visitor Center",
+      "contacttelephonenumber": "415-669-1534",
+      "recurrencedateend": "2022-11-04",
+      "longitude": "-123.023184",
+      "datestart": "2022-12-26",
+      "isrecurring": "false",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "pore_info@nps.gov",
+      "regresurl": "",
+      "description": "<p>1:30 pm to 3:30 pm<br />Fridays, Saturdays, Sundays, and <a href=\"https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/\">federal holidays</a> that fall on Mondays.</p>\n<p>See inside the Point Reyes Lighthouse and discover its history and function with a park ranger. Access requires a strenuous descent and ascent of 313 stairs. The stairs close when weather and winds are hazardous, i.e., if the winds are in excess of 40 mph (64 kmph). The clockwork room (the second-level chamber)—which houses the original clockworks and from which one can get a close look at the first-order Fresnel lens—is open with a ranger present from 1:30 pm to 3:30 pm on Fridays, Saturdays, Sundays, and federal holidays that fall on Mondays.</p>",
+      "images": [
+        {
+          "path": "/common/uploads/event_calendar/6B50D0D4-F470-F4CB-2ECC70CE6B333300.jpg",
+          "credit": "NPS Photo",
+          "imageId": "22210",
+          "altText": "A three-story lighthouse with white sides and a red roof on the edge of an ocean-facing cliff.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "The historic Point Reyes Lighthouse.",
+          "url": "/common/uploads/event_calendar/6B50D0D4-F470-F4CB-2ECC70CE6B333300.jpg"
+        }
+      ],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "42BD9303-D73E-4E7C-08F0C32418CCAFEC",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "pore",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "01:30 PM",
+          "timeend": "03:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Point Reyes National Seashore",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "",
+      "dates": [
+        "2022-12-26"
+      ],
+      "datetimecreated": "",
+      "title": "A Look into the Lens",
+      "latitude": "37.995626",
+      "subjectname": "",
+      "tags": [
+        "Point reyes",
+        "Point Reyes National Seashore",
+        "Point Reyes Lighthouse"
+      ]
+    },
+    {
+      "location": "",
+      "updateuser": "",
+      "contactname": "",
+      "contacttelephonenumber": "",
+      "recurrencedateend": "2022-12-30",
+      "longitude": "-73.935813",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Guided Tour"
+      ],
+      "createuser": "",
+      "isfree": "false",
+      "contactemailaddress": "",
+      "regresurl": "",
+      "description": "<p>Access to Springwood is by guided tour only. The house is decorated to reflect the Roosevelt family holiday traditions. </p>",
+      "images": [
+        {
+          "path": "/common/uploads/event_calendar/79845096-E548-805A-AFC368E02ADBE9FB.jpg",
+          "credit": "NPS Photo",
+          "imageId": "36764",
+          "altText": "A large room with comfortable seating and a Christmas tree next to a large portrait of FDR.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "The Library at Springwood decorated for Christmas.",
+          "url": "/common/uploads/event_calendar/79845096-E548-805A-AFC368E02ADBE9FB.jpg"
+        }
+      ],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "true",
+      "organizationname": "",
+      "id": "79927147-B884-0BA3-299CF9F1A6ECBF56",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "hofr",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "09:30 AM",
+          "timeend": "10:30 AM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "11:30 AM",
+          "timeend": "12:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "01:30 PM",
+          "timeend": "02:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "03:30 PM",
+          "timeend": "04:30 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "Tickets for all tour times are issued on-site on a first come, first serve basis at the Henry A. Wallace Visitor Center. All tours begin at the Carriage House Visitor Center.",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Home Of Franklin D Roosevelt National Historic Site",
+      "recurrencedatestart": "2022-12-01",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "$10 per person. Ages 15 and under are free. Please note credit cards are the only form of payment we can accept. For information on passes, visit https://www.nps.gov/hofr/planyourvisit/fees.htm",
+      "recurrencerule": "DTSTART=20221201T050000Z;UNTIL=20221230T050000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30"
+      ],
+      "datetimecreated": "",
+      "title": "A Roosevelt Family Christmas",
+      "latitude": "41.767907",
+      "subjectname": "",
+      "tags": [
+        "Roosevelt",
+        "FDR",
+        "Christmas Programs",
+        "Holiday"
+      ]
+    },
+    {
+      "location": "",
+      "updateuser": "",
+      "contactname": "",
+      "contacttelephonenumber": "",
+      "recurrencedateend": "2022-12-31",
+      "longitude": "-73.942402",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Guided Tour"
+      ],
+      "createuser": "",
+      "isfree": "false",
+      "contactemailaddress": "",
+      "regresurl": "",
+      "description": "<p>Access to the mansion is by guided tour only. The first floor of the mansion is decorated for a Vanderbilt holiday house party, including an extravagant new holiday buffet in the dining room. </p>\n<p>Please note, the Vanderbilt Mansion is closed on Tuesdays and Wednesdays.</p>",
+      "images": [
+        {
+          "path": "/common/uploads/event_calendar/74A504F1-CEF6-297B-7A08E1F5853AC077.jpg",
+          "credit": "NPS Photo",
+          "imageId": "36759",
+          "altText": "A long table in a large opulent dining room set with china and extravagant desserts.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "The Vanderbilt holiday buffet is based on illustrations found in Gilded Age era cookbooks.",
+          "url": "/common/uploads/event_calendar/74A504F1-CEF6-297B-7A08E1F5853AC077.jpg"
+        }
+      ],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "true",
+      "organizationname": "",
+      "id": "74E7AF80-935C-4F95-3BD4BB30D73FE8CE",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "vama",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "10:00 AM",
+          "timeend": "11:00 AM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "12:00 PM",
+          "timeend": "01:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "02:00 PM",
+          "timeend": "03:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        },
+        {
+          "timestart": "03:00 PM",
+          "timeend": "04:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "Tickets for all tour times are issued on-site on a first come, first serve basis at the Pavilion Visitor Center. All tours begin in the Pavilion Visitor Center.",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Vanderbilt Mansion National Historic Site",
+      "recurrencedatestart": "2022-11-25",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "$10 per person. Ages 15 and under are free. Please note credit cards are the only form of payment we can accept. For information on passes, visit https://www.nps.gov/vama/planyourvisit/fees.htm",
+      "recurrencerule": "DTSTART=20221125T050000Z;UNTIL=20221231T050000Z;FREQ=WEEKLY;WKST=SU;BYDAY=SU,MO,TH,FR,SA;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-29",
+        "2022-12-30",
+        "2022-12-31"
+      ],
+      "datetimecreated": "",
+      "title": "A Vanderbilt Holiday",
+      "latitude": "41.796407",
+      "subjectname": "",
+      "tags": [
+        "Vanderbilt",
+        "Holiday"
+      ]
+    },
+    {
+      "location": "",
+      "updateuser": "",
+      "contactname": "",
+      "contacttelephonenumber": "5207335158",
+      "recurrencedateend": "2022-12-26",
+      "longitude": "",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Talk"
+      ],
+      "createuser": "",
+      "isfree": "true",
+      "contactemailaddress": "",
+      "regresurl": "",
+      "description": "<p>You see them hurry, scurry, and laze in the day. What wonder lies within these plentiful lizards? Get to learn about Saguaro National Park's lizards and what makes them unique in this incredible corner of the Sonoran Desert. Wheelchair accessible.</p>",
+      "images": [],
+      "category": "Regular Event",
+      "imageidlist": "",
+      "isregresrequired": "false",
+      "organizationname": "",
+      "id": "E8B8C238-D63F-EB12-C7AD7FD6F372D6CE",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "sagu",
+      "infourl": "",
+      "times": [
+        {
+          "timestart": "02:15 PM",
+          "timeend": "02:45 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "This program is scheduled to last roughly 30 minutes.",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Saguaro National Park",
+      "recurrencedatestart": "2022-12-05",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "",
+      "recurrencerule": "DTSTART=20221205T070000Z;UNTIL=20221226T070000Z;FREQ=WEEKLY;WKST=SU;BYDAY=MO;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26"
+      ],
+      "datetimecreated": "",
+      "title": "An Abundance of Lovely Lizards (West District)",
+      "latitude": "",
+      "subjectname": "",
+      "tags": []
+    },
+    {
+      "location": "USS CONSTITUTION Museum",
+      "updateuser": "",
+      "contactname": "",
+      "contacttelephonenumber": "",
+      "recurrencedateend": "2022-12-31",
+      "longitude": "",
+      "datestart": "2022-12-26",
+      "isrecurring": "true",
+      "datetimeupdated": "",
+      "portalname": "",
+      "types": [
+        "Children’s Program",
+        "Partner Program"
+      ],
+      "createuser": "",
+      "isfree": "false",
+      "contactemailaddress": "",
+      "regresurl": "",
+      "description": "<p>Come visit the <em>USS Constitution</em> Museum and show them your own holiday traditions and participate in family friendly activities during December School Vacation Week. Make a holiday craft to share with the crew of USS <em>Constitution</em> or create a holiday LEGO creation! The museum will have a host of family friendly activities happening in their award winning galleries and can’t wait to welcome you for a week of fun! </p>\n<p>For more details about the offerings, check out the <em>USS Constitution </em>Museum's website.</p>",
+      "images": [
+        {
+          "path": "/common/uploads/event_calendar/425A6E0A-EACF-F7A8-EDA851A4ABF08D7B.jpg",
+          "credit": "USS CONSTITUTION Museum",
+          "imageId": "36876",
+          "altText": "children in winter coats on a ship with a Christmas tree in the background, arms outstretched.",
+          "title": "",
+          "ordinal": "0",
+          "caption": "Visit the USS CONSTITUTION Museum during December School Vacation Week for fun activities!",
+          "url": "/common/uploads/event_calendar/425A6E0A-EACF-F7A8-EDA851A4ABF08D7B.jpg"
+        }
+      ],
+      "category": "Special Event",
+      "imageidlist": "",
+      "isregresrequired": "true",
+      "organizationname": "",
+      "id": "427DB9F3-A402-A11D-09E1AE8319131CFC",
+      "isallday": "false",
+      "dateend": "2022-12-26",
+      "sitecode": "bost",
+      "infourl": "https://ussconstitutionmuseum.org/events/decemberbreak/",
+      "times": [
+        {
+          "timestart": "10:00 AM",
+          "timeend": "05:00 PM",
+          "sunsetend": "false",
+          "sunrisestart": "false"
+        }
+      ],
+      "regresinfo": "",
+      "timeinfo": "",
+      "categoryid": "0",
+      "eventid": "0",
+      "parkfullname": "Boston National Historical Park",
+      "recurrencedatestart": "2022-12-26",
+      "date": "2022-12-26",
+      "sitetype": "park",
+      "feeinfo": "Admission to the museum is by donation.",
+      "recurrencerule": "DTSTART=20221226T050000Z;UNTIL=20221231T050000Z;FREQ=DAILY;WKST=SU;COUNT=0;INTERVAL=1",
+      "dates": [
+        "2022-12-26",
+        "2022-12-27",
+        "2022-12-28",
+        "2022-12-29",
+        "2022-12-30",
+        "2022-12-31"
+      ],
+      "datetimecreated": "",
+      "title": "Anchored in Traditions:  December School Vacation Week",
+      "latitude": "",
+      "subjectname": "",
+      "tags": [
+        "Boston National Historical Park",
+        "Boston African American National Historic Site",
+        "Boston Harbor Islands National and State Park",
+        "USS Constitution",
+        "December School Vacation Week"
+      ]
+    }
+  ],
+  "dates": "2023-01-03,2022-12-29,2022-12-26,2023-01-09,2023-01-13,2023-01-25,2023-01-06,2023-01-12,2023-01-22,2023-01-01,2023-01-07,2023-01-11,2022-12-30,2023-01-18,2022-12-28,2023-01-04,2023-01-19,2023-01-10,2023-01-24,2023-01-16,2022-12-31,2022-12-27,2023-01-17,2023-01-05,2023-01-23,2023-01-21,2023-01-02,2023-01-15,2023-01-08,2023-01-14,2023-01-20,2022-11-25",
+  "pagenumber": "1",
+  "pagesize": "10"
+}

@@ -1,7 +1,12 @@
 State
 -----
+
+
+TODO
+----
 Determine how to get an image of the webcam and display that in the webcam list.
-What is the webcam image list going to do since most (all?) don't have any images.  These each have one image:
+
+Maybe WebcamImageList doesn't make since.  Most don't have images.  These (there may be others) each have one image:
 	Clarno Unit: The Palisades
 	Live View From Panther Junction
 	Spruce Tree House
@@ -11,9 +16,6 @@ What is the webcam image list going to do since most (all?) don't have any image
 	Bartlett Cove Lagoon and Fairweather Range
 	Bartlett Cove Public Dock
 
-
-TODO
-----
 Change the splash icon to the AdvApp icon.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?

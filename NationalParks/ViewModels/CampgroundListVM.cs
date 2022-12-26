@@ -92,7 +92,7 @@ namespace NationalParks.ViewModels
                 IsBusy = true;
                 ResultCampgrounds result;
 
-                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds.json");
+                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
                 //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 //foreach (var campground in result.Data)
                 //    Campgrounds.Add(campground);

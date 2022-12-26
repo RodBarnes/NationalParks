@@ -1,0 +1,943 @@
+﻿{
+  "total": "127",
+  "limit": "200",
+  "start": "0",
+  "data": [
+    {
+      "id": "A1B0AD01-740C-41E7-8412-FBBEDD5F1443",
+      "name": "ATM/Cash Machine",
+      "categories": [
+        "Convenience",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "4E4D076A-6866-46C8-A28B-A129E2B8F3DB",
+      "name": "Accessible Rooms",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "04D29064-B9A1-4031-AD0E-98E31EF69604",
+      "name": "Accessible Sites",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "0E2B9B01-9AC3-4AAF-A801-8027314BE863",
+      "name": "Airboat Launch",
+      "categories": [
+        "Boating"
+      ]
+    },
+    {
+      "id": "B509969B-F06A-4DCC-BBB3-134964D896E2",
+      "name": "Amphitheater",
+      "categories": [
+        "Interpretive",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "89397A1A-3517-4941-8D30-037856E9D063",
+      "name": "Animal-Safe Food Storage",
+      "categories": [
+        "Safety"
+      ]
+    },
+    {
+      "id": "64D6A0A9-8219-4B57-97A9-9DFB527831F8",
+      "name": "Aquatic Invasive Species Inspection",
+      "categories": [
+        "Boating"
+      ]
+    },
+    {
+      "id": "CBD31D2A-DD1A-4C5D-88C1-67B6B7147CE9",
+      "name": "Assistive Listening Systems",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "BD2D6111-3E55-4838-A943-66203D9D95D6",
+      "name": "Assistive Listening Systems - T-Coil Compatible",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "7DC6C690-2BC3-4344-9691-EF9FCFB6E506",
+      "name": "Audio Description",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "8BFB0FF0-0B32-402B-8B73-C8028E56501E",
+      "name": "Audio Description - Live",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "F4A842CB-C966-402E-BBD3-AB86EDCF8403",
+      "name": "Automated Entrance",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "03A732CF-E5FD-473D-A78B-BDC4D20721BF",
+      "name": "Automated External Defibrillator (AED)",
+      "categories": [
+        "Emergency",
+        "Safety"
+      ]
+    },
+    {
+      "id": "B166EAD1-0D3E-4111-AE04-D5AB15DFDEDC",
+      "name": "Baby Changing Station",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "7029B5F0-D918-4E8A-B066-6F221BB8C061",
+      "name": "Backcountry Permits",
+      "categories": [
+        "Permits and Passes"
+      ]
+    },
+    {
+      "id": "63734D6E-3330-4EED-B916-52B3F625A091",
+      "name": "Beach/Water Access",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "CABB4B31-8D23-4560-B359-6A12AF5621A9",
+      "name": "Bear Canister Purchase/Rental",
+      "categories": [
+        "Safety",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "7C64C0C4-5535-4E78-A04C-F78EBBFC3DAD",
+      "name": "Bear Spray Purchase/Rental",
+      "categories": [
+        "Safety",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "20291812-E85C-4A84-B8A2-E31C8D149704",
+      "name": "Benches/Seating",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "5BDFF349-2F74-490E-A33E-C35286152050",
+      "name": "Bicycle - Rack",
+      "categories": [
+        "Biking",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "EDA44DDD-DC61-4EAE-84AD-78FA52D98406",
+      "name": "Bicycle - Rental",
+      "categories": [
+        "Biking",
+        "Recreation",
+        "Transportation"
+      ]
+    },
+    {
+      "id": "DBADDA45-B695-4214-98D7-D3F886489421",
+      "name": "Bicycle - Repair",
+      "categories": [
+        "Biking",
+        "Emergency"
+      ]
+    },
+    {
+      "id": "37E409E6-FD87-456F-8A29-7C8287220FBF",
+      "name": "Bicycle - Sharing Station",
+      "categories": [
+        "Biking",
+        "Recreation",
+        "Transportation"
+      ]
+    },
+    {
+      "id": "1FDBBA99-3E2C-4AAB-AEE3-35B015F744E7",
+      "name": "Boat Ramp",
+      "categories": [
+        "Boating",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "FB1516EF-7AC9-4A58-B6CC-6F982890011B",
+      "name": "Boat Rental",
+      "categories": [
+        "Boating"
+      ]
+    },
+    {
+      "id": "27A7E3AB-CA53-41D3-AEDE-FBF74D20F023",
+      "name": "Braille",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "DA9F2E5C-E46B-4F62-893E-4364D35931DC",
+      "name": "Bus/Shuttle Stop",
+      "categories": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": "73C1C87E-F4EC-464D-BAEE-1F95876C24F4",
+      "name": "Canoe/Kayak/Small Boat Launch",
+      "categories": [
+        "Boating",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "3B84C2C8-E890-4EE5-B0E7-FA157EFD8DAC",
+      "name": "Captioned Media",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "48562BFB-834B-43F2-B865-E174C372032B",
+      "name": "Cellular Signal",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "91062A96-BF79-4719-9679-BB5461B7620A",
+      "name": "Dock/Pier",
+      "categories": [
+        "Accessibility",
+        "Boating",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "D81436AE-5DB6-462B-A4F2-1DC3780A06D9",
+      "name": "Electric Car Charging Station",
+      "categories": [
+        "Fuel"
+      ]
+    },
+    {
+      "id": "57E44FD1-410F-4488-A389-3D27E045CB79",
+      "name": "Electrical Hookup - Boat/RV",
+      "categories": [
+        "Boating"
+      ]
+    },
+    {
+      "id": "1C1B932D-32B6-4BAA-8AA6-497F08CC22BF",
+      "name": "Electrical Outlet/Cell Phone Charging",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "AB14DDED-4C61-4842-9D1F-1C9578A10802",
+      "name": "Elevator",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "1D08E7AD-5634-4185-80F4-B4C3CB5BD927",
+      "name": "Entrance Passes for Sale",
+      "categories": [
+        "Permits and Passes"
+      ]
+    },
+    {
+      "id": "63C7E515-6380-4092-83ED-FE1177F72A36",
+      "name": "Ferry - Passenger",
+      "categories": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": "BBB07B4A-2217-4FEA-AFD5-1E3B2ED674FF",
+      "name": "Ferry - Vehicle",
+      "categories": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": "802BE109-511F-47D9-84D5-18DDA1C90771",
+      "name": "Fire Extinguisher",
+      "categories": [
+        "Emergency",
+        "Safety"
+      ]
+    },
+    {
+      "id": "0A4F29B3-7FC1-4D4A-BD71-3B7E08CD4BCC",
+      "name": "Fire Pit",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "28BF85F5-E93F-4EF1-A89B-05C99FCD808A",
+      "name": "Firewood For Sale/Available",
+      "categories": [
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "5BA727FA-943D-418D-A238-44127EBA6EDB",
+      "name": "First Aid Kit Available",
+      "categories": [
+        "Emergency",
+        "Safety"
+      ]
+    },
+    {
+      "id": "2DEE6458-72F8-4C97-9279-5C3E90B19888",
+      "name": "First Aid/Medical Care Available",
+      "categories": [
+        "Emergency",
+        "Safety"
+      ]
+    },
+    {
+      "id": "2F2EE214-4BAB-4132-AFE4-2F664E5E80C5",
+      "name": "Fish-Cleaning Station",
+      "categories": [
+        "Fishing"
+      ]
+    },
+    {
+      "id": "4ACBE3CB-3CBB-47B6-8223-A7EE0342DC6D",
+      "name": "Fishing Licenses Issued",
+      "categories": [
+        "Fishing",
+        "Information Available",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "383F944C-35BA-43E3-8EEA-24953836B8C5",
+      "name": "Food/Drink - Bar/Alcohol For Sale",
+      "categories": [
+        "Food"
+      ]
+    },
+    {
+      "id": "D0D77D00-38EA-40F2-91E3-5FDCE3932A49",
+      "name": "Food/Drink - Cafeteria",
+      "categories": [
+        "Food"
+      ]
+    },
+    {
+      "id": "5D1ADBE5-E75D-4657-9577-FB5A6A90C7F9",
+      "name": "Food/Drink - Coffee",
+      "categories": [
+        "Food"
+      ]
+    },
+    {
+      "id": "3B482494-83EF-48D9-A626-FC00EFD4F4A4",
+      "name": "Food/Drink - Ice Cream",
+      "categories": [
+        "Food"
+      ]
+    },
+    {
+      "id": "2F798138-5D0A-468E-96DA-0A07F03031B0",
+      "name": "Food/Drink - Restaurant/Table Service",
+      "categories": [
+        "Food"
+      ]
+    },
+    {
+      "id": "29D286B6-069C-4204-AF35-AE7744B71212",
+      "name": "Food/Drink - Snacks",
+      "categories": [
+        "Food",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "4F26643C-FAAF-40CE-85F7-38DEC4746BE6",
+      "name": "Food/Drink - Vending Machine/Self Service",
+      "categories": [
+        "Food",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "B088B448-D7EF-4781-B79E-76C75B54EFA7",
+      "name": "Fuel (Diesel)",
+      "categories": [
+        "Fuel"
+      ]
+    },
+    {
+      "id": "2E5D791D-B040-45FD-9B61-82979A984102",
+      "name": "Fuel (Unleaded)",
+      "categories": [
+        "Fuel"
+      ]
+    },
+    {
+      "id": "3476E39B-5402-4999-99B3-AC8F030629E7",
+      "name": "Gifts/Souvenirs/Books",
+      "categories": [
+        "Convenience",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "6E639F57-CC17-40FB-B6A0-452652066187",
+      "name": "Grill",
+      "categories": [
+        "Picnic"
+      ]
+    },
+    {
+      "id": "8741D9DE-239A-4739-9920-4844BB587E6A",
+      "name": "Groceries/Convenience Items",
+      "categories": [
+        "Convenience",
+        "Food",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "2856392B-17A7-4413-8521-C13A8D2188EB",
+      "name": "Historical/Interpretive Information/Exhibits",
+      "categories": [
+        "Interpretive"
+      ]
+    },
+    {
+      "id": "ECFE1156-9072-4959-96C2-8D74AB14BEA6",
+      "name": "Hitching Post/Corral",
+      "categories": [
+        "Convenience",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "EC76D4B1-F391-45EB-AEC4-DC96B3F58194",
+      "name": "Ice",
+      "categories": [
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "0AF7920C-2F54-42A7-88CA-F2EEBCB15655",
+      "name": "Information",
+      "categories": [
+        "Information Available"
+      ]
+    },
+    {
+      "id": "7E66CA2E-40AD-487E-8A04-8A9A2E4897C9",
+      "name": "Information - Maps Available",
+      "categories": [
+        "Convenience",
+        "Information Available"
+      ]
+    },
+    {
+      "id": "6815A395-2988-4AF3-8006-50224AD05193",
+      "name": "Information - Park Newspaper Available",
+      "categories": [
+        "Information Available"
+      ]
+    },
+    {
+      "id": "8320DDEA-91E7-411D-81B4-5D31CCA2267B",
+      "name": "Information - Ranger/Staff Member Present",
+      "categories": [
+        "Information Available"
+      ]
+    },
+    {
+      "id": "80E207D6-E9C3-4075-9823-26D23E963FA2",
+      "name": "Information Kiosk/Bulletin Board",
+      "categories": [
+        "Information Available"
+      ]
+    },
+    {
+      "id": "9EA123B3-E118-4BE9-BF49-EE93F1BA645B",
+      "name": "Internet/WiFi Available",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "8AAA9B54-1797-4B6E-8F62-AC33F6BAD3E6",
+      "name": "Junior Ranger Activity",
+      "categories": [
+        "Junior Ranger Program"
+      ]
+    },
+    {
+      "id": "1D89D866-66BC-4CB9-9640-0291F984C29B",
+      "name": "Junior Ranger Booklet Available",
+      "categories": [
+        "Junior Ranger Program"
+      ]
+    },
+    {
+      "id": "27798945-B557-42A5-8599-90B92635EC06",
+      "name": "Kennel",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "0A8D7236-5316-4128-978D-31FE059031F8",
+      "name": "Large Print",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "B108A32A-52A4-4C4E-B178-0276BFBD9555",
+      "name": "Laundry",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "7760752A-8879-43F8-A338-6796D652D4EF",
+      "name": "Lifejacket Rentals",
+      "categories": [
+        "Boating",
+        "Safety"
+      ]
+    },
+    {
+      "id": "B190FA09-B841-434B-8A72-C78D59BF91EB",
+      "name": "Locker/Storage",
+      "categories": [
+        "Convenience",
+        "Safety"
+      ]
+    },
+    {
+      "id": "6297C73A-5B8D-4D0E-BAD1-5E47F244D20A",
+      "name": "Low-Vision Access",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "F9BA4FBF-C247-46C7-A699-2C2E7D954D30",
+      "name": "Mechanic",
+      "categories": [
+        "Convenience",
+        "Emergency",
+        "Transportation"
+      ]
+    },
+    {
+      "id": "163C13BC-0AD5-4190-8D1F-0B7E2C1B0BA3",
+      "name": "Open Captioning",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "B760D6E2-3616-4D8B-ABF2-B875B7966831",
+      "name": "Parking - Auto",
+      "categories": [
+        "Parking"
+      ]
+    },
+    {
+      "id": "EDA1E992-DA2B-4933-A7AD-23E3B7BFA602",
+      "name": "Parking - Boat Trailer",
+      "categories": [
+        "Boating",
+        "Parking"
+      ]
+    },
+    {
+      "id": "0965B1F3-A824-4A31-98C9-86CCD2889220",
+      "name": "Parking - Bus/RV",
+      "categories": [
+        "Parking"
+      ]
+    },
+    {
+      "id": "24140B47-F8FE-4046-BB6A-817F9E165959",
+      "name": "Permits Issued",
+      "categories": [
+        "Permits and Passes"
+      ]
+    },
+    {
+      "id": "C115FEF5-6B42-4850-8226-08E048E82520",
+      "name": "Pet Boarding",
+      "categories": [
+        "Pet-Friendly"
+      ]
+    },
+    {
+      "id": "683F4979-D6E5-461F-93B8-2DAE5DF0124A",
+      "name": "Pet Waste Disposal",
+      "categories": [
+        "Pet-Friendly"
+      ]
+    },
+    {
+      "id": "D7D63B75-2A7E-4715-856A-D8479DB9602A",
+      "name": "Pets Allowed",
+      "categories": [
+        "Pet-Friendly"
+      ]
+    },
+    {
+      "id": "DAB8DE0A-44A2-4AB5-8914-9528BF9413DB",
+      "name": "Picnic Shelter/Pavilion",
+      "categories": [
+        "Picnic",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "6B68B30A-40C9-4745-9397-4899B59B0B7E",
+      "name": "Picnic Table",
+      "categories": [
+        "Picnic",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "7736B50E-5210-46C3-B59D-5C5D1886C2A6",
+      "name": "Playground",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "053D7823-0372-4A24-8316-A6D728C4DA65",
+      "name": "Primitive Campsites",
+      "categories": [
+        "Campsites"
+      ]
+    },
+    {
+      "id": "8E6BF478-B938-469F-B5B8-2938DA389FF3",
+      "name": "Propane For Sale",
+      "categories": [
+        "Convenience",
+        "Fuel",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "6DB7E488-F085-4ECA-AB53-901B1C1D1F6D",
+      "name": "Propane Recycling",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "A0038A57-E213-46E7-BD5F-40E9AE18014F",
+      "name": "Public Transit",
+      "categories": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": "C3216D86-E013-434E-845F-0CFAE58C8914",
+      "name": "Recreational Field",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "4706077B-00CB-4D07-80C7-48B2D5ADEFA2",
+      "name": "Recycling",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "2883D965-1CA4-4858-B759-A5866CA8A188",
+      "name": "Restroom",
+      "categories": [
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "75F2DA2A-1741-445A-9FA7-B63A81E4BD7F",
+      "name": "Restroom - Accessible",
+      "categories": [
+        "Accessibility",
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "D6220FCB-F005-4C26-942C-2BE168819AE3",
+      "name": "Restroom - Family",
+      "categories": [
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "3AE99969-54E5-4A4E-AE43-5A11209D0120",
+      "name": "Restroom - Seasonal",
+      "categories": [
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "79247274-A3FB-42C4-9361-45A2BFADE78C",
+      "name": "Scenic View/Photo Spot",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "00FD91F9-D3A5-41FC-B506-B0AB6CABEF3B",
+      "name": "Sea Plane Launch",
+      "categories": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": "66F39143-96B7-44BC-BE90-EB44C361B448",
+      "name": "Sewage Dump Station - Boat/RV",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "135075E7-68DA-4E84-AF9D-63ACBDF809CC",
+      "name": "Sewer Hookups - Boat/RV",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "7B13EFFB-40DA-439C-AB41-9756EC32D22E",
+      "name": "Shelter/Cabin",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "94E21603-85F3-48C5-96B6-556E46FA2518",
+      "name": "Showers",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "347D79CD-4FEC-4218-86C4-079F0FE94945",
+      "name": "Sign Language Interpreter",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "F903E427-5E1C-44C0-B127-79C9054FBEBA",
+      "name": "Ski Rental",
+      "categories": [
+        "Recreation",
+        "Winter Recreation"
+      ]
+    },
+    {
+      "id": "460AECEB-2158-47B4-8DAC-40041649C0F3",
+      "name": "Supplies - Camping/Outdoor",
+      "categories": [
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "A57ABD0E-7A70-4F0F-B130-9D36636AAC99",
+      "name": "Supplies - Fishing/Boating",
+      "categories": [
+        "Boating",
+        "Fishing",
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "94006F6C-4EEF-489C-B8E6-FF1565E25F84",
+      "name": "Supplies - General",
+      "categories": [
+        "Souvenirs and Supplies"
+      ]
+    },
+    {
+      "id": "D7E4E6D8-4BAD-4758-8E76-97ED800502E8",
+      "name": "Swimming Pool",
+      "categories": [
+        "Recreation"
+      ]
+    },
+    {
+      "id": "1FF653F6-1F20-425C-A16A-B8D6210CD759",
+      "name": "Tactile Exhibit",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "343F0388-C62A-4FEB-A790-E73253ECDDB2",
+      "name": "Telephone",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "E1467219-BFA0-4A9F-AB38-3B35E3CEC067",
+      "name": "Tent Campsites",
+      "categories": [
+        "Campsites"
+      ]
+    },
+    {
+      "id": "BF109EEC-1E9C-4015-B5D1-829FE122C64B",
+      "name": "Text Telephone/TTY",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "A5EA8D15-1DFE-43D4-B2C4-B76DD927CE50",
+      "name": "Theater/Auditorium",
+      "categories": [
+        "Interpretive"
+      ]
+    },
+    {
+      "id": "C7577040-41BF-4948-9521-7044E09ABF7C",
+      "name": "Ticket Sales",
+      "categories": [
+        "Permits and Passes"
+      ]
+    },
+    {
+      "id": "CC4A51EF-1CB8-4625-9A9B-3AC77AF2F668",
+      "name": "Toilet - Flush",
+      "categories": [
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "F84C0528-0D1A-45A2-B644-B3C059B3D224",
+      "name": "Toilet - Vault/Composting",
+      "categories": [
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "39BE9614-4284-4B29-A650-AB2E7215C58B",
+      "name": "Trailhead",
+      "categories": [
+        "Hiking",
+        "Recreation"
+      ]
+    },
+    {
+      "id": "6F58A577-4B56-46B9-B170-A5A5F670E245",
+      "name": "Trailhead/Hiker Register",
+      "categories": [
+        "Hiking",
+        "Recreation",
+        "Safety"
+      ]
+    },
+    {
+      "id": "4EDE1652-84E4-4219-8D20-26317D4B61DA",
+      "name": "Trash Dumpster",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "4D4C1C32-793D-4440-8098-DBCA0126EDFD",
+      "name": "Trash/Litter Receptacles",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "3A8EC9F0-6CC6-48CE-9AA2-1B257B074383",
+      "name": "Volume-Controlled Telephone",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "23682251-700A-4DE2-8FD8-BD680F53DF82",
+      "name": "Water - Bottle-Filling Station",
+      "categories": [
+        "Convenience",
+        "Drinking Water",
+        "Safety"
+      ]
+    },
+    {
+      "id": "9A652919-D548-4850-8053-798CDC2C762B",
+      "name": "Water - Drinking/Potable",
+      "categories": [
+        "Convenience",
+        "Drinking Water",
+        "Safety"
+      ]
+    },
+    {
+      "id": "3CC88D72-D320-4E33-8D70-00A583E7F479",
+      "name": "Water - Hookup - Boat/RV",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "08EDBF67-DF67-4D3B-83C1-8B2844228C4D",
+      "name": "Water - Non-Potable",
+      "categories": [
+        "Convenience"
+      ]
+    },
+    {
+      "id": "EAB59B1F-2FA1-4545-A322-2C19149AF7FC",
+      "name": "Wheelchair Accessible",
+      "categories": [
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "1CF3D18E-C6A7-4462-9990-86B59383A9C3",
+      "name": "Wheelchairs Available",
+      "categories": [
+        "Accessibility"
+      ]
+    }
+  ]
+}
