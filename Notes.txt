@@ -1,7 +1,16 @@
 State
 -----
 Determine how to get an image of the webcam and display that in the webcam list.
-What is the webcam image list going to do since most (all?) don't have any images.
+What is the webcam image list going to do since most (all?) don't have any images.  These each have one image:
+	Clarno Unit: The Palisades
+	Live View From Panther Junction
+	Spruce Tree House
+	Pine Springs Canyon View
+	Dell City View
+	El Capitan View
+	Bartlett Cove Lagoon and Fairweather Range
+	Bartlett Cove Public Dock
+
 
 TODO
 ----
