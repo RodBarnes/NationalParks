@@ -43,7 +43,7 @@ public partial class ParkListVM : BaseVM
         Title = $"Parks ({totalParks})";
     }
 
-    public async void ClearData()
+    public void ClearData()
     {
         Parks.Clear();
         startParks = 0;

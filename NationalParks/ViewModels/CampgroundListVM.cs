@@ -3,6 +3,7 @@ using System.Text.Json;
 
 namespace NationalParks.ViewModels
 {
+    [QueryProperty(nameof(Filter), "Filter")]
     public partial class CampgroundListVM : BaseVM
     {
         public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
@@ -40,7 +41,7 @@ namespace NationalParks.ViewModels
             Title = $"Campgrounds ({totalCampgrounds})";
         }
 
-        public async void ClearData()
+        public void ClearData()
         {
             Campgrounds.Clear();
             startCampgrounds = 0;
