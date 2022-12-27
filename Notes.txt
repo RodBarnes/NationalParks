@@ -1,10 +1,6 @@
-State
------
-The selections in the Filter page are being collected and updated in the Filter passed in the query properties.
+Status
+------
 
-I've got it reassessing the Parks but it looks like I have to do a Parks.Clear() before I do GetParksAsync() again upon returning from the filter page.  Otherwise, it just adds to the current list?
-
-I think I have to go back to passing the VM reference and not just the Filter.  Because it has to happen in the FilterApply.  The VM won't otherwise know when to clear its list.
 
 Issue
 -----
@@ -15,6 +11,10 @@ But the 'q' parameter also gives unexpected results; e.g., a search for Parks wi
 TODO
 ----
 Determine how to get an image of the webcam and display that in the webcam list.
+
+Does it make sense to have the Webcams as a separate angle?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
+
+Webcams are not sorted alphbetically by title; unsure what the order is.  And it does not have the 'sort' parameter as found on Parks.
 
 Maybe WebcamImageList doesn't make since.  Most don't have images.  These (there may be others) each have one image:
 	Clarno Unit: The Palisades
