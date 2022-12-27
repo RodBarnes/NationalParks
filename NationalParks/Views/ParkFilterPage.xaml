@@ -20,9 +20,9 @@
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="1" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView
-            ItemsSource="{Binding Topics}"
-            SelectionMode="Multiple">
+            <CollectionView ItemsSource="{Binding Topics}"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedTopics}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Topic">
                         <VerticalStackLayout>
@@ -40,9 +40,9 @@
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="3" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView
-            ItemsSource="{Binding Activities}"
-            SelectionMode="Multiple">
+            <CollectionView ItemsSource="{Binding Activities}"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedActivities}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Topic">
                         <VerticalStackLayout>
@@ -60,9 +60,9 @@
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="5" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView
-            ItemsSource="{Binding States}"
-            SelectionMode="Multiple">
+            <CollectionView ItemsSource="{Binding States}"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:State">
                         <VerticalStackLayout>

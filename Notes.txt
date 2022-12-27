@@ -1,6 +1,7 @@
 State
 -----
-
+The selections in the Filter page are being collected and applied to the Filter passed in the query properties.
+I've adding a Filter QueryProperty to ParkListVM that, in theory, should allow passing it back in from ParkFilterVM.  But how do I apply the values so the list is filtered?  I think that during the GetParksAsync, it needs to consider the Filter values and adjust the API query.  Each time it comes into ParkListVM, it needs to reassess the Filter and determine if a new list is needed.
 
 TODO
 ----

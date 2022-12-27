@@ -3,18 +3,24 @@
     [QueryProperty(nameof(TopicsCol), "Topics")]
     [QueryProperty(nameof(ActivitiesCol), "Activities")]
     [QueryProperty(nameof(StatesCol), "States")]
-    [QueryProperty(nameof(ParentVM), "VM")]
+    [QueryProperty(nameof(Filter), "Filter")]
     public partial class ParkFilterVM : BaseVM
     {
         // Query properties
         public Collection<Models.Topic> TopicsCol { get; set; }
         public Collection<Models.Activity> ActivitiesCol { get; set; }
         public Collection<Models.State> StatesCol { get; set; }
-        public ParkListVM ParentVM { get; set; }
+        public ParkFilter Filter { get; set; }
 
+        // Displayed values
         public ObservableCollection<Models.Topic> Topics { get; } = new();
         public ObservableCollection<Models.Activity> Activities { get; } = new();
         public ObservableCollection<Models.State> States { get; } = new();
+
+        // Selected values
+        public ObservableCollection<object> SelectedTopics { get; set; } = new();
+        public ObservableCollection<object> SelectedActivities { get; set; } = new();
+        public ObservableCollection<object> SelectedStates { get; set; } = new();
 
         public ParkFilterVM()
         {
@@ -36,17 +42,36 @@
         }
 
         [RelayCommand]
-        public void ApplyFilter()
+        async Task ApplyFilter()
         {
-            Shell.Current.DisplayAlert("Filter",
-                "This will go back to the main page with the list filtered.", "OK");
+            foreach (var o in SelectedTopics)
+                if (o is Models.Topic topic)
+                    Filter.Topics.Add(topic);
+
+            foreach (var o in SelectedActivities)
+                if (o is Models.Activity activity)
+                    Filter.Activities.Add(activity);
+
+            foreach (var o in SelectedStates)
+                if (o is Models.State state)
+                    Filter.States.Add(state);
+
+            //await Shell.Current.DisplayAlert("Filter", "All filter values have been applied.", "OK");
+
+            await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
+            {
+                {"Filter", Filter }
+            });
         }
 
         [RelayCommand]
         public void ClearFilter()
         {
-            Shell.Current.DisplayAlert("Filter",
-                "This will clear all selections and reset the filter.", "OK");
+            SelectedTopics.Clear();
+            SelectedActivities.Clear();
+            SelectedStates.Clear();
+
+            Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
         }
     }
 }

@@ -7,5 +7,10 @@ public partial class ParkListPage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+    }
 }
 

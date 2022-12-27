@@ -3,6 +3,7 @@ using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
+[QueryProperty(nameof(Filter), "Filter")]
 public partial class ParkListVM : BaseVM
 {
     public ObservableCollection<Models.Park> Parks { get; } = new();
@@ -35,11 +36,10 @@ public partial class ParkListVM : BaseVM
         await LoadStates();
     }
 
-    [ObservableProperty]
-    bool isRefreshing;
+    private ParkFilter Filter { get; set; } = new ParkFilter();
 
     [ObservableProperty]
-    Filter filter;
+    bool isRefreshing;
 
     [RelayCommand]
     async Task GoToDetail(Park park)
@@ -61,7 +61,7 @@ public partial class ParkListVM : BaseVM
             {"Topics", Topics },
             {"Activities", Activities },
             {"States", States},
-            {"VM", this }
+            {"Filter", Filter }
         });
     }
 
