@@ -35,8 +35,40 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Campground}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Campground.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="Amenities" Style="{StaticResource LabelMedium}" />
+                <Grid ColumnDefinitions="*,*" Margin="10,0">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}" Style="{StaticResource LabelSmall}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}" Style="{StaticResource LabelSmall}" />
+                    </VerticalStackLayout>
+                </Grid>
+                <Label Text="Accessibility" Style="{StaticResource LabelMedium}" />
+                <Grid ColumnDefinitions="*,*" Margin="10,0">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}" Style="{StaticResource LabelSmall}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="{Binding Campground.Accessibility.RvAllowed, StringFormat='RV Allowed: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.RvMaxLength, StringFormat='RV Max Ln: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.RvInfo, StringFormat='RV Info: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.TrailerAllowed, StringFormat='Trailer Allowed: {0}'}" Style="{StaticResource LabelSmall}" />
+                        <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}" Style="{StaticResource LabelSmall}" />
+                    </VerticalStackLayout>
+                </Grid>
                 <Label Text="{Binding Campground.DirectionsOverview, StringFormat='Directions: {0}'}" Style="{StaticResource LabelMedium}" />
-                <Label Text="{Binding Campground.WeatherOverview}" Style="{StaticResource LabelMedium}" />
+                    <Label Text="{Binding Campground.WeatherOverview}" Style="{StaticResource LabelMedium}" />
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 

@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public class Accessibility
+    public class CampgroundAccessibility
     {
         public string WheelchairAccess { get; set; }
         public string InternetInfo { get; set; }
