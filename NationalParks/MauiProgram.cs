@@ -45,6 +45,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<CampgroundListPage>();
         builder.Services.AddTransient<CampgroundDetailVM>();
         builder.Services.AddTransient<CampgroundDetailPage>();
+        builder.Services.AddTransient<CampgroundFilterVM>();
+        builder.Services.AddTransient<CampgroundFilterPage>();
         builder.Services.AddTransient<CampgroundHoursVM>();
         builder.Services.AddTransient<CampgroundHoursPage>();
         builder.Services.AddTransient<CampgroundImageListVM>();

@@ -1,10 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class CampgroundListPage : ContentPage
+public partial class CampgroundFilterPage : ContentPage
 {
-	CampgroundListVM _vm;
+	CampgroundFilterVM _vm;
 
-	public CampgroundListPage(CampgroundListVM vm)
+	public CampgroundFilterPage(CampgroundFilterVM vm)
 	{
 		InitializeComponent();
 		BindingContext = _vm = vm;

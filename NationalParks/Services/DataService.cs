@@ -16,8 +16,6 @@ public class DataService
     {
         var result = new ResultParks();
 
-        // States: Comma-delimited list -- stateCode=OR%2CWA
-
         var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}&limit={limit}";
         if (!String.IsNullOrEmpty(topics))
         {
@@ -83,11 +81,16 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20)
+    public async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20, string states = "")
     {
         var result = new ResultCampgrounds();
 
         var url = $"https://developer.nps.gov/api/v1/campgrounds?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {

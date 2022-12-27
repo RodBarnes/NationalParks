@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:NationalParks.ViewModels"
     xmlns:model="clr-namespace:NationalParks.Models"
-    x:Class="NationalParks.Views.ParkFilterPage"
     x:DataType="vm:ParkFilterVM"
+    x:Class="NationalParks.Views.ParkFilterPage"
     Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*,*"

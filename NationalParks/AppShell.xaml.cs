@@ -9,11 +9,12 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
 
         Routing.RegisterRoute(nameof(ParkDetailPage), typeof(ParkDetailPage));
+        Routing.RegisterRoute(nameof(ParkFilterPage), typeof(ParkFilterPage));
         Routing.RegisterRoute(nameof(ParkImageListPage), typeof(ParkImageListPage));
         Routing.RegisterRoute(nameof(ParkHoursPage), typeof(ParkHoursPage));
-        Routing.RegisterRoute(nameof(ParkFilterPage), typeof(ParkFilterPage));
 
         Routing.RegisterRoute(nameof(CampgroundDetailPage), typeof(CampgroundDetailPage));
+        Routing.RegisterRoute(nameof(CampgroundFilterPage), typeof(CampgroundFilterPage));
         Routing.RegisterRoute(nameof(CampgroundImageListPage), typeof(CampgroundImageListPage));
         Routing.RegisterRoute(nameof(CampgroundHoursPage), typeof(CampgroundHoursPage));
 

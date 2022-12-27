@@ -8,6 +8,7 @@ public partial class ParkListVM : BaseVM
 {
     public ObservableCollection<Models.Park> Parks { get; } = new();
 
+    // For holding the available filter selections
     private Collection<Models.Topic> Topics { get; } = new();
     private Collection<Models.Activity> Activities { get; } = new();
     private Collection<Models.State> States { get; } = new();
@@ -28,10 +29,14 @@ public partial class ParkListVM : BaseVM
         this.connectivity = connectivity;
         this.geolocation = geolocation;
 
-        //PopulateData();
         LoadFilterDataAsync();
     }
-    
+
+    public ParkFilter Filter { get; set; } = new ParkFilter();
+
+    [ObservableProperty]
+    bool isRefreshing;
+
     public async void PopulateData()
     {
         await GetParksAsync();
@@ -50,11 +55,6 @@ public partial class ParkListVM : BaseVM
         await GetActivitiesAsync();
         await LoadStates();
     }
-
-    public ParkFilter Filter { get; set; } = new ParkFilter();
-
-    [ObservableProperty]
-    bool isRefreshing;
 
     [RelayCommand]
     async Task GoToDetail(Park park)
