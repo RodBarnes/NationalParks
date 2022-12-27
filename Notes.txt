@@ -1,7 +1,16 @@
 State
 -----
-The selections in the Filter page are being collected and applied to the Filter passed in the query properties.
-I've adding a Filter QueryProperty to ParkListVM that, in theory, should allow passing it back in from ParkFilterVM.  But how do I apply the values so the list is filtered?  I think that during the GetParksAsync, it needs to consider the Filter values and adjust the API query.  Each time it comes into ParkListVM, it needs to reassess the Filter and determine if a new list is needed.
+The selections in the Filter page are being collected and updated in the Filter passed in the query properties.
+
+I've got it reassessing the Parks but it looks like I have to do a Parks.Clear() before I do GetParksAsync() again upon returning from the filter page.  Otherwise, it just adds to the current list?
+
+I think I have to go back to passing the VM reference and not just the Filter.  Because it has to happen in the FilterApply.  The VM won't otherwise know when to clear its list.
+
+Issue
+-----
+It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'
+
+But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
 TODO
 ----

@@ -12,7 +12,7 @@ public class DataService
         httpClient = new HttpClient();
     }
 
-    public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20)
+    public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
     {
         var result = new ResultParks();
 

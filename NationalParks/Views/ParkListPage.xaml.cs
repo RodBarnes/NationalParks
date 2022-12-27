@@ -2,15 +2,18 @@
 
 public partial class ParkListPage : ContentPage
 {
+    ParkListVM _vm;
+
 	public ParkListPage(ParkListVM vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
+		BindingContext = _vm = vm;
 	}
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        _vm.PopulateData();
     }
 }
 

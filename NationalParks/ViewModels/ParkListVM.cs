@@ -17,20 +17,27 @@ public partial class ParkListVM : BaseVM
     readonly IGeolocation geolocation;
 
     private int startParks = 0;
+    private int limitParks = 20;
 
     public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
+        IsBusy = false;
         Title = "Parks";
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
 
-        LoadMainDataAsync();
+        //PopulateData();
+        LoadFilterDataAsync();
     }
     
-    private async void LoadMainDataAsync()
+    public async void PopulateData()
     {
         await GetParksAsync();
+    }
+
+    private async void LoadFilterDataAsync()
+    {
         await GetTopicsAsync();
         await GetActivitiesAsync();
         await LoadStates();
@@ -115,13 +122,52 @@ public partial class ParkListVM : BaseVM
 
             IsBusy = true;
             ResultParks result;
+            string states = "";
+            string topics = "";
+            string activities = "";
 
             //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
             //result = System.Text.Json.JsonSerializer.Deserialize<ResultParks>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             //foreach (var park in result.Data)
             //    Parks.Add(park);
 
-            result = await dataService.GetParksAsync(startParks);
+            if (Filter.Topics.Count > 0)
+            {
+                foreach (var topic in Filter.Topics)
+                {
+                    if (topics.Length > 0)
+                    {
+                        topics += "%2D";
+                    }
+                    topics += topic.Id;
+                }
+            }
+
+            if (Filter.Activities.Count > 0)
+            {
+                foreach (var activity in Filter.Activities)
+                {
+                    if (activities.Length > 0)
+                    {
+                        activities += "%2D";
+                    }
+                    activities += activity.Id;
+                }
+            }
+
+            if (Filter.States.Count > 0)
+            {
+                foreach (var state in Filter.States)
+                {
+                    if (states.Length > 0)
+                    {
+                        states += "%2D";
+                    }
+                    states += state.Abbreviation;
+                }
+
+            }
+            result = await dataService.GetParksAsync(startParks, limitParks, topics, activities, states);
             startParks += result.Data.Count;
             foreach (var park in result.Data)
                 Parks.Add(park);
@@ -141,15 +187,11 @@ public partial class ParkListVM : BaseVM
 
     async Task GetTopicsAsync()
     {
-        if (IsBusy)
-            return;
-
         if (Topics?.Count > 0)
             return;
 
         try
         {
-            IsBusy = true;
             int startTopics = 0;
             int totalTopics = 1;
 
@@ -170,24 +212,15 @@ public partial class ParkListVM : BaseVM
             Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
-        finally
-        {
-            IsBusy = false;
-        }
     }
 
     async Task GetActivitiesAsync()
     {
-        if (IsBusy)
-            return;
-
         if (Activities?.Count > 0)
             return;
 
         try
         {
-            IsBusy = true;
-
             int startActivities = 0;
             int totalActivities = 1;
 
@@ -208,14 +241,13 @@ public partial class ParkListVM : BaseVM
             Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
-        finally
-        {
-            IsBusy = false;
-        }
     }
 
     async Task LoadStates()
     {
+        if (States?.Count > 0)
+            return;
+
         using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
         var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
