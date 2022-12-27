@@ -18,11 +18,12 @@ public partial class ParkListVM : BaseVM
 
     private int startParks = 0;
     private int limitParks = 20;
+    private int totalParks = 0;
 
     public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
-        Title = "Parks";
+        Title = $"Parks";
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
@@ -34,6 +35,13 @@ public partial class ParkListVM : BaseVM
     public async void PopulateData()
     {
         await GetParksAsync();
+        Title = $"Parks ({totalParks})";
+    }
+
+    public async void ClearData()
+    {
+        Parks.Clear();
+        startParks = 0;
     }
 
     private async void LoadFilterDataAsync()
@@ -43,7 +51,7 @@ public partial class ParkListVM : BaseVM
         await LoadStates();
     }
 
-    private ParkFilter Filter { get; set; } = new ParkFilter();
+    public ParkFilter Filter { get; set; } = new ParkFilter();
 
     [ObservableProperty]
     bool isRefreshing;
@@ -68,7 +76,7 @@ public partial class ParkListVM : BaseVM
             {"Topics", Topics },
             {"Activities", Activities },
             {"States", States},
-            {"Filter", Filter }
+            {"VM", this }
         });
     }
 
@@ -131,46 +139,43 @@ public partial class ParkListVM : BaseVM
             //foreach (var park in result.Data)
             //    Parks.Add(park);
 
-            if (Filter.Topics.Count > 0)
+            foreach (var topic in Filter.Topics)
             {
-                foreach (var topic in Filter.Topics)
+                if (topics.Length > 0)
                 {
-                    if (topics.Length > 0)
-                    {
-                        topics += "%2D";
-                    }
-                    topics += topic.Id;
+                    topics += "%2D";
                 }
+                topics += topic.Id;
             }
 
-            if (Filter.Activities.Count > 0)
+            foreach (var activity in Filter.Activities)
             {
-                foreach (var activity in Filter.Activities)
+                if (activities.Length > 0)
                 {
-                    if (activities.Length > 0)
-                    {
-                        activities += "%2D";
-                    }
-                    activities += activity.Id;
+                    activities += "%2D";
                 }
+                activities += activity.Id;
             }
 
-            if (Filter.States.Count > 0)
+            foreach (var state in Filter.States)
             {
-                foreach (var state in Filter.States)
+                if (states.Length > 0)
                 {
-                    if (states.Length > 0)
-                    {
-                        states += "%2D";
-                    }
-                    states += state.Abbreviation;
+                    states += ",";
                 }
-
+                states += state.Abbreviation;
             }
+
             result = await dataService.GetParksAsync(startParks, limitParks, topics, activities, states);
             startParks += result.Data.Count;
             foreach (var park in result.Data)
+            {
                 Parks.Add(park);
+            }
+            if (!int.TryParse(result.Total, out totalParks))
+            {
+                totalParks = 0;
+            }
         }
         catch (Exception ex)
         {

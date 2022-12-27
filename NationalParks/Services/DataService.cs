@@ -19,6 +19,19 @@ public class DataService
         // States: Comma-delimited list -- stateCode=OR%2CWA
 
         var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(topics))
+        {
+            url += $"&topic%3D{topics}";
+        }
+        if (!String.IsNullOrEmpty(activities))
+        {
+            url += $"&activities%3D{activities}";
+        }
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
