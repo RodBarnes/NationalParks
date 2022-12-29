@@ -74,5 +74,8 @@
 
         public bool HasReservationUrl { get => !String.IsNullOrEmpty(ReservationUrl); }
         public bool HasRegulationsUrl { get => !String.IsNullOrEmpty(RegulationsUrl); }
+        public bool HasDirectionsOverview { get => !String.IsNullOrEmpty(DirectionsOverview); }
+        public bool HasWeatherOverview { get => !String.IsNullOrEmpty(WeatherOverview); }
+        public bool HasReservationInfo { get => !String.IsNullOrEmpty(ReservationInfo); }
     }
 }

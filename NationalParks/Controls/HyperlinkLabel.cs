@@ -17,7 +17,6 @@
             TextColor = Colors.Blue;
             GestureRecognizers.Add(new TapGestureRecognizer
             {
-                // Launcher.OpenAsync is provided by Essentials.
                 Command = new Command(async () => await Launcher.OpenAsync(Url))
             });
         }

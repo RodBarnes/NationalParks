@@ -16,5 +16,9 @@
         public string IceAvailableForSale { get; set; }
         public string FirewoodForSale { get; set; }
         public string FoodStorageLockers { get; set; }
+
+        public bool HasCellPhoneReception { get => !String.IsNullOrEmpty(CellPhoneReception); }
+        public bool HasInternetConnectivity { get => !String.IsNullOrEmpty(InternetConnectivity); }
+
     }
 }
