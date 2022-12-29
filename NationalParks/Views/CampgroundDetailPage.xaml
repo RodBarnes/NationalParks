@@ -102,7 +102,7 @@
                     </VerticalStackLayout>
                 </Grid>
                 <!-- Directions -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasDirectionsOverview, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasDirections, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleDirectionsCommand}" CommandParameter="{Binding .}" />
@@ -120,7 +120,7 @@
                            IsVisible="{Binding IsDirectionsVisible}"/>
                 </VerticalStackLayout>
                 <!-- Weather -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasWeatherOverview, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasWeather, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleWeatherCommand}" CommandParameter="{Binding .}" />
@@ -138,7 +138,7 @@
                            IsVisible="{Binding IsWeatherVisible}"/>
                 </VerticalStackLayout>
                 <!-- Reservations -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasReservationInfo, Converter={StaticResource boolToTrueFalse}}" >
+                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}" >
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleReservationsCommand}" CommandParameter="{Binding .}" />
@@ -163,7 +163,7 @@
                            IsVisible="{Binding IsReservationsVisible}"/>
                 </VerticalStackLayout>
                 <!-- Regulations -->
-                <VerticalStackLayout>
+                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasRegulations, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleRegulationsCommand}" CommandParameter="{Binding .}" />

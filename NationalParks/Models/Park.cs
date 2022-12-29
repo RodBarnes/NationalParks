@@ -65,7 +65,7 @@
             }
         }
 
-        public bool HasDirectionsInfo { get => !String.IsNullOrEmpty(DirectionsInfo); }
-        public bool HasWeatherInfo { get => !String.IsNullOrEmpty(WeatherInfo); }
+        public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsInfo); }
+        public bool HasWeather { get => !String.IsNullOrEmpty(WeatherInfo); }
     }
 }

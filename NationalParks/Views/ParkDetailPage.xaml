@@ -37,7 +37,7 @@
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
                 <!-- Directions -->
-                <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirectionsInfo, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirections, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleDirectionsCommand}" CommandParameter="{Binding .}" />
@@ -55,7 +55,7 @@
                            IsVisible="{Binding IsDirectionsVisible}"/>
                 </VerticalStackLayout>
                 <!-- Weather -->
-                <VerticalStackLayout IsVisible="{Binding Path=Park.HasWeatherInfo, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasWeather, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleWeatherCommand}" CommandParameter="{Binding .}" />
