@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:controls="clr-namespace:NationalParks.Controls"
+             xmlns:converters="clr-namespace:NationalParks.Converters"
              x:Class="NationalParks.Views.CampgroundDetailPage"
              x:DataType="vm:CampgroundDetailVM"
              Title="{Binding Campground.Name}">
+    <ContentPage.Resources>
+        <converters:BoolToTrueFalseConverter x:Key="boolToTrueFalse" />
+    </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="Auto,*,Auto">
         <BoxView BackgroundColor="{StaticResource Primary}"
@@ -33,6 +38,13 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
+
+                <controls:HyperlinkLabel Text="Regulations" 
+                                         Url="{Binding Campground.RegulationsUrl}" 
+                                         IsVisible="{Binding Path=Campground.HasRegulationsUrl, Converter={StaticResource boolToTrueFalse}}" />
+                <controls:HyperlinkLabel Text="Reservations" 
+                                         Url="{Binding Campground.ReservationUrl}" 
+                                         IsVisible="{Binding Path=Campground.HasReservationUrl, Converter={StaticResource boolToTrueFalse}}"/>
                 <Label Text="{Binding Campground}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Campground.Description}" Style="{StaticResource LabelMedium}" />
                 <Label Text="Amenities" Style="{StaticResource LabelMedium}" />
@@ -52,7 +64,7 @@
                     </VerticalStackLayout>
                 </Grid>
                 <Label Text="Accessibility" Style="{StaticResource LabelMedium}" />
-                <Grid ColumnDefinitions="*,*" Margin="10,0">
+                <Grid ColumnDefinitions="*,*" Padding="10">
                     <VerticalStackLayout Grid.Column="0">
                         <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}" Style="{StaticResource LabelSmall}" />
                         <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}" Style="{StaticResource LabelSmall}" />
@@ -67,8 +79,10 @@
                         <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}" Style="{StaticResource LabelSmall}" />
                     </VerticalStackLayout>
                 </Grid>
-                <Label Text="{Binding Campground.DirectionsOverview, StringFormat='Directions: {0}'}" Style="{StaticResource LabelMedium}" />
-                    <Label Text="{Binding Campground.WeatherOverview}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Campground.DirectionsOverview}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Campground.WeatherOverview}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Campground.ReservationInfo}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Campground.RegulationsOverview}" Style="{StaticResource LabelMedium}" />
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 

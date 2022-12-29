@@ -1,12 +1,10 @@
 Status
 ------
+Park list and Campground list are working including Filter by state.  Waiting on response to issue https://github.com/nationalparkservice/nps-api-samples/issues/3 regarding use of 'q' parameter.  It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'  But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
 
-Issue
------
-It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'
+Working on display of Campground Amenities and Campsites on detail page.
 
-But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
 TODO
 ----
@@ -14,7 +12,7 @@ In Park, can I make the Topics, Activities, and States public ObervableCollectio
 
 Determine how to get an image of the webcam and display that in the webcam list.
 
-Does it make sense to have the Webcams as a separate angle?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
+Does it make sense to have the Webcams as a separate aspect/list?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
 
 Webcams are not sorted alphbetically by title; unsure what the order is.  And it does not have the 'sort' parameter as found on Parks.
 
