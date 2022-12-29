@@ -71,5 +71,8 @@
                 }
             }
         }
+
+        public bool HasReservationUrl { get => !String.IsNullOrEmpty(ReservationUrl); }
+        public bool HasRegulationsUrl { get => !String.IsNullOrEmpty(RegulationsUrl); }
     }
 }
