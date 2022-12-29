@@ -6,12 +6,57 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     Park park;
 
+    [ObservableProperty]
+    string directionsIcon;
+
+    [ObservableProperty]
+    string isDirectionsVisible;
+
+    [ObservableProperty]
+    string weatherIcon;
+
+    [ObservableProperty]
+    string isWeatherVisible;
+
     IMap map;
 
     public ParkDetailVM(IMap map)
     {
         Title = "Park";
         this.map = map;
+
+        ToggleDirections();
+        ToggleWeather();
+    }
+
+    [RelayCommand]
+    public void ToggleDirections()
+    {
+        if (DirectionsIcon == "arrow_down_green")
+        {
+            DirectionsIcon = "arrow_up_green";
+            IsDirectionsVisible = "True";
+        }
+        else
+        {
+            DirectionsIcon = "arrow_down_green";
+            IsDirectionsVisible = "False";
+        }
+    }
+
+    [RelayCommand]
+    public void ToggleWeather()
+    {
+        if (WeatherIcon == "arrow_down_green")
+        {
+            WeatherIcon = "arrow_up_green";
+            IsWeatherVisible = "True";
+        }
+        else
+        {
+            WeatherIcon = "arrow_down_green";
+            IsWeatherVisible = "False";
+        }
     }
 
     [RelayCommand]

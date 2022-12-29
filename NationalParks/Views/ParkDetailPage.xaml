@@ -36,8 +36,42 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
-                <Label Text="{Binding Park.WeatherInfo}" Style="{StaticResource LabelMedium}" />
-                <Label Text="{Binding Park.DirectionsInfo, StringFormat='Directions: {0}'}" Style="{StaticResource LabelMedium}" />
+                <!-- Directions -->
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirectionsInfo, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleDirectionsCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=DirectionsIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Directions"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding Park.DirectionsInfo}"
+                           Style="{StaticResource LabelMedium}"
+                           IsVisible="{Binding IsDirectionsVisible}"/>
+                </VerticalStackLayout>
+                <!-- Weather -->
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasWeatherInfo, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleWeatherCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=WeatherIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Weather"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding Park.WeatherInfo}"
+                           Style="{StaticResource LabelMedium}"
+                           IsVisible="{Binding IsWeatherVisible}"/>
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 
