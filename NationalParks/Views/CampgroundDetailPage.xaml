@@ -38,12 +38,10 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
+                <!-- Description -->
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
-                <controls:HyperlinkLabel Text="Regulations" 
-                                         Url="{Binding Campground.RegulationsUrl}"
-                                         Style="{StaticResource LabelMedium}"
-                                         IsVisible="{Binding Path=Campground.HasRegulationsUrl, Converter={StaticResource boolToTrueFalse}}" />
+                <!-- Details -->
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleDetailsCommand}" CommandParameter="{Binding .}" />
@@ -103,6 +101,7 @@
                                Style="{StaticResource LabelMedium}" />-->
                     </VerticalStackLayout>
                 </Grid>
+                <!-- Directions -->
                 <VerticalStackLayout IsVisible="{Binding Path=Campground.HasDirectionsOverview, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
@@ -120,6 +119,7 @@
                            Style="{StaticResource LabelMedium}"
                            IsVisible="{Binding IsDirectionsVisible}"/>
                 </VerticalStackLayout>
+                <!-- Weather -->
                 <VerticalStackLayout IsVisible="{Binding Path=Campground.HasWeatherOverview, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
@@ -137,6 +137,7 @@
                            Style="{StaticResource LabelMedium}"
                            IsVisible="{Binding IsWeatherVisible}"/>
                 </VerticalStackLayout>
+                <!-- Reservations -->
                 <VerticalStackLayout IsVisible="{Binding Path=Campground.HasReservationInfo, Converter={StaticResource boolToTrueFalse}}" >
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
@@ -160,9 +161,31 @@
                            TextType="Html"
                            Padding="0,0,5,5"
                            IsVisible="{Binding IsReservationsVisible}"/>
+                    
+                </VerticalStackLayout>
+                <!-- Regulations -->
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleRegulationsCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=RegulationsIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Regulations "
+                               Style="{StaticResource LabelLargeBold}"/>
+                        <controls:HyperlinkLabel Text="(link)"
+                                             Url="{Binding Campground.RegulationsUrl}"
+                                             IsVisible="{Binding Path=Campground.HasRegulationsUrl, Converter={StaticResource boolToTrueFalse}}"
+                                             VerticalOptions="Center"
+                                             Style="{StaticResource LabelMedium}"/>
+                    </HorizontalStackLayout>
                     <Label Text="{Binding Campground.RegulationsOverview}" 
                            Style="{StaticResource LabelMedium}" 
-                           TextType="Html" />
+                           TextType="Html"
+                           IsVisible="{Binding IsRegulationsVisible}" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

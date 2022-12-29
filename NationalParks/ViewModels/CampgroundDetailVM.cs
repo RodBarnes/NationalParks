@@ -30,16 +30,24 @@
         [ObservableProperty]
         string isReservationsVisible;
 
+        [ObservableProperty]
+        string regulationsIcon;
+
+        [ObservableProperty]
+        string isRegulationsVisible;
+
         IMap map;
 
         public CampgroundDetailVM(IMap map)
         {
             Title = "Campground";
             this.map = map;
+
             ToggleDetails();
             ToggleDirections();
             ToggleWeather();
             ToggleReservations();
+            ToggleRegulations();
         }
 
         [RelayCommand]
@@ -99,6 +107,21 @@
             {
                 ReservationsIcon = "arrow_down_green";
                 IsReservationsVisible = "False";
+            }
+        }
+
+        [RelayCommand]
+        public void ToggleRegulations()
+        {
+            if (RegulationsIcon == "arrow_down_green")
+            {
+                RegulationsIcon = "arrow_up_green";
+                IsRegulationsVisible = "True";
+            }
+            else
+            {
+                RegulationsIcon = "arrow_down_green";
+                IsRegulationsVisible = "False";
             }
         }
 
