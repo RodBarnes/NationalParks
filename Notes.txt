@@ -10,6 +10,10 @@ TODO
 ----
 In Park, can I make the Topics, Activities, and States public ObervableCollections so they're accessible directly from within FilterPage?  This would elminate the need to copy all of these into a new ObservableCollection in Filter.
 
+Need a quick search (alphbet thumb) or some other means of quickly locating a specific Park or Campground.
+
+Need to find phone in midst of text and turn into link to call.
+
 Determine how to get an image of the webcam and display that in the webcam list.
 
 Does it make sense to have the Webcams as a separate aspect/list?  Or should the webcams be just part of the ParkDetail?  Or maybe both?

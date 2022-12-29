@@ -6,12 +6,34 @@
         [ObservableProperty]
         Campground campground;
 
+        [ObservableProperty]
+        string detailsIcon;
+
+        [ObservableProperty]
+        string isDetailsVisible;
+
         IMap map;
 
         public CampgroundDetailVM(IMap map)
         {
             Title = "Campground";
             this.map = map;
+            ToggleDetails();
+        }
+
+        [RelayCommand]
+        async Task ToggleDetails()
+        {
+            if (DetailsIcon == "arrow_down_green")
+            {
+                DetailsIcon = "arrow_up_green";
+                IsDetailsVisible = "True";
+            }
+            else
+            {
+                DetailsIcon = "arrow_down_green";
+                IsDetailsVisible = "False";
+            }
         }
 
         [RelayCommand]
