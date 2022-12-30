@@ -1,4 +1,8 @@
-﻿namespace NationalParks.Controls
+/*
+  Credit to Shagaroo (https://stackoverflow.com/users/8761813/shagaroo) on Stackoverflow
+  for this control (https://stackoverflow.com/questions/73695949/net-maui-how-to-include-a-link-in-a-label/74384181?r=Saves_AllUserSaves#74384181)
+*/
+namespace NationalParks.Controls
 {
     public class HyperlinkLabel : Label
     {
