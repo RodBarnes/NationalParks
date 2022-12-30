@@ -8,7 +8,7 @@ public partial class ParkDetailVM : BaseVM
 
     public ObservableCollection<Models.Topic> Topics { get; } = new();
     public ObservableCollection<Models.Activity> Activities { get; } = new();
-    public ObservableCollection<Models.EntranceFee> EntranceFees { get; } = new();
+    public ObservableCollection<Models.Fee> EntranceFees { get; } = new();
 
     [ObservableProperty]
     string topicsIcon;

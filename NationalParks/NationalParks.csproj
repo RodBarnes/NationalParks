@@ -39,6 +39,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\EntranceFee.cs" />
+	  <Compile Remove="Models\EntrancePass.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiAsset Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
 

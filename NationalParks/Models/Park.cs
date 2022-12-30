@@ -14,8 +14,8 @@
         public List<Topic> Topics { get; set; }
         public string States { get; set; }
         public Contacts Contacts { get; set; }
-        public List<EntranceFee> EntranceFees { get; set; }
-        public List<EntrancePass> EntrancePasses { get; set; }
+        public List<Fee> EntranceFees { get; set; }
+        public List<Fee> EntrancePasses { get; set; }
         public List<Fee> Fees { get; set; }
         public string DirectionsInfo { get; set; }
         public string DirectionsUrl { get; set; }
