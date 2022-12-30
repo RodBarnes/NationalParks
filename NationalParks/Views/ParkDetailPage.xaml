@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:NationalParks.ViewModels"
+    xmlns:models="clr-namespace:NationalParks.Models"
     x:Class="NationalParks.Views.ParkDetailPage"
     x:DataType="vm:ParkDetailVM"
     Title="{Binding Park.Name}">
@@ -36,6 +37,56 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
+                <!-- Topics -->
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasTopics, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleTopicsCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=TopicsIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Topics"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Topics}"
+                          SelectionMode="None"
+                          IsVisible="{Binding IsTopicsVisible}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Topic">
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource LabelMedium}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- Activities -->
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasActivities, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleActivitiesCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ActivitiesIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Activities"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Activities}"
+                          SelectionMode="None"
+                          IsVisible="{Binding IsActivitiesVisible}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Activity">
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource LabelMedium}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Directions -->
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirections, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>

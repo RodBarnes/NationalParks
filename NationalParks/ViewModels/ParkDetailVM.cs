@@ -6,6 +6,21 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     Park park;
 
+    public ObservableCollection<Models.Topic> Topics { get; } = new();
+    public ObservableCollection<Models.Activity> Activities { get; } = new();
+
+    [ObservableProperty]
+    string topicsIcon;
+
+    [ObservableProperty]
+    string isTopicsVisible;
+
+    [ObservableProperty]
+    string activitiesIcon;
+
+    [ObservableProperty]
+    string isActivitiesVisible;
+
     [ObservableProperty]
     string directionsIcon;
 
@@ -25,8 +40,40 @@ public partial class ParkDetailVM : BaseVM
         Title = "Park";
         this.map = map;
 
+        ToggleTopics();
+        ToggleActivities();
         ToggleDirections();
         ToggleWeather();
+    }
+
+    [RelayCommand]
+    public void ToggleTopics()
+    {
+        if (TopicsIcon == "arrow_down_green")
+        {
+            TopicsIcon = "arrow_up_green";
+            IsTopicsVisible = "True";
+        }
+        else
+        {
+            TopicsIcon = "arrow_down_green";
+            IsTopicsVisible = "False";
+        }
+    }
+
+    [RelayCommand]
+    public void ToggleActivities()
+    {
+        if (ActivitiesIcon == "arrow_down_green")
+        {
+            ActivitiesIcon = "arrow_up_green";
+            IsActivitiesVisible = "True";
+        }
+        else
+        {
+            ActivitiesIcon = "arrow_down_green";
+            IsActivitiesVisible = "False";
+        }
     }
 
     [RelayCommand]
@@ -93,5 +140,14 @@ public partial class ParkDetailVM : BaseVM
         {
             {"Park", Park }
         });
+    }
+
+    public void PopulateData()
+    {
+        foreach (var topic in Park.Topics)
+            Topics.Add(topic);
+
+        foreach (var activity in Park.Activities)
+            Activities.Add(activity);
     }
 }
