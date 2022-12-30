@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:models="clr-namespace:NationalParks.Models"
              xmlns:controls="clr-namespace:NationalParks.Controls"
              xmlns:converters="clr-namespace:NationalParks.Converters"
              x:Class="NationalParks.Views.CampgroundDetailPage"
@@ -41,6 +42,41 @@
                 <!-- Description -->
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
+                <!-- Fees -->
+                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasFees, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=ToggleFeesCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CampgroundDetailVM}}, Path=FeesIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Fees"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Fees}"
+                          SelectionMode="None"
+                          IsVisible="{Binding IsFeesVisible}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Fee">
+                            <VerticalStackLayout Margin="0,0,0,10">
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource LabelMediumBold}"/>
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Label Text="{Binding Cost, StringFormat='${0}'}"
+                                           Grid.Column="0"
+                                       Style="{StaticResource LabelMedium}"/>
+                                    <Label Text="{Binding Description}"
+                                           Grid.Column="1"
+                                       Style="{StaticResource LabelMedium}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Details -->
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>

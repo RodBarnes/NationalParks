@@ -6,6 +6,14 @@
         [ObservableProperty]
         Campground campground;
 
+        public ObservableCollection<Models.Fee> Fees { get; } = new();
+
+        [ObservableProperty]
+        string feesIcon;
+
+        [ObservableProperty]
+        string isFeesVisible;
+
         [ObservableProperty]
         string detailsIcon;
 
@@ -44,6 +52,7 @@
             this.map = map;
 
             ToggleDetails();
+            ToggleFees();
             ToggleDirections();
             ToggleWeather();
             ToggleReservations();
@@ -62,6 +71,21 @@
             {
                 DetailsIcon = "arrow_down_green";
                 IsDetailsVisible = "False";
+            }
+        }
+
+        [RelayCommand]
+        public void ToggleFees()
+        {
+            if (FeesIcon == "arrow_down_green")
+            {
+                FeesIcon = "arrow_up_green";
+                IsFeesVisible = "True";
+            }
+            else
+            {
+                FeesIcon = "arrow_down_green";
+                IsFeesVisible = "False";
             }
         }
 
@@ -159,6 +183,12 @@
             {
                 {"Campground", Campground }
             });
+        }
+
+        public void PopulateData()
+        {
+            foreach (var fee in Campground.Fees)
+                Fees.Add(fee);
         }
     }
 }

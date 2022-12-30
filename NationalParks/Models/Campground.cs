@@ -78,5 +78,6 @@
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherOverview); }
         public bool HasReservations { get => !String.IsNullOrEmpty(ReservationInfo); }
         public bool HasRegulations { get => !String.IsNullOrEmpty(RegulationsOverview); }
+        public bool HasFees { get => !(Fees is null) && Fees.Count > 0; }
     }
 }

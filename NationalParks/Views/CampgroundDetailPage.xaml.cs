@@ -2,9 +2,17 @@ namespace NationalParks.Views;
 
 public partial class CampgroundDetailPage : ContentPage
 {
-	public CampgroundDetailPage(CampgroundDetailVM vm)
+	CampgroundDetailVM _vm;
+
+    public CampgroundDetailPage(CampgroundDetailVM vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
+		BindingContext = _vm = vm;
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _vm.PopulateData();
+    }
 }
