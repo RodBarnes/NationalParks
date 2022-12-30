@@ -87,6 +87,41 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!-- Entrance Fees -->
+                <VerticalStackLayout IsVisible="{Binding Path=Park.HasEntranceFees, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleEntranceFeesCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=EntranceFeesIcon}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="20" />
+                        <Label Text="Entrance Fees"
+                           Style="{StaticResource LabelLargeBold}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding EntranceFees}"
+                          SelectionMode="None"
+                          IsVisible="{Binding IsEntranceFeesVisible}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Fee">
+                            <VerticalStackLayout Margin="0,0,0,10">
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource LabelMediumBold}"/>
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Label Text="{Binding Cost, StringFormat='${0}'}"
+                                           Grid.Column="0"
+                                       Style="{StaticResource LabelMedium}"/>
+                                    <Label Text="{Binding Description}"
+                                           Grid.Column="1"
+                                       Style="{StaticResource LabelMedium}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Directions -->
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirections, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>

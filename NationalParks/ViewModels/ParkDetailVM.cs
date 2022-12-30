@@ -8,6 +8,7 @@ public partial class ParkDetailVM : BaseVM
 
     public ObservableCollection<Models.Topic> Topics { get; } = new();
     public ObservableCollection<Models.Activity> Activities { get; } = new();
+    public ObservableCollection<Models.EntranceFee> EntranceFees { get; } = new();
 
     [ObservableProperty]
     string topicsIcon;
@@ -20,6 +21,12 @@ public partial class ParkDetailVM : BaseVM
 
     [ObservableProperty]
     string isActivitiesVisible;
+
+    [ObservableProperty]
+    string entranceFeesIcon;
+
+    [ObservableProperty]
+    string isEntranceFeesVisible;
 
     [ObservableProperty]
     string directionsIcon;
@@ -42,6 +49,7 @@ public partial class ParkDetailVM : BaseVM
 
         ToggleTopics();
         ToggleActivities();
+        ToggleEntranceFees();
         ToggleDirections();
         ToggleWeather();
     }
@@ -73,6 +81,21 @@ public partial class ParkDetailVM : BaseVM
         {
             ActivitiesIcon = "arrow_down_green";
             IsActivitiesVisible = "False";
+        }
+    }
+
+    [RelayCommand]
+    public void ToggleEntranceFees()
+    {
+        if (EntranceFeesIcon == "arrow_down_green")
+        {
+            EntranceFeesIcon = "arrow_up_green";
+            IsEntranceFeesVisible = "True";
+        }
+        else
+        {
+            EntranceFeesIcon = "arrow_down_green";
+            IsEntranceFeesVisible = "False";
         }
     }
 
@@ -149,5 +172,8 @@ public partial class ParkDetailVM : BaseVM
 
         foreach (var activity in Park.Activities)
             Activities.Add(activity);
+
+        foreach (var entranceFee in Park.EntranceFees)
+            EntranceFees.Add(entranceFee);
     }
 }

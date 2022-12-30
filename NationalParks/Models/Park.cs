@@ -67,6 +67,7 @@
 
         public bool HasTopics { get => !(Topics is null) && Topics.Count > 0; }
         public bool HasActivities { get => !(Activities is null) && Activities.Count > 0; }
+        public bool HasEntranceFees { get => !(EntranceFees is null) && EntranceFees.Count > 0; }
         public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsInfo); }
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherInfo); }
     }
