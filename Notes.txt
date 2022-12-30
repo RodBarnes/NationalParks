@@ -5,7 +5,13 @@ Park list and Campground list are working including Filter by state.  Waiting on
 
 Todo & Ideas
 ------------
-For the collapsible sections: Maybe a visibility class that has the two properties of Icon and Visible and a single method in the class to toggle it, changing the visibility and icon.
+CollapsibleViewVM
+string Title
+string Icon
+bool IsOpen
+Toggle()
+
+Start with the VM replacing the specific code in one collapsible section to test.  Then, replace them all. Then, maybe, turn this into a user control?
 
 Maybe some of the filter-related actions should be in the Filter class?
 
