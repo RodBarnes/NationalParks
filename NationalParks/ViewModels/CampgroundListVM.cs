@@ -8,6 +8,9 @@ namespace NationalParks.ViewModels
     {
         public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
 
+        [ObservableProperty]
+        bool isRefreshing;
+
         // For holding the available filter selections
         private Collection<Models.State> States { get; } = new();
 
@@ -31,9 +34,6 @@ namespace NationalParks.ViewModels
         }
 
         public ParkFilter Filter { get; set; } = new ParkFilter();
-
-        [ObservableProperty]
-        bool isRefreshing;
 
         public async void PopulateData()
         {

@@ -6,6 +6,9 @@ namespace NationalParks.ViewModels
     {
         public ObservableCollection<Models.Webcam> Webcams { get; } = new();
 
+        [ObservableProperty]
+        bool isRefreshing;
+
         readonly DataService dataService;
         readonly IConnectivity connectivity;
 
@@ -17,9 +20,6 @@ namespace NationalParks.ViewModels
             this.dataService = dataService;
             this.connectivity = connectivity;
         }
-
-        [ObservableProperty]
-        bool isRefreshing;
 
         [RelayCommand]
         async Task GoToDetail(Webcam webcam)

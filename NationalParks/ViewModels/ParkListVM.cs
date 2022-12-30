@@ -8,6 +8,9 @@ public partial class ParkListVM : BaseVM
 {
     public ObservableCollection<Models.Park> Parks { get; } = new();
 
+    [ObservableProperty]
+    bool isRefreshing;
+
     // For holding the available filter selections
     private Collection<Models.Topic> Topics { get; } = new();
     private Collection<Models.Activity> Activities { get; } = new();
@@ -33,9 +36,6 @@ public partial class ParkListVM : BaseVM
     }
 
     public ParkFilter Filter { get; set; } = new ParkFilter();
-
-    [ObservableProperty]
-    bool isRefreshing;
 
     public async void PopulateData()
     {
