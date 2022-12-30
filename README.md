@@ -1,5 +1,5 @@
 # National Parks
-Copied from MauiMVVM to build a National Parks app to list the parks, activities, etc.
+A National Parks app to list the parks, activities, etc. provide by the NPS API.
 
 ### NOTE on the API Key
 The app relies upon data from the National Park Service (NPS) via its API and use of the API requires obtaining an API Key from https://www.nps.gov/subjects/developer/get-started.htm.
