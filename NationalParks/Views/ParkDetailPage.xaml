@@ -68,18 +68,18 @@
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleActivitiesCommand}" CommandParameter="{Binding .}" />
                         </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ActivitiesIcon}"
+                        <Image Source="{Binding ActivitiesVM.Icon}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="Activities"
+                        <Label Text="{Binding ActivitiesVM.Title}"
                            Style="{StaticResource LabelLargeBold}" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Activities}"
                           SelectionMode="None"
-                          IsVisible="{Binding IsActivitiesVisible}">
+                          IsVisible="{Binding Path=ActivitiesVM.IsOpen, Converter={StaticResource boolToTrueFalse}}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Activity">
                             <Label Text="{Binding Name}"
@@ -93,18 +93,18 @@
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleEntranceFeesCommand}" CommandParameter="{Binding .}" />
                         </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=EntranceFeesIcon}"
+                        <Image Source="{Binding EntranceFeesVM.Icon}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="Entrance Fees"
+                        <Label Text="{Binding EntranceFeesVM.Title}"
                            Style="{StaticResource LabelLargeBold}" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding EntranceFees}"
                           SelectionMode="None"
-                          IsVisible="{Binding IsEntranceFeesVisible}">
+                          IsVisible="{Binding Path=EntranceFeesVM.IsOpen, Converter={StaticResource boolToTrueFalse}}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Fee">
                             <VerticalStackLayout Margin="0,0,0,10">
@@ -128,17 +128,17 @@
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleDirectionsCommand}" CommandParameter="{Binding .}" />
                         </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=DirectionsIcon}"
+                        <Image Source="{Binding DirectionsVM.Icon}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="Directions"
+                        <Label Text="{Binding DirectionsVM.Title}"
                            Style="{StaticResource LabelLargeBold}" />
                     </HorizontalStackLayout>
                     <Label Text="{Binding Park.DirectionsInfo}"
                            Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding IsDirectionsVisible}"/>
+                           IsVisible="{Binding Path=DirectionsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}"/>
                 </VerticalStackLayout>
                 <!-- Weather -->
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasWeather, Converter={StaticResource boolToTrueFalse}}">
@@ -146,17 +146,17 @@
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleWeatherCommand}" CommandParameter="{Binding .}" />
                         </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=WeatherIcon}"
+                        <Image Source="{Binding WeatherVM.Icon}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="Weather"
+                        <Label Text="{Binding WeatherVM.Title}"
                            Style="{StaticResource LabelLargeBold}" />
                     </HorizontalStackLayout>
                     <Label Text="{Binding Park.WeatherInfo}"
                            Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding IsWeatherVisible}"/>
+                           IsVisible="{Binding Path=WeatherVM.IsOpen, Converter={StaticResource boolToTrueFalse}}"/>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

@@ -14,28 +14,16 @@ public partial class ParkDetailVM : BaseVM
     public CollapsibleViewVM topicsVM;
 
     [ObservableProperty]
-    string activitiesIcon;
+    public CollapsibleViewVM activitiesVM;
 
     [ObservableProperty]
-    string isActivitiesVisible;
+    public CollapsibleViewVM entranceFeesVM;
 
     [ObservableProperty]
-    string entranceFeesIcon;
+    public CollapsibleViewVM directionsVM;
 
     [ObservableProperty]
-    string isEntranceFeesVisible;
-
-    [ObservableProperty]
-    string directionsIcon;
-
-    [ObservableProperty]
-    string isDirectionsVisible;
-
-    [ObservableProperty]
-    string weatherIcon;
-
-    [ObservableProperty]
-    string isWeatherVisible;
+    public CollapsibleViewVM weatherVM;
 
     IMap map;
 
@@ -45,11 +33,10 @@ public partial class ParkDetailVM : BaseVM
         this.map = map;
 
         TopicsVM = new CollapsibleViewVM("Topics", false);
-
-        ToggleActivities();
-        ToggleEntranceFees();
-        ToggleDirections();
-        ToggleWeather();
+        ActivitiesVM = new CollapsibleViewVM("Activities", false);
+        EntranceFeesVM = new CollapsibleViewVM("Entrance Fees", false);
+        DirectionsVM = new CollapsibleViewVM("Directions", false);
+        WeatherVM = new CollapsibleViewVM("Weather", false);
     }
 
     [RelayCommand]
@@ -61,61 +48,25 @@ public partial class ParkDetailVM : BaseVM
     [RelayCommand]
     public void ToggleActivities()
     {
-        if (ActivitiesIcon == "arrow_down_green")
-        {
-            ActivitiesIcon = "arrow_up_green";
-            IsActivitiesVisible = "True";
-        }
-        else
-        {
-            ActivitiesIcon = "arrow_down_green";
-            IsActivitiesVisible = "False";
-        }
+        ActivitiesVM.Toggle();
     }
 
     [RelayCommand]
     public void ToggleEntranceFees()
     {
-        if (EntranceFeesIcon == "arrow_down_green")
-        {
-            EntranceFeesIcon = "arrow_up_green";
-            IsEntranceFeesVisible = "True";
-        }
-        else
-        {
-            EntranceFeesIcon = "arrow_down_green";
-            IsEntranceFeesVisible = "False";
-        }
+        EntranceFeesVM.Toggle();
     }
 
     [RelayCommand]
     public void ToggleDirections()
     {
-        if (DirectionsIcon == "arrow_down_green")
-        {
-            DirectionsIcon = "arrow_up_green";
-            IsDirectionsVisible = "True";
-        }
-        else
-        {
-            DirectionsIcon = "arrow_down_green";
-            IsDirectionsVisible = "False";
-        }
+        DirectionsVM.Toggle();
     }
 
     [RelayCommand]
     public void ToggleWeather()
     {
-        if (WeatherIcon == "arrow_down_green")
-        {
-            WeatherIcon = "arrow_up_green";
-            IsWeatherVisible = "True";
-        }
-        else
-        {
-            WeatherIcon = "arrow_down_green";
-            IsWeatherVisible = "False";
-        }
+        WeatherVM.Toggle();
     }
 
     [RelayCommand]
