@@ -9,40 +9,22 @@
         public ObservableCollection<Models.Fee> Fees { get; } = new();
 
         [ObservableProperty]
-        string feesIcon;
+        public CollapsibleViewVM feesVM;
 
         [ObservableProperty]
-        string isFeesVisible;
+        public CollapsibleViewVM detailsVM;
 
         [ObservableProperty]
-        string detailsIcon;
+        public CollapsibleViewVM directionsVM;
 
         [ObservableProperty]
-        string isDetailsVisible;
+        public CollapsibleViewVM weatherVM;
 
         [ObservableProperty]
-        string directionsIcon;
+        public CollapsibleViewVM reservationsVM;
 
         [ObservableProperty]
-        string isDirectionsVisible;
-
-        [ObservableProperty]
-        string weatherIcon;
-
-        [ObservableProperty]
-        string isWeatherVisible;
-
-        [ObservableProperty]
-        string reservationsIcon;
-
-        [ObservableProperty]
-        string isReservationsVisible;
-
-        [ObservableProperty]
-        string regulationsIcon;
-
-        [ObservableProperty]
-        string isRegulationsVisible;
+        public CollapsibleViewVM regulationsVM;
 
         IMap map;
 
@@ -51,102 +33,12 @@
             Title = "Campground";
             this.map = map;
 
-            ToggleDetails();
-            ToggleFees();
-            ToggleDirections();
-            ToggleWeather();
-            ToggleReservations();
-            ToggleRegulations();
-        }
-
-        [RelayCommand]
-        public void ToggleDetails()
-        {
-            if (DetailsIcon == "arrow_down_green")
-            {
-                DetailsIcon = "arrow_up_green";
-                IsDetailsVisible = "True";
-            }
-            else
-            {
-                DetailsIcon = "arrow_down_green";
-                IsDetailsVisible = "False";
-            }
-        }
-
-        [RelayCommand]
-        public void ToggleFees()
-        {
-            if (FeesIcon == "arrow_down_green")
-            {
-                FeesIcon = "arrow_up_green";
-                IsFeesVisible = "True";
-            }
-            else
-            {
-                FeesIcon = "arrow_down_green";
-                IsFeesVisible = "False";
-            }
-        }
-
-        [RelayCommand]
-        public void ToggleDirections()
-        {
-            if (DirectionsIcon == "arrow_down_green")
-            {
-                DirectionsIcon = "arrow_up_green";
-                IsDirectionsVisible = "True";
-            }
-            else
-            {
-                DirectionsIcon = "arrow_down_green";
-                IsDirectionsVisible = "False";
-            }
-        }
-
-        [RelayCommand]
-        public void ToggleWeather()
-        {
-            if (WeatherIcon == "arrow_down_green")
-            {
-                WeatherIcon = "arrow_up_green";
-                IsWeatherVisible = "True";
-            }
-            else
-            {
-                WeatherIcon = "arrow_down_green";
-                IsWeatherVisible = "False";
-            }
-        }
-
-        [RelayCommand]
-        public void ToggleReservations()
-        {
-            if (ReservationsIcon == "arrow_down_green")
-            {
-                ReservationsIcon = "arrow_up_green";
-                IsReservationsVisible = "True";
-            }
-            else
-            {
-                ReservationsIcon = "arrow_down_green";
-                IsReservationsVisible = "False";
-            }
-        }
-
-        [RelayCommand]
-        public void ToggleRegulations()
-        {
-            if (RegulationsIcon == "arrow_down_green")
-            {
-                RegulationsIcon = "arrow_up_green";
-                IsRegulationsVisible = "True";
-            }
-            else
-            {
-                RegulationsIcon = "arrow_down_green";
-                IsRegulationsVisible = "False";
-            }
+            DetailsVM = new CollapsibleViewVM("Details", false);
+            FeesVM = new CollapsibleViewVM("Fees", false);
+            DirectionsVM = new CollapsibleViewVM("Directions", false);
+            WeatherVM = new CollapsibleViewVM("Weather", false);
+            ReservationsVM = new CollapsibleViewVM("Reservations", false);
+            RegulationsVM = new CollapsibleViewVM("Regulations", false);
         }
 
         [RelayCommand]
