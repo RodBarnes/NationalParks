@@ -11,10 +11,7 @@ public partial class ParkDetailVM : BaseVM
     public ObservableCollection<Models.Fee> EntranceFees { get; } = new();
 
     [ObservableProperty]
-    string topicsIcon;
-
-    [ObservableProperty]
-    string isTopicsVisible;
+    public CollapsibleViewVM topicsVM;
 
     [ObservableProperty]
     string activitiesIcon;
@@ -47,7 +44,8 @@ public partial class ParkDetailVM : BaseVM
         Title = "Park";
         this.map = map;
 
-        ToggleTopics();
+        TopicsVM = new CollapsibleViewVM("Topics", false);
+
         ToggleActivities();
         ToggleEntranceFees();
         ToggleDirections();
@@ -57,16 +55,7 @@ public partial class ParkDetailVM : BaseVM
     [RelayCommand]
     public void ToggleTopics()
     {
-        if (TopicsIcon == "arrow_down_green")
-        {
-            TopicsIcon = "arrow_up_green";
-            IsTopicsVisible = "True";
-        }
-        else
-        {
-            TopicsIcon = "arrow_down_green";
-            IsTopicsVisible = "False";
-        }
+        TopicsVM.Toggle();
     }
 
     [RelayCommand]

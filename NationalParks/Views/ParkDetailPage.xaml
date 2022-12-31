@@ -43,18 +43,18 @@
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleTopicsCommand}" CommandParameter="{Binding .}" />
                         </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=TopicsIcon}"
+                        <Image Source="{Binding TopicsVM.Icon}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="Topics"
+                        <Label Text="{Binding TopicsVM.Title}"
                            Style="{StaticResource LabelLargeBold}" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Topics}"
                           SelectionMode="None"
-                          IsVisible="{Binding IsTopicsVisible}">
+                          IsVisible="{Binding Path=TopicsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Topic">
                             <Label Text="{Binding Name}"
