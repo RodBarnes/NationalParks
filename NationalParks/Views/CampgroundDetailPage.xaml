@@ -196,6 +196,16 @@
                       Margin="10,0"
                       IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <VerticalStackLayout Grid.Column="0">
+                        <Label Text="{Binding Campground.Campsites.TotalSites, StringFormat='Total Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.NumberOfSitesReservable, StringFormat='Sites (reserve): {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.NumberOfSitesFirstComeFirstServe, StringFormat='Sites (non-reserve): {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.Horse, StringFormat='Horse Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.RvOnly, StringFormat='RV-only Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
                         <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
                                Style="{StaticResource LabelMedium}" />
                         <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
@@ -218,6 +228,16 @@
                                Style="{StaticResource LabelMedium}" />-->
                     </VerticalStackLayout>
                     <VerticalStackLayout Grid.Column="1">
+                        <Label Text="{Binding Campground.Campsites.Group, StringFormat='Group Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.TentOnly, StringFormat='Tent-only Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.WalkBoatTo, StringFormat='Boat-access Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.ElectricalHookup, StringFormat='Electric Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
+                        <Label Text="{Binding Campground.Campsites.Other, StringFormat='Other Sites: {0}'}"
+                               Style="{StaticResource LabelMedium}" />
                         <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}"
                                Style="{StaticResource LabelMedium}" />
                         <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}"
