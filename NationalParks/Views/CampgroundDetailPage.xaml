@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:models="clr-namespace:NationalParks.Models"
              xmlns:controls="clr-namespace:NationalParks.Controls"
-             xmlns:converters="clr-namespace:NationalParks.Converters"
              x:Class="NationalParks.Views.CampgroundDetailPage"
              x:DataType="vm:CampgroundDetailVM"
              Title="{Binding Campground.Name}">
     <ContentPage.Resources>
-        <converters:BoolToTrueFalseConverter x:Key="boolToTrueFalse" />
+        <ResourceDictionary>
+            <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="Auto,*,Auto">
@@ -43,7 +45,7 @@
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
                 <!-- Fees -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasFees, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Campground.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding FeesVM.ToggleCommand}" />
@@ -59,7 +61,7 @@
                 </VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Fees}"
                           SelectionMode="None"
-                          IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource boolToTrueFalse}}">
+                          IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Fee">
                             <VerticalStackLayout Margin="0,0,0,10">
@@ -92,7 +94,7 @@
                 </HorizontalStackLayout>
                 <Grid ColumnDefinitions="*,*"
                       Margin="10,0"
-                      IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}">
+                      IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <VerticalStackLayout Grid.Column="0">
                         <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
                                Style="{StaticResource LabelMedium}" />
@@ -139,7 +141,7 @@
                     </VerticalStackLayout>
                 </Grid>
                 <!-- Directions -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasDirections, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
@@ -154,10 +156,10 @@
                     </HorizontalStackLayout>
                     <Label Text="{Binding Campground.DirectionsOverview}"
                            Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}"/>
+                           IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 </VerticalStackLayout>
                 <!-- Weather -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasWeather, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
@@ -172,10 +174,10 @@
                     </HorizontalStackLayout>
                     <Label Text="{Binding Campground.WeatherOverview}"
                            Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource boolToTrueFalse}}"/>
+                           IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 </VerticalStackLayout>
                 <!-- Reservations -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}" >
+                <VerticalStackLayout IsVisible="{Binding Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}" >
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
@@ -189,7 +191,7 @@
                                Style="{StaticResource LabelLargeBold}"/>
                         <controls:HyperlinkLabel Text="(link)"
                                              Url="{Binding Campground.ReservationUrl}"
-                                             IsVisible="{Binding Path=Campground.HasReservationUrl, Converter={StaticResource boolToTrueFalse}}"
+                                             IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                              VerticalOptions="Center"
                                              Style="{StaticResource LabelMedium}"/>
                     </HorizontalStackLayout>
@@ -197,10 +199,10 @@
                            Style="{StaticResource LabelMedium}"
                            TextType="Html"
                            Padding="0,0,5,5"
-                           IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}"/>
+                           IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 </VerticalStackLayout>
                 <!-- Regulations -->
-                <VerticalStackLayout IsVisible="{Binding Path=Campground.HasRegulations, Converter={StaticResource boolToTrueFalse}}">
+                <VerticalStackLayout IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
@@ -214,14 +216,14 @@
                                Style="{StaticResource LabelLargeBold}"/>
                         <controls:HyperlinkLabel Text="(link)"
                                              Url="{Binding Campground.RegulationsUrl}"
-                                             IsVisible="{Binding Path=Campground.HasRegulationsUrl, Converter={StaticResource boolToTrueFalse}}"
+                                             IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                              VerticalOptions="Center"
                                              Style="{StaticResource LabelMedium}"/>
                     </HorizontalStackLayout>
                     <Label Text="{Binding Campground.RegulationsOverview}" 
                            Style="{StaticResource LabelMedium}" 
                            TextType="Html"
-                           IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource boolToTrueFalse}}" />
+                           IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

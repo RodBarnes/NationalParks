@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using NationalParks.Services;
 using NationalParks.Views;
 
@@ -15,8 +16,11 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+
+        builder.UseMauiApp<App>().UseMauiCommunityToolkit();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
     	builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
