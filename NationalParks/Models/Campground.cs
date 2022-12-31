@@ -19,7 +19,7 @@
         public string RegulationsUrl { get; set; }
         public string RegulationsOverview { get; set; }
         public CampgroundAmenities Amenities { get; set; }
-        public Contact Contacts { get; set; }
+        public Contacts Contacts { get; set; }
         public List<Fee> Fees { get; set; }
         public string DirectionsOverview { get; set; }
         public string DirectionsUrl { get; set; }
@@ -78,7 +78,8 @@
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherOverview); }
         public bool HasReservations { get => !String.IsNullOrEmpty(ReservationInfo); }
         public bool HasRegulations { get => !String.IsNullOrEmpty(RegulationsOverview); }
-        public bool HasFees { get => !(Fees is null) && Fees.Count > 0; }
-        public bool HasOperatingHours { get => !(OperatingHours is null) && OperatingHours.Count > 0; }
+        public bool HasFees { get => (Fees is not null) && Fees.Count > 0; }
+        public bool HasOperatingHours { get => (OperatingHours is not null) && OperatingHours.Count > 0; }
+        public bool HasContacts { get => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0)); }
     }
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:vm="clr-namespace:NationalParks.ViewModels"
-    xmlns:models="clr-namespace:NationalParks.Models"
-    x:Class="NationalParks.Views.ParkDetailPage"
-    x:DataType="vm:ParkDetailVM"
-    Title="{Binding Park.Name}">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:controls="clr-namespace:NationalParks.Controls"
+             xmlns:models="clr-namespace:NationalParks.Models"
+             x:Class="NationalParks.Views.ParkDetailPage"
+             x:DataType="vm:ParkDetailVM"
+             Title="{Binding Park.Name}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -77,7 +77,6 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <!-- Operating Hours -->
-                
                 <HorizontalStackLayout IsVisible="{Binding Park.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
@@ -121,6 +120,60 @@
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- Contacts -->
+                <HorizontalStackLayout IsVisible="{Binding Park.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding ContactsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding ContactsVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding PhoneContacts}"
+                          SelectionMode="None"
+                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:PhoneContact">
+                            <VerticalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Type, StringFormat='{0}:'}"
+                                           Style="{StaticResource LabelMedium}"
+                                           Margin="0,0,5,0"/>
+                                    <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                            Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
+                                            Style="{StaticResource LabelMedium}"/>
+                                    <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
+                                           Style="{StaticResource LabelMedium}"
+                                           IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                                </HorizontalStackLayout>
+                                <!--<Label Text="{Binding Description}"
+                                   Style="{StaticResource LabelMedium}"/>-->
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding EmailContacts}"
+                          SelectionMode="None"
+                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:EmailContact">
+                            <VerticalStackLayout>
+                                <Label Text="Email"
+                                   Style="{StaticResource LabelMedium}"
+                                       Margin="0,0,5,0"/>
+                                <controls:HyperlinkLabel Text="{Binding EmailAddress}"
+                                            Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
+                                            Style="{StaticResource LabelMedium}"/>
+                                <!--<Label Text="{Binding Description}"
+                                   Style="{StaticResource LabelMedium}"/>-->
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

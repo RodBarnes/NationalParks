@@ -7,12 +7,17 @@
         Campground campground;
 
         public ObservableCollection<Models.Fee> Fees { get; } = new();
+        public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
+        public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
 
         [ObservableProperty]
         public CollapsibleViewVM feesVM;
 
         [ObservableProperty]
         public CollapsibleViewVM operatingHoursVM;
+
+        [ObservableProperty]
+        public CollapsibleViewVM contactsVM;
 
         [ObservableProperty]
         public CollapsibleViewVM detailsVM;
@@ -38,6 +43,7 @@
 
             FeesVM = new CollapsibleViewVM("Fees", false);
             OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
+            ContactsVM = new CollapsibleViewVM("Contacts", false);
             DetailsVM = new CollapsibleViewVM("Details", false);
             DirectionsVM = new CollapsibleViewVM("Directions", false);
             WeatherVM = new CollapsibleViewVM("Weather", false);
@@ -85,6 +91,12 @@
         {
             foreach (var fee in Campground.Fees)
                 Fees.Add(fee);
+
+            foreach (var phoneNumber in Campground.Contacts.PhoneNumbers)
+                PhoneContacts.Add(phoneNumber);
+
+            foreach (var emailContact in Campground.Contacts.EmailAddresses)
+                EmailContacts.Add(emailContact);
         }
     }
 }

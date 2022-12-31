@@ -125,6 +125,60 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!-- Contacts -->
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding ContactsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding ContactsVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding PhoneContacts}"
+                          SelectionMode="None"
+                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:PhoneContact">
+                            <VerticalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Type, StringFormat='{0}:'}"
+                                           Style="{StaticResource LabelMedium}"
+                                           Margin="0,0,5,0"/>
+                                    <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                            Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
+                                            Style="{StaticResource LabelMedium}"/>
+                                    <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
+                                           Style="{StaticResource LabelMedium}"
+                                           IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                                </HorizontalStackLayout>
+                                <!--<Label Text="{Binding Description}"
+                                   Style="{StaticResource LabelMedium}"/>-->
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding EmailContacts}"
+                          SelectionMode="None"
+                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:EmailContact">
+                            <HorizontalStackLayout>
+                                <Label Text="Email"
+                                   Style="{StaticResource LabelMedium}"
+                                       Margin="0,0,5,0"/>
+                                <controls:HyperlinkLabel Text="{Binding EmailAddress}"
+                                            Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
+                                            Style="{StaticResource LabelMedium}"/>
+                                <!--<Label Text="{Binding Description}"
+                                   Style="{StaticResource LabelMedium}"/>-->
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Details -->
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>
@@ -228,8 +282,9 @@
                         HorizontalOptions="Center"
                         Aspect="AspectFill"
                         HeightRequest="20" />
-                    <Label Text="{Binding ReservationsVM.Title, StringFormat='{0} '} "
-                            Style="{StaticResource LabelLargeBold}"/>
+                    <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}'} "
+                           Style="{StaticResource LabelLargeBold}"
+                           Margin="0,0,5,0"/>
                     <controls:HyperlinkLabel Text="(link)"
                                             Url="{Binding Campground.ReservationUrl}"
                                             IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
@@ -252,7 +307,8 @@
                         Aspect="AspectFill"
                         HeightRequest="20" />
                     <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
-                            Style="{StaticResource LabelLargeBold}"/>
+                           Style="{StaticResource LabelLargeBold}"
+                           Margin="0,0,5,0"/>
                     <controls:HyperlinkLabel Text="(link)"
                                             Url="{Binding Campground.RegulationsUrl}"
                                             IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"

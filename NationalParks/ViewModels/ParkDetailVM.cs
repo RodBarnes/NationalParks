@@ -9,12 +9,17 @@ public partial class ParkDetailVM : BaseVM
     public ObservableCollection<Models.Topic> Topics { get; } = new();
     public ObservableCollection<Models.Activity> Activities { get; } = new();
     public ObservableCollection<Models.Fee> EntranceFees { get; } = new();
+    public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
+    public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
 
     [ObservableProperty]
     public CollapsibleViewVM entranceFeesVM;
 
     [ObservableProperty]
     public CollapsibleViewVM operatingHoursVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM contactsVM;
 
     [ObservableProperty]
     public CollapsibleViewVM topicsVM;
@@ -37,6 +42,7 @@ public partial class ParkDetailVM : BaseVM
 
         EntranceFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
+        ContactsVM = new CollapsibleViewVM("Contacts", false);
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
         DirectionsVM = new CollapsibleViewVM("Directions", false);
@@ -89,5 +95,11 @@ public partial class ParkDetailVM : BaseVM
 
         foreach (var entranceFee in Park.EntranceFees)
             EntranceFees.Add(entranceFee);
+
+        foreach (var phoneNumber in Park.Contacts.PhoneNumbers)
+            PhoneContacts.Add(phoneNumber);
+
+        foreach (var emailContact in Park.Contacts.EmailAddresses)
+            EmailContacts.Add(emailContact);
     }
 }
