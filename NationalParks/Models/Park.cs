@@ -1,6 +1,4 @@
-﻿using System.Net.NetworkInformation;
-
-namespace NationalParks.Models
+﻿namespace NationalParks.Models
 {
     public class Park
     {
@@ -69,6 +67,7 @@ namespace NationalParks.Models
             }
         }
 
+        public bool HasParkUrl { get => !String.IsNullOrEmpty(URL); }
         public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
         public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
         public bool HasEntranceFees { get => (EntranceFees is not null) && EntranceFees.Count > 0; }

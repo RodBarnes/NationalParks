@@ -43,6 +43,10 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
+                <controls:HyperlinkLabel Text="{Binding Park.URL}"
+                                         Url="{Binding Park.URL}"
+                                         IsVisible="{Binding Park.HasParkUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                         Style="{StaticResource LabelMedium}"/>
                 <!-- Entrance Fees -->
                 <HorizontalStackLayout IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout.GestureRecognizers>
