@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:model="clr-namespace:NationalParks.Models"
+             xmlns:models="clr-namespace:NationalParks.Models;assembly=Models"
              x:DataType="vm:CampgroundFilterVM"
              x:Class="NationalParks.Views.CampgroundFilterPage"
              Title="{Binding Title}">
@@ -63,7 +63,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:State">
+                    <DataTemplate x:DataType="models:State">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>

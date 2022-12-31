@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:NationalParks.ViewModels"
-    xmlns:model="clr-namespace:NationalParks.Models"
-    x:DataType="vm:ParkFilterVM"
-    x:Class="NationalParks.Views.ParkFilterPage"
-    Title="{Binding Title}">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:models="clr-namespace:NationalParks.Models;assembly=Models"
+             x:DataType="vm:ParkFilterVM"
+             x:Class="NationalParks.Views.ParkFilterPage"
+             Title="{Binding Title}">
     <Grid
         ColumnDefinitions="*,*"
         RowDefinitions="25,*,25,*,25,*,60"
@@ -24,7 +23,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedTopics}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Topic">
+                    <DataTemplate x:DataType="models:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
@@ -44,7 +43,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedActivities}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Topic">
+                    <DataTemplate x:DataType="models:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
@@ -64,7 +63,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:State">
+                    <DataTemplate x:DataType="models:State">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>

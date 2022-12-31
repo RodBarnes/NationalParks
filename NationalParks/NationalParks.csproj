@@ -71,11 +71,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Models\EntranceFee.cs" />
-	  <Compile Remove="Models\EntrancePass.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
 
@@ -87,6 +82,10 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Models\Models.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
