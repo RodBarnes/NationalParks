@@ -185,7 +185,7 @@
                            HorizontalOptions="Center"
                            Aspect="AspectFill"
                            HeightRequest="20" />
-                        <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}\ '} "
+                        <Label Text="{Binding ReservationsVM.Title, StringFormat='{0} '} "
                                Style="{StaticResource LabelLargeBold}"/>
                         <controls:HyperlinkLabel Text="(link)"
                                              Url="{Binding Campground.ReservationUrl}"
