@@ -4,6 +4,14 @@ Park list and Campground list are working including Filter by state.  Waiting on
 
 I implemented the Exceptions for OperatingHours.  For now, I've put this both on the HoursPage and as a CollapsibleView on the DetailPage.  I'm thinking I still want to use a separate page for the Hours since they can be pretty crazy to figure out when viewing the data.  Ideally, I can put some intelligence in there to make it more human readable; i.e., as if a human actually wrote it.
 
+Test Data
+---------
+Alcatraz Island: Park.OperatingHours test set
+
+Camp 4 Campground: regulationsOverview -- in the midst of HTML
+
+Baker Creek Campground: weatherOverview -- no text just the URL
+
 
 Todo & Ideas
 ------------
