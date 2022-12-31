@@ -46,24 +46,24 @@
                 <!-- Entrance Fees -->
                 <HorizontalStackLayout IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding EntranceFeesVM.ToggleCommand}" />
+                        <TapGestureRecognizer Command="{Binding CombinedFeesVM.ToggleCommand}" />
                     </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding EntranceFeesVM.Icon}"
+                    <Image Source="{Binding CombinedFeesVM.Icon}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Aspect="AspectFill"
                         HeightRequest="20" />
-                    <Label Text="{Binding EntranceFeesVM.Title}"
+                    <Label Text="{Binding CombinedFeesVM.Title}"
                         Style="{StaticResource LabelLargeBold}" />
                 </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding EntranceFees}"
+                <CollectionView ItemsSource="{Binding CombinedFees}"
                           SelectionMode="None"
-                          IsVisible="{Binding EntranceFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                          IsVisible="{Binding CombinedFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Fee">
+                        <DataTemplate x:DataType="models:CombinedFee">
                             <VerticalStackLayout Margin="0,0,0,10">
                                 <Label Text="{Binding Title}"
-                                       Style="{StaticResource LabelMediumBold}"/>
+                                        Style="{StaticResource LabelMediumBold}"/>
                                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                     <Label Text="{Binding Cost, StringFormat='${0}'}"
                                            Grid.Column="0"

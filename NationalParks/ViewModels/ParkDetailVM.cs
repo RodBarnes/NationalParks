@@ -8,12 +8,12 @@ public partial class ParkDetailVM : BaseVM
 
     public ObservableCollection<Models.Topic> Topics { get; } = new();
     public ObservableCollection<Models.Activity> Activities { get; } = new();
-    public ObservableCollection<Models.Fee> EntranceFees { get; } = new();
+    public ObservableCollection<Models.CombinedFee> CombinedFees { get; } = new();
     public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
     public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
 
     [ObservableProperty]
-    public CollapsibleViewVM entranceFeesVM;
+    public CollapsibleViewVM combinedFeesVM;
 
     [ObservableProperty]
     public CollapsibleViewVM operatingHoursVM;
@@ -40,7 +40,7 @@ public partial class ParkDetailVM : BaseVM
         Title = "Park";
         this.map = map;
 
-        EntranceFeesVM = new CollapsibleViewVM("Entrance Fees", false);
+        CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         ContactsVM = new CollapsibleViewVM("Contacts", false);
         TopicsVM = new CollapsibleViewVM("Topics", false);
@@ -94,7 +94,15 @@ public partial class ParkDetailVM : BaseVM
             Activities.Add(activity);
 
         foreach (var entranceFee in Park.EntranceFees)
-            EntranceFees.Add(entranceFee);
+        {
+            var combinedFee = new CombinedFee("Entrance", entranceFee);
+            CombinedFees.Add(combinedFee);
+        }
+        foreach (var entrancePass in Park.EntrancePasses)
+        {
+            var combinedFee = new CombinedFee("Pass", entrancePass);
+            CombinedFees.Add(combinedFee);
+        }
 
         foreach (var phoneNumber in Park.Contacts.PhoneNumbers)
             PhoneContacts.Add(phoneNumber);
