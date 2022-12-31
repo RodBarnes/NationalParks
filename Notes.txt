@@ -11,7 +11,7 @@ In Park, can I make the Topics, Activities, and States public ObervableCollectio
 
 EllipsisLabel control to display an elipsis at the end of too-long-to-display text?  I think this page might have some related guidance: https://swharden.com/blog/2021-10-16-maui-graphics-measurestring/
 
-Need a quick search (alphbet thumb) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...
+Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...
 
 Need to find phone in midst of text and turn into link to call.
 
