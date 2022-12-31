@@ -29,6 +29,7 @@
         [ObservableProperty]
         bool isOpen;
 
+        [RelayCommand]
         public void Toggle()
         {
             if (IsOpen)

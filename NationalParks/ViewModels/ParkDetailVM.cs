@@ -40,36 +40,6 @@ public partial class ParkDetailVM : BaseVM
     }
 
     [RelayCommand]
-    public void ToggleTopics()
-    {
-        TopicsVM.Toggle();
-    }
-
-    [RelayCommand]
-    public void ToggleActivities()
-    {
-        ActivitiesVM.Toggle();
-    }
-
-    [RelayCommand]
-    public void ToggleEntranceFees()
-    {
-        EntranceFeesVM.Toggle();
-    }
-
-    [RelayCommand]
-    public void ToggleDirections()
-    {
-        DirectionsVM.Toggle();
-    }
-
-    [RelayCommand]
-    public void ToggleWeather()
-    {
-        WeatherVM.Toggle();
-    }
-
-    [RelayCommand]
     async Task OpenMap()
     {
         try

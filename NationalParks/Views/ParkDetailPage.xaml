@@ -41,7 +41,7 @@
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasTopics, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleTopicsCommand}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
                         </HorizontalStackLayout.GestureRecognizers>
                         <Image Source="{Binding TopicsVM.Icon}"
                            VerticalOptions="Center"
@@ -66,7 +66,7 @@
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasActivities, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleActivitiesCommand}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
                         </HorizontalStackLayout.GestureRecognizers>
                         <Image Source="{Binding ActivitiesVM.Icon}"
                            VerticalOptions="Center"
@@ -91,7 +91,7 @@
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasEntranceFees, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleEntranceFeesCommand}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Command="{Binding EntranceFeesVM.ToggleCommand}" />
                         </HorizontalStackLayout.GestureRecognizers>
                         <Image Source="{Binding EntranceFeesVM.Icon}"
                            VerticalOptions="Center"
@@ -126,7 +126,7 @@
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasDirections, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleDirectionsCommand}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
                         </HorizontalStackLayout.GestureRecognizers>
                         <Image Source="{Binding DirectionsVM.Icon}"
                            VerticalOptions="Center"
@@ -144,7 +144,7 @@
                 <VerticalStackLayout IsVisible="{Binding Path=Park.HasWeather, Converter={StaticResource boolToTrueFalse}}">
                     <HorizontalStackLayout>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:ParkDetailVM}}, Path=ToggleWeatherCommand}" CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
                         </HorizontalStackLayout.GestureRecognizers>
                         <Image Source="{Binding WeatherVM.Icon}"
                            VerticalOptions="Center"
