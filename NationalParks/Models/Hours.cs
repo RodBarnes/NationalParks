@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public class StandardHours
+    public class Hours
     {
         public string Wednesday { get; set; }
         public string Monday { get; set; }

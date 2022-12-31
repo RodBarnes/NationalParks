@@ -1,16 +1,10 @@
 ﻿namespace NationalParks.Models
 {
-    public class ExceptionHours
+    public class OperatingException
     {
+        public Hours ExceptionHours { get; set; }
         public DateOnly StartDate { get; set; }
         public string Name { get; set; }
         public DateOnly EndDate { get; set; }
-        public string Combined
-        {
-            get
-            {
-                return $"{Name}: {StartDate}-{EndDate}";
-            }
-        }
     }
 }
