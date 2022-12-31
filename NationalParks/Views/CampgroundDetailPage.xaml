@@ -77,6 +77,54 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!-- Operating Hours -->
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding OperatingHoursVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding OperatingHoursVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding Campground.OperatingHours}"
+                          SelectionMode="None"
+                          IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:OperatingHours">
+                            <VerticalStackLayout Margin="0,0,0,10">
+                                <Label Text="{Binding Name}"
+                                       Style="{StaticResource LabelMediumBold}"/>
+                                <Label Text="{Binding StandardHours}"
+                                        Grid.Column="0"
+                                    Style="{StaticResource LabelMedium}"/>
+                                <Label Text="{Binding Description}"
+                                        Grid.Column="1"
+                                    Style="{StaticResource LabelMedium}"/>
+                                <CollectionView ItemsSource="{Binding Exceptions}"
+                                                SelectionMode="None">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:OperatingException">
+                                            <VerticalStackLayout>
+                                                <Label Text="{Binding Name}"
+                                                   Style="{StaticResource LabelMediumBold}"/>
+                                                <HorizontalStackLayout>
+                                                    <Label Text="{Binding StartDate}"/>
+                                                    <Label Text=" - "/>
+                                                    <Label Text="{Binding EndDate}"/>
+                                                </HorizontalStackLayout>
+                                                <Label Text="{Binding ExceptionHours}"/>
+                                            </VerticalStackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Details -->
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>

@@ -11,13 +11,16 @@ public partial class ParkDetailVM : BaseVM
     public ObservableCollection<Models.Fee> EntranceFees { get; } = new();
 
     [ObservableProperty]
+    public CollapsibleViewVM entranceFeesVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM operatingHoursVM;
+
+    [ObservableProperty]
     public CollapsibleViewVM topicsVM;
 
     [ObservableProperty]
     public CollapsibleViewVM activitiesVM;
-
-    [ObservableProperty]
-    public CollapsibleViewVM entranceFeesVM;
 
     [ObservableProperty]
     public CollapsibleViewVM directionsVM;
@@ -32,9 +35,10 @@ public partial class ParkDetailVM : BaseVM
         Title = "Park";
         this.map = map;
 
+        EntranceFeesVM = new CollapsibleViewVM("Entrance Fees", false);
+        OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
-        EntranceFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         DirectionsVM = new CollapsibleViewVM("Directions", false);
         WeatherVM = new CollapsibleViewVM("Weather", false);
     }

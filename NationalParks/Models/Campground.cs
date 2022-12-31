@@ -79,5 +79,6 @@
         public bool HasReservations { get => !String.IsNullOrEmpty(ReservationInfo); }
         public bool HasRegulations { get => !String.IsNullOrEmpty(RegulationsOverview); }
         public bool HasFees { get => !(Fees is null) && Fees.Count > 0; }
+        public bool HasOperatingHours { get => !(OperatingHours is null) && OperatingHours.Count > 0; }
     }
 }

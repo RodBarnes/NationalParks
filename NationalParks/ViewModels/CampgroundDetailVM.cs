@@ -12,6 +12,9 @@
         public CollapsibleViewVM feesVM;
 
         [ObservableProperty]
+        public CollapsibleViewVM operatingHoursVM;
+
+        [ObservableProperty]
         public CollapsibleViewVM detailsVM;
 
         [ObservableProperty]
@@ -33,8 +36,9 @@
             Title = "Campground";
             this.map = map;
 
-            DetailsVM = new CollapsibleViewVM("Details", false);
             FeesVM = new CollapsibleViewVM("Fees", false);
+            OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
+            DetailsVM = new CollapsibleViewVM("Details", false);
             DirectionsVM = new CollapsibleViewVM("Directions", false);
             WeatherVM = new CollapsibleViewVM("Weather", false);
             ReservationsVM = new CollapsibleViewVM("Reservations", false);

@@ -70,5 +70,6 @@
         public bool HasEntranceFees { get => !(EntranceFees is null) && EntranceFees.Count > 0; }
         public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsInfo); }
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherInfo); }
+        public bool HasOperatingHours { get => !(OperatingHours is null) && OperatingHours.Count > 0; }
     }
 }
