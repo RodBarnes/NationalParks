@@ -165,7 +165,7 @@
                           IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:EmailContact">
-                            <VerticalStackLayout>
+                            <HorizontalStackLayout>
                                 <Label Text="Email"
                                    Style="{StaticResource LabelMedium}"
                                        Margin="0,0,5,0"/>
@@ -174,7 +174,7 @@
                                             Style="{StaticResource LabelMedium}"/>
                                 <!--<Label Text="{Binding Description}"
                                    Style="{StaticResource LabelMedium}"/>-->
-                            </VerticalStackLayout>
+                            </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
