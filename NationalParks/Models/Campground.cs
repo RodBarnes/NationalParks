@@ -1,4 +1,6 @@
-﻿namespace NationalParks.Models
+﻿using System.Net.NetworkInformation;
+
+namespace NationalParks.Models
 {
     public class Campground
     {
@@ -25,6 +27,7 @@
         public string DirectionsUrl { get; set; }
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
+        public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
         public List<Image> Images { get; set; }
         public ImageSource MainImage {
             get
@@ -74,7 +77,7 @@
 
         public bool HasReservationUrl { get => !String.IsNullOrEmpty(ReservationUrl); }
         public bool HasRegulationsUrl { get => !String.IsNullOrEmpty(RegulationsUrl); }
-        public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsOverview); }
+        public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsOverview) || (PhysicalAddress is not null); }
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherOverview); }
         public bool HasReservations { get => !String.IsNullOrEmpty(ReservationInfo); }
         public bool HasRegulations { get => !String.IsNullOrEmpty(RegulationsOverview); }

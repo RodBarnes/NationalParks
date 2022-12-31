@@ -253,6 +253,9 @@
                     <Label Text="{Binding DirectionsVM.Title}"
                         Style="{StaticResource LabelLargeBold}" />
                 </HorizontalStackLayout>
+                <Label Text="{Binding Campground.PhysicalAddress}" 
+                       Style="{StaticResource LabelMedium}"
+                       IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 <Label Text="{Binding Campground.DirectionsOverview}"
                         Style="{StaticResource LabelMedium}"
                         IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
