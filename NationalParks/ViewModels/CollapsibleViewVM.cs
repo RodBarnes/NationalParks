@@ -10,14 +10,7 @@
         {
             Title = title;
             IsOpen = isOpen;
-            if (IsOpen)
-            {
-                Icon = closeIcon;
-            }
-            else
-            {
-                Icon = openIcon;
-            }
+            Icon = (IsOpen) ? closeIcon : openIcon;
         }
 
         [ObservableProperty]

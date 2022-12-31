@@ -5,14 +5,6 @@ Park list and Campground list are working including Filter by state.  Waiting on
 
 Todo & Ideas
 ------------
-CollapsibleViewVM
-string Title
-string Icon
-bool IsOpen
-Toggle()
-
-Start with the VM replacing the specific code in one collapsible section to test.  Then, replace them all. Then, maybe, turn this into a user control?
-
 Maybe some of the filter-related actions should be in the Filter class?
 
 In Park, can I make the Topics, Activities, and States public ObervableCollections so they're accessible directly from within FilterPage?  This would elminate the need to copy all of these into a new ObservableCollection in Filter.
