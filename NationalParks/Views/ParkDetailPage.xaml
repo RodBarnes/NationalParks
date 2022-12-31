@@ -43,71 +43,19 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
-                <!-- Topics -->
-                <VerticalStackLayout IsVisible="{Binding Park.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding TopicsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding TopicsVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Topics}"
-                          SelectionMode="None"
-                          IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Topic">
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource LabelMedium}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <!-- Activities -->
-                <VerticalStackLayout IsVisible="{Binding Park.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding ActivitiesVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding ActivitiesVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Activities}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Activity">
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource LabelMedium}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
                 <!-- Entrance Fees -->
-                <VerticalStackLayout IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding EntranceFeesVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding EntranceFeesVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding EntranceFeesVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EntranceFeesVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding EntranceFeesVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding EntranceFeesVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
                 <CollectionView ItemsSource="{Binding EntranceFees}"
                           SelectionMode="None"
                           IsVisible="{Binding EntranceFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -128,42 +76,84 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!-- Topics -->
+                <HorizontalStackLayout IsVisible="{Binding Park.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding TopicsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding TopicsVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding Topics}"
+                          SelectionMode="None"
+                          IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Topic">
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource LabelMedium}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- Activities -->
+                <HorizontalStackLayout IsVisible="{Binding Park.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding ActivitiesVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding ActivitiesVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding Activities}"
+                          SelectionMode="None"
+                          IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Activity">
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource LabelMedium}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!-- Directions -->
-                <VerticalStackLayout IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding DirectionsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding DirectionsVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Park.DirectionsInfo}"
-                           Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding DirectionsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding DirectionsVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <Label Text="{Binding Park.DirectionsInfo}"
+                        Style="{StaticResource LabelMedium}"
+                        IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 <!-- Weather -->
-                <VerticalStackLayout IsVisible="{Binding Park.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding WeatherVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding WeatherVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Park.WeatherInfo}"
-                           Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Park.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding WeatherVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding WeatherVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <Label Text="{Binding Park.WeatherInfo}"
+                        Style="{StaticResource LabelMedium}"
+                        IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 

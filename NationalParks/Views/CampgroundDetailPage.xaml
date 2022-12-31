@@ -45,20 +45,18 @@
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
                 <!-- Fees -->
-                <VerticalStackLayout IsVisible="{Binding Campground.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FeesVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding FeesVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding FeesVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FeesVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding FeesVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding FeesVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
                 <CollectionView ItemsSource="{Binding Fees}"
                           SelectionMode="None"
                           IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -141,90 +139,82 @@
                     </VerticalStackLayout>
                 </Grid>
                 <!-- Directions -->
-                <VerticalStackLayout IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding DirectionsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding DirectionsVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Campground.DirectionsOverview}"
-                           Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding DirectionsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding DirectionsVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <Label Text="{Binding Campground.DirectionsOverview}"
+                        Style="{StaticResource LabelMedium}"
+                        IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 <!-- Weather -->
-                <VerticalStackLayout IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding WeatherVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding WeatherVM.Title}"
-                           Style="{StaticResource LabelLargeBold}" />
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Campground.WeatherOverview}"
-                           Style="{StaticResource LabelMedium}"
-                           IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding WeatherVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding WeatherVM.Title}"
+                        Style="{StaticResource LabelLargeBold}" />
+                </HorizontalStackLayout>
+                <Label Text="{Binding Campground.WeatherOverview}"
+                        Style="{StaticResource LabelMedium}"
+                        IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 <!-- Reservations -->
-                <VerticalStackLayout IsVisible="{Binding Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}" >
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding ReservationsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding ReservationsVM.Title, StringFormat='{0} '} "
-                               Style="{StaticResource LabelLargeBold}"/>
-                        <controls:HyperlinkLabel Text="(link)"
-                                             Url="{Binding Campground.ReservationUrl}"
-                                             IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                             VerticalOptions="Center"
-                                             Style="{StaticResource LabelMedium}"/>
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Campground.ReservationInfo}" 
-                           Style="{StaticResource LabelMedium}"
-                           TextType="Html"
-                           Padding="0,0,5,5"
-                           IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding ReservationsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding ReservationsVM.Title, StringFormat='{0} '} "
+                            Style="{StaticResource LabelLargeBold}"/>
+                    <controls:HyperlinkLabel Text="(link)"
+                                            Url="{Binding Campground.ReservationUrl}"
+                                            IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource LabelMedium}"/>
+                </HorizontalStackLayout>
+                <Label Text="{Binding Campground.ReservationInfo}" 
+                        Style="{StaticResource LabelMedium}"
+                        TextType="Html"
+                        Padding="0,0,5,5"
+                        IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                 <!-- Regulations -->
-                <VerticalStackLayout IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding RegulationsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                        <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
-                               Style="{StaticResource LabelLargeBold}"/>
-                        <controls:HyperlinkLabel Text="(link)"
-                                             Url="{Binding Campground.RegulationsUrl}"
-                                             IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                             VerticalOptions="Center"
-                                             Style="{StaticResource LabelMedium}"/>
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Campground.RegulationsOverview}" 
-                           Style="{StaticResource LabelMedium}" 
-                           TextType="Html"
-                           IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
-                </VerticalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="{Binding RegulationsVM.Icon}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="20" />
+                    <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
+                            Style="{StaticResource LabelLargeBold}"/>
+                    <controls:HyperlinkLabel Text="(link)"
+                                            Url="{Binding Campground.RegulationsUrl}"
+                                            IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource LabelMedium}"/>
+                </HorizontalStackLayout>
+                <Label Text="{Binding Campground.RegulationsOverview}" 
+                        Style="{StaticResource LabelMedium}" 
+                        TextType="Html"
+                        IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 
