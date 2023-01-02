@@ -41,228 +41,263 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLarge}"/>
+                <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLargeBold}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
                 <controls:HyperlinkLabel Text="{Binding Park.URL}"
                                          Url="{Binding Park.URL}"
                                          IsVisible="{Binding Park.HasParkUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 <!-- Entrance Fees -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CombinedFeesVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding CombinedFeesVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding CombinedFeesVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding CombinedFees}"
-                          SelectionMode="None"
-                          IsVisible="{Binding CombinedFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:CombinedFee">
-                            <VerticalStackLayout Margin="0,0,0,10">
-                                <Label Text="{Binding Title}"
-                                        Style="{StaticResource LabelMediumBold}"/>
-                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                    <Label Text="{Binding Cost, StringFormat='${0}'}"
-                                           Grid.Column="0"
-                                       Style="{StaticResource LabelMedium}"/>
-                                    <Label Text="{Binding Description}"
-                                           Grid.Column="1"
-                                       Style="{StaticResource LabelMedium}"/>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CombinedFeesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding CombinedFeesVM.Icon}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Aspect="AspectFill"
+                                    HeightRequest="20" />
+                            <Label Text="{Binding CombinedFeesVM.Title}"
+                                   Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding CombinedFees}"
+                              SelectionMode="None"
+                              IsVisible="{Binding CombinedFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:CombinedFee">
+                                    <VerticalStackLayout >
+                                        <Label Text="{Binding Title}"
+                                            Style="{StaticResource LabelMediumBold}"/>
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                            <Label Text="{Binding Cost, StringFormat='${0}'}"
+                                               Grid.Column="0"
+                                           Style="{StaticResource LabelMedium}"/>
+                                            <Label Text="{Binding Description}"
+                                               Grid.Column="1"
+                                           Style="{StaticResource LabelMedium}"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Operating Hours -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding OperatingHoursVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding OperatingHoursVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding Park.OperatingHours}"
-                          SelectionMode="None"
-                          IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:OperatingHours">
-                            <VerticalStackLayout Margin="0,0,0,10">
-                                <Label Text="{Binding Name}"
-                                       Style="{StaticResource LabelMediumBold}"/>
-                                <Label Text="{Binding StandardHours}"
-                                        Grid.Column="0"
-                                    Style="{StaticResource LabelMedium}"/>
-                                <Label Text="{Binding Description}"
-                                        Grid.Column="1"
-                                    Style="{StaticResource LabelMedium}"/>
-                                <CollectionView ItemsSource="{Binding Exceptions}"
-                                                SelectionMode="None">
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="models:OperatingException">
-                                            <VerticalStackLayout>
-                                                <Label Text="{Binding Name}"
-                                                   Style="{StaticResource LabelMediumBold}"/>
-                                                <HorizontalStackLayout>
-                                                    <Label Text="{Binding StartDate}"/>
-                                                    <Label Text=" - "/>
-                                                    <Label Text="{Binding EndDate}"/>
-                                                </HorizontalStackLayout>
-                                                <Label Text="{Binding ExceptionHours}"/>
-                                            </VerticalStackLayout>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding OperatingHoursVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding OperatingHoursVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Park.OperatingHours}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:OperatingHours">
+                                    <VerticalStackLayout Margin="0,0,0,10">
+                                        <Label Text="{Binding Name}"
+                                               Style="{StaticResource LabelMediumBold}"/>
+                                        <Label Text="{Binding StandardHours}"
+                                               Grid.Column="0"
+                                               Style="{StaticResource LabelMedium}"/>
+                                        <Label Text="{Binding Description}"
+                                               Grid.Column="1"
+                                               Style="{StaticResource LabelMedium}"/>
+                                        <CollectionView ItemsSource="{Binding Exceptions}"
+                                                        SelectionMode="None">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="models:OperatingException">
+                                                    <VerticalStackLayout>
+                                                        <Label Text="{Binding Name}"
+                                                           Style="{StaticResource LabelMediumBold}"/>
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="{Binding StartDate}"/>
+                                                            <Label Text=" - "/>
+                                                            <Label Text="{Binding EndDate}"/>
+                                                        </HorizontalStackLayout>
+                                                        <Label Text="{Binding ExceptionHours}"/>
+                                                    </VerticalStackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Contacts -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding ContactsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding ContactsVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding PhoneContacts}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PhoneContact">
-                            <VerticalStackLayout>
-                                <HorizontalStackLayout>
-                                    <Label Text="{Binding Type, StringFormat='{0}:'}"
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ContactsVM.Icon}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Aspect="AspectFill"
+                                   HeightRequest="20" />
+                            <Label Text="{Binding ContactsVM.Title}"
+                                   Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding PhoneContacts}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:PhoneContact">
+                                    <VerticalStackLayout>
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Type, StringFormat='{0}:'}"
+                                                   Style="{StaticResource LabelMedium}"
+                                                   Margin="0,0,5,0"/>
+                                            <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                                    Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
+                                                    Style="{StaticResource LabelMedium}"/>
+                                            <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
+                                                   Style="{StaticResource LabelMedium}"
+                                                   IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                                        </HorizontalStackLayout>
+                                        <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <CollectionView ItemsSource="{Binding EmailContacts}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:EmailContact">
+                                    <HorizontalStackLayout>
+                                        <Label Text="Email"
                                            Style="{StaticResource LabelMedium}"
-                                           Margin="0,0,5,0"/>
-                                    <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
-                                            Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
-                                            Style="{StaticResource LabelMedium}"/>
-                                    <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
-                                           Style="{StaticResource LabelMedium}"
-                                           IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                                </HorizontalStackLayout>
-                                <!--<Label Text="{Binding Description}"
-                                   Style="{StaticResource LabelMedium}"/>-->
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <CollectionView ItemsSource="{Binding EmailContacts}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:EmailContact">
-                            <HorizontalStackLayout>
-                                <Label Text="Email"
-                                   Style="{StaticResource LabelMedium}"
-                                       Margin="0,0,5,0"/>
-                                <controls:HyperlinkLabel Text="{Binding EmailAddress}"
-                                            Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
-                                            Style="{StaticResource LabelMedium}"/>
-                                <!--<Label Text="{Binding Description}"
-                                   Style="{StaticResource LabelMedium}"/>-->
-                            </HorizontalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                               Margin="0,0,5,0"/>
+                                        <controls:HyperlinkLabel Text="{Binding EmailAddress}"
+                                                    Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
+                                                    Style="{StaticResource LabelMedium}"/>
+                                        <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                                    </HorizontalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Topics -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding TopicsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding TopicsVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding Topics}"
-                          SelectionMode="None"
-                          IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Topic">
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource LabelMedium}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding TopicsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding TopicsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Topics}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Topic">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Activities -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding ActivitiesVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding ActivitiesVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding Activities}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Activity">
-                            <Label Text="{Binding Name}"
-                                   Style="{StaticResource LabelMedium}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ActivitiesVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding ActivitiesVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Activities}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Activity">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Directions -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding DirectionsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding DirectionsVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <Label Text="{Binding Park.PhysicalAddress}" 
-                       Style="{StaticResource LabelMedium}"
-                       IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                <Label Text="{Binding Park.DirectionsInfo}"
-                        Style="{StaticResource LabelMedium}"
-                        IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding DirectionsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding DirectionsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Park.PhysicalAddress}" 
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                        <Label Text="{Binding Park.DirectionsInfo}"
+                                Style="{StaticResource LabelMedium}"
+                                IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Weather -->
-                <HorizontalStackLayout IsVisible="{Binding Park.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding WeatherVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding WeatherVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <Label Text="{Binding Park.WeatherInfo}"
-                        Style="{StaticResource LabelMedium}"
-                        IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding WeatherVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding WeatherVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Park.WeatherInfo}"
+                                Style="{StaticResource LabelMedium}"
+                                IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 

@@ -31,33 +31,33 @@
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
 
-            <Style x:Key="LabelBase" TargetType="Label">
+            <Style TargetType="Label" x:Key="LabelBase">
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelText}, Dark={StaticResource LabelTextDark}}" />
             </Style>
 
-            <Style x:Key="LabelMicro" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelMicro" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="10"/>
             </Style>
 
-            <Style x:Key="LabelSmall" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelSmall" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="12"/>
             </Style>
 
-            <Style x:Key="LabelMedium" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelMedium" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="16"/>
             </Style>
 
-            <Style x:Key="LabelMediumBold" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelMediumBold" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
-            <Style x:Key="LabelLarge" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelLarge" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="20"/>
             </Style>
 
-            <Style x:Key="LabelLargeBold" TargetType="Label" BasedOn="{StaticResource LabelBase}">
+            <Style TargetType="Label" x:Key="LabelLargeBold" BasedOn="{StaticResource LabelBase}">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
@@ -66,7 +66,7 @@
                 <Setter Property="RefreshColor" Value="{StaticResource Primary}" />
             </Style>
 
-            <Style x:Key="ButtonOutline" TargetType="Button">
+            <Style TargetType="Button" x:Key="ButtonOutline">
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ButtonBackground}, Dark={StaticResource ButtonBackgroundDark}}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="BorderColor" Value="{StaticResource Primary}" />
@@ -75,10 +75,19 @@
                 <Setter Property="CornerRadius" Value="12" />
             </Style>
 
-            <Style x:Key="ViewCard" TargetType="Frame">
+            <Style TargetType="Frame" x:Key="ViewCard">
                 <Setter Property="BorderColor" Value="#DDDDDD" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
                 <Setter Property="Padding" Value="0" />
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
+            <Style TargetType="Frame" x:Key="CollapsibleView">
+                <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+                <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
+                <Setter Property="Padding" Value="10" />
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}" />
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="IsClippedToBounds" Value="True"/>

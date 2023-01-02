@@ -45,303 +45,342 @@
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
                 <!-- Fees -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FeesVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding FeesVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding FeesVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding Fees}"
-                          SelectionMode="None"
-                          IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Fee">
-                            <VerticalStackLayout Margin="0,0,0,10">
-                                <Label Text="{Binding Title}"
-                                       Style="{StaticResource LabelMediumBold}"/>
-                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                    <Label Text="{Binding Cost, StringFormat='${0}'}"
-                                           Grid.Column="0"
-                                       Style="{StaticResource LabelMedium}"/>
-                                    <Label Text="{Binding Description}"
-                                           Grid.Column="1"
-                                       Style="{StaticResource LabelMedium}"/>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FeesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding FeesVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding FeesVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Fees}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Fee">
+                                    <VerticalStackLayout Margin="0,0,0,10">
+                                        <Label Text="{Binding Title}"
+                                               Style="{StaticResource LabelMediumBold}"/>
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                            <Label Text="{Binding Cost, StringFormat='${0}'}"
+                                                   Grid.Column="0"
+                                               Style="{StaticResource LabelMedium}"/>
+                                            <Label Text="{Binding Description}"
+                                                   Grid.Column="1"
+                                               Style="{StaticResource LabelMedium}"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Operating Hours -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding OperatingHoursVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding OperatingHoursVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding Campground.OperatingHours}"
-                          SelectionMode="None"
-                          IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:OperatingHours">
-                            <VerticalStackLayout Margin="0,0,0,10">
-                                <Label Text="{Binding Name}"
-                                       Style="{StaticResource LabelMediumBold}"/>
-                                <Label Text="{Binding StandardHours}"
-                                        Grid.Column="0"
-                                    Style="{StaticResource LabelMedium}"/>
-                                <Label Text="{Binding Description}"
-                                        Grid.Column="1"
-                                    Style="{StaticResource LabelMedium}"/>
-                                <CollectionView ItemsSource="{Binding Exceptions}"
-                                                SelectionMode="None">
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="models:OperatingException">
-                                            <VerticalStackLayout>
-                                                <Label Text="{Binding Name}"
-                                                   Style="{StaticResource LabelMediumBold}"/>
-                                                <HorizontalStackLayout>
-                                                    <Label Text="{Binding StartDate}"/>
-                                                    <Label Text=" - "/>
-                                                    <Label Text="{Binding EndDate}"/>
-                                                </HorizontalStackLayout>
-                                                <Label Text="{Binding ExceptionHours}"/>
-                                            </VerticalStackLayout>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasOperatingHours, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OperatingHoursVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding OperatingHoursVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding OperatingHoursVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Campground.OperatingHours}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:OperatingHours">
+                                    <VerticalStackLayout Margin="0,0,0,10">
+                                        <Label Text="{Binding Name}"
+                                               Style="{StaticResource LabelMediumBold}"/>
+                                        <Label Text="{Binding StandardHours}"
+                                                Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"/>
+                                        <Label Text="{Binding Description}"
+                                                Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"/>
+                                        <CollectionView ItemsSource="{Binding Exceptions}"
+                                                        SelectionMode="None">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="models:OperatingException">
+                                                    <VerticalStackLayout>
+                                                        <Label Text="{Binding Name}"
+                                                           Style="{StaticResource LabelMediumBold}"/>
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="{Binding StartDate}"/>
+                                                            <Label Text=" - "/>
+                                                            <Label Text="{Binding EndDate}"/>
+                                                        </HorizontalStackLayout>
+                                                        <Label Text="{Binding ExceptionHours}"/>
+                                                    </VerticalStackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Contacts -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding ContactsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding ContactsVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <CollectionView ItemsSource="{Binding PhoneContacts}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PhoneContact">
-                            <VerticalStackLayout>
-                                <HorizontalStackLayout>
-                                    <Label Text="{Binding Type, StringFormat='{0}:'}"
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasContacts, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ContactsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ContactsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding ContactsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding PhoneContacts}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:PhoneContact">
+                                    <VerticalStackLayout>
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Type, StringFormat='{0}:'}"
+                                                   Style="{StaticResource LabelMedium}"
+                                                   Margin="0,0,5,0"/>
+                                            <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                                    Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
+                                                    Style="{StaticResource LabelMedium}"/>
+                                            <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
+                                                   Style="{StaticResource LabelMedium}"
+                                                   IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                                        </HorizontalStackLayout>
+                                        <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <CollectionView ItemsSource="{Binding EmailContacts}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:EmailContact">
+                                    <HorizontalStackLayout>
+                                        <Label Text="Email"
                                            Style="{StaticResource LabelMedium}"
-                                           Margin="0,0,5,0"/>
-                                    <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
-                                            Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
-                                            Style="{StaticResource LabelMedium}"/>
-                                    <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
-                                           Style="{StaticResource LabelMedium}"
-                                           IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                                </HorizontalStackLayout>
-                                <!--<Label Text="{Binding Description}"
-                                   Style="{StaticResource LabelMedium}"/>-->
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <CollectionView ItemsSource="{Binding EmailContacts}"
-                          SelectionMode="None"
-                          IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:EmailContact">
-                            <HorizontalStackLayout>
-                                <Label Text="Email"
-                                   Style="{StaticResource LabelMedium}"
-                                       Margin="0,0,5,0"/>
-                                <controls:HyperlinkLabel Text="{Binding EmailAddress}"
-                                            Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
-                                            Style="{StaticResource LabelMedium}"/>
-                                <!--<Label Text="{Binding Description}"
-                                   Style="{StaticResource LabelMedium}"/>-->
-                            </HorizontalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                               Margin="0,0,5,0"/>
+                                        <controls:HyperlinkLabel Text="{Binding EmailAddress}"
+                                                    Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
+                                                    Style="{StaticResource LabelMedium}"/>
+                                        <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                                    </HorizontalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Details -->
-                <HorizontalStackLayout>
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding DetailsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding DetailsVM.Icon}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill"
-                           HeightRequest="20" />
-                    <Label Text="{Binding DetailsVM.Title}" 
-                           Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <Grid ColumnDefinitions="*,*"
-                      Margin="10,0"
-                      IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout Grid.Column="0">
-                        <Label Text="{Binding Campground.Campsites.TotalSites, StringFormat='Total Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.NumberOfSitesReservable, StringFormat='Sites (reserve): {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.NumberOfSitesFirstComeFirstServe, StringFormat='Sites (non-reserve): {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.Horse, StringFormat='Horse Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.RvOnly, StringFormat='RV-only Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <!--<Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}"
-                               Style="{StaticResource LabelMedium}" />-->
+                <Frame Style="{StaticResource CollapsibleView}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DetailsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding DetailsVM.Icon}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Aspect="AspectFill"
+                                   HeightRequest="20" />
+                            <Label Text="{Binding DetailsVM.Title}" 
+                                   Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*,*"
+                              Margin="10,0"
+                              IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Campground.Campsites.TotalSites, StringFormat='Total Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.NumberOfSitesReservable, StringFormat='Sites (reserve): {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.NumberOfSitesFirstComeFirstServe, StringFormat='Sites (non-reserve): {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.Horse, StringFormat='Horse Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.RvOnly, StringFormat='RV-only Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <!--<Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />-->
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="{Binding Campground.Campsites.Group, StringFormat='Group Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.TentOnly, StringFormat='Tent-only Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.WalkBoatTo, StringFormat='Boat-access Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.ElectricalHookup, StringFormat='Electric Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Campsites.Other, StringFormat='Other Sites: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.RvInfo, StringFormat='RV Info: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.RvAllowed, StringFormat='RV Allowed: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.RvMaxLength, StringFormat='RV Max Ln: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.TrailerAllowed, StringFormat='Trailer Allowed: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <!--<Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />-->
+                            </VerticalStackLayout>
+                        </Grid>
                     </VerticalStackLayout>
-                    <VerticalStackLayout Grid.Column="1">
-                        <Label Text="{Binding Campground.Campsites.Group, StringFormat='Group Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.TentOnly, StringFormat='Tent-only Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.WalkBoatTo, StringFormat='Boat-access Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.ElectricalHookup, StringFormat='Electric Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Campsites.Other, StringFormat='Other Sites: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.RvInfo, StringFormat='RV Info: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.RvAllowed, StringFormat='RV Allowed: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.RvMaxLength, StringFormat='RV Max Ln: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.TrailerAllowed, StringFormat='Trailer Allowed: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}"
-                               Style="{StaticResource LabelMedium}" />
-                        <!--<Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}"
-                               Style="{StaticResource LabelMedium}" />-->
-                    </VerticalStackLayout>
-                </Grid>
+                </Frame>
                 <!-- Directions -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding DirectionsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding DirectionsVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <Label Text="{Binding Campground.PhysicalAddress}" 
-                       Style="{StaticResource LabelMedium}"
-                       IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                <Label Text="{Binding Campground.DirectionsOverview}"
-                        Style="{StaticResource LabelMedium}"
-                        IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding DirectionsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding DirectionsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Campground.PhysicalAddress}" 
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                        <Label Text="{Binding Campground.DirectionsOverview}"
+                                Style="{StaticResource LabelMedium}"
+                                IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Weather -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding WeatherVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding WeatherVM.Title}"
-                        Style="{StaticResource LabelLargeBold}" />
-                </HorizontalStackLayout>
-                <Label Text="{Binding Campground.WeatherOverview}"
-                        Style="{StaticResource LabelMedium}"
-                        IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding WeatherVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding WeatherVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding WeatherVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Campground.WeatherOverview}"
+                                Style="{StaticResource LabelMedium}"
+                                IsVisible="{Binding WeatherVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Reservations -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasReservations, Converter={StaticResource boolToTrueFalse}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding ReservationsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}'} "
-                           Style="{StaticResource LabelLargeBold}"
-                           Margin="0,0,5,0"/>
-                    <controls:HyperlinkLabel Text="(link)"
-                                            Url="{Binding Campground.ReservationUrl}"
-                                            IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                            VerticalOptions="Center"
-                                            Style="{StaticResource LabelMedium}"/>
-                </HorizontalStackLayout>
-                <Label Text="{Binding Campground.ReservationInfo}" 
-                        Style="{StaticResource LabelMedium}"
-                        TextType="Html"
-                        Padding="0,0,5,5"
-                        IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasReservations, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ReservationsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}'} "
+                                   Style="{StaticResource LabelLargeBold}"
+                                   Margin="0,0,5,0"/>
+                            <controls:HyperlinkLabel Text="(link)"
+                                                    Url="{Binding Campground.ReservationUrl}"
+                                                    IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                                    VerticalOptions="Center"
+                                                    Style="{StaticResource LabelMedium}"/>
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Campground.ReservationInfo}" 
+                                Style="{StaticResource LabelMedium}"
+                                TextType="Html"
+                                Padding="0,0,5,5"
+                                IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Regulations -->
-                <HorizontalStackLayout IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="{Binding RegulationsVM.Icon}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Aspect="AspectFill"
-                        HeightRequest="20" />
-                    <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
-                           Style="{StaticResource LabelLargeBold}"
-                           Margin="0,0,5,0"/>
-                    <controls:HyperlinkLabel Text="(link)"
-                                            Url="{Binding Campground.RegulationsUrl}"
-                                            IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                            VerticalOptions="Center"
-                                            Style="{StaticResource LabelMedium}"/>
-                </HorizontalStackLayout>
-                <Label Text="{Binding Campground.RegulationsOverview}" 
-                        Style="{StaticResource LabelMedium}" 
-                        TextType="Html"
-                        IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding RegulationsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
+                                   Style="{StaticResource LabelLargeBold}"
+                                   Margin="0,0,5,0"/>
+                            <controls:HyperlinkLabel Text="(link)"
+                                                    Url="{Binding Campground.RegulationsUrl}"
+                                                    IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                                    VerticalOptions="Center"
+                                                    Style="{StaticResource LabelMedium}"/>
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Campground.RegulationsOverview}" 
+                                Style="{StaticResource LabelMedium}" 
+                                TextType="Html"
+                                IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
+                    </VerticalStackLayout>
+                </Frame>
             </VerticalStackLayout>
         </ScrollView>
         <Button Text="Location" 

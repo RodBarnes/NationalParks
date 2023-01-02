@@ -2,7 +2,8 @@ Status
 ------
 Park list and Campground list are working including Filter by state.  Waiting on response to issue https://github.com/nationalparkservice/nps-api-samples/issues/3 regarding use of 'q' parameter.  It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'  But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
-I implemented the Exceptions for OperatingHours.  For now, I've put this both on the HoursPage and as a CollapsibleView on the DetailPage.  I'm thinking I still want to use a separate page for the Hours since they can be pretty crazy to figure out when viewing the data, especially when there are multiple units in a Park.
+I implemented the Exceptions for OperatingHours.  Though it is implemented both on the Hours page (as originally done) and as a collapsible view on the main page, I've commented out the collapsible section for now.
+
 
 Test Data
 ---------
@@ -15,6 +16,9 @@ Baker Creek Campground: weatherOverview -- no text just the URL
 
 Todo & Ideas
 ------------
+Can I put a CollapsibleView within a CollapsibleView?  I'm thinking like the Operating Hours?
+Can I turn the CollapsibleView into a UserControl?
+
 Maybe some of the filter-related actions should be in the Filter class?
 
 In Park, can I make the Topics, Activities, and States public ObervableCollections so they're accessible directly from within FilterPage?  This would elminate the need to copy all of these into a new ObservableCollection in Filter.
