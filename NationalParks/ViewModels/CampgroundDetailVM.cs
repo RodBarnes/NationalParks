@@ -20,7 +20,13 @@
         public CollapsibleViewVM contactsVM;
 
         [ObservableProperty]
-        public CollapsibleViewVM detailsVM;
+        public CollapsibleViewVM campsiteInfoVM;
+
+        [ObservableProperty]
+        public CollapsibleViewVM amenitiesVM;
+
+        [ObservableProperty]
+        public CollapsibleViewVM accessibilityVM;
 
         [ObservableProperty]
         public CollapsibleViewVM directionsVM;
@@ -44,7 +50,9 @@
             FeesVM = new CollapsibleViewVM("Fees", false);
             OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
             ContactsVM = new CollapsibleViewVM("Contacts", false);
-            DetailsVM = new CollapsibleViewVM("Details", false);
+            CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
+            AmenitiesVM = new CollapsibleViewVM("Amenities", false);
+            AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
             DirectionsVM = new CollapsibleViewVM("Directions", false);
             WeatherVM = new CollapsibleViewVM("Weather", false);
             ReservationsVM = new CollapsibleViewVM("Reservations", false);

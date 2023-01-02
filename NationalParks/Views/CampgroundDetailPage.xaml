@@ -194,24 +194,24 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Details -->
+                <!-- Campsite Info -->
                 <Frame Style="{StaticResource CollapsibleView}">
                     <VerticalStackLayout >
                         <HorizontalStackLayout>
                             <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DetailsVM.ToggleCommand}" />
+                                <TapGestureRecognizer Command="{Binding CampsiteInfoVM.ToggleCommand}" />
                             </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding DetailsVM.Icon}"
+                            <Image Source="{Binding CampsiteInfoVM.Icon}"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    Aspect="AspectFill"
                                    HeightRequest="20" />
-                            <Label Text="{Binding DetailsVM.Title}" 
+                            <Label Text="{Binding CampsiteInfoVM.Title}" 
                                    Style="{StaticResource LabelLargeBold}" />
                         </HorizontalStackLayout>
                         <Grid ColumnDefinitions="*,*"
                               Margin="10,0"
-                              IsVisible="{Binding DetailsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                              IsVisible="{Binding CampsiteInfoVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <VerticalStackLayout Grid.Column="0">
                                 <Label Text="{Binding Campground.Campsites.TotalSites, StringFormat='Total Sites: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
@@ -223,26 +223,6 @@
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Campsites.RvOnly, StringFormat='RV-only Sites: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <!--<Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />-->
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1">
                                 <Label Text="{Binding Campground.Campsites.Group, StringFormat='Group Sites: {0}'}"
@@ -255,6 +235,43 @@
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Campsites.Other, StringFormat='Other Sites: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Amenities -->
+                <Frame Style="{StaticResource CollapsibleView}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AmenitiesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding AmenitiesVM.Icon}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Aspect="AspectFill"
+                                   HeightRequest="20" />
+                            <Label Text="{Binding AmenitiesVM.Title}" 
+                                   Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*,*"
+                              Margin="10,0"
+                              IsVisible="{Binding AmenitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
                                 <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}"
@@ -263,18 +280,51 @@
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Accessibility -->
+                <Frame Style="{StaticResource CollapsibleView}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AccessibilityVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding AccessibilityVM.Icon}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Aspect="AspectFill"
+                                   HeightRequest="20" />
+                            <Label Text="{Binding AccessibilityVM.Title}" 
+                                   Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*,*"
+                              Margin="10,0"
+                              IsVisible="{Binding AccessibilityVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <VerticalStackLayout Grid.Column="0">
                                 <Label Text="{Binding Campground.Accessibility.RvInfo, StringFormat='RV Info: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Accessibility.RvAllowed, StringFormat='RV Allowed: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                                <Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
                                 <Label Text="{Binding Campground.Accessibility.RvMaxLength, StringFormat='RV Max Ln: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Accessibility.TrailerAllowed, StringFormat='Trailer Allowed: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
                                 <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}"
                                        Style="{StaticResource LabelMedium}" />
-                                <!--<Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />-->
+                                <Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}"
+                                       Style="{StaticResource LabelMedium}" />
                             </VerticalStackLayout>
                         </Grid>
                     </VerticalStackLayout>
