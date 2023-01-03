@@ -23,7 +23,6 @@
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
         public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
-
         public ImageSource MainImage
         {
             get
@@ -39,6 +38,7 @@
         public string Name { get; set; }
         public string Designation { get; set; }
 
+        // Derived properties
         public double DLatitude
         {
             get
@@ -67,7 +67,6 @@
                 }
             }
         }
-
         public bool HasParkUrl { get => !String.IsNullOrEmpty(URL); }
         public bool HasAlerts { get => (Alerts is not null) && Alerts.Count > 0; }
         public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }

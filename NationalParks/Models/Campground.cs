@@ -46,6 +46,7 @@ namespace NationalParks.Models
         public List<Multimedia> Multimedia { get; set; }
         public string LastIndexDate { get; set; }
 
+        // Derived properties
         public double DLatitude
         {
             get
@@ -74,7 +75,6 @@ namespace NationalParks.Models
                 }
             }
         }
-
         public bool HasReservationUrl { get => !String.IsNullOrEmpty(ReservationUrl); }
         public bool HasRegulationsUrl { get => !String.IsNullOrEmpty(RegulationsUrl); }
         public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsOverview) || (PhysicalAddress is not null); }

@@ -219,7 +219,6 @@ public partial class ParkListVM : BaseVM
         }
     }
 
-
     async Task GetAllTopicsAsync()
     {
         if (Topics?.Count > 0)
