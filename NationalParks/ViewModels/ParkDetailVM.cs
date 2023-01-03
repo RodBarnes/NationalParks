@@ -3,14 +3,20 @@
 [QueryProperty(nameof(Models.Park), "Park")]
 public partial class ParkDetailVM : BaseVM
 {
+    IMap map;
+
     [ObservableProperty]
     Park park;
 
     public ObservableCollection<Models.ParkTopic> Topics { get; } = new();
     public ObservableCollection<Models.ParkActivity> Activities { get; } = new();
+    public ObservableCollection<Models.ParkAlert> Alerts { get; } = new();
     public ObservableCollection<Models.CombinedFee> CombinedFees { get; } = new();
     public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
     public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
+
+    [ObservableProperty]
+    public CollapsibleViewVM alertsVM;
 
     [ObservableProperty]
     public CollapsibleViewVM combinedFeesVM;
@@ -33,13 +39,12 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     public CollapsibleViewVM weatherVM;
 
-    IMap map;
-
     public ParkDetailVM(IMap map)
     {
         Title = "Park";
         this.map = map;
 
+        AlertsVM = new CollapsibleViewVM("Alerts", false);
         CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         ContactsVM = new CollapsibleViewVM("Contacts", false);

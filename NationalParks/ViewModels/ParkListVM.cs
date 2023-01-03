@@ -42,8 +42,8 @@ public partial class ParkListVM : BaseVM
         // explicit invocation is required.
         //await GetParksAsync();
 
-        await GetTopicsAsync();
-        await GetActivitiesAsync();
+        await GetAllTopicsAsync();
+        await GetAllActivitiesAsync();
         await LoadStates();
 
         Title = $"Parks ({totalParks})";
@@ -170,6 +170,7 @@ public partial class ParkListVM : BaseVM
             foreach (var park in result.Data)
             {
                 Parks.Add(park);
+                await GetAlertsAsync(park);
             }
             if (!int.TryParse(result.Total, out totalParks))
             {
@@ -186,10 +187,40 @@ public partial class ParkListVM : BaseVM
             IsBusy = false;
             IsRefreshing = false;
         }
-
     }
 
-    async Task GetTopicsAsync()
+    async Task GetAlertsAsync(Park park)
+    {
+        if (park.Alerts?.Count > 0)
+            return;
+
+        try
+        {
+            int startAlerts = 0;
+            int totalAlerts = 1;
+            int limitAlerts = 20;
+
+            while (totalAlerts > startAlerts)
+            {
+                var result = await dataService.GetAlertsAsync(park.ParkCode, startAlerts, limitAlerts);
+
+                if (!int.TryParse(result.Total, out totalAlerts))
+                    totalAlerts = 0;
+
+                startAlerts += result.Data.Count;
+                foreach (var alert in result.Data)
+                    park.Alerts.Add(alert);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get data items: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+    }
+
+
+    async Task GetAllTopicsAsync()
     {
         if (Topics?.Count > 0)
             return;
@@ -218,7 +249,7 @@ public partial class ParkListVM : BaseVM
         }
     }
 
-    async Task GetActivitiesAsync()
+    async Task GetAllActivitiesAsync()
     {
         if (Activities?.Count > 0)
             return;
