@@ -8,13 +8,6 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     Park park;
 
-    public ObservableCollection<Models.Topic> Topics { get; } = new();
-    public ObservableCollection<Models.Activity> Activities { get; } = new();
-    public ObservableCollection<Models.Alert> Alerts { get; } = new();
-    public ObservableCollection<Models.CombinedFee> CombinedFees { get; } = new();
-    public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
-    public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
-
     [ObservableProperty]
     public CollapsibleViewVM alertsVM;
 
@@ -79,31 +72,5 @@ public partial class ParkDetailVM : BaseVM
         {
             {"Park", Park }
         });
-    }
-
-    public void PopulateData()
-    {
-        foreach (var topic in Park.Topics)
-            Topics.Add(topic);
-
-        foreach (var activity in Park.Activities)
-            Activities.Add(activity);
-
-        foreach (var entranceFee in Park.EntranceFees)
-        {
-            var combinedFee = new CombinedFee("Entrance", entranceFee);
-            CombinedFees.Add(combinedFee);
-        }
-        foreach (var entrancePass in Park.EntrancePasses)
-        {
-            var combinedFee = new CombinedFee("Pass", entrancePass);
-            CombinedFees.Add(combinedFee);
-        }
-
-        foreach (var phoneNumber in Park.Contacts.PhoneNumbers)
-            PhoneContacts.Add(phoneNumber);
-
-        foreach (var emailContact in Park.Contacts.EmailAddresses)
-            EmailContacts.Add(emailContact);
     }
 }
