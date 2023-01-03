@@ -26,7 +26,7 @@
                         VerticalOptions="Center" />
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:ParkFull">
+                    <DataTemplate x:DataType="model:Park">
                         <Grid Padding="10,5" HorizontalOptions="Fill">
                             <Frame HeightRequest="125" 
                                     Style="{StaticResource ViewCard}">

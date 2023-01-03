@@ -43,8 +43,8 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLargeBold}"/>
                 <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
-                <controls:HyperlinkLabel Text="{Binding Park.Url}"
-                                         Url="{Binding Park.Url}"
+                <controls:HyperlinkLabel Text="{Binding Park.URL}"
+                                         Url="{Binding Park.URL}"
                                          IsVisible="{Binding Park.HasParkUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 <!-- Alerts -->

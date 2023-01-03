@@ -1,12 +1,12 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.ParkFull), "Park")]
+[QueryProperty(nameof(Models.Park), "Park")]
 public partial class ParkDetailVM : BaseVM
 {
     IMap map;
 
     [ObservableProperty]
-    ParkFull park;
+    Park park;
 
     [ObservableProperty]
     public CollapsibleViewVM alertsVM;
