@@ -1,8 +1,8 @@
 ﻿namespace NationalParks.Models
 {
-    public class WebcamCrop
+    public class MediaCrop
     {
-        public long AspectRation { get; set; }
         public string Url { get; set; }
+        public long AspectRation { get; set; }
     }
 }

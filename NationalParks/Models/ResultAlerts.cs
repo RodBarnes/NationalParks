@@ -2,6 +2,6 @@
 {
     public class ResultAlerts : Result
     {
-        public List<ParkAlert> Data { get; set; }
+        public List<Alert> Data { get; set; }
     }
 }

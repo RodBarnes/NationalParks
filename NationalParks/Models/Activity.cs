@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public class ParkActivity
+    public class Activity
     {
         public string Id { get; set; }
         public string Name { get; set; }

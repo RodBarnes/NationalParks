@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class ParkAlert
+public class Alert
 {
     public string Id { get; set; }
     public string Url { get; set; }

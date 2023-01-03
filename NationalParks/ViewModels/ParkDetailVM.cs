@@ -8,9 +8,9 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     Park park;
 
-    public ObservableCollection<Models.ParkTopic> Topics { get; } = new();
-    public ObservableCollection<Models.ParkActivity> Activities { get; } = new();
-    public ObservableCollection<Models.ParkAlert> Alerts { get; } = new();
+    public ObservableCollection<Models.Topic> Topics { get; } = new();
+    public ObservableCollection<Models.Activity> Activities { get; } = new();
+    public ObservableCollection<Models.Alert> Alerts { get; } = new();
     public ObservableCollection<Models.CombinedFee> CombinedFees { get; } = new();
     public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
     public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();

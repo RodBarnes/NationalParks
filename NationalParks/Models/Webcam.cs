@@ -6,8 +6,8 @@
         public string Url { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public List<WebcamImage> Images { get; set; }
-        public List<WebcamPark> RelatedParks { get; set; }
+        public List<Image> Images { get; set; }
+        public List<RelatedPark> RelatedParks { get; set; }
         public ImageSource MainImage
         {
             get
