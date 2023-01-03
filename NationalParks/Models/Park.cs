@@ -10,8 +10,9 @@
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string LatLong { get; set; }
-        public List<ParkActivity> Activities { get; set; }
-        public List<ParkTopic> Topics { get; set; }
+        public List<ParkAlert> Alerts { get; set; } = new();
+        public List<ParkActivity> Activities { get; set; } = new();
+        public List<ParkTopic> Topics { get; set; } = new();
         public string States { get; set; }
         public Contacts Contacts { get; set; }
         public List<Fee> EntranceFees { get; set; }
@@ -68,6 +69,7 @@
         }
 
         public bool HasParkUrl { get => !String.IsNullOrEmpty(URL); }
+        public bool HasAlerts { get => (Alerts is not null) && Alerts.Count > 0; }
         public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
         public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
         public bool HasEntranceFees { get => (EntranceFees is not null) && EntranceFees.Count > 0; }

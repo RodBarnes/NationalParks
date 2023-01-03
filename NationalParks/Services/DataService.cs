@@ -67,6 +67,19 @@ public class DataService
         return result;
     }
 
+    public async Task<ResultAlerts> GetAlertsAsync(string parkCode, int start = 0, int limit = 20)
+    {
+        var result = new ResultAlerts();
+        var url = $"https://developer.nps.gov/api/v1/alerts?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}&start={start}&limit={limit}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultAlerts>();
+        }
+
+        return result;
+    }
+
     public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
     {
         var result = new ResultWebcams();
