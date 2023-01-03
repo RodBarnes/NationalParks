@@ -96,9 +96,6 @@
 	  <Compile Update="Views\ParkImageListPage.xaml.cs">
 	    <DependentUpon>ParkImageListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ParkHoursPage.xaml.cs">
-	    <DependentUpon>ParkHoursPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Views\ParkListPage.xaml.cs">
 	    <DependentUpon>ParkListPage.xaml</DependentUpon>
 	  </Compile>
@@ -120,9 +117,6 @@
 	  <MauiXaml Update="Views\CampgroundFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CampgroundHoursPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\CampgroundListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -133,9 +127,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ParkImageListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ParkHoursPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\WebcamDetailPage.xaml">

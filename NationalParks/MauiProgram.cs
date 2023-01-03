@@ -40,8 +40,6 @@ public static class MauiProgram
 		builder.Services.AddTransient<ParkDetailPage>();
         builder.Services.AddTransient<ParkFilterVM>();
         builder.Services.AddTransient<ParkFilterPage>();
-        builder.Services.AddTransient<ParkHoursVM>();
-        builder.Services.AddTransient<ParkHoursPage>();
         builder.Services.AddTransient<ParkImageListVM>();
         builder.Services.AddTransient<ParkImageListPage>();
 
@@ -51,8 +49,6 @@ public static class MauiProgram
         builder.Services.AddTransient<CampgroundDetailPage>();
         builder.Services.AddTransient<CampgroundFilterVM>();
         builder.Services.AddTransient<CampgroundFilterPage>();
-        builder.Services.AddTransient<CampgroundHoursVM>();
-        builder.Services.AddTransient<CampgroundHoursPage>();
         builder.Services.AddTransient<CampgroundImageListVM>();
         builder.Services.AddTransient<CampgroundImageListPage>();
 

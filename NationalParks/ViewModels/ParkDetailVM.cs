@@ -68,15 +68,6 @@ public partial class ParkDetailVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToHours()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkHoursPage), true, new Dictionary<string, object>
-        {
-            {"Park", Park }
-        });
-    }
-
-    [RelayCommand]
     async Task GoToImages()
     {
         await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>

@@ -78,15 +78,6 @@
         }
 
         [RelayCommand]
-        async Task GoToHours()
-        {
-            await Shell.Current.GoToAsync(nameof(CampgroundHoursPage), true, new Dictionary<string, object>
-            {
-                {"Campground", Campground }
-            });
-        }
-
-        [RelayCommand]
         async Task GoToImages()
         {
             await Shell.Current.GoToAsync(nameof(CampgroundImageListPage), true, new Dictionary<string, object>
