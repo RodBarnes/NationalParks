@@ -60,7 +60,7 @@
                             <Label Text="{Binding FeesVM.Title}"
                                 Style="{StaticResource LabelLargeBold}" />
                         </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Fees}"
+                        <CollectionView ItemsSource="{Binding Campground.Fees}"
                                   SelectionMode="None"
                                   IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
@@ -151,7 +151,7 @@
                             <Label Text="{Binding ContactsVM.Title}"
                                 Style="{StaticResource LabelLargeBold}" />
                         </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding PhoneContacts}"
+                        <CollectionView ItemsSource="{Binding Campground.Contacts.PhoneNumbers}"
                                   SelectionMode="None"
                                   IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
@@ -174,7 +174,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <CollectionView ItemsSource="{Binding EmailContacts}"
+                        <CollectionView ItemsSource="{Binding Campground.Contacts.EmailAddresses}"
                                   SelectionMode="None"
                                   IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>

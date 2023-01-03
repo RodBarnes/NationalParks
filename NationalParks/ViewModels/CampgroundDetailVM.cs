@@ -6,10 +6,6 @@
         [ObservableProperty]
         Campground campground;
 
-        public ObservableCollection<Models.Fee> Fees { get; } = new();
-        public ObservableCollection<Models.PhoneContact> PhoneContacts { get; } = new();
-        public ObservableCollection<Models.EmailContact> EmailContacts { get; } = new();
-
         [ObservableProperty]
         public CollapsibleViewVM feesVM;
 
@@ -84,18 +80,6 @@
             {
                 {"Campground", Campground }
             });
-        }
-
-        public void PopulateData()
-        {
-            foreach (var fee in Campground.Fees)
-                Fees.Add(fee);
-
-            foreach (var phoneNumber in Campground.Contacts.PhoneNumbers)
-                PhoneContacts.Add(phoneNumber);
-
-            foreach (var emailContact in Campground.Contacts.EmailAddresses)
-                EmailContacts.Add(emailContact);
         }
     }
 }

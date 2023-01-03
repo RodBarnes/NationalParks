@@ -87,7 +87,7 @@
                 </Frame>
                 <!-- Entrance Fees -->
                 <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Park.HasEntranceFees, Converter={StaticResource BoolToTrueFalseConverter}}">
+                        IsVisible="{Binding Park.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <VerticalStackLayout >
                         <HorizontalStackLayout>
                             <HorizontalStackLayout.GestureRecognizers>

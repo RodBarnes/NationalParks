@@ -71,7 +71,7 @@
         public bool HasAlerts { get => (Alerts is not null) && Alerts.Count > 0; }
         public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
         public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
-        public bool HasEntranceFees { get => (EntranceFees is not null) && EntranceFees.Count > 0; }
+        public bool HasFees { get => ((EntranceFees is not null) && EntranceFees.Count > 0) || ((EntrancePasses is not null) && EntrancePasses.Count > 0); }
         public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsInfo) || (PhysicalAddress is not null); }
         public bool HasWeather { get => !String.IsNullOrEmpty(WeatherInfo); }
         public bool HasOperatingHours { get => (OperatingHours is not null) && OperatingHours.Count > 0; }
