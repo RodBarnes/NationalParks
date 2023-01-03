@@ -67,7 +67,7 @@
                               SelectionMode="None"
                               IsVisible="{Binding AlertsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:ParkAlert">
+                                <DataTemplate x:DataType="models:Alert">
                                     <VerticalStackLayout >
                                         <Label Text="{Binding Title}"
                                             Style="{StaticResource LabelMediumBold}"/>
@@ -255,7 +255,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:ParkTopic">
+                                <DataTemplate x:DataType="models:Topic">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
@@ -283,7 +283,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:ParkActivity">
+                                <DataTemplate x:DataType="models:Activity">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>

@@ -24,7 +24,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedTopics}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:ParkTopic">
+                    <DataTemplate x:DataType="model:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
@@ -44,7 +44,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedActivities}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:ParkTopic">
+                    <DataTemplate x:DataType="model:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
