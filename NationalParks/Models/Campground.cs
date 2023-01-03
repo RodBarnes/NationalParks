@@ -20,7 +20,7 @@ namespace NationalParks.Models
         public string ReservationUrl { get; set; }
         public string RegulationsUrl { get; set; }
         public string RegulationsOverview { get; set; }
-        public CampgroundAmenities Amenities { get; set; }
+        public Amenities Amenities { get; set; }
         public Contacts Contacts { get; set; }
         public List<Fee> Fees { get; set; }
         public string DirectionsOverview { get; set; }
@@ -42,7 +42,7 @@ namespace NationalParks.Models
         public string NumberOfSitesReservable { get; set; }
         public string NumberOfSitesFirstComeFirstServe { get; set; }
         public Campsite Campsites { get; set; }
-        public CampgroundAccessibility Accessibility { get; set; }
+        public Accessibility Accessibility { get; set; }
         public List<Multimedia> Multimedia { get; set; }
         public string LastIndexDate { get; set; }
 
