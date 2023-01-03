@@ -1,7 +1,9 @@
 Status
 ------
-ThingToDo, Place, and Tour seem likely appropriate for a list separate from Parks and Campgrounds.
 
+
+Issue
+-----
 Park list and Campground list are working including Filter by state.  Waiting on response to issue https://github.com/nationalparkservice/nps-api-samples/issues/3 regarding use of 'q' parameter.  It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'  But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
 NOTE: If I end up not being able to filter by Topic or Activity, then these should be considered to be moved into the ParkDetailVM intead of ParkVM and being passed.
@@ -18,6 +20,9 @@ Baker Creek Campground: weatherOverview -- no text just the URL
 
 Todo & Ideas
 ------------
+ThingToDo, Place, and Tour seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
+
+
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
 Can I put a CollapsibleView within a CollapsibleView?  I'm thinking like the Operating Hours?
