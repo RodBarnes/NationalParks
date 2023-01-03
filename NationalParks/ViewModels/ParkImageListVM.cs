@@ -5,7 +5,7 @@
     {
         // Query properties
         [ObservableProperty]
-        Park park;
+        ParkFull park;
 
         public ObservableCollection<Models.Image> Images { get; } = new();
 

@@ -6,7 +6,7 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ParkListVM : BaseVM
 {
-    public ObservableCollection<Models.Park> Parks { get; } = new();
+    public ObservableCollection<Models.ParkFull> Parks { get; } = new();
 
     [ObservableProperty]
     bool isRefreshing;
@@ -56,14 +56,14 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetail(Park park)
+    async Task GoToDetail(ParkFull park)
     {
         if (park == null)
         return;
 
         await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
         {
-            {"Park", park }
+            {"ParkFull", park }
         });
     }
 
@@ -189,7 +189,7 @@ public partial class ParkListVM : BaseVM
         }
     }
 
-    async Task GetAlertsAsync(Park park)
+    async Task GetAlertsAsync(ParkFull park)
     {
         if (park.Alerts?.Count > 0)
             return;
