@@ -217,7 +217,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Topic">
+                                <DataTemplate x:DataType="models:ParkTopic">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
@@ -245,7 +245,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Activity">
+                                <DataTemplate x:DataType="models:ParkActivity">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>

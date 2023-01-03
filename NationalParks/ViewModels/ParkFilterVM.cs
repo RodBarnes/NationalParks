@@ -7,14 +7,14 @@
     public partial class ParkFilterVM : BaseVM
     {
         // Query properties
-        public Collection<Models.Topic> TopicsCol { get; set; }
-        public Collection<Models.Activity> ActivitiesCol { get; set; }
+        public Collection<Models.ParkTopic> TopicsCol { get; set; }
+        public Collection<Models.ParkActivity> ActivitiesCol { get; set; }
         public Collection<Models.State> StatesCol { get; set; }
         public ParkListVM ParkVM { get; set; }
 
         // Displayed values
-        public ObservableCollection<Models.Topic> Topics { get; } = new();
-        public ObservableCollection<Models.Activity> Activities { get; } = new();
+        public ObservableCollection<Models.ParkTopic> Topics { get; } = new();
+        public ObservableCollection<Models.ParkActivity> Activities { get; } = new();
         public ObservableCollection<Models.State> States { get; } = new();
 
         // Selected values
@@ -67,7 +67,7 @@
             ParkVM.Filter.Topics.Clear();
             foreach (var o in SelectedTopics)
             {
-                if (o is Models.Topic topic)
+                if (o is Models.ParkTopic topic)
                 {
                     ParkVM.Filter.Topics.Add(topic);
                 }
@@ -75,7 +75,7 @@
             ParkVM.Filter.Activities.Clear();
             foreach (var o in SelectedActivities)
             {
-                if (o is Models.Activity activity)
+                if (o is Models.ParkActivity activity)
                 {
                     ParkVM.Filter.Activities.Add(activity);
                 }

@@ -12,8 +12,8 @@ public partial class ParkListVM : BaseVM
     bool isRefreshing;
 
     // For holding the available filter selections
-    private Collection<Models.Topic> Topics { get; } = new();
-    private Collection<Models.Activity> Activities { get; } = new();
+    private Collection<Models.ParkTopic> Topics { get; } = new();
+    private Collection<Models.ParkActivity> Activities { get; } = new();
     private Collection<Models.State> States { get; } = new();
 
     readonly DataService dataService;

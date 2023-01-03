@@ -2,6 +2,6 @@
 {
     public partial class ResultActivities : Result
     {
-        public List<Activity> Data { get; set; }
+        public List<ParkActivity> Data { get; set; }
     }
 }

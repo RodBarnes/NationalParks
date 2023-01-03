@@ -10,8 +10,8 @@
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string LatLong { get; set; }
-        public List<Activity> Activities { get; set; }
-        public List<Topic> Topics { get; set; }
+        public List<ParkActivity> Activities { get; set; }
+        public List<ParkTopic> Topics { get; set; }
         public string States { get; set; }
         public Contacts Contacts { get; set; }
         public List<Fee> EntranceFees { get; set; }
