@@ -31,15 +31,21 @@ public partial class ParkListVM : BaseVM
         this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
-
-        LoadFilterDataAsync();
     }
 
     public ParkFilter Filter { get; set; } = new ParkFilter();
 
     public async void PopulateData()
     {
-        await GetParksAsync();
+        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke GetParksCommand
+        // upon first displaying the page.  If that property is removed from the CollectionView, this
+        // explicit invocation is required.
+        //await GetParksAsync();
+
+        await GetTopicsAsync();
+        await GetActivitiesAsync();
+        await LoadStates();
+
         Title = $"Parks ({totalParks})";
     }
 
@@ -47,13 +53,6 @@ public partial class ParkListVM : BaseVM
     {
         Parks.Clear();
         startParks = 0;
-    }
-
-    private async void LoadFilterDataAsync()
-    {
-        await GetTopicsAsync();
-        await GetActivitiesAsync();
-        await LoadStates();
     }
 
     [RelayCommand]
