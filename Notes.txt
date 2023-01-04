@@ -1,7 +1,6 @@
 Status
 ------
-
-Are ThingsToDo just a combination of all the others?
+Adding Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
 
 
 Issue

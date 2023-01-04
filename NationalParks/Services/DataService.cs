@@ -151,6 +151,25 @@ public class DataService
         return result;
     }
 
+    public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
+    {
+        var result = new ResultEvents();
+
+        var url = $"https://developer.nps.gov/api/v1/events?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
+        }
+
+        return result;
+    }
+
     public async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
     {
         var result = new ResultPlaces();

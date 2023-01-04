@@ -9,4 +9,13 @@ public partial class EventListPage : ContentPage
 		InitializeComponent();
 		BindingContext = _vm = vm;
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (!_vm.IsPopulated)
+        {
+            _vm.PopulateData();
+        }
+    }
 }

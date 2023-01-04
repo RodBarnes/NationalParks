@@ -31,4 +31,34 @@ public class Place
     public string LocationDescription { get; set; }
     public string Credit { get; set; }
     public object[] Multimedia { get; set; }
+
+    // Derived properties
+    public double DLatitude
+    {
+        get
+        {
+            if (double.TryParse(Latitude, out double d))
+            {
+                return d;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+    public double DLongitude
+    {
+        get
+        {
+            if (double.TryParse(Longitude, out double d))
+            {
+                return d;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
 }
