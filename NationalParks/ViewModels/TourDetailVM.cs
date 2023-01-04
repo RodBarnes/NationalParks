@@ -3,6 +3,8 @@
 [QueryProperty(nameof(Models.Tour), "Tour")]
 public partial class TourDetailVM : BaseVM
 {
+    IMap map;
+
     [ObservableProperty]
     Tour tour;
 
@@ -18,9 +20,10 @@ public partial class TourDetailVM : BaseVM
     [ObservableProperty]
     public CollapsibleViewVM activitiesVM;
 
-    public TourDetailVM()
+    public TourDetailVM(IMap map)
     {
         Title = "Tour";
+        this.map = map;
 
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
@@ -28,23 +31,23 @@ public partial class TourDetailVM : BaseVM
         StopsVM = new CollapsibleViewVM("Stops", false);
     }
 
-    //[RelayCommand]
-    //async Task OpenMap()
-    //{
-    //    try
-    //    {
-    //        await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions
-    //        {
-    //            Name = Tour.Name,
-    //            NavigationMode = NavigationMode.None
-    //        });
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Debug.WriteLine($"Unable to launch maps: {ex.Message}");
-    //        await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-    //    }
-    //}
+    [RelayCommand]
+    async Task OpenMap()
+    {
+        try
+        {
+            await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions
+            {
+                Name = Tour.Title,
+                NavigationMode = NavigationMode.None
+            });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to launch maps: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
+        }
+    }
 
     [RelayCommand]
     async Task GoToImages()

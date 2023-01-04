@@ -15,6 +15,8 @@ public class Tour
     public string DurationUnit { get; set; }
     public List<Stop> Stops { get; set; }
     public List<Image> Images { get; set; }
+
+    // Derived properties
     public ImageSource MainImage
     {
         get
@@ -25,7 +27,34 @@ public class Tour
                 return ImageSource.FromFile("no_image_green.png");
         }
     }
-
+    public double DLatitude
+    {
+        get
+        {
+            if (double.TryParse(Park.Latitude, out double d))
+            {
+                return d;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+    public double DLongitude
+    {
+        get
+        {
+            if (double.TryParse(Park.Longitude, out double d))
+            {
+                return d;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
     public bool HasTags { get => (Tags is not null) && Tags.Count > 0; }
     public bool HasStops { get => (Stops is not null) && Stops.Count > 0; }
     public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }

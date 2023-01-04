@@ -55,6 +55,12 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
+        <Button Text="Closest"
+                Grid.Row="1" Grid.Column="0"
+                Margin="8"
+                Command="{Binding GetClosestCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}" />
         <Button Text="Filter" 
                 Grid.Row="1" Grid.Column="1"
                 Margin="8"
