@@ -93,6 +93,9 @@
 	  <Compile Update="Views\CampgroundImageListPage.xaml.cs">
 	    <DependentUpon>CampgroundImageListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\EventListPage.xaml.cs">
+	    <DependentUpon>EventListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\TourListPage.xaml.cs">
 	    <DependentUpon>TourListPage.xaml</DependentUpon>
 	  </Compile>
@@ -127,6 +130,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CampgroundImageListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EventListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TourListPage.xaml">

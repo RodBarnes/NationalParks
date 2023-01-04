@@ -40,9 +40,9 @@
         <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
                       Route="TourListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Places" Icon="location_green.png">
-        <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
-                      Route="TourListPage" />
+    <FlyoutItem Title="Events" Icon="event_green.png">
+        <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
+                      Route="EventListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Webcams" Icon="camera_green.png">
         <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
