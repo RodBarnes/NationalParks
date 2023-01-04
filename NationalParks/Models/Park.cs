@@ -23,6 +23,12 @@
         public List<OperatingHours> OperatingHours { get; set; }
         public List<Address> Addresses { get; set; }
         public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
+        public List<Image> Images { get; set; }
+        public string WeatherInfo { get; set; }
+        public string Name { get; set; }
+        public string Designation { get; set; }
+
+        // Derived properties
         public ImageSource MainImage
         {
             get
@@ -33,12 +39,6 @@
                     return ImageSource.FromFile("no_image_green.png");
             }
         }
-        public List<Image> Images { get; set; }
-        public string WeatherInfo { get; set; }
-        public string Name { get; set; }
-        public string Designation { get; set; }
-
-        // Derived properties
         public double DLatitude
         {
             get

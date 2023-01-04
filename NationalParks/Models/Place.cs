@@ -33,6 +33,16 @@ public class Place
     public object[] Multimedia { get; set; }
 
     // Derived properties
+    public ImageSource MainImage
+    {
+        get
+        {
+            if (Images.Count > 0)
+                return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
+            else
+                return ImageSource.FromFile("no_image_green.png");
+        }
+    }
     public double DLatitude
     {
         get

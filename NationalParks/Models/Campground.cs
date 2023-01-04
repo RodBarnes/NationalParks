@@ -29,15 +29,6 @@ namespace NationalParks.Models
         public List<Address> Addresses { get; set; }
         public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
         public List<Image> Images { get; set; }
-        public ImageSource MainImage {
-            get
-            {
-                if (Images.Count > 0)
-                    return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
-                else
-                    return ImageSource.FromFile("no_image_green.png");
-            }
-        }
         public string WeatherOverview { get; set; }
         public string NumberOfSitesReservable { get; set; }
         public string NumberOfSitesFirstComeFirstServe { get; set; }
@@ -47,6 +38,16 @@ namespace NationalParks.Models
         public string LastIndexDate { get; set; }
 
         // Derived properties
+        public ImageSource MainImage
+        {
+            get
+            {
+                if (Images.Count > 0)
+                    return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
+                else
+                    return ImageSource.FromFile("no_image_green.png");
+            }
+        }
         public double DLatitude
         {
             get
