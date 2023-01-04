@@ -1,8 +1,6 @@
 Status
 ------
 
-Adding Tour List/Detail.  It is showing the wrong title in the top banner.  It is correct title in the fly-out.  It starts out at "Tours" and then after the data is initially displayed, it changes to "Parks (527)".  The number is the correct count of Tours.
-
 Are ThingsToDo just a combination of all the others?
 
 
@@ -24,11 +22,11 @@ Baker Creek Campground: weatherOverview -- no text just the URL
 
 Todo & Ideas
 ------------
-ThingToDo, Place, and Tour seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
+ThingToDo, Place, Events, and Tours seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
 
 Setting for determining which list to display as the default page?
 
-Need icons for Tours, Places, and ThingsToDo.
+Need icons for ThingsToDo and Events.
 
 Maybe a setting that is the user determined states by which to always filter?
 
