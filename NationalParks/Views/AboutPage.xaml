@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
+             xmlns:controls="clr-namespace:NationalParks.Controls"
              x:DataType="vm:AboutVM"
              x:Class="NationalParks.Views.AboutPage"
              Title="{Binding Title}">
@@ -21,24 +22,36 @@
                                      VerticalOptions="Center">
                     <Label Text="This app uses the API provided by the National Park Service."
                            Style="{StaticResource LabelMedium}"/>
-                    <Label Text="https://www.nps.gov/subjects/developer/"
-                           Style="{StaticResource LabelMedium}"
-                           VerticalOptions="Center" 
-                           HorizontalOptions="Center" />
+                    <controls:HyperlinkLabel Text="NPS Developer Resources"
+                                            Url="{Binding NpsUrl}"
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource LabelMedium}"/>
                 </VerticalStackLayout>
             </Grid>
         </Frame>
         <Frame Style="{StaticResource ViewCard}"
                Padding="10">
             <VerticalStackLayout>
+                <HorizontalStackLayout
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center">
+                    <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}"/>
+                    <Label Text="{Binding VersionString, StringFormat=', Version {0}'}" Style="{StaticResource LabelMedium}"/>
+                    <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelMedium}"/>
+                </HorizontalStackLayout>
                 <Label Text="Advanced Applications"
-               Style="{StaticResource LabelMediumBold}"
-               VerticalOptions="Center"
-               HorizontalOptions="Center" />
+                      Style="{StaticResource LabelMediumBold}"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center" />
                 <Label Text="Copyright © 2022"
-               Style="{StaticResource LabelSmall}"
-               HorizontalOptions="Center"/>
+                       Style="{StaticResource LabelSmall}"
+                       HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Frame>
+        <Button Text="App Info"
+                Margin="10"
+                WidthRequest="120"
+                Command="{Binding GoToAppInfoCommand}"
+                Style="{StaticResource ButtonOutline}"/>
     </VerticalStackLayout>
 </ContentPage>
