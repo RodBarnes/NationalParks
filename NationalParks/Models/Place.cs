@@ -71,4 +71,5 @@ public class Place
             }
         }
     }
+    public bool HasUrl { get => !String.IsNullOrEmpty(Url); }
 }

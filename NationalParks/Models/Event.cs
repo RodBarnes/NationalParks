@@ -85,4 +85,5 @@ public class Event
             }
         }
     }
+    public bool HasUrl { get => !String.IsNullOrEmpty(InfoUrl); }
 }
