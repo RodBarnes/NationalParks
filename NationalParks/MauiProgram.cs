@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using NationalParks.Services;
-using NationalParks.Views;
 
 namespace NationalParks;
 
@@ -51,6 +50,9 @@ public static class MauiProgram
         builder.Services.AddTransient<CampgroundFilterPage>();
         builder.Services.AddTransient<CampgroundImageListVM>();
         builder.Services.AddTransient<CampgroundImageListPage>();
+
+        builder.Services.AddSingleton<TourListVM>();
+        builder.Services.AddSingleton<TourListPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();

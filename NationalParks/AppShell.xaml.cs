@@ -16,6 +16,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CampgroundFilterPage), typeof(CampgroundFilterPage));
         Routing.RegisterRoute(nameof(CampgroundImageListPage), typeof(CampgroundImageListPage));
 
+        Routing.RegisterRoute(nameof(TourDetailPage), typeof(TourDetailPage));
+
         Routing.RegisterRoute(nameof(WebcamDetailPage), typeof(WebcamDetailPage));
     }
 }
