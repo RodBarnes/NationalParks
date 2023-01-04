@@ -36,7 +36,11 @@
         <ShellContent ContentTemplate="{DataTemplate views:CampgroundListPage}"
                       Route="CampgroundListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Tours" Icon="info_fancy_green.png">
+    <FlyoutItem Title="Tours" Icon="tour_green.png">
+        <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
+                      Route="TourListPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Places" Icon="location_green.png">
         <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
                       Route="TourListPage" />
     </FlyoutItem>
