@@ -24,6 +24,8 @@ public partial class ParkListVM : BaseVM
     private int limitItems = 20;
     private int totalItems = 0;
 
+    public bool IsPopulated { get; set; }
+
     public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
@@ -37,7 +39,7 @@ public partial class ParkListVM : BaseVM
 
     public async void PopulateData()
     {
-        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke GetParksCommand
+        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
         // upon first displaying the page.  If that property is removed from the CollectionView, this
         // explicit invocation is required.
         //await GetParksAsync();
@@ -46,7 +48,7 @@ public partial class ParkListVM : BaseVM
         await GetAllActivitiesAsync();
         await LoadStates();
 
-        Title = $"Parks ({totalParks})";
+        IsPopulated = true;
     }
 
     public void ClearData()
@@ -59,7 +61,7 @@ public partial class ParkListVM : BaseVM
     async Task GoToDetail(Park park)
     {
         if (park == null)
-        return;
+            return;
 
         await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
         {
@@ -133,11 +135,7 @@ public partial class ParkListVM : BaseVM
             string topics = "";
             string activities = "";
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultParks>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var park in result.Data)
-            //    Parks.Add(park);
-
+            // Apply any filters prior to getting the items
             foreach (var topic in Filter.Topics)
             {
                 if (topics.Length > 0)

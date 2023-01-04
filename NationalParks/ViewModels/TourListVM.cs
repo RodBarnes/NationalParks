@@ -24,6 +24,8 @@ public partial class TourListVM : BaseVM
     private int limitItems = 20;
     private int totalItems = 0;
 
+    public bool IsPopulated { get; set; }
+
     public TourListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
@@ -37,16 +39,14 @@ public partial class TourListVM : BaseVM
 
     public async void PopulateData()
     {
-        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke GetParksCommand
+        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
         // upon first displaying the page.  If that property is removed from the CollectionView, this
         // explicit invocation is required.
-        //await GetParksAsync();
+        //await GetToursAsync();
 
         await GetAllTopicsAsync();
         await GetAllActivitiesAsync();
         await LoadStates();
-
-        Title = $"Parks ({totalItems})";
     }
 
     public void ClearData()
@@ -59,7 +59,7 @@ public partial class TourListVM : BaseVM
     async Task GoToDetail(Tour tour)
     {
         if (tour == null)
-        return;
+            return;
 
         await Shell.Current.GoToAsync(nameof(TourDetailPage), true, new Dictionary<string, object>
         {
@@ -135,11 +135,7 @@ public partial class TourListVM : BaseVM
             string topics = "";
             string activities = "";
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("tours_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultTours>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var tour in result.Data)
-            //    Tours.Add(tour);
-
+            // Apply any filters prior to getting the items
             foreach (var topic in Filter.Topics)
             {
                 if (topics.Length > 0)
@@ -166,6 +162,11 @@ public partial class TourListVM : BaseVM
                 }
                 states += state.Abbreviation;
             }
+
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("tours_0.json");
+            //result = System.Text.Json.JsonSerializer.Deserialize<ResultTours>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            //foreach (var tour in result.Data)
+            //    Tours.Add(tour);
 
             result = await dataService.GetToursAsync(startItems, limitItems, states);
             startItems += result.Data.Count;

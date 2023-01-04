@@ -13,7 +13,10 @@ public partial class TourListPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _vm.PopulateData();
+        if (!_vm.IsPopulated)
+        {
+            _vm.PopulateData();
+        }
     }
 }
 

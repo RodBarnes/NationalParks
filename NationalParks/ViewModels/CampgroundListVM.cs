@@ -22,6 +22,8 @@ namespace NationalParks.ViewModels
         private int limitItems = 20;
         private int totalItems = 0;
 
+        public bool IsPopulated { get; set; }
+
         public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
         {
             IsBusy = false;
@@ -29,16 +31,19 @@ namespace NationalParks.ViewModels
             this.dataService = dataService;
             this.connectivity = connectivity;
             this.geolocation = geolocation;
-
-            LoadFilterDataAsync();
         }
 
         public Filter Filter { get; set; } = new Filter();
 
         public async void PopulateData()
         {
-            await GetCampgroundsAsync();
-            Title = $"Campgrounds ({totalCampgrounds})";
+            // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
+            // upon first displaying the page.  If that property is removed from the CollectionView, this
+            // explicit invocation is required.
+            //await GetCampgroundsAsync();
+            await LoadStates();
+
+            IsPopulated = true;
         }
 
         public void ClearData()
@@ -121,11 +126,7 @@ namespace NationalParks.ViewModels
                 ResultCampgrounds result;
                 string states = "";
 
-                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
-                //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                //foreach (var campground in result.Data)
-                //    Campgrounds.Add(campground);
-
+                // Apply any filters prior to getting the items
                 foreach (var state in Filter.States)
                 {
                     if (states.Length > 0)
