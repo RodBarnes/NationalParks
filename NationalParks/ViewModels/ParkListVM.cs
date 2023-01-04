@@ -115,7 +115,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetParksAsync()
+    async Task GetItemsAsync()
     {
         if (IsBusy)
             return;

@@ -115,7 +115,7 @@ public partial class TourListVM : BaseVM
     //}
 
     [RelayCommand]
-    async Task GetToursAsync()
+    async Task GetItemsAsync()
     {
         if (IsBusy)
             return;

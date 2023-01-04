@@ -98,7 +98,7 @@ public partial class PlaceListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetPlaceAsync()
+    async Task GetItemsAsync()
     {
         if (IsBusy)
             return;

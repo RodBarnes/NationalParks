@@ -11,13 +11,13 @@
           RowDefinitions="*,Auto"
           RowSpacing="0"
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <RefreshView Command="{Binding GetToursCommand}"
+        <RefreshView Command="{Binding GetItemsCommand}"
                      IsRefreshing="{Binding IsRefreshing}"
                      Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Tours}"
                             SelectionMode="None"
                             RemainingItemsThreshold="2"
-                            RemainingItemsThresholdReachedCommand="{Binding GetToursCommand}">
+                            RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
                 <CollectionView.EmptyView>
                 <Image Source="data_loading_green.png"
                         HeightRequest="160"

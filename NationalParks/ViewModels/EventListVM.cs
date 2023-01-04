@@ -98,7 +98,7 @@ public partial class EventListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetEventsAsync()
+    async Task GetItemsAsync()
     {
         if (IsBusy)
             return;

@@ -108,7 +108,7 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task GetCampgroundsAsync()
+        async Task GetItemsAsync()
         {
             if (IsBusy)
                 return;

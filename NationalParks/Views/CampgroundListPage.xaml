@@ -11,13 +11,13 @@
           RowDefinitions="*,Auto"
           RowSpacing="0"
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <RefreshView Command="{Binding GetCampgroundsCommand}"
+        <RefreshView Command="{Binding GetItemsCommand}"
                      IsRefreshing="{Binding IsRefreshing}"
                      Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Campgrounds}"
                             SelectionMode="None"
                             RemainingItemsThreshold="2"
-                            RemainingItemsThresholdReachedCommand="{Binding GetCampgroundsCommand}">
+                            RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
                 <CollectionView.EmptyView>
                     <Image Source="data_loading_green.png"
                         HeightRequest="160"
@@ -47,7 +47,6 @@
                                         Padding="10">
                                         <Label Text="{Binding Name}" Style="{StaticResource LabelLargeBold}" />
                                         <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
-                                        <Label Text="{Binding Url}" Style="{StaticResource LabelMedium}" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>
