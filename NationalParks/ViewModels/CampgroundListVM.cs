@@ -33,7 +33,7 @@ namespace NationalParks.ViewModels
             LoadFilterDataAsync();
         }
 
-        public ParkFilter Filter { get; set; } = new ParkFilter();
+        public Filter Filter { get; set; } = new Filter();
 
         public async void PopulateData()
         {
