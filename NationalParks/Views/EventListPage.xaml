@@ -5,10 +5,10 @@
              xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:EventListVM"
              x:Class="NationalParks.Views.EventListPage"
-             Title="EventListPage">
+             Title="{Binding Title}">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="{Binding Title}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
