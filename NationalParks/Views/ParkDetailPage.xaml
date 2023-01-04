@@ -5,8 +5,8 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:controls="clr-namespace:NationalParks.Controls"
              xmlns:models="clr-namespace:NationalParks.Models"
-             x:Class="NationalParks.Views.ParkDetailPage"
              x:DataType="vm:ParkDetailVM"
+             x:Class="NationalParks.Views.ParkDetailPage"
              Title="{Binding Park.Name}">
     <ContentPage.Resources>
         <ResourceDictionary>

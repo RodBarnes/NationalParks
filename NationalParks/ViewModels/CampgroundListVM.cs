@@ -24,6 +24,8 @@ namespace NationalParks.ViewModels
 
         public bool IsPopulated { get; set; }
 
+        public Filter Filter { get; set; } = new Filter();
+
         public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
         {
             IsBusy = false;
@@ -32,8 +34,6 @@ namespace NationalParks.ViewModels
             this.connectivity = connectivity;
             this.geolocation = geolocation;
         }
-
-        public Filter Filter { get; set; } = new Filter();
 
         public async void PopulateData()
         {
@@ -60,7 +60,7 @@ namespace NationalParks.ViewModels
 
             await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
             {
-                {"Campground", campground }
+                {"Campground", campground}
             });
         }
 

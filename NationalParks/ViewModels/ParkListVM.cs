@@ -65,19 +65,7 @@ public partial class ParkListVM : BaseVM
 
         await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
         {
-            {"Park", park }
-        });
-    }
-
-    [RelayCommand]
-    async Task GoToFilter()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
-        {
-            {"Topics", Topics },
-            {"Activities", Activities },
-            {"States", States},
-            {"VM", this }
+            {"Park", park}
         });
     }
 
@@ -112,6 +100,18 @@ public partial class ParkListVM : BaseVM
             Debug.WriteLine($"Unable to query location: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
+    }
+
+    [RelayCommand]
+    async Task GoToFilter()
+    {
+        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
+        {
+            {"Topics", Topics },
+            {"Activities", Activities },
+            {"States", States},
+            {"VM", this }
+        });
     }
 
     [RelayCommand]

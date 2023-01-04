@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:Class="NationalParks.Views.TourListPage"
              x:DataType="vm:TourListVM"
+             x:Class="NationalParks.Views.TourListPage"
              Title="{Binding Title}">
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"

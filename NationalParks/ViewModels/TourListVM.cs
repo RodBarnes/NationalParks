@@ -63,7 +63,7 @@ public partial class TourListVM : BaseVM
 
         await Shell.Current.GoToAsync(nameof(TourDetailPage), true, new Dictionary<string, object>
         {
-            {"Tour", tour }
+            {"Tour", tour}
         });
     }
 
