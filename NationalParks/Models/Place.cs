@@ -8,8 +8,8 @@ public class Place
     public string ListingDescription { get; set; }
     public List<Image> Images { get; set; }
     public List<Park> RelatedParks { get; set; }
-    public object[] RelatedOrganizations { get; set; }
-    public string[] Tags { get; set; }
+    public List<object> RelatedOrganizations { get; set; }
+    public List<string> Tags { get; set; }
     public string Latitude { get; set; }
     public string Longitude { get; set; }
     public string LatLong { get; set; }
@@ -30,7 +30,7 @@ public class Place
     public string Location { get; set; }
     public string LocationDescription { get; set; }
     public string Credit { get; set; }
-    public object[] Multimedia { get; set; }
+    public List<object> Multimedia { get; set; }
 
     // Derived properties
     public ImageSource MainImage

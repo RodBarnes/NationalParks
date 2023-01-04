@@ -10,18 +10,13 @@ Park list and Campground list are working including Filter by state.  Waiting on
 NOTE: If I end up not being able to filter by Topic or Activity, then these should be considered to be collected only under the DetailVM intead of ListVM and being passed.
 
 
-Test Data
----------
-Alcatraz Island: Park.OperatingHours test set
-
-Camp 4 Campground: regulationsOverview -- in the midst of HTML
-
-Baker Creek Campground: weatherOverview -- no text just the URL
-
-
 Todo & Ideas
 ------------
 ThingToDo, Place, Events, and Tours seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
+
+What to do instead of Eventx/eventx since (apparently) "event" is a reserved word?  Could include the models all the time like I did for Activity.
+
+Add version and other info about app to About page.
 
 Setting for determining which list to display as the default page?
 

@@ -13,10 +13,58 @@
             <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto,*,Auto">
+        <BoxView BackgroundColor="{StaticResource Primary}"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+        <Border StrokeShape="RoundRectangle 10"
+                Grid.Row="0"
+                Grid.Column="1"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="175"
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,0,0,8">
+            <Image Source="{Binding Eventx.MainImage}"
+                   Aspect="AspectFill"
+                   HeightRequest="160"
+                   WidthRequest="160"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="{Binding Eventx.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
+                <Label Text="{Binding Eventx.Description}" Style="{StaticResource LabelMedium}" />
+                <controls:HyperlinkLabel Text="{Binding Eventx.InfoUrl}"
+                                         Url="{Binding Eventx.InfoUrl}"
+                                         IsVisible="{Binding Eventx.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                         Style="{StaticResource LabelMedium}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        <HorizontalStackLayout
+            Grid.ColumnSpan="3"
+            Grid.Row="2"
+            HorizontalOptions="CenterAndExpand">
+            <Button Text="Location" 
+                Command="{Binding OpenMapCommand}"
+                HorizontalOptions="StartAndExpand" 
+                WidthRequest="175" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+            <Button Text="Images" 
+                Command="{Binding GoToImagesCommand}"
+                HorizontalOptions="EndAndExpand" 
+                WidthRequest="175" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
