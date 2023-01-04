@@ -110,6 +110,63 @@ public class DataService
             result = await response.Content.ReadFromJsonAsync<ResultCampgrounds>();
         }
 
+        return result;  
+    }
+
+    public async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
+    {
+        var result = new ResultThingsToDo();
+
+        var url = $"https://developer.nps.gov/api/v1/thingstodo?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
+    {
+        var result = new ResultTours();
+
+        var url = $"https://developer.nps.gov/api/v1/tours?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultTours>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
+    {
+        var result = new ResultPlaces();
+
+        var url = $"https://developer.nps.gov/api/v1/places?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultPlaces>();
+        }
+
         return result;
     }
 }
