@@ -3,22 +3,14 @@
 [QueryProperty(nameof(Models.Tour), "Tour")]
 public partial class TourDetailVM : BaseVM
 {
-    IMap map;
-
     [ObservableProperty]
     Tour tour;
 
     [ObservableProperty]
-    public CollapsibleViewVM alertsVM;
+    public CollapsibleViewVM tagsVM;
 
     [ObservableProperty]
-    public CollapsibleViewVM combinedFeesVM;
-
-    [ObservableProperty]
-    public CollapsibleViewVM operatingHoursVM;
-
-    [ObservableProperty]
-    public CollapsibleViewVM contactsVM;
+    public CollapsibleViewVM stopsVM;
 
     [ObservableProperty]
     public CollapsibleViewVM topicsVM;
@@ -26,25 +18,14 @@ public partial class TourDetailVM : BaseVM
     [ObservableProperty]
     public CollapsibleViewVM activitiesVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM directionsVM;
-
-    [ObservableProperty]
-    public CollapsibleViewVM weatherVM;
-
-    public TourDetailVM(IMap map)
+    public TourDetailVM()
     {
         Title = "Tour";
-        this.map = map;
 
-        AlertsVM = new CollapsibleViewVM("Alerts", false);
-        CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
-        OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
-        ContactsVM = new CollapsibleViewVM("Contacts", false);
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
-        DirectionsVM = new CollapsibleViewVM("Directions", false);
-        WeatherVM = new CollapsibleViewVM("Weather", false);
+        TagsVM = new CollapsibleViewVM("Tags", false);
+        StopsVM = new CollapsibleViewVM("Stops", false);
     }
 
     //[RelayCommand]
