@@ -3,7 +3,7 @@
     public class Park
     {
         public string Id { get; set; }
-        public string URL { get; set; }
+        public string Url { get; set; }
         public string FullName { get; set; }
         public string ParkCode { get; set; }
         public string Description { get; set; }
@@ -67,7 +67,7 @@
                 }
             }
         }
-        public bool HasParkUrl { get => !String.IsNullOrEmpty(URL); }
+        public bool HasUrl { get => !String.IsNullOrEmpty(Url); }
         public bool HasAlerts { get => (Alerts is not null) && Alerts.Count > 0; }
         public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
         public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
