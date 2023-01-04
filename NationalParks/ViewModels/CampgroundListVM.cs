@@ -148,6 +148,7 @@ namespace NationalParks.ViewModels
                 {
                     totalCampgrounds = 0;
                 }
+                Title = $"Campgrounds ({totalItems})";
             }
             catch (Exception ex)
             {

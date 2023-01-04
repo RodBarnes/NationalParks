@@ -177,6 +177,7 @@ public partial class TourListVM : BaseVM
             {
                 totalItems = 0;
             }
+            Title = $"Tours ({totalItems})";
         }
         catch (Exception ex)
         {

@@ -176,6 +176,7 @@ public partial class ParkListVM : BaseVM
             {
                 totalParks = 0;
             }
+            Title = $"Parks ({totalItems})";
         }
         catch (Exception ex)
         {
