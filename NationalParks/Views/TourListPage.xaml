@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:model="clr-namespace:NationalParks.Models"
+             x:Class="NationalParks.Views.TourListPage"
+             x:DataType="vm:TourListVM"
+             Title="{Binding Title}">
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0"
+          BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
+        <RefreshView Command="{Binding GetToursCommand}"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Grid.ColumnSpan="2">
+            <CollectionView ItemsSource="{Binding Tours}"
+                            SelectionMode="None"
+                            RemainingItemsThreshold="2"
+                            RemainingItemsThresholdReachedCommand="{Binding GetToursCommand}">
+                <CollectionView.EmptyView>
+                <Image Source="data_loading_green.png"
+                        HeightRequest="160"
+                        WidthRequest="160"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Park">
+                        <Grid Padding="10,5" HorizontalOptions="Fill">
+                            <Frame HeightRequest="125" 
+                                    Style="{StaticResource ViewCard}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkListVM}}, Path=GoToDetailCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="125"
+                                        Source="{Binding MainImage}"
+                                        WidthRequest="125" />
+                                    <VerticalStackLayout
+                                        VerticalOptions="Center"
+                                        Grid.Column="1"
+                                        Padding="10">
+                                        <Label Text="{Binding Name}" Style="{StaticResource LabelLarge}" />
+                                        <Label Text="{Binding Designation}" Style="{StaticResource LabelMedium}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Text="Filter" 
+                Grid.Row="1" Grid.Column="1"
+                Margin="8"
+                Command="{Binding GoToFilterCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           Grid.RowSpan="2" Grid.ColumnSpan="2"
+                           HorizontalOptions="Fill"
+                           Color="{StaticResource Primary}"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
