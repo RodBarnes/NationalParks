@@ -18,9 +18,9 @@ namespace NationalParks.ViewModels
         readonly IConnectivity connectivity;
         readonly IGeolocation geolocation;
 
-        private int startCampgrounds = 0;
-        private int limitCampgrounds = 20;
-        private int totalCampgrounds = 0;
+        private int startItems = 0;
+        private int limitItems = 20;
+        private int totalItems = 0;
 
         public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
         {
@@ -44,12 +44,7 @@ namespace NationalParks.ViewModels
         public void ClearData()
         {
             Campgrounds.Clear();
-            startCampgrounds = 0;
-        }
-
-        private async void LoadFilterDataAsync()
-        {
-            await LoadStates();
+            startItems = 0;
         }
 
         [RelayCommand]
@@ -140,13 +135,18 @@ namespace NationalParks.ViewModels
                     states += state.Abbreviation;
                 }
 
-                result = await dataService.GetCampgroundsAsync(startCampgrounds, limitCampgrounds, states);
-                startCampgrounds += result.Data.Count;
+                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
+                //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                //foreach (var campground in result.Data)
+                //    Campgrounds.Add(campground);
+
+                result = await dataService.GetCampgroundsAsync(startItems, limitItems, states);
+                startItems += result.Data.Count;
                 foreach (var campground in result.Data)
                     Campgrounds.Add(campground);
-                if (!int.TryParse(result.Total, out totalCampgrounds))
+                if (!int.TryParse(result.Total, out totalItems))
                 {
-                    totalCampgrounds = 0;
+                    totalItems = 0;
                 }
                 Title = $"Campgrounds ({totalItems})";
             }

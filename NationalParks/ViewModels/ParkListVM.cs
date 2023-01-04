@@ -20,9 +20,9 @@ public partial class ParkListVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    private int startParks = 0;
-    private int limitParks = 20;
-    private int totalParks = 0;
+    private int startItems = 0;
+    private int limitItems = 20;
+    private int totalItems = 0;
 
     public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
@@ -52,7 +52,7 @@ public partial class ParkListVM : BaseVM
     public void ClearData()
     {
         Parks.Clear();
-        startParks = 0;
+        startItems = 0;
     }
 
     [RelayCommand]
@@ -165,16 +165,21 @@ public partial class ParkListVM : BaseVM
                 states += state.Abbreviation;
             }
 
-            result = await dataService.GetParksAsync(startParks, limitParks, topics, activities, states);
-            startParks += result.Data.Count;
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
+            //result = System.Text.Json.JsonSerializer.Deserialize<ResultParks>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            //foreach (var park in result.Data)
+            //    Parks.Add(park);
+
+            result = await dataService.GetParksAsync(startItems, limitItems, topics, activities, states);
+            startItems += result.Data.Count;
             foreach (var park in result.Data)
             {
                 Parks.Add(park);
                 await GetAlertsAsync(park);
             }
-            if (!int.TryParse(result.Total, out totalParks))
+            if (!int.TryParse(result.Total, out totalItems))
             {
-                totalParks = 0;
+                totalItems = 0;
             }
             Title = $"Parks ({totalItems})";
         }
