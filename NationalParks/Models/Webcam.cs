@@ -18,7 +18,7 @@
                 }
                 else
                 {
-                    return ImageSource.FromFile("no_image_green.png");
+                    return ImageSource.FromFile("nps.png");
                 }
             }
         }

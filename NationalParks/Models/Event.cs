@@ -54,7 +54,7 @@ public class Event
             if (Images.Count > 0)
                 return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
             else
-                return ImageSource.FromFile("no_image_green.png");
+                return ImageSource.FromFile("nps.png");
         }
     }
     public double DLatitude
