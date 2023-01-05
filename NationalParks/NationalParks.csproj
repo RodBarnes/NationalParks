@@ -23,42 +23,42 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041|AnyCPU'">
 	  <ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
-	  <ApplicationTitle>National Parks</ApplicationTitle>
+	  <ApplicationTitle>NPS Info</ApplicationTitle>
 	</PropertyGroup>
 
 	<ItemGroup>
