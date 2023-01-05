@@ -36,11 +36,9 @@
                                         CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image
-                                        Aspect="AspectFill"
-                                        HeightRequest="125"
-                                        Source="{Binding MainImage}"
-                                        WidthRequest="125" />
+                                    <Image Source="{Binding MainImage}"
+                                           Grid.Column="0"
+                                           Aspect="AspectFill" />
                                     <VerticalStackLayout
                                         VerticalOptions="Center"
                                         Grid.Column="1"
