@@ -31,12 +31,6 @@
         }
 
         [RelayCommand]
-        async Task GoToNpsSite()
-        {
-            await Shell.Current.DisplayAlert($"NPS", $"Go to NPS developer site", "OK");
-        }
-
-        [RelayCommand]
         public void GoToAppInfo()
         {
             AppInfo.ShowSettingsUI();

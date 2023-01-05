@@ -9,11 +9,33 @@
              Title="{Binding Title}">
     <VerticalStackLayout>
         <Frame Style="{StaticResource ViewCard}"
+               Padding="10">
+            <Grid ColumnDefinitions="100,*">
+                <Image Source="no_image_green.png"
+                       Grid.Column="0"
+                       Aspect="AspectFill" />
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
+                    <HorizontalStackLayout
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center"
+                    Margin="0,0,0,10">
+                        <Label Text="{Binding VersionString, StringFormat='Version {0}'}" Style="{StaticResource LabelSmall}"/>
+                        <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelSmall}"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Advanced Applications"
+                      Style="{StaticResource LabelMediumBold}"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center" />
+                    <Label Text="Copyright © 2022"
+                       Style="{StaticResource LabelSmall}"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Frame Style="{StaticResource ViewCard}"
                Padding="10"
                HeightRequest="150">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToNpsSiteCommand}" />
-            </Frame.GestureRecognizers>
             <Grid ColumnDefinitions="100,*">
                 <Image Source="nps.png"
                        Grid.Column="0"
@@ -28,25 +50,6 @@
                                             Style="{StaticResource LabelMedium}"/>
                 </VerticalStackLayout>
             </Grid>
-        </Frame>
-        <Frame Style="{StaticResource ViewCard}"
-               Padding="10">
-            <VerticalStackLayout>
-                <HorizontalStackLayout
-                      VerticalOptions="Center"
-                      HorizontalOptions="Center">
-                    <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}"/>
-                    <Label Text="{Binding VersionString, StringFormat=', Version {0}'}" Style="{StaticResource LabelMedium}"/>
-                    <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelMedium}"/>
-                </HorizontalStackLayout>
-                <Label Text="Advanced Applications"
-                      Style="{StaticResource LabelMediumBold}"
-                      VerticalOptions="Center"
-                      HorizontalOptions="Center" />
-                <Label Text="Copyright © 2022"
-                       Style="{StaticResource LabelSmall}"
-                       HorizontalOptions="Center"/>
-            </VerticalStackLayout>
         </Frame>
         <Button Text="App Info"
                 Margin="10"
