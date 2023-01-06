@@ -6,8 +6,6 @@ Issues
 ------
 Park list and Campground list are working including Filter by state.  Waiting on response to issue https://github.com/nationalparkservice/nps-api-samples/issues/3 regarding use of 'q' parameter.  It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'  But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
 
-NOTE: If I end up not being able to filter by Topic or Activity, then these should be considered to be collected only under the DetailVM intead of ListVM and being passed.
-
 Event API returns everything -- it does not recognize start or limit.  It does have a pageSize and pageNumber.  Maybe those can be used?
 
 Todo & Ideas
@@ -30,12 +28,6 @@ Probably need to be able to move to ParkDetail from CampgroundDetail and from To
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
 Can I turn the CollapsibleView into a UserControl?
-
-Maybe some of the filter-related actions should be in the Filter class?
-
-Since Topics, Activities, and States are used by multiple List pages, can these be stored at the App level?
-
-In Park, can I make the Topics, Activities, and States public ObervableCollections so they're accessible directly from within FilterPage?  This would elminate the need to copy all of these into a new ObservableCollection in Filter.
 
 EllipsisLabel control to display an elipsis at the end of too-long-to-display text?  I think this page might have some related guidance: https://swharden.com/blog/2021-10-16-maui-graphics-measurestring/
 
