@@ -1,6 +1,5 @@
 Status
 ------
-ThingToDo, Place, Events, and Tours seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
 
 
 Issues
@@ -16,19 +15,20 @@ Todo & Ideas
 
 Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
 
-What to do instead of Eventx/eventx since (apparently) "event" is a reserved word?  Could include the models all the time like I did for Activity.
-
-Setting for determining which list to display as the default page?
+The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  Does this justify having a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties)?
 
 Need icons for ThingsToDo.
 
 Maybe a setting that is the user determined states by which to always filter?
 
-Probably need to be able to move to ParkDetail from CampgroundDetail and from TourDetail?
+Setting for determining which list to display as the default page?
+
+If filter is applied, need to visually indicated that (in the header?) when that is in effect.
+
+Probably need to be able to move to ParkDetail from CampgroundDetail and from TourDetail? Example: Maybe the user wants to always filter everthing by three states: OR, WA, CA.  So those could be added and the list always filtered by that.
 
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
-Can I put a CollapsibleView within a CollapsibleView?  I'm thinking like the Operating Hours?
 Can I turn the CollapsibleView into a UserControl?
 
 Maybe some of the filter-related actions should be in the Filter class?

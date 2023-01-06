@@ -30,7 +30,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 Margin="0,0,0,8">
-            <Image Source="{Binding Eventx.MainImage}"
+            <Image Source="{Binding NpsEvent.MainImage}"
                    Aspect="AspectFill"
                    HeightRequest="160"
                    WidthRequest="160"
@@ -41,11 +41,11 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Eventx.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
-                <Label Text="{Binding Eventx.Description}" Style="{StaticResource LabelMedium}" />
-                <controls:HyperlinkLabel Text="{Binding Eventx.InfoUrl}"
-                                         Url="{Binding Eventx.InfoUrl}"
-                                         IsVisible="{Binding Eventx.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                <Label Text="{Binding NpsEvent.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
+                <Label Text="{Binding NpsEvent.Description}" Style="{StaticResource LabelMedium}" />
+                <controls:HyperlinkLabel Text="{Binding NpsEvent.InfoUrl}"
+                                         Url="{Binding NpsEvent.InfoUrl}"
+                                         IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
             </VerticalStackLayout>
         </ScrollView>

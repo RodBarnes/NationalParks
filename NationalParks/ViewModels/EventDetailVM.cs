@@ -6,7 +6,7 @@ public partial class EventDetailVM : BaseVM
     IMap map;
 
     [ObservableProperty]
-    Event eventx;
+    Event npsEvent;
 
     public EventDetailVM(IMap map)
     {
@@ -19,9 +19,9 @@ public partial class EventDetailVM : BaseVM
     {
         try
         {
-            await map.OpenAsync(Eventx.DLatitude, Eventx.DLongitude, new MapLaunchOptions
+            await map.OpenAsync(NpsEvent.DLatitude, NpsEvent.DLongitude, new MapLaunchOptions
             {
-                Name = Eventx.Title,
+                Name = NpsEvent.Title,
                 NavigationMode = NavigationMode.None
             });
         }
@@ -37,7 +37,7 @@ public partial class EventDetailVM : BaseVM
     {
         await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>
         {
-            {"Event", Eventx }
+            {"Event", NpsEvent }
         });
     }
 }

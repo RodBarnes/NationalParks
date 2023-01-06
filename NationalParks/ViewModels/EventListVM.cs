@@ -61,14 +61,14 @@ public partial class EventListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetail(Event eventx)
+    async Task GoToDetail(Event npsEvent)
     {
-        if (eventx == null)
+        if (npsEvent == null)
             return;
 
         await Shell.Current.GoToAsync(nameof(EventDetailPage), true, new Dictionary<string, object>
         {
-            {"Event", eventx}
+            {"Event", npsEvent}
         });
     }
 
@@ -141,8 +141,8 @@ public partial class EventListVM : BaseVM
 
             result = await dataService.GetEventsAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
-            foreach (var eventx in result.Data)
-                Events.Add(eventx);
+            foreach (var npsEvent in result.Data)
+                Events.Add(npsEvent);
 
             if (!int.TryParse(result.Total, out totalItems))
             {
