@@ -1,15 +1,10 @@
 ﻿namespace NationalParks.ViewModels
 {
-    [QueryProperty(nameof(StatesCol), "States")]
     [QueryProperty(nameof(CampgroundVM), "VM")]
     public partial class CampgroundFilterVM : BaseVM
     {
         // Query properties
-        public Collection<Models.State> StatesCol { get; set; }
         public CampgroundListVM CampgroundVM { get; set; }
-
-        // Displayed values
-        public ObservableCollection<Models.State> States { get; } = new();
 
         // Selected values
         public ObservableCollection<object> SelectedStates { get; set; } = new();
@@ -21,12 +16,6 @@
 
         public void PopulateData()
         {
-            // Populate the available items
-            foreach (var state in StatesCol)
-            {
-                States.Add(state);
-            }
-
             // Populate the selected items
             foreach (var state in CampgroundVM.Filter.States)
             {

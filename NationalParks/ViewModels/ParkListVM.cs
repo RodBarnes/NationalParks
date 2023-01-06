@@ -6,11 +6,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ParkListVM : BaseVM
 {
-    // For holding the available filter selections
-    private Collection<Models.Topic> Topics { get; } = new();
-    private Collection<Models.Activity> Activities { get; } = new();
-    private Collection<Models.State> States { get; } = new();
-
     readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -52,9 +47,15 @@ public partial class ParkListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-        await GetAllTopicsAsync();
-        await GetAllActivitiesAsync();
-        await LoadStates();
+
+        if (Filter.StateSelections.Count == 0)
+            await LoadStates();
+
+        if (Filter.ActivitySelections.Count == 0)
+            await GetAllActivitiesAsync();
+
+        if (Filter.TopicSelections.Count == 0)
+            await GetAllTopicsAsync();
 
         IsPopulated = true;
     }
@@ -115,9 +116,6 @@ public partial class ParkListVM : BaseVM
     {
         await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
         {
-            {"Topics", Topics },
-            {"Activities", Activities },
-            {"States", States},
             {"VM", this }
         });
     }
@@ -232,7 +230,7 @@ public partial class ParkListVM : BaseVM
 
     async Task GetAllTopicsAsync()
     {
-        if (Topics?.Count > 0)
+        if (Filter.TopicSelections?.Count > 0)
             return;
 
         try
@@ -249,7 +247,7 @@ public partial class ParkListVM : BaseVM
 
                 startTopics += result.Data.Count;
                 foreach (var topic in result.Data)
-                    Topics.Add(topic);
+                    Filter.TopicSelections.Add(topic);
             }
         }
         catch (Exception ex)
@@ -261,7 +259,7 @@ public partial class ParkListVM : BaseVM
 
     async Task GetAllActivitiesAsync()
     {
-        if (Activities?.Count > 0)
+        if (Filter.ActivitySelections?.Count > 0)
             return;
 
         try
@@ -278,7 +276,7 @@ public partial class ParkListVM : BaseVM
 
                 startActivities += result.Data.Count;
                 foreach (var activity in result.Data)
-                    Activities.Add(activity);
+                    Filter.ActivitySelections.Add(activity);
             }
         }
         catch (Exception ex)
@@ -290,7 +288,7 @@ public partial class ParkListVM : BaseVM
 
     async Task LoadStates()
     {
-        if (States?.Count > 0)
+        if (Filter.StateSelections?.Count > 0)
             return;
 
         using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
@@ -300,7 +298,7 @@ public partial class ParkListVM : BaseVM
         {
             foreach (var item in result.Data)
             {
-                States.Add(item);
+                Filter.StateSelections.Add(item);
             }
         }
     }

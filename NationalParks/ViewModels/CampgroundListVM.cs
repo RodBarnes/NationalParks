@@ -6,9 +6,6 @@ namespace NationalParks.ViewModels
     [QueryProperty(nameof(Filter), "Filter")]
     public partial class CampgroundListVM : BaseVM
     {
-        // For holding the available filter selections
-        private Collection<Models.State> States { get; } = new();
-
         readonly DataService dataService;
         readonly IConnectivity connectivity;
         readonly IGeolocation geolocation;
@@ -50,7 +47,9 @@ namespace NationalParks.ViewModels
         public async void PopulateData()
         {
             await GetItemsAsync();
-            await LoadStates();
+
+            if (Filter.StateSelections.Count == 0)
+                await LoadStates();
 
             IsPopulated = true;
         }
@@ -78,7 +77,6 @@ namespace NationalParks.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(CampgroundFilterPage), true, new Dictionary<string, object>
         {
-            {"States", States},
             {"VM", this }
         });
         }
@@ -173,7 +171,7 @@ namespace NationalParks.ViewModels
 
         async Task LoadStates()
         {
-            if (States?.Count > 0)
+            if (Filter.StateSelections?.Count > 0)
                 return;
 
             using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
@@ -183,7 +181,7 @@ namespace NationalParks.ViewModels
             {
                 foreach (var item in result.Data)
                 {
-                    States.Add(item);
+                    Filter.StateSelections.Add(item);
                 }
             }
         }

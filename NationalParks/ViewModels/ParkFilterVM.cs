@@ -1,21 +1,10 @@
 ﻿namespace NationalParks.ViewModels
 {
-    [QueryProperty(nameof(TopicsCol), "Topics")]
-    [QueryProperty(nameof(ActivitiesCol), "Activities")]
-    [QueryProperty(nameof(StatesCol), "States")]
     [QueryProperty(nameof(ParkVM), "VM")]
     public partial class ParkFilterVM : BaseVM
     {
         // Query properties
-        public Collection<Models.Topic> TopicsCol { get; set; }
-        public Collection<Models.Activity> ActivitiesCol { get; set; }
-        public Collection<Models.State> StatesCol { get; set; }
         public ParkListVM ParkVM { get; set; }
-
-        // Displayed values
-        public ObservableCollection<Models.Topic> Topics { get; } = new();
-        public ObservableCollection<Models.Activity> Activities { get; } = new();
-        public ObservableCollection<Models.State> States { get; } = new();
 
         // Selected values
         public ObservableCollection<object> SelectedTopics { get; set; } = new();
@@ -29,22 +18,6 @@
 
         public void PopulateData()
         {
-            // Populate the available items
-            foreach (var topic in TopicsCol)
-            {
-                Topics.Add(topic);
-            }
-
-            foreach (var activity in ActivitiesCol)
-            {
-                Activities.Add(activity);
-            }
-
-            foreach (var state in StatesCol)
-            {
-                States.Add(state);
-            }
-
             // Populate the selected items
             foreach (var topic in ParkVM.Filter.Topics)
             {

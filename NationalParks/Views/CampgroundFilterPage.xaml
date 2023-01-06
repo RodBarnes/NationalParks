@@ -6,6 +6,9 @@
              x:DataType="vm:CampgroundFilterVM"
              x:Class="NationalParks.Views.CampgroundFilterPage"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <model:Filter x:Key="Filter"/>
+    </ContentPage.Resources>
     <Grid
         ColumnDefinitions="*,*"
         RowDefinitions="25,*,25,*,25,*,60"
@@ -59,7 +62,7 @@
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="5" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView ItemsSource="{Binding States}"
+            <CollectionView ItemsSource="{Binding Source={x:Static model:Filter.StateSelections}}"
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>
