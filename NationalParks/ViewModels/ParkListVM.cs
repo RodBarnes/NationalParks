@@ -1,5 +1,4 @@
 ﻿using NationalParks.Services;
-using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
@@ -16,7 +15,7 @@ public partial class ParkListVM : BaseVM
 
     public ObservableCollection<Models.Park> Parks { get; } = new();
 
-    public Filter Filter { get; set; } = new Filter();
+    public Filter Filter { get; set; }
 
     [ObservableProperty]
     int itemsRefreshThreshold = -1;
@@ -47,15 +46,6 @@ public partial class ParkListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-
-        if (Filter.StateSelections.Count == 0)
-            await LoadStates();
-
-        if (Filter.ActivitySelections.Count == 0)
-            await GetAllActivitiesAsync();
-
-        if (Filter.TopicSelections.Count == 0)
-            await GetAllTopicsAsync();
 
         IsPopulated = true;
     }
@@ -141,32 +131,35 @@ public partial class ParkListVM : BaseVM
             string topics = "";
             string activities = "";
 
-            // Apply any filters prior to getting the items
-            foreach (var topic in Filter.Topics)
+            if (Filter is not null)
             {
-                if (topics.Length > 0)
+                // Apply any filters prior to getting the items
+                foreach (var topic in Filter.Topics)
                 {
-                    topics += "%2D";
+                    if (topics.Length > 0)
+                    {
+                        topics += "%2D";
+                    }
+                    topics += topic.Id;
                 }
-                topics += topic.Id;
-            }
 
-            foreach (var activity in Filter.Activities)
-            {
-                if (activities.Length > 0)
+                foreach (var activity in Filter.Activities)
                 {
-                    activities += "%2D";
+                    if (activities.Length > 0)
+                    {
+                        activities += "%2D";
+                    }
+                    activities += activity.Id;
                 }
-                activities += activity.Id;
-            }
 
-            foreach (var state in Filter.States)
-            {
-                if (states.Length > 0)
+                foreach (var state in Filter.States)
                 {
-                    states += ",";
+                    if (states.Length > 0)
+                    {
+                        states += ",";
+                    }
+                    states += state.Abbreviation;
                 }
-                states += state.Abbreviation;
             }
 
             //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
@@ -225,81 +218,6 @@ public partial class ParkListVM : BaseVM
         {
             Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-    }
-
-    async Task GetAllTopicsAsync()
-    {
-        if (Filter.TopicSelections?.Count > 0)
-            return;
-
-        try
-        {
-            int startTopics = 0;
-            int totalTopics = 1;
-
-            while (totalTopics > startTopics)
-            {
-                var result = await dataService.GetTopicsAsync(startTopics);
-
-                if (!int.TryParse(result.Total, out totalTopics))
-                    totalTopics = 0;
-
-                startTopics += result.Data.Count;
-                foreach (var topic in result.Data)
-                    Filter.TopicSelections.Add(topic);
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Unable to get data items: {ex.Message}");
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-    }
-
-    async Task GetAllActivitiesAsync()
-    {
-        if (Filter.ActivitySelections?.Count > 0)
-            return;
-
-        try
-        {
-            int startActivities = 0;
-            int totalActivities = 1;
-
-            while (totalActivities > startActivities)
-            {
-                var result = await dataService.GetActivitiesAsync(startActivities);
-
-                if (!int.TryParse(result.Total, out totalActivities))
-                    totalActivities = 0;
-
-                startActivities += result.Data.Count;
-                foreach (var activity in result.Data)
-                    Filter.ActivitySelections.Add(activity);
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Unable to get data items: {ex.Message}");
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-    }
-
-    async Task LoadStates()
-    {
-        if (Filter.StateSelections?.Count > 0)
-            return;
-
-        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
-        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-        if (result != null)
-        {
-            foreach (var item in result.Data)
-            {
-                Filter.StateSelections.Add(item);
-            }
         }
     }
 }

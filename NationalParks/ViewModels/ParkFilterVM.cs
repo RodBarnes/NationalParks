@@ -1,8 +1,12 @@
-﻿namespace NationalParks.ViewModels
+﻿using NationalParks.Services;
+
+namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(ParkVM), "VM")]
     public partial class ParkFilterVM : BaseVM
     {
+        readonly DataService dataService;
+
         // Query properties
         public ParkListVM ParkVM { get; set; }
 
@@ -11,13 +15,17 @@
         public ObservableCollection<object> SelectedActivities { get; set; } = new();
         public ObservableCollection<object> SelectedStates { get; set; } = new();
 
-        public ParkFilterVM()
+        public ParkFilterVM(DataService dataService)
         {
             Title = "Filter";
+            this.dataService = dataService;
         }
 
         public void PopulateData()
         {
+            if (ParkVM.Filter is null)
+                ParkVM.Filter = new Filter(dataService);
+
             // Populate the selected items
             foreach (var topic in ParkVM.Filter.Topics)
             {

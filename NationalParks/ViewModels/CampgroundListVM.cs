@@ -1,5 +1,4 @@
 ﻿using NationalParks.Services;
-using System.Text.Json;
 
 namespace NationalParks.ViewModels
 {
@@ -47,9 +46,6 @@ namespace NationalParks.ViewModels
         public async void PopulateData()
         {
             await GetItemsAsync();
-
-            if (Filter.StateSelections.Count == 0)
-                await LoadStates();
 
             IsPopulated = true;
         }
@@ -133,14 +129,17 @@ namespace NationalParks.ViewModels
                 ResultCampgrounds result;
                 string states = "";
 
-                // Apply any filters prior to getting the items
-                foreach (var state in Filter.States)
+                if (Filter is not null)
                 {
-                    if (states.Length > 0)
+                    // Apply any filters prior to getting the items
+                    foreach (var state in Filter.States)
                     {
-                        states += ",";
+                        if (states.Length > 0)
+                        {
+                            states += ",";
+                        }
+                        states += state.Abbreviation;
                     }
-                    states += state.Abbreviation;
                 }
 
                 //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
@@ -166,23 +165,6 @@ namespace NationalParks.ViewModels
             finally
             {
                 IsBusy = false;
-            }
-        }
-
-        async Task LoadStates()
-        {
-            if (Filter.StateSelections?.Count > 0)
-                return;
-
-            using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
-            var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-            if (result != null)
-            {
-                foreach (var item in result.Data)
-                {
-                    Filter.StateSelections.Add(item);
-                }
             }
         }
     }
