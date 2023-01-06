@@ -76,14 +76,14 @@ namespace NationalParks.Models
                 }
             }
         }
-        public bool HasReservationUrl { get => !String.IsNullOrEmpty(ReservationUrl); }
-        public bool HasRegulationsUrl { get => !String.IsNullOrEmpty(RegulationsUrl); }
-        public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsOverview) || (PhysicalAddress is not null); }
-        public bool HasWeather { get => !String.IsNullOrEmpty(WeatherOverview); }
-        public bool HasReservations { get => !String.IsNullOrEmpty(ReservationInfo); }
-        public bool HasRegulations { get => !String.IsNullOrEmpty(RegulationsOverview); }
-        public bool HasFees { get => (Fees is not null) && Fees.Count > 0; }
-        public bool HasOperatingHours { get => (OperatingHours is not null) && OperatingHours.Count > 0; }
-        public bool HasContacts { get => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0)); }
+        public bool HasReservationUrl => !String.IsNullOrEmpty(ReservationUrl);
+        public bool HasRegulationsUrl => !String.IsNullOrEmpty(RegulationsUrl);
+        public bool HasDirections => !String.IsNullOrEmpty(DirectionsOverview) || (PhysicalAddress is not null);
+        public bool HasWeather => !String.IsNullOrEmpty(WeatherOverview);
+        public bool HasReservations => !String.IsNullOrEmpty(ReservationInfo);
+        public bool HasRegulations => !String.IsNullOrEmpty(RegulationsOverview);
+        public bool HasFees => (Fees is not null) && Fees.Count > 0;
+        public bool HasOperatingHours => (OperatingHours is not null) && OperatingHours.Count > 0;
+        public bool HasContacts => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0));
     }
 }

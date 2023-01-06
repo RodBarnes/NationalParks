@@ -55,8 +55,8 @@ public class Tour
             }
         }
     }
-    public bool HasTags { get => (Tags is not null) && Tags.Count > 0; }
-    public bool HasStops { get => (Stops is not null) && Stops.Count > 0; }
-    public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
-    public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
+    public bool HasTags => (Tags is not null) && Tags.Count > 0;
+    public bool HasStops => (Stops is not null) && Stops.Count > 0;
+    public bool HasTopics => (Topics is not null) && Topics.Count > 0;
+    public bool HasActivities => (Activities is not null) && Activities.Count > 0;
 }

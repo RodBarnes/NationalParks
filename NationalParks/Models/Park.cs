@@ -67,14 +67,14 @@
                 }
             }
         }
-        public bool HasUrl { get => !String.IsNullOrEmpty(Url); }
-        public bool HasAlerts { get => (Alerts is not null) && Alerts.Count > 0; }
-        public bool HasTopics { get => (Topics is not null) && Topics.Count > 0; }
-        public bool HasActivities { get => (Activities is not null) && Activities.Count > 0; }
-        public bool HasFees { get => ((EntranceFees is not null) && EntranceFees.Count > 0) || ((EntrancePasses is not null) && EntrancePasses.Count > 0); }
-        public bool HasDirections { get => !String.IsNullOrEmpty(DirectionsInfo) || (PhysicalAddress is not null); }
-        public bool HasWeather { get => !String.IsNullOrEmpty(WeatherInfo); }
-        public bool HasOperatingHours { get => (OperatingHours is not null) && OperatingHours.Count > 0; }
-        public bool HasContacts { get => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0)); }
+        public bool HasUrl => !String.IsNullOrEmpty(Url);
+        public bool HasAlerts => (Alerts is not null) && Alerts.Count > 0;
+        public bool HasTopics => (Topics is not null) && Topics.Count > 0;
+        public bool HasActivities => (Activities is not null) && Activities.Count > 0;
+        public bool HasFees => ((EntranceFees is not null) && EntranceFees.Count > 0) || ((EntrancePasses is not null) && EntrancePasses.Count > 0);
+        public bool HasDirections => !String.IsNullOrEmpty(DirectionsInfo) || (PhysicalAddress is not null);
+        public bool HasWeather => !String.IsNullOrEmpty(WeatherInfo);
+        public bool HasOperatingHours => (OperatingHours is not null) && OperatingHours.Count > 0;
+        public bool HasContacts => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0));
     }
 }

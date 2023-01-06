@@ -71,5 +71,11 @@ public class Place
             }
         }
     }
-    public bool HasUrl { get => !String.IsNullOrEmpty(Url); }
+    public bool HasBodyText => !String.IsNullOrEmpty(BodyText);
+    public bool HasUrl => !String.IsNullOrEmpty(Url);
+    public bool HasTags => (Tags is not null) && Tags.Count > 0;
+    public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
+    public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
+    public bool HasQuickFacts => (QuickFacts is not null) && QuickFacts.Count > 0;
+    public bool HasAmenities => (Amenities is not null) && Amenities.Count > 0;
 }
