@@ -7,20 +7,9 @@
         [ObservableProperty]
         Campground campground;
 
-        public ObservableCollection<Models.Image> Images { get; } = new();
-
         public CampgroundImageListVM()
         {
             Title = "Images";
-        }
-
-        public void PopulateData()
-        {
-            foreach (var image in Campground.Images)
-            {
-                //var img = ImageSource.FromUri(new Uri(image.Url));
-                Images.Add(image);
-            }
         }
 
         [RelayCommand]
