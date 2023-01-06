@@ -1,6 +1,6 @@
 Status
 ------
-Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
+ThingToDo, Place, Events, and Tours seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
 
 
 Issues
@@ -13,7 +13,8 @@ Event API returns everything -- it does not recognize start or limit.  It does h
 
 Todo & Ideas
 ------------
-ThingToDo, Place, Events, and Tours seem likely appropriate for a list separate from Parks and Campgrounds.  The API for Tour relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  So, it seems there may be reason to have a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties).
+
+Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
 
 What to do instead of Eventx/eventx since (apparently) "event" is a reserved word?  Could include the models all the time like I did for Activity.
 

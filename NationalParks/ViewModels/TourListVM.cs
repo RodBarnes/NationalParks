@@ -6,11 +6,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class TourListVM : BaseVM
 {
-    public ObservableCollection<Models.Tour> Tours { get; } = new();
-
-    [ObservableProperty]
-    bool isRefreshing;
-
     // For holding the available filter selections
     private Collection<Models.Topic> Topics { get; } = new();
     private Collection<Models.Activity> Activities { get; } = new();
@@ -24,7 +19,26 @@ public partial class TourListVM : BaseVM
     private int limitItems = 20;
     private int totalItems = 0;
 
-    public bool IsPopulated { get; set; }
+    public ObservableCollection<Models.Tour> Tours { get; } = new();
+
+    public Filter Filter { get; set; } = new Filter();
+
+    [ObservableProperty]
+    int itemsRefreshThreshold = -1;
+
+    private bool isPopulated = false;
+    public bool IsPopulated
+    {
+        get => isPopulated;
+        set
+        {
+            if (value == true)
+            {
+                ItemsRefreshThreshold = 2;
+            }
+            isPopulated = value;
+        }
+    }
 
     public TourListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
@@ -35,18 +49,14 @@ public partial class TourListVM : BaseVM
         this.geolocation = geolocation;
     }
 
-    public Filter Filter { get; set; } = new Filter();
-
     public async void PopulateData()
     {
-        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
-        // upon first displaying the page.  If that property is removed from the CollectionView, this
-        // explicit invocation is required.
-        //await GetItemsAsync();
-
+        await GetItemsAsync();
         await GetAllTopicsAsync();
         await GetAllActivitiesAsync();
         await LoadStates();
+
+        IsPopulated = true;
     }
 
     public void ClearData()
@@ -188,7 +198,6 @@ public partial class TourListVM : BaseVM
         finally
         {
             IsBusy = false;
-            IsRefreshing = false;
         }
     }
 

@@ -6,11 +6,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class EventListVM : BaseVM
 {
-    public ObservableCollection<Models.Event> Events { get; } = new();
-
-    [ObservableProperty]
-    bool isRefreshing;
-
     // For holding the available filter selections
     private Collection<Models.State> States { get; } = new();
 
@@ -22,9 +17,25 @@ public partial class EventListVM : BaseVM
     private int limitItems = 20;
     private int totalItems = 0;
 
-    public bool IsPopulated { get; set; }
-
+    public ObservableCollection<Models.Event> Events { get; } = new();
     public Filter Filter { get; set; } = new Filter();
+
+    [ObservableProperty]
+    int itemsRefreshThreshold = -1;
+
+    private bool isPopulated = false;
+    public bool IsPopulated
+    {
+        get => isPopulated;
+        set
+        {
+            if (value == true)
+            {
+                ItemsRefreshThreshold = 2;
+            }
+            isPopulated = value;
+        }
+    }
 
     public EventListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
     {
@@ -37,10 +48,7 @@ public partial class EventListVM : BaseVM
 
     public async void PopulateData()
     {
-        // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
-        // upon first displaying the page.  If that property is removed from the CollectionView, this
-        // explicit invocation is required.
-        //await GetItemsAsync();
+        await GetItemsAsync();
         await LoadStates();
 
         IsPopulated = true;
@@ -150,7 +158,6 @@ public partial class EventListVM : BaseVM
         finally
         {
             IsBusy = false;
-            IsRefreshing = false;
         }
     }
 

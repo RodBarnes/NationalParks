@@ -11,48 +11,45 @@
           RowDefinitions="*,Auto"
           RowSpacing="0"
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <RefreshView Command="{Binding GetItemsCommand}"
-                     IsRefreshing="{Binding IsRefreshing}"
-                     Grid.ColumnSpan="2">
-            <CollectionView ItemsSource="{Binding Places}"
-                            SelectionMode="None"
-                            RemainingItemsThreshold="2"
-                            RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
-                <CollectionView.EmptyView>
-                    <Image Source="data_loading_green.png"
-                        HeightRequest="160"
-                        WidthRequest="160"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                </CollectionView.EmptyView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Place">
-                        <Grid Padding="10,5" HorizontalOptions="Fill">
-                            <Frame HeightRequest="125" 
-                                    Style="{StaticResource ViewCard}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceListVM}}, Path=GoToDetailCommand}"
-                                        CommandParameter="{Binding .}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Source="{Binding MainImage}"
-                                           Grid.Column="0"
-                                           Aspect="AspectFill" />
-                                    <VerticalStackLayout
-                                        VerticalOptions="Center"
-                                        Grid.Column="1"
-                                        Padding="10">
-                                        <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
-                                        <Label Text="{Binding LocationDescription}" Style="{StaticResource LabelMedium}" />
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+        <CollectionView ItemsSource="{Binding Places}"
+                        Grid.ColumnSpan="2"
+                        SelectionMode="None"
+                        RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
+                        RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
+            <CollectionView.EmptyView>
+                <Image Source="data_loading_green.png"
+                    HeightRequest="160"
+                    WidthRequest="160"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Place">
+                    <Grid Padding="10,5" HorizontalOptions="Fill">
+                        <Frame HeightRequest="125" 
+                                Style="{StaticResource ViewCard}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceListVM}}, Path=GoToDetailCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <Image Source="{Binding MainImage}"
+                                        Grid.Column="0"
+                                        Aspect="AspectFill" />
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
+                                    <Label Text="{Binding LocationDescription}" Style="{StaticResource LabelMedium}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Button Text="Closest"
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"

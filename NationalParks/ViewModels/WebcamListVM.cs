@@ -4,21 +4,41 @@ namespace NationalParks.ViewModels
 {
     public partial class WebcamListVM : BaseVM
     {
-        public ObservableCollection<Models.Webcam> Webcams { get; } = new();
-
-        [ObservableProperty]
-        bool isRefreshing;
-
         readonly DataService dataService;
         readonly IConnectivity connectivity;
 
         private int startWebcams = 0;
+        public ObservableCollection<Models.Webcam> Webcams { get; } = new();
+
+        [ObservableProperty]
+        int itemsRefreshThreshold = -1;
+
+        private bool isPopulated = false;
+        public bool IsPopulated
+        {
+            get => isPopulated;
+            set
+            {
+                if (value == true)
+                {
+                    ItemsRefreshThreshold = 2;
+                }
+                isPopulated = value;
+            }
+        }
 
         public WebcamListVM(DataService dataService, IConnectivity connectivity)
         {
             Title = "Webcams";
             this.dataService = dataService;
             this.connectivity = connectivity;
+        }
+
+        public async void PopulateData()
+        {
+            await GetItemsAsync();
+
+            IsPopulated = true;
         }
 
         [RelayCommand]
@@ -81,7 +101,6 @@ namespace NationalParks.ViewModels
             finally
             {
                 IsBusy = false;
-                IsRefreshing = false;
             }
         }
     }
