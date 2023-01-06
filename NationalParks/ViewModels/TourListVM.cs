@@ -42,7 +42,7 @@ public partial class TourListVM : BaseVM
         // The RemainingItemsThresholdReachedCommand of the CollectionView will invoke this
         // upon first displaying the page.  If that property is removed from the CollectionView, this
         // explicit invocation is required.
-        //await GetToursAsync();
+        //await GetItemsAsync();
 
         await GetAllTopicsAsync();
         await GetAllActivitiesAsync();
