@@ -26,7 +26,7 @@ namespace NationalParks.Models
 
         public async Task PopulateData()
         {
-            // Populate the available sections
+            // Populate the available selections
             await LoadStates();
             await GetAllActivitiesAsync();
             await GetAllTopicsAsync();
