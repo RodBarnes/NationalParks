@@ -8,7 +8,7 @@ public class Place
     public string ListingDescription { get; set; }
     public List<Image> Images { get; set; }
     public List<Park> RelatedParks { get; set; }
-    public List<object> RelatedOrganizations { get; set; }
+    public List<Organization> RelatedOrganizations { get; set; }
     public List<string> Tags { get; set; }
     public string Latitude { get; set; }
     public string Longitude { get; set; }
