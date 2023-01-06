@@ -30,7 +30,7 @@ public class Place
     public string Location { get; set; }
     public string LocationDescription { get; set; }
     public string Credit { get; set; }
-    public List<object> Multimedia { get; set; }
+    public List<Multimedia> Multimedia { get; set; }
 
     // Derived properties
     public ImageSource MainImage
@@ -78,4 +78,5 @@ public class Place
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
     public bool HasQuickFacts => (QuickFacts is not null) && QuickFacts.Count > 0;
     public bool HasAmenities => (Amenities is not null) && Amenities.Count > 0;
+    public bool HasMultiMedia => (Multimedia is not null) && Multimedia.Count > 0;
 }

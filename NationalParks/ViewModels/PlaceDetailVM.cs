@@ -8,11 +8,35 @@ public partial class PlaceDetailVM : BaseVM
     [ObservableProperty]
     Place place;
 
+    [ObservableProperty]
+    public CollapsibleViewVM bodyTextVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM tagsVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM organizationsVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM quickFactsVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM amenitiesVM;
+
+    [ObservableProperty]
+    public CollapsibleViewVM multimediaVM;
+
     public PlaceDetailVM(IMap map)
     {
         Title = "Place";
         this.map = map;
 
+        BodyTextVM = new CollapsibleViewVM("Full Description", false);
+        TagsVM = new CollapsibleViewVM("Tags", false);
+        OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
+        QuickFactsVM = new CollapsibleViewVM("Quick Facts", false);
+        AmenitiesVM = new CollapsibleViewVM("Amenities", false);
+        MultimediaVM = new CollapsibleViewVM("Multimedia", false);
     }
 
     [RelayCommand]
