@@ -3,6 +3,8 @@
     [QueryProperty(nameof(Models.Campground), "Campground")]
     public partial class CampgroundDetailVM : BaseVM
     {
+        IMap map;
+
         [ObservableProperty]
         Campground campground;
 
@@ -35,8 +37,6 @@
 
         [ObservableProperty]
         public CollapsibleViewVM regulationsVM;
-
-        IMap map;
 
         public CampgroundDetailVM(IMap map)
         {
