@@ -9,6 +9,9 @@ public partial class PlaceDetailVM : BaseVM
     Place place;
 
     [ObservableProperty]
+    public CollapsibleViewVM relatedParksVM;
+
+    [ObservableProperty]
     public CollapsibleViewVM bodyTextVM;
 
     [ObservableProperty]
@@ -31,6 +34,7 @@ public partial class PlaceDetailVM : BaseVM
         Title = "Place";
         this.map = map;
 
+        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         TagsVM = new CollapsibleViewVM("Tags", false);
         OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);

@@ -46,6 +46,40 @@
                                          Url="{Binding Place.Url}"
                                          IsVisible="{Binding Place.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
+                <!-- Related Parks -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Place.HasRelatedParks, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RelatedParksVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding RelatedParksVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding RelatedParksVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Place.RelatedParks}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding RelatedParksVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Park">
+                                    <VerticalStackLayout Margin="5">
+                                        <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceDetailVM}}, Path=GoToParkCommand}"
+                                                                      CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Body Text -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Place.HasBodyText, Converter={StaticResource BoolToTrueFalseConverter}}">
