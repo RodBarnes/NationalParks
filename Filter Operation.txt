@@ -1,0 +1,14 @@
+Pages that support filtering operate in this way:
+	- When the page is displayed, OnAppearing() (in the code-behind) runs PopulateData() (on the view model).
+	- PopulateData() invokes GetItemsAsync() and, since no filter has been configured, it just returns items. 
+	- After data is retrieved, IsPopulated is set 'true' and RemainingItemsThreshold is changed from "-1" to "2".
+	- With RemainingItemsThreshold set to a positive value, it will invoke GetItemsAsync() as needed to get items.
+	- User taps [Filter] and user selects items to filter; e.g., State.
+	- User taps [Apply] which clears the Items, sets IsPopulated to 'false', and routes back to the ListPage.
+	- Since IsPopulated is 'false', when OnAppearing() fires it invokes PopulateData().
+	- In GetItemsAsync(), the Filter.Selected* are accessed and applied to the URL before calling the API.
+	- Now, the items returned only match the filter in the URL; e.g., only shows the filtered-by-State items.
+	- User taps [Filter] and taps [Clear] to remove all filters.
+	- User taps [Apply] which clears the Items, sets IsPopulated to 'false', and routes back to the ListPage.
+	- Since IsPopulated is 'false', when OnAppearing() fires it invokes PopulateData().
+	- In GetItemsAsync() the Filter.Selected* is processed but nothing is being filtered so the URL is back to normal.

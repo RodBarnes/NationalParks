@@ -15,18 +15,6 @@ Places is not returned in any (recgonizable) sorted order and doesn't provide a 
 
 Todo & Ideas
 ------------
-
-Filter is working in this way:
-	- Initial list is displayed and OnAppearing runs PopulateData()
-	- After data is retrieved, RemainingItemsThreshold is changed from "-1" to "2"
-	- User taps [Filter] and user selects State
-	- User taps [Apply] which clears the Itemslist and then goes back to the ListPage
-	- List is empty but OnAppearing invokes PopulateData()
-	RemainingItemsThreshold is set to "2" so it invokes GetItemsAsync() to fill the list.
-	- The Filter.SelectedStates is accessed and applied to the URL before the API call
-	- So the list only shows the filtered-by-State items.
-
-
 Maybe totalItems should be an observable property and have the title in the page be like "Name ({TotalItems})" so that it just gets updated each time the totalItems changes -- which should only happen after each GetItemsAsync().
 
 After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.
