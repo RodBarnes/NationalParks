@@ -1,0 +1,1 @@
+To use a JSON file for testing instead of the API: Move the file from /Raw to /Resources/Raw.  This will ensure it is packaged with the app and be available as a resource.
