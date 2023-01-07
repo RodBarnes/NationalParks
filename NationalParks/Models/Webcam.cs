@@ -22,14 +22,22 @@
         {
             get
             {
+                ImageSource source = null;
+
                 if (Images.Count > 0)
                 {
-                    return ImageSource.FromUri(new Uri(Url));
+                    foreach (var image in Images)
+                    {
+                        if (!String.IsNullOrEmpty(image.Url))
+                        {
+                            source = ImageSource.FromUri(new Uri(image.Url));
+                        }
+                    }
                 }
-                else
-                {
-                    return ImageSource.FromFile("nps.png");
-                }
+
+                source ??= ImageSource.FromFile("nps.png");
+
+                return source;
             }
         }
     }

@@ -37,10 +37,22 @@ public class Place
     {
         get
         {
+            ImageSource source = null;
+
             if (Images.Count > 0)
-                return ImageSource.FromUri(new Uri(Images.FirstOrDefault().Url));
-            else
-                return ImageSource.FromFile("nps.png");
+            {
+                foreach (var image in Images)
+                {
+                    if (!String.IsNullOrEmpty(image.Url))
+                    {
+                        source = ImageSource.FromUri(new Uri(image.Url));
+                    }
+                }
+            }
+
+            source ??= ImageSource.FromFile("nps.png");
+
+            return source;
         }
     }
     public double DLatitude
