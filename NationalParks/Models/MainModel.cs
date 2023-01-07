@@ -19,7 +19,7 @@
         {
             ImageSource source = null;
 
-            if (Images.Count > 0)
+            if (Images?.Count > 0)
             {
                 foreach (var image in Images)
                 {
