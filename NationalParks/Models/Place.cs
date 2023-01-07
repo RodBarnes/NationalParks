@@ -1,17 +1,12 @@
 ﻿namespace NationalParks.Models;
 
-public class Place
+public class Place : MainModel
 {
-    public string Id { get; set; }
-    public string Url { get; set; }
     public string Title { get; set; }
     public string ListingDescription { get; set; }
-    public List<Image> Images { get; set; }
     public List<Park> RelatedParks { get; set; }
     public List<Organization> RelatedOrganizations { get; set; }
     public List<string> Tags { get; set; }
-    public string Latitude { get; set; }
-    public string Longitude { get; set; }
     public string LatLong { get; set; }
     public string BodyText { get; set; }
     public string AudioDescription { get; set; }
@@ -33,58 +28,7 @@ public class Place
     public List<Multimedia> Multimedia { get; set; }
 
     // Derived properties
-    public ImageSource MainImage
-    {
-        get
-        {
-            ImageSource source = null;
-
-            if (Images.Count > 0)
-            {
-                foreach (var image in Images)
-                {
-                    if (!String.IsNullOrEmpty(image.Url))
-                    {
-                        source = ImageSource.FromUri(new Uri(image.Url));
-                    }
-                }
-            }
-
-            source ??= ImageSource.FromFile("nps.png");
-
-            return source;
-        }
-    }
-    public double DLatitude
-    {
-        get
-        {
-            if (double.TryParse(Latitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
-    public double DLongitude
-    {
-        get
-        {
-            if (double.TryParse(Longitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
     public bool HasBodyText => !String.IsNullOrEmpty(BodyText);
-    public bool HasUrl => !String.IsNullOrEmpty(Url);
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
     public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;

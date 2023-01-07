@@ -1,13 +1,12 @@
 ﻿namespace NationalParks.Models;
 
-public class Event
+public class Event : MainModel
 {
     public string Location { get; set; }
     public string UpdateUser { get; set; }
     public string ContactName { get; set; }
     public string ContacttelePhoneNumber { get; set; }
     public string RecurrenceDateEnd { get; set; }
-    public string Longitude { get; set; }
     public string Datestart { get; set; }
     public string IsRecurring { get; set; }
     public string DateTimeUpdated { get; set; }
@@ -18,12 +17,10 @@ public class Event
     public string ContactEmailAddress { get; set; }
     public string RegresUrl { get; set; }
     public string Description { get; set; }
-    public List<Image> Images { get; set; }
     public string Category { get; set; }
     public string ImageIdlist { get; set; }
     public string IsRegresRequired { get; set; }
     public string OrganizationName { get; set; }
-    public string Id { get; set; }
     public string IsAllDay { get; set; }
     public string DateEnd { get; set; }
     public string SiteCode { get; set; }
@@ -42,60 +39,8 @@ public class Event
     public List<string> Dates { get; set; }
     public string DateTimeCreated { get; set; }
     public string Title { get; set; }
-    public string Latitude { get; set; }
     public string SubjectName { get; set; }
     public List<string> Tags { get; set; }
 
     // Derived properties
-    public ImageSource MainImage
-    {
-        get
-        {
-            ImageSource source = null;
-
-            if (Images.Count > 0)
-            {
-                foreach (var image in Images)
-                {
-                    if (!String.IsNullOrEmpty(image.Url))
-                    {
-                        source = ImageSource.FromUri(new Uri(image.Url));
-                    }
-                }
-            }
-
-            source ??= ImageSource.FromFile("nps.png");
-
-            return source;
-        }
-    }
-    public double DLatitude
-    {
-        get
-        {
-            if (double.TryParse(Latitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
-    public double DLongitude
-    {
-        get
-        {
-            if (double.TryParse(Longitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
-    public bool HasUrl => !String.IsNullOrEmpty(InfoUrl);
 }

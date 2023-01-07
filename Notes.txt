@@ -1,5 +1,9 @@
 Status
 ------
+Should change MainImage so that it is an actual property and have the class constructor run the current code to determine what the value is rather than in the property itself.
+
+Finish fleshing out Place pages.
+Then work on Tour and Event pages.
 
 
 Issues
