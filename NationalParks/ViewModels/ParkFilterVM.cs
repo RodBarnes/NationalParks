@@ -24,7 +24,7 @@ namespace NationalParks.ViewModels
         public void PopulateData()
         {
             if (ParkVM.Filter is null)
-                ParkVM.Filter = new Filter(dataService);
+                ParkVM.Filter = new FilterVM(dataService);
 
             // Populate the selected items
             foreach (var topic in ParkVM.Filter.Topics)

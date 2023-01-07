@@ -15,7 +15,7 @@ public partial class ParkListVM : BaseVM
 
     public ObservableCollection<Models.Park> Parks { get; } = new();
 
-    public Filter Filter { get; set; }
+    public FilterVM Filter { get; set; }
 
     [ObservableProperty]
     int itemsRefreshThreshold = -1;

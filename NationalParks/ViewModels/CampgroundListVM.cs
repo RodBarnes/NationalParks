@@ -15,7 +15,7 @@ namespace NationalParks.ViewModels
 
         public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
 
-        public Filter Filter { get; set; } = new Filter();
+    public FilterVM Filter { get; set; }
 
         [ObservableProperty]
         int itemsRefreshThreshold = -1;

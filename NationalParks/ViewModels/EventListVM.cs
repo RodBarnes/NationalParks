@@ -18,7 +18,7 @@ public partial class EventListVM : BaseVM
     private int totalItems = 0;
 
     public ObservableCollection<Models.Event> Events { get; } = new();
-    public Filter Filter { get; set; } = new Filter();
+    public FilterVM Filter { get; set; } = new FilterVM();
 
     [ObservableProperty]
     int itemsRefreshThreshold = -1;

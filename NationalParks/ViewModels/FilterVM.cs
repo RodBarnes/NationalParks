@@ -1,23 +1,28 @@
 ﻿using NationalParks.Services;
 using System.Text.Json;
 
-namespace NationalParks.Models
+namespace NationalParks.ViewModels
 {
-    public class Filter
+    public class FilterVM
     {
         readonly DataService dataService;
 
+        // Collections of possible selections
         public static ObservableCollection<State> StateSelections { get; } = new();
         public static ObservableCollection<Topic> TopicSelections { get; } = new();
-        public static ObservableCollection<Activity> ActivitySelections { get; } = new();
+        public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
 
+        // Lists of items selected
         public List<Topic> Topics { get; set; } = new();
-        public List<Activity> Activities { get; set; } = new();
+        public List<Models.Activity> Activities { get; set; } = new();
         public List<State> States { get; set; } = new();
 
-        public Filter() { }
+        public FilterVM()
+        {
 
-        public Filter(DataService dataService) : base()
+        }
+
+        public FilterVM(DataService dataService) : base()
         {
             this.dataService = dataService;
 
@@ -27,7 +32,7 @@ namespace NationalParks.Models
         public async Task PopulateData()
         {
             // Populate the available selections
-            await LoadStates();
+            await ReadStates();
             await GetAllActivitiesAsync();
             await GetAllTopicsAsync();
         }
@@ -90,7 +95,7 @@ namespace NationalParks.Models
             }
         }
 
-        public async Task LoadStates()
+        public async Task ReadStates()
         {
             if (StateSelections?.Count > 0)
                 return;

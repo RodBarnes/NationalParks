@@ -19,7 +19,7 @@ public partial class PlaceListVM : BaseVM
 
     public ObservableCollection<Models.Place> Places { get; } = new();
 
-    public Filter Filter { get; set; } = new Filter();
+    public FilterVM Filter { get; set; }
 
     [ObservableProperty]
     int itemsRefreshThreshold = -1;

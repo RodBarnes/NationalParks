@@ -22,7 +22,7 @@ namespace NationalParks.ViewModels
         public void PopulateData()
         {
             if (CampgroundVM.Filter is null)
-                CampgroundVM.Filter = new Filter(dataService);
+                CampgroundVM.Filter = new FilterVM(dataService);
 
             // Populate the selected items
             foreach (var state in CampgroundVM.Filter.States)
@@ -30,6 +30,7 @@ namespace NationalParks.ViewModels
                 SelectedStates.Add(state);
             }
         }
+
         [RelayCommand]
         async Task ApplyFilter()
         {
