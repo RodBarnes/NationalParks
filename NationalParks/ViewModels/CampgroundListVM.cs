@@ -1,171 +1,174 @@
 ﻿using NationalParks.Services;
 
-namespace NationalParks.ViewModels
+namespace NationalParks.ViewModels;
+
+[QueryProperty(nameof(Filter), "Filter")]
+public partial class CampgroundListVM : BaseVM
 {
-    [QueryProperty(nameof(Filter), "Filter")]
-    public partial class CampgroundListVM : BaseVM
-    {
-        readonly DataService dataService;
-        readonly IConnectivity connectivity;
-        readonly IGeolocation geolocation;
+    readonly DataService dataService;
+    readonly IConnectivity connectivity;
+    readonly IGeolocation geolocation;
 
-        private int startItems = 0;
-        private int limitItems = 20;
-        private int totalItems = 0;
+    private int startItems = 0;
+    private int limitItems = 20;
+    private int totalItems = 0;
 
-        public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
+    public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
 
     public FilterVM Filter { get; set; }
 
-        [ObservableProperty]
-        int itemsRefreshThreshold = -1;
+    [ObservableProperty]
+    int itemsRefreshThreshold = -1;
 
-        private bool isPopulated = false;
-        public bool IsPopulated
+    private bool isPopulated = false;
+    public bool IsPopulated
+    {
+        get => isPopulated;
+        set
         {
-            get => isPopulated;
-            set
+            if (value == true)
             {
-                if (value == true)
-                {
-                    ItemsRefreshThreshold = 2;
-                }
-                isPopulated = value;
+                ItemsRefreshThreshold = 2;
+                Title = $"Campgrounds ({totalItems})";
             }
-        }
-
-        public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
-        {
-            IsBusy = false;
-            Title = "Campgrounds";
-            this.dataService = dataService;
-            this.connectivity = connectivity;
-            this.geolocation = geolocation;
-        }
-
-        public async void PopulateData()
-        {
-            await GetItemsAsync();
-
-            IsPopulated = true;
-        }
-
-        public void ClearData()
-        {
-            Campgrounds.Clear();
-            startItems = 0;
-        }
-
-        [RelayCommand]
-        async Task GoToDetail(Campground campground)
-        {
-            if (campground == null)
-                return;
-
-            await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
+            else
             {
-                {"Campground", campground}
-            });
+                ItemsRefreshThreshold = -1;
+                startItems = 0;
+            }
+            isPopulated = value;
         }
+    }
 
-        [RelayCommand]
-        async Task GoToFilter()
+    public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    {
+        IsBusy = false;
+        Title = "Campgrounds";
+        this.dataService = dataService;
+        this.connectivity = connectivity;
+        this.geolocation = geolocation;
+    }
+
+    public async void PopulateData()
+    {
+        await GetItemsAsync();
+    }
+
+    public void ClearData()
+    {
+        Campgrounds.Clear();
+        IsPopulated = false;
+    }
+
+    [RelayCommand]
+    async Task GoToDetailAsync(Campground campground)
+    {
+        if (campground == null)
+            return;
+
+        await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
         {
-            await Shell.Current.GoToAsync(nameof(CampgroundFilterPage), true, new Dictionary<string, object>
+            {"Campground", campground}
+        });
+    }
+
+    [RelayCommand]
+    async Task GoToFilterAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(CampgroundFilterPage), true, new Dictionary<string, object>
         {
             {"VM", this }
         });
-        }
+    }
 
-        [RelayCommand]
-        async Task GetClosestAsync()
+    [RelayCommand]
+    async Task GetClosestAsync()
+    {
+        if (IsBusy || Campgrounds.Count == 0)
+            return;
+
+        try
         {
-            if (IsBusy || Campgrounds.Count == 0)
-                return;
-
-            try
+            // Get cached location, else get real location.
+            var location = await geolocation.GetLastKnownLocationAsync();
+            if (location == null)
             {
-                // Get cached location, else get real location.
-                var location = await geolocation.GetLastKnownLocationAsync();
-                if (location == null)
+                location = await geolocation.GetLocationAsync(new GeolocationRequest
                 {
-                    location = await geolocation.GetLocationAsync(new GeolocationRequest
-                    {
-                        DesiredAccuracy = GeolocationAccuracy.Medium,
-                        Timeout = TimeSpan.FromSeconds(30)
-                    });
-                }
-
-                // Find closest item to us
-                var first = Campgrounds.OrderBy(m => location.CalculateDistance(
-                    new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
-                    .FirstOrDefault();
-
-                await GoToDetail(first);
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to query location: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-            }
+
+            // Find closest item to us
+            var first = Campgrounds.OrderBy(m => location.CalculateDistance(
+                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
+                .FirstOrDefault();
+
+            await GoToDetailAsync(first);
         }
-
-        [RelayCommand]
-        async Task GetItemsAsync()
+        catch (Exception ex)
         {
-            if (IsBusy)
-                return;
+            Debug.WriteLine($"Unable to query location: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+    }
 
-            try
+    [RelayCommand]
+    async Task GetItemsAsync()
+    {
+        if (IsBusy)
+            return;
+
+        try
+        {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
-                }
+                await Shell.Current.DisplayAlert("No connectivity!",
+                    $"Please check internet and try again.", "OK");
+                return;
+            }
 
-                IsBusy = true;
-                ResultCampgrounds result;
-                string states = "";
+            IsBusy = true;
+            ResultCampgrounds result;
+            string states = "";
 
-                if (Filter is not null)
+            if (Filter is not null)
+            {
+                // Apply any filters prior to getting the items
+                foreach (var state in Filter.States)
                 {
-                    // Apply any filters prior to getting the items
-                    foreach (var state in Filter.States)
+                    if (states.Length > 0)
                     {
-                        if (states.Length > 0)
-                        {
-                            states += ",";
-                        }
-                        states += state.Abbreviation;
+                        states += ",";
                     }
+                    states += state.Abbreviation;
                 }
+            }
 
-                //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
-                //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                //foreach (var campground in result.Data)
-                //    Campgrounds.Add(campground);
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
+            //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            //foreach (var campground in result.Data)
+            //    Campgrounds.Add(campground);
 
-                result = await dataService.GetCampgroundsAsync(startItems, limitItems, states);
-                startItems += result.Data.Count;
-                foreach (var campground in result.Data)
-                    Campgrounds.Add(campground);
-                if (!int.TryParse(result.Total, out totalItems))
-                {
-                    totalItems = 0;
-                }
-                Title = $"Campgrounds ({totalItems})";
-            }
-            catch (Exception ex)
+            result = await dataService.GetCampgroundsAsync(startItems, limitItems, states);
+            startItems += result.Data.Count;
+            foreach (var campground in result.Data)
+                Campgrounds.Add(campground);
+            if (!int.TryParse(result.Total, out totalItems))
             {
-                Debug.WriteLine($"Unable to get data items: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", $"{ex.Source}: {ex.Message}", "OK");
+                totalItems = 0;
             }
-            finally
-            {
-                IsBusy = false;
-            }
+            IsPopulated = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get data items: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}: {ex.Message}", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }

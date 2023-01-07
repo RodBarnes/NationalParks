@@ -1,14 +1,10 @@
 ﻿using NationalParks.Services;
-using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class PlaceListVM : BaseVM
 {
-    // For holding the available filter selections
-    private Collection<Models.State> States { get; } = new();
-
     readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -33,6 +29,12 @@ public partial class PlaceListVM : BaseVM
             if (value == true)
             {
                 ItemsRefreshThreshold = 2;
+                Title = $"Places ({totalItems})";
+            }
+            else
+            {
+                ItemsRefreshThreshold = -1;
+                startItems = 0;
             }
             isPopulated = value;
         }
@@ -50,19 +52,16 @@ public partial class PlaceListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-        await LoadStates();
-
-        IsPopulated = true;
     }
 
     public void ClearData()
     {
         Places.Clear();
-        startItems = 0;
+        IsPopulated = false;
     }
 
     [RelayCommand]
-    async Task GoToDetail(Place place)
+    async Task GoToDetailAsync(Place place)
     {
         if (place == null)
             return;
@@ -70,6 +69,15 @@ public partial class PlaceListVM : BaseVM
         await Shell.Current.GoToAsync(nameof(PlaceDetailPage), true, new Dictionary<string, object>
         {
             {"Place", place}
+        });
+    }
+
+    [RelayCommand]
+    async Task GoToFilterAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(PlaceFilterPage), true, new Dictionary<string, object>
+        {
+            {"VM", this }
         });
     }
 
@@ -97,7 +105,7 @@ public partial class PlaceListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetail(first);
+            await GoToDetailAsync(first);
         }
         catch (Exception ex)
         {
@@ -125,7 +133,20 @@ public partial class PlaceListVM : BaseVM
             ResultPlaces result;
             string states = "";
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("places_0.json");
+            if (Filter is not null)
+            {
+                // Apply any filters prior to getting the items
+                foreach (var state in Filter.States)
+                {
+                    if (states.Length > 0)
+                    {
+                        states += ",";
+                    }
+                    states += state.Abbreviation;
+                }
+            }
+
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("places_MO.json");
             //result = System.Text.Json.JsonSerializer.Deserialize<ResultPlaces>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             //foreach (var place in result.Data)
             //    Places.Add(place);
@@ -138,7 +159,7 @@ public partial class PlaceListVM : BaseVM
             {
                 totalItems = 0;
             }
-            Title = $"Places ({totalItems})";
+            IsPopulated = true;
         }
         catch (Exception ex)
         {
@@ -148,23 +169,6 @@ public partial class PlaceListVM : BaseVM
         finally
         {
             IsBusy = false;
-        }
-    }
-
-    async Task LoadStates()
-    {
-        if (States?.Count > 0)
-            return;
-
-        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
-        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-        if (result != null)
-        {
-            foreach (var item in result.Data)
-            {
-                States.Add(item);
-            }
         }
     }
 }

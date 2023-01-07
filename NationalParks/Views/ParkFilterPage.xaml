@@ -8,22 +8,42 @@
     x:Class="NationalParks.Views.ParkFilterPage"
     Title="{Binding Title}">
     <ContentPage.Resources>
-        <model:Filter x:Key="Filter"/>
+        <vm:FilterVM x:Key="Filter"/>
     </ContentPage.Resources>
     <Grid
         ColumnDefinitions="*,*"
         RowDefinitions="25,*,25,*,25,*,60"
         RowSpacing="0"
         VerticalOptions="FillAndExpand">
-        <Label Text="Topics"
-               Grid.Row="0" Grid.ColumnSpan="2"
+        <Label Text="States"
+               Grid.Row ="0" Grid.ColumnSpan="2"
                Style="{StaticResource LabelLargeBold}"
                HorizontalOptions="FillAndExpand"
                HorizontalTextAlignment="Center"/>
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="1" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView ItemsSource="{Binding Source={x:Static model:Filter.TopicSelections}}"
+            <CollectionView ItemsSource="{Binding Source={x:Static vm:FilterVM.StateSelections}}"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedStates}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:State">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+        <Label Text="Topics"
+               Grid.Row="2" Grid.ColumnSpan="2"
+               Style="{StaticResource LabelLargeBold}"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"/>
+        <Frame BorderColor="{StaticResource Primary}"
+               Grid.Row="3" Grid.ColumnSpan="2"
+               CornerRadius="12">
+            <CollectionView ItemsSource="{Binding Source={x:Static vm:FilterVM.TopicSelections}}"
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedTopics}">
                 <CollectionView.ItemTemplate>
@@ -36,38 +56,18 @@
             </CollectionView>
         </Frame>
         <Label Text="Activities"
-               Grid.Row="2" Grid.ColumnSpan="2"
-               Style="{StaticResource LabelLargeBold}"
-               HorizontalOptions="FillAndExpand"
-               HorizontalTextAlignment="Center"/>
-        <Frame BorderColor="{StaticResource Primary}"
-               Grid.Row="3" Grid.ColumnSpan="2"
-               CornerRadius="12">
-            <CollectionView ItemsSource="{Binding Source={x:Static model:Filter.ActivitySelections}}"
-                            SelectionMode="Multiple"
-                            SelectedItems="{Binding SelectedActivities}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Topic">
-                        <VerticalStackLayout>
-                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Frame>
-        <Label Text="States"
-               Grid.Row ="4" Grid.ColumnSpan="2"
+               Grid.Row="4" Grid.ColumnSpan="2"
                Style="{StaticResource LabelLargeBold}"
                HorizontalOptions="FillAndExpand"
                HorizontalTextAlignment="Center"/>
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="5" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView ItemsSource="{Binding Source={x:Static model:Filter.StateSelections}}"
+            <CollectionView ItemsSource="{Binding Source={x:Static vm:FilterVM.ActivitySelections}}"
                             SelectionMode="Multiple"
-                            SelectedItems="{Binding SelectedStates}">
+                            SelectedItems="{Binding SelectedActivities}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:State">
+                    <DataTemplate x:DataType="model:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>

@@ -65,6 +65,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<PlaceListPage>();
         builder.Services.AddTransient<PlaceDetailVM>();
         builder.Services.AddTransient<PlaceDetailPage>();
+        builder.Services.AddTransient<PlaceFilterVM>();
+        builder.Services.AddTransient<PlaceFilterPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();

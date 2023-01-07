@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:DataType="vm:CampgroundFilterVM"
-             x:Class="NationalParks.Views.CampgroundFilterPage"
-             Title="{Binding Title}">
+             x:DataType="vm:PlaceFilterVM"
+             x:Class="NationalParks.Views.PlaceFilterPage"
+             Title="PlaceFilterPage">
     <ContentPage.Resources>
         <vm:FilterVM x:Key="Filter"/>
     </ContentPage.Resources>

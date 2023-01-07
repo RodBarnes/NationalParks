@@ -29,6 +29,12 @@ public partial class ParkListVM : BaseVM
             if (value == true)
             {
                 ItemsRefreshThreshold = 2;
+                Title = $"Parks ({totalItems})";
+            }
+            else
+            {
+                ItemsRefreshThreshold = -1;
+                startItems = 0;
             }
             isPopulated = value;
         }
@@ -46,18 +52,16 @@ public partial class ParkListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-
-        IsPopulated = true;
     }
 
     public void ClearData()
     {
         Parks.Clear();
-        startItems = 0;
+        IsPopulated = false;
     }
 
     [RelayCommand]
-    async Task GoToDetail(Park park)
+    async Task GoToDetailAsync(Park park)
     {
         if (park == null)
             return;
@@ -92,7 +96,7 @@ public partial class ParkListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetail(first);
+            await GoToDetailAsync(first);
         }
         catch (Exception ex)
         {
@@ -102,7 +106,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToFilter()
+    async Task GoToFilterAsync()
     {
         await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
         {
@@ -178,7 +182,7 @@ public partial class ParkListVM : BaseVM
             {
                 totalItems = 0;
             }
-            Title = $"Parks ({totalItems})";
+            IsPopulated = true;
         }
         catch (Exception ex)
         {

@@ -1,6 +1,18 @@
+PINNED
+------
+To use a data file for testing instead of the API: Move the file from /Raw to /Resources/Raw.  This will ensure it is packaged with the app and be available as a resource.
+
+
 Status
 ------
 
+Something happening with process flow.  ParkList to ParkFilter works as expected. CampgroundList and PlaceList to Filter aren't working as expected.
+	- ParkList: GetItemsAsync() is invoked one time after returning from Filter and tapping [Apply].
+	- CampgroundList: GetItemsAsync() is invoked twice time after returning from Filter and tapping [Apply].
+
+	Determined that the RemainingItemsThreshold was firing whenever the list was short enough; e.g., 9 campgrounds.  If I filtered so there were like 100 campgrounds, then GetItemsAsync() was not fired again.
+
+	So, is this a problem or a destraction?  How does it know to not continue firing the RemainingItemsThreshold after the first time since the number of items is still (and continues) to be less than the full list?
 
 Issues
 ------
@@ -13,6 +25,21 @@ Places is not returned in any (recgonizable) sorted order and doesn't provide a 
 
 Todo & Ideas
 ------------
+
+Filter is working in this way:
+	- Initial list is displayed and OnAppearing runs PopulateData()
+	- After data is retrieved, RemainingItemsThreshold is changed from "-1" to "2"
+	- User taps [Filter] and user selects State
+	- User taps [Apply] which clears the Itemslist and then goes back to the ListPage
+	- List is empty but OnAppearing invokes PopulateData()
+	RemainingItemsThreshold is set to "2" so it invokes GetItemsAsync() to fill the list.
+	- The Filter.SelectedStates is accessed and applied to the URL before the API call
+	- So the list only shows the filtered-by-State items.
+
+
+Maybe totalItems should be an observable property and have the title in the page be like "Name ({TotalItems})" so that it just gets updated each time the totalItems changes -- which should only happen after each GetItemsAsync().
+
+After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.
 
 Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
 Do I need an icon for ThingsToDo.
