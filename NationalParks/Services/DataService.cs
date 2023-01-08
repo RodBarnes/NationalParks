@@ -1,5 +1,4 @@
 ﻿using System.Net.Http.Json;
-using System.Text.Json;
 
 namespace NationalParks.Services;
 
@@ -22,6 +21,21 @@ public class DataService
 
         return url;
     }
+
+    public async Task<ResultParks> GetParkAsync(string parkCode)
+    {
+        ResultParks result = new();
+
+        var url = ConstructUrl("parks", $"parkCode={parkCode}");
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultParks>();
+        }
+
+        return result;
+    }
+
     public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
     {
         ResultParks result = new();

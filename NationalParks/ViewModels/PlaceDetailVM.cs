@@ -1,9 +1,12 @@
-﻿namespace NationalParks.ViewModels;
+﻿using NationalParks.Services;
+
+namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Place), "Place")]
 public partial class PlaceDetailVM : BaseVM
 {
     IMap map;
+    DataService dataService;
 
     [ObservableProperty]
     Place place;
@@ -29,10 +32,11 @@ public partial class PlaceDetailVM : BaseVM
     [ObservableProperty]
     public CollapsibleViewVM multimediaVM;
 
-    public PlaceDetailVM(IMap map)
+    public PlaceDetailVM(DataService dataService, IMap map)
     {
         Title = "Place";
         this.map = map;
+        this.dataService = dataService;
 
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
@@ -69,4 +73,25 @@ public partial class PlaceDetailVM : BaseVM
         });
     }
 
+    [RelayCommand]
+    async Task GoToParkAsync(Park park)
+    {
+        if (park == null)
+            return;
+
+        ResultParks result = await dataService.GetParkAsync(park.ParkCode);
+        if (result.Data.Count == 1)
+        {
+            park = result.Data[0];
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
+        }
+
+        await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
+        {
+            {"Park", park }
+        });
+    }
 }
