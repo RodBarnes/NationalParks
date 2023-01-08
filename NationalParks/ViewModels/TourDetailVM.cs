@@ -34,18 +34,18 @@ public partial class TourDetailVM : BaseVM
     [RelayCommand]
     async Task OpenMap()
     {
-        try
-        {
-            await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions
-            {
-                Name = Tour.Title,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
+        //try
+        //{
+        //    await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions
+        //    {
+        //        Name = Tour.Title,
+        //        NavigationMode = NavigationMode.None
+        //    });
+        //}
+        //catch (Exception ex)
+        //{
+        //    await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
+        //}
     }
 
     [RelayCommand]

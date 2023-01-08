@@ -39,34 +39,6 @@ public class Tour
             return source;
         }
     }
-    public double DLatitude
-    {
-        get
-        {
-            if (double.TryParse(Park.Latitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
-    public double DLongitude
-    {
-        get
-        {
-            if (double.TryParse(Park.Longitude, out double d))
-            {
-                return d;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-    }
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
     public bool HasStops => (Stops is not null) && Stops.Count > 0;
     public bool HasTopics => (Topics is not null) && Topics.Count > 0;
