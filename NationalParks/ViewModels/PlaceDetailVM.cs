@@ -74,24 +74,25 @@ public partial class PlaceDetailVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToParkAsync(Park park)
+    async Task GoToParkAsync(RelatedPark relPark)
     {
-        if (park == null)
+        if (relPark == null)
             return;
 
-        ResultParks result = await dataService.GetParkAsync(park.ParkCode);
+        Park park;
+
+        ResultParks result = await dataService.GetParkAsync(relPark.ParkCode);
         if (result.Data.Count == 1)
         {
             park = result.Data[0];
+            await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
+            {
+                {"Park", park }
+            });
         }
         else
         {
             await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
         }
-
-        await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
-        {
-            {"Park", park }
-        });
     }
 }

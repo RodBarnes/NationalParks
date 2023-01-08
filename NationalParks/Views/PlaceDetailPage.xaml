@@ -68,12 +68,18 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Park">
                                     <VerticalStackLayout Margin="5">
-                                        <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}">
-                                            <Label.GestureRecognizers>
+                                        <HorizontalStackLayout>
+                                            <HorizontalStackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceDetailVM}}, Path=GoToParkCommand}"
                                                                       CommandParameter="{Binding .}" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                            </HorizontalStackLayout.GestureRecognizers>
+                                            <Image Source="arrow_right_green.png"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Center"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="15" />
+                                            <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}"/>
+                                        </HorizontalStackLayout>
                                     </VerticalStackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

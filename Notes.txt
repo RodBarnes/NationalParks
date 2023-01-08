@@ -15,6 +15,8 @@ Places is not returned in any (recgonizable) sorted order and doesn't provide a 
 
 Todo & Ideas
 ------------
+If filter is applied, need to visually indicated that (in the header?) when that is in effect.
+
 Need to review all need for try/catch, catching and dislaying errors.
 
 Image list should support tapping on an image to see it fullscreen or something.  Do we support showing the crops?  Maybe just listing them and supporting download?
@@ -23,14 +25,12 @@ Maybe totalItems should be an observable property and have the title in the page
 
 After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.
 
-Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
+Are ThingsToDo just a combination of all the others?
 Do I need an icon for ThingsToDo.
 
-Maybe a setting that is the user determined states by which to always filter?
-
-Setting for determining which list to display as the default page?
-
-If filter is applied, need to visually indicated that (in the header?) when that is in effect.
+Settings?
+	- User determined states by which to always filter?
+	- Which list to display as the default page?
 
 Probably need to be able to move to ParkDetail from CampgroundDetail and from TourDetail? Example: Maybe the user wants to always filter everthing by three states: OR, WA, CA.  So those could be added and the list always filtered by that.
 
