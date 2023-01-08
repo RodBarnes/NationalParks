@@ -6,7 +6,7 @@ public class Tour
     public string Id { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public Park Park { get; set; }
+    public RelatedPark Park { get; set; }
     public List<string> Tags { get; set; }
     public List<Activity> Activities { get; set; }
     public List<Topic> Topics { get; set; }

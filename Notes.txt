@@ -26,8 +26,6 @@ After recopgnizing that Filter isn't a model but a VM, can I use it as an additi
 Working to flesh out Tours/Events/Places.  Are ThingsToDo just a combination of all the others?
 Do I need an icon for ThingsToDo.
 
-The API for Tour and Place relies upon a shortened version of Park with only properties of Name, Url, ParkCode, Designation, FullName, and States.  Does this justify having a base Park class (with only those properties) and a full Park class (based upon that one and which adds all the other properties)?
-
 Maybe a setting that is the user determined states by which to always filter?
 
 Setting for determining which list to display as the default page?

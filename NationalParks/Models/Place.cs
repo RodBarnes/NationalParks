@@ -4,7 +4,7 @@ public class Place : MainModel
 {
     public string Title { get; set; }
     public string ListingDescription { get; set; }
-    public List<Park> RelatedParks { get; set; }
+    public List<RelatedPark> RelatedParks { get; set; }
     public List<Organization> RelatedOrganizations { get; set; }
     public List<string> Tags { get; set; }
     public string LatLong { get; set; }
