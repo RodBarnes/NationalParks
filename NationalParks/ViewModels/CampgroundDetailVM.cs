@@ -1,9 +1,12 @@
-﻿namespace NationalParks.ViewModels
+﻿using NationalParks.Services;
+
+namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(Models.Campground), "Campground")]
     public partial class CampgroundDetailVM : BaseVM
     {
         IMap map;
+        DataService dataService;
 
         [ObservableProperty]
         Campground campground;
@@ -38,10 +41,11 @@
         [ObservableProperty]
         public CollapsibleViewVM regulationsVM;
 
-        public CampgroundDetailVM(IMap map)
+        public CampgroundDetailVM(DataService dataService, IMap map)
         {
             Title = "Campground";
             this.map = map;
+            this.dataService = dataService;
 
             FeesVM = new CollapsibleViewVM("Fees", false);
             OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
@@ -56,7 +60,7 @@
         }
 
         [RelayCommand]
-        async Task OpenMap()
+        async Task OpenMapAsync()
         {
             try
             {
@@ -73,12 +77,32 @@
         }
 
         [RelayCommand]
-        async Task GoToImages()
+        async Task GoToImagesAsync()
         {
             await Shell.Current.GoToAsync(nameof(CampgroundImageListPage), true, new Dictionary<string, object>
             {
                 {"Campground", Campground }
             });
+        }
+
+        [RelayCommand]
+        async Task GoToParkAsync()
+        {
+            Park park;
+
+            ResultParks result = await dataService.GetParkAsync(Campground.ParkCode);
+            if (result.Data.Count == 1)
+            {
+                park = result.Data[0];
+                await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
+                {
+                    {"Park", park }
+                });
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
+            }
         }
     }
 }

@@ -19,6 +19,10 @@ If filter is applied, need to visually indicated that (in the header?) when that
 
 Need to review all need for try/catch, catching and dislaying errors.
 
+Probably need to be able to move to ParkDetail from CampgroundDetail, TourDetail, and EventDetail as was done for PlaceDetail?
+	- Tour has RelatedPark (like Place) so that could be done the same way.
+	- Event has only ParkFullName so that could be really difficult.  The fullname could be displayed (too bad it isn't the short name) but an that be used to get the Park?
+
 Image list should support tapping on an image to see it fullscreen or something.  Do we support showing the crops?  Maybe just listing them and supporting download?
 
 Maybe totalItems should be an observable property and have the title in the page be like "Name ({TotalItems})" so that it just gets updated each time the totalItems changes -- which should only happen after each GetItemsAsync().
@@ -31,8 +35,6 @@ Do I need an icon for ThingsToDo.
 Settings?
 	- User determined states by which to always filter?
 	- Which list to display as the default page?
-
-Probably need to be able to move to ParkDetail from CampgroundDetail and from TourDetail? Example: Maybe the user wants to always filter everthing by three states: OR, WA, CA.  So those could be added and the list always filtered by that.
 
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
