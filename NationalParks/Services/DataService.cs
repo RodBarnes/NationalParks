@@ -12,11 +12,21 @@ public class DataService
         httpClient = new HttpClient();
     }
 
+    private static string ConstructUrl(string item, string paramList)
+    {
+        var url = $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}";
+        if (paramList != null)
+        {
+            url += "&" + paramList ;
+        }
+
+        return url;
+    }
     public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
     {
-        var result = new ResultParks();
+        ResultParks result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/parks?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("parks", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(topics))
         {
             url += $"&topic%3D{topics}";
@@ -41,9 +51,9 @@ public class DataService
 
     public async Task<ResultTopics> GetTopicsAsync(int start = 0, int limit = 20)
     {
-        var result = new ResultTopics();
+        ResultTopics result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/topics?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("topics", $"start={start}&limit={limit}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -55,9 +65,9 @@ public class DataService
 
     public async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
     {
-        var result = new ResultActivities();
+        ResultActivities result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/activities?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("activities", $"start={start}&limit={limit}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -69,8 +79,9 @@ public class DataService
 
     public async Task<ResultAlerts> GetAlertsAsync(string parkCode, int start = 0, int limit = 20)
     {
-        var result = new ResultAlerts();
-        var url = $"https://developer.nps.gov/api/v1/alerts?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}&start={start}&limit={limit}";
+        ResultAlerts result = new();
+
+        var url = ConstructUrl("alerts", $"start={start}&limit={limit}&parkCode={parkCode}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -82,9 +93,9 @@ public class DataService
 
     public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
     {
-        var result = new ResultWebcams();
+        ResultWebcams result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/webcams?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("webcams", $"start={start}&limit={limit}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -96,9 +107,9 @@ public class DataService
 
     public async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20, string states = "")
     {
-        var result = new ResultCampgrounds();
+        ResultCampgrounds result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/campgrounds?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("campgrounds", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
@@ -115,9 +126,9 @@ public class DataService
 
     public async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
     {
-        var result = new ResultThingsToDo();
+        ResultThingsToDo result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/thingstodo?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("thingstodo", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
@@ -134,9 +145,9 @@ public class DataService
 
     public async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
     {
-        var result = new ResultTours();
+        ResultTours result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/tours?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("tours", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
@@ -153,9 +164,9 @@ public class DataService
 
     public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
     {
-        var result = new ResultEvents();
+        ResultEvents result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/events?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("events", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
@@ -172,9 +183,9 @@ public class DataService
 
     public async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
     {
-        var result = new ResultPlaces();
+        ResultPlaces result = new();
 
-        var url = $"https://developer.nps.gov/api/v1/places?api_key={Config.ApiKey}&start={start}&limit={limit}";
+        var url = ConstructUrl("places", $"start={start}&limit={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
