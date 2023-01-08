@@ -119,7 +119,6 @@ public partial class TourListVM : BaseVM
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to query location: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
@@ -192,7 +191,6 @@ public partial class TourListVM : BaseVM
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
         finally
@@ -225,7 +223,6 @@ public partial class TourListVM : BaseVM
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
@@ -254,7 +251,6 @@ public partial class TourListVM : BaseVM
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get data items: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }

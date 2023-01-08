@@ -68,7 +68,6 @@
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to launch maps: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
             }
         }

@@ -61,7 +61,6 @@ namespace NationalParks.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get data items: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
             }
         }
@@ -90,7 +89,6 @@ namespace NationalParks.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get data items: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
             }
         }
