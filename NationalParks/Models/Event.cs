@@ -5,7 +5,7 @@ public class Event : MainModel
     public string Location { get; set; }
     public string UpdateUser { get; set; }
     public string ContactName { get; set; }
-    public string ContacttelePhoneNumber { get; set; }
+    public string ContactTelephoneNumber { get; set; }
     public string RecurrenceDateEnd { get; set; }
     public string Datestart { get; set; }
     public string IsRecurring { get; set; }
