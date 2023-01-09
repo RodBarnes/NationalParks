@@ -18,7 +18,7 @@ public partial class DataTesterVM : BaseVM
     public FilterVM Filter { get; set; }
 
     [ObservableProperty]
-    private bool isPopulated = false;
+    bool isPopulated = false;
 
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {

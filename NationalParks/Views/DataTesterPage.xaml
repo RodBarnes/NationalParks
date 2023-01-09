@@ -7,19 +7,27 @@
              x:Class="NationalParks.Views.DataTesterPage"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        <Button Text="Start"
-                Command="{Binding StartActionCommand}"
-                Style="{StaticResource ButtonOutline}"/>
-        <Button Text="Stop"
-                Command="{Binding StopActionCommand}"
-                IsEnabled="{Binding IsBusy}"
-                Style="{StaticResource ButtonOutline}" />
-        <Button Text="Clear"
-                Command="{Binding ClearDataCommand}"
-                IsEnabled="{Binding IsPopulated}"
-                Style="{StaticResource ButtonOutline}" />
-        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
-                           Grid.RowSpan="2" Grid.ColumnSpan="2"
+        <Grid ColumnDefinitions="*,*,*">
+            <Button Text="Start"
+                    Command="{Binding StartActionCommand}"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="5"
+                    Grid.Column="0"/>
+            <Button Text="Stop"
+                    Command="{Binding StopActionCommand}"
+                    IsEnabled="{Binding IsBusy}"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="5"
+                    Grid.Column="1"/>
+            <Button Text="Clear"
+                    Command="{Binding ClearDataCommand}"
+                    IsEnabled="{Binding IsPopulated}"
+                    Style="{StaticResource ButtonOutline}"
+                    Margin="5"
+                    Grid.Column="2"/>
+        </Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                           IsVisible="{Binding IsBusy}"
                            HorizontalOptions="Fill"
                            Color="{StaticResource Primary}"
                            VerticalOptions="Center" />
