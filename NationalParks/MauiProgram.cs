@@ -32,8 +32,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<AboutVM>();
         builder.Services.AddSingleton<AboutPage>();
 
-        
-		builder.Services.AddSingleton<ParkListVM>();
+        builder.Services.AddSingleton<DataTesterVM>();
+        builder.Services.AddSingleton<DataTesterPage>();
+
+        builder.Services.AddSingleton<ParkListVM>();
 		builder.Services.AddSingleton<ParkListPage>();
         builder.Services.AddTransient<ParkDetailVM>();
 		builder.Services.AddTransient<ParkDetailPage>();

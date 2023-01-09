@@ -140,6 +140,9 @@
 	  <MauiXaml Update="Views\CampgroundImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\DataTesterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\EventDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
