@@ -1,12 +1,13 @@
 Status
 ------
-Finish fleshing out Place pages.
-Then work on Tour and Event pages.
+Fleshing out PlaceDetail items.
+Is there a PlaceImageList?
+Next, work on Tour and Event pages.
 
 
-Issues
-------
-Park list and Campground list are working including Filter by state.  Waiting on response to issue https://github.com/nationalparkservice/nps-api-samples/issues/3 regarding use of 'q' parameter.  It appears that the 'q' parameter in the API query can accept multiple entries separated with an '&' (x26) or ',' (x2D); e.g., activity%3DBiking%26topic%3DAfrican%20American%20Heritage.  These are used in an 'OR' condition not 'AND'; i.e., those with the activity 'Biking' OR the topic 'African American Heritage'  But the 'q' parameter also gives unexpected results; e.g., a search for Parks with Activity="Dog Sledding" returns 36 parks but only 4 of them actually have that in the "activities" list.  I submitted an issue on this.  Until that is resolved, I'm not sure how to use this reliably.
+API Issues
+----------
+It appears that the 'q' parameter is a full-text search for any listed value.  It seems to accept multiple specified values -- space-delimited, maybe comma-delimited.
 
 Event API returns everything -- it does not recognize start or limit.  It does have a pageSize and pageNumber.  Maybe those can be used?
 
@@ -15,7 +16,7 @@ Places is not returned in any (recgonizable) sorted order and doesn't provide a 
 
 Todo & Ideas
 ------------
-If filter is applied, need to visually indicated that (in the header?) when that is in effect.
+If filter is applied, need to visually indicated that (in the header?) when that is in effect. Is this an icon?  A label?
 
 Need to review all need for try/catch, catching and dislaying errors.
 

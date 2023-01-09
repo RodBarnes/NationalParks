@@ -45,15 +45,19 @@
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
                 <HorizontalStackLayout>
-                    <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToParkCommand}" />
-                    </HorizontalStackLayout.GestureRecognizers>
-                    <Image Source="arrow_right_green.png"
+                    <Label Text="Related Park" 
+                           Style="{StaticResource LabelMediumBold}" 
+                           VerticalOptions="Center" 
+                           Margin="5"/>
+                    <Image Source="tree_reverse_circle_green.png"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"
                             Aspect="AspectFill"
-                            HeightRequest="15" />
-                    <Label Text="Related Park" Style="{StaticResource LabelMediumBold}"/>
+                            HeightRequest="25">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToParkCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </HorizontalStackLayout>
                 <!-- Fees -->
                 <Frame Style="{StaticResource CollapsibleView}"
