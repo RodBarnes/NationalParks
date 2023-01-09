@@ -53,7 +53,7 @@
                             VerticalOptions="Center"
                             HorizontalOptions="Center"
                             Aspect="AspectFill"
-                            HeightRequest="25">
+                            HeightRequest="30">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToParkCommand}" />
                         </Image.GestureRecognizers>
