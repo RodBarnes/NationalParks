@@ -20,33 +20,41 @@ public partial class DataTesterVM : BaseVM
     [ObservableProperty]
     bool isPopulated = false;
 
+    [ObservableProperty]
+    string currentState;
+
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {
         Title = "Tester";
         this.dataService = dataService;
         this.connectivity = connectivity;
+
+        currentState = "Waiting...";
     }
 
     [RelayCommand]
-    public void StopAction()
+    async Task StopAction()
     {
         okToContinue = false;
+        currentState = "Stopped";
     }
 
     [RelayCommand]
     async Task StartActionAsync()
     {
         okToContinue = true;
+        currentState = "Running...";
         await GetAllPlacesAsync();
     }
 
     [RelayCommand]
-    public void ClearData()
+    async Task ClearDataAsync()
     {
         Places.Clear();
         IsPopulated = false;
         startItems = 0;
         Title = "Places";
+        currentState = "Cleared";
     }
 
     async Task GetAllPlacesAsync()

@@ -7,29 +7,41 @@
              x:Class="NationalParks.Views.DataTesterPage"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        <Grid ColumnDefinitions="*,*,*">
+        <Grid ColumnDefinitions="*,*,*"
+              RowDefinitions="*,Auto">
             <Button Text="Start"
                     Command="{Binding StartActionCommand}"
                     Style="{StaticResource ButtonOutline}"
                     Margin="5"
-                    Grid.Column="0"/>
+                    Grid.Column="0"
+                    Grid.Row="0"/>
             <Button Text="Stop"
                     Command="{Binding StopActionCommand}"
                     IsEnabled="{Binding IsBusy}"
                     Style="{StaticResource ButtonOutline}"
                     Margin="5"
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    Grid.Row="0"/>
             <Button Text="Clear"
                     Command="{Binding ClearDataCommand}"
                     IsEnabled="{Binding IsPopulated}"
                     Style="{StaticResource ButtonOutline}"
                     Margin="5"
-                    Grid.Column="2"/>
+                    Grid.Column="2"
+                    Grid.Row="0"/>
+            <HorizontalStackLayout Grid.ColumnSpan="3" Grid.Row="1">
+                <Label Text="State:"
+                       Style="{StaticResource LabelMediumBold}"
+                       Padding="5"/>
+                <Label Text="{Binding CurrentState}"
+                       Style="{StaticResource LabelMedium}"
+                       Padding="5"/>
+            </HorizontalStackLayout>
         </Grid>
-        <ActivityIndicator IsRunning="{Binding IsBusy}" 
+        <!--<ActivityIndicator IsRunning="{Binding IsBusy}" 
                            IsVisible="{Binding IsBusy}"
                            HorizontalOptions="Fill"
                            Color="{StaticResource Primary}"
-                           VerticalOptions="Center" />
+                           VerticalOptions="Center" />-->
     </VerticalStackLayout>
 </ContentPage>
