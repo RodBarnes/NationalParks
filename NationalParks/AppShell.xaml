@@ -56,7 +56,7 @@
         <ShellContent ContentTemplate="{DataTemplate views:AboutPage}"
                       Route="AboutPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Tester" Icon="info_fancy_green">
+    <FlyoutItem Title="Tester" Icon="question_green">
         <ShellContent ContentTemplate="{DataTemplate views:DataTesterPage}"
                       Route="TesterPage" />
     </FlyoutItem>
