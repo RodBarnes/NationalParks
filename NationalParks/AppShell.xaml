@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NationalParks.AppShell"
-             xmlns:views="clr-namespace:NationalParks.Views">
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:NationalParks.Views"
+       x:Class="NationalParks.AppShell"
+       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+       CurrentItem="{x:Reference StartItem}">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -21,6 +23,20 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="35" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       VerticalTextAlignment="Center"
+                       Style="{StaticResource LabelMedium}"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
     <Shell.FlyoutHeader>
         <Grid HeightRequest="100" BackgroundColor="{StaticResource Primary}">
@@ -54,10 +70,11 @@
     </FlyoutItem>
     <FlyoutItem Title="About" Icon="info_fancy_green">
         <ShellContent ContentTemplate="{DataTemplate views:AboutPage}"
-                      Route="AboutPage" />
+                      Route="AboutPage"/>
     </FlyoutItem>
     <FlyoutItem Title="Tester" Icon="question_green">
         <ShellContent ContentTemplate="{DataTemplate views:DataTesterPage}"
-                      Route="TesterPage" />
+                      Route="TesterPage"
+                      x:Name="StartItem" />
     </FlyoutItem>
 </Shell>

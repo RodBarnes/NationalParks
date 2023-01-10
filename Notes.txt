@@ -4,6 +4,8 @@ Fleshing out PlaceDetail items.
 	- IsOpenToPublic
 	- IsManagedByNps
 	- ManagedByOrg
+	- IsMapPinHidden
+	No place is has both a "ManagedByOrg" string and also "IsManageByNps='1'".
 
 All current Place records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
 
@@ -40,7 +42,7 @@ Do I need an icon for ThingsToDo.
 
 Settings?
 	- User determined states by which to always filter?
-	- Which list to display as the default page?
+	- Which list to display as the default page?  Probably would use the CurrentItem property of <Shell>? And update the name of the new item based to that name based upon user selection?
 
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
