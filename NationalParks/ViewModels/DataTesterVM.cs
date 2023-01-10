@@ -8,7 +8,7 @@ public partial class DataTesterVM : BaseVM
     IConnectivity connectivity;
 
     private int startItems = 0;
-    private int limitItems = 100;
+    private int limitItems = 500;
     private int totalItems = 1;
     private bool okToContinue = false;
 
@@ -21,6 +21,7 @@ public partial class DataTesterVM : BaseVM
     [ObservableProperty] string currentState;
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
+    [ObservableProperty] int matchCount;
 
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {
@@ -32,7 +33,7 @@ public partial class DataTesterVM : BaseVM
     }
 
     [RelayCommand]
-    async Task StopAction()
+    public void StopAction()
     {
         okToContinue = false;
         CurrentState = "Stopped";
@@ -44,17 +45,21 @@ public partial class DataTesterVM : BaseVM
         okToContinue = true;
         CurrentState = "Running...";
         await GetAllPlacesAsync();
+        if (startItems <= totalItems)
+        {
+            okToContinue = false;
+            CurrentState = "Stopped";
+        }
     }
 
     [RelayCommand]
-    async Task ClearDataAsync()
+    public void ClearData()
     {
         Places.Clear();
         IsPopulated = false;
         startItems = 0;
         CurrentState = "Cleared";
-        TotalCount = 0;
-        CurrentCount = 0;
+        CurrentCount = MatchCount = TotalCount = 0;
     }
 
     async Task GetAllPlacesAsync()
@@ -96,6 +101,7 @@ public partial class DataTesterVM : BaseVM
                 IsPopulated = true;
                 TotalCount = totalItems;
                 CurrentCount = Places.Count;
+                MatchCount = Places.Where(p => p.Images.Count > 1).Count();
                 if (!okToContinue)
                 {
                     break;

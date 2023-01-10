@@ -27,6 +27,14 @@
                     Grid.Column="2"/>
         </Grid>
         <HorizontalStackLayout>
+            <Label Text="State:"
+                       Style="{StaticResource LabelMediumBold}"
+                       Padding="5"/>
+            <Label Text="{Binding CurrentState}"
+                       Style="{StaticResource LabelMedium}"
+                       Padding="5"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
             <Label Text="Total:"
                        Style="{StaticResource LabelMediumBold}"
                        Padding="5"/>
@@ -43,10 +51,10 @@
                        Padding="5"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout>
-            <Label Text="State:"
+            <Label Text="Match:"
                        Style="{StaticResource LabelMediumBold}"
                        Padding="5"/>
-            <Label Text="{Binding CurrentState}"
+            <Label Text="{Binding MatchCount}"
                        Style="{StaticResource LabelMedium}"
                        Padding="5"/>
         </HorizontalStackLayout>
