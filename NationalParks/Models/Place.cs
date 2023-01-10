@@ -28,6 +28,7 @@ public class Place : MainModel
     public List<Multimedia> Multimedia { get; set; }
 
     // Derived properties
+    public string ManagedBy => IsManagedByNps == 1 ? "National Park Service" : ManagedByOrg;
     public bool HasBodyText => !String.IsNullOrEmpty(BodyText);
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
     public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;

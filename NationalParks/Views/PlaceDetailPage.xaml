@@ -46,6 +46,15 @@
                                          Url="{Binding Place.Url}"
                                          IsVisible="{Binding Place.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
+                <HorizontalStackLayout>
+                    <Label Text="Managed By:"
+                           Style="{StaticResource LabelMediumBold}"
+                           Padding="5"
+                           VerticalOptions="Center"/>
+                    <Label Text="{Binding Place.ManagedBy}"
+                           Style="{StaticResource LabelMedium}"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
                 <!-- Related Parks -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Place.HasRelatedParks, Converter={StaticResource BoolToTrueFalseConverter}}">
