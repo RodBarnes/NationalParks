@@ -10,7 +10,6 @@ public partial class DataTesterVM : BaseVM
     private int startItems = 0;
     private int limitItems = 100;
     private int totalItems = 1;
-
     private bool okToContinue = false;
 
     public ObservableCollection<Models.Place> Places { get; } = new();
@@ -20,6 +19,8 @@ public partial class DataTesterVM : BaseVM
     [ObservableProperty] bool isPopulated = false;
 
     [ObservableProperty] string currentState;
+    [ObservableProperty] int currentCount;
+    [ObservableProperty] int totalCount;
 
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {
@@ -27,21 +28,21 @@ public partial class DataTesterVM : BaseVM
         this.dataService = dataService;
         this.connectivity = connectivity;
 
-        currentState = "Waiting...";
+        CurrentState = "Waiting...";
     }
 
     [RelayCommand]
     async Task StopAction()
     {
         okToContinue = false;
-        currentState = "Stopped";
+        CurrentState = "Stopped";
     }
 
     [RelayCommand]
     async Task StartActionAsync()
     {
         okToContinue = true;
-        currentState = "Running...";
+        CurrentState = "Running...";
         await GetAllPlacesAsync();
     }
 
@@ -51,8 +52,9 @@ public partial class DataTesterVM : BaseVM
         Places.Clear();
         IsPopulated = false;
         startItems = 0;
-        Title = "Places";
-        currentState = "Cleared";
+        CurrentState = "Cleared";
+        TotalCount = 0;
+        CurrentCount = 0;
     }
 
     async Task GetAllPlacesAsync()
@@ -92,7 +94,8 @@ public partial class DataTesterVM : BaseVM
                     totalItems = 0;
                 }
                 IsPopulated = true;
-                Title = $"Places ({Places.Count} of {totalItems})";
+                TotalCount = totalItems;
+                CurrentCount = Places.Count;
                 if (!okToContinue)
                 {
                     break;
