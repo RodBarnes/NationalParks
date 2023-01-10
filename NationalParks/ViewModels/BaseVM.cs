@@ -3,7 +3,7 @@
 public partial class BaseVM : ObservableObject
 {
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(IsNotBusy))]
+    //[NotifyPropertyChangedFor(nameof(IsNotBusy))]
     bool isBusy;
 
     [ObservableProperty] string title;
