@@ -1,8 +1,10 @@
 Status
 ------
 Fleshing out PlaceDetail items.
-Is there a PlaceImageList?
+Is there a PlaceImageList?  Use DataTester to see if any Place has > 1 images.
 Next, work on Tour and Event pages.
+
+Somewhere, I lost the "data_loading_image". It is no longer displaying when a list is empty.
 
 
 API Issues

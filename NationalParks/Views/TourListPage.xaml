@@ -17,7 +17,7 @@
                         RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
                         RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
             <CollectionView.EmptyView>
-            <Image Source="data_loading_green.png"
+            <Image Source="data_loading_green"
                     HeightRequest="160"
                     WidthRequest="160"
                     HorizontalOptions="Center"

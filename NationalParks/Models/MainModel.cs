@@ -31,7 +31,7 @@
                 }
             }
 
-            source ??= ImageSource.FromFile("nps.png");
+            source ??= ImageSource.FromFile("nps");
             return source;
         }
     }

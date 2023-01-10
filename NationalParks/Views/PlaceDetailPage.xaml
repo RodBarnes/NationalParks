@@ -73,7 +73,7 @@
                                                    Style="{StaticResource LabelMediumBold}" 
                                                    VerticalOptions="Center" 
                                                    Margin="5"/>
-                                            <Image Source="tree_reverse_circle_green.png"
+                                            <Image Source="tree_reverse_green"
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="Center"
                                                     Aspect="AspectFill"

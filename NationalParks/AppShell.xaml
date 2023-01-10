@@ -24,39 +24,39 @@
 
     <Shell.FlyoutHeader>
         <Grid HeightRequest="100" BackgroundColor="{StaticResource Primary}">
-            <Image Source="nps.png"/>
+            <Image Source="nps"/>
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Parks" Icon="tree_green.png">
+    <FlyoutItem Title="Parks" Icon="tree_green">
         <ShellContent ContentTemplate="{DataTemplate views:ParkListPage}"
                       Route="ParkListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Campgrounds" Icon="campfire_green.png">
+    <FlyoutItem Title="Campgrounds" Icon="campfire_green">
         <ShellContent ContentTemplate="{DataTemplate views:CampgroundListPage}"
                       Route="CampgroundListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Tours" Icon="tour_green.png">
+    <FlyoutItem Title="Tours" Icon="tour_green">
         <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
                       Route="TourListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Events" Icon="event_green.png">
+    <FlyoutItem Title="Events" Icon="event_green">
         <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
                       Route="EventListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Places" Icon="location_green.png">
+    <FlyoutItem Title="Places" Icon="location_green">
         <ShellContent ContentTemplate="{DataTemplate views:PlaceListPage}"
                       Route="PlaceListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Webcams" Icon="camera_green.png">
+    <FlyoutItem Title="Webcams" Icon="camera_green">
         <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
                       Route="WebcamListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="About" Icon="info_fancy_green.png">
+    <FlyoutItem Title="About" Icon="info_fancy_green">
         <ShellContent ContentTemplate="{DataTemplate views:AboutPage}"
                       Route="AboutPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Tester" Icon="info_fancy_green.png">
+    <FlyoutItem Title="Tester" Icon="info_fancy_green">
         <ShellContent ContentTemplate="{DataTemplate views:DataTesterPage}"
                       Route="TesterPage" />
     </FlyoutItem>

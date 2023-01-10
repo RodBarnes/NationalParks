@@ -9,7 +9,7 @@
     <CollectionView ItemsSource="{Binding Campground.Images}"
                     SelectionMode="None">
         <CollectionView.EmptyView>
-            <Image Source="data_loading.png"
+            <Image Source="data_loading"
                    HeightRequest="160"
                    WidthRequest="160"
                    HorizontalOptions="Center"

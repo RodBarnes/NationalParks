@@ -11,7 +11,7 @@
         <Frame Style="{StaticResource ViewCard}"
                Padding="10">
             <Grid ColumnDefinitions="100,*">
-                <Image Source="no_image_green.png"
+                <Image Source="no_image_green"
                        Grid.Column="0"
                        Aspect="AspectFill" />
                 <VerticalStackLayout Grid.Column="1">
@@ -37,7 +37,7 @@
                Padding="10"
                HeightRequest="150">
             <Grid ColumnDefinitions="100,*">
-                <Image Source="nps.png"
+                <Image Source="nps"
                        Grid.Column="0"
                        Aspect="AspectFill" />
                 <VerticalStackLayout Grid.Column="1"
