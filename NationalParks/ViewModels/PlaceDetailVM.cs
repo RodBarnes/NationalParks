@@ -8,29 +8,21 @@ public partial class PlaceDetailVM : BaseVM
     IMap map;
     DataService dataService;
 
-    [ObservableProperty]
-    Place place;
+    [ObservableProperty] Place place;
 
-    [ObservableProperty]
-    public CollapsibleViewVM relatedParksVM;
+    [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM bodyTextVM;
+    [ObservableProperty] CollapsibleViewVM bodyTextVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM tagsVM;
+    [ObservableProperty] CollapsibleViewVM tagsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM organizationsVM;
+    [ObservableProperty] CollapsibleViewVM organizationsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM quickFactsVM;
+    [ObservableProperty] CollapsibleViewVM quickFactsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM amenitiesVM;
+    [ObservableProperty] CollapsibleViewVM amenitiesVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM multimediaVM;
+    [ObservableProperty] CollapsibleViewVM multimediaVM;
 
     public PlaceDetailVM(DataService dataService, IMap map)
     {

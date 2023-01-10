@@ -4,8 +4,7 @@
     public partial class ParkImageListVM: BaseVM
     {
         // Query properties
-        [ObservableProperty]
-        Park park;
+        [ObservableProperty] Park park;
 
         public ParkImageListVM()
         {

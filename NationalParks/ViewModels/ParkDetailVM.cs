@@ -8,29 +8,21 @@ public partial class ParkDetailVM : BaseVM
     [ObservableProperty]
     Park park;
 
-    [ObservableProperty]
-    public CollapsibleViewVM alertsVM;
+    [ObservableProperty] CollapsibleViewVM alertsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM combinedFeesVM;
+    [ObservableProperty] CollapsibleViewVM combinedFeesVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM operatingHoursVM;
+    [ObservableProperty] CollapsibleViewVM operatingHoursVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM contactsVM;
+    [ObservableProperty] CollapsibleViewVM contactsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM topicsVM;
+    [ObservableProperty] CollapsibleViewVM topicsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM activitiesVM;
+    [ObservableProperty] CollapsibleViewVM activitiesVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM directionsVM;
+    [ObservableProperty] CollapsibleViewVM directionsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM weatherVM;
+    [ObservableProperty] CollapsibleViewVM weatherVM;
 
     public ParkDetailVM(IMap map)
     {

@@ -10,8 +10,7 @@ namespace NationalParks.ViewModels
         private int startWebcams = 0;
         public ObservableCollection<Models.Webcam> Webcams { get; } = new();
 
-        [ObservableProperty]
-        int itemsRefreshThreshold = -1;
+        [ObservableProperty] int itemsRefreshThreshold = -1;
 
         private bool isPopulated = false;
         public bool IsPopulated

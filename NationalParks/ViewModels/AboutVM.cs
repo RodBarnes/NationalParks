@@ -2,23 +2,17 @@
 {
     public partial class AboutVM : BaseVM
     {
-        [ObservableProperty]
-        string npsUrl;
+        [ObservableProperty] string npsUrl;
 
-        [ObservableProperty]
-        string name;
+        [ObservableProperty] string name;
 
-        [ObservableProperty]
-        string versionString;
+        [ObservableProperty] string versionString;
 
-        [ObservableProperty]
-        string package;
+        [ObservableProperty] string package;
 
-        [ObservableProperty]
-        string buildString;
+        [ObservableProperty] string buildString;
 
-        [ObservableProperty]
-        Version version;
+        [ObservableProperty] Version version;
 
         public AboutVM()
         {

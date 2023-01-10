@@ -20,8 +20,7 @@ public partial class EventListVM : BaseVM
     public ObservableCollection<Models.Event> Events { get; } = new();
     public FilterVM Filter { get; set; } = new FilterVM();
 
-    [ObservableProperty]
-    int itemsRefreshThreshold = -1;
+    [ObservableProperty] int itemsRefreshThreshold = -1;
 
     private bool isPopulated = false;
     public bool IsPopulated

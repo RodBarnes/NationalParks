@@ -4,8 +4,7 @@
     public partial class CampgroundImageListVM : BaseVM
     {
         // Query properties
-        [ObservableProperty]
-        Campground campground;
+        [ObservableProperty] Campground campground;
 
         public CampgroundImageListVM()
         {

@@ -3,10 +3,9 @@
     [QueryProperty(nameof(Models.Webcam), "Webcam")]
     public partial class WebcamDetailVM : BaseVM
     {
-        [ObservableProperty]
-        Webcam webcam;
-
         IMap map;
+
+        [ObservableProperty] Webcam webcam;
 
         public WebcamDetailVM(IMap map)
         {

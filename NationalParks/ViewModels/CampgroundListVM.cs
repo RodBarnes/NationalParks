@@ -17,8 +17,7 @@ public partial class CampgroundListVM : BaseVM
 
     public FilterVM Filter { get; set; }
 
-    [ObservableProperty]
-    int itemsRefreshThreshold = -1;
+    [ObservableProperty] int itemsRefreshThreshold = -1;
 
     private bool isPopulated = false;
     public bool IsPopulated

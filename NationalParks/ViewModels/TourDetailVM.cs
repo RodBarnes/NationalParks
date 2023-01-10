@@ -5,20 +5,15 @@ public partial class TourDetailVM : BaseVM
 {
     IMap map;
 
-    [ObservableProperty]
-    Tour tour;
+    [ObservableProperty] Tour tour;
 
-    [ObservableProperty]
-    public CollapsibleViewVM tagsVM;
+    [ObservableProperty] CollapsibleViewVM tagsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM stopsVM;
+    [ObservableProperty] CollapsibleViewVM stopsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM topicsVM;
+    [ObservableProperty] CollapsibleViewVM topicsVM;
 
-    [ObservableProperty]
-    public CollapsibleViewVM activitiesVM;
+    [ObservableProperty] CollapsibleViewVM activitiesVM;
 
     public TourDetailVM(IMap map)
     {

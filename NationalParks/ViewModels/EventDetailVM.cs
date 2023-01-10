@@ -5,8 +5,7 @@ public partial class EventDetailVM : BaseVM
 {
     IMap map;
 
-    [ObservableProperty]
-    Event npsEvent;
+    [ObservableProperty] Event npsEvent;
 
     public EventDetailVM(IMap map)
     {

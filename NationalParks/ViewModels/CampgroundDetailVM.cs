@@ -8,38 +8,27 @@ namespace NationalParks.ViewModels
         IMap map;
         DataService dataService;
 
-        [ObservableProperty]
-        Campground campground;
+        [ObservableProperty] Campground campground;
 
-        [ObservableProperty]
-        public CollapsibleViewVM feesVM;
+        [ObservableProperty] CollapsibleViewVM feesVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM operatingHoursVM;
+        [ObservableProperty] CollapsibleViewVM operatingHoursVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM contactsVM;
+        [ObservableProperty] CollapsibleViewVM contactsVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM campsiteInfoVM;
+        [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM amenitiesVM;
+        [ObservableProperty] CollapsibleViewVM amenitiesVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM accessibilityVM;
+        [ObservableProperty] CollapsibleViewVM accessibilityVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM directionsVM;
+        [ObservableProperty] CollapsibleViewVM directionsVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM weatherVM;
+        [ObservableProperty] CollapsibleViewVM weatherVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM reservationsVM;
+        [ObservableProperty] CollapsibleViewVM reservationsVM;
 
-        [ObservableProperty]
-        public CollapsibleViewVM regulationsVM;
+        [ObservableProperty] CollapsibleViewVM regulationsVM;
 
         public CampgroundDetailVM(DataService dataService, IMap map)
         {

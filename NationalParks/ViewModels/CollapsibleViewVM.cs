@@ -13,14 +13,11 @@
             Icon = (IsOpen) ? closeIcon : openIcon;
         }
 
-        [ObservableProperty]
-        string icon;
+        [ObservableProperty] string icon;
 
-        [ObservableProperty]
-        string title;
+        [ObservableProperty] string title;
 
-        [ObservableProperty]
-        bool isOpen;
+        [ObservableProperty] bool isOpen;
 
         [RelayCommand]
         public void Toggle()
