@@ -10,15 +10,15 @@ public class Place : MainModel
     public string LatLong { get; set; }
     public string BodyText { get; set; }
     public string AudioDescription { get; set; }
-    public string IsPassportStampLocation { get; set; }
+    public int IsPassportStampLocation { get; set; }
     public string PassportStampLocationDescription { get; set; }
     public List<Image> PassportStampImages { get; set; }
     public string ManagedByUrl { get; set; }
-    public string IsOpenToPublic { get; set; }
-    public string IsMapPinHidden { get; set; }
+    public int IsOpenToPublic { get; set; }
+    public int IsMapPinHidden { get; set; }
     public string NpmapId { get; set; }
     public string GeometryPoiId { get; set; }
-    public string IsManagedByNps { get; set; }
+    public int IsManagedByNps { get; set; }
     public List<string> Amenities { get; set; }
     public string ManagedByOrg { get; set; }
     public List<QuickFact> QuickFacts { get; set; }
