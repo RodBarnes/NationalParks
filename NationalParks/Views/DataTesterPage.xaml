@@ -51,17 +51,36 @@
                        Padding="5"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout>
-            <Label Text="Match:"
+            <Label Text="ManagedByOrg:"
                        Style="{StaticResource LabelMediumBold}"
                        Padding="5"/>
-            <Label Text="{Binding MatchCount}"
+            <Label Text="{Binding ManagedByOrgCount}"
                        Style="{StaticResource LabelMedium}"
                        Padding="5"/>
         </HorizontalStackLayout>
-        <!--<ActivityIndicator IsRunning="{Binding IsBusy}" 
-                           IsVisible="{Binding IsBusy}"
-                           HorizontalOptions="Fill"
-                           Color="{StaticResource Primary}"
-                           VerticalOptions="Center" />-->
+        <HorizontalStackLayout>
+            <Label Text="IsManagedByNps:"
+                       Style="{StaticResource LabelMediumBold}"
+                       Padding="5"/>
+            <Label Text="{Binding IsManagedByNpsCount}"
+                       Style="{StaticResource LabelMedium}"
+                       Padding="5"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="IsMapPinHidden:"
+                       Style="{StaticResource LabelMediumBold}"
+                       Padding="5"/>
+            <Label Text="{Binding IsMapPinHiddenCount}"
+                       Style="{StaticResource LabelMedium}"
+                       Padding="5"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="IsOpenToPublic:"
+                       Style="{StaticResource LabelMediumBold}"
+                       Padding="5"/>
+            <Label Text="{Binding IsOpenToPublicCount}"
+                       Style="{StaticResource LabelMedium}"
+                       Padding="5"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

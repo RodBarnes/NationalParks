@@ -21,8 +21,11 @@ public partial class DataTesterVM : BaseVM
     [ObservableProperty] string currentState;
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
-    [ObservableProperty] int matchCount;
 
+    [ObservableProperty] int managedByOrgCount;
+    [ObservableProperty] int isManagedByNpsCount;
+    [ObservableProperty] int isOpenToPublicCount;
+    [ObservableProperty] int isMapPinHiddenCount;
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {
         Title = "Tester";
@@ -59,7 +62,7 @@ public partial class DataTesterVM : BaseVM
         IsPopulated = false;
         startItems = 0;
         CurrentState = "Cleared";
-        CurrentCount = MatchCount = TotalCount = 0;
+        CurrentCount = ManagedByOrgCount = TotalCount = 0;
     }
 
     async Task GetAllPlacesAsync()
@@ -101,7 +104,10 @@ public partial class DataTesterVM : BaseVM
                 IsPopulated = true;
                 TotalCount = totalItems;
                 CurrentCount = Places.Count;
-                MatchCount = Places.Where(p => p.Images.Count > 1).Count();
+                ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
+                IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
+                IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
+                IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
                 if (!okToContinue)
                 {
                     break;
