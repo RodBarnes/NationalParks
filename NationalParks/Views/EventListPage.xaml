@@ -11,44 +11,46 @@
           RowDefinitions="*,Auto"
           RowSpacing="0"
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <CollectionView ItemsSource="{Binding Events}"
+        <RefreshView Grid.ColumnSpan="2">
+            <CollectionView ItemsSource="{Binding Events}"
                         Grid.ColumnSpan="2"
                         SelectionMode="None"
                         RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
                         RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
-            <CollectionView.EmptyView>
-                <Image Source="data_loading_green"
+                <CollectionView.EmptyView>
+                    <Image Source="data_loading_green"
                     HeightRequest="160"
                     WidthRequest="160"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Event">
-                    <Grid Padding="10,5" HorizontalOptions="Fill">
-                        <Frame HeightRequest="125" 
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Event">
+                        <Grid Padding="10,5" HorizontalOptions="Fill">
+                            <Frame HeightRequest="125" 
                                 Style="{StaticResource ViewCard}">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer 
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:EventListVM}}, Path=GoToDetailCommand}"
                                     CommandParameter="{Binding .}"/>
-                            </Frame.GestureRecognizers>
-                            <Grid Padding="0" ColumnDefinitions="125,*">
-                                <Image Source="{Binding MainImage}"
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Source="{Binding MainImage}"
                                         Grid.Column="0"
                                         Aspect="AspectFill" />
-                                <VerticalStackLayout
+                                    <VerticalStackLayout
                                     VerticalOptions="Center"
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                        <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
         <Button Text="Closest"
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"

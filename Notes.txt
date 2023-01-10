@@ -6,8 +6,6 @@ All current Place records have 1 or less images.  So, an ImageList doesn't make 
 
 Next, work on Tour and Event pages.
 
-Somewhere, I lost the "data_loading_image". It is no longer displaying when a list is empty.
-
 
 API Issues
 ----------
