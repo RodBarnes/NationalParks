@@ -1,7 +1,9 @@
 Status
 ------
 Fleshing out PlaceDetail items.
-No Place has more than 1 image so an ImageList doesn't make sense.  But, since the data structure allows for more than one, any use of an image has to always take the first of the array.
+
+All current Place records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
+
 Next, work on Tour and Event pages.
 
 Somewhere, I lost the "data_loading_image". It is no longer displaying when a list is empty.
