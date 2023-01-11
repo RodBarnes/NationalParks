@@ -56,13 +56,13 @@
         <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
                       Route="TourListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Events" Icon="event_green">
-        <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
-                      Route="EventListPage" />
-    </FlyoutItem>
     <FlyoutItem Title="Places" Icon="location_green">
         <ShellContent ContentTemplate="{DataTemplate views:PlaceListPage}"
                       Route="PlaceListPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Events" Icon="event_green">
+        <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
+                      Route="EventListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Webcams" Icon="camera_green">
         <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
