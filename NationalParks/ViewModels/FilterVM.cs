@@ -50,10 +50,7 @@ namespace NationalParks.ViewModels
                 while (totalTopics > startTopics)
                 {
                     var result = await dataService.GetTopicsAsync(startTopics);
-
-                    if (!int.TryParse(result.Total, out totalTopics))
-                        totalTopics = 0;
-
+                    totalTopics = result.Total;
                     startTopics += result.Data.Count;
                     foreach (var topic in result.Data)
                         TopicSelections.Add(topic);
@@ -78,10 +75,7 @@ namespace NationalParks.ViewModels
                 while (totalActivities > startActivities)
                 {
                     var result = await dataService.GetActivitiesAsync(startActivities);
-
-                    if (!int.TryParse(result.Total, out totalActivities))
-                        totalActivities = 0;
-
+                    totalActivities = result.Total;
                     startActivities += result.Data.Count;
                     foreach (var activity in result.Data)
                         ActivitySelections.Add(activity);

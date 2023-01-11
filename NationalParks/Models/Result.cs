@@ -2,8 +2,8 @@
 {
     public partial class Result
     {
-        public string Total { get; set; }
-        public string Limit { get; set; }
-        public string Start { get; set; }
+        public int Total { get; set; }
+        public int Limit { get; set; }
+        public int Start { get; set; }
     }
 }

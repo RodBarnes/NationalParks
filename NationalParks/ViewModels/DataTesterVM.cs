@@ -99,10 +99,7 @@ public partial class DataTesterVM : BaseVM
                 startItems += result.Data.Count;
                 foreach (var tour in result.Data)
                     Tours.Add(tour);
-                if (!int.TryParse(result.Total, out totalItems))
-                {
-                    totalItems = 0;
-                }
+                totalItems = result.Total;
                 IsPopulated = true;
                 TotalCount = totalItems;
                 CurrentCount = Places.Count;

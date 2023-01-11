@@ -176,10 +176,7 @@ public partial class ParkListVM : BaseVM
                 Parks.Add(park);
                 await GetAlertsAsync(park);
             }
-            if (!int.TryParse(result.Total, out totalItems))
-            {
-                totalItems = 0;
-            }
+            totalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)
@@ -206,10 +203,7 @@ public partial class ParkListVM : BaseVM
             while (totalAlerts > startAlerts)
             {
                 var result = await dataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
-
-                if (!int.TryParse(result.Total, out totalAlerts))
-                    totalAlerts = 0;
-
+                totalAlerts = result.Total;
                 startAlerts += result.Data.Count;
                 foreach (var alert in result.Data)
                     park.Alerts.Add(alert);

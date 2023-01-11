@@ -153,10 +153,7 @@ public partial class PlaceListVM : BaseVM
             startItems += result.Data.Count;
             foreach (var place in result.Data)
                 Places.Add(place);
-            if (!int.TryParse(result.Total, out totalItems))
-            {
-                totalItems = 0;
-            }
+            totalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

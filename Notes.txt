@@ -1,7 +1,7 @@
 Status
 ------
 Fleshing out Event page.
-
+Estudillo House in Places has no "Manage By" displaying.
 
 API Issues
 ----------

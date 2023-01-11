@@ -142,10 +142,7 @@ public partial class EventListVM : BaseVM
             foreach (var npsEvent in result.Data)
                 Events.Add(npsEvent);
 
-            if (!int.TryParse(result.Total, out totalItems))
-            {
-                totalItems = 0;
-            }
+            totalItems = result.Total;
             Title = $"Events ({totalItems})";
         }
         catch (Exception ex)
