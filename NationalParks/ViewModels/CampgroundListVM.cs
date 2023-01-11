@@ -153,10 +153,7 @@ public partial class CampgroundListVM : BaseVM
             startItems += result.Data.Count;
             foreach (var campground in result.Data)
                 Campgrounds.Add(campground);
-            if (!int.TryParse(result.Total, out totalItems))
-            {
-                totalItems = 0;
-            }
+            totalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

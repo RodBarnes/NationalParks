@@ -6,11 +6,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class TourListVM : BaseVM
 {
-    // For holding the available filter selections
-    private Collection<Models.Topic> Topics { get; } = new();
-    private Collection<Models.Activity> Activities { get; } = new();
-    private Collection<Models.State> States { get; } = new();
-
     readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -51,9 +46,6 @@ public partial class TourListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-        await GetAllTopicsAsync();
-        await GetAllActivitiesAsync();
-        await LoadStates();
 
         IsPopulated = true;
     }
@@ -182,10 +174,7 @@ public partial class TourListVM : BaseVM
             {
                 Tours.Add(tour);
             }
-            if (!int.TryParse(result.Total, out totalItems))
-            {
-                totalItems = 0;
-            }
+            totalItems = result.Total;
             Title = $"Tours ({totalItems})";
         }
         catch (Exception ex)
@@ -195,79 +184,6 @@ public partial class TourListVM : BaseVM
         finally
         {
             IsBusy = false;
-        }
-    }
-
-    async Task GetAllTopicsAsync()
-    {
-        if (Topics?.Count > 0)
-            return;
-
-        try
-        {
-            int startTopics = 0;
-            int totalTopics = 1;
-
-            while (totalTopics > startTopics)
-            {
-                var result = await dataService.GetTopicsAsync(startTopics);
-
-                if (!int.TryParse(result.Total, out totalTopics))
-                    totalTopics = 0;
-
-                startTopics += result.Data.Count;
-                foreach (var topic in result.Data)
-                    Topics.Add(topic);
-            }
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-    }
-
-    async Task GetAllActivitiesAsync()
-    {
-        if (Activities?.Count > 0)
-            return;
-
-        try
-        {
-            int startActivities = 0;
-            int totalActivities = 1;
-
-            while (totalActivities > startActivities)
-            {
-                var result = await dataService.GetActivitiesAsync(startActivities);
-
-                if (!int.TryParse(result.Total, out totalActivities))
-                    totalActivities = 0;
-
-                startActivities += result.Data.Count;
-                foreach (var activity in result.Data)
-                    Activities.Add(activity);
-            }
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-    }
-
-    async Task LoadStates()
-    {
-        if (States?.Count > 0)
-            return;
-
-        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
-        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-        if (result != null)
-        {
-            foreach (var item in result.Data)
-            {
-                States.Add(item);
-            }
         }
     }
 }
