@@ -88,10 +88,46 @@ public partial class DataTesterVM : BaseVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("places_MO.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultPlaces>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var place in result.Data)
-            //    Places.Add(place);
+            while (totalItems > startItems)
+            {
+                result = await dataService.GetPlacesAsync(startItems, limitItems, states);
+                startItems += result.Data.Count;
+                foreach (var place in result.Data)
+                    Places.Add(place);
+                totalItems = result.Total;
+                IsPopulated = true;
+                TotalCount = totalItems;
+                CurrentCount = Places.Count;
+                ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
+                IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
+                IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
+                IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
+                if (!okToContinue)
+                {
+                    break;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}: {ex.Message}", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    async Task GetToursAsync()
+    {
+        try
+        {
+            IsBusy = true;
+            ResultTours result;
+            string states = "";
+            IsBusy = true;
+            ResultTours result;
+            string states = "";
 
             while (totalItems > startItems)
             {

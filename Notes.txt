@@ -1,7 +1,24 @@
 Status
 ------
 Fleshing out Event page.
-Estudillo House in Places has no "Manage By" displaying.
+
+Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
+
+Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
+
+Event API seems broken.  Anything from 61 and beyond returns no data -- here is the result:
+	{
+		"total": "0",
+		"errors": [],
+		"data": [],
+		"dates": [],
+		"pagenumber": "61",
+		"pagesize": "10"
+	}
+
+The count of returns pages is 10 for everything up to and including a pageNumber of 59.  At pageNumber 60, it returns only 6 pages.  At pageNumber 61 and beyond, it returns 0 pages.
+
+
 
 API Issues
 ----------
