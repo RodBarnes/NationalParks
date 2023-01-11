@@ -22,10 +22,11 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(TourFilterPage), typeof(TourFilterPage));
         Routing.RegisterRoute(nameof(TourImageListPage), typeof(TourImageListPage));
 
-        Routing.RegisterRoute(nameof(EventDetailPage), typeof(EventDetailPage));
-
         Routing.RegisterRoute(nameof(PlaceDetailPage), typeof(PlaceDetailPage));
         Routing.RegisterRoute(nameof(PlaceFilterPage), typeof(PlaceFilterPage));
+        Routing.RegisterRoute(nameof(PlaceImageListPage), typeof(PlaceImageListPage));
+
+        Routing.RegisterRoute(nameof(EventDetailPage), typeof(EventDetailPage));
 
         Routing.RegisterRoute(nameof(WebcamDetailPage), typeof(WebcamDetailPage));
     }
