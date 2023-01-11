@@ -1,13 +1,9 @@
 Status
 ------
 Fleshing out PlaceDetail items.
-	- IsOpenToPublic
-	- IsManagedByNps
-	- ManagedByOrg
-	- IsMapPinHidden
-	No place is has both a "ManagedByOrg" string and also "IsManageByNps='1'".
 
 All current Place records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
+Is the only place the image show is in the top window?  Do we let the user tap on that to show the entire image?
 
 Next, work on Tour and Event pages.
 
