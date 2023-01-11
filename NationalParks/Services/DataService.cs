@@ -176,20 +176,31 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
+    public async Task<ResultEvents> GetEventsAsync(int start = 1, int limit = 10, string states = "")
     {
         ResultEvents result = new();
 
-        var url = ConstructUrl("events", $"start={start}&limit={limit}");
+        var url = ConstructUrl("events", $"pageNumber={start}&pageSize={limit}");
         if (!String.IsNullOrEmpty(states))
         {
             url += $"&stateCode={states}";
         }
 
+        //StreamReader reader;
+        //string httpString;
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
+            //reader = new StreamReader(response.Content.ReadAsStream());
+            //while (!reader.EndOfStream)
+            //{
+            //    httpString = reader.ReadToEnd();
+            //}
             result = await response.Content.ReadFromJsonAsync<ResultEvents>();
+        }
+        else
+        {
+            Debug.WriteLine($"Error: {response.StatusCode}");
         }
 
         return result;

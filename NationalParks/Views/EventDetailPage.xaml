@@ -40,13 +40,34 @@
         <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
-            <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding NpsEvent.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
-                <Label Text="{Binding NpsEvent.Description}" Style="{StaticResource LabelMedium}" />
-                <controls:HyperlinkLabel Text="{Binding NpsEvent.InfoUrl}"
-                                         Url="{Binding NpsEvent.InfoUrl}"
-                                         IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+            <VerticalStackLayout>
+                <VerticalStackLayout Padding="10" 
+                                 Spacing="10" 
+                                 x:DataType="models:Event">
+                    <Label Text="{Binding ParkFullname}" 
+                       Style="{StaticResource LabelLargeBold}"/>
+                    <Label Text="{Binding Description}" 
+                       Style="{StaticResource LabelMedium}" />
+                    <controls:HyperlinkLabel Text="{Binding InfoUrl}"
+                                         Url="{Binding InfoUrl}"
+                                         IsVisible="{Binding HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
+                </VerticalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Related Park" 
+                           Style="{StaticResource LabelMediumBold}" 
+                           VerticalOptions="Center" 
+                           Margin="5"/>
+                    <Image Source="tree_reverse_green"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Aspect="AspectFill"
+                            HeightRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

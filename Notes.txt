@@ -1,13 +1,20 @@
 Status
 ------
+Result members are set as string and should all be int.  Need to go through testing that change.
+
+
+
+
 Fleshing out Event page.
+
+Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
+
+Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
 
 API Issues
 ----------
 It appears that the 'q' parameter is a full-text search for any listed value.  It seems to accept multiple specified values -- space-delimited, maybe comma-delimited.
-
-Event API returns everything -- it does not recognize start or limit.  It does have a pageSize and pageNumber.  Maybe those can be used?
 
 Places is not returned in any (recgonizable) sorted order and doesn't provide a "sort" parameter
 
@@ -20,10 +27,6 @@ All current Place and Tour records have 1 or less images.  So, an ImageList does
 Right now, the only spot where the image appears is in the top window.  Do we let the user tap on that to show the entire image?
 
 Need to review all need for try/catch, catching and dislaying errors.
-
-Probably need to be able to move to ParkDetail from CampgroundDetail, TourDetail, and EventDetail as was done for PlaceDetail?
-	- Tour has RelatedPark (like Place) so that could be done the same way.
-	- Event has only ParkFullName so that could be really difficult.  The fullname could be displayed (too bad it isn't the short name) but an that be used to get the Park?
 
 Image list should support tapping on an image to see it fullscreen or something.  Do we support showing the crops?  Maybe just listing them and supporting download?
 
@@ -81,7 +84,5 @@ Still unsure what to do with the ExceptionHours and whether to display the Stand
 WebCam image model is the same as Park image model but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
 
 And maybe Activity should be ParkActivity to eliminate the ambiguity with System...Activity?
-
-What about Amenities, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
 
 What is the best way to handle the string Lat/Long?  Ideally, they'd be private and only expose the double values?
