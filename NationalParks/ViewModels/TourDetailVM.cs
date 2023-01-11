@@ -33,6 +33,12 @@ public partial class TourDetailVM : BaseVM
     [RelayCommand]
     async Task OpenMap()
     {
+        if (Tour.DLatitude < 0)
+        {
+            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
+            return;
+        }
+
         try
         {
             await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions

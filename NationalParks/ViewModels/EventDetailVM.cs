@@ -16,6 +16,12 @@ public partial class EventDetailVM : BaseVM
     [RelayCommand]
     async Task OpenMap()
     {
+        if (NpsEvent.DLatitude < 0)
+        {
+            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
+            return;
+        }
+
         try
         {
             await map.OpenAsync(NpsEvent.DLatitude, NpsEvent.DLongitude, new MapLaunchOptions

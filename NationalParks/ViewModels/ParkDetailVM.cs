@@ -42,6 +42,12 @@ public partial class ParkDetailVM : BaseVM
     [RelayCommand]
     async Task OpenMap()
     {
+        if (Park.DLatitude < 0)
+        {
+            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
+            return;
+        }
+
         try
         {
             await map.OpenAsync(Park.DLatitude, Park.DLongitude, new MapLaunchOptions

@@ -16,6 +16,12 @@
         [RelayCommand]
         async Task OpenMap()
         {
+            if (Webcam.Latitude < 0)
+            {
+                await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
+                return;
+            }
+
             try
             {
                 await map.OpenAsync((double)Webcam.Latitude, (double)Webcam.Longitude, new MapLaunchOptions
