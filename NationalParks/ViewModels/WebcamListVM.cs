@@ -33,7 +33,7 @@ namespace NationalParks.ViewModels
 
         public async void PopulateData()
         {
-            await GetItemsAsync();
+            await GetItems();
 
             IsPopulated = true;
         }
@@ -57,13 +57,13 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task GetClosestAsync()
+        async Task GetClosest()
         {
             await Shell.Current.DisplayAlert("Filter", $"How would GetClosest() work for {this}?", "OK");
         }
 
         [RelayCommand]
-        async Task GetItemsAsync()
+        async Task GetItems()
         {
             if (IsBusy)
                 return;

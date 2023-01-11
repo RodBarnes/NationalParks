@@ -48,7 +48,7 @@ public partial class ParkListVM : BaseVM
 
     public async void PopulateData()
     {
-        await GetItemsAsync();
+        await GetItems();
     }
 
     public void ClearData()
@@ -58,7 +58,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetailAsync(Park park)
+    async Task GoToDetail(Park park)
     {
         if (park == null)
             return;
@@ -70,7 +70,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToFilterAsync()
+    async Task GoToFilter()
     {
         await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
         {
@@ -79,7 +79,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetClosestAsync()
+    async Task GetClosest()
     {
         if (IsBusy || Parks.Count == 0)
             return;
@@ -102,7 +102,7 @@ public partial class ParkListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetailAsync(first);
+            await GoToDetail(first);
         }
         catch (Exception ex)
         {
@@ -111,7 +111,7 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetItemsAsync()
+    async Task GetItems()
     {
         if (IsBusy)
             return;
@@ -172,7 +172,7 @@ public partial class ParkListVM : BaseVM
             foreach (var park in result.Data)
             {
                 Parks.Add(park);
-                await GetAlertsAsync(park);
+                await ParkListVM.GetAlerts(park);
             }
             totalItems = result.Total;
             IsPopulated = true;
@@ -187,7 +187,7 @@ public partial class ParkListVM : BaseVM
         }
     }
 
-    async Task GetAlertsAsync(Park park)
+    static async Task GetAlerts(Park park)
     {
         if (park.Alerts?.Count > 0)
             return;

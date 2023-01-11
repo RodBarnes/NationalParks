@@ -57,7 +57,7 @@ public partial class TourDetailVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToParkFromRelatedParkAsync(RelatedPark relPark)
+    async Task GoToParkFromRelatedPark(RelatedPark relPark)
     {
         if (relPark == null)
             return;

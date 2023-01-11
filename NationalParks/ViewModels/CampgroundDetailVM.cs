@@ -49,7 +49,7 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task OpenMapAsync()
+        async Task OpenMap()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task GoToImagesAsync()
+        async Task GoToImages()
         {
             await Shell.Current.GoToAsync(nameof(CampgroundImageListPage), true, new Dictionary<string, object>
             {
@@ -75,7 +75,7 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task GoToParkFromParkCodeAsync()
+        async Task GoToParkFromParkCode()
         {
             Park park;
 

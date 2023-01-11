@@ -16,5 +16,4 @@ public partial class TourImageListVM : BaseVM
     {
         await Shell.Current.DisplayAlert($"Image", $"{image.Title}\n{image.Url}", "OK");
     }
-
 }

@@ -45,8 +45,7 @@ public partial class EventListVM : BaseVM
 
     public async void PopulateData()
     {
-        await GetItemsAsync();
-        await LoadStates();
+        await GetItems();
 
         IsPopulated = true;
     }
@@ -70,7 +69,7 @@ public partial class EventListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetClosestAsync()
+    async Task GetClosest()
     {
         if (IsBusy || Events.Count == 0)
             return;
@@ -102,7 +101,7 @@ public partial class EventListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetItemsAsync()
+    async Task GetItems()
     {
         if (IsBusy)
             return;
@@ -150,23 +149,6 @@ public partial class EventListVM : BaseVM
         finally
         {
             IsBusy = false;
-        }
-    }
-
-    async Task LoadStates()
-    {
-        if (States?.Count > 0)
-            return;
-
-        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
-        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-        if (result != null)
-        {
-            foreach (var item in result.Data)
-            {
-                States.Add(item);
-            }
         }
     }
 }

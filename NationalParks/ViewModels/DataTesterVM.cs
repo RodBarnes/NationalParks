@@ -49,7 +49,7 @@ public partial class DataTesterVM : BaseVM
     {
         okToContinue = true;
         CurrentState = "Running...";
-        await GetAllPlacesAsync();
+        await GetAllPlaces();
         if (startItems <= totalItems)
         {
             okToContinue = false;
@@ -67,7 +67,7 @@ public partial class DataTesterVM : BaseVM
         CurrentCount = MatchCount = TotalCount = 0;
     }
 
-    async Task GetAllPlacesAsync()
+    async Task GetAllPlaces()
     {
         try
         {
@@ -118,7 +118,7 @@ public partial class DataTesterVM : BaseVM
         }
     }
 
-    async Task GetToursAsync()
+    async Task GetTours()
     {
         try
         {

@@ -48,7 +48,7 @@ public partial class TourListVM : BaseVM
 
     public async void PopulateData()
     {
-        await GetItemsAsync();
+        await GetItems();
     }
 
     public void ClearData()
@@ -58,7 +58,7 @@ public partial class TourListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetailAsync(Tour tour)
+    async Task GoToDetail(Tour tour)
     {
         if (tour == null)
             return;
@@ -79,7 +79,7 @@ public partial class TourListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetClosestAsync()
+    async Task GetClosest()
     {
         if (IsBusy || Tours.Count == 0)
             return;
@@ -102,7 +102,7 @@ public partial class TourListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetailAsync(first);
+            await GoToDetail(first);
         }
         catch (Exception ex)
         {
@@ -111,7 +111,7 @@ public partial class TourListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetItemsAsync()
+    async Task GetItems()
     {
         if (IsBusy)
             return;

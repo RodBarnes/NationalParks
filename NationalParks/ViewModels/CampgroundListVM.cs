@@ -48,7 +48,7 @@ public partial class CampgroundListVM : BaseVM
 
     public async void PopulateData()
     {
-        await GetItemsAsync();
+        await GetItems();
     }
 
     public void ClearData()
@@ -58,7 +58,7 @@ public partial class CampgroundListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetailAsync(Campground campground)
+    async Task GoToDetail(Campground campground)
     {
         if (campground == null)
             return;
@@ -70,7 +70,7 @@ public partial class CampgroundListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToFilterAsync()
+    async Task GoToFilter()
     {
         await Shell.Current.GoToAsync(nameof(CampgroundFilterPage), true, new Dictionary<string, object>
         {
@@ -79,7 +79,7 @@ public partial class CampgroundListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetClosestAsync()
+    async Task GetClosest()
     {
         if (IsBusy || Campgrounds.Count == 0)
             return;
@@ -102,7 +102,7 @@ public partial class CampgroundListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetailAsync(first);
+            await GoToDetail(first);
         }
         catch (Exception ex)
         {
@@ -111,7 +111,7 @@ public partial class CampgroundListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GetItemsAsync()
+    async Task GetItems()
     {
         if (IsBusy)
             return;
