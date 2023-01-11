@@ -64,7 +64,7 @@ public partial class TourDetailVM : BaseVM
 
         Park park;
 
-        ResultParks result = await dataService.GetParkForParkCodeAsync(relPark.ParkCode);
+        ResultParks result = await DataService.GetParkForParkCodeAsync(relPark.ParkCode);
         if (result.Data.Count == 1)
         {
             park = result.Data[0];

@@ -22,21 +22,7 @@ public class DataService
         return url;
     }
 
-    public async Task<ResultParks> GetParkForParkCodeAsync(string parkCode)
-    {
-        ResultParks result = new();
-
-        var url = ConstructUrl("parks", $"parkCode={parkCode}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultParks>();
-        }
-
-        return result;
-    }
-
-    public async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
+    public static async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
     {
         ResultParks result = new();
 
@@ -54,6 +40,34 @@ public class DataService
             url += $"&stateCode={states}";
         }
 
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultParks>();
+        }
+
+        return result;
+    }
+
+    public static async Task<ResultAlerts> GetAlertsForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
+    {
+        ResultAlerts result = new();
+
+        var url = ConstructUrl("alerts", $"start={start}&limit={limit}&parkCode={parkCode}");
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultAlerts>();
+        }
+
+        return result;
+    }
+
+    public static async Task<ResultParks> GetParkForParkCodeAsync(string parkCode)
+    {
+        ResultParks result = new();
+
+        var url = ConstructUrl("parks", $"parkCode={parkCode}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -86,20 +100,6 @@ public class DataService
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultActivities>();
-        }
-
-        return result;
-    }
-
-    public async Task<ResultAlerts> GetAlertsForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
-    {
-        ResultAlerts result = new();
-
-        var url = ConstructUrl("alerts", $"start={start}&limit={limit}&parkCode={parkCode}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultAlerts>();
         }
 
         return result;

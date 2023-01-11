@@ -5,7 +5,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ParkListVM : BaseVM
 {
-    readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
@@ -39,11 +38,10 @@ public partial class ParkListVM : BaseVM
         }
     }
 
-    public ParkListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    public ParkListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
         Title = $"Parks";
-        this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
@@ -169,7 +167,7 @@ public partial class ParkListVM : BaseVM
             //foreach (var park in result.Data)
             //    Parks.Add(park);
 
-            result = await dataService.GetParksAsync(startItems, limitItems, topics, activities, states);
+            result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
             startItems += result.Data.Count;
             foreach (var park in result.Data)
             {
@@ -202,7 +200,7 @@ public partial class ParkListVM : BaseVM
 
             while (totalAlerts > startAlerts)
             {
-                var result = await dataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
+                var result = await DataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
                 totalAlerts = result.Total;
                 startAlerts += result.Data.Count;
                 foreach (var alert in result.Data)
