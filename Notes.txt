@@ -4,6 +4,8 @@ Status
 
 Todo & Ideas
 ------------
+I need to consider full tests on the DataService methods to ensure that all parameters are verfied before going to the API.  For example, GetParkForParkCodeAsync() needs to check that it actually has a park code, or that the item actuallly has a RelatedPark before attempting to get info for the Park using the ParkCode -- which would be null.
+
 If filter is applied, need to visually indicated that (in the header?) when that is in effect. Is this an icon?  A label?
 
 All current Place and Tour records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.

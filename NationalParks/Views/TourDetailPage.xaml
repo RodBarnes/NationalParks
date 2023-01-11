@@ -47,7 +47,7 @@
                     <Label Text="{Binding Tour.Duration}" Style="{StaticResource LabelMedium}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label Text="Related Park" 
+                    <Label Text="{Binding Tour.Park.Name}" 
                            Style="{StaticResource LabelMediumBold}" 
                            VerticalOptions="Center" 
                            Margin="5"/>
