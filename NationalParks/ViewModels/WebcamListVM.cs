@@ -4,7 +4,6 @@ namespace NationalParks.ViewModels
 {
     public partial class WebcamListVM : BaseVM
     {
-        readonly DataService dataService;
         readonly IConnectivity connectivity;
 
         private int startWebcams = 0;
@@ -26,10 +25,9 @@ namespace NationalParks.ViewModels
             }
         }
 
-        public WebcamListVM(DataService dataService, IConnectivity connectivity)
+        public WebcamListVM(IConnectivity connectivity)
         {
             Title = "Webcams";
-            this.dataService = dataService;
             this.connectivity = connectivity;
         }
 
@@ -87,7 +85,7 @@ namespace NationalParks.ViewModels
                 //foreach (var webcam in result.Data)
                 //    Webcams.Add(webcam);
 
-                result = await dataService.GetWebcamsAsync(startWebcams);
+                result = await DataService.GetWebcamsAsync(startWebcams);
                 startWebcams += result.Data.Count;
                 foreach (var webcam in result.Data)
                     Webcams.Add(webcam);

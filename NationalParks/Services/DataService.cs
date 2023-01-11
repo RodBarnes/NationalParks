@@ -162,7 +162,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
+    public static async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
     {
         ResultWebcams result = new();
 
