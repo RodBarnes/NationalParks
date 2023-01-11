@@ -127,6 +127,7 @@ public partial class PlaceListVM : BaseVM
 
             IsBusy = true;
             ResultPlaces result;
+            Park park;
             string states = "";
 
             if (Filter is not null)
@@ -150,7 +151,21 @@ public partial class PlaceListVM : BaseVM
             result = await DataService.GetPlacesAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var place in result.Data)
+            {
+                // This code addresses the condition where there is no location of the place
+                // but it has at least one related park
+                if (place.DLatitude < 0 && place.RelatedParks.Count > 0)
+                {
+                    ResultParks resultPark = await DataService.GetParkForParkCodeAsync(place.RelatedParks[0].ParkCode);
+                    if (resultPark.Data.Count == 1)
+                    {
+                        park = resultPark.Data[0];
+                        place.Latitude = park.Latitude;
+                        place.Longitude = park.Longitude;
+                    }
+                }
                 Places.Add(place);
+            }
             totalItems = result.Total;
             IsPopulated = true;
         }
