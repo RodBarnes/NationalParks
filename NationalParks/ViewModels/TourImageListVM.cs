@@ -1,12 +1,12 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Campground), "Campground")]
-public partial class CampgroundImageListVM : BaseVM
+[QueryProperty(nameof(Tour), "Tour")]
+public partial class TourImageListVM : BaseVM
 {
     // Query properties
-    [ObservableProperty] Campground campground;
+    [ObservableProperty] Tour tour;
 
-    public CampgroundImageListVM()
+    public TourImageListVM()
     {
         Title = "Images";
     }
@@ -16,4 +16,5 @@ public partial class CampgroundImageListVM : BaseVM
     {
         await Shell.Current.DisplayAlert($"Image", $"{image.Title}\n{image.Url}", "OK");
     }
+
 }

@@ -20,6 +20,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(TourDetailPage), typeof(TourDetailPage));
         Routing.RegisterRoute(nameof(TourFilterPage), typeof(TourFilterPage));
+        Routing.RegisterRoute(nameof(TourImageListPage), typeof(TourImageListPage));
 
         Routing.RegisterRoute(nameof(EventDetailPage), typeof(EventDetailPage));
 

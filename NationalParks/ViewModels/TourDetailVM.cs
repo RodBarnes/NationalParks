@@ -50,7 +50,7 @@ public partial class TourDetailVM : BaseVM
     [RelayCommand]
     async Task GoToImages()
     {
-        await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(TourImageListPage), true, new Dictionary<string, object>
         {
             {"Tour", Tour }
         });
