@@ -105,21 +105,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
-    {
-        ResultWebcams result = new();
-
-        var url = ConstructUrl("webcams", $"start={start}&limit={limit}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultWebcams>();
-        }
-
-        return result;
-    }
-
-    public async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20, string states = "")
+    public static async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20, string states = "")
     {
         ResultCampgrounds result = new();
 
@@ -136,25 +122,6 @@ public class DataService
         }
 
         return result;  
-    }
-
-    public async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultThingsToDo result = new();
-
-        var url = ConstructUrl("thingstodo", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
-        }
-
-        return result;
     }
 
     public async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
@@ -176,25 +143,6 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultEvents result = new();
-
-        var url = ConstructUrl("events", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
-        }
-
-        return result;
-    }
-
     public async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
     {
         ResultPlaces result = new();
@@ -209,6 +157,58 @@ public class DataService
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultPlaces>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
+    {
+        ResultWebcams result = new();
+
+        var url = ConstructUrl("webcams", $"start={start}&limit={limit}");
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultWebcams>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
+    {
+        ResultThingsToDo result = new();
+
+        var url = ConstructUrl("thingstodo", $"start={start}&limit={limit}");
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
+        }
+
+        return result;
+    }
+
+    public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
+    {
+        ResultEvents result = new();
+
+        var url = ConstructUrl("events", $"start={start}&limit={limit}");
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
         }
 
         return result;

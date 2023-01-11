@@ -5,7 +5,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class CampgroundListVM : BaseVM
 {
-    readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
@@ -39,11 +38,10 @@ public partial class CampgroundListVM : BaseVM
         }
     }
 
-    public CampgroundListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
         Title = "Campgrounds";
-        this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
@@ -149,7 +147,7 @@ public partial class CampgroundListVM : BaseVM
             //foreach (var campground in result.Data)
             //    Campgrounds.Add(campground);
 
-            result = await dataService.GetCampgroundsAsync(startItems, limitItems, states);
+            result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var campground in result.Data)
                 Campgrounds.Add(campground);
