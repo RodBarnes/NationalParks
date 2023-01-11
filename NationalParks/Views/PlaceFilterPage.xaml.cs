@@ -2,7 +2,7 @@ namespace NationalParks.Views;
 
 public partial class PlaceFilterPage : ContentPage
 {
-    PlaceFilterVM _vm;
+    readonly PlaceFilterVM _vm;
 
 	public PlaceFilterPage(PlaceFilterVM vm)
 	{

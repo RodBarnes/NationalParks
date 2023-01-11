@@ -2,7 +2,7 @@ namespace NationalParks.Views;
 
 public partial class PlaceListPage : ContentPage
 {
-	PlaceListVM _vm;
+    readonly PlaceListVM _vm;
 
 	public PlaceListPage(PlaceListVM vm)
 	{

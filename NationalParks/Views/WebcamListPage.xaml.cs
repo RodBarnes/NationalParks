@@ -2,7 +2,7 @@ namespace NationalParks.Views;
 
 public partial class WebcamListPage : ContentPage
 {
-    WebcamListVM _vm;
+    readonly WebcamListVM _vm;
 
 	public WebcamListPage(WebcamListVM vm)
 	{

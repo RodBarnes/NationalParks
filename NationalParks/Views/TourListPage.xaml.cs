@@ -2,7 +2,7 @@
 
 public partial class TourListPage : ContentPage
 {
-    TourListVM _vm;
+    readonly TourListVM _vm;
 
 	public TourListPage(TourListVM vm)
 	{

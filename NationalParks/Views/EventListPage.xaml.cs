@@ -2,7 +2,7 @@ namespace NationalParks.Views;
 
 public partial class EventListPage : ContentPage
 {
-    EventListVM _vm;
+    readonly EventListVM _vm;
 
 	public EventListPage(EventListVM vm)
 	{

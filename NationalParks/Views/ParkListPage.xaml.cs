@@ -2,7 +2,7 @@
 
 public partial class ParkListPage : ContentPage
 {
-    ParkListVM _vm;
+    readonly ParkListVM _vm;
 
 	public ParkListPage(ParkListVM vm)
 	{
