@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:DataType="vm:ParkFilterVM"
-             x:Class="NationalParks.Views.ParkFilterPage"
+             x:DataType="vm:TourFilterVM"
+             x:Class="NationalParks.Views.TourFilterPage"
              Title="{Binding Title}">
     <ContentPage.Resources>
         <vm:FilterVM x:Key="Filter"/>

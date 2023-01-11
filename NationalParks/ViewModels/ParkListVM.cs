@@ -70,6 +70,15 @@ public partial class ParkListVM : BaseVM
     }
 
     [RelayCommand]
+    async Task GoToFilterAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
+        {
+            {"VM", this }
+        });
+    }
+
+    [RelayCommand]
     async Task GetClosestAsync()
     {
         if (IsBusy || Parks.Count == 0)
@@ -99,15 +108,6 @@ public partial class ParkListVM : BaseVM
         {
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
-    }
-
-    [RelayCommand]
-    async Task GoToFilterAsync()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
-        {
-            {"VM", this }
-        });
     }
 
     [RelayCommand]

@@ -14,7 +14,7 @@ public partial class TourListVM : BaseVM
 
     public ObservableCollection<Models.Tour> Tours { get; } = new();
 
-    public FilterVM Filter { get; set; } = new FilterVM();
+    public FilterVM Filter { get; set; }
 
     [ObservableProperty] int itemsRefreshThreshold = -1;
 
@@ -27,6 +27,12 @@ public partial class TourListVM : BaseVM
             if (value == true)
             {
                 ItemsRefreshThreshold = 2;
+                Title = $"Tours ({totalItems})";
+            }
+            else
+            {
+                ItemsRefreshThreshold = -1;
+                startItems = 0;
             }
             isPopulated = value;
         }
@@ -43,18 +49,16 @@ public partial class TourListVM : BaseVM
     public async void PopulateData()
     {
         await GetItemsAsync();
-
-        IsPopulated = true;
     }
 
     public void ClearData()
     {
         Tours.Clear();
-        startItems = 0;
+        IsPopulated = false;
     }
 
     [RelayCommand]
-    async Task GoToDetail(Tour tour)
+    async Task GoToDetailAsync(Tour tour)
     {
         if (tour == null)
             return;
@@ -68,15 +72,10 @@ public partial class TourListVM : BaseVM
     [RelayCommand]
     async Task GoToFilter()
     {
-        await Shell.Current.DisplayAlert("???", $"TourFilterPage", "OK");
-
-        //await Shell.Current.GoToAsync(nameof(TourFilterPage), true, new Dictionary<string, object>
-        //{
-        //    {"Topics", Topics },
-        //    {"Activities", Activities },
-        //    {"States", States},
-        //    {"VM", this }
-        //});
+        await Shell.Current.GoToAsync(nameof(TourFilterPage), true, new Dictionary<string, object>
+        {
+            {"VM", this }
+        });
     }
 
     [RelayCommand]
@@ -103,7 +102,7 @@ public partial class TourListVM : BaseVM
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                 .FirstOrDefault();
 
-            await GoToDetail(first);
+            await GoToDetailAsync(first);
         }
         catch (Exception ex)
         {
@@ -133,32 +132,35 @@ public partial class TourListVM : BaseVM
             string topics = "";
             string activities = "";
 
-            // Apply any filters prior to getting the items
-            foreach (var topic in Filter.Topics)
+            if (Filter is not null)
             {
-                if (topics.Length > 0)
+                // Apply any filters prior to getting the items
+                foreach (var topic in Filter.Topics)
                 {
-                    topics += "%2D";
+                    if (topics.Length > 0)
+                    {
+                        topics += "%2D";
+                    }
+                    topics += topic.Id;
                 }
-                topics += topic.Id;
-            }
 
-            foreach (var activity in Filter.Activities)
-            {
-                if (activities.Length > 0)
+                foreach (var activity in Filter.Activities)
                 {
-                    activities += "%2D";
+                    if (activities.Length > 0)
+                    {
+                        activities += "%2D";
+                    }
+                    activities += activity.Id;
                 }
-                activities += activity.Id;
-            }
 
-            foreach (var state in Filter.States)
-            {
-                if (states.Length > 0)
+                foreach (var state in Filter.States)
                 {
-                    states += ",";
+                    if (states.Length > 0)
+                    {
+                        states += ",";
+                    }
+                    states += state.Abbreviation;
                 }
-                states += state.Abbreviation;
             }
 
             //using var stream = await FileSystem.OpenAppPackageFileAsync("tours_0.json");
@@ -180,7 +182,7 @@ public partial class TourListVM : BaseVM
                 Tours.Add(tour);
             }
             totalItems = result.Total;
-            Title = $"Tours ({totalItems})";
+            IsPopulated = true;
         }
         catch (Exception ex)
         {

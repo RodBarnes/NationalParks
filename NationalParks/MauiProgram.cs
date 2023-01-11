@@ -57,6 +57,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<TourListPage>();
         builder.Services.AddTransient<TourDetailVM>();
         builder.Services.AddTransient<TourDetailPage>();
+        builder.Services.AddTransient<TourFilterVM>();
+        builder.Services.AddTransient<TourFilterPage>();
 
         builder.Services.AddSingleton<EventListVM>();
         builder.Services.AddSingleton<EventListPage>();
