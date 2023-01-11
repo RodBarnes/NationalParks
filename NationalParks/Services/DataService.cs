@@ -77,7 +77,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultTopics> GetTopicsAsync(int start = 0, int limit = 20)
+    public static async Task<ResultTopics> GetTopicsAsync(int start = 0, int limit = 20)
     {
         ResultTopics result = new();
 
@@ -91,7 +91,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
+    public static async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
     {
         ResultActivities result = new();
 

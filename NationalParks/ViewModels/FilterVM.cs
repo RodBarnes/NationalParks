@@ -5,8 +5,6 @@ namespace NationalParks.ViewModels
 {
     public class FilterVM
     {
-        readonly DataService dataService;
-
         // Collections of possible selections
         public static ObservableCollection<State> StateSelections { get; } = new();
         public static ObservableCollection<Topic> TopicSelections { get; } = new();
@@ -17,16 +15,13 @@ namespace NationalParks.ViewModels
         public List<Models.Activity> Activities { get; set; } = new();
         public List<State> States { get; set; } = new();
 
-        public FilterVM()
+        // Required in order for this to be referenced in the XAML
+        public FilterVM() {}
+
+        public FilterVM(bool populateData = false) : base()
         {
-
-        }
-
-        public FilterVM(DataService dataService) : base()
-        {
-            this.dataService = dataService;
-
-            PopulateData();
+            if (populateData)
+                PopulateData();
         }
 
         public async Task PopulateData()
@@ -49,7 +44,7 @@ namespace NationalParks.ViewModels
 
                 while (totalTopics > startTopics)
                 {
-                    var result = await dataService.GetTopicsAsync(startTopics);
+                    var result = await DataService.GetTopicsAsync(startTopics);
                     totalTopics = result.Total;
                     startTopics += result.Data.Count;
                     foreach (var topic in result.Data)
@@ -74,7 +69,7 @@ namespace NationalParks.ViewModels
 
                 while (totalActivities > startActivities)
                 {
-                    var result = await dataService.GetActivitiesAsync(startActivities);
+                    var result = await DataService.GetActivitiesAsync(startActivities);
                     totalActivities = result.Total;
                     startActivities += result.Data.Count;
                     foreach (var activity in result.Data)

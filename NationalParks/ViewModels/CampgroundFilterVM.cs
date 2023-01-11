@@ -5,24 +5,21 @@ namespace NationalParks.ViewModels
     [QueryProperty(nameof(CampgroundVM), "VM")]
     public partial class CampgroundFilterVM : BaseVM
     {
-        readonly DataService dataService;
-
         // Query properties
         public CampgroundListVM CampgroundVM { get; set; }
 
         // Selected values
         public ObservableCollection<object> SelectedStates { get; set; } = new();
 
-        public CampgroundFilterVM(DataService dataService)
+        public CampgroundFilterVM()
         {
             Title = "Filter";
-            this.dataService = dataService;
         }
 
         public void PopulateData()
         {
             if (CampgroundVM.Filter is null)
-                CampgroundVM.Filter = new FilterVM(dataService);
+                CampgroundVM.Filter = new FilterVM(true);
 
             // Populate the selected items
             foreach (var state in CampgroundVM.Filter.States)
