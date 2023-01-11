@@ -128,7 +128,7 @@ public partial class DataTesterVM : BaseVM
 
             while (totalItems > startItems)
             {
-                result = await dataService.GetToursAsync(startItems, limitItems, states);
+                result = await DataService.GetToursAsync(startItems, limitItems, states);
                 startItems += result.Data.Count;
                 foreach (var tour in result.Data)
                     Tours.Add(tour);

@@ -143,7 +143,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
+    public static async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
     {
         ResultTours result = new();
 

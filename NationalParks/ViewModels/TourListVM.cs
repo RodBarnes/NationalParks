@@ -1,12 +1,10 @@
 ﻿using NationalParks.Services;
-using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class TourListVM : BaseVM
 {
-    readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
@@ -34,11 +32,10 @@ public partial class TourListVM : BaseVM
         }
     }
 
-    public TourListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    public TourListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
         Title = $"Tours";
-        this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
@@ -168,7 +165,7 @@ public partial class TourListVM : BaseVM
             //foreach (var tour in result.Data)
             //    Tours.Add(tour);
 
-            result = await dataService.GetToursAsync(startItems, limitItems, states);
+            result = await DataService.GetToursAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var tour in result.Data)
             {
