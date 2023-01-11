@@ -13,6 +13,7 @@ public partial class DataTesterVM : BaseVM
     private bool okToContinue = false;
 
     public ObservableCollection<Models.Place> Places { get; } = new();
+    public ObservableCollection<Models.Tour> Tours { get; } = new();
 
     public FilterVM Filter { get; set; }
 
@@ -22,10 +23,11 @@ public partial class DataTesterVM : BaseVM
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
 
-    [ObservableProperty] int managedByOrgCount;
-    [ObservableProperty] int isManagedByNpsCount;
-    [ObservableProperty] int isOpenToPublicCount;
-    [ObservableProperty] int isMapPinHiddenCount;
+    [ObservableProperty] int matchCount;
+    //[ObservableProperty] int managedByOrgCount;
+    //[ObservableProperty] int isManagedByNpsCount;
+    //[ObservableProperty] int isOpenToPublicCount;
+    //[ObservableProperty] int isMapPinHiddenCount;
     public DataTesterVM(DataService dataService, IConnectivity connectivity)
     {
         Title = "Tester";
@@ -62,7 +64,7 @@ public partial class DataTesterVM : BaseVM
         IsPopulated = false;
         startItems = 0;
         CurrentState = "Cleared";
-        CurrentCount = ManagedByOrgCount = TotalCount = 0;
+        CurrentCount = MatchCount = TotalCount = 0;
     }
 
     async Task GetAllPlacesAsync()
@@ -70,7 +72,7 @@ public partial class DataTesterVM : BaseVM
         try
         {
             IsBusy = true;
-            ResultPlaces result;
+            ResultTours result;
             string states = "";
 
             if (Filter is not null)
@@ -93,10 +95,10 @@ public partial class DataTesterVM : BaseVM
 
             while (totalItems > startItems)
             {
-                result = await dataService.GetPlacesAsync(startItems, limitItems, states);
+                result = await dataService.GetToursAsync(startItems, limitItems, states);
                 startItems += result.Data.Count;
-                foreach (var place in result.Data)
-                    Places.Add(place);
+                foreach (var tour in result.Data)
+                    Tours.Add(tour);
                 if (!int.TryParse(result.Total, out totalItems))
                 {
                     totalItems = 0;
@@ -104,10 +106,11 @@ public partial class DataTesterVM : BaseVM
                 IsPopulated = true;
                 TotalCount = totalItems;
                 CurrentCount = Places.Count;
-                ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
-                IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
-                IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
-                IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
+                MatchCount = Places.Where(i => i.Images.Count == 0).Count();
+                //ManagedByOrgCount = Places.Where(i => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
+                //IsManagedByNpsCount = Places.Where(i => i.IsManagedByNps == 1).Count();
+                //IsOpenToPublicCount = Places.Where(i => i.IsOpenToPublic == 1).Count();
+                //IsMapPinHiddenCount = Places.Where(i => i.IsMapPinHidden == 1).Count();
                 if (!okToContinue)
                 {
                     break;

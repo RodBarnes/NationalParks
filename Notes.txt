@@ -1,6 +1,6 @@
 Status
 ------
-Fleshing out Tour.  Need to see if an Tour has > 1 images and handle it either as is Place images (what?) or Park images (list)
+Fleshing out Tour.  Looks like no Tour has more than one image so probably handle this and Place in the same way; i.e., not need for an ImageList.
 Next, work on Event pages.
 
 
