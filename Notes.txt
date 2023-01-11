@@ -1,32 +1,5 @@
 Status
 ------
-Fleshing out Event page.
-
-Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
-
-Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
-
-Event API seems broken.  Anything from 61 and beyond returns no data -- here is the result:
-	{
-		"total": "0",
-		"errors": [],
-		"data": [],
-		"dates": [],
-		"pagenumber": "61",
-		"pagesize": "10"
-	}
-
-The count of returns pages is 10 for everything up to and including a pageNumber of 59.  At pageNumber 60, it returns only 6 pages.  At pageNumber 61 and beyond, it returns 0 pages.
-
-
-
-API Issues
-----------
-It appears that the 'q' parameter is a full-text search for any listed value.  It seems to accept multiple specified values -- space-delimited, maybe comma-delimited.
-
-Event API returns everything -- it does not recognize start or limit.  It does have a pageSize and pageNumber.  Maybe those can be used?
-
-Places is not returned in any (recgonizable) sorted order and doesn't provide a "sort" parameter
 
 
 Todo & Ideas
@@ -35,6 +8,10 @@ If filter is applied, need to visually indicated that (in the header?) when that
 
 All current Place and Tour records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
 Right now, the only spot where the image appears is in the top window.  Do we let the user tap on that to show the entire image?
+
+Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
+
+Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
 Need to review all need for try/catch, catching and dislaying errors.
 

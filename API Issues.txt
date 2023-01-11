@@ -1,0 +1,20 @@
+Event
+-----
+Event API returns everything -- it does not recognize start or limit.  It does have a pageSize and pageNumber.  Maybe those can be used?
+
+Event API seems broken.  Anything from 61 and beyond returns no data -- here is the result:
+	{
+		"total": "0",
+		"errors": [],
+		"data": [],
+		"dates": [],
+		"pagenumber": "61",
+		"pagesize": "10"
+	}
+
+The count of returns pages is 10 for everything up to and including a pageNumber of 59.  At pageNumber 60, it returns only 6 pages.  At pageNumber 61 and beyond, it returns 0 pages.
+
+
+Places
+------
+Places is not returned in any (recgonizable) sorted order and doesn't provide a "sort" parameter
