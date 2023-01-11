@@ -88,7 +88,7 @@
                                                     Aspect="AspectFill"
                                                     HeightRequest="30">
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceDetailVM}}, Path=GoToParkCommand}"
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlaceDetailVM}}, Path=GoToParkFromRelatedParkCommand}"
                                                                       CommandParameter="{Binding .}" />
                                                 </Image.GestureRecognizers>
                                             </Image>

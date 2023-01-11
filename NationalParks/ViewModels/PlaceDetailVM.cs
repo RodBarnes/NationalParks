@@ -66,7 +66,7 @@ public partial class PlaceDetailVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToParkAsync(RelatedPark relPark)
+    async Task GoToParkFromRelatedParkAsync(RelatedPark relPark)
     {
         if (relPark == null)
             return;

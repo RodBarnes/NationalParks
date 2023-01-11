@@ -55,7 +55,7 @@
                             Aspect="AspectFill"
                             HeightRequest="30">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToParkCommand}" />
+                            <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>

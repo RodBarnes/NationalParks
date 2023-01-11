@@ -75,7 +75,7 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        async Task GoToParkAsync()
+        async Task GoToParkFromParkCodeAsync()
         {
             Park park;
 
