@@ -1,7 +1,6 @@
 Status
 ------
-Fleshing out Tour.  Looks like no Tour has more than one image so probably handle this and Place in the same way; i.e., not need for an ImageList.
-Next, work on Event pages.
+Fleshing out Event page.
 
 
 API Issues
@@ -17,8 +16,8 @@ Todo & Ideas
 ------------
 If filter is applied, need to visually indicated that (in the header?) when that is in effect. Is this an icon?  A label?
 
-All current Place records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
-Is the only place the image show is in the top window?  Do we let the user tap on that to show the entire image?
+All current Place and Tour records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
+Right now, the only spot where the image appears is in the top window.  Do we let the user tap on that to show the entire image?
 
 Need to review all need for try/catch, catching and dislaying errors.
 
