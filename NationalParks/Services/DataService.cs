@@ -124,6 +124,25 @@ public class DataService
         return result;  
     }
 
+    public static async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
+    {
+        ResultPlaces result = new();
+
+        var url = ConstructUrl("places", $"start={start}&limit={limit}");
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultPlaces>();
+        }
+
+        return result;
+    }
+
     public async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
     {
         ResultTours result = new();
@@ -138,25 +157,6 @@ public class DataService
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultTours>();
-        }
-
-        return result;
-    }
-
-    public async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultPlaces result = new();
-
-        var url = ConstructUrl("places", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultPlaces>();
         }
 
         return result;

@@ -90,7 +90,7 @@ public partial class DataTesterVM : BaseVM
 
             while (totalItems > startItems)
             {
-                result = await dataService.GetPlacesAsync(startItems, limitItems, states);
+                result = await DataService.GetPlacesAsync(startItems, limitItems, states);
                 startItems += result.Data.Count;
                 foreach (var place in result.Data)
                     Places.Add(place);
