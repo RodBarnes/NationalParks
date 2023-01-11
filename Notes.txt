@@ -1,6 +1,6 @@
 Status
 ------
-Fleshing out Tour.
+Fleshing out Tour.  Need to see if an Tour has > 1 images and handle it either as is Place images (what?) or Park images (list)
 Next, work on Event pages.
 
 
