@@ -176,6 +176,25 @@ public class DataService
         return result;
     }
 
+    public static async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
+    {
+        ResultEvents result = new();
+
+        var url = ConstructUrl("events", $"start={start}&limit={limit}");
+        if (!String.IsNullOrEmpty(states))
+        {
+            url += $"&stateCode={states}";
+        }
+
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
+        }
+
+        return result;
+    }
+
     public async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
     {
         ResultThingsToDo result = new();
@@ -190,25 +209,6 @@ public class DataService
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
-        }
-
-        return result;
-    }
-
-    public async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultEvents result = new();
-
-        var url = ConstructUrl("events", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
         }
 
         return result;

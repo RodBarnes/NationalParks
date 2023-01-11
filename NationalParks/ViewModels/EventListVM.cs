@@ -9,7 +9,6 @@ public partial class EventListVM : BaseVM
     // For holding the available filter selections
     private Collection<Models.State> States { get; } = new();
 
-    readonly DataService dataService;
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
@@ -36,11 +35,10 @@ public partial class EventListVM : BaseVM
         }
     }
 
-    public EventListVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation)
+    public EventListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
         Title = "Events";
-        this.dataService = dataService;
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
@@ -137,7 +135,7 @@ public partial class EventListVM : BaseVM
             //foreach (var event in result.Data)
             //    Events.Add(event);
 
-            result = await dataService.GetEventsAsync(startItems, limitItems, states);
+            result = await DataService.GetEventsAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var npsEvent in result.Data)
                 Events.Add(npsEvent);
