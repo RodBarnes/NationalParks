@@ -79,7 +79,7 @@ namespace NationalParks.ViewModels
         {
             Park park;
 
-            ResultParks result = await dataService.GetParkAsync(Campground.ParkCode);
+            ResultParks result = await dataService.GetParkForParkCodeAsync(Campground.ParkCode);
             if (result.Data.Count == 1)
             {
                 park = result.Data[0];

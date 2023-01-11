@@ -205,7 +205,7 @@ public partial class ParkListVM : BaseVM
 
             while (totalAlerts > startAlerts)
             {
-                var result = await dataService.GetAlertsAsync(park.ParkCode, startAlerts, limitAlerts);
+                var result = await dataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
 
                 if (!int.TryParse(result.Total, out totalAlerts))
                     totalAlerts = 0;

@@ -22,7 +22,7 @@ public class DataService
         return url;
     }
 
-    public async Task<ResultParks> GetParkAsync(string parkCode)
+    public async Task<ResultParks> GetParkForParkCodeAsync(string parkCode)
     {
         ResultParks result = new();
 
@@ -91,7 +91,7 @@ public class DataService
         return result;
     }
 
-    public async Task<ResultAlerts> GetAlertsAsync(string parkCode, int start = 0, int limit = 20)
+    public async Task<ResultAlerts> GetAlertsForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
     {
         ResultAlerts result = new();
 
