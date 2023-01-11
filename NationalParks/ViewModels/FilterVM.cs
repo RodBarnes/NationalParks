@@ -10,6 +10,8 @@ namespace NationalParks.ViewModels
         public static ObservableCollection<Topic> TopicSelections { get; } = new();
         public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
 
+        public bool IsFiltered => (States.Count > 0 || Topics.Count > 0 || Activities.Count > 0);
+
         // Lists of items selected
         public List<Topic> Topics { get; set; } = new();
         public List<Models.Activity> Activities { get; set; } = new();

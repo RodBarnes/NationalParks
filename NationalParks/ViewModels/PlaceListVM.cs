@@ -8,9 +8,10 @@ public partial class PlaceListVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    private int startItems = 0;
-    private int limitItems = 20;
-    private int totalItems = 0;
+    readonly string baseTitle = "Places";
+    readonly int limitItems = 20;
+    int startItems = 0;
+    int totalItems = 0;
 
     public ObservableCollection<Models.Place> Places { get; } = new();
 
@@ -27,7 +28,7 @@ public partial class PlaceListVM : BaseVM
             if (value == true)
             {
                 ItemsRefreshThreshold = 2;
-                Title = $"Places ({totalItems})";
+                Title = BuildTitle();
             }
             else
             {
@@ -41,13 +42,13 @@ public partial class PlaceListVM : BaseVM
     public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
-        Title = "Places";
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
 
     public async void PopulateData()
     {
+        Title = baseTitle;
         await GetItems();
     }
 
@@ -177,5 +178,17 @@ public partial class PlaceListVM : BaseVM
         {
             IsBusy = false;
         }
+    }
+
+    private string BuildTitle()
+    {
+        string tmp = $"{baseTitle} ({totalItems}";
+        if (Filter is not null && Filter.IsFiltered)
+        {
+            tmp += $", filtered";
+        }
+        tmp += ")";
+
+        return tmp;
     }
 }

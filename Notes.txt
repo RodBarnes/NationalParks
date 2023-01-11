@@ -7,11 +7,7 @@ Todo & Ideas
 ------------
 Code Smell:  I think the respective VM/page for the filter is the same on everyone?  If so, why isn't this just sourced from FilterVM directly?
 
-Is Place Location working?
-
 Needs to do activity indicator or something while it figures out the Place closest and then displays.
-
-I need to consider full tests on the DataService methods to ensure that all parameters are verfied before going to the API.  For example, GetParkForParkCodeAsync() needs to check that it actually has a park code, or that the item actuallly has a RelatedPark before attempting to get info for the Park using the ParkCode -- which would be null.
 
 If filter is applied, need to visually indicated that (in the header?) when that is in effect. Is this an icon?  A label?
 
