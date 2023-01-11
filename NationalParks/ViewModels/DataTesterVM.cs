@@ -72,7 +72,7 @@ public partial class DataTesterVM : BaseVM
         try
         {
             IsBusy = true;
-            ResultTours result;
+            ResultPlaces result;
             string states = "";
 
             if (Filter is not null)
@@ -98,10 +98,10 @@ public partial class DataTesterVM : BaseVM
                 IsPopulated = true;
                 TotalCount = totalItems;
                 CurrentCount = Places.Count;
-                ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
-                IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
-                IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
-                IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
+                //ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
+                //IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
+                //IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
+                //IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
                 if (!okToContinue)
                 {
                     break;
@@ -122,9 +122,6 @@ public partial class DataTesterVM : BaseVM
     {
         try
         {
-            IsBusy = true;
-            ResultTours result;
-            string states = "";
             IsBusy = true;
             ResultTours result;
             string states = "";
