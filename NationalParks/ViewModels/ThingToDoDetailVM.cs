@@ -1,49 +1,35 @@
-﻿using NationalParks.Services;
+﻿namespace NationalParks.ViewModels;
 
-namespace NationalParks.ViewModels;
-
-public partial class ThingToDoDetailVM : BaseVM
+[QueryProperty(nameof(Models.ThingToDo), "ThingToDo")]
+public partial class ThingToDoDetailVM : DetailVM
 {
-    IMap map;
-
     [ObservableProperty] ThingToDo thingToDo;
 
-    public ThingToDoDetailVM(IMap map)
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
+
+    public ThingToDoDetailVM(IMap map) : base(map)
     {
-        Title = "Place";
-        this.map = map;
+        Title = "Things To Do";
     }
 
-    [RelayCommand]
-    async Task OpenMap()
+    public void PopulateData()
     {
-        if (ThingToDo.DLatitude < 0)
+        OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-            return;
-        }
+            { "Latitude", ThingToDo.DLatitude },
+            { "Longitude", ThingToDo.DLongitude },
+            { "Name", ThingToDo.Title }
+        };
 
-        try
+        GoToImagesDict = new Dictionary<string, object>
         {
-            await map.OpenAsync(ThingToDo.DLatitude, ThingToDo.DLongitude, new MapLaunchOptions
-            {
-                Name = ThingToDo.Title,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
+            { "PageName", nameof(ThingToDoImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", ThingToDo.Images }
+        };
     }
-
-    [RelayCommand]
-    async Task GoToImages()
-    {
-        await Shell.Current.GoToAsync(nameof(PlaceImageListPage), true, new Dictionary<string, object>
-        {
-            {"ThingToDo", ThingToDo }
-        });
-    }
-
 }
