@@ -6,7 +6,6 @@ namespace NationalParks.ViewModels;
 public partial class PlaceDetailVM : BaseVM
 {
     IMap map;
-    DataService dataService;
 
     [ObservableProperty] Place place;
 
@@ -24,11 +23,10 @@ public partial class PlaceDetailVM : BaseVM
 
     [ObservableProperty] CollapsibleViewVM multimediaVM;
 
-    public PlaceDetailVM(DataService dataService, IMap map)
+    public PlaceDetailVM(IMap map)
     {
         Title = "Place";
         this.map = map;
-        this.dataService = dataService;
 
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);

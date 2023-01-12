@@ -6,7 +6,6 @@ namespace NationalParks.ViewModels
     public partial class CampgroundDetailVM : BaseVM
     {
         IMap map;
-        DataService dataService;
 
         [ObservableProperty] Campground campground;
 
@@ -30,11 +29,10 @@ namespace NationalParks.ViewModels
 
         [ObservableProperty] CollapsibleViewVM regulationsVM;
 
-        public CampgroundDetailVM(DataService dataService, IMap map)
+        public CampgroundDetailVM(IMap map)
         {
             Title = "Campground";
             this.map = map;
-            this.dataService = dataService;
 
             FeesVM = new CollapsibleViewVM("Fees", false);
             OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);

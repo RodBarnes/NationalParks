@@ -5,7 +5,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Models.Tour), "Tour")]
 public partial class TourDetailVM : BaseVM
 {
-    DataService dataService;
     IMap map;
 
     [ObservableProperty] Tour tour;
@@ -18,11 +17,10 @@ public partial class TourDetailVM : BaseVM
 
     [ObservableProperty] CollapsibleViewVM activitiesVM;
 
-    public TourDetailVM(DataService dataService, IMap map)
+    public TourDetailVM(IMap map)
     {
         Title = "Tour";
         this.map = map;
-        this.dataService = dataService;
 
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
