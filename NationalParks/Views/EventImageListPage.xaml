@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:EventImageListVM"
-             x:Class="NationalParks.Views.EventImagesListPage"
+             x:Class="NationalParks.Views.EventImageListPage"
              Title="{Binding Title}">
     <CollectionView ItemsSource="{Binding Images}"
                     SelectionMode="None">

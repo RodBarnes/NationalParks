@@ -1,47 +1,35 @@
 ﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Event), "Event")]
-public partial class EventDetailVM : BaseVM
+public partial class EventDetailVM : DetailVM
 {
-    IMap map;
-
     [ObservableProperty] Event npsEvent;
 
-    public EventDetailVM(IMap map)
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
+
+    public EventDetailVM(IMap map) : base(map)
     {
         Title = "Events";
-        this.map = map;
     }
 
-    [RelayCommand]
-    async Task OpenMap()
+    public void PopulateData()
     {
-        if (NpsEvent.DLatitude < 0)
+        OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-            return;
-        }
+            { "Latitude", NpsEvent.DLatitude },
+            { "Longitude", NpsEvent.DLongitude },
+            { "Name", NpsEvent.Title }
+        };
 
-        try
+        GoToImagesDict = new Dictionary<string, object>
         {
-            await map.OpenAsync(NpsEvent.DLatitude, NpsEvent.DLongitude, new MapLaunchOptions
-            {
-                Name = NpsEvent.Title,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
-    }
-
-    [RelayCommand]
-    async Task GoToImages()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>
-        {
-            {"Event", NpsEvent }
-        });
+            { "PageName", nameof(EventImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", NpsEvent.Images }
+        };
     }
 }
