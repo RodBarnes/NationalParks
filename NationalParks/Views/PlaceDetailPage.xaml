@@ -277,17 +277,19 @@
             Grid.Row="2"
             HorizontalOptions="CenterAndExpand">
             <Button Text="Location" 
-                Command="{Binding OpenMapCommand}"
-                HorizontalOptions="StartAndExpand" 
-                WidthRequest="175" 
-                Margin="8"
-                Style="{StaticResource ButtonOutline}"/>
+                    Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding OpenMapDict}"
+                    HorizontalOptions="StartAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
             <Button Text="Images" 
-                Command="{Binding GoToImagesCommand}"
-                HorizontalOptions="EndAndExpand" 
-                WidthRequest="175" 
-                Margin="8"
-                Style="{StaticResource ButtonOutline}"/>
+                    Command="{Binding GoToImagesCommand}"
+                    CommandParameter="{Binding GoToImagesDict}"
+                    HorizontalOptions="EndAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

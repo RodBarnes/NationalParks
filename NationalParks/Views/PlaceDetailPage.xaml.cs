@@ -2,9 +2,17 @@ namespace NationalParks.Views;
 
 public partial class PlaceDetailPage : ContentPage
 {
+	readonly PlaceDetailVM _vm;
+
 	public PlaceDetailPage(PlaceDetailVM vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
+		BindingContext = _vm = vm;
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+		_vm.PopulateData();
+    }
 }

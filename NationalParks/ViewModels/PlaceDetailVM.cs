@@ -3,11 +3,15 @@
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Place), "Place")]
-public partial class PlaceDetailVM : BaseVM
+public partial class PlaceDetailVM : DetailVM
 {
-    IMap map;
-
     [ObservableProperty] Place place;
+
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
 
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
@@ -23,10 +27,9 @@ public partial class PlaceDetailVM : BaseVM
 
     [ObservableProperty] CollapsibleViewVM multimediaVM;
 
-    public PlaceDetailVM(IMap map)
+    public PlaceDetailVM(IMap map) : base(map)
     {
         Title = "Place";
-        this.map = map;
 
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
@@ -37,36 +40,21 @@ public partial class PlaceDetailVM : BaseVM
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
     }
 
-    [RelayCommand]
-    async Task OpenMap()
+    public void PopulateData()
     {
-        if (Place.DLatitude < 0)
+        OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-            return;
-        }
+            { "Latitude", Place.DLatitude },
+            { "Longitude", Place.DLongitude },
+            { "Name", Place.Title }
+        };
 
-        try
+        GoToImagesDict = new Dictionary<string, object>
         {
-            await map.OpenAsync(Place.DLatitude, Place.DLongitude, new MapLaunchOptions
-            {
-                Name =  Place.Title,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
-    }
-
-    [RelayCommand]
-    async Task GoToImages()
-    {
-        await Shell.Current.GoToAsync(nameof(PlaceImageListPage), true, new Dictionary<string, object>
-        {
-            {"Place", Place }
-        });
+            { "PageName", nameof(PlaceImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", Place.Images }
+        };
     }
 
     [RelayCommand]
