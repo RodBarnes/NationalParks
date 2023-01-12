@@ -1,12 +1,16 @@
 ﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Park), "Park")]
-public partial class ParkDetailVM : BaseVM
+public partial class ParkDetailVM : DetailVM
 {
-    IMap map;
-
     [ObservableProperty]
     Park park;
+
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
 
     [ObservableProperty] CollapsibleViewVM alertsVM;
 
@@ -24,10 +28,9 @@ public partial class ParkDetailVM : BaseVM
 
     [ObservableProperty] CollapsibleViewVM weatherVM;
 
-    public ParkDetailVM(IMap map)
+    public ParkDetailVM(IMap map) : base(map)
     {
         Title = "Park";
-        this.map = map;
 
         AlertsVM = new CollapsibleViewVM("Alerts", false);
         CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
@@ -39,35 +42,20 @@ public partial class ParkDetailVM : BaseVM
         WeatherVM = new CollapsibleViewVM("Weather", false);
     }
 
-    [RelayCommand]
-    async Task OpenMap()
+    public void PopulateData()
     {
-        if (Park.DLatitude < 0)
+        OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-            return;
-        }
+            { "Latitude", Park.DLatitude },
+            { "Longitude", Park.DLongitude },
+            { "Name", Park.Name }
+        };
 
-        try
+        GoToImagesDict = new Dictionary<string, object>
         {
-            await map.OpenAsync(Park.DLatitude, Park.DLongitude, new MapLaunchOptions
-            {
-                Name = Park.Name,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
-    }
-
-    [RelayCommand]
-    async Task GoToImages()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkImageListPage), true, new Dictionary<string, object>
-        {
-            {"Park", Park }
-        });
+            { "PageName", nameof(ParkImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", Park.Images }
+        };
     }
 }
