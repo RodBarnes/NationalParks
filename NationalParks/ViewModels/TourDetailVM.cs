@@ -3,9 +3,13 @@
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Tour), "Tour")]
-public partial class TourDetailVM : BaseVM
+public partial class TourDetailVM : DetailVM
 {
-    IMap map;
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
 
     [ObservableProperty] Tour tour;
 
@@ -17,10 +21,9 @@ public partial class TourDetailVM : BaseVM
 
     [ObservableProperty] CollapsibleViewVM activitiesVM;
 
-    public TourDetailVM(IMap map)
+    public TourDetailVM(IMap map) : base(map)
     {
         Title = "Tour";
-        this.map = map;
 
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
@@ -28,36 +31,21 @@ public partial class TourDetailVM : BaseVM
         StopsVM = new CollapsibleViewVM("Stops", false);
     }
 
-    [RelayCommand]
-    async Task OpenMap()
+    public void PopulateData()
     {
-        if (Tour.DLatitude < 0)
+        OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-            return;
-        }
+            { "Latitude", Tour.DLatitude },
+            { "Longitude", Tour.DLongitude },
+            { "Name", Tour.Title }
+        };
 
-        try
+        GoToImagesDict = new Dictionary<string, object>
         {
-            await map.OpenAsync(Tour.DLatitude, Tour.DLongitude, new MapLaunchOptions
-            {
-                Name = Tour.Title,
-                NavigationMode = NavigationMode.None
-            });
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-        }
-    }
-
-    [RelayCommand]
-    async Task GoToImages()
-    {
-        await Shell.Current.GoToAsync(nameof(TourImageListPage), true, new Dictionary<string, object>
-        {
-            {"Tour", Tour }
-        });
+            { "PageName", nameof(TourImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", Tour.Images }
+        };
     }
 
     [RelayCommand]

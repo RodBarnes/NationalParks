@@ -1,10 +1,10 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Tour), "Tour")]
+[QueryProperty(nameof(Images), "Images")]
 public partial class TourImageListVM : BaseVM
 {
     // Query properties
-    [ObservableProperty] Tour tour;
+    [ObservableProperty] List<Models.Image> images;
 
     public TourImageListVM()
     {
