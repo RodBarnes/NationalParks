@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models
 {
-    public partial class MainModel
+    public partial class BaseModel
     {
         // Base properties
         public string Id { get; set; }
@@ -36,3 +36,4 @@
         }
     }
 }
+

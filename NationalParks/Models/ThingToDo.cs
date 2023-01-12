@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class ThingToDo : MainModel
+public class ThingToDo : BaseModel
 {
     public string Title { get; set; }
     public string ShortDescription { get; set; }

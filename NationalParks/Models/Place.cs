@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class Place : MainModel
+public class Place : BaseModel
 {
     public string Title { get; set; }
     public string ListingDescription { get; set; }

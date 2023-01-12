@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class Campground : MainModel
+public class Campground : BaseModel
 {
     public string Name { get; set; }
     public string ParkCode { get; set; }

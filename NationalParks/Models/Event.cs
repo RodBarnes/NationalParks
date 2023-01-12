@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class Event : MainModel
+public class Event : BaseModel
 {
     public string Location { get; set; }
     public string UpdateUser { get; set; }
