@@ -1,4 +1,6 @@
-﻿namespace NationalParks.ViewModels;
+﻿using NationalParks.Services;
+
+namespace NationalParks.ViewModels;
 
 public partial class DetailVM : BaseVM
 {
@@ -47,5 +49,28 @@ public partial class DetailVM : BaseVM
         {
             { paramName, obj }
         });
+    }
+
+    [RelayCommand]
+    async Task GoToParkFromParkCode(Dictionary<string, object> dict)
+    {
+        var parkCode = (string)dict["ParkCode"];
+        var paramName = (string)dict["ParamName"];
+
+        Park park;
+
+        ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
+        if (result.Data.Count == 1)
+        {
+            park = result.Data[0];
+            await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
+                {
+                    {paramName, park }
+                });
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
+        }
     }
 }

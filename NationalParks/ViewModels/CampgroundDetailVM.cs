@@ -1,89 +1,75 @@
-﻿using NationalParks.Services;
+﻿namespace NationalParks.ViewModels;
 
-namespace NationalParks.ViewModels
+[QueryProperty(nameof(Models.Campground), "Campground")]
+public partial class CampgroundDetailVM : DetailVM
 {
-    [QueryProperty(nameof(Models.Campground), "Campground")]
-    public partial class CampgroundDetailVM : DetailVM
+    [ObservableProperty] Campground campground;
+
+    [ObservableProperty]
+    public Dictionary<string, object> openMapDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToImagesDict;
+
+    [ObservableProperty]
+    public Dictionary<string, object> goToParkFromParkCodeDict;
+
+    [ObservableProperty] CollapsibleViewVM feesVM;
+
+    [ObservableProperty] CollapsibleViewVM operatingHoursVM;
+
+    [ObservableProperty] CollapsibleViewVM contactsVM;
+
+    [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
+
+    [ObservableProperty] CollapsibleViewVM amenitiesVM;
+
+    [ObservableProperty] CollapsibleViewVM accessibilityVM;
+
+    [ObservableProperty] CollapsibleViewVM directionsVM;
+
+    [ObservableProperty] CollapsibleViewVM weatherVM;
+
+    [ObservableProperty] CollapsibleViewVM reservationsVM;
+
+    [ObservableProperty] CollapsibleViewVM regulationsVM;
+
+    public CampgroundDetailVM(IMap map) : base(map)
     {
-        [ObservableProperty] Campground campground;
+        Title = "Campground";
 
-        [ObservableProperty]
-        public Dictionary<string, object> openMapDict;
+        FeesVM = new CollapsibleViewVM("Fees", false);
+        OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
+        ContactsVM = new CollapsibleViewVM("Contacts", false);
+        CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
+        AmenitiesVM = new CollapsibleViewVM("Amenities", false);
+        AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
+        DirectionsVM = new CollapsibleViewVM("Directions", false);
+        WeatherVM = new CollapsibleViewVM("Weather", false);
+        ReservationsVM = new CollapsibleViewVM("Reservations", false);
+        RegulationsVM = new CollapsibleViewVM("Regulations", false);
+    }
 
-        [ObservableProperty]
-        public Dictionary<string, object> goToImagesDict;
-
-        [ObservableProperty] CollapsibleViewVM feesVM;
-
-        [ObservableProperty] CollapsibleViewVM operatingHoursVM;
-
-        [ObservableProperty] CollapsibleViewVM contactsVM;
-
-        [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
-
-        [ObservableProperty] CollapsibleViewVM amenitiesVM;
-
-        [ObservableProperty] CollapsibleViewVM accessibilityVM;
-
-        [ObservableProperty] CollapsibleViewVM directionsVM;
-
-        [ObservableProperty] CollapsibleViewVM weatherVM;
-
-        [ObservableProperty] CollapsibleViewVM reservationsVM;
-
-        [ObservableProperty] CollapsibleViewVM regulationsVM;
-
-        public CampgroundDetailVM(IMap map) : base(map)
-        {
-            Title = "Campground";
-
-            FeesVM = new CollapsibleViewVM("Fees", false);
-            OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
-            ContactsVM = new CollapsibleViewVM("Contacts", false);
-            CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
-            AmenitiesVM = new CollapsibleViewVM("Amenities", false);
-            AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
-            DirectionsVM = new CollapsibleViewVM("Directions", false);
-            WeatherVM = new CollapsibleViewVM("Weather", false);
-            ReservationsVM = new CollapsibleViewVM("Reservations", false);
-            RegulationsVM = new CollapsibleViewVM("Regulations", false);
-        }
-
-        public void PopulateData()
-        {
-            OpenMapDict = new Dictionary<string, object>
+    public void PopulateData()
+    {
+        OpenMapDict = new Dictionary<string, object>
         {
             { "Latitude", Campground.DLatitude },
             { "Longitude", Campground.DLongitude },
             { "Name", Campground.Name }
         };
 
-            GoToImagesDict = new Dictionary<string, object>
+        GoToImagesDict = new Dictionary<string, object>
         {
             { "PageName", nameof(CampgroundImageListPage) },
             { "ParamName", "Images" },
             { "Object", Campground.Images }
         };
-        }
 
-        [RelayCommand]
-        async Task GoToParkFromParkCode()
+        GoToParkFromParkCodeDict = new Dictionary<string, object>
         {
-            Park park;
-
-            ResultParks result = await DataService.GetParkForParkCodeAsync(Campground.ParkCode);
-            if (result.Data.Count == 1)
-            {
-                park = result.Data[0];
-                await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
-                {
-                    {"Park", park }
-                });
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
-            }
-        }
+            { "ParkCode", Campground.ParkCode },
+            { "ParamName", "Park" },
+        };
     }
 }
