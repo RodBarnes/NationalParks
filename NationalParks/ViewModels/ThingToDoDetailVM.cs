@@ -11,9 +11,13 @@ public partial class ThingToDoDetailVM : DetailVM
     [ObservableProperty]
     public Dictionary<string, object> goToImagesDict;
 
+    [ObservableProperty] CollapsibleViewVM relatedParksVM;
+
     public ThingToDoDetailVM(IMap map) : base(map)
     {
         Title = "Things To Do";
+
+        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
     }
 
     public void PopulateData()

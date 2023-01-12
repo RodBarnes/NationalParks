@@ -1,39 +1,38 @@
 ﻿namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(Models.Webcam), "Webcam")]
-    public partial class WebcamDetailVM : BaseVM
+    public partial class WebcamDetailVM : DetailVM
     {
-        IMap map;
-
         [ObservableProperty] Webcam webcam;
 
-        public WebcamDetailVM(IMap map)
+        [ObservableProperty] Dictionary<string, object> openMapDict;
+
+        //[ObservableProperty] Dictionary<string, object> goToImagesDict;
+
+        [ObservableProperty] CollapsibleViewVM relatedParksVM;
+
+        public WebcamDetailVM(IMap map) : base(map)
         {
             Title = "Webcam";
-            this.map = map;
+
+            RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         }
 
-        [RelayCommand]
-        async Task OpenMap()
+        public void PopulateData()
         {
-            if (Webcam.Latitude < 0)
+            OpenMapDict = new Dictionary<string, object>
             {
-                await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-                return;
-            }
+                { "Latitude", Webcam.Latitude },
+                { "Longitude", Webcam.Longitude },
+                { "Name", Webcam.Title }
+            };
 
-            try
-            {
-                await map.OpenAsync((double)Webcam.Latitude, (double)Webcam.Longitude, new MapLaunchOptions
-                {
-                    Name = Webcam.Title,
-                    NavigationMode = NavigationMode.None
-                });
-            }
-            catch (Exception ex)
-            {
-                await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-            }
+            //GoToImagesDict = new Dictionary<string, object>
+            //{
+            //    { "PageName", nameof(WebcamImageListPage) },
+            //    { "ParamName", "Images" },
+            //    { "Object", Webcam.Images }
+            //};
         }
     }
 }
