@@ -3,11 +3,15 @@
 namespace NationalParks.ViewModels
 {
     [QueryProperty(nameof(Models.Campground), "Campground")]
-    public partial class CampgroundDetailVM : BaseVM
+    public partial class CampgroundDetailVM : DetailVM
     {
-        IMap map;
-
         [ObservableProperty] Campground campground;
+
+        [ObservableProperty]
+        public Dictionary<string, object> openMapDict;
+
+        [ObservableProperty]
+        public Dictionary<string, object> goToImagesDict;
 
         [ObservableProperty] CollapsibleViewVM feesVM;
 
@@ -29,10 +33,9 @@ namespace NationalParks.ViewModels
 
         [ObservableProperty] CollapsibleViewVM regulationsVM;
 
-        public CampgroundDetailVM(IMap map)
+        public CampgroundDetailVM(IMap map) : base(map)
         {
             Title = "Campground";
-            this.map = map;
 
             FeesVM = new CollapsibleViewVM("Fees", false);
             OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
@@ -46,36 +49,21 @@ namespace NationalParks.ViewModels
             RegulationsVM = new CollapsibleViewVM("Regulations", false);
         }
 
-        [RelayCommand]
-        async Task OpenMap()
+        public void PopulateData()
         {
-            if (Campground.DLatitude < 0)
-            {
-                await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
-                return;
-            }
-
-            try
-            {
-                await map.OpenAsync(Campground.DLatitude, Campground.DLongitude, new MapLaunchOptions
-                {
-                    Name = Campground.Name,
-                    NavigationMode = NavigationMode.None
-                });
-            }
-            catch (Exception ex)
-            {
-                await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
-            }
-        }
-
-        [RelayCommand]
-        async Task GoToImages()
+            OpenMapDict = new Dictionary<string, object>
         {
-            await Shell.Current.GoToAsync(nameof(CampgroundImageListPage), true, new Dictionary<string, object>
-            {
-                {"Campground", Campground }
-            });
+            { "Latitude", Campground.DLatitude },
+            { "Longitude", Campground.DLongitude },
+            { "Name", Campground.Name }
+        };
+
+            GoToImagesDict = new Dictionary<string, object>
+        {
+            { "PageName", nameof(CampgroundImageListPage) },
+            { "ParamName", "Images" },
+            { "Object", Campground.Images }
+        };
         }
 
         [RelayCommand]

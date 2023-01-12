@@ -6,7 +6,7 @@
              x:DataType="vm:CampgroundImageListVM"
              x:Class="NationalParks.Views.CampgroundImageListPage"
              Title="{Binding Title}">
-    <CollectionView ItemsSource="{Binding Campground.Images}"
+    <CollectionView ItemsSource="{Binding Images}"
                     SelectionMode="None">
         <CollectionView.EmptyView>
             <Image Source="data_loading"

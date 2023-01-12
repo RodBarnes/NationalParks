@@ -2,7 +2,7 @@ namespace NationalParks.Views;
 
 public partial class TourDetailPage : ContentPage
 {
-	TourDetailVM _vm;
+    readonly TourDetailVM _vm;
 
 	public TourDetailPage(TourDetailVM vm)
 	{
