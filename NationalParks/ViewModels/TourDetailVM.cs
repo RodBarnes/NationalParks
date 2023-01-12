@@ -5,13 +5,13 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Models.Tour), "Tour")]
 public partial class TourDetailVM : DetailVM
 {
+    [ObservableProperty] Tour tour;
+
     [ObservableProperty]
     public Dictionary<string, object> openMapDict;
 
     [ObservableProperty]
     public Dictionary<string, object> goToImagesDict;
-
-    [ObservableProperty] Tour tour;
 
     [ObservableProperty] CollapsibleViewVM tagsVM;
 
@@ -46,28 +46,5 @@ public partial class TourDetailVM : DetailVM
             { "ParamName", "Images" },
             { "Object", Tour.Images }
         };
-    }
-
-    [RelayCommand]
-    async Task GoToParkFromRelatedPark(RelatedPark relPark)
-    {
-        if (relPark == null)
-            return;
-
-        Park park;
-
-        ResultParks result = await DataService.GetParkForParkCodeAsync(relPark.ParkCode);
-        if (result.Data.Count == 1)
-        {
-            park = result.Data[0];
-            await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
-            {
-                {"Park", park }
-            });
-        }
-        else
-        {
-            await Shell.Current.DisplayAlert("Error!", "Unable to get park!", "OK");
-        }
     }
 }

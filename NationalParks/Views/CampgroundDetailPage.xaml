@@ -56,7 +56,7 @@
                             HeightRequest="30">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
-                                                  CommandParameter="{Binding GoToParkFromParkCodeDict}"/>
+                                                  CommandParameter="{Binding Campground.ParkCode}"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>

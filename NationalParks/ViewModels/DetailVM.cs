@@ -52,11 +52,8 @@ public partial class DetailVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToParkFromParkCode(Dictionary<string, object> dict)
+    async Task GoToParkFromParkCode(string parkCode)
     {
-        var parkCode = (string)dict["ParkCode"];
-        var paramName = (string)dict["ParamName"];
-
         Park park;
 
         ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
@@ -65,7 +62,7 @@ public partial class DetailVM : BaseVM
             park = result.Data[0];
             await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
                 {
-                    {paramName, park }
+                    {"Park", park }
                 });
         }
         else
