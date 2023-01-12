@@ -26,6 +26,10 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(PlaceFilterPage), typeof(PlaceFilterPage));
         Routing.RegisterRoute(nameof(PlaceImageListPage), typeof(PlaceImageListPage));
 
+        Routing.RegisterRoute(nameof(ThingToDoDetailPage), typeof(ThingToDoDetailPage));
+        Routing.RegisterRoute(nameof(ThingToDoFilterPage), typeof(ThingToDoFilterPage));
+        Routing.RegisterRoute(nameof(ThingToDoImageListPage), typeof(ThingToDoImageListPage));
+
         Routing.RegisterRoute(nameof(EventDetailPage), typeof(EventDetailPage));
 
         Routing.RegisterRoute(nameof(WebcamDetailPage), typeof(WebcamDetailPage));

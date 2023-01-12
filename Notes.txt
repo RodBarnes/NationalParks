@@ -5,33 +5,20 @@ Reviewing need for catching Exceptions...
 
 Todo & Ideas
 ------------
-Code Smell:  I think the respective VM/page for the filter is the same on everyone?  If so, why isn't this just sourced from FilterVM directly?
+Code Smell:  I think the respective VM/page for the filter is the same on everyone?  If so, why isn't this just sourced from FilterVM directly?  If this can be done, it has to allow for which filters are available/visible; i.e., states, topics, acivities.
 
 Needs to do activity indicator or something while it figures out the Place closest and then displays.
-
-If filter is applied, need to visually indicated that (in the header?) when that is in effect. Is this an icon?  A label?
-
-All current Place and Tour records have 1 or less images.  So, an ImageList doesn't make sense. But, without one, if it shows only that single image, it still needs to allows for more than one and any use of an image has to always take the first of the array.
-Right now, the only spot where the image appears is in the top window.  Do we let the user tap on that to show the entire image?
 
 Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
 
 Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
-Need to review all need for try/catch, catching and dislaying errors.
-
-Probably need to be able to move to ParkDetail from CampgroundDetail, TourDetail, and EventDetail as was done for PlaceDetail?
-	- Tour has RelatedPark (like Place) so that could be done the same way.
-	- Event has only ParkFullName so that could be really difficult.  The fullname could be displayed (too bad it isn't the short name) but an that be used to get the Park?
-
 Image list should support tapping on an image to see it fullscreen or something.  Do we support showing the crops?  Maybe just listing them and supporting download?
 
-Maybe totalItems should be an observable property and have the title in the page be like "Name ({TotalItems})" so that it just gets updated each time the totalItems changes -- which should only happen after each GetItemsAsync().
-
-After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.
+After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of it via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.  FilterVM would have to be derived from BaseVM since can't derive from two base objects.
 
 Are ThingsToDo just a combination of all the others?
-Do I need an icon for ThingsToDo.
+Do I need an icon for ThingsToDo?
 
 Settings?
 	- User determined states by which to always filter?

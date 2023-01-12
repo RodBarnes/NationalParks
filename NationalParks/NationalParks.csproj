@@ -104,6 +104,9 @@
 	  <Compile Update="Views\EventListPage.xaml.cs">
 	    <DependentUpon>EventListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\ThingToDoListPage.xaml.cs">
+	    <DependentUpon>ThingToDoListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\TourListPage.xaml.cs">
 	    <DependentUpon>TourListPage.xaml</DependentUpon>
 	  </Compile>
@@ -159,6 +162,18 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PlaceListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ThingToDoImageListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ThingToDoListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ThingToDoDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ThingToDoFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TourFilterPage.xaml">

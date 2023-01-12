@@ -71,6 +71,15 @@ public static class MauiProgram
         builder.Services.AddTransient<PlaceImageListVM>();
         builder.Services.AddTransient<PlaceImageListPage>();
 
+        builder.Services.AddSingleton<ThingToDoListVM>();
+        builder.Services.AddSingleton<ThingToDoListPage>();
+        builder.Services.AddTransient<ThingToDoDetailVM>();
+        builder.Services.AddTransient<ThingToDoDetailPage>();
+        builder.Services.AddTransient<ThingToDoFilterVM>();
+        builder.Services.AddTransient<ThingToDoFilterPage>();
+        builder.Services.AddTransient<ThingToDoImageListVM>();
+        builder.Services.AddTransient<ThingToDoImageListPage>();
+
         builder.Services.AddSingleton<EventListVM>();
         builder.Services.AddSingleton<EventListPage>();
         builder.Services.AddTransient<EventDetailVM>();
