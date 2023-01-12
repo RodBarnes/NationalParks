@@ -1,12 +1,12 @@
 ﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Images), "Images")]
-public partial class ThingToDoImageListVM : BaseVM
+public partial class ImageListVM : BaseVM
 {
     // Query properties
     [ObservableProperty] List<Models.Image> images;
 
-    public ThingToDoImageListVM()
+    public ImageListVM()
     {
         Title = "Images";
     }

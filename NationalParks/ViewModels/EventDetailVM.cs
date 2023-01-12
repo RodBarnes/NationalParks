@@ -8,9 +8,6 @@ public partial class EventDetailVM : DetailVM
     [ObservableProperty]
     public Dictionary<string, object> openMapDict;
 
-    [ObservableProperty]
-    public Dictionary<string, object> goToImagesDict;
-
     public EventDetailVM(IMap map) : base(map)
     {
         Title = "Events";
@@ -23,13 +20,6 @@ public partial class EventDetailVM : DetailVM
             { "Latitude", NpsEvent.DLatitude },
             { "Longitude", NpsEvent.DLongitude },
             { "Name", NpsEvent.Title }
-        };
-
-        GoToImagesDict = new Dictionary<string, object>
-        {
-            { "PageName", nameof(EventImageListPage) },
-            { "ParamName", "Images" },
-            { "Object", NpsEvent.Images }
         };
     }
 }

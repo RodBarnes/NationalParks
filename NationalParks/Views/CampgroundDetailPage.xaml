@@ -462,7 +462,7 @@
                     Style="{StaticResource ButtonOutline}"/>
             <Button Text="Images"
                     Command="{Binding GoToImagesCommand}"
-                    CommandParameter="{Binding GoToImagesDict}"
+                    CommandParameter="{Binding Campground.Images}"
                     HorizontalOptions="EndAndExpand" 
                     WidthRequest="175" 
                     Margin="8"

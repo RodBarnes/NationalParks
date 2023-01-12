@@ -91,29 +91,24 @@
                 </Frame>
             </VerticalStackLayout>
         </ScrollView>
-        <Button Text="Location" 
-                Command="{Binding OpenMapCommand}"
-                Grid.Row="2"
-                Grid.Column="0"
-                HorizontalOptions="Start" 
-                WidthRequest="100" 
-                Margin="8"
-                Style="{StaticResource ButtonOutline}"/>
-        <!--<Button Text="Hours" 
-                Command="{Binding GoToHoursCommand}"
-                Grid.Row="2"
-                Grid.Column="1"
-                HorizontalOptions="Center" 
-                WidthRequest="100" 
-                Margin="8"
-                Style="{StaticResource ButtonOutline}"/>
-        <Button Text="Images" 
-                Command="{Binding GoToImagesCommand}"
-                Grid.Row="2"
-                Grid.Column="2"
-                HorizontalOptions="End" 
-                WidthRequest="100" 
-                Margin="8"
-                Style="{StaticResource ButtonOutline}"/>-->
+        <HorizontalStackLayout
+            Grid.ColumnSpan="3"
+            Grid.Row="2"
+            HorizontalOptions="CenterAndExpand">
+            <Button Text="Location" 
+                    Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding OpenMapDict}"
+                    HorizontalOptions="StartAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+            <Button Text="Images" 
+                    Command="{Binding GoToImagesCommand}"
+                    CommandParameter="{Binding Webcam.Images}"
+                    HorizontalOptions="EndAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

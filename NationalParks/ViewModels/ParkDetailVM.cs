@@ -9,9 +9,6 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty]
     public Dictionary<string, object> openMapDict;
 
-    [ObservableProperty]
-    public Dictionary<string, object> goToImagesDict;
-
     [ObservableProperty] CollapsibleViewVM alertsVM;
 
     [ObservableProperty] CollapsibleViewVM combinedFeesVM;
@@ -49,13 +46,6 @@ public partial class ParkDetailVM : DetailVM
             { "Latitude", Park.DLatitude },
             { "Longitude", Park.DLongitude },
             { "Name", Park.Name }
-        };
-
-        GoToImagesDict = new Dictionary<string, object>
-        {
-            { "PageName", nameof(ParkImageListPage) },
-            { "ParamName", "Images" },
-            { "Object", Park.Images }
         };
     }
 }

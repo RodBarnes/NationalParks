@@ -39,15 +39,11 @@ public partial class DetailVM : BaseVM
     }
 
     [RelayCommand]
-    static async Task GoToImages(Dictionary<string, object> dict)
+    static async Task GoToImages(List<Models.Image> images)
     {
-        var pageName = (string)dict["PageName"];
-        var paramName = (string)dict["ParamName"];
-        var obj = dict["Object"];
-
-        await Shell.Current.GoToAsync(pageName, true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(ImageListPage), true, new Dictionary<string, object>
         {
-            { paramName, obj }
+            { "Images", images }
         });
     }
 

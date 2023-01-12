@@ -1,38 +1,28 @@
-﻿namespace NationalParks.ViewModels
+﻿namespace NationalParks.ViewModels;
+
+[QueryProperty(nameof(Models.Webcam), "Webcam")]
+public partial class WebcamDetailVM : DetailVM
 {
-    [QueryProperty(nameof(Models.Webcam), "Webcam")]
-    public partial class WebcamDetailVM : DetailVM
+    [ObservableProperty] Webcam webcam;
+
+    [ObservableProperty] Dictionary<string, object> openMapDict;
+
+    [ObservableProperty] CollapsibleViewVM relatedParksVM;
+
+    public WebcamDetailVM(IMap map) : base(map)
     {
-        [ObservableProperty] Webcam webcam;
+        Title = "Webcam";
 
-        [ObservableProperty] Dictionary<string, object> openMapDict;
+        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
+    }
 
-        //[ObservableProperty] Dictionary<string, object> goToImagesDict;
-
-        [ObservableProperty] CollapsibleViewVM relatedParksVM;
-
-        public WebcamDetailVM(IMap map) : base(map)
+    public void PopulateData()
+    {
+        OpenMapDict = new Dictionary<string, object>
         {
-            Title = "Webcam";
-
-            RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
-        }
-
-        public void PopulateData()
-        {
-            OpenMapDict = new Dictionary<string, object>
-            {
-                { "Latitude", Webcam.Latitude },
-                { "Longitude", Webcam.Longitude },
-                { "Name", Webcam.Title }
-            };
-
-            //GoToImagesDict = new Dictionary<string, object>
-            //{
-            //    { "PageName", nameof(WebcamImageListPage) },
-            //    { "ParamName", "Images" },
-            //    { "Object", Webcam.Images }
-            //};
-        }
+            { "Latitude", Webcam.Latitude },
+            { "Longitude", Webcam.Longitude },
+            { "Name", Webcam.Title }
+        };
     }
 }

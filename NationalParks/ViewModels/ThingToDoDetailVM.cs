@@ -8,9 +8,6 @@ public partial class ThingToDoDetailVM : DetailVM
     [ObservableProperty]
     public Dictionary<string, object> openMapDict;
 
-    [ObservableProperty]
-    public Dictionary<string, object> goToImagesDict;
-
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
     public ThingToDoDetailVM(IMap map) : base(map)
@@ -27,13 +24,6 @@ public partial class ThingToDoDetailVM : DetailVM
             { "Latitude", ThingToDo.DLatitude },
             { "Longitude", ThingToDo.DLongitude },
             { "Name", ThingToDo.Title }
-        };
-
-        GoToImagesDict = new Dictionary<string, object>
-        {
-            { "PageName", nameof(ThingToDoImageListPage) },
-            { "ParamName", "Images" },
-            { "Object", ThingToDo.Images }
         };
     }
 }

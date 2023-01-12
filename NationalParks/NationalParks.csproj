@@ -87,6 +87,7 @@
 	  <MauiAsset Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 	  <None Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
@@ -98,12 +99,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\CampgroundImageListPage.xaml.cs">
-	    <DependentUpon>CampgroundImageListPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\EventImageListPage.xaml.cs">
-	    <DependentUpon>EventImageListPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Views\EventListPage.xaml.cs">
 	    <DependentUpon>EventListPage.xaml</DependentUpon>
 	  </Compile>
@@ -115,9 +110,6 @@
 	  </Compile>
 	  <Compile Update="Views\TourDetailPage.xaml.cs">
 	    <DependentUpon>TourDetailPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\ParkImageListPage.xaml.cs">
-	    <DependentUpon>ParkImageListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\ParkListPage.xaml.cs">
 	    <DependentUpon>ParkListPage.xaml</DependentUpon>
@@ -143,19 +135,16 @@
 	  <MauiXaml Update="Views\CampgroundListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CampgroundImageListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\DataTesterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EventDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EventImageListPage.xaml">
+	  <MauiXaml Update="Views\EventListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EventListPage.xaml">
+	  <MauiXaml Update="Views\ImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PlaceDetailPage.xaml">
@@ -164,13 +153,7 @@
 	  <MauiXaml Update="Views\PlaceFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PlaceImageListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\PlaceListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ThingToDoImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ThingToDoListPage.xaml">
@@ -185,9 +168,6 @@
 	  <MauiXaml Update="Views\TourFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TourImageListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\TourListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -195,9 +175,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ParkFilterPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ParkImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\WebcamDetailPage.xaml">

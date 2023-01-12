@@ -8,9 +8,6 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty]
     public Dictionary<string, object> openMapDict;
 
-    [ObservableProperty]
-    public Dictionary<string, object> goToImagesDict;
-
     [ObservableProperty] CollapsibleViewVM feesVM;
 
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
@@ -54,13 +51,6 @@ public partial class CampgroundDetailVM : DetailVM
             { "Latitude", Campground.DLatitude },
             { "Longitude", Campground.DLongitude },
             { "Name", Campground.Name }
-        };
-
-        GoToImagesDict = new Dictionary<string, object>
-        {
-            { "PageName", nameof(CampgroundImageListPage) },
-            { "ParamName", "Images" },
-            { "Object", Campground.Images }
         };
     }
 }

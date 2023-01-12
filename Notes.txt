@@ -1,12 +1,13 @@
 Status
 ------
-Checking if Webcam can derive from MainModel and then implement GoToParkFromParkCode()
 
 Next fleshing out ThingsToDo pages
 
 
 Todo & Ideas
 ------------
+Can I derive Webcam from BaseModel by doing something special with the Latitude/Longitude values?
+
 Code Smell:  I think the respective VM/page for the filter is the same on everyone?  If so, why isn't this just sourced from FilterVM directly?  If this can be done, it has to allow for which filters are available/visible; i.e., states, topics, acivities.
 
 Needs to do activity indicator or something while it figures out the Place closest and then displays.
