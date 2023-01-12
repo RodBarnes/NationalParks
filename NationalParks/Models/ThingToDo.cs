@@ -32,4 +32,7 @@ public class ThingToDo : MainModel
     public List<string> TimeOfDay { get; set; }
     public string Duration { get; set; }
     public string Credit { get; set; }
+
+    // Derived properties
+    public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
 }
