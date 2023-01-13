@@ -4,7 +4,6 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
-    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM feesVM;
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
     [ObservableProperty] CollapsibleViewVM contactsVM;
@@ -34,11 +33,7 @@ public partial class CampgroundDetailVM : DetailVM
 
     public void PopulateData()
     {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", Campground.DLatitude },
-            { "Longitude", Campground.DLongitude },
-            { "Name", Campground.Name }
-        };
+        Model = Campground;
+        BuildDict();
     }
 }

@@ -5,10 +5,22 @@ namespace NationalParks.ViewModels;
 public partial class DetailVM : BaseVM
 {
     readonly IMap map;
+    [ObservableProperty] Dictionary<string, object> openMapDict;
 
+    public BaseModel Model { get; set; }
     public DetailVM(IMap map)
     {
         this.map = map;
+    }
+
+    public void BuildDict()
+    {
+        OpenMapDict = new Dictionary<string, object>
+        {
+            { "Latitude", Model.DLatitude },
+            { "Longitude", Model.DLongitude },
+            { "Name", Model.Title }
+        };
     }
 
     [RelayCommand]

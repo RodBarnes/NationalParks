@@ -4,7 +4,6 @@
 public partial class EventDetailVM : DetailVM
 {
     [ObservableProperty] Event npsEvent;
-    [ObservableProperty] Dictionary<string, object> openMapDict;
 
     public EventDetailVM(IMap map) : base(map)
     {
@@ -13,11 +12,7 @@ public partial class EventDetailVM : DetailVM
 
     public void PopulateData()
     {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", NpsEvent.DLatitude },
-            { "Longitude", NpsEvent.DLongitude },
-            { "Name", NpsEvent.Title }
-        };
+        Model = NpsEvent;
+        BuildDict();
     }
 }

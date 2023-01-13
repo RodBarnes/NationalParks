@@ -4,7 +4,6 @@
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
-    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
     public ThingToDoDetailVM(IMap map) : base(map)
@@ -16,11 +15,7 @@ public partial class ThingToDoDetailVM : DetailVM
 
     public void PopulateData()
     {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", ThingToDo.DLatitude },
-            { "Longitude", ThingToDo.DLongitude },
-            { "Name", ThingToDo.Title }
-        };
+        Model = ThingToDo;
+        BuildDict();
     }
 }

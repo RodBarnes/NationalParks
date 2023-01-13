@@ -6,7 +6,6 @@ namespace NationalParks.ViewModels;
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;
-    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
     [ObservableProperty] CollapsibleViewVM tagsVM;
@@ -30,11 +29,7 @@ public partial class PlaceDetailVM : DetailVM
 
     public void PopulateData()
     {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", Place.DLatitude },
-            { "Longitude", Place.DLongitude },
-            { "Name", Place.Title }
-        };
+        Model = Place;
+        BuildDict();
     }
 }

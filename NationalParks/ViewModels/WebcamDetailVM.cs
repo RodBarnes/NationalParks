@@ -4,7 +4,6 @@
 public partial class WebcamDetailVM : DetailVM
 {
     [ObservableProperty] Webcam webcam;
-    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
     public WebcamDetailVM(IMap map) : base(map)
@@ -16,11 +15,7 @@ public partial class WebcamDetailVM : DetailVM
 
     public void PopulateData()
     {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", Webcam.DLatitude },
-            { "Longitude", Webcam.DLongitude },
-            { "Name", Webcam.Title }
-        };
+        Model = Webcam;
+        BuildDict();
     }
 }
