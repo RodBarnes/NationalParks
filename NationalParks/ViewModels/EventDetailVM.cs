@@ -4,9 +4,7 @@
 public partial class EventDetailVM : DetailVM
 {
     [ObservableProperty] Event npsEvent;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
+    [ObservableProperty] Dictionary<string, object> openMapDict;
 
     public EventDetailVM(IMap map) : base(map)
     {

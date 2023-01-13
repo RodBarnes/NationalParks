@@ -4,10 +4,7 @@
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
-
+    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
     public ThingToDoDetailVM(IMap map) : base(map)

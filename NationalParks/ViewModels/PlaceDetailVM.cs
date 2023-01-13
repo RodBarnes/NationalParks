@@ -6,22 +6,13 @@ namespace NationalParks.ViewModels;
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
-
+    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
-
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
-
     [ObservableProperty] CollapsibleViewVM tagsVM;
-
     [ObservableProperty] CollapsibleViewVM organizationsVM;
-
     [ObservableProperty] CollapsibleViewVM quickFactsVM;
-
     [ObservableProperty] CollapsibleViewVM amenitiesVM;
-
     [ObservableProperty] CollapsibleViewVM multimediaVM;
 
     public PlaceDetailVM(IMap map) : base(map)

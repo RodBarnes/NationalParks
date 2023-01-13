@@ -6,16 +6,10 @@ namespace NationalParks.ViewModels;
 public partial class TourDetailVM : DetailVM
 {
     [ObservableProperty] Tour tour;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
-
+    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM tagsVM;
-
     [ObservableProperty] CollapsibleViewVM stopsVM;
-
     [ObservableProperty] CollapsibleViewVM topicsVM;
-
     [ObservableProperty] CollapsibleViewVM activitiesVM;
 
     public TourDetailVM(IMap map) : base(map)

@@ -4,28 +4,16 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
-
+    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM feesVM;
-
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
-
     [ObservableProperty] CollapsibleViewVM contactsVM;
-
     [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
-
     [ObservableProperty] CollapsibleViewVM amenitiesVM;
-
     [ObservableProperty] CollapsibleViewVM accessibilityVM;
-
     [ObservableProperty] CollapsibleViewVM directionsVM;
-
     [ObservableProperty] CollapsibleViewVM weatherVM;
-
     [ObservableProperty] CollapsibleViewVM reservationsVM;
-
     [ObservableProperty] CollapsibleViewVM regulationsVM;
 
     public CampgroundDetailVM(IMap map) : base(map)

@@ -4,9 +4,7 @@
 public partial class WebcamDetailVM : DetailVM
 {
     [ObservableProperty] Webcam webcam;
-
     [ObservableProperty] Dictionary<string, object> openMapDict;
-
     [ObservableProperty] CollapsibleViewVM relatedParksVM;
 
     public WebcamDetailVM(IMap map) : base(map)

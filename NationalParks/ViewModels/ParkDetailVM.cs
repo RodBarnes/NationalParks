@@ -3,26 +3,15 @@
 [QueryProperty(nameof(Models.Park), "Park")]
 public partial class ParkDetailVM : DetailVM
 {
-    [ObservableProperty]
-    Park park;
-
-    [ObservableProperty]
-    public Dictionary<string, object> openMapDict;
-
+    [ObservableProperty] Park park;
+    [ObservableProperty] Dictionary<string, object> openMapDict;
     [ObservableProperty] CollapsibleViewVM alertsVM;
-
     [ObservableProperty] CollapsibleViewVM combinedFeesVM;
-
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
-
     [ObservableProperty] CollapsibleViewVM contactsVM;
-
     [ObservableProperty] CollapsibleViewVM topicsVM;
-
     [ObservableProperty] CollapsibleViewVM activitiesVM;
-
     [ObservableProperty] CollapsibleViewVM directionsVM;
-
     [ObservableProperty] CollapsibleViewVM weatherVM;
 
     public ParkDetailVM(IMap map) : base(map)
