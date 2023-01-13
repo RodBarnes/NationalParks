@@ -40,9 +40,9 @@ public partial class WebcamListVM : ListVM
             ResultWebcams result;
 
             result = await DataService.GetWebcamsAsync(startWebcams);
-            startWebcams += result.Data.Count;
             foreach (var webcam in result.Data)
                 Webcams.Add(webcam);
+            startWebcams += result.Data.Count;
         }
         catch (Exception ex)
         {

@@ -64,7 +64,6 @@ public partial class PlaceListVM : ListVM
             }
 
             result = await DataService.GetPlacesAsync(startItems, limitItems, states);
-            startItems += result.Data.Count;
             foreach (var place in result.Data)
             {
                 // This code addresses the condition where there is no location of the place
@@ -81,6 +80,7 @@ public partial class PlaceListVM : ListVM
                 }
                 Places.Add(place);
             }
+            startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
         }

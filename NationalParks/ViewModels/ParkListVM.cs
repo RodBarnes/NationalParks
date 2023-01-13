@@ -81,12 +81,12 @@ public partial class ParkListVM : ListVM
             }
 
             result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
-            startItems += result.Data.Count;
             foreach (var park in result.Data)
             {
                 Parks.Add(park);
                 await ParkListVM.GetAlerts(park);
             }
+            startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
         }

@@ -62,10 +62,9 @@ public partial class EventListVM : ListVM
             }
 
             result = await DataService.GetEventsAsync(startItems, limitItems, states);
-            startItems += result.Data.Count;
             foreach (var npsEvent in result.Data)
                 Events.Add(npsEvent);
-
+            startItems += result.Data.Count;
             totalItems = result.Total;
             Title = $"Events ({totalItems})";
         }

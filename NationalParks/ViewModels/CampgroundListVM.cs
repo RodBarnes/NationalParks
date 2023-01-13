@@ -61,9 +61,9 @@ public partial class CampgroundListVM : ListVM
             }
 
             result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
-            startItems += result.Data.Count;
             foreach (var campground in result.Data)
                 Campgrounds.Add(campground);
+            startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
         }

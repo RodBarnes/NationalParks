@@ -81,11 +81,9 @@ public partial class ThingToDoListVM : ListVM
             }
 
             result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
-            startItems += result.Data.Count;
             foreach (var thingToDo in result.Data)
-            {
                 ThingsToDo.Add(thingToDo);
-            }
+            startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
         }
