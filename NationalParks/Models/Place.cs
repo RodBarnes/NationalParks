@@ -2,7 +2,6 @@
 
 public class Place : BaseModel
 {
-    public string Title { get; set; }
     public string ListingDescription { get; set; }
     public List<RelatedPark> RelatedParks { get; set; }
     public List<Organization> RelatedOrganizations { get; set; }

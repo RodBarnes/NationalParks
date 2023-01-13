@@ -2,7 +2,6 @@
 
 public class Campground : BaseModel
 {
-    public string Name { get; set; }
     public string ParkCode { get; set; }
     public string Description { get; set; }
     public string AudioDescription { get; set; }

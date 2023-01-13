@@ -127,7 +127,6 @@ public partial class ThingToDoListVM : BaseVM
 
             IsBusy = true;
             ResultThingsToDo result;
-            Park park;
             string states = "";
             string topics = "";
             string activities = "";

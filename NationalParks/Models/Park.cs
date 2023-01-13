@@ -20,7 +20,6 @@ public class Park : BaseModel
     public List<Address> Addresses { get; set; }
     public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
     public string WeatherInfo { get; set; }
-    public string Name { get; set; }
     public string Designation { get; set; }
 
     // Derived properties

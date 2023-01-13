@@ -38,7 +38,6 @@ public class Event : BaseModel
     public string RecurrenceRule { get; set; }
     public List<string> Dates { get; set; }
     public string DateTimeCreated { get; set; }
-    public string Title { get; set; }
     public string SubjectName { get; set; }
     public List<string> Tags { get; set; }
 
