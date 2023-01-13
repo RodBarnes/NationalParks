@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.Webcam), "Webcam")]
+[QueryProperty(nameof(Models.Webcam), "Model")]
 public partial class WebcamDetailVM : DetailVM
 {
     [ObservableProperty] Webcam webcam;

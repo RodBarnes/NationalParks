@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.ThingToDo), "ThingToDo")]
+[QueryProperty(nameof(Models.ThingToDo), "Model")]
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;

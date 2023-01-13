@@ -2,7 +2,7 @@
 
 namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.Tour), "Tour")]
+[QueryProperty(nameof(Models.Tour), "Model")]
 public partial class TourDetailVM : DetailVM
 {
     [ObservableProperty] Tour tour;

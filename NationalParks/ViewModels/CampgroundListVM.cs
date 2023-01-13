@@ -38,7 +38,7 @@ public partial class CampgroundListVM : ListVM
 
         await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
         {
-            {"Campground", campground}
+            {"Model", campground}
         });
     }
 

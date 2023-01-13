@@ -40,7 +40,7 @@ public partial class PlaceListVM : ListVM
 
         await Shell.Current.GoToAsync(nameof(PlaceDetailPage), true, new Dictionary<string, object>
         {
-            {"Place", place}
+            {"Model", place}
         });
     }
 

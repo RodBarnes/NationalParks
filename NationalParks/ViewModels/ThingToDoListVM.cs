@@ -38,7 +38,7 @@ public partial class ThingToDoListVM : ListVM
 
         await Shell.Current.GoToAsync(nameof(ThingToDoDetailPage), true, new Dictionary<string, object>
         {
-            {"ThingToDo", thingToDo}
+            {"Model", thingToDo}
         });
     }
 

@@ -29,7 +29,7 @@ public partial class WebcamListVM : ListVM
 
         await Shell.Current.GoToAsync(nameof(WebcamDetailPage), true, new Dictionary<string, object>
         {
-            {"Webcam", webcam }
+            {"Model", webcam }
         });
     }
 

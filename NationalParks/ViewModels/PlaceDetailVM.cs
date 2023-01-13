@@ -2,7 +2,7 @@
 
 namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.Place), "Place")]
+[QueryProperty(nameof(Models.Place), "Model")]
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;

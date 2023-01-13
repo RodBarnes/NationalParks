@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.Event), "Event")]
+[QueryProperty(nameof(Models.Event), "Model")]
 public partial class EventDetailVM : DetailVM
 {
     [ObservableProperty] Event npsEvent;

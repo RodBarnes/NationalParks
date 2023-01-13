@@ -42,7 +42,7 @@ public partial class EventListVM : ListVM
 
         await Shell.Current.GoToAsync(nameof(EventDetailPage), true, new Dictionary<string, object>
         {
-            {"Event", npsEvent}
+            {"Model", npsEvent}
         });
     }
 

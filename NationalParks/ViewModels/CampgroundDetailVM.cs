@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Models.Campground), "Campground")]
+[QueryProperty(nameof(Models.Campground), "Model")]
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
