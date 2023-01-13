@@ -13,24 +13,10 @@ public partial class DetailVM : BaseVM
         this.map = map;
     }
 
-    public void BuildDict()
-    {
-        OpenMapDict = new Dictionary<string, object>
-        {
-            { "Latitude", Model.DLatitude },
-            { "Longitude", Model.DLongitude },
-            { "Name", Model.Title }
-        };
-    }
-
     [RelayCommand]
-    async Task OpenMap(Dictionary<string, object> dict)
+    async Task OpenMap()
     {
-        var latitude = (double)dict["Latitude"];
-        var longitude = (double)dict["Longitude"];
-        var name = (string)dict["Name"];
-
-        if (latitude < 0)
+        if (Model.DLatitude < 0)
         {
             await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
             return;
@@ -38,9 +24,9 @@ public partial class DetailVM : BaseVM
 
         try
         {
-            await map.OpenAsync(latitude, longitude, new MapLaunchOptions
+            await map.OpenAsync(Model.DLatitude, Model.DLongitude, new MapLaunchOptions
             {
-                Name = name,
+                Name = Model.Name,
                 NavigationMode = NavigationMode.None
             });
         }

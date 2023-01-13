@@ -24,6 +24,5 @@ public partial class TourDetailVM : DetailVM
     public void PopulateData()
     {
         Model = Tour;
-        BuildDict();
     }
 }

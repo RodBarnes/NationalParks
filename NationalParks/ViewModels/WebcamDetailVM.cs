@@ -16,6 +16,5 @@ public partial class WebcamDetailVM : DetailVM
     public void PopulateData()
     {
         Model = Webcam;
-        BuildDict();
     }
 }

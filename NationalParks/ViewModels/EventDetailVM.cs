@@ -13,6 +13,5 @@ public partial class EventDetailVM : DetailVM
     public void PopulateData()
     {
         Model = NpsEvent;
-        BuildDict();
     }
 }

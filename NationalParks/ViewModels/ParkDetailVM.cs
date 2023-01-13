@@ -30,6 +30,5 @@ public partial class ParkDetailVM : DetailVM
     public void PopulateData()
     {
         Model = Park;
-        BuildDict();
     }
 }

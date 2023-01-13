@@ -16,6 +16,5 @@ public partial class ThingToDoDetailVM : DetailVM
     public void PopulateData()
     {
         Model = ThingToDo;
-        BuildDict();
     }
 }

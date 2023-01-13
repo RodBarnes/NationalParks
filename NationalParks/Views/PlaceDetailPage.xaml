@@ -278,7 +278,6 @@
             HorizontalOptions="CenterAndExpand">
             <Button Text="Location" 
                     Command="{Binding OpenMapCommand}"
-                    CommandParameter="{Binding OpenMapDict}"
                     HorizontalOptions="StartAndExpand" 
                     WidthRequest="175" 
                     Margin="8"

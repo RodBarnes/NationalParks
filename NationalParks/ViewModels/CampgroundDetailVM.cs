@@ -34,6 +34,5 @@ public partial class CampgroundDetailVM : DetailVM
     public void PopulateData()
     {
         Model = Campground;
-        BuildDict();
     }
 }
