@@ -51,32 +51,9 @@ public partial class TourListVM : ListVM
             if (Filter is not null)
             {
                 // Apply any filters prior to getting the items
-                foreach (var topic in Filter.Topics)
-                {
-                    if (topics.Length > 0)
-                    {
-                        topics += "%2D";
-                    }
-                    topics += topic.Id;
-                }
-
-                foreach (var activity in Filter.Activities)
-                {
-                    if (activities.Length > 0)
-                    {
-                        activities += "%2D";
-                    }
-                    activities += activity.Id;
-                }
-
-                foreach (var state in Filter.States)
-                {
-                    if (states.Length > 0)
-                    {
-                        states += ",";
-                    }
-                    states += state.Abbreviation;
-                }
+                topics = GetSelectedTopics(Filter.Topics);
+                activities = GetSelectedActivities(Filter.Activities);
+                states = GetSelectedStates(Filter.States);
             }
 
             Park park;

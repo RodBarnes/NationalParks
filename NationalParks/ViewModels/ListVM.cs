@@ -93,7 +93,51 @@ public partial class ListVM : BaseVM
         }
     }
 
+    protected string GetSelectedStates(List<State> states)
+    {
+        string filter = "";
 
+        foreach (var state in Filter.States)
+        {
+            if (filter.Length > 0)
+            {
+                filter += ",";
+            }
+            filter += state.Abbreviation;
+        }
+
+        return filter;
+    }
+    protected string GetSelectedTopics(List<Topic> topics)
+    {
+        string filter = "";
+
+        foreach (var topic in topics)
+        {
+            if (filter.Length > 0)
+            {
+                filter += "%2D";
+            }
+            filter += topic.Id;
+        }
+
+        return filter;
+    }
+    protected string GetSelectedActivities(List<Models.Activity> activities)
+    {
+        string filter = "";
+
+        foreach (var activity in activities)
+        {
+            if (filter.Length > 0)
+            {
+                filter += "%2D";
+            }
+            filter += activity.Id;
+        }
+
+        return filter;
+    }
     protected string GetTitle()
     {
         string tmp = $"{BaseTitle}";

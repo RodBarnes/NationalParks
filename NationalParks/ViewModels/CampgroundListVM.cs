@@ -44,20 +44,12 @@ public partial class CampgroundListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
 
+            string states = "";
             if (Filter is not null)
             {
-                // Apply any filters prior to getting the items
-                foreach (var state in Filter.States)
-                {
-                    if (states.Length > 0)
-                    {
-                        states += ",";
+                states = GetSelectedStates(Filter.States);
                     }
-                    states += state.Abbreviation;
-                }
-            }
 
             ResultCampgrounds result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
             foreach (var campground in result.Data)

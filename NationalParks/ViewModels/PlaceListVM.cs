@@ -51,14 +51,7 @@ public partial class PlaceListVM : ListVM
             if (Filter is not null)
             {
                 // Apply any filters prior to getting the items
-                foreach (var state in Filter.States)
-                {
-                    if (states.Length > 0)
-                    {
-                        states += ",";
-                    }
-                    states += state.Abbreviation;
-                }
+                states = GetSelectedStates(Filter.States);
             }
 
             Park park;

@@ -48,16 +48,11 @@ public partial class EventListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
 
-            // Apply any filters prior to getting the items
-            foreach (var state in Filter.States)
+            string states = "";
+            if (Filter is not null)
             {
-                if (states.Length > 0)
-                {
-                    states += ",";
-                }
-                states += state.Abbreviation;
+                states = GetSelectedStates(Filter.States);
             }
 
             ResultEvents result = await DataService.GetEventsAsync(startItems, limitItems, states);
