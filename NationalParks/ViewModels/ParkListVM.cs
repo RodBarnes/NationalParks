@@ -48,12 +48,7 @@ public partial class ParkListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultParks result = await DataService.GetParksAsync(StartItems, LimitItems, TopicsFilter, ActivitiesFilter, StatesFilter);
-            foreach (var park in result.Data)
-            {
-                Parks.Add(park);
-                await ParkListVM.GetAlerts(park);
-            }
+            ResultParks result = await GetParksData(StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
 
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -94,4 +89,17 @@ public partial class ParkListVM : ListVM
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
+
+    private async Task<ResultParks> GetParksData(int startItems, int limitItems, string statesFilter, string topicsFilter, string activitiesFilter)
+    {
+        ResultParks result = await DataService.GetParksAsync(startItems, limitItems, topicsFilter, activitiesFilter, statesFilter);
+        foreach (var park in result.Data)
+        {
+            Parks.Add(park);
+            await GetAlerts(park);
+        }
+
+        return result;
+    }
+
 }

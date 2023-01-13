@@ -48,10 +48,10 @@ public partial class CampgroundListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            foreach (var campground in result.Data)
-                Campgrounds.Add(campground);
-            startItems += result.Data.Count;
-            totalItems = result.Total;
+            ResultCampgrounds result = await GetCampgroundsData(StartItems, LimitItems, StatesFilter);
+
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)
@@ -62,5 +62,13 @@ public partial class CampgroundListVM : ListVM
         {
             IsBusy = false;
         }
+    }
+
+    private async Task<ResultCampgrounds> GetCampgroundsData(int startItems, int limitItems, string statesFilter)
+    {
+        ResultCampgrounds result = await DataService.GetCampgroundsAsync(startItems, limitItems, statesFilter);
+        foreach (var campground in result.Data)
+            Campgrounds.Add(campground);
+        return result;
     }
 }

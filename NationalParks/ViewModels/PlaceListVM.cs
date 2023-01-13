@@ -50,24 +50,7 @@ public partial class PlaceListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            Park park;
-            ResultPlaces result = await DataService.GetPlacesAsync(StartItems, LimitItems, StatesFilter);
-            foreach (var place in result.Data)
-            {
-                // This code addresses the condition where there is no location of the place
-                // but it has at least one related park
-                if (place.DLatitude < 0 && place.RelatedParks.Count > 0)
-                {
-                    ResultParks resultPark = await DataService.GetParkForParkCodeAsync(place.RelatedParks[0].ParkCode);
-                    if (resultPark.Data.Count == 1)
-                    {
-                        park = resultPark.Data[0];
-                        place.Latitude = park.Latitude;
-                        place.Longitude = park.Longitude;
-                    }
-                }
-                Places.Add(place);
-            }
+            ResultPlaces result = await GetPlacesData(StartItems, LimitItems, StatesFilter);
 
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -81,5 +64,29 @@ public partial class PlaceListVM : ListVM
         {
             IsBusy = false;
         }
+    }
+
+    private async Task<ResultPlaces> GetPlacesData(int startItems, int limitItems, string statesFilter)
+    {
+        Park park;
+        ResultPlaces result = await DataService.GetPlacesAsync(startItems, limitItems, statesFilter);
+        foreach (var place in result.Data)
+        {
+            // This code addresses the condition where there is no location of the place
+            // but it has at least one related park
+            if (place.DLatitude < 0 && place.RelatedParks.Count > 0)
+            {
+                ResultParks resultPark = await DataService.GetParkForParkCodeAsync(place.RelatedParks[0].ParkCode);
+                if (resultPark.Data.Count == 1)
+                {
+                    park = resultPark.Data[0];
+                    place.Latitude = park.Latitude;
+                    place.Longitude = park.Longitude;
+                }
+            }
+            Places.Add(place);
+        }
+
+        return result;
     }
 }

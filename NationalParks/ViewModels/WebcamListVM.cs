@@ -6,7 +6,6 @@ public partial class WebcamListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    private int startWebcams = 0;
     public ObservableCollection<Models.Webcam> Webcams { get; } = new();
 
     public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
@@ -39,11 +38,11 @@ public partial class WebcamListVM : ListVM
             IsBusy = true;
 
             // Populate the list
-            ResultWebcams result = await DataService.GetWebcamsAsync(startWebcams);
-            foreach (var webcam in result.Data)
-                Webcams.Add(webcam);
+            ResultWebcams result = await GetWebcamsData(StartItems, LimitItems);
 
-            startWebcams += result.Data.Count;
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
+            IsPopulated = true;
         }
         catch (Exception ex)
         {
@@ -53,5 +52,14 @@ public partial class WebcamListVM : ListVM
         {
             IsBusy = false;
         }
+    }
+
+    private async Task<ResultWebcams> GetWebcamsData(int startItems, int limitItems)
+    {
+        ResultWebcams result = await DataService.GetWebcamsAsync(startItems, limitItems);
+        foreach (var webcam in result.Data)
+            Webcams.Add(webcam);
+
+        return result;
     }
 }

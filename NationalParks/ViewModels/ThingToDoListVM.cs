@@ -48,9 +48,7 @@ public partial class ThingToDoListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultThingsToDo result = await DataService.GetThingsToDoAsync(StartItems, LimitItems, StatesFilter);
-            foreach (var thingToDo in result.Data)
-                ThingsToDo.Add(thingToDo);
+            ResultThingsToDo result = await GetThingsToDoData(StartItems, LimitItems, StatesFilter);
 
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -65,5 +63,14 @@ public partial class ThingToDoListVM : ListVM
             IsBusy = false;
         }
 
+    }
+
+    private async Task<ResultThingsToDo> GetThingsToDoData(int startItems, int limitItems, string statesFilter)
+    {
+        ResultThingsToDo result = await DataService.GetThingsToDoAsync(startItems, limitItems, statesFilter);
+        foreach (var thingToDo in result.Data)
+            ThingsToDo.Add(thingToDo);
+
+        return result;
     }
 }

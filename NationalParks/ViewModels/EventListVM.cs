@@ -52,9 +52,7 @@ public partial class EventListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultEvents result = await DataService.GetEventsAsync(StartItems, LimitItems, StatesFilter);
-            foreach (var npsEvent in result.Data)
-                Events.Add(npsEvent);
+            ResultEvents result = await GetEventsData(StartItems, LimitItems, StatesFilter);
 
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -68,5 +66,13 @@ public partial class EventListVM : ListVM
         {
             IsBusy = false;
         }
+    }
+    private async Task<ResultEvents> GetEventsData(int startItems, int limitItems, string statesFilter)
+    {
+        ResultEvents result = await DataService.GetEventsAsync(startItems, limitItems, statesFilter);
+        foreach (var npsEvent in result.Data)
+            Events.Add(npsEvent);
+
+        return result;
     }
 }

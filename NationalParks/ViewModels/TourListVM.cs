@@ -48,19 +48,7 @@ public partial class TourListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            Park park;
-            ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
-            foreach (var tour in result.Data)
-            {
-                ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
-                if (resultPark.Data.Count == 1)
-                {
-                    park = resultPark.Data[0];
-                    tour.Latitude = park.Latitude;
-                    tour.Longitude = park.Longitude;
-                }
-                Tours.Add(tour);
-            }
+            ResultTours result = await GetToursData(StartItems, LimitItems, StatesFilter);
 
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -74,6 +62,24 @@ public partial class TourListVM : ListVM
         {
             IsBusy = false;
         }
+    }
 
+    private async Task<ResultTours> GetToursData(int startItems, int limitItems, string statesFilter)
+    {
+        Park park;
+        ResultTours result = await DataService.GetToursAsync(startItems, limitItems, statesFilter);
+        foreach (var tour in result.Data)
+        {
+            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
+            if (resultPark.Data.Count == 1)
+            {
+                park = resultPark.Data[0];
+                tour.Latitude = park.Latitude;
+                tour.Longitude = park.Longitude;
+            }
+            Tours.Add(tour);
+        }
+
+        return result;
     }
 }
