@@ -126,11 +126,6 @@ public partial class ThingToDoListVM : ListVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("tours_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultTours>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var tour in result.Data)
-            //    Tours.Add(tour);
-
             result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var thingToDo in result.Data)

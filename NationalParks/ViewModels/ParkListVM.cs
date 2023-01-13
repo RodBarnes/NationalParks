@@ -126,11 +126,6 @@ public partial class ParkListVM : ListVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("parks_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultParks>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var park in result.Data)
-            //    Parks.Add(park);
-
             result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
             startItems += result.Data.Count;
             foreach (var park in result.Data)

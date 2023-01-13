@@ -127,11 +127,6 @@ public partial class TourListVM : ListVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("tours_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultTours>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var tour in result.Data)
-            //    Tours.Add(tour);
-
             result = await DataService.GetToursAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var tour in result.Data)

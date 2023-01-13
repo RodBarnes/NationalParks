@@ -107,11 +107,6 @@ public partial class CampgroundListVM : ListVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("campgrounds_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultCampgrounds>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var campground in result.Data)
-            //    Campgrounds.Add(campground);
-
             result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var campground in result.Data)

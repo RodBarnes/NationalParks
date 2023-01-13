@@ -57,11 +57,6 @@ public partial class WebcamListVM : ListVM
             IsBusy = true;
             ResultWebcams result;
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("webcams_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultWebcams>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var webcam in result.Data)
-            //    Webcams.Add(webcam);
-
             result = await DataService.GetWebcamsAsync(startWebcams);
             startWebcams += result.Data.Count;
             foreach (var webcam in result.Data)

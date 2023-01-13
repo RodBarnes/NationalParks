@@ -107,11 +107,6 @@ public partial class EventListVM : ListVM
                 states += state.Abbreviation;
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("events_0.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultEvents>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var event in result.Data)
-            //    Events.Add(event);
-
             result = await DataService.GetEventsAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var npsEvent in result.Data)

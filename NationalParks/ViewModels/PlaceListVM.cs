@@ -109,11 +109,6 @@ public partial class PlaceListVM : ListVM
                 }
             }
 
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("places_MO.json");
-            //result = System.Text.Json.JsonSerializer.Deserialize<ResultPlaces>(stream, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            //foreach (var place in result.Data)
-            //    Places.Add(place);
-
             result = await DataService.GetPlacesAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var place in result.Data)
