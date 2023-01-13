@@ -18,8 +18,8 @@ public partial class WebcamDetailVM : DetailVM
     {
         OpenMapDict = new Dictionary<string, object>
         {
-            { "Latitude", Webcam.Latitude },
-            { "Longitude", Webcam.Longitude },
+            { "Latitude", Webcam.DLatitude },
+            { "Longitude", Webcam.DLongitude },
             { "Name", Webcam.Title }
         };
     }

@@ -98,6 +98,7 @@ public partial class CampgroundListVM : BaseVM
                 });
             }
 
+
             // Find closest item to us
             var first = Campgrounds.OrderBy(m => location.CalculateDistance(
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
