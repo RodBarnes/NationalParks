@@ -56,9 +56,11 @@ public partial class ThingToDoListVM : ListVM
                 states = GetSelectedStates(Filter.States);
             }
 
+            // Populate the list
             ResultThingsToDo result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
             foreach (var thingToDo in result.Data)
                 ThingsToDo.Add(thingToDo);
+
             startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;

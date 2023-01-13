@@ -51,7 +51,7 @@ public partial class CampgroundListVM : ListVM
                 states = GetSelectedStates(Filter.States);
                     }
 
-            ResultCampgrounds result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
+            // Populate the list
             foreach (var campground in result.Data)
                 Campgrounds.Add(campground);
             startItems += result.Data.Count;

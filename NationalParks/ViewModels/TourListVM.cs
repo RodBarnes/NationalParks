@@ -56,9 +56,9 @@ public partial class TourListVM : ListVM
                 states = GetSelectedStates(Filter.States);
             }
 
+            // Populate the list
             Park park;
             ResultTours result = await DataService.GetToursAsync(startItems, limitItems, states);
-            startItems += result.Data.Count;
             foreach (var tour in result.Data)
             {
                 ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
@@ -70,6 +70,8 @@ public partial class TourListVM : ListVM
                 }
                 Tours.Add(tour);
             }
+
+            startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
         }

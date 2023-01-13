@@ -1,5 +1,11 @@
 Status
 ------
+Working on the increasing the common parts of ListVM.
+	- Could I improve things by only loading the BaseModel during ListVM and then only populate the full class (e.g., Campground) when I get the detail?
+	- I don't need it before then. 
+	- It wouldn't change the amount of data returned during so I don't think there'd be any performanced improvement.
+	- And it would mean a second hit to get the detail.
+
 Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
 
 Next fleshing out ThingsToDo pages

@@ -54,6 +54,7 @@ public partial class PlaceListVM : ListVM
                 states = GetSelectedStates(Filter.States);
             }
 
+            // Populate the list
             Park park;
             ResultPlaces result = await DataService.GetPlacesAsync(startItems, limitItems, states);
             foreach (var place in result.Data)
@@ -72,6 +73,7 @@ public partial class PlaceListVM : ListVM
                 }
                 Places.Add(place);
             }
+
             startItems += result.Data.Count;
             totalItems = result.Total;
             IsPopulated = true;
