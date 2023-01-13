@@ -44,28 +44,19 @@ public partial class ParkListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
-            string topics = "";
-            string activities = "";
 
-            if (Filter is not null)
-            {
-                // Apply any filters prior to getting the items
-                topics = GetSelectedTopics(Filter.Topics);
-                activities = GetSelectedActivities(Filter.Activities);
-                states = GetSelectedStates(Filter.States);
-            }
+            GetFilterSelections();
 
             // Populate the list
-            ResultParks result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
+            ResultParks result = await DataService.GetParksAsync(StartItems, LimitItems, TopicsFilter, ActivitiesFilter, StatesFilter);
             foreach (var park in result.Data)
             {
                 Parks.Add(park);
                 await ParkListVM.GetAlerts(park);
             }
 
-            startItems += result.Data.Count;
-            totalItems = result.Total;
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

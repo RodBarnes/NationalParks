@@ -45,11 +45,7 @@ public partial class CampgroundListVM : ListVM
 
             IsBusy = true;
 
-            string states = "";
-            if (Filter is not null)
-            {
-                states = GetSelectedStates(Filter.States);
-                    }
+            GetFilterSelections();
 
             // Populate the list
             foreach (var campground in result.Data)

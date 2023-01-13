@@ -14,7 +14,7 @@ public partial class PlaceListVM : ListVM
     public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
         IsBusy = false;
-        BaseTitle = "Places";
+        base.BaseTitle = "Places";
         this.connectivity = connectivity;
     }
 
@@ -46,17 +46,12 @@ public partial class PlaceListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
 
-            if (Filter is not null)
-            {
-                // Apply any filters prior to getting the items
-                states = GetSelectedStates(Filter.States);
-            }
+            GetFilterSelections();
 
             // Populate the list
             Park park;
-            ResultPlaces result = await DataService.GetPlacesAsync(startItems, limitItems, states);
+            ResultPlaces result = await DataService.GetPlacesAsync(StartItems, LimitItems, StatesFilter);
             foreach (var place in result.Data)
             {
                 // This code addresses the condition where there is no location of the place
@@ -74,8 +69,8 @@ public partial class PlaceListVM : ListVM
                 Places.Add(place);
             }
 
-            startItems += result.Data.Count;
-            totalItems = result.Total;
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

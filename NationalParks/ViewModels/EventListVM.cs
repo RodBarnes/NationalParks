@@ -29,7 +29,7 @@ public partial class EventListVM : ListVM
     public void ClearData()
     {
         Events.Clear();
-        startItems = 0;
+        StartItems = 0;
     }
 
     [RelayCommand]
@@ -49,20 +49,16 @@ public partial class EventListVM : ListVM
 
             IsBusy = true;
 
-            string states = "";
-            if (Filter is not null)
-            {
-                states = GetSelectedStates(Filter.States);
-            }
+            GetFilterSelections();
 
             // Populate the list
-            ResultEvents result = await DataService.GetEventsAsync(startItems, limitItems, states);
+            ResultEvents result = await DataService.GetEventsAsync(StartItems, LimitItems, StatesFilter);
             foreach (var npsEvent in result.Data)
                 Events.Add(npsEvent);
 
-            startItems += result.Data.Count;
-            totalItems = result.Total;
-            Title = $"Events ({totalItems})";
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
+            Title = $"Events ({TotalItems})";
         }
         catch (Exception ex)
         {

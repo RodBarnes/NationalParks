@@ -44,25 +44,16 @@ public partial class ThingToDoListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
-            string topics = "";
-            string activities = "";
 
-            if (Filter is not null)
-            {
-                // Apply any filters prior to getting the items
-                topics = GetSelectedTopics(Filter.Topics);
-                activities = GetSelectedActivities(Filter.Activities);
-                states = GetSelectedStates(Filter.States);
-            }
+            GetFilterSelections();
 
             // Populate the list
-            ResultThingsToDo result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
+            ResultThingsToDo result = await DataService.GetThingsToDoAsync(StartItems, LimitItems, StatesFilter);
             foreach (var thingToDo in result.Data)
                 ThingsToDo.Add(thingToDo);
 
-            startItems += result.Data.Count;
-            totalItems = result.Total;
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

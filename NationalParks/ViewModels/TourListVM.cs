@@ -44,21 +44,12 @@ public partial class TourListVM : ListVM
             }
 
             IsBusy = true;
-            string states = "";
-            string topics = "";
-            string activities = "";
 
-            if (Filter is not null)
-            {
-                // Apply any filters prior to getting the items
-                topics = GetSelectedTopics(Filter.Topics);
-                activities = GetSelectedActivities(Filter.Activities);
-                states = GetSelectedStates(Filter.States);
-            }
+            GetFilterSelections();
 
             // Populate the list
             Park park;
-            ResultTours result = await DataService.GetToursAsync(startItems, limitItems, states);
+            ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
             foreach (var tour in result.Data)
             {
                 ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
@@ -71,8 +62,8 @@ public partial class TourListVM : ListVM
                 Tours.Add(tour);
             }
 
-            startItems += result.Data.Count;
-            totalItems = result.Total;
+            StartItems += result.Data.Count;
+            TotalItems = result.Total;
             IsPopulated = true;
         }
         catch (Exception ex)

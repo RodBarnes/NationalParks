@@ -4,13 +4,18 @@ namespace NationalParks.ViewModels;
 
 public partial class ListVM : BaseVM
 {
+    public FilterVM Filter { get; set; }
+
     readonly IGeolocation geolocation;
 
-    protected readonly int limitItems = 20;
-    protected int startItems = 0;
-    protected int totalItems = 0;
+    protected readonly int LimitItems = 20;
+    protected int StartItems = 0;
+    protected int TotalItems = 0;
 
-    public FilterVM Filter { get; set; }
+    protected string StatesFilter = "";
+    protected string TopicsFilter = "";
+    protected string ActivitiesFilter = "";
+    protected string BaseTitle = "";
 
     [ObservableProperty] int itemsRefreshThreshold = -1;
 
@@ -28,12 +33,11 @@ public partial class ListVM : BaseVM
             else
             {
                 ItemsRefreshThreshold = -1;
-                startItems = 0;
+                StartItems = 0;
             }
             isPopulated = value;
         }
     }
-    protected string BaseTitle { get; set; }
 
     public ListVM(IGeolocation geolocation)
     {
@@ -93,7 +97,31 @@ public partial class ListVM : BaseVM
         }
     }
 
-    protected string GetSelectedStates(List<State> states)
+    protected string GetTitle()
+    {
+        string tmp = $"{BaseTitle}";
+        if (TotalItems > 0)
+        {
+            tmp += $"  ({TotalItems}";
+            if (Filter is not null && Filter.IsFiltered)
+            {
+                tmp += $", filtered";
+            }
+            tmp += ")";
+        }
+
+        return tmp;
+    }
+    protected void GetFilterSelections()
+    {
+        if (Filter is not null)
+        {
+            StatesFilter = GetSelectedStates(Filter.States);
+            TopicsFilter = GetSelectedTopics(Filter.Topics);
+            ActivitiesFilter = GetSelectedActivities(Filter.Activities);
+        }
+    }
+    private string GetSelectedStates(List<State> states)
     {
         string filter = "";
 
@@ -108,7 +136,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    protected string GetSelectedTopics(List<Topic> topics)
+    private string GetSelectedTopics(List<Topic> topics)
     {
         string filter = "";
 
@@ -123,7 +151,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    protected string GetSelectedActivities(List<Models.Activity> activities)
+    private string GetSelectedActivities(List<Models.Activity> activities)
     {
         string filter = "";
 
@@ -137,20 +165,5 @@ public partial class ListVM : BaseVM
         }
 
         return filter;
-    }
-    protected string GetTitle()
-    {
-        string tmp = $"{BaseTitle}";
-        if (totalItems > 0)
-        {
-            tmp += $"  ({totalItems}";
-            if (Filter is not null && Filter.IsFiltered)
-            {
-                tmp += $", filtered";
-            }
-            tmp += ")";
-        }
-
-        return tmp;
     }
 }
