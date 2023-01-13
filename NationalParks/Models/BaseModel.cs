@@ -3,8 +3,18 @@
     public partial class BaseModel
     {
         public string Id { get; set; }
-        public string Title { get; set; }
-        public string Name { get; set; }
+        private string title;
+        public string Title
+        {
+            get => !String.IsNullOrEmpty(title) ? title : Name;
+            set => title = value;
+        }
+        private string name;
+        public string Name
+        {
+            get => !String.IsNullOrEmpty(name) ? name : Title;
+            set => name = value;
+        }
         public string Url { get; set; }
         public object Latitude { get; set; }
         public object Longitude { get; set; }

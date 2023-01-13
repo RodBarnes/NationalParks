@@ -42,7 +42,7 @@
                                     VerticalOptions="Center"
                                     Grid.Column="1"
                                     Padding="10">
-                                        <Label Text="{Binding Name}" Style="{StaticResource LabelLargeBold}" />
+                                        <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
                                         <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
                                     </VerticalStackLayout>
                                 </Grid>

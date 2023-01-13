@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:NationalParks.Controls"
              x:DataType="vm:CampgroundDetailVM"
              x:Class="NationalParks.Views.CampgroundDetailPage"
-             Title="{Binding Campground.Name}">
+             Title="{Binding Campground.Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />

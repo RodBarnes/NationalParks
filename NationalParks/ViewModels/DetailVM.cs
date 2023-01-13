@@ -26,7 +26,7 @@ public partial class DetailVM : BaseVM
         {
             await map.OpenAsync(Model.DLatitude, Model.DLongitude, new MapLaunchOptions
             {
-                Name = Model.Name,
+                Name = Model.Title,
                 NavigationMode = NavigationMode.None
             });
         }

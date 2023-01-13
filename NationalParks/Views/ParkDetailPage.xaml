@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:NationalParks.Models"
              x:DataType="vm:ParkDetailVM"
              x:Class="NationalParks.Views.ParkDetailPage"
-             Title="{Binding Park.Name}">
+             Title="{Binding Park.Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
