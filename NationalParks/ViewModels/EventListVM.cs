@@ -48,7 +48,6 @@ public partial class EventListVM : ListVM
             }
 
             IsBusy = true;
-            ResultEvents result;
             string states = "";
 
             // Apply any filters prior to getting the items
@@ -61,7 +60,7 @@ public partial class EventListVM : ListVM
                 states += state.Abbreviation;
             }
 
-            result = await DataService.GetEventsAsync(startItems, limitItems, states);
+            ResultEvents result = await DataService.GetEventsAsync(startItems, limitItems, states);
             foreach (var npsEvent in result.Data)
                 Events.Add(npsEvent);
             startItems += result.Data.Count;

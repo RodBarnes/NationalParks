@@ -44,7 +44,6 @@ public partial class ParkListVM : ListVM
             }
 
             IsBusy = true;
-            ResultParks result;
             string states = "";
             string topics = "";
             string activities = "";
@@ -80,7 +79,7 @@ public partial class ParkListVM : ListVM
                 }
             }
 
-            result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
+            ResultParks result = await DataService.GetParksAsync(startItems, limitItems, topics, activities, states);
             foreach (var park in result.Data)
             {
                 Parks.Add(park);

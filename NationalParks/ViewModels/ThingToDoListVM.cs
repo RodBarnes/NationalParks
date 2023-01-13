@@ -44,7 +44,6 @@ public partial class ThingToDoListVM : ListVM
             }
 
             IsBusy = true;
-            ResultThingsToDo result;
             string states = "";
             string topics = "";
             string activities = "";
@@ -80,7 +79,7 @@ public partial class ThingToDoListVM : ListVM
                 }
             }
 
-            result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
+            ResultThingsToDo result = await DataService.GetThingsToDoAsync(startItems, limitItems, states);
             foreach (var thingToDo in result.Data)
                 ThingsToDo.Add(thingToDo);
             startItems += result.Data.Count;

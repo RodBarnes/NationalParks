@@ -44,8 +44,6 @@ public partial class TourListVM : ListVM
             }
 
             IsBusy = true;
-            ResultTours result;
-            Park park;
             string states = "";
             string topics = "";
             string activities = "";
@@ -81,7 +79,8 @@ public partial class TourListVM : ListVM
                 }
             }
 
-            result = await DataService.GetToursAsync(startItems, limitItems, states);
+            Park park;
+            ResultTours result = await DataService.GetToursAsync(startItems, limitItems, states);
             startItems += result.Data.Count;
             foreach (var tour in result.Data)
             {

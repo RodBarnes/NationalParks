@@ -44,7 +44,6 @@ public partial class CampgroundListVM : ListVM
             }
 
             IsBusy = true;
-            ResultCampgrounds result;
             string states = "";
 
             if (Filter is not null)
@@ -60,7 +59,7 @@ public partial class CampgroundListVM : ListVM
                 }
             }
 
-            result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
+            ResultCampgrounds result = await DataService.GetCampgroundsAsync(startItems, limitItems, states);
             foreach (var campground in result.Data)
                 Campgrounds.Add(campground);
             startItems += result.Data.Count;

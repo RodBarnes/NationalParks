@@ -37,9 +37,8 @@ public partial class WebcamListVM : ListVM
             }
 
             IsBusy = true;
-            ResultWebcams result;
 
-            result = await DataService.GetWebcamsAsync(startWebcams);
+            ResultWebcams result = await DataService.GetWebcamsAsync(startWebcams);
             foreach (var webcam in result.Data)
                 Webcams.Add(webcam);
             startWebcams += result.Data.Count;

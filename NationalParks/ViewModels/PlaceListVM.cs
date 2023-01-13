@@ -46,8 +46,6 @@ public partial class PlaceListVM : ListVM
             }
 
             IsBusy = true;
-            ResultPlaces result;
-            Park park;
             string states = "";
 
             if (Filter is not null)
@@ -63,7 +61,8 @@ public partial class PlaceListVM : ListVM
                 }
             }
 
-            result = await DataService.GetPlacesAsync(startItems, limitItems, states);
+            Park park;
+            ResultPlaces result = await DataService.GetPlacesAsync(startItems, limitItems, states);
             foreach (var place in result.Data)
             {
                 // This code addresses the condition where there is no location of the place
