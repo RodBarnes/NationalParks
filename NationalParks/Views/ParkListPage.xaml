@@ -59,11 +59,12 @@
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}" />
         <Button Text="Filter" 
-            Grid.Row="1" Grid.Column="1"
-            Margin="8"
-            Command="{Binding GoToFilterCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}"/>
+                Grid.Row="1" Grid.Column="1"
+                Margin="8"
+                Command="{Binding GoToFilterCommand}"
+                CommandParameter="ParkFilterPage"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
                         Grid.RowSpan="2" Grid.ColumnSpan="2"
                         HorizontalOptions="Fill"

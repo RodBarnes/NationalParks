@@ -3,52 +3,24 @@
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
-public partial class CampgroundListVM : BaseVM
+public partial class CampgroundListVM : ListVM
 {
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    readonly string baseTitle = "Campgrounds";
-    readonly int limitItems = 20;
-    int startItems = 0;
-    int totalItems = 0;
-
     public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
-
-    public FilterVM Filter { get; set; }
-
-    [ObservableProperty] int itemsRefreshThreshold = -1;
-
-    private bool isPopulated = false;
-    public bool IsPopulated
-    {
-        get => isPopulated;
-        set
-        {
-            if (value == true)
-            {
-                ItemsRefreshThreshold = 2;
-                Title = BuildTitle();
-            }
-            else
-            {
-                ItemsRefreshThreshold = -1;
-                startItems = 0;
-            }
-            isPopulated = value;
-        }
-    }
 
     public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
+        BaseTitle = "Campgrounds";
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
 
     public async void PopulateData()
     {
-        Title = baseTitle;
+        Title = GetTitle();
         await GetItems();
     }
 
@@ -67,15 +39,6 @@ public partial class CampgroundListVM : BaseVM
         await Shell.Current.GoToAsync(nameof(CampgroundDetailPage), true, new Dictionary<string, object>
         {
             {"Campground", campground}
-        });
-    }
-
-    [RelayCommand]
-    async Task GoToFilter()
-    {
-        await Shell.Current.GoToAsync(nameof(CampgroundFilterPage), true, new Dictionary<string, object>
-        {
-            {"VM", this }
         });
     }
 
@@ -164,17 +127,5 @@ public partial class CampgroundListVM : BaseVM
         {
             IsBusy = false;
         }
-    }
-
-    private string BuildTitle()
-    {
-        string tmp = $"{baseTitle}  ({totalItems}";
-        if (Filter is not null && Filter.IsFiltered)
-        {
-            tmp += $", filtered";
-        }
-        tmp += ")";
-
-        return tmp;
     }
 }

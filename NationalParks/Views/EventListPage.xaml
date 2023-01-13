@@ -57,12 +57,13 @@
                 Command="{Binding GetClosestCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}" />
-        <!--<Button Text="Filter" 
+        <Button Text="Filter" 
                 Grid.Row="1" Grid.Column="1"
                 Margin="8"
                 Command="{Binding GoToFilterCommand}"
+                CommandParameter="EventFilterPage"
                 IsEnabled="{Binding IsNotBusy}"
-                Style="{StaticResource ButtonOutline}"/>-->
+                Style="{StaticResource ButtonOutline}"/>
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
                            Grid.RowSpan="2" Grid.ColumnSpan="2"
                            HorizontalOptions="Fill"

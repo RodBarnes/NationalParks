@@ -3,52 +3,26 @@
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
-public partial class PlaceListVM : BaseVM
+public partial class PlaceListVM : ListVM
 {
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
     readonly string baseTitle = "Places";
-    readonly int limitItems = 20;
-    int startItems = 0;
-    int totalItems = 0;
 
     public ObservableCollection<Models.Place> Places { get; } = new();
-
-    public FilterVM Filter { get; set; }
-
-    [ObservableProperty] int itemsRefreshThreshold = -1;
-
-    private bool isPopulated = false;
-    public bool IsPopulated
-    {
-        get => isPopulated;
-        set
-        {
-            if (value == true)
-            {
-                ItemsRefreshThreshold = 2;
-                Title = BuildTitle();
-            }
-            else
-            {
-                ItemsRefreshThreshold = -1;
-                startItems = 0;
-            }
-            isPopulated = value;
-        }
-    }
 
     public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
+        BaseTitle = "Places";
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
 
     public async void PopulateData()
     {
-        Title = baseTitle;
+        Title = GetTitle();
         await GetItems();
     }
 
@@ -67,15 +41,6 @@ public partial class PlaceListVM : BaseVM
         await Shell.Current.GoToAsync(nameof(PlaceDetailPage), true, new Dictionary<string, object>
         {
             {"Place", place}
-        });
-    }
-
-    [RelayCommand]
-    async Task GoToFilter()
-    {
-        await Shell.Current.GoToAsync(nameof(PlaceFilterPage), true, new Dictionary<string, object>
-        {
-            {"VM", this }
         });
     }
 
@@ -178,17 +143,5 @@ public partial class PlaceListVM : BaseVM
         {
             IsBusy = false;
         }
-    }
-
-    private string BuildTitle()
-    {
-        string tmp = $"{baseTitle} ({totalItems}";
-        if (Filter is not null && Filter.IsFiltered)
-        {
-            tmp += $", filtered";
-        }
-        tmp += ")";
-
-        return tmp;
     }
 }

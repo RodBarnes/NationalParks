@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
-public partial class EventListVM : BaseVM
+public partial class EventListVM : ListVM
 {
     // For holding the available filter selections
     private Collection<Models.State> States { get; } = new();
@@ -12,42 +12,20 @@ public partial class EventListVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    private int startItems = 0;
-    private int limitItems = 20;
-    private int totalItems = 0;
-
     public ObservableCollection<Models.Event> Events { get; } = new();
-    public FilterVM Filter { get; set; } = new FilterVM();
-
-    [ObservableProperty] int itemsRefreshThreshold = -1;
-
-    private bool isPopulated = false;
-    public bool IsPopulated
-    {
-        get => isPopulated;
-        set
-        {
-            if (value == true)
-            {
-                ItemsRefreshThreshold = 2;
-            }
-            isPopulated = value;
-        }
-    }
 
     public EventListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
-        Title = "Events";
+        BaseTitle = "Events";
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
 
     public async void PopulateData()
     {
+        Title = GetTitle();
         await GetItems();
-
-        IsPopulated = true;
     }
 
     public void ClearData()

@@ -3,52 +3,24 @@
 namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
-public partial class ParkListVM : BaseVM
+public partial class ParkListVM : ListVM
 {
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    readonly string baseTitle = "Parks";
-    readonly int limitItems = 20;
-    int startItems = 0;
-    int totalItems = 0;
-
     public ObservableCollection<Models.Park> Parks { get; } = new();
-
-    public FilterVM Filter { get; set; }
-
-    [ObservableProperty] int itemsRefreshThreshold = -1;
-
-    private bool isPopulated = false;
-    public bool IsPopulated
-    {
-        get => isPopulated;
-        set
-        {
-            if (value == true)
-            {
-                ItemsRefreshThreshold = 2;
-                Title = BuildTitle();
-            }
-            else
-            {
-                ItemsRefreshThreshold = -1;
-                startItems = 0;
-            }
-            isPopulated = value;
-        }
-    }
 
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         IsBusy = false;
+        BaseTitle = "Parks";
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
 
     public async void PopulateData()
     {
-        Title = baseTitle;
+        Title = GetTitle();
         await GetItems();
     }
 
@@ -67,15 +39,6 @@ public partial class ParkListVM : BaseVM
         await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
         {
             {"Park", park}
-        });
-    }
-
-    [RelayCommand]
-    async Task GoToFilter()
-    {
-        await Shell.Current.GoToAsync(nameof(ParkFilterPage), true, new Dictionary<string, object>
-        {
-            {"VM", this }
         });
     }
 
@@ -212,17 +175,5 @@ public partial class ParkListVM : BaseVM
         {
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
-    }
-
-    private string BuildTitle()
-    {
-        string tmp = $"{baseTitle} ({totalItems}";
-        if (Filter is not null && Filter.IsFiltered)
-        {
-            tmp += $", filtered";
-        }
-        tmp += ")";
-
-        return tmp;
     }
 }
