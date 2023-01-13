@@ -26,9 +26,4 @@ public partial class PlaceDetailVM : DetailVM
         AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
     }
-
-    public void PopulateData()
-    {
-        Model = Place;
-    }
 }

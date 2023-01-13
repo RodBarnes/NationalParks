@@ -364,6 +364,7 @@
             HorizontalOptions="CenterAndExpand">
             <Button Text="Location" 
                     Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding Park}"
                     HorizontalOptions="StartAndExpand" 
                     WidthRequest="175" 
                     Margin="8"

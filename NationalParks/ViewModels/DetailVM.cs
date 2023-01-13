@@ -7,16 +7,15 @@ public partial class DetailVM : BaseVM
     readonly IMap map;
     [ObservableProperty] Dictionary<string, object> openMapDict;
 
-    public BaseModel Model { get; set; }
     public DetailVM(IMap map)
     {
         this.map = map;
     }
 
     [RelayCommand]
-    async Task OpenMap()
+    async Task OpenMap(BaseModel model)
     {
-        if (Model.DLatitude < 0)
+        if (model.DLatitude < 0)
         {
             await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
             return;
@@ -24,9 +23,9 @@ public partial class DetailVM : BaseVM
 
         try
         {
-            await map.OpenAsync(Model.DLatitude, Model.DLongitude, new MapLaunchOptions
+            await map.OpenAsync(model.DLatitude, model.DLongitude, new MapLaunchOptions
             {
-                Name = Model.Title,
+                Name = model.Title,
                 NavigationMode = NavigationMode.None
             });
         }

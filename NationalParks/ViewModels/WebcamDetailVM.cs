@@ -12,9 +12,4 @@ public partial class WebcamDetailVM : DetailVM
 
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
     }
-
-    public void PopulateData()
-    {
-        Model = Webcam;
-    }
 }

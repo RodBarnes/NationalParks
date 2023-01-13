@@ -9,9 +9,4 @@ public partial class EventDetailVM : DetailVM
     {
         Title = "Events";
     }
-
-    public void PopulateData()
-    {
-        Model = NpsEvent;
-    }
 }

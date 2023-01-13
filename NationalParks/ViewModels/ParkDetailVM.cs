@@ -26,9 +26,4 @@ public partial class ParkDetailVM : DetailVM
         DirectionsVM = new CollapsibleViewVM("Directions", false);
         WeatherVM = new CollapsibleViewVM("Weather", false);
     }
-
-    public void PopulateData()
-    {
-        Model = Park;
-    }
 }

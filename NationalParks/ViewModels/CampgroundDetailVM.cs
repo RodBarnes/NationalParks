@@ -30,9 +30,4 @@ public partial class CampgroundDetailVM : DetailVM
         ReservationsVM = new CollapsibleViewVM("Reservations", false);
         RegulationsVM = new CollapsibleViewVM("Regulations", false);
     }
-
-    public void PopulateData()
-    {
-        Model = Campground;
-    }
 }

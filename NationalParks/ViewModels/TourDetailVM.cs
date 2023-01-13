@@ -20,9 +20,4 @@ public partial class TourDetailVM : DetailVM
         TagsVM = new CollapsibleViewVM("Tags", false);
         StopsVM = new CollapsibleViewVM("Stops", false);
     }
-
-    public void PopulateData()
-    {
-        Model = Tour;
-    }
 }

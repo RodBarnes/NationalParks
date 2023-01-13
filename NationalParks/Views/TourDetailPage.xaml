@@ -178,6 +178,7 @@
             HorizontalOptions="CenterAndExpand">
             <Button Text="Location" 
                     Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding Tour}"
                     HorizontalOptions="StartAndExpand" 
                     WidthRequest="175" 
                     Margin="8"

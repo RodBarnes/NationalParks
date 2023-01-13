@@ -12,9 +12,4 @@ public partial class ThingToDoDetailVM : DetailVM
 
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
     }
-
-    public void PopulateData()
-    {
-        Model = ThingToDo;
-    }
 }
