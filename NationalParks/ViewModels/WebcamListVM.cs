@@ -9,7 +9,7 @@ public partial class WebcamListVM : ListVM
     private int startWebcams = 0;
     public ObservableCollection<Models.Webcam> Webcams { get; } = new();
 
-    public WebcamListVM(IConnectivity connectivity)
+    public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
         BaseTitle = "Webcams";
         this.connectivity = connectivity;
@@ -19,24 +19,6 @@ public partial class WebcamListVM : ListVM
     {
         Title = GetTitle();
         await GetItems();
-    }
-
-    [RelayCommand]
-    async Task GoToDetail(Webcam webcam)
-    {
-        if (webcam == null)
-            return;
-
-        await Shell.Current.GoToAsync(nameof(WebcamDetailPage), true, new Dictionary<string, object>
-        {
-            {"Model", webcam }
-        });
-    }
-
-    [RelayCommand]
-    async Task GetClosest()
-    {
-        await Shell.Current.DisplayAlert("Filter", $"How would GetClosest() work for {this}?", "OK");
     }
 
     [RelayCommand]

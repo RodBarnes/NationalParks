@@ -55,6 +55,7 @@
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"
                 Command="{Binding GetClosestCommand}"
+                CommandParameter="{Binding Events}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}" />
         <Button Text="Filter" 

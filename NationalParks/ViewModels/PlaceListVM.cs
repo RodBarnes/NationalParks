@@ -6,18 +6,16 @@ namespace NationalParks.ViewModels;
 public partial class PlaceListVM : ListVM
 {
     readonly IConnectivity connectivity;
-    readonly IGeolocation geolocation;
 
     readonly string baseTitle = "Places";
 
     public ObservableCollection<Models.Place> Places { get; } = new();
 
-    public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation)
+    public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
         IsBusy = false;
         BaseTitle = "Places";
         this.connectivity = connectivity;
-        this.geolocation = geolocation;
     }
 
     public async void PopulateData()
@@ -30,50 +28,6 @@ public partial class PlaceListVM : ListVM
     {
         Places.Clear();
         IsPopulated = false;
-    }
-
-    [RelayCommand]
-    async Task GoToDetail(Place place)
-    {
-        if (place == null)
-            return;
-
-        await Shell.Current.GoToAsync(nameof(PlaceDetailPage), true, new Dictionary<string, object>
-        {
-            {"Model", place}
-        });
-    }
-
-    [RelayCommand]
-    async Task GetClosest()
-    {
-        if (IsBusy || Places.Count == 0)
-            return;
-
-        try
-        {
-            // Get cached location, else get real location.
-            var location = await geolocation.GetLastKnownLocationAsync();
-            if (location == null)
-            {
-                location = await geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-            }
-
-            // Find closest item to us
-            var first = Places.OrderBy(m => location.CalculateDistance(
-                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
-                .FirstOrDefault();
-
-            await GoToDetail(first);
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
     }
 
     [RelayCommand]
