@@ -51,6 +51,7 @@ public partial class TourListVM : ListVM
             ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
 
             // Where to do this?
+            // This addresses that Tours don't have a location but the associated park does
             //ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
             //if (resultPark.Data.Count == 1)
             //{
