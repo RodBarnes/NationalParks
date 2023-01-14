@@ -50,7 +50,7 @@ public partial class PlaceListVM : ListVM
             // Populate the list
             ResultPlaces result = await DataService.GetPlacesAsync(StartItems, LimitItems, StatesFilter);
 
-            // Where to do this?
+            // This should be done in the DataServices?
             // This code addresses the condition where there is no location of the place
             // but it has at least one related park
             //if (place.DLatitude < 0 && place.RelatedParks.Count > 0)
