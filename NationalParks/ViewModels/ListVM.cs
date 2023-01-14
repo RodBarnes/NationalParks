@@ -116,16 +116,16 @@ public partial class ListVM : BaseVM
     {
         if (Filter is not null)
         {
-            StatesFilter = GetSelectedStates(Filter.States);
-            TopicsFilter = GetSelectedTopics(Filter.Topics);
-            ActivitiesFilter = GetSelectedActivities(Filter.Activities);
+            StatesFilter = GetStatesFilter(Filter.States);
+            TopicsFilter = GetTopicsFilter(Filter.Topics);
+            ActivitiesFilter = GetActivitiesFilter(Filter.Activities);
         }
     }
-    private string GetSelectedStates(List<State> states)
+    private static string GetStatesFilter(List<State> states)
     {
         string filter = "";
 
-        foreach (var state in Filter.States)
+        foreach (var state in states)
         {
             if (filter.Length > 0)
             {
@@ -136,7 +136,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private string GetSelectedTopics(List<Topic> topics)
+    private static string GetTopicsFilter(List<Topic> topics)
     {
         string filter = "";
 
@@ -151,7 +151,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private string GetSelectedActivities(List<Models.Activity> activities)
+    private static string GetActivitiesFilter(List<Models.Activity> activities)
     {
         string filter = "";
 
