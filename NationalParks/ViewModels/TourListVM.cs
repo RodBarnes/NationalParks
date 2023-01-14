@@ -7,7 +7,7 @@ public partial class TourListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
 
     public TourListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -50,7 +50,8 @@ public partial class TourListVM : ListVM
             // Populate the list
             ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
 
-            Items = new(result.Data);
+            foreach (var item in result.Data)
+                Items.Add(item);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;

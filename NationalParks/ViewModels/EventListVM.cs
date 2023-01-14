@@ -8,7 +8,7 @@ public partial class EventListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
 
     public EventListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -51,7 +51,8 @@ public partial class EventListVM : ListVM
             // Populate the list
             ResultEvents result = await DataService.GetEventsAsync(StartItems, LimitItems, StatesFilter);
 
-            Items = new(result.Data);
+            foreach (var item in result.Data)
+                Items.Add(item);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             Title = $"Events ({TotalItems})";

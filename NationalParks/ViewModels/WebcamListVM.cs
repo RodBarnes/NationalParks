@@ -6,7 +6,7 @@ public partial class WebcamListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
 
     public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -40,7 +40,8 @@ public partial class WebcamListVM : ListVM
             // Populate the list
             ResultWebcams result = await DataService.GetWebcamsAsync(StartItems, LimitItems);
 
-            Items = new(result.Data);
+            foreach (var item in result.Data)
+                Items.Add(item);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;
