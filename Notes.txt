@@ -17,11 +17,7 @@ Status
 ------
 !!! GetClosest only works against the LOADED ITEMS.  It does not get the entire list and check.  So, this is not going to work as it is.  It would have to get the list of all items -- probably only getting the location of each into a list and then use that list to determine the location.  This would probably be done in the GetClosest() method itself; i.e., get the list of all items and then produce the location.
 
-Working on the increasing the common parts of ListVM.
-	- Could I improve things by only loading the BaseModel during ListVM and then only populate the full class (e.g., Campground) when I get the detail?
-	- I don't need it before then. 
-	- It wouldn't change the amount of data returned during so I don't think there'd be any performanced improvement.
-	- And it would mean a second hit to get the detail.
+Working on increasing the common parts of ListVM.
 
 Can I return a List<derived> from the data then use this to build ObserrableCollection<BaseModel>(List)
 
