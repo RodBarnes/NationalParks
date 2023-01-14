@@ -7,7 +7,7 @@ public partial class TourListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    public ObservableCollection<Models.Tour> Tours { get; } = new();
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
 
     public TourListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -24,7 +24,7 @@ public partial class TourListVM : ListVM
 
     public void ClearData()
     {
-        Tours.Clear();
+        Items.Clear();
         IsPopulated = false;
     }
 
@@ -48,8 +48,18 @@ public partial class TourListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultTours result = await GetToursData(StartItems, LimitItems, StatesFilter);
+            ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
 
+            // Where to do this?
+            //ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
+            //if (resultPark.Data.Count == 1)
+            //{
+            //    park = resultPark.Data[0];
+            //    tour.Latitude = park.Latitude;
+            //    tour.Longitude = park.Longitude;
+            //}
+
+            Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;
@@ -77,7 +87,7 @@ public partial class TourListVM : ListVM
                 tour.Latitude = park.Latitude;
                 tour.Longitude = park.Longitude;
             }
-            Tours.Add(tour);
+            Items.Add(tour);
         }
 
         return result;

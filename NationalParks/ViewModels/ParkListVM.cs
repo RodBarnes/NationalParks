@@ -7,7 +7,7 @@ public partial class ParkListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    public ObservableCollection<Models.Park> Parks { get; } = new();
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
 
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -24,7 +24,7 @@ public partial class ParkListVM : ListVM
 
     public void ClearData()
     {
-        Parks.Clear();
+        Items.Clear();
         IsPopulated = false;
     }
 
@@ -48,8 +48,12 @@ public partial class ParkListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultParks result = await GetParksData(StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            ResultParks result = await DataService.GetParksAsync(StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
 
+            // Need to do this in the detail
+            // await GetAlerts(park);
+
+            Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;
@@ -89,17 +93,4 @@ public partial class ParkListVM : ListVM
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
-
-    private async Task<ResultParks> GetParksData(int startItems, int limitItems, string statesFilter, string topicsFilter, string activitiesFilter)
-    {
-        ResultParks result = await DataService.GetParksAsync(startItems, limitItems, topicsFilter, activitiesFilter, statesFilter);
-        foreach (var park in result.Data)
-        {
-            Parks.Add(park);
-            await GetAlerts(park);
-        }
-
-        return result;
-    }
-
 }

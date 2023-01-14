@@ -7,7 +7,7 @@ public partial class CampgroundListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    public ObservableCollection<Models.Campground> Campgrounds { get; } = new();
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
 
     public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -24,7 +24,7 @@ public partial class CampgroundListVM : ListVM
 
     public void ClearData()
     {
-        Campgrounds.Clear();
+        Items.Clear();
         IsPopulated = false;
     }
 
@@ -48,8 +48,9 @@ public partial class CampgroundListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultCampgrounds result = await GetCampgroundsData(StartItems, LimitItems, StatesFilter);
+            ResultCampgrounds result = await DataService.GetCampgroundsAsync(StartItems, LimitItems, StatesFilter);
 
+            Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;
@@ -62,13 +63,5 @@ public partial class CampgroundListVM : ListVM
         {
             IsBusy = false;
         }
-    }
-
-    private async Task<ResultCampgrounds> GetCampgroundsData(int startItems, int limitItems, string statesFilter)
-    {
-        ResultCampgrounds result = await DataService.GetCampgroundsAsync(startItems, limitItems, statesFilter);
-        foreach (var campground in result.Data)
-            Campgrounds.Add(campground);
-        return result;
     }
 }

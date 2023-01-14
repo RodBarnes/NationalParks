@@ -7,7 +7,7 @@ public partial class ThingToDoListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    public ObservableCollection<Models.ThingToDo> ThingsToDo { get; } = new();
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
 
     public ThingToDoListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -24,7 +24,7 @@ public partial class ThingToDoListVM : ListVM
 
     public void ClearData()
     {
-        ThingsToDo.Clear();
+        Items.Clear();
         IsPopulated = false;
     }
 
@@ -48,8 +48,9 @@ public partial class ThingToDoListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultThingsToDo result = await GetThingsToDoData(StartItems, LimitItems, StatesFilter);
+            ResultThingsToDo result = await DataService.GetThingsToDoAsync(StartItems, LimitItems, StatesFilter);
 
+            Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             IsPopulated = true;
@@ -63,14 +64,5 @@ public partial class ThingToDoListVM : ListVM
             IsBusy = false;
         }
 
-    }
-
-    private async Task<ResultThingsToDo> GetThingsToDoData(int startItems, int limitItems, string statesFilter)
-    {
-        ResultThingsToDo result = await DataService.GetThingsToDoAsync(startItems, limitItems, statesFilter);
-        foreach (var thingToDo in result.Data)
-            ThingsToDo.Add(thingToDo);
-
-        return result;
     }
 }

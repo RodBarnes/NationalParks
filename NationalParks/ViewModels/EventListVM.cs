@@ -8,7 +8,7 @@ public partial class EventListVM : ListVM
 {
     readonly IConnectivity connectivity;
 
-    public ObservableCollection<Models.Event> Events { get; } = new();
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items;
 
     public EventListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
     {
@@ -25,7 +25,7 @@ public partial class EventListVM : ListVM
 
     public void ClearData()
     {
-        Events.Clear();
+        Items.Clear();
         StartItems = 0;
     }
 
@@ -49,8 +49,9 @@ public partial class EventListVM : ListVM
             GetFilterSelections();
 
             // Populate the list
-            ResultEvents result = await GetEventsData(StartItems, LimitItems, StatesFilter);
+            ResultEvents result = await DataService.GetEventsAsync(StartItems, LimitItems, StatesFilter);
 
+            Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
             Title = $"Events ({TotalItems})";
@@ -63,13 +64,5 @@ public partial class EventListVM : ListVM
         {
             IsBusy = false;
         }
-    }
-    private async Task<ResultEvents> GetEventsData(int startItems, int limitItems, string statesFilter)
-    {
-        ResultEvents result = await DataService.GetEventsAsync(startItems, limitItems, statesFilter);
-        foreach (var npsEvent in result.Data)
-            Events.Add(npsEvent);
-
-        return result;
     }
 }

@@ -12,7 +12,7 @@
           RowSpacing="0"
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <RefreshView Grid.ColumnSpan="2">
-            <CollectionView ItemsSource="{Binding Places}"
+            <CollectionView ItemsSource="{Binding Items}"
                         Grid.ColumnSpan="2"
                         SelectionMode="None"
                         RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
@@ -56,7 +56,7 @@
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"
                 Command="{Binding GetClosestCommand}"
-                CommandParameter="{Binding Places}"
+                CommandParameter="{Binding Items}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}" />
         <Button Text="Filter" 
