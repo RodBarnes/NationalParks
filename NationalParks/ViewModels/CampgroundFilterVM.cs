@@ -1,68 +1,65 @@
-﻿using NationalParks.Services;
+﻿namespace NationalParks.ViewModels;
 
-namespace NationalParks.ViewModels
+[QueryProperty(nameof(CampgroundVM), "VM")]
+public partial class CampgroundFilterVM : BaseVM
 {
-    [QueryProperty(nameof(CampgroundVM), "VM")]
-    public partial class CampgroundFilterVM : BaseVM
+    // Query properties
+    public CampgroundListVM CampgroundVM { get; set; }
+
+    // Selected values
+    public ObservableCollection<object> SelectedStates { get; set; } = new();
+
+    public CampgroundFilterVM()
     {
-        // Query properties
-        public CampgroundListVM CampgroundVM { get; set; }
+        Title = "Filter";
+    }
 
-        // Selected values
-        public ObservableCollection<object> SelectedStates { get; set; } = new();
+    public void PopulateData()
+    {
+        if (CampgroundVM.Filter is null)
+            CampgroundVM.Filter = new FilterVM(true);
 
-        public CampgroundFilterVM()
+        // Populate the selected items
+        foreach (var state in CampgroundVM.Filter.States)
         {
-            Title = "Filter";
+            SelectedStates.Add(state);
         }
+    }
 
-        public void PopulateData()
+    [RelayCommand]
+    async Task ApplyFilter()
+    {
+        // Update the filter
+        CampgroundVM.Filter.States.Clear();
+        foreach (var o in SelectedStates)
         {
-            if (CampgroundVM.Filter is null)
-                CampgroundVM.Filter = new FilterVM(true);
-
-            // Populate the selected items
-            foreach (var state in CampgroundVM.Filter.States)
+            if (o is Models.State state)
             {
-                SelectedStates.Add(state);
+                CampgroundVM.Filter.States.Add(state);
             }
         }
 
-        [RelayCommand]
-        async Task ApplyFilter()
+        // Clear the list
+        CampgroundVM.ClearData();
+
+        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
         {
-            // Update the filter
-            CampgroundVM.Filter.States.Clear();
-            foreach (var o in SelectedStates)
-            {
-                if (o is Models.State state)
-                {
-                    CampgroundVM.Filter.States.Add(state);
-                }
-            }
+            {"Filter", CampgroundVM.Filter }
+        });
+    }
 
-            // Clear the list
-            CampgroundVM.ClearData();
+    [RelayCommand]
+    public void ClearFilter()
+    {
+        // Clear the selections
+        SelectedStates.Clear();
 
-            await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
-            {
-                {"Filter", CampgroundVM.Filter }
-            });
-        }
+        // Clear the filter
+        CampgroundVM.Filter.States.Clear();
 
-        [RelayCommand]
-        public void ClearFilter()
-        {
-            // Clear the selections
-            SelectedStates.Clear();
+        // Clear the list
+        CampgroundVM.ClearData();
 
-            // Clear the filter
-            CampgroundVM.Filter.States.Clear();
-
-            // Clear the list
-            CampgroundVM.ClearData();
-
-            Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
-        }
+        Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
     }
 }
