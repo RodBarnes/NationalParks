@@ -84,6 +84,30 @@ public partial class ListVM : BaseVM
                 });
             }
 
+            // This should be done in the DataServices?
+            // This addresses the condition Tours don't have a location but the associated park does
+            //ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
+            //if (resultPark.Data.Count == 1)
+            //{
+            //    park = resultPark.Data[0];
+            //    tour.Latitude = park.Latitude;
+            //    tour.Longitude = park.Longitude;
+            //}
+
+            // This should be done in the DataServices?
+            // This code addresses the condition where Place has no location but
+            // but it has at least one related park
+            //if (place.DLatitude < 0 && place.RelatedParks.Count > 0)
+            //{
+            //    ResultParks resultPark = await DataService.GetParkForParkCodeAsync(place.RelatedParks[0].ParkCode);
+            //    if (resultPark.Data.Count == 1)
+            //    {
+            //        park = resultPark.Data[0];
+            //        place.Latitude = park.Latitude;
+            //        place.Longitude = park.Longitude;
+            //    }
+            //}
+
             // Find closest item to us
             var first = items.OrderBy(m => location.CalculateDistance(
                 new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))

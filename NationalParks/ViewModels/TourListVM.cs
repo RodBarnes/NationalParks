@@ -50,16 +50,6 @@ public partial class TourListVM : ListVM
             // Populate the list
             ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
 
-            // This should be done in the DataServices?
-            // This addresses that Tours don't have a location but the associated park does
-            //ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
-            //if (resultPark.Data.Count == 1)
-            //{
-            //    park = resultPark.Data[0];
-            //    tour.Latitude = park.Latitude;
-            //    tour.Longitude = park.Longitude;
-            //}
-
             Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
