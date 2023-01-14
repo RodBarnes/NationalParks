@@ -50,9 +50,6 @@ public partial class ParkListVM : ListVM
             // Populate the list
             ResultParks result = await DataService.GetParksAsync(StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
 
-            // Need to do this in the detail
-            // await GetAlerts(park);
-
             Items = new(result.Data);
             StartItems += result.Data.Count;
             TotalItems = result.Total;
@@ -65,32 +62,6 @@ public partial class ParkListVM : ListVM
         finally
         {
             IsBusy = false;
-        }
-    }
-
-    static async Task GetAlerts(Park park)
-    {
-        if (park.Alerts?.Count > 0)
-            return;
-
-        try
-        {
-            int startAlerts = 0;
-            int totalAlerts = 1;
-            int limitAlerts = 20;
-
-            while (totalAlerts > startAlerts)
-            {
-                var result = await DataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
-                totalAlerts = result.Total;
-                startAlerts += result.Data.Count;
-                foreach (var alert in result.Data)
-                    park.Alerts.Add(alert);
-            }
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
 }
