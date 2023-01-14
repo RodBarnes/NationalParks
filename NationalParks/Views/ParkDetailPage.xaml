@@ -49,7 +49,7 @@
                                          Style="{StaticResource LabelMedium}"/>
                 <!-- Alerts -->
                 <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Park.HasAlerts, Converter={StaticResource BoolToTrueFalseConverter}}">
+                        IsVisible="{Binding HasAlerts, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <VerticalStackLayout >
                         <HorizontalStackLayout>
                             <HorizontalStackLayout.GestureRecognizers>

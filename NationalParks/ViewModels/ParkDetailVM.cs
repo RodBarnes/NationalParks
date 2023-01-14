@@ -14,6 +14,7 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM activitiesVM;
     [ObservableProperty] CollapsibleViewVM directionsVM;
     [ObservableProperty] CollapsibleViewVM weatherVM;
+    [ObservableProperty] bool hasAlerts;
 
     public ParkDetailVM(IMap map) : base(map)
     {
@@ -27,12 +28,12 @@ public partial class ParkDetailVM : DetailVM
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
         DirectionsVM = new CollapsibleViewVM("Directions", false);
         WeatherVM = new CollapsibleViewVM("Weather", false);
-
     }
 
     public async void PopulateData()
     {
         await GetAlerts(park);
+        HasAlerts = park.HasAlerts;
     }
 
     static async Task GetAlerts(Park park)
