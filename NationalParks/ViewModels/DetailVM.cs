@@ -55,7 +55,7 @@ public partial class DetailVM : BaseVM
             park = result.Data[0];
             await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
                 {
-                    {"Park", park }
+                    {"Model", park }
                 });
         }
         else
