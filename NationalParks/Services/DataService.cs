@@ -22,7 +22,7 @@ public class DataService
         return url;
     }
 
-    public static async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string topics = "", string activities = "", string states="")
+    public static async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
     {
         ResultParks result = new();
 
