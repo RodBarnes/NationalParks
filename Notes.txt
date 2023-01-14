@@ -1,3 +1,18 @@
+Error
+-----
+Error		ADB0010: Mono.AndroidTools.InstallFailedException: Unexpected install output: 
+Exception occurred while executing 'install':
+java.lang.IllegalArgumentException: Error: Failed to parse APK file: /data/local/tmp/com.advancedapplications.NationalParks-Signed.apk: Requires newer sdk version #33 (current version is #31)
+
+I got this trying to deploy to my phone.  So I created a Pixel emulatorwith SDK 31. Same result.
+
+I opened MonkeyFinder and built and deployed it successfully to both the API 31 emulator and to my phone.
+
+Attempts to build a release of any sort for any API, fails with this error:
+Error	NETSDK1147	To build this project, the following workloads must be installed: android
+To install these workloads, run the following command: dotnet workload restore	MonkeyFinder	C:\Program Files\dotnet\sdk\7.0.102\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets	38	
+
+
 Status
 ------
 Working on the increasing the common parts of ListVM.
