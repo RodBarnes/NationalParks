@@ -6,9 +6,6 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class EventListVM : ListVM
 {
-    // For holding the available filter selections
-    private Collection<Models.State> States { get; } = new();
-
     readonly IConnectivity connectivity;
 
     public ObservableCollection<Models.Event> Events { get; } = new();
