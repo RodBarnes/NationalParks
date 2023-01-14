@@ -21,9 +21,9 @@ Working on the increasing the common parts of ListVM.
 	- It wouldn't change the amount of data returned during so I don't think there'd be any performanced improvement.
 	- And it would mean a second hit to get the detail.
 
-Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
+Can I return a List<derived> from the data then use this to build ObserrableCollection<BaseModel>(List)
 
-Next fleshing out ThingsToDo pages
+Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
 
 
 Todo & Ideas
