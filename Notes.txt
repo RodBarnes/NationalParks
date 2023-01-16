@@ -13,19 +13,26 @@ Error	NETSDK1147	To build this project, the following workloads must be installe
 To install these workloads, run the following command: dotnet workload restore	MonkeyFinder	C:\Program Files\dotnet\sdk\7.0.102\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets	38	
 
 
-Status
-------
+GetClosest
+----------
 !!! GetClosest only works against the LOADED ITEMS.  It does not get the entire list and check.  So, this is not going to work as it is.  It would have to get the list of all items -- probably only getting the location of each into a list and then use that list to determine the location.  This would probably be done in the GetClosest() method itself; i.e., get the list of all items and then produce the location.
 
+
+ListVM
+------
 Working on increasing the common parts of ListVM.
-
-Can I return a List<derived> from the data then use this to build ObserrableCollection<BaseModel>(List)
-
-Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
+	- Maybe pass nameof(class) as a parameter to a common method from within GetItems()?
+	- But it seems that method would have to switch/case to decide which API call to make.
+	- Maybe the model stores its API term as a property?  The method uses that as part of the URL request?  That still leaves knowing the Result type.
+	- Or maybe the API term is in Result<class> and that is passed in as a Result parameter?
+	- The method can't know the derived type only the base type.
+	- Can I return a List<derived> from the data then use this to build ObserrableCollection<BaseModel>(List)
 
 
 Todo & Ideas
 ------------
+Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
+
 Can I derive Webcam from BaseModel by doing something special with the Latitude/Longitude values?
 
 Needs to do activity indicator or something while it figures out the Place closest and then displays.
