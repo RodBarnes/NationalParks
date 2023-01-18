@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Devices.Sensors;
+﻿using NationalParks.Services;
 
 namespace NationalParks.ViewModels;
 
@@ -6,6 +6,7 @@ public partial class ListVM : BaseVM
 {
     public FilterVM Filter { get; set; }
 
+    readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
     protected readonly int LimitItems = 20;
@@ -17,6 +18,7 @@ public partial class ListVM : BaseVM
     protected string ActivitiesFilter = "";
     protected string BaseTitle = "";
 
+    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
 
     private bool isPopulated = false;
@@ -39,9 +41,10 @@ public partial class ListVM : BaseVM
         }
     }
 
-    public ListVM(IGeolocation geolocation)
+    public ListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
         this.geolocation = geolocation;
+        this.connectivity = connectivity;
     }
 
     [RelayCommand]
@@ -121,6 +124,44 @@ public partial class ListVM : BaseVM
         }
     }
 
+    public async Task<Result> GetItems(string ofType)
+    {
+        Result result = new();
+
+        try
+        {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("No connectivity!",
+                    $"Please check internet and try again.", "OK");
+                return null;
+            }
+
+            IsBusy = true;
+
+            GetFilterSelections();
+
+            // Populate the list
+            result = await DataService.GetItemsAsync(ofType, StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            TotalItems = result.Total;
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+
+        return result;
+    }
+
+    public void ClearData()
+    {
+        Items.Clear();
+        IsPopulated = false;
+    }
     protected string GetTitle()
     {
         string tmp = $"{BaseTitle}";

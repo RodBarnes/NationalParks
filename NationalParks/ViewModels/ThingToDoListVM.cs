@@ -5,15 +5,10 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ThingToDoListVM : ListVM
 {
-    readonly IConnectivity connectivity;
-
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
-
-    public ThingToDoListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
+    public ThingToDoListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         IsBusy = false;
         BaseTitle = "Things To Do";
-        this.connectivity = connectivity;
     }
 
     public async void PopulateData()
@@ -22,48 +17,18 @@ public partial class ThingToDoListVM : ListVM
         await GetItems();
     }
 
-    public void ClearData()
-    {
-        Items.Clear();
-        IsPopulated = false;
-    }
-
     [RelayCommand]
     async Task GetItems()
     {
         if (IsBusy)
             return;
 
-        try
-        {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check internet and try again.", "OK");
-                return;
-            }
-
-            IsBusy = true;
-
-            GetFilterSelections();
-
-            // Populate the list
-            ResultThingsToDo result = await DataService.GetThingsToDoAsync(StartItems, LimitItems, StatesFilter);
-
-            foreach (var item in result.Data)
-                Items.Add(item);
-            StartItems += result.Data.Count;
-            TotalItems = result.Total;
-            IsPopulated = true;
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-
+        // Populate the list
+        Result result = await GetItems(ResultThingsToDo.Term);
+        ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
+        foreach (var item in resultThingsToDo.Data)
+            Items.Add(item);
+        StartItems += resultThingsToDo.Data.Count;
+        IsPopulated = true;
     }
 }

@@ -20,7 +20,10 @@ GetClosest
 
 ListVM
 ------
-Working on increasing the common parts of ListVM.
+Working on increasing the common parts of ListVM. There are two issues:
+	+ 1) how to have it return the list of items with the full content available to the derived class (e.g., Parks) while still treating them the same way (e.g, BaseModel) in the *ListVM.
+	+ 2) at the same time, since the logic is the same for all *ListVM, put that logic in the ListVM rather than *ListVM.
+Ideas:
 	- Maybe pass nameof(class) as a parameter to a common method from within GetItems()?
 	- But it seems that method would have to switch/case to decide which API call to make.
 	- Maybe the model stores its API term as a property?  The method uses that as part of the URL request?  That still leaves knowing the Result type.

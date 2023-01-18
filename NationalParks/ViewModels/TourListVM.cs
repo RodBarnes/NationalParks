@@ -5,15 +5,10 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class TourListVM : ListVM
 {
-    readonly IConnectivity connectivity;
-
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
-
-    public TourListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
+    public TourListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         IsBusy = false;
         BaseTitle = "Tours";
-        this.connectivity = connectivity;
     }
 
     public async void PopulateData()
@@ -22,66 +17,37 @@ public partial class TourListVM : ListVM
         await GetItems();
     }
 
-    public void ClearData()
-    {
-        Items.Clear();
-        IsPopulated = false;
-    }
-
     [RelayCommand]
     async Task GetItems()
     {
         if (IsBusy)
             return;
 
-        try
-        {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check internet and try again.", "OK");
-                return;
-            }
-
-            IsBusy = true;
-
-            GetFilterSelections();
-
-            // Populate the list
-            ResultTours result = await DataService.GetToursAsync(StartItems, LimitItems, StatesFilter);
-
-            foreach (var item in result.Data)
-                Items.Add(item);
-            StartItems += result.Data.Count;
-            TotalItems = result.Total;
-            IsPopulated = true;
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
+        // Populate the list
+        Result result = await GetItems(ResultTours.Term);
+        ResultTours resultTours = (ResultTours)result;
+        foreach (var item in resultTours.Data)
+            Items.Add(item);
+        StartItems += resultTours.Data.Count;
+        IsPopulated = true;
     }
 
-    private async Task<ResultTours> GetToursData(int startItems, int limitItems, string statesFilter)
-    {
-        Park park;
-        ResultTours result = await DataService.GetToursAsync(startItems, limitItems, statesFilter);
-        foreach (var tour in result.Data)
-        {
-            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
-            if (resultPark.Data.Count == 1)
-            {
-                park = resultPark.Data[0];
-                tour.Latitude = park.Latitude;
-                tour.Longitude = park.Longitude;
-            }
-            Items.Add(tour);
-        }
+    //private async Task<ResultTours> GetToursData(int startItems, int limitItems, string statesFilter)
+    //{
+    //    Park park;
+    //    ResultTours result = await DataService.GetToursAsync(startItems, limitItems, statesFilter);
+    //    foreach (var tour in result.Data)
+    //    {
+    //        ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
+    //        if (resultPark.Data.Count == 1)
+    //        {
+    //            park = resultPark.Data[0];
+    //            tour.Latitude = park.Latitude;
+    //            tour.Longitude = park.Longitude;
+    //        }
+    //        Items.Add(tour);
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 }

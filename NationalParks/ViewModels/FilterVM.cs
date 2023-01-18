@@ -46,10 +46,11 @@ namespace NationalParks.ViewModels
 
                 while (totalTopics > startTopics)
                 {
-                    var result = await DataService.GetTopicsAsync(startTopics);
-                    totalTopics = result.Total;
-                    startTopics += result.Data.Count;
-                    foreach (var topic in result.Data)
+                    var resultBase = await DataService.GetItemsAsync(ResultTopics.Term, startTopics);
+                    ResultTopics resultTopics = (ResultTopics)resultBase;
+                    totalTopics = resultTopics.Total;
+                    startTopics += resultTopics.Data.Count;
+                    foreach (var topic in resultTopics.Data)
                         TopicSelections.Add(topic);
                 }
             }
@@ -71,10 +72,11 @@ namespace NationalParks.ViewModels
 
                 while (totalActivities > startActivities)
                 {
-                    var result = await DataService.GetActivitiesAsync(startActivities);
-                    totalActivities = result.Total;
-                    startActivities += result.Data.Count;
-                    foreach (var activity in result.Data)
+                    var resultBase = await DataService.GetItemsAsync(ResultActivities.Term, startActivities);
+                    ResultActivities resultActivities = (ResultActivities)resultBase;
+                    totalActivities = resultActivities.Total;
+                    startActivities += resultActivities.Data.Count;
+                    foreach (var activity in resultActivities.Data)
                         ActivitySelections.Add(activity);
                 }
             }

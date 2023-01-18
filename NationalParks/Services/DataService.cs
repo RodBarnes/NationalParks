@@ -11,22 +11,14 @@ public class DataService
         httpClient = new HttpClient();
     }
 
-    private static string ConstructUrl(string item, string paramList)
+    public static async Task<Result> GetItemsAsync(string ofType, int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
     {
-        var url = $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}";
-        if (paramList != null)
-        {
-            url += "&" + paramList ;
-        }
+        Result result = new();
 
-        return url;
-    }
+        // Build base URL
+        var url = ConstructUrl(ofType, $"start={start}&limit={limit}");
 
-    public static async Task<ResultParks> GetParksAsync(int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
-    {
-        ResultParks result = new();
-
-        var url = ConstructUrl("parks", $"start={start}&limit={limit}");
+        // Apply filters
         if (!String.IsNullOrEmpty(topics))
         {
             url += $"&topic%3D{topics}";
@@ -40,10 +32,55 @@ public class DataService
             url += $"&stateCode={states}";
         }
 
+        // Retrieve data
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
-            result = await response.Content.ReadFromJsonAsync<ResultParks>();
+            switch(ofType)
+            {
+                case ResultParks.Term:
+                    ResultParks resultParks = await response.Content.ReadFromJsonAsync<ResultParks>();
+                    result = resultParks;
+                    break;
+                case ResultCampgrounds.Term:
+                    ResultCampgrounds resultCampgrounds = await response.Content.ReadFromJsonAsync<ResultCampgrounds>();
+                    result = resultCampgrounds;
+                    break;
+                case ResultPlaces.Term:
+                    ResultPlaces resultPlaces = await response.Content.ReadFromJsonAsync<ResultPlaces>();
+                    result = resultPlaces;
+                    break;
+                case ResultTours.Term:
+                    ResultTours resultTours = await response.Content.ReadFromJsonAsync<ResultTours>();
+                    result = resultTours;
+                    break;
+                case ResultThingsToDo.Term:
+                    ResultThingsToDo resultThingsToDo = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
+                    result = resultThingsToDo;
+                    break;
+                case ResultWebcams.Term:
+                    ResultWebcams resultWebcams = await response.Content.ReadFromJsonAsync<ResultWebcams>();
+                    result = resultWebcams;
+                    break;
+                case ResultEvents.Term:
+                    ResultEvents resultEvents = await response.Content.ReadFromJsonAsync<ResultEvents>();
+                    result = resultEvents;
+                    break;
+                case ResultAlerts.Term:
+                    ResultAlerts resultAlerts = await response.Content.ReadFromJsonAsync<ResultAlerts>();
+                    result = resultAlerts;
+                    break;
+                case ResultActivities.Term:
+                    ResultActivities resultActivities = await response.Content.ReadFromJsonAsync<ResultActivities>();
+                    result = resultActivities;
+                    break;
+                case ResultTopics.Term:
+                    ResultTopics resultTopics = await response.Content.ReadFromJsonAsync<ResultTopics>();
+                    result = resultTopics;
+                    break;
+                default:
+                    throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {ofType}");
+            }
         }
 
         return result;
@@ -77,140 +114,14 @@ public class DataService
         return result;
     }
 
-    public static async Task<ResultTopics> GetTopicsAsync(int start = 0, int limit = 20)
+    private static string ConstructUrl(string item, string paramList)
     {
-        ResultTopics result = new();
-
-        var url = ConstructUrl("topics", $"start={start}&limit={limit}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
+        var url = $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}";
+        if (paramList != null)
         {
-            result = await response.Content.ReadFromJsonAsync<ResultTopics>();
+            url += "&" + paramList;
         }
 
-        return result;
-    }
-
-    public static async Task<ResultActivities> GetActivitiesAsync(int start = 0, int limit = 20)
-    {
-        ResultActivities result = new();
-
-        var url = ConstructUrl("activities", $"start={start}&limit={limit}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultActivities>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultCampgrounds> GetCampgroundsAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultCampgrounds result = new();
-
-        var url = ConstructUrl("campgrounds", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultCampgrounds>();
-        }
-
-        return result;  
-    }
-
-    public static async Task<ResultPlaces> GetPlacesAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultPlaces result = new();
-
-        var url = ConstructUrl("places", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultPlaces>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultTours> GetToursAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultTours result = new();
-
-        var url = ConstructUrl("tours", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultTours>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultWebcams> GetWebcamsAsync(int start = 0, int limit = 20)
-    {
-        ResultWebcams result = new();
-
-        var url = ConstructUrl("webcams", $"start={start}&limit={limit}");
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultWebcams>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultEvents> GetEventsAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultEvents result = new();
-
-        var url = ConstructUrl("events", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultEvents>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultThingsToDo> GetThingsToDoAsync(int start = 0, int limit = 20, string states = "")
-    {
-        ResultThingsToDo result = new();
-
-        var url = ConstructUrl("thingstodo", $"start={start}&limit={limit}");
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
-
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultThingsToDo>();
-        }
-
-        return result;
+        return url;
     }
 }

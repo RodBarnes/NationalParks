@@ -4,14 +4,10 @@ namespace NationalParks.ViewModels;
 
 public partial class WebcamListVM : ListVM
 {
-    readonly IConnectivity connectivity;
-
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
-
-    public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(geolocation)
+    public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
+        IsBusy = false;
         BaseTitle = "Webcams";
-        this.connectivity = connectivity;
     }
 
     public async void PopulateData()
@@ -26,33 +22,12 @@ public partial class WebcamListVM : ListVM
         if (IsBusy)
             return;
 
-        try
-        {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check internet and try again.", "OK");
-                return;
-            }
-
-            IsBusy = true;
-
-            // Populate the list
-            ResultWebcams result = await DataService.GetWebcamsAsync(StartItems, LimitItems);
-
-            foreach (var item in result.Data)
-                Items.Add(item);
-            StartItems += result.Data.Count;
-            TotalItems = result.Total;
-            IsPopulated = true;
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
+        // Populate the list
+        Result result = await GetItems(ResultWebcams.Term);
+        ResultWebcams resultWebcams = (ResultWebcams)result;
+        foreach (var item in resultWebcams.Data)
+            Items.Add(item);
+        StartItems += resultWebcams.Data.Count;
+        IsPopulated = true;
     }
 }
