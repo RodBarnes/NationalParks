@@ -19,10 +19,6 @@ public partial class ThingToDoListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
-        // Populate the list
         Result result = await GetItems(ResultThingsToDo.Term);
         ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
         foreach (var item in resultThingsToDo.Data)

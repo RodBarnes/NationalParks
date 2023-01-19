@@ -18,10 +18,6 @@ public partial class WebcamListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
-        // Populate the list
         Result result = await GetItems(ResultWebcams.Term);
         ResultWebcams resultWebcams = (ResultWebcams)result;
         foreach (var item in resultWebcams.Data)

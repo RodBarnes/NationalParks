@@ -19,9 +19,6 @@ public partial class ParkListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
         // Populate the list
         Result result = await GetItems(ResultParks.Term);
         ResultParks resultParks = (ResultParks)result;

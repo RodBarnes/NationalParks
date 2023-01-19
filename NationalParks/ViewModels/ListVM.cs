@@ -127,6 +127,9 @@ public partial class ListVM : BaseVM
 
     public async Task<Result> GetItems(string ofType)
     {
+        if (IsBusy)
+            return null;
+
         Result result = new();
 
         try

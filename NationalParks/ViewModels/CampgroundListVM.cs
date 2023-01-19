@@ -19,9 +19,6 @@ public partial class CampgroundListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
         // Populate the list
         Result result = await GetItems(ResultCampgrounds.Term);
         ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;

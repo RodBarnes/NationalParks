@@ -19,10 +19,6 @@ public partial class PlaceListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
-        // Populate the list
         Result result = await GetItems(ResultPlaces.Term);
         ResultPlaces resultPlaces = (ResultPlaces)result;
         foreach (var item in resultPlaces.Data)

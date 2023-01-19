@@ -19,10 +19,6 @@ public partial class TourListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
-        // Populate the list
         Result result = await GetItems(ResultTours.Term);
         ResultTours resultTours = (ResultTours)result;
         foreach (var item in resultTours.Data)

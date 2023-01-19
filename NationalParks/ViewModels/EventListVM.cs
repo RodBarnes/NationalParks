@@ -20,10 +20,6 @@ public partial class EventListVM : ListVM
     [RelayCommand]
     async Task GetItems()
     {
-        if (IsBusy)
-            return;
-
-        // Populate the list
         Result result = await GetItems(ResultEvents.Term);
         ResultEvents resultEvents = (ResultEvents)result;
         foreach (var item in resultEvents.Data)
