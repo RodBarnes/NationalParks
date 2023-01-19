@@ -8,7 +8,6 @@ public partial class EventListVM : ListVM
 {
     public EventListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Events";
     }
 

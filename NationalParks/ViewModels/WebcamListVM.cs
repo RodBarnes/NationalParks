@@ -6,7 +6,6 @@ public partial class WebcamListVM : ListVM
 {
     public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Webcams";
     }
 

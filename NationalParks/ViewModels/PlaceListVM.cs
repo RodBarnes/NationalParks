@@ -7,7 +7,6 @@ public partial class PlaceListVM : ListVM
 {
     public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Places";
     }
 

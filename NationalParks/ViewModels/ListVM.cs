@@ -43,6 +43,7 @@ public partial class ListVM : BaseVM
 
     public ListVM(IConnectivity connectivity, IGeolocation geolocation)
     {
+        IsBusy = false;
         this.geolocation = geolocation;
         this.connectivity = connectivity;
     }

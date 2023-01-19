@@ -7,7 +7,6 @@ public partial class ThingToDoListVM : ListVM
 {
     public ThingToDoListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Things To Do";
     }
 

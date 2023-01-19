@@ -7,7 +7,6 @@ public partial class TourListVM : ListVM
 {
     public TourListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Tours";
     }
 

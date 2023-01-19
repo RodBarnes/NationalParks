@@ -7,7 +7,6 @@ public partial class CampgroundListVM : ListVM
 {
     public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        IsBusy = false;
         BaseTitle = "Campgrounds";
     }
 
