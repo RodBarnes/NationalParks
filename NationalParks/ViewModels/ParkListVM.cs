@@ -21,10 +21,28 @@ public partial class ParkListVM : ListVM
     {
         // Populate the list
         Result result = await GetItems(ResultParks.Term);
-        ResultParks resultParks = (ResultParks)result;
-        foreach (var item in resultParks.Data)
-            Items.Add(item);
-        StartItems += resultParks.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultParks resultParks = (ResultParks)result;
+            foreach (var item in resultParks.Data)
+                Items.Add(item);
+            StartItems += resultParks.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultParks.Term);
     }
 }
