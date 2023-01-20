@@ -19,10 +19,28 @@ public partial class WebcamListVM : ListVM
     async Task GetItems()
     {
         Result result = await GetItems(ResultWebcams.Term);
-        ResultWebcams resultWebcams = (ResultWebcams)result;
-        foreach (var item in resultWebcams.Data)
-            Items.Add(item);
-        StartItems += resultWebcams.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultWebcams resultWebcams = (ResultWebcams)result;
+            foreach (var item in resultWebcams.Data)
+                Items.Add(item);
+            StartItems += resultWebcams.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultWebcams.Term);
     }
 }

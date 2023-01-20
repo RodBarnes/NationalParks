@@ -20,10 +20,28 @@ public partial class ThingToDoListVM : ListVM
     async Task GetItems()
     {
         Result result = await GetItems(ResultThingsToDo.Term);
-        ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
-        foreach (var item in resultThingsToDo.Data)
-            Items.Add(item);
-        StartItems += resultThingsToDo.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
+            foreach (var item in resultThingsToDo.Data)
+                Items.Add(item);
+            StartItems += resultThingsToDo.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultThingsToDo.Term);
     }
 }

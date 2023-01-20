@@ -13,16 +13,11 @@ Error	NETSDK1147	To build this project, the following workloads must be installe
 To install these workloads, run the following command: dotnet workload restore	MonkeyFinder	C:\Program Files\dotnet\sdk\7.0.102\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets	38	
 
 
-GetClosest
-----------
-!!! GetClosest only works against the LOADED ITEMS.  It does not get the entire list and check.  So, this is not going to work as it is.  It would have to get the list of all items -- probably only getting the location of each into a list and then use that list to determine the location.  This would probably be done in the GetClosest() method itself; i.e., get the list of all items and then produce the location.
-
-
 Todo & Ideas
 ------------
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
 
-Can I do the same with FilterVM as I did with ImageListVM?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
+Can I do the same with FilterVM as I did with ImageListVM; i.e., make it a base class instead of a member class?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
 
 Can I derive Webcam from BaseModel by doing something special with the Latitude/Longitude values?
 

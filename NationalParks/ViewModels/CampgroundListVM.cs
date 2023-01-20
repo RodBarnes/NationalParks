@@ -21,10 +21,28 @@ public partial class CampgroundListVM : ListVM
     {
         // Populate the list
         Result result = await GetItems(ResultCampgrounds.Term);
-        ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
-        foreach (var item in resultCampgrounds.Data)
-            Items.Add(item);
-        StartItems += resultCampgrounds.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
+            foreach (var item in resultCampgrounds.Data)
+                Items.Add(item);
+            StartItems += resultCampgrounds.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultCampgrounds.Term);
     }
 }

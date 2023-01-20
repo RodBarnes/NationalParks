@@ -20,10 +20,28 @@ public partial class PlaceListVM : ListVM
     async Task GetItems()
     {
         Result result = await GetItems(ResultPlaces.Term);
-        ResultPlaces resultPlaces = (ResultPlaces)result;
-        foreach (var item in resultPlaces.Data)
-            Items.Add(item);
-        StartItems += resultPlaces.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultPlaces resultPlaces = (ResultPlaces)result;
+            foreach (var item in resultPlaces.Data)
+                Items.Add(item);
+            StartItems += resultPlaces.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultPlaces.Term);
     }
 }

@@ -21,10 +21,28 @@ public partial class EventListVM : ListVM
     async Task GetItems()
     {
         Result result = await GetItems(ResultEvents.Term);
-        ResultEvents resultEvents = (ResultEvents)result;
-        foreach (var item in resultEvents.Data)
-            Items.Add(item);
-        StartItems += resultEvents.Data.Count;
-        IsPopulated = true;
+        if (result != null)
+        {
+            ResultEvents resultEvents = (ResultEvents)result;
+            foreach (var item in resultEvents.Data)
+                Items.Add(item);
+            StartItems += resultEvents.Data.Count;
+            IsPopulated = true;
+        }
+    }
+
+    [RelayCommand]
+    async Task GetClosest()
+    {
+        if (Items.Count < TotalItems)
+        {
+            // Get the rest of the items
+            while (TotalItems > StartItems)
+            {
+                await GetItems();
+            }
+        }
+
+        await GetClosest(ResultEvents.Term);
     }
 }
