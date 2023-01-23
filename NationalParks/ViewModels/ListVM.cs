@@ -16,13 +16,23 @@ public partial class ListVM : BaseVM
     protected string StatesFilter = "";
     protected string TopicsFilter = "";
     protected string ActivitiesFilter = "";
-    protected string BaseTitle;
 
     [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] double progressClosest;
     [ObservableProperty] string progressText;
+
+    private string baseTitle;
+    protected string BaseTitle
+    {
+        get => baseTitle;
+        set
+        {
+            baseTitle = value;
+            ProgressText = $"Retrieving all {BaseTitle}...";
+        }
+    }
 
     private bool isPopulated = false;
     public bool IsPopulated

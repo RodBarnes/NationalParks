@@ -8,7 +8,6 @@ public partial class CampgroundListVM : ListVM
     public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Campgrounds";
-        ProgressText = $"Retrieving all {BaseTitle}...";
     }
 
     public async void PopulateData()

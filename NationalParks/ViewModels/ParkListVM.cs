@@ -8,7 +8,6 @@ public partial class ParkListVM : ListVM
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Parks";
-        ProgressText = $"Retrieving all {BaseTitle}...";
     }
 
     public async void PopulateData()
