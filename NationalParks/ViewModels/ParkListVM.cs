@@ -8,6 +8,7 @@ public partial class ParkListVM : ListVM
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Parks";
+        ProgressText = $"Retrieving all {BaseTitle}...";
     }
 
     public async void PopulateData()
@@ -37,10 +38,13 @@ public partial class ParkListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
+            IsFindingClosest = true;
             while (TotalItems > StartItems)
             {
+                ProgressClosest = (double)StartItems / (double)TotalItems;
                 await GetItems();
             }
+            IsFindingClosest = false;
         }
 
         await GetClosest(ResultParks.Term);

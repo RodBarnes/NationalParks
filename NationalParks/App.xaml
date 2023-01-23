@@ -84,6 +84,17 @@
                 <Setter Property="IsClippedToBounds" Value="True"/>
             </Style>
 
+            <Style TargetType="Frame" x:Key="ProgressBar">
+                <Setter Property="BorderColor" Value="#DDDDDD" />
+                <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Background" Value="{StaticResource Background}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="WidthRequest" Value="350" />
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
             <Style TargetType="Frame" x:Key="CollapsibleView">
                 <Setter Property="BorderColor" Value="{StaticResource Primary}" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />

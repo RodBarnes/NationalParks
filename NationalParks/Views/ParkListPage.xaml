@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:ParkListVM"
              x:Class="NationalParks.Views.ParkListPage"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
@@ -71,5 +77,15 @@
                         HorizontalOptions="Fill"
                         Color="{StaticResource Primary}"
                         VerticalOptions="Center" />
+        <Frame Grid.RowSpan="2" Grid.ColumnSpan="2"
+               Style="{StaticResource ProgressBar}"
+               IsVisible="{Binding IsFindingClosest, Converter={StaticResource BoolToTrueFalseConverter}}">
+            <VerticalStackLayout>
+                <Label Text="{Binding ProgressText}"
+                       Style="{StaticResource LabelMedium}"/>
+                <ProgressBar ProgressColor="Green"
+                         Progress="{Binding ProgressClosest}" />
+            </VerticalStackLayout>
+        </Frame>
     </Grid>
 </ContentPage>

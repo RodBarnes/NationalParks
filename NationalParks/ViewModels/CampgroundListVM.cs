@@ -8,6 +8,7 @@ public partial class CampgroundListVM : ListVM
     public CampgroundListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Campgrounds";
+        ProgressText = $"Retrieving all {BaseTitle}...";
     }
 
     public async void PopulateData()
@@ -37,10 +38,13 @@ public partial class CampgroundListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
+            IsFindingClosest = true;
             while (TotalItems > StartItems)
             {
+                ProgressClosest = (double)StartItems / (double)TotalItems;
                 await GetItems();
             }
+            IsFindingClosest = false;
         }
 
         await GetClosest(ResultCampgrounds.Term);
