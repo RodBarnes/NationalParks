@@ -7,7 +7,7 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Todo & Ideas
 ------------
-The code in the *ListPage.xaml is nearly identical.  This should be an included XAML like that done in WeatherTwentyOne.
+The code in the *ListPage.xaml is nearly identical.  This could be an included XAML like that done in WeatherTwentyOne except that the <CollectionView /> declares the DataTemplate x:DataType that is unique to each consumer.  How to get past this?
 
 I can use Type.GetType(string) to get the type from a string.  Does this allow moving all the GetItems() code from the *ListVM to the base ListVM?
 
