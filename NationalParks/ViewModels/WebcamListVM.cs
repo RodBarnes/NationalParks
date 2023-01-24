@@ -1,6 +1,4 @@
-﻿using NationalParks.Services;
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 public partial class WebcamListVM : ListVM
 {

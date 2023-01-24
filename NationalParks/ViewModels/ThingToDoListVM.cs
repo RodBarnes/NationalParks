@@ -1,6 +1,4 @@
-﻿using NationalParks.Services;
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ThingToDoListVM : ListVM

@@ -1,7 +1,4 @@
-﻿using NationalParks.Services;
-using System.Text.Json;
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class EventListVM : ListVM
