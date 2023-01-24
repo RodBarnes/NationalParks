@@ -16,7 +16,7 @@ public partial class ListVM : BaseVM
     protected string TopicsFilter = "";
     protected string ActivitiesFilter = "";
 
-    [ObservableProperty] public ObservableCollection<Models.BaseModel> items = new();
+    [ObservableProperty] public ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] double progressClosest;
