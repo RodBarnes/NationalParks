@@ -9,7 +9,7 @@ public partial class ListVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    protected readonly int LimitItems = 20;
+    protected int LimitItems = 20;
     protected int TotalItems = 0;
 
     protected string StatesFilter = "";
@@ -18,9 +18,9 @@ public partial class ListVM : BaseVM
 
     [ObservableProperty] public ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
-    [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] double progressClosest;
     [ObservableProperty] string progressText;
+    [ObservableProperty] bool isFindingClosest;
 
     private string baseTitle;
     protected string BaseTitle

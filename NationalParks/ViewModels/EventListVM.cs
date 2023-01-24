@@ -33,12 +33,14 @@ public partial class EventListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
+            LimitItems = 50;
             IsFindingClosest = true;
             while (TotalItems > Items.Count)
             {
                 ProgressClosest = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
+            LimitItems = 20;
             IsFindingClosest = false;
         }
 
