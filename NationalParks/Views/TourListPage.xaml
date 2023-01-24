@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:v="clr-namespace:NationalParks.Views"
              xmlns:m="clr-namespace:NationalParks.Models"
              x:DataType="vm:TourListVM"
              x:Class="NationalParks.Views.TourListPage"
              Title="{Binding Title}">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
@@ -71,12 +65,9 @@
                 CommandParameter="{Binding FilterName}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}"/>
-        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
-                           Grid.RowSpan="2" Grid.ColumnSpan="2"
-                           HorizontalOptions="Fill"
-                           Color="{StaticResource Primary}"
-                           VerticalOptions="Center" />
+        <v:ActivityView Grid.RowSpan="2" Grid.ColumnSpan="2"
+                        IsVisible="{Binding IsBusy}"/>
         <v:ProgressBarView Grid.RowSpan="2" Grid.ColumnSpan="2"
-                           IsVisible="{Binding IsFindingClosest, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                           IsVisible="{Binding IsFindingClosest}"/>
     </Grid>
 </ContentPage>
