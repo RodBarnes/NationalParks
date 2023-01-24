@@ -24,8 +24,8 @@ public partial class BaseModel
     #region Derived Properties
 
     public ImageSource MainImage => GetMainImage();
-    public double DLatitude => double.TryParse(Latitude.ToString(), out double d) ? d : -1;
-    public double DLongitude => double.TryParse(Longitude.ToString(), out double d) ? d : -1;
+    public double DLatitude => double.TryParse(Latitude?.ToString(), out double d) ? d : -1;
+    public double DLongitude => double.TryParse(Longitude?.ToString(), out double d) ? d : -1;
     public bool HasUrl => !String.IsNullOrEmpty(Url);
 
     #endregion
