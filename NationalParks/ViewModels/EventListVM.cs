@@ -26,7 +26,6 @@ public partial class EventListVM : ListVM
             ResultEvents resultEvents = (ResultEvents)result;
             foreach (var item in resultEvents.Data)
                 Items.Add(item);
-            StartItems += resultEvents.Data.Count;
             IsPopulated = true;
         }
     }
@@ -37,7 +36,7 @@ public partial class EventListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
                 await GetItems();
             }

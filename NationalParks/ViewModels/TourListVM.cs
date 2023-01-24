@@ -25,7 +25,6 @@ public partial class TourListVM : ListVM
             ResultTours resultTours = (ResultTours)result;
             foreach (var item in resultTours.Data)
                 Items.Add(item);
-            StartItems += resultTours.Data.Count;
             IsPopulated = true;
         }
     }
@@ -36,7 +35,7 @@ public partial class TourListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
                 await GetItems();
             }

@@ -25,7 +25,6 @@ public partial class PlaceListVM : ListVM
             ResultPlaces resultPlaces = (ResultPlaces)result;
             foreach (var item in resultPlaces.Data)
                 Items.Add(item);
-            StartItems += resultPlaces.Data.Count;
             IsPopulated = true;
         }
     }
@@ -36,7 +35,7 @@ public partial class PlaceListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
                 await GetItems();
             }

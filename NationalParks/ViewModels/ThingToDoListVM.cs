@@ -25,7 +25,6 @@ public partial class ThingToDoListVM : ListVM
             ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
             foreach (var item in resultThingsToDo.Data)
                 Items.Add(item);
-            StartItems += resultThingsToDo.Data.Count;
             IsPopulated = true;
         }
     }
@@ -36,7 +35,7 @@ public partial class ThingToDoListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
                 await GetItems();
             }

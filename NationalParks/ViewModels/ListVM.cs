@@ -10,7 +10,6 @@ public partial class ListVM : BaseVM
     readonly IGeolocation geolocation;
 
     protected readonly int LimitItems = 20;
-    protected int StartItems = 0;
     protected int TotalItems = 0;
 
     protected string StatesFilter = "";
@@ -48,7 +47,6 @@ public partial class ListVM : BaseVM
             else
             {
                 ItemsRefreshThreshold = -1;
-                StartItems = 0;
             }
             isPopulated = value;
         }
@@ -162,7 +160,7 @@ public partial class ListVM : BaseVM
             GetFilterSelections();
 
             // Populate the list
-            result = await DataService.GetItemsAsync(ofType, StartItems, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            result = await DataService.GetItemsAsync(ofType, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
             TotalItems = result.Total;
         }
         catch (Exception ex)

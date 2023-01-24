@@ -1,6 +1,4 @@
-﻿using NationalParks.Services;
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class CampgroundListVM : ListVM
@@ -26,7 +24,6 @@ public partial class CampgroundListVM : ListVM
             ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
             foreach (var item in resultCampgrounds.Data)
                 Items.Add(item);
-            StartItems += resultCampgrounds.Data.Count;
             IsPopulated = true;
         }
     }
@@ -38,9 +35,9 @@ public partial class CampgroundListVM : ListVM
         {
             // Get the rest of the items
             IsFindingClosest = true;
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
-                ProgressClosest = (double)StartItems / (double)TotalItems;
+                ProgressClosest = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
             IsFindingClosest = false;

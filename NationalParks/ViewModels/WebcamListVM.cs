@@ -24,7 +24,6 @@ public partial class WebcamListVM : ListVM
             ResultWebcams resultWebcams = (ResultWebcams)result;
             foreach (var item in resultWebcams.Data)
                 Items.Add(item);
-            StartItems += resultWebcams.Data.Count;
             IsPopulated = true;
         }
     }
@@ -35,7 +34,7 @@ public partial class WebcamListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
-            while (TotalItems > StartItems)
+            while (TotalItems > Items.Count)
             {
                 await GetItems();
             }
