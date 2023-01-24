@@ -10,13 +10,14 @@ public partial class WebcamListVM : ListVM
     public async void PopulateData()
     {
         Title = GetTitle();
+        Term = ResultWebcams.Term;
         await GetItems();
     }
 
     [RelayCommand]
-    async Task GetItems()
+    new async Task GetItems()
     {
-        Result result = await GetItems(ResultWebcams.Term);
+        Result result = await base.GetItems();
         if (result != null)
         {
             ResultWebcams resultWebcams = (ResultWebcams)result;
@@ -27,7 +28,7 @@ public partial class WebcamListVM : ListVM
     }
 
     [RelayCommand]
-    async Task GetClosest()
+    new async Task GetClosest()
     {
         if (Items.Count < TotalItems)
         {
@@ -41,6 +42,6 @@ public partial class WebcamListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosestBase();
+        await base.GetClosest();
     }
 }

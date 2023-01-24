@@ -11,13 +11,14 @@ public partial class ThingToDoListVM : ListVM
     public async void PopulateData()
     {
         Title = GetTitle();
+        Term = ResultThingsToDo.Term;
         await GetItems();
     }
 
     [RelayCommand]
-    async Task GetItems()
+    new async Task GetItems()
     {
-        Result result = await GetItems(ResultThingsToDo.Term);
+        Result result = await base.GetItems();
         if (result != null)
         {
             ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
@@ -28,7 +29,7 @@ public partial class ThingToDoListVM : ListVM
     }
 
     [RelayCommand]
-    async Task GetClosest()
+    new async Task GetClosest()
     {
         if (Items.Count < TotalItems)
         {
@@ -44,6 +45,6 @@ public partial class ThingToDoListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosestBase();
+        await base.GetClosest();
     }
 }

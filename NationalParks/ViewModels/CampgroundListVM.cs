@@ -11,14 +11,15 @@ public partial class CampgroundListVM : ListVM
     public async void PopulateData()
     {
         Title = GetTitle();
+        Term = ResultCampgrounds.Term;
         await GetItems();
     }
 
     [RelayCommand]
-    async Task GetItems()
+    new async Task GetItems()
     {
         // Populate the list
-        Result result = await GetItems(ResultCampgrounds.Term);
+        Result result = await base.GetItems();
         if (result != null)
         {
             ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
@@ -29,7 +30,7 @@ public partial class CampgroundListVM : ListVM
     }
 
     [RelayCommand]
-    async Task GetClosest()
+    new async Task GetClosest()
     {
         if (Items.Count < TotalItems)
         {
@@ -45,6 +46,6 @@ public partial class CampgroundListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosestBase();
+        await base.GetClosest();
     }
 }

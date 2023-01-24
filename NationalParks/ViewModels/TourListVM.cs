@@ -13,13 +13,14 @@ public partial class TourListVM : ListVM
     public async void PopulateData()
     {
         Title = GetTitle();
+        Term = ResultTours.Term;
         await GetItems();
     }
 
     [RelayCommand]
-    async Task GetItems()
+    new async Task GetItems()
     {
-        Result result = await GetItems(ResultTours.Term);
+        Result result = await base.GetItems();
         if (result != null)
         {
             ResultTours resultTours = (ResultTours)result;
@@ -41,7 +42,7 @@ public partial class TourListVM : ListVM
     }
 
     [RelayCommand]
-    async Task GetClosest()
+    new async Task GetClosest()
     {
         if (Items.Count < TotalItems)
         {
@@ -57,6 +58,6 @@ public partial class TourListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosestBase();
+        await base.GetClosest();
     }
 }

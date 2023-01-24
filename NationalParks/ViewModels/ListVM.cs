@@ -21,6 +21,7 @@ public partial class ListVM : BaseVM
     [ObservableProperty] double progressClosest;
     [ObservableProperty] string progressText;
     [ObservableProperty] bool isFindingClosest;
+    [ObservableProperty] string term;
 
     private string baseTitle;
     protected string BaseTitle
@@ -80,7 +81,7 @@ public partial class ListVM : BaseVM
         });
     }
 
-    public async Task GetClosestBase()
+    public async Task GetClosest()
     {
         if (IsBusy)
             return;
@@ -111,7 +112,7 @@ public partial class ListVM : BaseVM
         }
     }
 
-    public async Task<Result> GetItems(string ofType)
+    public async Task<Result> GetItems()
     {
         if (IsBusy)
             return null;
@@ -132,7 +133,7 @@ public partial class ListVM : BaseVM
             GetFilterSelections();
 
             // Populate the list
-            result = await DataService.GetItemsAsync(ofType, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
             TotalItems = result.Total;
         }
         catch (Exception ex)

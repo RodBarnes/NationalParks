@@ -11,13 +11,14 @@ public partial class EventListVM : ListVM
     public async void PopulateData()
     {
         Title = GetTitle();
+        Term = ResultEvents.Term;
         await GetItems();
     }
 
     [RelayCommand]
-    async Task GetItems()
+    new async Task GetItems()
     {
-        Result result = await GetItems(ResultEvents.Term);
+        Result result = await base.GetItems();
         if (result != null)
         {
             ResultEvents resultEvents = (ResultEvents)result;
@@ -28,7 +29,7 @@ public partial class EventListVM : ListVM
     }
 
     [RelayCommand]
-    async Task GetClosest()
+    new async Task GetClosest()
     {
         if (Items.Count < TotalItems)
         {
@@ -44,6 +45,6 @@ public partial class EventListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosestBase();
+        await base.GetClosest();
     }
 }
