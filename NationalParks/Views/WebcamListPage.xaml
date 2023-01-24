@@ -69,7 +69,7 @@
                 Grid.Row="1" Grid.Column="1"
                 Margin="8"
                 Command="{Binding GoToFilterCommand}"
-                CommandParameter="WebcamFilterPage"
+                CommandParameter="Webcam"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}"/>
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"

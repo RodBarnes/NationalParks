@@ -9,6 +9,10 @@ Todo & Ideas
 ------------
 The code in the *ListPage.xaml is nearly identical.  This could be an included XAML like that done in WeatherTwentyOne except that the <CollectionView /> declares the DataTemplate x:DataType that is unique to each consumer.  How to get past this?
 
+The above is true of the *DetailPage.xaml also.  Other than the specific name of the type of data, the operation is identical.
+
+As above, the *FilterPage.xaml should probably be a single page that is configured (i.e., which filters are available) based upon the name/type of the ListPage from which it was invoked.
+
 I can use Type.GetType(string) to get the type from a string.  Does this allow moving all the GetItems() code from the *ListVM to the base ListVM?
 
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?

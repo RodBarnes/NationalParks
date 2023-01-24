@@ -60,9 +60,9 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToFilter(string pageName)
+    async Task GoToFilter(string pageType)
     {
-        await Shell.Current.GoToAsync(pageName, true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
         {
             {"VM", this }
         });
