@@ -2,7 +2,6 @@
 
 public class Place : BaseModel
 {
-    public new string Description { get => ListingDescription; }
     public string ListingDescription { get; set; }
     public List<RelatedPark> RelatedParks { get; set; }
     public List<Organization> RelatedOrganizations { get; set; }
@@ -27,7 +26,9 @@ public class Place : BaseModel
     public string Credit { get; set; }
     public List<Multimedia> Multimedia { get; set; }
 
-    // Derived properties
+    #region Derived Properties
+
+    public new string Description { get => ListingDescription; }
     public string ManagedBy => IsManagedByNps == 1 ? "National Park Service" : ManagedByOrg;
     public bool HasBodyText => !String.IsNullOrEmpty(BodyText);
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
@@ -36,4 +37,6 @@ public class Place : BaseModel
     public bool HasQuickFacts => (QuickFacts is not null) && QuickFacts.Count > 0;
     public bool HasAmenities => (Amenities is not null) && Amenities.Count > 0;
     public bool HasMultiMedia => (Multimedia is not null) && Multimedia.Count > 0;
+
+    #endregion
 }

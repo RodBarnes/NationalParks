@@ -28,7 +28,8 @@ public class Campground : BaseModel
     public List<Multimedia> Multimedia { get; set; }
     public string LastIndexDate { get; set; }
 
-    // Derived properties
+    #region Derived Properties
+
     public bool HasReservationUrl => !String.IsNullOrEmpty(ReservationUrl);
     public bool HasRegulationsUrl => !String.IsNullOrEmpty(RegulationsUrl);
     public bool HasDirections => !String.IsNullOrEmpty(DirectionsOverview) || (PhysicalAddress is not null);
@@ -38,4 +39,6 @@ public class Campground : BaseModel
     public bool HasFees => (Fees is not null) && Fees.Count > 0;
     public bool HasOperatingHours => (OperatingHours is not null) && OperatingHours.Count > 0;
     public bool HasContacts => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0));
+
+    #endregion
 }

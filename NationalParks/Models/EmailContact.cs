@@ -1,8 +1,7 @@
-﻿namespace NationalParks.Models
+﻿namespace NationalParks.Models;
+
+public class EmailContact
 {
-    public class EmailContact
-    {
-        public string Description { get; set; }
-        public string EmailAddress { get; set; }
-    }
+    public string Description { get; set; }
+    public string EmailAddress { get; set; }
 }

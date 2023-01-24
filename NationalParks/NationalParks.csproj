@@ -10,10 +10,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>NationalParks</ApplicationTitle>
+		<ApplicationTitle>NPS Info</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.NationalParks</ApplicationId>
+		<ApplicationId>com.advancedapplications.NationalParks</ApplicationId>
 		<ApplicationIdGuid>ECD44DAE-B03E-4D8B-B427-71865961E696</ApplicationIdGuid>
 
 		<!-- Versions -->
