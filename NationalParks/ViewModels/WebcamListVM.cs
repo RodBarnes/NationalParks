@@ -41,6 +41,6 @@ public partial class WebcamListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosest(ResultWebcams.Term);
+        await GetClosestBase();
     }
 }

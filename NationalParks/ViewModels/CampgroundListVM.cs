@@ -45,6 +45,6 @@ public partial class CampgroundListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosest(ResultCampgrounds.Term);
+        await GetClosestBase();
     }
 }

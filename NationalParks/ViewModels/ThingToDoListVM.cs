@@ -44,6 +44,6 @@ public partial class ThingToDoListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosest(ResultThingsToDo.Term);
+        await GetClosestBase();
     }
 }

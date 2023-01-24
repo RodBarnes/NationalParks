@@ -44,6 +44,6 @@ public partial class EventListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosest(ResultEvents.Term);
+        await GetClosestBase();
     }
 }

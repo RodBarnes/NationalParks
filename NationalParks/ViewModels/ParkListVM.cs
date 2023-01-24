@@ -45,6 +45,6 @@ public partial class ParkListVM : ListVM
             IsFindingClosest = false;
         }
 
-        await GetClosest(ResultParks.Term);
+        await GetClosestBase();
     }
 }
