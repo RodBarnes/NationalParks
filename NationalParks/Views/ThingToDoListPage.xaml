@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:model="clr-namespace:NationalParks.Models"
+             xmlns:m="clr-namespace:NationalParks.Models"
              x:DataType="vm:ThingToDoListVM"
              x:Class="NationalParks.Views.ThingToDoListPage"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
@@ -25,7 +31,7 @@
                     VerticalOptions="Center" />
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Tour">
+                    <DataTemplate x:DataType="m:Tour">
                         <Grid Padding="10,5" HorizontalOptions="Fill">
                             <Frame HeightRequest="125" 
                                 Style="{StaticResource ViewCard}">
