@@ -69,5 +69,15 @@
                            HorizontalOptions="Fill"
                            Color="{StaticResource Primary}"
                            VerticalOptions="Center" />
+        <Frame Grid.RowSpan="2" Grid.ColumnSpan="2"
+               Style="{StaticResource ProgressBar}"
+               IsVisible="{Binding IsFindingClosest, Converter={StaticResource BoolToTrueFalseConverter}}">
+            <VerticalStackLayout>
+                <Label Text="{Binding ProgressText}"
+                       Style="{StaticResource LabelMedium}"/>
+                <ProgressBar ProgressColor="Green"
+                         Progress="{Binding ProgressClosest}" />
+            </VerticalStackLayout>
+        </Frame>
     </Grid>
 </ContentPage>
