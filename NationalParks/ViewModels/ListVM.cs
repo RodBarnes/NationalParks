@@ -100,7 +100,7 @@ public partial class ListVM : BaseVM
 
             if (ofType == "tours")
             {
-                // This addresses the condition Tours don't have a location but the associated park does
+                // This addresses the condition where Tours don't have a location but the associated park does
                 //ResultParks resultPark = await DataService.GetParkForParkCodeAsync(tour.Park.ParkCode);
                 //if (resultPark.Data.Count == 1)
                 //{
