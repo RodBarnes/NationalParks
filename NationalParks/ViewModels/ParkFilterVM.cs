@@ -1,10 +1,10 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(ParkVM), "VM")]
+[QueryProperty(nameof(ListVM), "VM")]
 public partial class ParkFilterVM : BaseVM
 {
     // Query properties
-    public ParkListVM ParkVM { get; set; }
+    public ParkListVM ListVM { get; set; }
 
     // Selected values
     public ObservableCollection<object> SelectedTopics { get; set; } = new();
@@ -18,19 +18,19 @@ public partial class ParkFilterVM : BaseVM
 
     public void PopulateData()
     {
-        if (ParkVM.Filter is null)
-            ParkVM.Filter = new FilterVM(true);
+        if (ListVM.Filter is null)
+            ListVM.Filter = new FilterVM(true);
 
         // Populate the selected items
-        foreach (var topic in ParkVM.Filter.Topics)
+        foreach (var topic in ListVM.Filter.Topics)
         {
             SelectedTopics.Add(topic);
         }
-        foreach (var activity in ParkVM.Filter.Activities)
+        foreach (var activity in ListVM.Filter.Activities)
         {
             SelectedActivities.Add(activity);
         }
-        foreach (var state in ParkVM.Filter.States)
+        foreach (var state in ListVM.Filter.States)
         {
             SelectedStates.Add(state);
         }
@@ -40,37 +40,37 @@ public partial class ParkFilterVM : BaseVM
     async Task ApplyFilter()
     {
         // Update the filter
-        ParkVM.Filter.Topics.Clear();
+        ListVM.Filter.Topics.Clear();
         foreach (var o in SelectedTopics)
         {
             if (o is Models.Topic topic)
             {
-                ParkVM.Filter.Topics.Add(topic);
+                ListVM.Filter.Topics.Add(topic);
             }
         }
-        ParkVM.Filter.Activities.Clear();
+        ListVM.Filter.Activities.Clear();
         foreach (var o in SelectedActivities)
         {
             if (o is Models.Activity activity)
             {
-                ParkVM.Filter.Activities.Add(activity);
+                ListVM.Filter.Activities.Add(activity);
             }
         }
-        ParkVM.Filter.States.Clear();
+        ListVM.Filter.States.Clear();
         foreach (var o in SelectedStates)
         {
             if (o is Models.State state)
             {
-                ParkVM.Filter.States.Add(state);
+                ListVM.Filter.States.Add(state);
             }
         }
 
         // Clear the list
-        ParkVM.ClearData();
+        ListVM.ClearData();
 
         await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
         {
-            {"Filter", ParkVM.Filter }
+            {"Filter", ListVM.Filter }
         });
     }
 
@@ -83,12 +83,12 @@ public partial class ParkFilterVM : BaseVM
         SelectedStates.Clear();
 
         // Clear the filter
-        ParkVM.Filter.Topics.Clear();
-        ParkVM.Filter.Activities.Clear();
-        ParkVM.Filter.States.Clear();
+        ListVM.Filter.Topics.Clear();
+        ListVM.Filter.Activities.Clear();
+        ListVM.Filter.States.Clear();
 
         // Clear the list
-        ParkVM.ClearData();
+        ListVM.ClearData();
 
         Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
     }

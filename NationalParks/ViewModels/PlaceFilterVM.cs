@@ -2,11 +2,11 @@
 
 namespace NationalParks.ViewModels
 {
-    [QueryProperty(nameof(PlaceVM), "VM")]
+    [QueryProperty(nameof(ListVM), "VM")]
     public partial class PlaceFilterVM : BaseVM
     {
         // Query properties
-        public PlaceListVM PlaceVM { get; set; }
+        public PlaceListVM ListVM { get; set; }
 
         // Selected values
         public ObservableCollection<object> SelectedStates { get; set; } = new();
@@ -18,11 +18,11 @@ namespace NationalParks.ViewModels
 
         public void PopulateData()
         {
-            if (PlaceVM.Filter is null)
-                PlaceVM.Filter = new FilterVM(true);
+            if (ListVM.Filter is null)
+                ListVM.Filter = new FilterVM(true);
 
             // Populate the selected items
-            foreach (var state in PlaceVM.Filter.States)
+            foreach (var state in ListVM.Filter.States)
             {
                 SelectedStates.Add(state);
             }
@@ -32,21 +32,21 @@ namespace NationalParks.ViewModels
         async Task ApplyFilter()
         {
             // Update the filter
-            PlaceVM.Filter.States.Clear();
+            ListVM.Filter.States.Clear();
             foreach (var o in SelectedStates)
             {
                 if (o is Models.State state)
                 {
-                    PlaceVM.Filter.States.Add(state);
+                    ListVM.Filter.States.Add(state);
                 }
             }
 
             // Clear the list
-            PlaceVM.ClearData();
+            ListVM.ClearData();
 
             await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
             {
-                {"Filter", PlaceVM.Filter }
+                {"Filter", ListVM.Filter }
             });
         }
 
@@ -57,10 +57,10 @@ namespace NationalParks.ViewModels
             SelectedStates.Clear();
 
             // Clear the filter
-            PlaceVM.Filter.States.Clear();
+            ListVM.Filter.States.Clear();
 
             // Clear the list
-            PlaceVM.ClearData();
+            ListVM.ClearData();
 
             Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
         }
