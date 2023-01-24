@@ -39,6 +39,4 @@ public class Event : BaseModel
     public string DateTimeCreated { get; set; }
     public string SubjectName { get; set; }
     public List<string> Tags { get; set; }
-
-    // Derived properties
 }

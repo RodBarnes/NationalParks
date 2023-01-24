@@ -1,8 +1,7 @@
-﻿namespace NationalParks.Models
+﻿namespace NationalParks.Models;
+
+public partial class ResultActivities : Result
 {
-    public partial class ResultActivities : Result
-    {
-        public const string Term = "activities";
-        public List<Activity> Data { get; set; }
-    }
+    public const string Term = "activities";
+    public List<Activity> Data { get; set; }
 }

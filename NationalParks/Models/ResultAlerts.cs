@@ -1,8 +1,7 @@
-﻿namespace NationalParks.Models
+﻿namespace NationalParks.Models;
+
+public class ResultAlerts : Result
 {
-    public class ResultAlerts : Result
-    {
-        public const string Term = "alerts";
-        public List<Alert> Data { get; set; }
-    }
+    public const string Term = "alerts";
+    public List<Alert> Data { get; set; }
 }

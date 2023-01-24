@@ -1,8 +1,7 @@
-﻿namespace NationalParks.Models
+﻿namespace NationalParks.Models;
+
+public class MediaCrop
 {
-    public class MediaCrop
-    {
-        public string Url { get; set; }
-        public long AspectRation { get; set; }
-    }
+    public string Url { get; set; }
+    public long AspectRation { get; set; }
 }

@@ -17,8 +17,11 @@
         public string FirewoodForSale { get; set; }
         public string FoodStorageLockers { get; set; }
 
+        #region Derived Properties
+
         public bool HasCellPhoneReception { get => !String.IsNullOrEmpty(CellPhoneReception); }
         public bool HasInternetConnectivity { get => !String.IsNullOrEmpty(InternetConnectivity); }
 
+        #endregion
     }
 }

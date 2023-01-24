@@ -1,8 +1,7 @@
-﻿namespace NationalParks.Models
+﻿namespace NationalParks.Models;
+
+public class Topic
 {
-    public class Topic
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-    }
+    public string Id { get; set; }
+    public string Name { get; set; }
 }

@@ -2,7 +2,6 @@
 
 public class Park : BaseModel
 {
-    public new string Description { get => Designation; }
     public string FullName { get; set; }
     public string ParkCode { get; set; }
     public string LatLong { get; set; }
@@ -22,7 +21,9 @@ public class Park : BaseModel
     public string WeatherInfo { get; set; }
     public string Designation { get; set; }
 
-    // Derived properties
+    #region Derived Properties
+
+    public new string Description { get => Designation; }
     public bool HasAlerts => (Alerts is not null) && Alerts.Count > 0;
     public bool HasTopics => (Topics is not null) && Topics.Count > 0;
     public bool HasActivities => (Activities is not null) && Activities.Count > 0;
@@ -31,4 +32,6 @@ public class Park : BaseModel
     public bool HasWeather => !String.IsNullOrEmpty(WeatherInfo);
     public bool HasOperatingHours => (OperatingHours is not null) && OperatingHours.Count > 0;
     public bool HasContacts => ((Contacts.PhoneNumbers is not null && Contacts.PhoneNumbers.Count > 0)) || ((Contacts.EmailAddresses is not null && Contacts.EmailAddresses.Count > 0));
+
+    #endregion
 }

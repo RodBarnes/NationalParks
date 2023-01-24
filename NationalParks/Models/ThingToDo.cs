@@ -2,7 +2,6 @@
 
 public class ThingToDo : BaseModel
 {
-    public new string Description { get => ShortDescription; }
     public string ShortDescription { get; set; }
     public List<RelatedPark> RelatedParks { get; set; }
     public List<object> RelatedOrganizations { get; set; }
@@ -33,6 +32,10 @@ public class ThingToDo : BaseModel
     public string Duration { get; set; }
     public string Credit { get; set; }
 
-    // Derived properties
+    #region Derived Properties
+
+    public new string Description { get => ShortDescription; }
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
+
+    #endregion
 }
