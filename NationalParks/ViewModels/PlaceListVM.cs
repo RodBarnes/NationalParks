@@ -8,12 +8,13 @@ public partial class PlaceListVM : ListVM
     public PlaceListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Places";
+        Term = ResultPlaces.Term;
+        FilterName = "Place";
     }
 
     public async void PopulateData()
     {
         Title = GetTitle();
-        Term = ResultPlaces.Term;
         await GetItems();
     }
 

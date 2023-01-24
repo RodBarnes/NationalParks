@@ -6,12 +6,13 @@ public partial class ParkListVM : ListVM
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Parks";
+        Term = ResultParks.Term;
+        FilterName = "Park";
     }
 
     public async void PopulateData()
     {
         Title = GetTitle();
-        Term = ResultParks.Term;
         await GetItems();
     }
 

@@ -5,12 +5,13 @@ public partial class WebcamListVM : ListVM
     public WebcamListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Webcams";
+        Term = ResultWebcams.Term;
+        FilterName = "Webcam";
     }
 
     public async void PopulateData()
     {
         Title = GetTitle();
-        Term = ResultWebcams.Term;
         await GetItems();
     }
 

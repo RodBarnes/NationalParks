@@ -6,12 +6,13 @@ public partial class EventListVM : ListVM
     public EventListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
         BaseTitle = "Events";
+        Term = ResultEvents.Term;
+        FilterName = "Event";
     }
 
     public async void PopulateData()
     {
         Title = GetTitle();
-        Term = ResultEvents.Term;
         await GetItems();
     }
 
