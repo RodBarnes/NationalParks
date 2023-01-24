@@ -20,7 +20,6 @@
           BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
         <RefreshView Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Items}"
-                        Grid.ColumnSpan="2"
                         SelectionMode="None"
                         RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
                         RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
