@@ -9,12 +9,7 @@ public partial class BaseModel
         get => !String.IsNullOrEmpty(title) ? title : Name;
         set => title = value;
     }
-    private string name;
-    public string Name
-    {
-        get => !String.IsNullOrEmpty(name) ? name : Title;
-        set => name = value;
-    }
+    public string Name { get; set; }
     public string Description { get; set; }
     public string Url { get; set; }
     public object Latitude { get; set; }
