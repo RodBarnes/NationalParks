@@ -3,7 +3,6 @@
 public class Campground : BaseModel
 {
     public string ParkCode { get; set; }
-    public string Description { get; set; }
     public string AudioDescription { get; set; }
     public string IsPassportStampLocation { get; set; }
     public string PassportStampLocationDescription { get; set; }

@@ -3,7 +3,6 @@
 
 public class Tour : BaseModel
 {
-    public string Description { get; set; }
     public RelatedPark Park { get; set; }
     public List<string> Tags { get; set; }
     public List<Activity> Activities { get; set; }

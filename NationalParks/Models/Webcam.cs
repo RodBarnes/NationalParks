@@ -2,7 +2,6 @@
 {
     public class Webcam : BaseModel
     {
-        public string Description { get; set; }
         public List<RelatedPark> RelatedParks { get; set; }
         public string Status { get; set; }
         public string StatusMessage { get; set; }

@@ -16,7 +16,6 @@ public class Event : BaseModel
     public string IsFree { get; set; }
     public string ContactEmailAddress { get; set; }
     public string RegresUrl { get; set; }
-    public string Description { get; set; }
     public string Category { get; set; }
     public string ImageIdlist { get; set; }
     public string IsRegresRequired { get; set; }

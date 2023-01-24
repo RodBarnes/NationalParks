@@ -15,6 +15,7 @@
             get => !String.IsNullOrEmpty(name) ? name : Title;
             set => name = value;
         }
+        public string Description { get; set; }
         public string Url { get; set; }
         public object Latitude { get; set; }
         public object Longitude { get; set; }

@@ -2,6 +2,7 @@
 
 public class ThingToDo : BaseModel
 {
+    public new string Description { get => ShortDescription; }
     public string ShortDescription { get; set; }
     public List<RelatedPark> RelatedParks { get; set; }
     public List<object> RelatedOrganizations { get; set; }

@@ -31,13 +31,13 @@
                     VerticalOptions="Center" />
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:Tour">
+                    <DataTemplate x:DataType="m:BaseModel">
                         <Grid Padding="10,5" HorizontalOptions="Fill">
                             <Frame HeightRequest="125" 
                                 Style="{StaticResource ViewCard}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TourListVM}}, Path=GoToDetailCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ListVM}}, Path=GoToDetailCommand}"
                                     CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">

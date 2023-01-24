@@ -2,9 +2,9 @@
 
 public class Park : BaseModel
 {
+    public new string Description { get => Designation; }
     public string FullName { get; set; }
     public string ParkCode { get; set; }
-    public string Description { get; set; }
     public string LatLong { get; set; }
     public List<Alert> Alerts { get; set; } = new();
     public List<Activity> Activities { get; set; } = new();
