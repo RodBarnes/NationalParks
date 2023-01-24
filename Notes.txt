@@ -7,6 +7,10 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Todo & Ideas
 ------------
+The code in the *ListPage.xaml is nearly identical.  This should be an included XAML like that done in WeatherTwentyOne.
+
+I can use Type.GetType(string) to get the type from a string.  Does this allow moving all the GetItems() code from the *ListVM to the base ListVM?
+
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
 
 Can I do the same with FilterVM as I did with ImageListVM; i.e., make it a base class instead of a member class?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?

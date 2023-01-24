@@ -35,10 +35,13 @@ public partial class PlaceListVM : ListVM
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
+            IsFindingClosest = true;
             while (TotalItems > Items.Count)
             {
+                ProgressClosest = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
+            IsFindingClosest = false;
         }
 
         await GetClosest(ResultPlaces.Term);
