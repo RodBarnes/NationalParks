@@ -249,7 +249,6 @@ public partial class ListVM : BaseVM
         Title = GetTitle();
         await GetItems();
     }
-
     public void ClearData()
     {
         Items.Clear();
