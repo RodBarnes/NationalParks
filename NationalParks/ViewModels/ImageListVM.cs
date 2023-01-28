@@ -1,4 +1,6 @@
-﻿namespace NationalParks.ViewModels;
+﻿using System;
+
+namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Images), "Images")]
 public partial class ImageListVM : BaseVM
@@ -14,6 +16,6 @@ public partial class ImageListVM : BaseVM
     [RelayCommand]
     async Task GoToImage(Models.Image image)
     {
-        await Shell.Current.DisplayAlert($"Image", $"{image.Title}\n{image.Url}", "OK");
+        await Launcher.OpenAsync(image.Url);
     }
 }
