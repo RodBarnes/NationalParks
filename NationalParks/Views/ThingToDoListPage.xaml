@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:v="clr-namespace:NationalParks.Views"
-             x:DataType="vm:ThingToDoListVM"
+             x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.ThingToDoListPage"
              Title="{Binding Title}">
     <v:ListView />
