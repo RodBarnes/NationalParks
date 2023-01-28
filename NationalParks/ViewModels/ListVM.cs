@@ -190,6 +190,7 @@ public partial class ListVM : BaseVM
         return result;
     }
 
+    [RelayCommand]
     public async Task GetClosest()
     {
         if (IsBusy)
@@ -208,12 +209,28 @@ public partial class ListVM : BaseVM
                 });
             }
 
-            // Find closest item to us
-            var first = items.OrderBy(m => location.CalculateDistance(
-                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
-                .FirstOrDefault();
+            if (Items.Count < TotalItems)
+            {
+                // Get the rest of the items
+                LimitItems = 50;
+                IsFindingClosest = true;
+                while (TotalItems > Items.Count && IsFindingClosest)
+                {
+                    ProgressClosest = (double)Items.Count / (double)TotalItems;
+                    await GetItems();
+                }
+                LimitItems = 20;
+            }
 
-            await GoToDetail(first);
+            if (IsFindingClosest)
+            {
+                // Find closest item to us
+                var first = items.OrderBy(m => location.CalculateDistance(
+                    new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
+                    .FirstOrDefault();
+
+                await GoToDetail(first);
+            }
         }
         catch (Exception ex)
         {
