@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:models="clr-namespace:NationalParks.Models"
-             xmlns:controls="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
              x:DataType="vm:CampgroundDetailVM"
              x:Class="NationalParks.Views.CampgroundDetailPage"
              Title="{Binding Campground.Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
@@ -80,7 +80,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding FeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Fee">
+                                <DataTemplate x:DataType="m:Fee">
                                     <VerticalStackLayout Margin="0,0,0,10">
                                         <Label Text="{Binding Title}"
                                                Style="{StaticResource LabelMediumBold}"/>
@@ -118,7 +118,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding OperatingHoursVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:OperatingHours">
+                                <DataTemplate x:DataType="m:OperatingHours">
                                     <VerticalStackLayout Margin="0,0,0,10">
                                         <Label Text="{Binding Name}"
                                                Style="{StaticResource LabelMediumBold}"/>
@@ -131,7 +131,7 @@
                                         <CollectionView ItemsSource="{Binding Exceptions}"
                                                         SelectionMode="None">
                                             <CollectionView.ItemTemplate>
-                                                <DataTemplate x:DataType="models:OperatingException">
+                                                <DataTemplate x:DataType="m:OperatingException">
                                                     <VerticalStackLayout>
                                                         <Label Text="{Binding Name}"
                                                            Style="{StaticResource LabelMediumBold}"/>
@@ -171,13 +171,13 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:PhoneContact">
+                                <DataTemplate x:DataType="m:PhoneContact">
                                     <VerticalStackLayout>
                                         <HorizontalStackLayout>
                                             <Label Text="{Binding Type, StringFormat='{0}:'}"
                                                    Style="{StaticResource LabelMedium}"
                                                    Margin="0,0,5,0"/>
-                                            <controls:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                            <ctrl:HyperlinkLabel Text="{Binding PhoneNumber}"
                                                     Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
                                                     Style="{StaticResource LabelMedium}"/>
                                             <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
@@ -194,12 +194,12 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding ContactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:EmailContact">
+                                <DataTemplate x:DataType="m:EmailContact">
                                     <HorizontalStackLayout>
                                         <Label Text="Email"
                                            Style="{StaticResource LabelMedium}"
                                                Margin="0,0,5,0"/>
-                                        <controls:HyperlinkLabel Text="{Binding EmailAddress}"
+                                        <ctrl:HyperlinkLabel Text="{Binding EmailAddress}"
                                                     Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
                                                     Style="{StaticResource LabelMedium}"/>
                                         <!--<Label Text="{Binding Description}"
@@ -406,7 +406,7 @@
                             <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}'} "
                                    Style="{StaticResource LabelLargeBold}"
                                    Margin="0,0,5,0"/>
-                            <controls:HyperlinkLabel Text="(link)"
+                            <ctrl:HyperlinkLabel Text="(link)"
                                                     Url="{Binding Campground.ReservationUrl}"
                                                     IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                                     VerticalOptions="Center"
@@ -435,7 +435,7 @@
                             <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
                                    Style="{StaticResource LabelLargeBold}"
                                    Margin="0,0,5,0"/>
-                            <controls:HyperlinkLabel Text="(link)"
+                            <ctrl:HyperlinkLabel Text="(link)"
                                                     Url="{Binding Campground.RegulationsUrl}"
                                                     IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                                     VerticalOptions="Center"

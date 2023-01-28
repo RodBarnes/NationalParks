@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:controls="clr-namespace:NationalParks.Controls"
-             xmlns:models="clr-namespace:NationalParks.Models"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
              x:DataType="vm:TourDetailVM"
              x:Class="NationalParks.Views.TourDetailPage"
              Title="{Binding Tour.Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
@@ -106,7 +106,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding StopsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Stop">
+                                <DataTemplate x:DataType="m:Stop">
                                     <Label Text="{Binding AssetName}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
@@ -134,7 +134,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Topic">
+                                <DataTemplate x:DataType="m:Topic">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
@@ -162,7 +162,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Activity">
+                                <DataTemplate x:DataType="m:Activity">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
