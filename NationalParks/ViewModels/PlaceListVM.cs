@@ -12,39 +12,6 @@ public partial class PlaceListVM : ListVM
         FilterName = "Place";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
-    [RelayCommand]
-    new async Task GetItems()
-    {
-        Result result = await base.GetItems();
-        if (result != null)
-        {
-            ResultPlaces resultPlaces = (ResultPlaces)result;
-            foreach (var item in resultPlaces.Data)
-            {
-                // This code addresses the condition where Place has no location but
-                // but it has at least one related park
-                if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
-                {
-                    ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.RelatedParks[0].ParkCode);
-                    if (resultPark.Data.Count == 1)
-                    {
-                        var park = resultPark.Data[0];
-                        item.Latitude = park.Latitude;
-                        item.Longitude = park.Longitude;
-                    }
-                }
-                Items.Add(item);
-            }
-            IsPopulated = true;
-        }
-    }
-
     [RelayCommand]
     new async Task GetClosest()
     {

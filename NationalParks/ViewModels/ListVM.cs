@@ -88,6 +88,108 @@ public partial class ListVM : BaseVM
         IsFindingClosest = false;
     }
 
+    [RelayCommand]
+    public async Task<Result> GetItems()
+    {
+        if (IsBusy)
+            return null;
+
+        Result result = new();
+
+        try
+        {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("No connectivity!",
+                    $"Please check internet and try again.", "OK");
+                return null;
+            }
+
+            IsBusy = true;
+
+            GetFilterSelections();
+
+            // Populate the list
+            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            TotalItems = result.Total;
+            switch (term)
+            {
+                case ResultParks.Term:
+                    ResultParks resultParks = (ResultParks)result;
+                    foreach (var item in resultParks.Data)
+                        Items.Add(item);
+                    break;
+                case ResultCampgrounds.Term:
+                    ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
+                    foreach (var item in resultCampgrounds.Data)
+                        Items.Add(item);
+                    break;
+                case ResultPlaces.Term:
+                    ResultPlaces resultPlaces = (ResultPlaces)result;
+                    foreach (var item in resultPlaces.Data)
+                    {
+                        // This code addresses the condition where Place has no location but
+                        // but it has at least one related park
+                        if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
+                        {
+                            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.RelatedParks[0].ParkCode);
+                            if (resultPark.Data.Count == 1)
+                            {
+                                var park = resultPark.Data[0];
+                                item.Latitude = park.Latitude;
+                                item.Longitude = park.Longitude;
+                            }
+                        }
+                        Items.Add(item);
+                    }
+                    break;
+                case ResultTours.Term:
+                    ResultTours resultTours = (ResultTours)result;
+                    foreach (var item in resultTours.Data)
+                    {
+                        // This addresses the condition that Tours don't have a location but the associated park does
+                        ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.Park.ParkCode);
+                        if (resultPark.Data.Count == 1)
+                        {
+                            var park = resultPark.Data[0];
+                            item.Latitude = park.Latitude;
+                            item.Longitude = park.Longitude;
+                        }
+                        Items.Add(item);
+                    }
+                    break;
+                case ResultThingsToDo.Term:
+                    ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
+                    foreach (var item in resultThingsToDo.Data)
+                        Items.Add(item);
+                    break;
+                case ResultWebcams.Term:
+                    ResultWebcams resultWebcams = (ResultWebcams)result;
+                    foreach (var item in resultWebcams.Data)
+                        Items.Add(item);
+                    break;
+                case ResultEvents.Term:
+                    ResultEvents resultEvents = (ResultEvents)result;
+                    foreach (var item in resultEvents.Data)
+                        Items.Add(item);
+                    break;
+                default:
+                    throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {term}");
+            }
+            IsPopulated = true;
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+
+        return result;
+    }
+
     public async Task GetClosest()
     {
         if (IsBusy)
@@ -124,40 +226,10 @@ public partial class ListVM : BaseVM
         }
     }
 
-    public async Task<Result> GetItems()
+    public async void PopulateData()
     {
-        if (IsBusy)
-            return null;
-
-        Result result = new();
-
-        try
-        {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check internet and try again.", "OK");
-                return null;
-            }
-
-            IsBusy = true;
-
-            GetFilterSelections();
-
-            // Populate the list
-            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
-            TotalItems = result.Total;
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-
-        return result;
+        Title = GetTitle();
+        await GetItems();
     }
 
     public void ClearData()

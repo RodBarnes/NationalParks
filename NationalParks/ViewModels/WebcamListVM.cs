@@ -9,25 +9,6 @@ public partial class WebcamListVM : ListVM
         FilterName = "Webcam";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
-    [RelayCommand]
-    new async Task GetItems()
-    {
-        Result result = await base.GetItems();
-        if (result != null)
-        {
-            ResultWebcams resultWebcams = (ResultWebcams)result;
-            foreach (var item in resultWebcams.Data)
-                Items.Add(item);
-            IsPopulated = true;
-        }
-    }
-
     [RelayCommand]
     new async Task GetClosest()
     {

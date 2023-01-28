@@ -10,25 +10,6 @@ public partial class ThingToDoListVM : ListVM
         FilterName = "ThingToDo";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
-    [RelayCommand]
-    new async Task GetItems()
-    {
-        Result result = await base.GetItems();
-        if (result != null)
-        {
-            ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
-            foreach (var item in resultThingsToDo.Data)
-                Items.Add(item);
-            IsPopulated = true;
-        }
-    }
-
     [RelayCommand]
     new async Task GetClosest()
     {

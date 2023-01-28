@@ -10,25 +10,6 @@ public partial class EventListVM : ListVM
         FilterName = "Event";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
-    [RelayCommand]
-    new async Task GetItems()
-    {
-        Result result = await base.GetItems();
-        if (result != null)
-        {
-            ResultEvents resultEvents = (ResultEvents)result;
-            foreach (var item in resultEvents.Data)
-                Items.Add(item);
-            IsPopulated = true;
-        }
-    }
-
     [RelayCommand]
     new async Task GetClosest()
     {

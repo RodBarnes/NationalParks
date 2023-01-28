@@ -12,36 +12,6 @@ public partial class TourListVM : ListVM
         FilterName = "Tour";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
-    [RelayCommand]
-    new async Task GetItems()
-    {
-        Result result = await base.GetItems();
-        if (result != null)
-        {
-            ResultTours resultTours = (ResultTours)result;
-            foreach (var item in resultTours.Data)
-            {
-                // This addresses the condition that Tours don't have a location but the associated park does
-                ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.Park.ParkCode);
-                if (resultPark.Data.Count == 1)
-                {
-                    var park = resultPark.Data[0];
-                    item.Latitude = park.Latitude;
-                    item.Longitude = park.Longitude;
-                }
-                Items.Add(item);
-            }
-
-            IsPopulated = true;
-        }
-    }
-
     [RelayCommand]
     new async Task GetClosest()
     {
