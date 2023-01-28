@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:TourFilterVM"
              x:Class="NationalParks.Views.TourFilterPage"
              Title="{Binding Title}">
@@ -26,7 +26,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:State">
+                    <DataTemplate x:DataType="m:State">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
@@ -46,7 +46,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedTopics}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Topic">
+                    <DataTemplate x:DataType="m:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
@@ -66,7 +66,7 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedActivities}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Topic">
+                    <DataTemplate x:DataType="m:Topic">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
                         </VerticalStackLayout>
