@@ -160,6 +160,11 @@ public partial class ListVM : BaseVM
         return result;
     }
 
+    public async void PopulateData()
+    {
+        Title = GetTitle();
+        await GetItems();
+    }
     public void ClearData()
     {
         Items.Clear();

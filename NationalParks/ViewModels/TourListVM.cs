@@ -12,12 +12,6 @@ public partial class TourListVM : ListVM
         FilterName = "Tour";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
     [RelayCommand]
     new async Task GetItems()
     {

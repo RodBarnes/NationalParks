@@ -9,12 +9,6 @@ public partial class WebcamListVM : ListVM
         FilterName = "Webcam";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
     [RelayCommand]
     new async Task GetItems()
     {

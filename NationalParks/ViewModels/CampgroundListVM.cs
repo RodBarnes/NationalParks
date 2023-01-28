@@ -10,12 +10,6 @@ public partial class CampgroundListVM : ListVM
         FilterName = "Campground";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
     [RelayCommand]
     new async Task GetItems()
     {

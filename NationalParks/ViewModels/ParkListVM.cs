@@ -10,12 +10,6 @@ public partial class ParkListVM : ListVM
         FilterName = "Park";
     }
 
-    public async void PopulateData()
-    {
-        Title = GetTitle();
-        await GetItems();
-    }
-
     [RelayCommand]
     new async Task GetItems()
     {
