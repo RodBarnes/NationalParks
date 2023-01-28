@@ -90,7 +90,7 @@
                 <Setter Property="Padding" Value="10" />
                 <Setter Property="Background" Value="{StaticResource Background}" />
                 <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="100" />
                 <Setter Property="WidthRequest" Value="350" />
                 <Setter Property="IsClippedToBounds" Value="True"/>
             </Style>

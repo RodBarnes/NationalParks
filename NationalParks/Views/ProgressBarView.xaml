@@ -4,12 +4,15 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.ProgressBarView">
-    <Frame Style="{StaticResource ProgressBar}">
+    <Frame Style="{StaticResource ProgressBar}" >
         <VerticalStackLayout>
             <Label Text="{Binding ProgressText}"
                        Style="{StaticResource LabelMedium}"/>
             <ProgressBar ProgressColor="Green"
                          Progress="{Binding ProgressClosest}" />
+            <Button Text="Cancel"
+                    Style="{StaticResource ButtonOutline}"
+                    Command="{Binding CancelGetClosestCommand}"/>
         </VerticalStackLayout>
     </Frame>
 </ContentView>

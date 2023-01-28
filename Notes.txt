@@ -1,3 +1,7 @@
+Working on moving the list XAML into a ContentView.  But the hang up is the RemainingItems call has to currently reference the GetItems in the derived class; e.g., ParkListVM.  If GetItems could all be moved into ListVM, then all the list pages could use a ListView.xaml.
+
+The issue with moving all GetItems() into the ListVM is having to fill Items with derived types (e.g., ResultParks) because Result doesn't know anything about the array of data.
+
 Error
 -----
 Attempts to build a release of any sort for any API, fails with this error:

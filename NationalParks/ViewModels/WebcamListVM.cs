@@ -35,14 +35,16 @@ public partial class WebcamListVM : ListVM
         {
             // Get the rest of the items
             IsFindingClosest = true;
-            while (TotalItems > Items.Count)
+            while (TotalItems > Items.Count && IsFindingClosest)
             {
                 ProgressClosest = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
-            IsFindingClosest = false;
         }
 
-        await base.GetClosest();
+        if (IsFindingClosest)
+        {
+            await base.GetClosest();
+        }
     }
 }

@@ -82,6 +82,12 @@ public partial class ListVM : BaseVM
         });
     }
 
+    [RelayCommand]
+    public void CancelGetClosest()
+    {
+        IsFindingClosest = false;
+    }
+
     public async Task GetClosest()
     {
         if (IsBusy)
@@ -110,6 +116,11 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+        finally
+        {
+            IsFindingClosest = false;
+            IsBusy = false;
         }
     }
 
