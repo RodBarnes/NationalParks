@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:controls="clr-namespace:NationalParks.Controls"
-             xmlns:models="clr-namespace:NationalParks.Models"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
              x:DataType="vm:ThingToDoDetailVM"
              x:Class="NationalParks.Views.ThingToDoDetailPage"
              Title="{Binding ThingToDo.Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <toolkit:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
@@ -42,7 +42,7 @@
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding ThingToDo.ActivityDescription}" Style="{StaticResource LabelMedium}" />
-                <controls:HyperlinkLabel Text="{Binding ThingToDo.Url}"
+                <ctrl:HyperlinkLabel Text="{Binding ThingToDo.Url}"
                                          Url="{Binding ThingToDo.Url}"
                                          IsVisible="{Binding ThingToDo.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
@@ -66,7 +66,7 @@
                                   SelectionMode="None"
                                   IsVisible="{Binding RelatedParksVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Park">
+                                <DataTemplate x:DataType="m:Park">
                                     <VerticalStackLayout Margin="5">
                                         <HorizontalStackLayout>
                                             <Label Text="{Binding Name}" 

@@ -1,7 +1,3 @@
-In List_Consolidated, I've moved GetItems and GetClosest fully into ListVM.  This allowed for also moving PopulateData into ListVM and allowed for using a consolidated ListView in each of the ListPage.  To do this, it requires passing something (right now, it is Term) to ListVM so it can tell which type of data items are needed (as Term is passed on to DataServices call) and then ListVM uses that type to know how to add the data to Items.
-But: Is this the right thing to do?
-
-
 Error
 -----
 Attempts to build a release of any sort for any API, fails with this error:
@@ -11,19 +7,14 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Todo & Ideas
 ------------
-The code in the *ListPage.xaml is nearly identical.  This could be an included XAML like that done in WeatherTwentyOne except that the <CollectionView /> declares the DataTemplate x:DataType that is unique to each consumer.  How to get past this?
 
-Can the Collapsible components be standardized into a user control? This requires being able to specify the DataType and the contents of the DataTemplate since these are different for each one.  But the operation is identical.
+I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
 
 As above, the *FilterPage.xaml should probably be a single page that is configured (i.e., which filters are available) based upon the name/type of the ListPage from which it was invoked.
-
-I can use Type.GetType(string) to get the type from a string.  Does this allow moving all the GetItems() code from the *ListVM to the base ListVM?
 
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
 
 Can I do the same with FilterVM as I did with ImageListVM; i.e., make it a base class instead of a member class?  If this can be done, it has to allow for which filters are available/visible; e.g., States would be for all and be in FilterVM but Topics and Activities would only be in Park?
-
-Needs to do activity indicator or something while it figures out the Place closest and then displays.
 
 Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
 
