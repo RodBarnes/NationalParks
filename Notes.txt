@@ -7,6 +7,8 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Todo & Ideas
 ------------
+Finish Events
+Finish Webcams
 
 I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
 
