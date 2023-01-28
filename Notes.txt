@@ -20,15 +20,11 @@ Event has SiteCode rather than ParkCode.  It appears to be the same so could be 
 
 Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
-After recopgnizing that Filter isn't a model but a VM, can I use it as an additional base when creating the others (e.g., ParkFitlerVM) and just reference the base members directly of it via the member this.FilterVM?  The issue is that the current mechanism relies upon the filter contents being avilable to the ListVM and applying its Selected contents when getting the data.  FilterVM would have to be derived from BaseVM since can't derive from two base objects.
-
 Settings?
 	- User determined states by which to always filter?
 	- Which list to display as the default page?  Probably would use the CurrentItem property of <Shell>? And update the name of the new item based to that name based upon user selection?
 
 Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
-
-Can I turn the CollapsibleView into a UserControl?
 
 EllipsisLabel control to display an elipsis at the end of too-long-to-display text?  I think this page might have some related guidance: https://swharden.com/blog/2021-10-16-maui-graphics-measurestring/
 
