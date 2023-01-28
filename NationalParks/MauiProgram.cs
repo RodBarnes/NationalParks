@@ -76,11 +76,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<EventListPage>();
         builder.Services.AddTransient<EventDetailVM>();
         builder.Services.AddTransient<EventDetailPage>();
+        builder.Services.AddTransient<EventFilterVM>();
+        builder.Services.AddTransient<EventFilterPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();
         builder.Services.AddTransient<WebcamDetailVM>();
         builder.Services.AddTransient<WebcamDetailPage>();
+        builder.Services.AddTransient<WebcamFilterVM>();
+        builder.Services.AddTransient<WebcamFilterPage>();
 
         return builder.Build();
 	}

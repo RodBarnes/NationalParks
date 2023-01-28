@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             x:DataType="vm:WebcamFilterVM"
+             x:Class="NationalParks.Views.WebcamFilterPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <vm:FilterVM x:Key="Filter"/>
+    </ContentPage.Resources>
+    <Grid
+        ColumnDefinitions="*,*"
+        RowDefinitions="25,*,25,*,25,*,60"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+        <Label Text="States"
+               Grid.Row ="0" Grid.ColumnSpan="2"
+               Style="{StaticResource LabelLargeBold}"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"/>
+        <Frame BorderColor="{StaticResource Primary}"
+               Grid.Row="1" Grid.ColumnSpan="2"
+               CornerRadius="12">
+            <CollectionView ItemsSource="{Binding Source={x:Static vm:FilterVM.StateSelections}}"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedStates}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:State">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource LabelMedium}" Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+        <Button
+            Text="Apply"
+            Grid.Row="6"
+            Grid.Column="0"
+            Margin="8"
+            VerticalOptions="End"
+            Command="{Binding ApplyFilterCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"/>
+        <Button
+            Text="Clear"
+            Grid.Row="6"
+            Grid.Column="1"
+            Margin="8"
+            VerticalOptions="End"
+            Command="{Binding ClearFilterCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"/>
+    </Grid>
+</ContentPage>
