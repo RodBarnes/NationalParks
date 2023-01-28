@@ -72,12 +72,12 @@ public static class MauiProgram
         builder.Services.AddTransient<ThingToDoFilterVM>();
         builder.Services.AddTransient<ThingToDoFilterPage>();
 
-        builder.Services.AddSingleton<EventListVM>();
-        builder.Services.AddSingleton<EventListPage>();
-        builder.Services.AddTransient<EventDetailVM>();
-        builder.Services.AddTransient<EventDetailPage>();
-        builder.Services.AddTransient<EventFilterVM>();
-        builder.Services.AddTransient<EventFilterPage>();
+        //builder.Services.AddSingleton<EventListVM>();
+        //builder.Services.AddSingleton<EventListPage>();
+        //builder.Services.AddTransient<EventDetailVM>();
+        //builder.Services.AddTransient<EventDetailPage>();
+        //builder.Services.AddTransient<EventFilterVM>();
+        //builder.Services.AddTransient<EventFilterPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();

@@ -64,10 +64,10 @@
         <ShellContent ContentTemplate="{DataTemplate views:ThingToDoListPage}"
                       Route="ThingToDoListPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Events" Icon="event_green">
+    <!--<FlyoutItem Title="Events" Icon="event_green">
         <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
                       Route="EventListPage" />
-    </FlyoutItem>
+    </FlyoutItem>-->
     <FlyoutItem Title="Webcams" Icon="camera_green">
         <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
                       Route="WebcamListPage" />
