@@ -3,71 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:v="clr-namespace:NationalParks.Views"
-             xmlns:m="clr-namespace:NationalParks.Models"
              x:DataType="vm:WebcamListVM"
              x:Class="NationalParks.Views.WebcamListPage"
              Title="{Binding Title}">
-    <Grid ColumnDefinitions="*,*"
-          ColumnSpacing="5"
-          RowDefinitions="*,Auto"
-          RowSpacing="0"
-          BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
-        <RefreshView Grid.ColumnSpan="2">
-            <CollectionView ItemsSource="{Binding Items}"
-                        SelectionMode="None"
-                        RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
-                        RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
-                <CollectionView.EmptyView>
-                    <Image Source="data_loading_green"
-                    HeightRequest="160"
-                    WidthRequest="160"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-                </CollectionView.EmptyView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:BaseModel">
-                        <Grid Padding="10,5" HorizontalOptions="Fill">
-                            <Frame HeightRequest="125" 
-                                Style="{StaticResource ViewCard}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ListVM}}, Path=GoToDetailCommand}"
-                                    CommandParameter="{Binding .}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Source="{Binding MainImage}"
-                                        Grid.Column="0"
-                                        Aspect="AspectFill" />
-                                    <VerticalStackLayout
-                                    VerticalOptions="Center"
-                                    Grid.Column="1"
-                                    Padding="10">
-                                        <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
-                                        <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
-        <Button Text="Closest"
-                Grid.Row="1" Grid.Column="0"
-                Margin="8"
-                Command="{Binding GetClosestCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Style="{StaticResource ButtonOutline}" />
-        <Button Text="Filter" 
-                Grid.Row="1" Grid.Column="1"
-                Margin="8"
-                Command="{Binding GoToFilterCommand}"
-                CommandParameter="{Binding FilterName}"
-                IsEnabled="{Binding IsNotBusy}"
-                Style="{StaticResource ButtonOutline}"/>
-        <v:ActivityView Grid.RowSpan="2" Grid.ColumnSpan="2"
-                        IsVisible="{Binding IsBusy}"/>
-        <v:ProgressBarView Grid.RowSpan="2" Grid.ColumnSpan="2"
-                           IsVisible="{Binding IsFindingClosest}"/>
-    </Grid>
+    <v:ListView />
 </ContentPage>
