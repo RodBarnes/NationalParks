@@ -1,6 +1,7 @@
-Working on moving the list XAML into a ContentView.  But the hang up is the RemainingItems call has to currently reference the GetItems in the derived class; e.g., ParkListVM.  If GetItems could all be moved into ListVM, then all the list pages could use a ListView.xaml.
+Working on moving the list XAML into a ContentView.  But the hang up is the RemainingItems call has to currently reference the GetItems in the derived class; e.g., ParkListVM.  If GetItems could all be moved into ListVM, then all the list pages could use a ListView.xaml.  But, GetItems has to know about the 
 
 The issue with moving all GetItems() into the ListVM is having to fill Items with derived types (e.g., ResultParks) because Result doesn't know anything about the array of data.
+
 
 Error
 -----
@@ -13,7 +14,7 @@ Todo & Ideas
 ------------
 The code in the *ListPage.xaml is nearly identical.  This could be an included XAML like that done in WeatherTwentyOne except that the <CollectionView /> declares the DataTemplate x:DataType that is unique to each consumer.  How to get past this?
 
-The above is true of the *DetailPage.xaml also.  Other than the specific name of the type of data, the operation is identical.
+Can the Collapsible components be standardized into a user control? This requires being able to specify the DataType and the contents of the DataTemplate since these are different for each one.  But the operation is identical.
 
 As above, the *FilterPage.xaml should probably be a single page that is configured (i.e., which filters are available) based upon the name/type of the ListPage from which it was invoked.
 

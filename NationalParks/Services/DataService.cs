@@ -11,12 +11,12 @@ public class DataService
         httpClient = new HttpClient();
     }
 
-    public static async Task<Result> GetItemsAsync(string ofType, int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
+    public static async Task<Result> GetItemsAsync(string term, int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
     {
         Result result = new();
 
         // Build base URL
-        var url = ConstructUrl(ofType, $"start={start}&limit={limit}");
+        var url = ConstructUrl(term, $"start={start}&limit={limit}");
 
         // Apply filters
         if (!String.IsNullOrEmpty(topics))
@@ -36,7 +36,7 @@ public class DataService
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
-            switch(ofType)
+            switch(term)
             {
                 case ResultParks.Term:
                     ResultParks resultParks = await response.Content.ReadFromJsonAsync<ResultParks>();
@@ -79,7 +79,7 @@ public class DataService
                     result = resultTopics;
                     break;
                 default:
-                    throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {ofType}");
+                    throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {term}");
             }
         }
 
