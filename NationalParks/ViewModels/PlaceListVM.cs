@@ -12,6 +12,12 @@ public partial class PlaceListVM : ListVM
         FilterName = "Place";
     }
 
+    public async void PopulateData()
+    {
+        Title = GetTitle();
+        await GetItems();
+    }
+
     [RelayCommand]
     new async Task GetItems()
     {

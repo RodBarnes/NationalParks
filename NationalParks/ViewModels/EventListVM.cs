@@ -10,6 +10,12 @@ public partial class EventListVM : ListVM
         FilterName = "Event";
     }
 
+    public async void PopulateData()
+    {
+        Title = GetTitle();
+        await GetItems();
+    }
+
     [RelayCommand]
     new async Task GetItems()
     {
