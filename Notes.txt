@@ -1,6 +1,5 @@
-Working on moving the list XAML into a ContentView.  But the hang up is the RemainingItems call has to currently reference the GetItems in the derived class; e.g., ParkListVM.  If GetItems could all be moved into ListVM, then all the list pages could use a ListView.xaml.  But, GetItems has to know about the 
-
-The issue with moving all GetItems() into the ListVM is having to fill Items with derived types (e.g., ResultParks) because Result doesn't know anything about the array of data.
+In List_Consolidated, I've moved GetItems and GetClosest fully into ListVM.  This allowed for also moving PopulateData into ListVM and allowed for using a consolidated ListView in each of the ListPage.  To do this, it requires passing something (right now, it is Term) to ListVM so it can tell which type of data items are needed (as Term is passed on to DataServices call) and then ListVM uses that type to know how to add the data to Items.
+But: Is this the right thing to do?
 
 
 Error
