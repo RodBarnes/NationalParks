@@ -8,6 +8,12 @@ To install these workloads, run the following command: dotnet workload restore	M
 Todo & Ideas
 ------------
 
+Add People?
+Add ParkingLots?
+Add News Releases?
+Add Multimedia?
+Add Articles?
+
 I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
 
 As above, the *FilterPage.xaml should probably be a single page that is configured (i.e., which filters are available) based upon the name/type of the ListPage from which it was invoked.
