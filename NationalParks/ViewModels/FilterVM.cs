@@ -17,7 +17,7 @@ namespace NationalParks.ViewModels
         public List<Models.Activity> Activities { get; set; } = new();
         public List<State> States { get; set; } = new();
 
-        // Required in order for this to be referenced in the XAML
+        // Parameterless constructor required in order for this to be referenced in the XAML
         public FilterVM() {}
 
         public FilterVM(bool populateData = false) : base()
