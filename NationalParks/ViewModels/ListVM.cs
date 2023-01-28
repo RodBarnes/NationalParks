@@ -2,6 +2,7 @@
 
 namespace NationalParks.ViewModels;
 
+[QueryProperty(nameof(Filter), "Filter")]
 public partial class ListVM : BaseVM
 {
     public FilterVM Filter { get; set; }
@@ -209,11 +210,11 @@ public partial class ListVM : BaseVM
                 });
             }
 
+            IsFindingClosest = true;
             if (Items.Count < TotalItems)
             {
                 // Get the rest of the items
                 LimitItems = 50;
-                IsFindingClosest = true;
                 while (TotalItems > Items.Count && IsFindingClosest)
                 {
                     ProgressClosest = (double)Items.Count / (double)TotalItems;

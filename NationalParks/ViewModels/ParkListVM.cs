@@ -1,6 +1,5 @@
 ﻿namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Filter), "Filter")]
 public partial class ParkListVM : ListVM
 {
     public ParkListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
