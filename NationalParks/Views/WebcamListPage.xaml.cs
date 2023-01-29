@@ -1,21 +1,9 @@
 namespace NationalParks.Views;
 
-public partial class WebcamListPage : ContentPage
+public partial class WebcamListPage : ListContentPage
 {
-    readonly WebcamListVM _vm;
-
-	public WebcamListPage(WebcamListVM vm)
+	public WebcamListPage(WebcamListVM vm) : base(vm)
 	{
 		InitializeComponent();
-		BindingContext = _vm = vm;
 	}
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        if (!_vm.IsPopulated)
-        {
-            _vm.PopulateData();
-        }
-    }
 }

@@ -1,21 +1,9 @@
 namespace NationalParks.Views;
 
-public partial class CampgroundListPage : ContentPage
+public partial class CampgroundListPage : ListContentPage
 {
-    readonly CampgroundListVM _vm;
-
-	public CampgroundListPage(CampgroundListVM vm)
+	public CampgroundListPage(CampgroundListVM vm) : base(vm)
 	{
 		InitializeComponent();
-		BindingContext = _vm = vm;
 	}
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        if (!_vm.IsPopulated)
-        {
-            _vm.PopulateData();
-        }
-    }
 }

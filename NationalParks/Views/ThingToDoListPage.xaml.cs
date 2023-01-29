@@ -1,22 +1,9 @@
 namespace NationalParks.Views;
 
-public partial class ThingToDoListPage : ContentPage
+public partial class ThingToDoListPage : ListContentPage
 {
-	readonly ThingToDoListVM _vm;
-
-	public ThingToDoListPage(ThingToDoListVM vm)
+	public ThingToDoListPage(ThingToDoListVM vm) : base(vm)
 	{
 		InitializeComponent();
-		BindingContext = _vm = vm;
 	}
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        if (!_vm.IsPopulated)
-        {
-            _vm.PopulateData();
-        }
-    }
-
 }

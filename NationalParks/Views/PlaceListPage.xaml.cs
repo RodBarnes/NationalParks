@@ -1,21 +1,9 @@
 namespace NationalParks.Views;
 
-public partial class PlaceListPage : ContentPage
+public partial class PlaceListPage : ListContentPage
 {
-    readonly PlaceListVM _vm;
-
-	public PlaceListPage(PlaceListVM vm)
+	public PlaceListPage(PlaceListVM vm) : base(vm)
 	{
 		InitializeComponent();
-		BindingContext = _vm = vm;
 	}
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        if (!_vm.IsPopulated)
-        {
-            _vm.PopulateData();
-        }
-    }
 }
