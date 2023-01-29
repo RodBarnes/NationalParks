@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:NationalParks.Views"
+       xmlns:v="clr-namespace:NationalParks.Views"
        x:Class="NationalParks.AppShell"
        FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
        CurrentItem="{x:Reference StartItem}">
@@ -45,39 +45,39 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem Title="Parks" Icon="tree_green">
-        <ShellContent ContentTemplate="{DataTemplate views:ParkListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:ParkListPage}"
                       Route="ParkListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Campgrounds" Icon="campfire_green">
-        <ShellContent ContentTemplate="{DataTemplate views:CampgroundListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:CampgroundListPage}"
                       Route="CampgroundListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Tours" Icon="tour_green">
-        <ShellContent ContentTemplate="{DataTemplate views:TourListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:TourListPage}"
                       Route="TourListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Places" Icon="location_green">
-        <ShellContent ContentTemplate="{DataTemplate views:PlaceListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:PlaceListPage}"
                       Route="PlaceListPage" />
     </FlyoutItem>
     <FlyoutItem Title="Things To Do" Icon="eye_green">
-        <ShellContent ContentTemplate="{DataTemplate views:ThingToDoListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:ThingToDoListPage}"
                       Route="ThingToDoListPage" />
     </FlyoutItem>
     <!--<FlyoutItem Title="Events" Icon="event_green">
-        <ShellContent ContentTemplate="{DataTemplate views:EventListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:EventListPage}"
                       Route="EventListPage" />
     </FlyoutItem>-->
     <FlyoutItem Title="Webcams" Icon="camera_green">
-        <ShellContent ContentTemplate="{DataTemplate views:WebcamListPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:WebcamListPage}"
                       Route="WebcamListPage" />
     </FlyoutItem>
     <FlyoutItem Title="About" Icon="info_fancy_green">
-        <ShellContent ContentTemplate="{DataTemplate views:AboutPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:AboutPage}"
                       Route="AboutPage"/>
     </FlyoutItem>
     <FlyoutItem Title="Tester" Icon="question_green">
-        <ShellContent ContentTemplate="{DataTemplate views:DataTesterPage}"
+        <ShellContent ContentTemplate="{DataTemplate v:DataTesterPage}"
                       Route="TesterPage"
                       x:Name="StartItem" />
     </FlyoutItem>
