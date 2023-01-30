@@ -31,7 +31,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AboutVM>();
         builder.Services.AddSingleton<AboutPage>();
 
-        builder.Services.AddTransient<ListVM>();
+        builder.Services.AddSingleton<ListVM>();
 
         builder.Services.AddSingleton<DataTesterVM>();
         builder.Services.AddSingleton<DataTesterPage>();
@@ -41,46 +41,45 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<ParkListVM>();
 		builder.Services.AddSingleton<ParkListPage>();
+        builder.Services.AddTransient<ParkFilterPage>();
         builder.Services.AddTransient<ParkDetailVM>();
 		builder.Services.AddTransient<ParkDetailPage>();
-        builder.Services.AddTransient<ParkFilterPage>();
 
         builder.Services.AddSingleton<CampgroundListVM>();
         builder.Services.AddSingleton<CampgroundListPage>();
+        builder.Services.AddTransient<CampgroundFilterPage>();
         builder.Services.AddTransient<CampgroundDetailVM>();
         builder.Services.AddTransient<CampgroundDetailPage>();
-        builder.Services.AddTransient<CampgroundFilterPage>();
 
         builder.Services.AddSingleton<TourListVM>();
         builder.Services.AddSingleton<TourListPage>();
+        builder.Services.AddTransient<TourFilterPage>();
         builder.Services.AddTransient<TourDetailVM>();
         builder.Services.AddTransient<TourDetailPage>();
-        builder.Services.AddTransient<TourFilterPage>();
 
         builder.Services.AddSingleton<PlaceListVM>();
         builder.Services.AddSingleton<PlaceListPage>();
+        builder.Services.AddTransient<PlaceFilterPage>();
         builder.Services.AddTransient<PlaceDetailVM>();
         builder.Services.AddTransient<PlaceDetailPage>();
-        builder.Services.AddTransient<PlaceFilterPage>();
 
         builder.Services.AddSingleton<ThingToDoListVM>();
         builder.Services.AddSingleton<ThingToDoListPage>();
+        builder.Services.AddTransient<ThingToDoFilterPage>();
         builder.Services.AddTransient<ThingToDoDetailVM>();
         builder.Services.AddTransient<ThingToDoDetailPage>();
-        builder.Services.AddTransient<ThingToDoFilterPage>();
 
         //builder.Services.AddSingleton<EventListVM>();
         //builder.Services.AddSingleton<EventListPage>();
+        //builder.Services.AddTransient<EventFilterPage>();
         //builder.Services.AddTransient<EventDetailVM>();
         //builder.Services.AddTransient<EventDetailPage>();
-        //builder.Services.AddTransient<EventFilterVM>();
-        //builder.Services.AddTransient<EventFilterPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();
+        builder.Services.AddTransient<WebcamFilterPage>();
         builder.Services.AddTransient<WebcamDetailVM>();
         builder.Services.AddTransient<WebcamDetailPage>();
-        builder.Services.AddTransient<WebcamFilterPage>();
 
         return builder.Build();
 	}
