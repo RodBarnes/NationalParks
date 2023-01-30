@@ -37,7 +37,7 @@ public partial class ParkFilterVM : BaseVM
     }
 
     [RelayCommand]
-    async Task ApplyFilter()
+    public async Task ApplyFilter()
     {
         // Update the filter
         ListVM.Filter.Topics.Clear();

@@ -26,7 +26,7 @@ namespace NationalParks.ViewModels
                 PopulateData();
         }
 
-        public async Task PopulateData()
+        private static async Task PopulateData()
         {
             // Populate the available selections
             await ReadStates();
@@ -34,7 +34,7 @@ namespace NationalParks.ViewModels
             await GetAllTopicsAsync();
         }
 
-        public async Task GetAllTopicsAsync()
+        private static async Task GetAllTopicsAsync()
         {
             if (TopicSelections?.Count > 0)
                 return;
@@ -60,7 +60,7 @@ namespace NationalParks.ViewModels
             }
         }
 
-        public async Task GetAllActivitiesAsync()
+        private static async Task GetAllActivitiesAsync()
         {
             if (ActivitySelections?.Count > 0)
                 return;
@@ -86,7 +86,7 @@ namespace NationalParks.ViewModels
             }
         }
 
-        public async Task ReadStates()
+        private static async Task ReadStates()
         {
             if (StateSelections?.Count > 0)
                 return;

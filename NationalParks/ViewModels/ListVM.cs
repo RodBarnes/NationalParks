@@ -63,7 +63,7 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToFilter(string pageType)
+    public async Task GoToFilter(string pageType)
     {
         await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
         {
@@ -72,7 +72,7 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    async Task GoToDetail(BaseModel model)
+    public async Task GoToDetail(BaseModel model)
     {
         if (model == null)
             return;
