@@ -2,9 +2,9 @@ namespace NationalParks.Views;
 
 public partial class WebcamFilterPage : ContentPage
 {
-	readonly WebcamFilterVM _vm;
+	readonly WebcamListVM _vm;
 
-	public WebcamFilterPage(WebcamFilterVM vm)
+	public WebcamFilterPage(WebcamListVM vm)
 	{
 		InitializeComponent();
 		BindingContext = _vm = vm;
@@ -13,6 +13,6 @@ public partial class WebcamFilterPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _vm.PopulateData();
+        _vm.PopulateFilterData();
     }
 }

@@ -31,6 +31,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<AboutVM>();
         builder.Services.AddSingleton<AboutPage>();
 
+        builder.Services.AddTransient<ListVM>();
+
         builder.Services.AddSingleton<DataTesterVM>();
         builder.Services.AddSingleton<DataTesterPage>();
 
@@ -41,35 +43,30 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ParkListPage>();
         builder.Services.AddTransient<ParkDetailVM>();
 		builder.Services.AddTransient<ParkDetailPage>();
-        builder.Services.AddTransient<ParkFilterVM>();
         builder.Services.AddTransient<ParkFilterPage>();
 
         builder.Services.AddSingleton<CampgroundListVM>();
         builder.Services.AddSingleton<CampgroundListPage>();
         builder.Services.AddTransient<CampgroundDetailVM>();
         builder.Services.AddTransient<CampgroundDetailPage>();
-        builder.Services.AddTransient<CampgroundFilterVM>();
         builder.Services.AddTransient<CampgroundFilterPage>();
 
         builder.Services.AddSingleton<TourListVM>();
         builder.Services.AddSingleton<TourListPage>();
         builder.Services.AddTransient<TourDetailVM>();
         builder.Services.AddTransient<TourDetailPage>();
-        builder.Services.AddTransient<TourFilterVM>();
         builder.Services.AddTransient<TourFilterPage>();
 
         builder.Services.AddSingleton<PlaceListVM>();
         builder.Services.AddSingleton<PlaceListPage>();
         builder.Services.AddTransient<PlaceDetailVM>();
         builder.Services.AddTransient<PlaceDetailPage>();
-        builder.Services.AddTransient<PlaceFilterVM>();
         builder.Services.AddTransient<PlaceFilterPage>();
 
         builder.Services.AddSingleton<ThingToDoListVM>();
         builder.Services.AddSingleton<ThingToDoListPage>();
         builder.Services.AddTransient<ThingToDoDetailVM>();
         builder.Services.AddTransient<ThingToDoDetailPage>();
-        builder.Services.AddTransient<ThingToDoFilterVM>();
         builder.Services.AddTransient<ThingToDoFilterPage>();
 
         //builder.Services.AddSingleton<EventListVM>();
@@ -83,7 +80,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<WebcamListPage>();
         builder.Services.AddTransient<WebcamDetailVM>();
         builder.Services.AddTransient<WebcamDetailPage>();
-        builder.Services.AddTransient<WebcamFilterVM>();
         builder.Services.AddTransient<WebcamFilterPage>();
 
         return builder.Build();

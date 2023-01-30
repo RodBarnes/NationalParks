@@ -5,6 +5,13 @@ Error	NETSDK1147	To build this project, the following workloads must be installe
 To install these workloads, run the following command: dotnet workload restore	MonkeyFinder	C:\Program Files\dotnet\sdk\7.0.102\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets	38	
 
 
+Status
+------
+Successfully consolidated *FilterVM into ListVM and deleted the *FilterVMs.  But two considerations:
+	- Once something is selected and going back to the filter, I have to click it twice to get it to *uncheck*.  Maybe a disconnected between the UI and what is selected?
+	- Every list has to fill its own static list of selections.  Seems this should be done once for all, right?
+
+
 Todo & Ideas
 ------------
 

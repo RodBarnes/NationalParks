@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             x:DataType="vm:PlaceFilterVM"
+             x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.PlaceFilterPage"
              Title="PlaceFilterPage">
     <ContentPage.Resources>

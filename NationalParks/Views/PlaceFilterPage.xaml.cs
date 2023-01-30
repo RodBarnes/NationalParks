@@ -2,9 +2,9 @@ namespace NationalParks.Views;
 
 public partial class PlaceFilterPage : ContentPage
 {
-    readonly PlaceFilterVM _vm;
+    readonly PlaceListVM _vm;
 
-	public PlaceFilterPage(PlaceFilterVM vm)
+	public PlaceFilterPage(PlaceListVM vm)
 	{
 		InitializeComponent();
         BindingContext = _vm = vm;
@@ -14,7 +14,7 @@ public partial class PlaceFilterPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _vm.PopulateData();
+        _vm.PopulateFilterData();
     }
 
 }

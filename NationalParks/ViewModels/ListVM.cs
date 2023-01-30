@@ -5,7 +5,7 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ListVM : BaseVM
 {
-    public FilterVM Filter { get; set; }
+    private FilterVM Filter { get; set; }
 
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -24,6 +24,11 @@ public partial class ListVM : BaseVM
     [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] string term;
     [ObservableProperty] string filterName;
+
+    // Selected values
+    public ObservableCollection<object> SelectedTopics { get; set; } = new();
+    public ObservableCollection<object> SelectedActivities { get; set; } = new();
+    public ObservableCollection<object> SelectedStates { get; set; } = new();
 
     private string baseTitle;
     protected string BaseTitle
@@ -60,6 +65,26 @@ public partial class ListVM : BaseVM
         IsBusy = false;
         this.geolocation = geolocation;
         this.connectivity = connectivity;
+    }
+
+    public void PopulateFilterData()
+    {
+        if (Filter is null)
+            Filter = new FilterVM(true);
+
+        // Populate the selected items
+        foreach (var topic in Filter.Topics)
+        {
+            SelectedTopics.Add(topic);
+        }
+        foreach (var activity in Filter.Activities)
+        {
+            SelectedActivities.Add(activity);
+        }
+        foreach (var state in Filter.States)
+        {
+            SelectedStates.Add(state);
+        }
     }
 
     [RelayCommand]
@@ -242,6 +267,63 @@ public partial class ListVM : BaseVM
             IsFindingClosest = false;
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    public async Task ApplyFilter()
+    {
+        // Update the filter
+        Filter.Topics.Clear();
+        foreach (var o in SelectedTopics)
+        {
+            if (o is Models.Topic topic)
+            {
+                Filter.Topics.Add(topic);
+            }
+        }
+        Filter.Activities.Clear();
+        foreach (var o in SelectedActivities)
+        {
+            if (o is Models.Activity activity)
+            {
+                Filter.Activities.Add(activity);
+            }
+        }
+        Filter.States.Clear();
+        foreach (var o in SelectedStates)
+        {
+            if (o is Models.State state)
+            {
+                Filter.States.Add(state);
+            }
+        }
+
+        // Clear the list
+        ClearData();
+
+        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
+        {
+            {"Filter", Filter }
+        });
+    }
+
+    [RelayCommand]
+    public void ClearFilter()
+    {
+        // Clear the selections
+        SelectedTopics.Clear();
+        SelectedActivities.Clear();
+        SelectedStates.Clear();
+
+        // Clear the filter
+        Filter.Topics.Clear();
+        Filter.Activities.Clear();
+        Filter.States.Clear();
+
+        // Clear the list
+        ClearData();
+
+        Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
     }
 
     public async void PopulateData()
