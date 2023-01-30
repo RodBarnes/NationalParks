@@ -13,7 +13,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAEIAAAKQBCAAAgBgQkAwIAIIFQQAgAHAIQAAAAAAiA=</HashCode>
+      <HashCode>AAEIECAKQBCAAAgFgQkBwIAIJFQQAgAHAIQAAAAAAiA=</HashCode>
       <FileName>ViewModels\ListVM.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -33,16 +33,6 @@
       <HashCode>EBgAAAAAAAAAACAAAAAAAAAAAAAAAACBAAAABKAAAQA=</HashCode>
       <FileName>ViewModels\FilterVM.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="NationalParks.ViewModels.ParkFilterVM">
-    <Position X="0.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAECAAAAAAAAAAAAABQAAABAAAAACBAAAAAAAAAAA=</HashCode>
-      <FileName>ViewModels\ParkFilterVM.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="ListVM" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
