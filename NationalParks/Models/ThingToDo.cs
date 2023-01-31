@@ -4,7 +4,7 @@ public class ThingToDo : BaseModel
 {
     public string ShortDescription { get; set; }
     public List<RelatedPark> RelatedParks { get; set; }
-    public List<object> RelatedOrganizations { get; set; }
+    public List<Organization> RelatedOrganizations { get; set; }
     public List<string> Tags { get; set; }
     public string GeometryPoiId { get; set; }
     public List<object> Amenities { get; set; }
