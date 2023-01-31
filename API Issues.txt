@@ -12,7 +12,26 @@ Event API seems broken.  Anything from 61 and beyond returns no data -- here is 
 		"pagesize": "10"
 	}
 
+Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
+
 The count of returns pages is 10 for everything up to and including a pageNumber of 59.  At pageNumber 60, it returns only 6 pages.  At pageNumber 61 and beyond, it returns 0 pages.
+
+
+Webcam
+------
+Webcams are not sorted alphbetically by title; unsure what the order is.  And it does not have the 'sort' parameter as found on Parks.
+
+Maybe WebcamImageList doesn't make since.  Most don't have images.  These (there may be others) each have one image:
+	Clarno Unit: The Palisades
+	Live View From Panther Junction
+	Spruce Tree House
+	Pine Springs Canyon View
+	Dell City View
+	El Capitan View
+	Bartlett Cove Lagoon and Fairweather Range
+	Bartlett Cove Public Dock
+
+WebCam image model is the same as Park image model but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
 
 
 Places

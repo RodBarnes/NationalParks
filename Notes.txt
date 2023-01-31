@@ -24,8 +24,6 @@ I attempted to turn CollapsibleView into a user Control but failed because I cou
 
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
 
-Event has SiteCode rather than ParkCode.  It appears to be the same so could be used to go to related park?  It also has ParkFullname so maybe that could be used?
-
 Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
 Settings?
@@ -42,23 +40,9 @@ Determine how to get an image of the webcam and display that in the webcam list.
 
 Does it make sense to have the Webcams as a separate aspect/list?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
 
-Webcams are not sorted alphbetically by title; unsure what the order is.  And it does not have the 'sort' parameter as found on Parks.
-
-Maybe WebcamImageList doesn't make since.  Most don't have images.  These (there may be others) each have one image:
-	Clarno Unit: The Palisades
-	Live View From Panther Junction
-	Spruce Tree House
-	Pine Springs Canyon View
-	Dell City View
-	El Capitan View
-	Bartlett Cove Lagoon and Fairweather Range
-	Bartlett Cove Public Dock
-
 Change the splash icon to the AdvApp icon.
 
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
-
-The parks and campgrounds come in sorted order.  Webcams are not -- at least, no order is determined.
 
 Allow setting radious in miles and presenting list of Parks within that radius.
 
@@ -67,8 +51,6 @@ The NPS API provides for "Parks with Activity", "Parks for Topic", "Parks with A
 Maybe need a string handler that recognizes URLs in text (e.g., weather descriptions) and turns those into clickable links.
 
 Still unsure what to do with the ExceptionHours and whether to display the StandardHours since they are often (alway?) included as text in the description.
-
-WebCam image model is the same as Park image model but they include two additional properties: Description (which I've never seen filled), and a collection of "crops" which indicate an aspect ratio and the associated URL to view it. For now, I've derived WebCamImage from Image.  But should Image be ParkImage (which would eliminate the ambiguity with System...Image)?
 
 And maybe Activity should be NpsActivity to eliminate the ambiguity with System...Activity?
 
