@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.Models.Park">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RQFBARACAAAgAIAAAAiABgAEAIAoAgAAQAAADKAAAAI=</HashCode>
+      <FileName>Models\Park.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Contacts" />
+      <Property Name="PhysicalAddress" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Activities" />
+      <Property Name="Addresses" />
+      <Property Name="Fees" />
+      <Property Name="EntranceFees" />
+      <Property Name="EntrancePasses" />
+      <Property Name="Alerts" />
+      <Property Name="OperatingHours" />
+      <Property Name="Topics" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.Activity" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Address" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEKAAAAIAAAAAAAAAgAQAAQAAAAAA=</HashCode>
+      <FileName>Models\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Contacts">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contacts.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="EmailAddresses" />
+      <Property Name="PhoneNumbers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.EmailContact" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\EmailContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.PhoneContact" Collapsed="true">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgQAAAAAAAAQAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\PhoneContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Fee">
+    <Position X="3.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Fee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Alert" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAgAEAAAAAAAAAAAAAAAAAACAAgAAAACAA=</HashCode>
+      <FileName>Models\Alert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.OperatingHours">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAgAAAAAAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OperatingHours.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StandardHours" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Exceptions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.OperatingException">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQgAAAAAAAAAAAQAEAAAAA=</HashCode>
+      <FileName>Models\OperatingException.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ExceptionHours" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.Topic" Collapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Hours" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAARAAIAACCAAACEAIAAgCAIIACAJAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\Hours.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.Models.ThingToDo">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AFEBABACAQoiAEgBgEIgAEACAAAAIEiBAACABKAAAIA=</HashCode>
+      <FileName>Models\ThingToDo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Activities" />
+      <Property Name="RelatedParks" />
+      <Property Name="RelatedOrganizations" />
+      <Property Name="Topics" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.Activity">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.RelatedPark">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAIAAAAAAAAQAAAAAAgAACAAABAAAAAA=</HashCode>
+      <FileName>Models\RelatedPark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Organization">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Organization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Topic">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

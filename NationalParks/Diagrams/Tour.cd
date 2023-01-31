@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.Models.Tour">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAQgAAAACAAQgAAAABAAAAAAAAEAAAAAAAKAAAQA=</HashCode>
+      <FileName>Models\Tour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Park" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Activities" />
+      <Property Name="Stops" />
+      <Property Name="Topics" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.Activity" Collapsed="true">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Stop" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAQQAAABgAAAAAAggAAAAEAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Stop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Topic" Collapsed="true">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.RelatedPark" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAIAAAAAAAAQAAAAAAgAACAAABAAAAAA=</HashCode>
+      <FileName>Models\RelatedPark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

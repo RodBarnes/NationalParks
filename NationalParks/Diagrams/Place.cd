@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.Models.Place">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>oEAAAAoGogAwAAABkAqgAggBCAAQAESBAAAAAUAAAAA=</HashCode>
+      <FileName>Models\Place.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="QuickFacts" />
+      <Property Name="RelatedParks" />
+      <Property Name="Multimedia" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.QuickFact">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\QuickFact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.RelatedPark">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAIAAAAAAAAQAAAAAAgAACAAABAAAAAA=</HashCode>
+      <FileName>Models\RelatedPark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Multimedia">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAAAAACQAAAAAAAAA=</HashCode>
+      <FileName>Models\Multimedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
