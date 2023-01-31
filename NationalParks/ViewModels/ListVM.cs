@@ -5,7 +5,7 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Filter), "Filter")]
 public partial class ListVM : BaseVM
 {
-    private FilterVM Filter { get; set; }
+    FilterVM Filter { get; set; }
 
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -65,26 +65,6 @@ public partial class ListVM : BaseVM
         IsBusy = false;
         this.geolocation = geolocation;
         this.connectivity = connectivity;
-    }
-
-    public void PopulateFilterData()
-    {
-        if (Filter is null)
-            Filter = new FilterVM(true);
-
-        // Populate the selected items
-        foreach (var topic in Filter.Topics)
-        {
-            SelectedTopics.Add(topic);
-        }
-        foreach (var activity in Filter.Activities)
-        {
-            SelectedActivities.Add(activity);
-        }
-        foreach (var state in Filter.States)
-        {
-            SelectedStates.Add(state);
-        }
     }
 
     [RelayCommand]
@@ -324,6 +304,25 @@ public partial class ListVM : BaseVM
         ClearData();
 
         Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
+    }
+
+    public void PopulateFilterData()
+    {
+        Filter ??= new FilterVM(true);
+
+        // Populate the selected items
+        foreach (var topic in Filter.Topics)
+        {
+            SelectedTopics.Add(topic);
+        }
+        foreach (var activity in Filter.Activities)
+        {
+            SelectedActivities.Add(activity);
+        }
+        foreach (var state in Filter.States)
+        {
+            SelectedStates.Add(state);
+        }
     }
 
     public async void PopulateData()
