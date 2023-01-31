@@ -115,8 +115,7 @@ public partial class ListVM : BaseVM
                     ResultPlaces resultPlaces = (ResultPlaces)result;
                     foreach (var item in resultPlaces.Data)
                     {
-                        // This code addresses the condition where Place has no location but
-                        // but it has at least one related park
+                        // Place may not have a location so use the related park location
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
                             ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.RelatedParks[0].ParkCode);
@@ -134,7 +133,7 @@ public partial class ListVM : BaseVM
                     ResultTours resultTours = (ResultTours)result;
                     foreach (var item in resultTours.Data)
                     {
-                        // This addresses the condition that Tours don't have a location but the associated park does
+                        // Tours don't have a location so use the associated park location
                         ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.Park.ParkCode);
                         if (resultPark.Data.Count == 1)
                         {
