@@ -1,0 +1,66 @@
+This shows the events occurring in ListContentPage after selecting Park from the flyout menu, letting it settle, then clicking [Filter]
+
+OnPropertyChanging("Navigation")
+OnPropertyChanged("Navigation")
+
+OnPropertyChanging("ImplicitStyle")
+OnPropertyChanged("ImplicitStyle")
+
+OnPropertyChanging("BackgroundColor")
+OnPropertyChanged("BackgroundColor")
+
+OnPropertyChanging("BindingContext")
+OnPropertyChanged("BindingContext")
+OnBindingContextChanged
+
+OnPropertyChanged("NameScope")
+
+OnPropertyChanging("Content")
+OnPropertyChanged("Content")
+
+OnChildAdded(ListView)
+
+OnPropertyChanging("Parent")
+OnParentChanging(ParentChangingEventArgs)
+	NewParent.Page [ParkListPage]
+OnParentSet
+OnPropertyChanging("Window")
+OnPropertyChanged("Window")
+OnParentChanged()
+OnPropertyChanged("Parent")
+
+OnAppearing()
+
+OnPropertyChanging("Title")
+OnPropertyChanged("Title")
+
+OnNavigatedTo(NavigatedToEventArgs)
+	PreviousPage [DataTesterPage]
+
+OnHandlerChanging(HandlerChangingEventArgs)
+	NewHandler [Microsoft.Maui.Handlers.PageHandler]
+OnChildMeasureInvalidated(ListView, EventArgs)
+OnChildMeasureInvalidated(ListView, EventArgs)   >>>> Did this really happen twice <<<<
+OnHandlerChanged()
+
+OnPropertyChanging("Width")
+OnPropertyChanged("Width")
+
+OnPropertyChanging("Height")
+OnPropertyChanged("Height")
+
+OnSizeAllocated(width, height)
+
+OnPropertyChanging("Title")
+OnPropertyChanged("Title")
+
+>>>> The Park List has now displayed <<<<
+
+>>>> Tapped [Filter] <<<<
+
+OnNavigatingFrom()
+
+OnDisappearing()
+
+OnNavigatedFrom(NavigatedFromEventArgs)
+	DestinationPage [ParkFilterPage]
