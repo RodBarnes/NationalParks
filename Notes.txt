@@ -7,11 +7,11 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Status
 ------
+Events is still hidden but the rest are all working.  Ready to add some more?
 
 
 Todo & Ideas
 ------------
-
 Add People?
 Add ParkingLots?
 Add News Releases?
