@@ -9,10 +9,4 @@ public partial class TourFilterPage : ContentPage
 		InitializeComponent();
 		BindingContext = _vm = vm;
 	}
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        _vm.PopulateFilterData();
-    }
 }

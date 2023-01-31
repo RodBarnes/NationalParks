@@ -6,9 +6,6 @@
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.EventFilterPage"
              Title="{Binding Title}">
-    <ContentPage.Resources>
-        <vm:FilterVM x:Key="Filter"/>
-    </ContentPage.Resources>
     <Grid
         ColumnDefinitions="*,*"
         RowDefinitions="25,*,25,*,25,*,60"
@@ -22,7 +19,7 @@
         <Frame BorderColor="{StaticResource Primary}"
                Grid.Row="1" Grid.ColumnSpan="2"
                CornerRadius="12">
-            <CollectionView ItemsSource="{Binding Source={x:Static vm:FilterVM.StateSelections}}"
+            <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.StateSelections}}"
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedStates}">
                 <CollectionView.ItemTemplate>

@@ -13,31 +13,21 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAEIECAKQBCAAAgFgQkBwIAIJFQQAgAHAIQAAAAAAiA=</HashCode>
+      <HashCode>EBkIECAKQBCAACgBgQkBwIAIJEQQAgCHAIQAAAAAAyA=</HashCode>
       <FileName>ViewModels\ListVM.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Filter" />
-    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="StateSelections" />
+      <Property Name="TopicSelections" />
+      <Property Name="ActivitySelections" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="NationalParks.ViewModels.ParkListVM">
-    <Position X="5.5" Y="1" Width="1.5" />
+    <Position X="6.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\ParkListVM.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="NationalParks.ViewModels.FilterVM">
-    <Position X="6.25" Y="3" Width="2" />
-    <TypeIdentifier>
-      <HashCode>EBgAAAAAAAAAACAAAAAAAAAAAAAAAACBAAAABKAAAQA=</HashCode>
-      <FileName>ViewModels\FilterVM.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="ActivitySelections" />
-      <Property Name="StateSelections" />
-      <Property Name="TopicSelections" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="NationalParks.ViewModels.DetailVM">
     <Position X="0.5" Y="3.5" Width="2" />
@@ -47,21 +37,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="NationalParks.Models.Activity" Collapsed="true">
-    <Position X="9.75" Y="3.25" Width="1.5" />
+    <Position X="6.75" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Activity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NationalParks.Models.State" Collapsed="true">
-    <Position X="9.75" Y="4.25" Width="1.5" />
+    <Position X="6.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\State.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NationalParks.Models.Topic" Collapsed="true">
-    <Position X="9.75" Y="5.25" Width="1.5" />
+    <Position X="6.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Topic.cs</FileName>

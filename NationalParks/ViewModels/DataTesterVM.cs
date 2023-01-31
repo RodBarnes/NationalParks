@@ -15,8 +15,6 @@ public partial class DataTesterVM : BaseVM
     public ObservableCollection<Models.Place> Places { get; } = new();
     public ObservableCollection<Models.Tour> Tours { get; } = new();
 
-    public FilterVM Filter { get; set; }
-
     [ObservableProperty] bool isPopulated = false;
 
     [ObservableProperty] string currentState;
