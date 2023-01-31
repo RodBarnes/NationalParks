@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.ViewModels.BaseVM">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.ListVM">
+    <Position X="3" Y="0.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEIECAKQBCAAAgFgQkBwIAIJFQQAgAHAIQAAAAAAiA=</HashCode>
+      <FileName>ViewModels\ListVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Filter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NationalParks.ViewModels.ParkListVM">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ParkListVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.FilterVM">
+    <Position X="6.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EBgAAAAAAAAAACAAAAAAAAAAAAAAAACBAAAABKAAAQA=</HashCode>
+      <FileName>ViewModels\FilterVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ActivitySelections" />
+      <Property Name="StateSelections" />
+      <Property Name="TopicSelections" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.ViewModels.DetailVM">
+    <Position X="0.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEACgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>ViewModels\DetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Activity" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.State" Collapsed="true">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.Topic" Collapsed="true">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
