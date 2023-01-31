@@ -18,6 +18,8 @@ Add News Releases?
 Add Multimedia?
 Add Articles?
 
+If a filter selection is made and it is lower down in the list it isn't visible when returning to edit the filter.  Should it automatically scroll to the top selected position?  Or...?
+
 I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
 
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?

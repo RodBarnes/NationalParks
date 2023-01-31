@@ -11,10 +11,6 @@ public partial class ListVM : BaseVM
     protected int LimitItems = 20;
     protected int TotalItems = 0;
 
-    protected string StatesFilter = "";
-    protected string TopicsFilter = "";
-    protected string ActivitiesFilter = "";
-
     [ObservableProperty] public ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] double progressClosest;
@@ -22,21 +18,6 @@ public partial class ListVM : BaseVM
     [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] string term;
     [ObservableProperty] string filterName;
-
-    // Selected values
-    public ObservableCollection<object> SelectedTopics { get; set; } = new();
-    public ObservableCollection<object> SelectedActivities { get; set; } = new();
-    public ObservableCollection<object> SelectedStates { get; set; } = new();
-
-    public bool IsFiltered => (
-        SelectedStates.Count > 0 || 
-        SelectedTopics.Count > 0 || 
-        SelectedActivities.Count > 0);
-
-    // Possible selections
-    public static ObservableCollection<State> StateSelections { get; } = new();
-    public static ObservableCollection<Topic> TopicSelections { get; } = new();
-    public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
 
     private string baseTitle;
     protected string BaseTitle
@@ -76,15 +57,6 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task GoToFilter(string pageType)
-    {
-        await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
-        {
-            {"VM", this }
-        });
-    }
-
-    [RelayCommand]
     public async Task GoToDetail(BaseModel model)
     {
         if (model == null)
@@ -120,8 +92,9 @@ public partial class ListVM : BaseVM
             }
 
             IsBusy = true;
-
-            GetFilterSelections();
+            string StatesFilter = GetStatesFilter(SelectedStates);
+            string TopicsFilter = GetTopicsFilter(SelectedTopics);
+            string ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
 
             // Populate the list
             result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
@@ -257,25 +230,6 @@ public partial class ListVM : BaseVM
         }
     }
 
-    [RelayCommand]
-    public async Task ApplyFilter()
-    {
-        // Clear the list
-        ClearData();
-        await Shell.Current.GoToAsync("..", true);
-    }
-
-    [RelayCommand]
-    public void ClearFilter()
-    {
-        // Clear the selections
-        SelectedTopics.Clear();
-        SelectedActivities.Clear();
-        SelectedStates.Clear();
-
-        Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
-    }
-
     public async void PopulateData()
     {
         Title = GetTitle();
@@ -306,13 +260,25 @@ public partial class ListVM : BaseVM
 
         return tmp;
     }
-    protected void GetFilterSelections()
-    {
-        StatesFilter = GetStatesFilter(SelectedStates);
-        TopicsFilter = GetTopicsFilter(SelectedTopics);
-        ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
-    }
-    private static string GetStatesFilter(ObservableCollection<object> states)
+
+    #region Filter
+
+    // Filter possible selections
+    public static ObservableCollection<State> StateSelections { get; } = new();
+    public static ObservableCollection<Topic> TopicSelections { get; } = new();
+    public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
+
+    // Filter selected values
+    public ObservableCollection<object> SelectedTopics { get; set; } = new();
+    public ObservableCollection<object> SelectedActivities { get; set; } = new();
+    public ObservableCollection<object> SelectedStates { get; set; } = new();
+
+    bool IsFiltered => (
+                SelectedStates.Count > 0 ||
+                SelectedTopics.Count > 0 ||
+                SelectedActivities.Count > 0);
+
+    static string GetStatesFilter(ObservableCollection<object> states)
     {
         string filter = "";
 
@@ -327,7 +293,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private static string GetTopicsFilter(ObservableCollection<object> topics)
+    static string GetTopicsFilter(ObservableCollection<object> topics)
     {
         string filter = "";
 
@@ -342,7 +308,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private static string GetActivitiesFilter(ObservableCollection<object> activities)
+    static string GetActivitiesFilter(ObservableCollection<object> activities)
     {
         string filter = "";
 
@@ -357,7 +323,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private static async Task GetAllTopicsAsync()
+    static async Task GetAllTopicsAsync()
     {
         if (TopicSelections?.Count > 0)
             return;
@@ -382,7 +348,7 @@ public partial class ListVM : BaseVM
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
-    private static async Task GetAllActivitiesAsync()
+    static async Task GetAllActivitiesAsync()
     {
         if (ActivitySelections?.Count > 0)
             return;
@@ -407,7 +373,7 @@ public partial class ListVM : BaseVM
             await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
         }
     }
-    private static async Task ReadStates()
+    static async Task ReadStates()
     {
         if (StateSelections?.Count > 0)
             return;
@@ -423,4 +389,34 @@ public partial class ListVM : BaseVM
             }
         }
     }
+
+    [RelayCommand]
+    public async Task GoToFilter(string pageType)
+    {
+        await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
+        {
+            {"VM", this }
+        });
+    }
+
+    [RelayCommand]
+    public async Task ApplyFilter()
+    {
+        // Clear the list
+        ClearData();
+        await Shell.Current.GoToAsync("..", true);
+    }
+
+    [RelayCommand]
+    public void ClearFilter()
+    {
+        // Clear the selections
+        SelectedTopics.Clear();
+        SelectedActivities.Clear();
+        SelectedStates.Clear();
+
+        Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
+    }
+
+    #endregion
 }
