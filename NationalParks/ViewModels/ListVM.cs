@@ -1,12 +1,10 @@
 ﻿using NationalParks.Services;
+using System.Text.Json;
 
 namespace NationalParks.ViewModels;
 
-[QueryProperty(nameof(Filter), "Filter")]
 public partial class ListVM : BaseVM
 {
-    FilterVM Filter { get; set; }
-
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
@@ -29,6 +27,16 @@ public partial class ListVM : BaseVM
     public ObservableCollection<object> SelectedTopics { get; set; } = new();
     public ObservableCollection<object> SelectedActivities { get; set; } = new();
     public ObservableCollection<object> SelectedStates { get; set; } = new();
+
+    public bool IsFiltered => (
+        SelectedStates.Count > 0 || 
+        SelectedTopics.Count > 0 || 
+        SelectedActivities.Count > 0);
+
+    // Possible selections
+    public static ObservableCollection<State> StateSelections { get; } = new();
+    public static ObservableCollection<Topic> TopicSelections { get; } = new();
+    public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
 
     private string baseTitle;
     protected string BaseTitle
@@ -252,39 +260,9 @@ public partial class ListVM : BaseVM
     [RelayCommand]
     public async Task ApplyFilter()
     {
-        // Update the filter
-        Filter.Topics.Clear();
-        foreach (var o in SelectedTopics)
-        {
-            if (o is Models.Topic topic)
-            {
-                Filter.Topics.Add(topic);
-            }
-        }
-        Filter.Activities.Clear();
-        foreach (var o in SelectedActivities)
-        {
-            if (o is Models.Activity activity)
-            {
-                Filter.Activities.Add(activity);
-            }
-        }
-        Filter.States.Clear();
-        foreach (var o in SelectedStates)
-        {
-            if (o is Models.State state)
-            {
-                Filter.States.Add(state);
-            }
-        }
-
         // Clear the list
         ClearData();
-
-        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
-        {
-            {"Filter", Filter }
-        });
+        await Shell.Current.GoToAsync("..", true);
     }
 
     [RelayCommand]
@@ -295,40 +273,18 @@ public partial class ListVM : BaseVM
         SelectedActivities.Clear();
         SelectedStates.Clear();
 
-        // Clear the filter
-        Filter.Topics.Clear();
-        Filter.Activities.Clear();
-        Filter.States.Clear();
-
-        // Clear the list
-        ClearData();
-
         Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
-    }
-
-    public void PopulateFilterData()
-    {
-        Filter ??= new FilterVM(true);
-
-        // Populate the selected items
-        foreach (var topic in Filter.Topics)
-        {
-            SelectedTopics.Add(topic);
-        }
-        foreach (var activity in Filter.Activities)
-        {
-            SelectedActivities.Add(activity);
-        }
-        foreach (var state in Filter.States)
-        {
-            SelectedStates.Add(state);
-        }
     }
 
     public async void PopulateData()
     {
         Title = GetTitle();
         await GetItems();
+
+        // Populate the available selections
+        await ReadStates();
+        await GetAllActivitiesAsync();
+        await GetAllTopicsAsync();
     }
     public void ClearData()
     {
@@ -341,7 +297,7 @@ public partial class ListVM : BaseVM
         if (TotalItems > 0)
         {
             tmp += $"  ({TotalItems}";
-            if (Filter is not null && Filter.IsFiltered)
+            if (IsFiltered)
             {
                 tmp += $", filtered";
             }
@@ -352,18 +308,15 @@ public partial class ListVM : BaseVM
     }
     protected void GetFilterSelections()
     {
-        if (Filter is not null)
-        {
-            StatesFilter = GetStatesFilter(Filter.States);
-            TopicsFilter = GetTopicsFilter(Filter.Topics);
-            ActivitiesFilter = GetActivitiesFilter(Filter.Activities);
-        }
+        StatesFilter = GetStatesFilter(SelectedStates);
+        TopicsFilter = GetTopicsFilter(SelectedTopics);
+        ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
     }
-    private static string GetStatesFilter(List<State> states)
+    private static string GetStatesFilter(ObservableCollection<object> states)
     {
         string filter = "";
 
-        foreach (var state in states)
+        foreach (State state in states)
         {
             if (filter.Length > 0)
             {
@@ -374,11 +327,11 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private static string GetTopicsFilter(List<Topic> topics)
+    private static string GetTopicsFilter(ObservableCollection<object> topics)
     {
         string filter = "";
 
-        foreach (var topic in topics)
+        foreach (Topic topic in topics)
         {
             if (filter.Length > 0)
             {
@@ -389,11 +342,11 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    private static string GetActivitiesFilter(List<Models.Activity> activities)
+    private static string GetActivitiesFilter(ObservableCollection<object> activities)
     {
         string filter = "";
 
-        foreach (var activity in activities)
+        foreach (Models.Activity activity in activities)
         {
             if (filter.Length > 0)
             {
@@ -403,5 +356,71 @@ public partial class ListVM : BaseVM
         }
 
         return filter;
+    }
+    private static async Task GetAllTopicsAsync()
+    {
+        if (TopicSelections?.Count > 0)
+            return;
+
+        try
+        {
+            int startTopics = 0;
+            int totalTopics = 1;
+
+            while (totalTopics > startTopics)
+            {
+                var resultBase = await DataService.GetItemsAsync(ResultTopics.Term, startTopics);
+                ResultTopics resultTopics = (ResultTopics)resultBase;
+                totalTopics = resultTopics.Total;
+                startTopics += resultTopics.Data.Count;
+                foreach (var topic in resultTopics.Data)
+                    TopicSelections.Add(topic);
+            }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+    }
+    private static async Task GetAllActivitiesAsync()
+    {
+        if (ActivitySelections?.Count > 0)
+            return;
+
+        try
+        {
+            int startActivities = 0;
+            int totalActivities = 1;
+
+            while (totalActivities > startActivities)
+            {
+                var resultBase = await DataService.GetItemsAsync(ResultActivities.Term, startActivities);
+                ResultActivities resultActivities = (ResultActivities)resultBase;
+                totalActivities = resultActivities.Total;
+                startActivities += resultActivities.Data.Count;
+                foreach (var activity in resultActivities.Data)
+                    ActivitySelections.Add(activity);
+            }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+        }
+    }
+    private static async Task ReadStates()
+    {
+        if (StateSelections?.Count > 0)
+            return;
+
+        using var stream = await FileSystem.OpenAppPackageFileAsync("states_titlecase.json");
+        var result = JsonSerializer.Deserialize<ResultStates>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        if (result != null)
+        {
+            foreach (var item in result.Data)
+            {
+                StateSelections.Add(item);
+            }
+        }
     }
 }
