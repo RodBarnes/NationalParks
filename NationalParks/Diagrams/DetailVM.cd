@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.ViewModels.DetailVM">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEACgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>ViewModels\DetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.CampgroundDetailVM" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAIAAAAAAAACAQEgAAECAAgAAAAABgAAAA=</HashCode>
+      <FileName>ViewModels\CampgroundDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.EventDetailVM" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\EventDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.ParkDetailVM" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAQEEQAAAAAAAAIEAAAEAAAIAAABAAAAABgAAAA=</HashCode>
+      <FileName>ViewModels\ParkDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.PlaceDetailVM" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAIgAAAEAABAEQAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PlaceDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.ThingToDoDetailVM" Collapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ThingToDoDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.TourDetailVM" Collapsed="true">
+    <Position X="3.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAQAIAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TourDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.ViewModels.WebcamDetailVM" Collapsed="true">
+    <Position X="3.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\WebcamDetailVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
