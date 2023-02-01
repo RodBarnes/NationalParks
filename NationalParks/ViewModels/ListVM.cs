@@ -236,7 +236,7 @@ public partial class ListVM : BaseVM
             if (IsFindingClosest)
             {
                 // Find closest item to us
-                var first = items.OrderBy(m => location.CalculateDistance(
+                var first = Items.OrderBy(m => location.CalculateDistance(
                     new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
                     .FirstOrDefault();
 
