@@ -16,7 +16,7 @@ public partial class NewsRelease : BaseModel
 
     public new string Description { get => Abstract; }
 
-    public new Image MainImage { get => Image; }
-    
+    public new ImageSource MainImage => (!String.IsNullOrEmpty(Image?.Url)) ? ImageSource.FromUri(new Uri(Image.Url)) : ImageSource.FromFile("nps");
+
     #endregion
 }
