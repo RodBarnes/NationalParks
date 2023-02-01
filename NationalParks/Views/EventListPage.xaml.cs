@@ -1,9 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class EventListPage : ListContentPage
+public partial class EventListPage : ContentPage
 {
-	public EventListPage(EventListVM vm) : base(vm)
+	public EventListPage(EventListVM vm)
 	{
 		InitializeComponent();
-	}
+        BindingContext = vm;
+    }
 }

@@ -1,9 +1,10 @@
 namespace NationalParks.Views;
 
-public partial class ThingToDoListPage : ListContentPage
+public partial class ThingToDoListPage : ContentPage
 {
-	public ThingToDoListPage(ThingToDoListVM vm) : base(vm)
+	public ThingToDoListPage(ThingToDoListVM vm)
 	{
 		InitializeComponent();
-	}
+        BindingContext = vm;
+    }
 }

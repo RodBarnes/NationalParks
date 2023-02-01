@@ -229,7 +229,8 @@ public partial class ListVM : BaseVM
         }
     }
 
-    public async void PopulateData()
+    [RelayCommand]
+    public async Task PopulateData()
     {
         Title = GetTitle();
         await GetItems();
@@ -239,6 +240,7 @@ public partial class ListVM : BaseVM
         await GetAllActivitiesAsync();
         await GetAllTopicsAsync();
     }
+
     public void ClearData()
     {
         Items.Clear();

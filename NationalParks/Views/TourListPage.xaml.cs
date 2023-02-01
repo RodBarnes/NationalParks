@@ -1,9 +1,10 @@
 ﻿namespace NationalParks.Views;
 
-public partial class TourListPage : ListContentPage
+public partial class TourListPage : ContentPage
 {
-	public TourListPage(TourListVM vm) :base(vm)
+	public TourListPage(TourListVM vm)
 	{
 		InitializeComponent();
-	}
+        BindingContext = vm;
+    }
 }
