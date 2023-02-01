@@ -112,13 +112,8 @@ public partial class ListVM : BaseVM
                         // Place may not have a location so use the related park location
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
-                            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.RelatedParks[0].ParkCode);
-                            if (resultPark.Data.Count == 1)
-                            {
-                                var park = resultPark.Data[0];
-                                item.Latitude = park.Latitude;
-                                item.Longitude = park.Longitude;
-                            }
+                            string parkCode = item.RelatedParks[0].ParkCode;
+                            await FillLocationFromPark(item, parkCode);
                         }
                         Items.Add(item);
                     }
@@ -128,13 +123,8 @@ public partial class ListVM : BaseVM
                     foreach (var item in resultTours.Data)
                     {
                         // Tours don't have a location so use the associated park location
-                        ResultParks resultPark = await DataService.GetParkForParkCodeAsync(item.Park.ParkCode);
-                        if (resultPark.Data.Count == 1)
-                        {
-                            var park = resultPark.Data[0];
-                            item.Latitude = park.Latitude;
-                            item.Longitude = park.Longitude;
-                        }
+                        string parkCode = item.Park.ParkCode;
+                        await FillLocationFromPark(item, parkCode);
                         Items.Add(item);
                     }
                     break;
@@ -260,6 +250,16 @@ public partial class ListVM : BaseVM
         }
 
         return tmp;
+    }
+    private static async Task FillLocationFromPark(BaseModel item, string parkCode)
+    {
+        ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
+        if (resultPark.Data.Count == 1)
+        {
+            var park = resultPark.Data[0];
+            item.Latitude = park.Latitude;
+            item.Longitude = park.Longitude;
+        }
     }
 
     #region Filter
