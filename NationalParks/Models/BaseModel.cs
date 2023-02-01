@@ -44,7 +44,5 @@ public partial class BaseModel
         source ??= ImageSource.FromFile("nps");
         return source;
     }
-
-
 }
 

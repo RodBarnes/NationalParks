@@ -51,6 +51,12 @@ public static class MauiProgram
         //builder.Services.AddTransient<EventDetailVM>();
         //builder.Services.AddTransient<EventDetailPage>();
 
+        builder.Services.AddSingleton<NewsReleaseListVM>();
+        builder.Services.AddSingleton<NewsReleaseListPage>();
+        builder.Services.AddTransient<NewsReleaseFilterPage>();
+        builder.Services.AddTransient<NewsReleaseDetailVM>();
+        builder.Services.AddTransient<NewsReleaseDetailPage>();
+
         builder.Services.AddSingleton<ParkListVM>();
 		builder.Services.AddSingleton<ParkListPage>();
         builder.Services.AddTransient<ParkFilterPage>();

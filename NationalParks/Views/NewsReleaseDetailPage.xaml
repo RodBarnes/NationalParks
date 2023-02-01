@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             x:DataType="vm:NewsReleaseDetailVM"
+             x:Class="NationalParks.Views.NewsReleaseDetailPage"
+             Title="{Binding NewsRelease.Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto,*,Auto">
+        <BoxView BackgroundColor="{StaticResource Primary}"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+        <Border StrokeShape="RoundRectangle 10"
+                Grid.Row="0"
+                Grid.Column="1"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="175"
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,0,0,8">
+            <Image Source="{Binding NewsRelease.MainImage}"
+                   Aspect="AspectFill"
+                   HeightRequest="160"
+                   WidthRequest="160"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <!-- Description -->
+                <Label Text="{Binding NewsRelease.Description}" 
+                       Style="{StaticResource LabelMedium}" />
+                <HorizontalStackLayout>
+                    <Label Text="Related Park" 
+                           Style="{StaticResource LabelMediumBold}" 
+                           VerticalOptions="Center" 
+                           Margin="5"/>
+                    <Image Source="tree_reverse_green"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Aspect="AspectFill"
+                            HeightRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
+                                                  CommandParameter="{Binding NewsRelease.ParkCode}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        <HorizontalStackLayout
+            Grid.ColumnSpan="3"
+            Grid.Row="2"
+            HorizontalOptions="CenterAndExpand">
+            <Button Text="Location" 
+                    Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding NewsRelease}"
+                    HorizontalOptions="StartAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+            <Button Text="Images"
+                    Command="{Binding GoToImagesCommand}"
+                    CommandParameter="{Binding NewsRelease.Images}"
+                    HorizontalOptions="EndAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

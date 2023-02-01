@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NationalParks.Models.NewsRelease">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAAoAAABAAAgAAAAAAAAABCBAAAgAAAAAAA=</HashCode>
+      <FileName>Models\NewsRelease.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="RelatedOrganizations" />
+      <Property Name="RelatedParks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NationalParks.Models.Organization" Collapsed="true">
+    <Position X="5.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Organization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalParks.Models.RelatedPark" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAIAAAAAAAAQAAAAAAgAACAAABAAAAAA=</HashCode>
+      <FileName>Models\RelatedPark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

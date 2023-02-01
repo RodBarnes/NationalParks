@@ -7,12 +7,18 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Status
 ------
+Adding News Releases...
 
 
 Todo & Ideas
 ------------
+Can I do with FilterPage like I did with ListPage and create a FilterView used by them>?
+Does Community.Toolkit have an HTML label link?
+Can the x:DataType of the DetailPages be set to just DetailVM?
+Should I change MainImage to just Image as what NewsRelease has?
+
+
 Add ParkingLots?
-Add News Releases?
 Add Multimedia?
 Add Articles?
 

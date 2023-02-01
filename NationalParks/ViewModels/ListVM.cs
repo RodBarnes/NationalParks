@@ -131,6 +131,19 @@ public partial class ListVM : BaseVM
                         Items.Add(item);
                     }
                     break;
+                case ResultNewsReleases.Term:
+                    ResultNewsReleases resultReleases = (ResultNewsReleases)result;
+                    foreach (var item in resultReleases.Data)
+                    {
+                        if (item.DLatitude < 0)
+                        {
+                            // News Release is missing location so use park location
+                            string parkCode = item.ParkCode;
+                            await FillLocationFromPark(item, parkCode);
+                        }
+                        Items.Add(item);
+                    }
+                    break;
                 case ResultThingsToDo.Term:
                     ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
                     foreach (var item in resultThingsToDo.Data)

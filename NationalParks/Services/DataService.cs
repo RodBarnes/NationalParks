@@ -82,6 +82,10 @@ public class DataService
                     ResultPeople resultPeople = await response.Content.ReadFromJsonAsync<ResultPeople>();
                     result = resultPeople;
                     break;
+                case ResultNewsReleases.Term:
+                    ResultNewsReleases resultNewsReleases = await response.Content.ReadFromJsonAsync<ResultNewsReleases>();
+                    result = resultNewsReleases;
+                    break;
                 default:
                     throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {term}");
             }
