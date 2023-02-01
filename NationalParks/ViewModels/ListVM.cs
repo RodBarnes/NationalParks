@@ -149,7 +149,15 @@ public partial class ListVM : BaseVM
                 case ResultPeople.Term:
                     ResultPeople resultPeople = (ResultPeople)result;
                     foreach (var item in resultPeople.Data)
+                    {
+                        if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
+                        {
+                            // Person is missing location so use first related park location
+                            string parkCode = item.RelatedParks[0].ParkCode;
+                            await FillLocationFromPark(item, parkCode);
+                        }
                         Items.Add(item);
+                    }
                     break;
                 default:
                     throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");

@@ -7,7 +7,6 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Status
 ------
-People have been added.  List and Detail seem fine.  Need to flesh out details with CollapsibleViews.
 
 
 Todo & Ideas
