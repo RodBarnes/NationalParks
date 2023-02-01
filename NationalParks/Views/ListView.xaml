@@ -37,8 +37,7 @@
                                     <Image Source="{Binding MainImage}"
                                         Grid.Column="0"
                                         Aspect="AspectFill" />
-                                    <VerticalStackLayout
-                                    VerticalOptions="Center"
+                                    <VerticalStackLayout VerticalOptions="Center"
                                     Grid.Column="1"
                                     Padding="10">
                                         <Label Text="{Binding Title}" Style="{StaticResource LabelLargeBold}" />
