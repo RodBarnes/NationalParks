@@ -7,19 +7,19 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Status
 ------
-Working on splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list.  Location is only needed when either:
-	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
-	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.  But this also means getting it not just for those yet to be retrieved but those already in the list.  I tried implenting this and it makes GetClosest for Tours very, very slow.  Whereas, the orignal way (that gets the location when loading the items) takes a little hit per item but really not that much.  Overall, the original seems faster.
-
+People have been added.  List and Detail seem fine.  Need to flesh out details with CollapsibleViews.
 
 
 Todo & Ideas
 ------------
-Add People?
 Add ParkingLots?
 Add News Releases?
 Add Multimedia?
 Add Articles?
+
+Splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list might be helpful.  Location is only needed when either:
+	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
+	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.  But this also means getting it not just for those yet to be retrieved but those already in the list.  I tried implenting this and it makes GetClosest for Tours very, very slow.  Whereas, the orignal way (that gets the location when loading the items) takes a little hit per item but really not that much.  Overall, the original seems faster.
 
 If a filter selection is made and it is lower down in the list it isn't visible when returning to edit the filter.  Should it automatically scroll to the top selected position?  Or...?
 

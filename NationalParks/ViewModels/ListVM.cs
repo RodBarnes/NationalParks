@@ -146,8 +146,13 @@ public partial class ListVM : BaseVM
                     foreach (var item in resultEvents.Data)
                         Items.Add(item);
                     break;
+                case ResultPeople.Term:
+                    ResultPeople resultPeople = (ResultPeople)result;
+                    foreach (var item in resultPeople.Data)
+                        Items.Add(item);
+                    break;
                 default:
-                    throw new Exception($"DataService.GetItemsAsync -- No idea what that means: {term}");
+                    throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");
             }
             IsPopulated = true;
         }

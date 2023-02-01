@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             x:DataType="vm:PersonDetailVM"
+             x:Class="NationalParks.Views.PersonDetailPage"
+             Title="{Binding Person.Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto,*,Auto">
+        <BoxView BackgroundColor="{StaticResource Primary}"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"/>
+        <Border StrokeShape="RoundRectangle 10"
+                Grid.Row="0"
+                Grid.Column="1"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="175"
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,0,0,8">
+            <Image Source="{Binding Person.MainImage}"
+                   Aspect="AspectFill"
+                   HeightRequest="160"
+                   WidthRequest="160"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="{Binding Person.FullName}" Style="{StaticResource LabelLargeBold}"/>
+                <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
+                <ctrl:HyperlinkLabel Text="{Binding Person.Url}"
+                                         Url="{Binding Person.Url}"
+                                         IsVisible="{Binding Person.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                         Style="{StaticResource LabelMedium}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        <HorizontalStackLayout
+            Grid.ColumnSpan="3"
+            Grid.Row="2"
+            HorizontalOptions="CenterAndExpand">
+            <Button Text="Location" 
+                    Command="{Binding OpenMapCommand}"
+                    CommandParameter="{Binding Person}"
+                    HorizontalOptions="StartAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+            <Button Text="Images" 
+                    Command="{Binding GoToImagesCommand}"
+                    CommandParameter="{Binding Person.Images}"
+                    HorizontalOptions="EndAndExpand" 
+                    WidthRequest="175" 
+                    Margin="8"
+                    Style="{StaticResource ButtonOutline}"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

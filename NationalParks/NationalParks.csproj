@@ -102,6 +102,15 @@
 	  <Compile Update="Views\EventListPage.xaml.cs">
 	    <DependentUpon>EventListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\PersonListPage.xaml.cs">
+	    <DependentUpon>PersonListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PersonFilterPage.xaml.cs">
+	    <DependentUpon>PersonFilterPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PersonDetailPage.xaml.cs">
+	    <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ThingToDoListPage.xaml.cs">
 	    <DependentUpon>ThingToDoListPage.xaml</DependentUpon>
 	  </Compile>
@@ -154,6 +163,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PersonDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PersonFilterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PersonListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PlaceDetailPage.xaml">

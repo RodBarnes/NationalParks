@@ -39,23 +39,29 @@ public static class MauiProgram
         builder.Services.AddSingleton<ImageListVM>();
         builder.Services.AddSingleton<ImageListPage>();
 
-        builder.Services.AddSingleton<ParkListVM>();
-		builder.Services.AddSingleton<ParkListPage>();
-        builder.Services.AddTransient<ParkFilterPage>();
-        builder.Services.AddTransient<ParkDetailVM>();
-		builder.Services.AddTransient<ParkDetailPage>();
-
         builder.Services.AddSingleton<CampgroundListVM>();
         builder.Services.AddSingleton<CampgroundListPage>();
         builder.Services.AddTransient<CampgroundFilterPage>();
         builder.Services.AddTransient<CampgroundDetailVM>();
         builder.Services.AddTransient<CampgroundDetailPage>();
 
-        builder.Services.AddSingleton<TourListVM>();
-        builder.Services.AddSingleton<TourListPage>();
-        builder.Services.AddTransient<TourFilterPage>();
-        builder.Services.AddTransient<TourDetailVM>();
-        builder.Services.AddTransient<TourDetailPage>();
+        //builder.Services.AddSingleton<EventListVM>();
+        //builder.Services.AddSingleton<EventListPage>();
+        //builder.Services.AddTransient<EventFilterPage>();
+        //builder.Services.AddTransient<EventDetailVM>();
+        //builder.Services.AddTransient<EventDetailPage>();
+
+        builder.Services.AddSingleton<ParkListVM>();
+		builder.Services.AddSingleton<ParkListPage>();
+        builder.Services.AddTransient<ParkFilterPage>();
+        builder.Services.AddTransient<ParkDetailVM>();
+		builder.Services.AddTransient<ParkDetailPage>();
+
+        builder.Services.AddSingleton<PersonListVM>();
+        builder.Services.AddSingleton<PersonListPage>();
+        builder.Services.AddTransient<PersonFilterPage>();
+        builder.Services.AddTransient<PersonDetailVM>();
+        builder.Services.AddTransient<PersonDetailPage>();
 
         builder.Services.AddSingleton<PlaceListVM>();
         builder.Services.AddSingleton<PlaceListPage>();
@@ -69,11 +75,11 @@ public static class MauiProgram
         builder.Services.AddTransient<ThingToDoDetailVM>();
         builder.Services.AddTransient<ThingToDoDetailPage>();
 
-        //builder.Services.AddSingleton<EventListVM>();
-        //builder.Services.AddSingleton<EventListPage>();
-        //builder.Services.AddTransient<EventFilterPage>();
-        //builder.Services.AddTransient<EventDetailVM>();
-        //builder.Services.AddTransient<EventDetailPage>();
+        builder.Services.AddSingleton<TourListVM>();
+        builder.Services.AddSingleton<TourListPage>();
+        builder.Services.AddTransient<TourFilterPage>();
+        builder.Services.AddTransient<TourDetailVM>();
+        builder.Services.AddTransient<TourDetailPage>();
 
         builder.Services.AddSingleton<WebcamListVM>();
         builder.Services.AddSingleton<WebcamListPage>();

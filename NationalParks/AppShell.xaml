@@ -56,6 +56,9 @@
     <FlyoutItem Title="Places" Icon="location_green">
         <ShellContent ContentTemplate="{DataTemplate v:PlaceListPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="People" Icon="ball_green">
+        <ShellContent ContentTemplate="{DataTemplate v:PersonListPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Things To Do" Icon="eye_green">
         <ShellContent ContentTemplate="{DataTemplate v:ThingToDoListPage}" />
     </FlyoutItem>
