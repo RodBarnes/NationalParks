@@ -43,6 +43,8 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Person.FullName}" Style="{StaticResource LabelLargeBold}"/>
                 <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="Detail" Style="{StaticResource LabelMediumBold}" />
+                <Label Text="{Binding Person.BodyText}" Style="{StaticResource LabelSmall}" TextType="Html"/>
                 <ctrl:HyperlinkLabel Text="{Binding Person.Url}"
                                          Url="{Binding Person.Url}"
                                          IsVisible="{Binding Person.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
