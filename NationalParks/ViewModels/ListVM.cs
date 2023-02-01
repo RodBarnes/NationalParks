@@ -57,21 +57,15 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task GoToDetail(BaseModel model)
+    public async Task PopulateData()
     {
-        if (model == null)
-            return;
+        Title = GetTitle();
+        await GetItems();
 
-        await Shell.Current.GoToAsync($"{model.GetType().Name}DetailPage", true, new Dictionary<string, object>
-        {
-            {"Model", model}
-        });
-    }
-
-    [RelayCommand]
-    public void CancelGetClosest()
-    {
-        IsFindingClosest = false;
+        // Populate the available selections
+        await ReadStates();
+        await GetAllActivitiesAsync();
+        await GetAllTopicsAsync();
     }
 
     [RelayCommand]
@@ -177,6 +171,18 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
+    public async Task GoToDetail(BaseModel model)
+    {
+        if (model == null)
+            return;
+
+        await Shell.Current.GoToAsync($"{model.GetType().Name}DetailPage", true, new Dictionary<string, object>
+        {
+            {"Model", model}
+        });
+    }
+
+    [RelayCommand]
     public async Task GetClosest()
     {
         if (IsBusy)
@@ -230,15 +236,9 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task PopulateData()
+    public void CancelGetClosest()
     {
-        Title = GetTitle();
-        await GetItems();
-
-        // Populate the available selections
-        await ReadStates();
-        await GetAllActivitiesAsync();
-        await GetAllTopicsAsync();
+        IsFindingClosest = false;
     }
 
     public void ClearData()
