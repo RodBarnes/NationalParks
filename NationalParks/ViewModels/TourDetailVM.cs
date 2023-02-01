@@ -14,7 +14,6 @@ public partial class TourDetailVM : DetailVM
     public TourDetailVM(IMap map) : base(map)
     {
         Title = "Tour";
-
         TopicsVM = new CollapsibleViewVM("Topics", false);
         ActivitiesVM = new CollapsibleViewVM("Activities", false);
         TagsVM = new CollapsibleViewVM("Tags", false);

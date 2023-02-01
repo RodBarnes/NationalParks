@@ -9,7 +9,6 @@ public partial class WebcamDetailVM : DetailVM
     public WebcamDetailVM(IMap map) : base(map)
     {
         Title = "Webcam";
-
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
     }
 }

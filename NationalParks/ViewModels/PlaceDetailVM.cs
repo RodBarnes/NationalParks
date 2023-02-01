@@ -17,7 +17,6 @@ public partial class PlaceDetailVM : DetailVM
     public PlaceDetailVM(IMap map) : base(map)
     {
         Title = "Place";
-
         RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         TagsVM = new CollapsibleViewVM("Tags", false);

@@ -18,7 +18,6 @@ public partial class CampgroundDetailVM : DetailVM
     public CampgroundDetailVM(IMap map) : base(map)
     {
         Title = "Campground";
-
         FeesVM = new CollapsibleViewVM("Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         ContactsVM = new CollapsibleViewVM("Contacts", false);

@@ -19,7 +19,6 @@ public partial class ParkDetailVM : DetailVM
     public ParkDetailVM(IMap map) : base(map)
     {
         Title = "Park";
-
         AlertsVM = new CollapsibleViewVM("Alerts", false);
         CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
