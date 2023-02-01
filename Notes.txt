@@ -7,7 +7,9 @@ To install these workloads, run the following command: dotnet workload restore	M
 
 Status
 ------
-Events is still hidden but the rest are all working.  Ready to add some more?
+Working on splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list.  Location is only needed when either:
+	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
+	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.
 
 
 Todo & Ideas
