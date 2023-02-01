@@ -11,7 +11,7 @@ public partial class ListVM : BaseVM
     protected int LimitItems = 20;
     protected int TotalItems = 0;
 
-    [ObservableProperty] public ObservableCollection<BaseModel> items = new();
+    [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] double progressClosest;
     [ObservableProperty] string progressText;
