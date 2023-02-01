@@ -14,8 +14,8 @@ public partial class NewsRelease : BaseModel
 
     #region Derived Properties
 
+    public bool HasCredit { get => !String.IsNullOrEmpty(Credit); }
     public new string Description { get => Abstract; }
-
     public new ImageSource MainImage => (!String.IsNullOrEmpty(Image?.Url)) ? ImageSource.FromUri(new Uri(Image.Url)) : ImageSource.FromFile("nps");
 
     #endregion

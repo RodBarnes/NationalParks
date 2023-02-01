@@ -44,6 +44,14 @@
                 <!-- Description -->
                 <Label Text="{Binding NewsRelease.Description}" 
                        Style="{StaticResource LabelMedium}" />
+                <HorizontalStackLayout IsVisible="{Binding NewsRelease.HasCredit, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <Label Text="Credit: " Style="{StaticResource LabelMediumBold}" Margin="5,0"/>
+                    <Label Text="{Binding NewsRelease.Credit}" Style="{StaticResource LabelMedium}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Released: " Style="{StaticResource LabelMediumBold}" Margin="5,0"/>
+                    <Label Text="{Binding NewsRelease.ReleaseDate}" Style="{StaticResource LabelMedium}" />
+                </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <Label Text="Related Park" 
                            Style="{StaticResource LabelMediumBold}" 
