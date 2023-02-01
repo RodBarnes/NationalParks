@@ -62,7 +62,7 @@
     <FlyoutItem Title="Things To Do" Icon="eye_green">
         <ShellContent ContentTemplate="{DataTemplate v:ThingToDoListPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="News Releases" Icon="ball_green">
+    <FlyoutItem Title="News Releases" Icon="newspaper_green">
         <ShellContent ContentTemplate="{DataTemplate v:NewsReleaseListPage}" />
     </FlyoutItem>
     <!--<FlyoutItem Title="Events" Icon="event_green">
