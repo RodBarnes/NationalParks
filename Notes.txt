@@ -9,7 +9,8 @@ Status
 ------
 Working on splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list.  Location is only needed when either:
 	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
-	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.
+	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.  But this also means getting it not just for those yet to be retrieved but those already in the list.  I tried implenting this and it makes GetClosest for Tours very, very slow.  Whereas, the orignal way (that gets the location when loading the items) takes a little hit per item but really not that much.  Overall, the original seems faster.
+
 
 
 Todo & Ideas

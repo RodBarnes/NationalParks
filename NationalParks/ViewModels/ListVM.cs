@@ -109,9 +109,9 @@ public partial class ListVM : BaseVM
                     ResultPlaces resultPlaces = (ResultPlaces)result;
                     foreach (var item in resultPlaces.Data)
                     {
-                        // Place may not have a location so use the related park location
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
+                            // Place is missing location so use first related park location
                             string parkCode = item.RelatedParks[0].ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
@@ -122,9 +122,12 @@ public partial class ListVM : BaseVM
                     ResultTours resultTours = (ResultTours)result;
                     foreach (var item in resultTours.Data)
                     {
-                        // Tours don't have a location so use the associated park location
-                        string parkCode = item.Park.ParkCode;
-                        await FillLocationFromPark(item, parkCode);
+                        if (item.DLatitude < 0)
+                        {
+                            // Tour is missing location so use park location
+                            string parkCode = item.Park.ParkCode;
+                            await FillLocationFromPark(item, parkCode);
+                        }
                         Items.Add(item);
                     }
                     break;
