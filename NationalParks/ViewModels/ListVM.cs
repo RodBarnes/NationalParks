@@ -295,22 +295,22 @@ public partial class ListVM : BaseVM
 
     #region Filter
 
-    // Variables to store the string filters
+    // Filters created from the selections
     protected string StatesFilter;
     protected string TopicsFilter;
     protected string ActivitiesFilter;
 
-    // Variable to indicate whether to hide/show each filter section
+    // Whether to hide/show each filter section
     [ObservableProperty] bool allowFilterStates;
     [ObservableProperty] bool allowFilterTopics;
     [ObservableProperty] bool allowFilterActivities;
 
-    // Filter possible selections
+    // Available selections
     public static ObservableCollection<State> StateSelections { get; } = new();
     public static ObservableCollection<Topic> TopicSelections { get; } = new();
     public static ObservableCollection<Models.Activity> ActivitySelections { get; } = new();
 
-    // Filter selected values
+    // Selected values
     public ObservableCollection<object> SelectedTopics { get; set; } = new();
     public ObservableCollection<object> SelectedActivities { get; set; } = new();
     public ObservableCollection<object> SelectedStates { get; set; } = new();
