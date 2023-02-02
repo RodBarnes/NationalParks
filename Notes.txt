@@ -1,47 +1,46 @@
 Status
 ------
+Determine how to get an image of the webcam and display that in the webcam list.
+
+
+How can I have the filters fill the page based upon how many are visible? For example, if there is only state, fill the page with the state list instead of leaving it fixed the top with the size set for three filters.
 
 
 Todo & Ideas
 ------------
-Add ParkingLots?
-Add Multimedia?
-Add Articles?
+Add ParkingLots? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
+Add Multimedia? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
+Add Articles? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
+
+I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe... What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
+
 
 Does Community.Toolkit have an HTML label link?
 
 If a filter selection is made and it is lower down in the list it isn't visible when returning to edit the filter.  Should it automatically scroll to the top selected position?  Or...?
 
-How can I have the filters fill the page based upon how many are visible? For example, if there is only state, fill the page with the state list instead of leaving it fixed the top with the size set for three filters.
-
 Can the x:DataType of the DetailPages be set to just DetailVM?
 	- No, because DetailVM does not have a reference to the model that is required by several of the elements.
 
-I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe...
-
-What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
+I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
 
 Splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list might be helpful.  Location is only needed when either:
 	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
 	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.  But this also means getting it not just for those yet to be retrieved but those already in the list.  I tried implenting this and it makes GetClosest for Tours very, very slow.  Whereas, the orignal way (that gets the location when loading the items) takes a little hit per item but really not that much.  Overall, the original seems faster.
 
-I attempted to turn CollapsibleView into a user Control but failed because I couldn't figure out how to inject the created VM into the page.  The *DetailVM creates each CollapsibleViewVM it needs and this needs to then be associated with the respective user control (CollapsivleView) instance.  Couldn't get there.  Maybe later.
-
 Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
-
-Event API uses pageSize (which defaults to 10 and corresponds to limit) and pageNumber (which defaults to 1 and corresponds to start).  But I tried running through tester getting 20 pages at a time and it gets through the first 40 and then poops coming back with a null? Data.
 
 Settings?
 	- User determined states by which to always filter?
 	- Which list to display as the default page?  Probably would use the CurrentItem property of <Shell>? And update the name of the new item based to that name based upon user selection?
 
-Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.  I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
+Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.
+	- How would this work given the case where not all the items have been retrieved?  And some are not retrieved alphabetically.
+	- I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
 EllipsisLabel control to display an elipsis at the end of too-long-to-display text?  I think this page might have some related guidance: https://swharden.com/blog/2021-10-16-maui-graphics-measurestring/
 
 Need to find phone in midst of text and turn into link to call.  This may be as simple as turning it into HTML text and selecting that as the text type in the label.
-
-Determine how to get an image of the webcam and display that in the webcam list.
 
 Does it make sense to have the Webcams as a separate aspect/list?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
 

@@ -1,0 +1,5 @@
+All of these (below) have ParkCode as the first element in the data set -- suggesting that these were intended as viewed from a Park.  But I like being able to go to a Campground and then go to the related park if desired.
+	- Alerts, Amenities/ParksPlaces, Amenities/Parksvisitorcenters, Articles, Campgrounds, Events, LessonPlans, Multimedia/Audio, Multimedia/Video, NewsReleases, Parks, ParkingLots, PassportStampLocations, People, Places, VistorCenter, Webcam
+
+All of these (below) have no ID property.  Not sure what that means; maybe ID was an earlier idea or a later idea?
+	- Alerts, Articles, Campgrounds, Events, LessonPlans, Multimedia/Audio, Multimedia/Video, NewsReleases, Parks, ParkingLots, PassportStampLocations, People, Places, VistorCenter
