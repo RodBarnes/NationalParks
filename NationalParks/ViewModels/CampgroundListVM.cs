@@ -7,5 +7,6 @@ public partial class CampgroundListVM : ListVM
         BaseTitle = "Campgrounds";
         Term = ResultCampgrounds.Term;
         FilterName = "Campground";
+        AllowFilterStates = true;
     }
 }

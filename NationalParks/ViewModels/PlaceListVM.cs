@@ -9,5 +9,6 @@ public partial class PlaceListVM : ListVM
         BaseTitle = "Places";
         Term = ResultPlaces.Term;
         FilterName = "Place";
+        AllowFilterStates = true;
     }
 }

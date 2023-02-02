@@ -7,6 +7,6 @@ public partial class NewsReleaseListVM : ListVM
         BaseTitle = "News Releases";
         Term = ResultNewsReleases.Term;
         FilterName = "NewsRelease";
+        AllowFilterStates = true;
     }
-
 }

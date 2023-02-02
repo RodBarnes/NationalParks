@@ -7,5 +7,6 @@ public partial class WebcamListVM : ListVM
         BaseTitle = "Webcams";
         Term = ResultWebcams.Term;
         FilterName = "Webcam";
+        AllowFilterStates = true;
     }
 }

@@ -7,5 +7,6 @@ public partial class EventListVM : ListVM
         BaseTitle = "Events";
         Term = ResultEvents.Term;
         FilterName = "Event";
+        AllowFilterStates = true;
     }
 }

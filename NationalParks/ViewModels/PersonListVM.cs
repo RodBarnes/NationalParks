@@ -7,5 +7,6 @@ public partial class PersonListVM : ListVM
         BaseTitle = "People";
         Term = ResultPeople.Term;
         FilterName = "Person";
+        AllowFilterStates = true;
     }
 }

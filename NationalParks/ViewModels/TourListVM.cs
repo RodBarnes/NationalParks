@@ -9,5 +9,6 @@ public partial class TourListVM : ListVM
         BaseTitle = "Tours";
         Term = ResultTours.Term;
         FilterName = "Tour";
+        AllowFilterStates = true;
     }
 }

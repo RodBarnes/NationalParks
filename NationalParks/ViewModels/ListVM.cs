@@ -10,9 +10,6 @@ public partial class ListVM : BaseVM
 
     protected int LimitItems = 20;
     protected int TotalItems = 0;
-    protected string StatesFilter;
-    protected string TopicsFilter;
-    protected string ActivitiesFilter;
 
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
@@ -297,6 +294,16 @@ public partial class ListVM : BaseVM
     }
 
     #region Filter
+
+    // Variables to store the string filters
+    protected string StatesFilter;
+    protected string TopicsFilter;
+    protected string ActivitiesFilter;
+
+    // Variable to indicate whether to hide/show each filter section
+    [ObservableProperty] bool allowFilterStates;
+    [ObservableProperty] bool allowFilterTopics;
+    [ObservableProperty] bool allowFilterActivities;
 
     // Filter possible selections
     public static ObservableCollection<State> StateSelections { get; } = new();

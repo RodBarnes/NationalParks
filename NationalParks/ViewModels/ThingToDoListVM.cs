@@ -7,5 +7,6 @@ public partial class ThingToDoListVM : ListVM
         BaseTitle = "Things To Do";
         Term = ResultThingsToDo.Term;
         FilterName = "ThingToDo";
+        AllowFilterStates = true;
     }
 }
