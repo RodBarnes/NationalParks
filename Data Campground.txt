@@ -1,0 +1,3 @@
+Only one instance of Campground has any Multimedia.  All the others have nothing.
+
+

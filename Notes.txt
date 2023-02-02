@@ -11,18 +11,22 @@ Status
 
 Todo & Ideas
 ------------
+Add ParkingLots?
+Add Multimedia?
+Add Articles?
+
 Does Community.Toolkit have an HTML label link?
 
 If a filter selection is made and it is lower down in the list it isn't visible when returning to edit the filter.  Should it automatically scroll to the top selected position?  Or...?
 
 How can I have the filters fill the page based upon how many are visible? For example, if there is only state, fill the page with the state list instead of leaving it fixed the top with the size set for three filters.
 
-Add ParkingLots?
-Add Multimedia?
-Add Articles?
-
 Can the x:DataType of the DetailPages be set to just DetailVM?
 	- No, because DetailVM does not have a reference to the model that is required by several of the elements.
+
+I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe...
+
+What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
 
 Splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list might be helpful.  Location is only needed when either:
 	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
