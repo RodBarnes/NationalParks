@@ -10,6 +10,9 @@ public partial class ListVM : BaseVM
 
     protected int LimitItems = 20;
     protected int TotalItems = 0;
+    protected string StatesFilter;
+    protected string TopicsFilter;
+    protected string ActivitiesFilter;
 
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
@@ -69,12 +72,12 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task<Result> GetItems()
+    public async Task GetItems()
     {
         if (IsBusy)
-            return null;
+            return;
 
-        Result result = new();
+        Result result;
 
         try
         {
@@ -82,13 +85,11 @@ public partial class ListVM : BaseVM
             {
                 await Shell.Current.DisplayAlert("No connectivity!",
                     $"Please check internet and try again.", "OK");
-                return null;
+                return;
             }
 
             IsBusy = true;
-            string StatesFilter = GetStatesFilter(SelectedStates);
-            string TopicsFilter = GetTopicsFilter(SelectedTopics);
-            string ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
+            BuildFilterSelections();
 
             // Populate the list
             result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
@@ -185,8 +186,6 @@ public partial class ListVM : BaseVM
         {
             IsBusy = false;
         }
-
-        return result;
     }
 
     [RelayCommand]
@@ -260,6 +259,12 @@ public partial class ListVM : BaseVM
         IsFindingClosest = false;
     }
 
+    private void BuildFilterSelections()
+    {
+        StatesFilter = GetStatesFilter(SelectedStates);
+        TopicsFilter = GetTopicsFilter(SelectedTopics);
+        ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
+    }
     public void ClearData()
     {
         Items.Clear();
