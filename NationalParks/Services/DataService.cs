@@ -14,23 +14,24 @@ public class DataService
     public static async Task<Result> GetItemsAsync(string term, int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
     {
         Result result = new();
+        string paramlist = $"&start={start}&limit={limit}";
 
-        // Build base URL
-        var url = ConstructUrl(term, $"start={start}&limit={limit}");
-
-        // Apply filters
+        // Get filter params
+        if (!String.IsNullOrEmpty(states))
+        {
+            paramlist += $"&stateCode={states}";
+        }
         if (!String.IsNullOrEmpty(topics))
         {
-            url += $"&topic%3D{topics}";
+            paramlist += $"&topic%3D{topics}";
         }
         if (!String.IsNullOrEmpty(activities))
         {
-            url += $"&activities%3D{activities}";
+            paramlist += $"&activities%3D{activities}";
         }
-        if (!String.IsNullOrEmpty(states))
-        {
-            url += $"&stateCode={states}";
-        }
+
+        // Build URL
+        var url = ConstructUrl(term, paramlist);
 
         // Retrieve data
         var response = await httpClient.GetAsync(url);
@@ -98,7 +99,7 @@ public class DataService
     {
         ResultAlerts result = new();
 
-        var url = ConstructUrl("alerts", $"start={start}&limit={limit}&parkCode={parkCode}");
+        var url = ConstructUrl("alerts", $"&start={start}&limit={limit}&parkCode={parkCode}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -112,7 +113,7 @@ public class DataService
     {
         ResultParks result = new();
 
-        var url = ConstructUrl("parks", $"parkCode={parkCode}");
+        var url = ConstructUrl("parks", $"&parkCode={parkCode}");
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -124,12 +125,6 @@ public class DataService
 
     private static string ConstructUrl(string item, string paramList)
     {
-        var url = $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}";
-        if (paramList != null)
-        {
-            url += "&" + paramList;
-        }
-
-        return url;
+        return $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}{paramList}";
     }
 }
