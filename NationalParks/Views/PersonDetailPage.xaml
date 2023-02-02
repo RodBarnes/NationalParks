@@ -41,12 +41,17 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Person.FullName}" Style="{StaticResource LabelLargeBold}"/>
+                <HorizontalStackLayout>
+                    <Label Text="{Binding Person.FullName}"
+                           Style="{StaticResource LabelLarge}"
+                           Margin="0,0,5,0"/>
+                    <ctrl:HyperlinkLabel Text="NPS Site"
+                                     Url="{Binding Person.Url}"
+                                     IsVisible="{Binding Person.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     Style="{StaticResource LabelMedium}"
+                                         VerticalOptions="Center"/>
+                </HorizontalStackLayout>
                 <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
-                <ctrl:HyperlinkLabel Text="{Binding Person.Url}"
-                                         Url="{Binding Person.Url}"
-                                         IsVisible="{Binding Person.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
                 <!-- Related Parks -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Person.HasRelatedParks, Converter={StaticResource BoolToTrueFalseConverter}}">

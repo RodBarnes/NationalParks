@@ -43,7 +43,7 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding NpsEvent.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
                 <Label Text="{Binding NpsEvent.Description}" Style="{StaticResource LabelMedium}" />
-                <ctrl:HyperlinkLabel Text="{Binding NpsEvent.InfoUrl}"
+                <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding NpsEvent.InfoUrl}"
                                          IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>

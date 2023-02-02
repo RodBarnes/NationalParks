@@ -42,11 +42,13 @@
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLargeBold}"/>
-                <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" />
-                <ctrl:HyperlinkLabel Text="{Binding Park.Url}"
+                <HorizontalStackLayout>
+                    <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" Margin="0,0,5,0"/>
+                    <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding Park.Url}"
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
+                </HorizontalStackLayout>
                 <!-- Alerts -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding HasAlerts, Converter={StaticResource BoolToTrueFalseConverter}}">
