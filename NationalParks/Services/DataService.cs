@@ -5,6 +5,7 @@ namespace NationalParks.Services;
 public class DataService
 {
     private static HttpClient httpClient;
+    private const string DomainUrl = "https://developer.nps.gov/api/v1/";
 
     public DataService()
     {
@@ -14,24 +15,22 @@ public class DataService
     public static async Task<Result> GetItemsAsync(string term, int start = 0, int limit = 20, string states = "", string topics = "", string activities = "")
     {
         Result result = new();
-        string paramlist = $"&start={start}&limit={limit}";
 
-        // Get filter params
+        // Build URL
+        string paramList = $"&start={start}&limit={limit}";
         if (!String.IsNullOrEmpty(states))
         {
-            paramlist += $"&stateCode={states}";
+            paramList += $"&stateCode={states}";
         }
         if (!String.IsNullOrEmpty(topics))
         {
-            paramlist += $"&topic%3D{topics}";
+            paramList += $"&topic%3D{topics}";
         }
         if (!String.IsNullOrEmpty(activities))
         {
-            paramlist += $"&activities%3D{activities}";
+            paramList += $"&activities%3D{activities}";
         }
-
-        // Build URL
-        var url = ConstructUrl(term, paramlist);
+        var url = $"{DomainUrl}{term}?api_key={Config.ApiKey}{paramList}";
 
         // Retrieve data
         var response = await httpClient.GetAsync(url);
@@ -99,7 +98,7 @@ public class DataService
     {
         ResultAlerts result = new();
 
-        var url = ConstructUrl("alerts", $"&start={start}&limit={limit}&parkCode={parkCode}");
+        var url = $"{DomainUrl}alerts?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -113,7 +112,7 @@ public class DataService
     {
         ResultParks result = new();
 
-        var url = ConstructUrl("parks", $"&parkCode={parkCode}");
+        var url = $"{DomainUrl}parks?api_key={Config.ApiKey}&parkCode={parkCode}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -121,10 +120,5 @@ public class DataService
         }
 
         return result;
-    }
-
-    private static string ConstructUrl(string item, string paramList)
-    {
-        return $"https://developer.nps.gov/api/v1/{item}?api_key={Config.ApiKey}{paramList}";
     }
 }
