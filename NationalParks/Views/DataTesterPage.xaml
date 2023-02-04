@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:v="clr-namespace:NationalParks.Views"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:DataTesterVM"
@@ -20,75 +21,40 @@
                     Margin="5"
                     Grid.Column="1"/>
             <Button Text="Clear"
-                    Command="{Binding ClearDataCommand}"
+                    Command="{Binding ClearAllDataCommand}"
                     IsEnabled="{Binding IsPopulated}"
                     Style="{StaticResource ButtonOutline}"
                     Margin="5"
                     Grid.Column="2"/>
         </Grid>
-        <HorizontalStackLayout>
-            <Label Text="State:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
+        <Grid ColumnDefinitions="*,*,*,*"
+              RowDefinitions="*,*"
+              Padding="5">
+            <Label Text="Status:"
+                   Grid.Column="0" Grid.Row="0"
+                   Style="{StaticResource LabelMediumBold}"/>
             <Label Text="{Binding CurrentState}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
+                   Grid.Column="0" Grid.Row="1"
+                   Style="{StaticResource LabelMedium}"/>
             <Label Text="Total:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
+                   Grid.Column="1" Grid.Row="0"
+                   Style="{StaticResource LabelMediumBold}"/>
             <Label Text="{Binding TotalCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
+                   Grid.Column="1" Grid.Row="1"
+                   Style="{StaticResource LabelMedium}"/>
             <Label Text="Count:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
+                   Grid.Column="2" Grid.Row="0"
+                   Style="{StaticResource LabelMediumBold}"/>
             <Label Text="{Binding CurrentCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
+                   Grid.Column="2" Grid.Row="1"
+                   Style="{StaticResource LabelMedium}"/>
             <Label Text="Match:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
+                   Grid.Column="3" Grid.Row="0"
+                   Style="{StaticResource LabelMediumBold}"/>
             <Label Text="{Binding MatchCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <!--<HorizontalStackLayout>
-            <Label Text="ManagedByOrg:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
-            <Label Text="{Binding ManagedByOrgCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label Text="IsManagedByNps:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
-            <Label Text="{Binding IsManagedByNpsCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label Text="IsMapPinHidden:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
-            <Label Text="{Binding IsMapPinHiddenCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label Text="IsOpenToPublic:"
-                       Style="{StaticResource LabelMediumBold}"
-                       Padding="5"/>
-            <Label Text="{Binding IsOpenToPublicCount}"
-                       Style="{StaticResource LabelMedium}"
-                       Padding="5"/>
-        </HorizontalStackLayout>-->
+                   Grid.Column="3" Grid.Row="1"
+                   Style="{StaticResource LabelMedium}"/>
+        </Grid>
+        <v:ListView />
     </VerticalStackLayout>
 </ContentPage>
