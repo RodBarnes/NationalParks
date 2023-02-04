@@ -7,17 +7,22 @@
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.FilterView">
     <Grid
-        ColumnDefinitions="*,*"
-        RowDefinitions="*,60">
+        ColumnDefinitions="*,*">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="MainArea" Height="*" />
+            <RowDefinition x:Name="ButtonArea" Height="60" />
+        </Grid.RowDefinitions>
         <VerticalStackLayout Grid.Row ="0" Grid.ColumnSpan="2">
             <!-- States -->
-            <VerticalStackLayout IsVisible="{Binding AllowFilterStates}"
-                                 Padding="10,10,10,0" VerticalOptions="CenterAndExpand">
+            <VerticalStackLayout x:Name="StatesFilter" 
+                                 IsVisible="{Binding AllowFilterStates}"
+                                 Padding="10,10,10,0">
                 <Label Text="State"
                        Style="{StaticResource LabelLargeBold}"
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
-                <Frame BorderColor="{StaticResource Primary}"
+                <Frame x:Name="StatesFrame" 
+                       BorderColor="{StaticResource Primary}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.StateSelections}}"
@@ -34,13 +39,15 @@
                 </Frame>
             </VerticalStackLayout>
             <!-- Topics -->
-            <VerticalStackLayout IsVisible="{Binding AllowFilterTopics}"
+            <VerticalStackLayout x:Name="TopicsFilter" 
+                                 IsVisible="{Binding AllowFilterTopics}"
                                  Padding="10,10,10,0">
                 <Label Text="Topic"
                        Style="{StaticResource LabelLargeBold}"
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
-                <Frame BorderColor="{StaticResource Primary}"
+                <Frame x:Name="TopicsFrame" 
+                       BorderColor="{StaticResource Primary}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.TopicSelections}}"
@@ -57,13 +64,15 @@
                 </Frame>
             </VerticalStackLayout>
             <!-- Activities -->
-            <VerticalStackLayout IsVisible="{Binding AllowFilterActivities}"
+            <VerticalStackLayout x:Name="ActivitiesFilter" 
+                                 IsVisible="{Binding AllowFilterActivities}"
                                  Padding="10,10,10,0">
                 <Label Text="Activity"
                        Style="{StaticResource LabelLargeBold}"
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
-                <Frame BorderColor="{StaticResource Primary}"
+                <Frame x:Name="ActivitiesFrame" 
+                       BorderColor="{StaticResource Primary}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.ActivitySelections}}"

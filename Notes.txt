@@ -1,11 +1,10 @@
 Status
 ------
-How can I have the filters fill the page based upon how many are visible? For example, if there is only state, fill the page with the state list instead of leaving it fixed the top with the size set for three filters.
 
 
 Todo & Ideas
 ------------
-Determine how to get an image of the webcam and display that in the webcam list.
+Determine how to get a snapshot of the webcam and display that in the webcam list as the image.
 
 Can I change Related Parks so that it shows an element like Campground when there is a single one and a CollapsibleView when there is more than one.  In fact, are there any that have more than one?
 
@@ -14,7 +13,6 @@ Add Multimedia? Should this be a section in ParkDetail?  Should it be its own li
 Add Articles? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
 
 I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe... What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
-
 
 Does Community.Toolkit have an HTML label link?
 
