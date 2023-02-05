@@ -50,7 +50,7 @@ public partial class DetailVM : BaseVM
         Park park;
 
         ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
-        if (result.Data.Count == 1)
+        if (result.Data.Count > 0)
         {
             park = result.Data[0];
             await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
