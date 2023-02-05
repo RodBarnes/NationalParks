@@ -21,7 +21,7 @@ public class ThingToDo : BaseModel
     public List<Activity> Activities { get; set; }
     public string ActivityDescription { get; set; }
     public string LocationDescription { get; set; }
-    public string FoFeesApply { get; set; }
+    public string DoFeesApply { get; set; }
     public string LongDescription { get; set; }
     public string ReservationDescription { get; set; }
     public List<string> Season { get; set; }
@@ -35,7 +35,11 @@ public class ThingToDo : BaseModel
     #region Derived Properties
 
     public new string Description { get => ShortDescription; }
+    public bool HasLongDescription => !String.IsNullOrEmpty(LongDescription);
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
+    public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
+    public bool HasTags => (Tags is not null) && Tags.Count > 0;
+    public bool HasAmenities => (Amenities is not null) && Amenities.Count > 0;
 
     #endregion
 }

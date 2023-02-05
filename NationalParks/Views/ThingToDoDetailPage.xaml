@@ -41,7 +41,12 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding ThingToDo.ActivityDescription}" Style="{StaticResource LabelMedium}" />
+                <HorizontalStackLayout>
+                    <Label Text="Duration: " Style="{StaticResource LabelMediumBold}" />
+                    <Label Text="{Binding ThingToDo.Duration}" Style="{StaticResource LabelMedium}" />
+                    <Label Text="Age: " Style="{StaticResource LabelMediumBold}" />
+                    <Label Text="{Binding ThingToDo.Age}" Style="{StaticResource LabelMedium}" />
+                </HorizontalStackLayout>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding ThingToDo.Url}"
                                          IsVisible="{Binding ThingToDo.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
@@ -85,6 +90,112 @@
                                             </Image>
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Full Description -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasLongDescription, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FullDescriptionVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding FullDescriptionVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding FullDescriptionVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding ThingToDo.LongDescription}"
+                               TextType="Html"
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding FullDescriptionVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Tags -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasTags, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TagsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding TagsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding TagsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding ThingToDo.Tags}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding TagsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Label Text="{Binding .}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Related Organizations -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OrganizationsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding OrganizationsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding OrganizationsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding ThingToDo.RelatedOrganizations}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding OrganizationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="m:Organization">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Amenities -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasAmenities, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AmenitiesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding AmenitiesVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding AmenitiesVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding ThingToDo.Amenities}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding AmenitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Label Text="{Binding .}"
+                                           Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
