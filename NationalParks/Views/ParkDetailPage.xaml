@@ -8,6 +8,9 @@
              x:DataType="vm:ParkDetailVM"
              x:Class="NationalParks.Views.ParkDetailPage"
              Title="{Binding Park.Title}">
+    <ContentPage.Behaviors>
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />

@@ -29,6 +29,7 @@ public partial class ParkDetailVM : DetailVM
         WeatherVM = new CollapsibleViewVM("Weather", false);
     }
 
+    [RelayCommand]
     public async void PopulateData()
     {
         await GetAlerts(park);
