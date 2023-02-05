@@ -8,8 +8,7 @@
              x:Class="NationalParks.Views.ThingToDoListPage"
              Title="{Binding Title}">
     <ContentPage.Behaviors>
-        <tk:EventToCommandBehavior EventName="Appearing"
-                                   Command="{Binding PopulateDataCommand}" />
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
     </ContentPage.Behaviors>
     <v:ListView />
 </ContentPage>
