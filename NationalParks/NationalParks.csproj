@@ -150,9 +150,6 @@
 	  <MauiXaml Update="Views\CampgroundListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CollapsibleListView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\CollapsibleTextView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

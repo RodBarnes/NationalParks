@@ -11,7 +11,7 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
     [ObservableProperty] CollapsibleViewVM contactsVM;
     [ObservableProperty] CollapsibleViewVM topicsVM;
-    [ObservableProperty] CollapsibleListVM activitiesVM;
+    [ObservableProperty] CollapsibleViewVM activitiesVM;
     [ObservableProperty] CollapsibleViewVM directionsVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
     [ObservableProperty] bool hasAlerts;
@@ -24,7 +24,7 @@ public partial class ParkDetailVM : DetailVM
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         ContactsVM = new CollapsibleViewVM("Contacts", false);
         TopicsVM = new CollapsibleViewVM("Topics", false);
-        ActivitiesVM = new CollapsibleListVM("Activities", false);
+        ActivitiesVM = new CollapsibleViewVM("Activities", false);
         DirectionsVM = new CollapsibleViewVM("Directions", false);
         WeatherVM = new CollapsibleTextVM("Weather", false);
     }
@@ -37,9 +37,6 @@ public partial class ParkDetailVM : DetailVM
 
         WeatherVM.Text = park.WeatherInfo;
         WeatherVM.HasContent = park.HasWeather;
-
-        ActivitiesVM.Items = park.Activities;
-        ActivitiesVM.HasContent = park.HasActivities;
     }
 
     static async Task GetAlerts(Park park)

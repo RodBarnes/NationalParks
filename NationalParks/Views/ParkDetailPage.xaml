@@ -290,7 +290,33 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Activities -->
-                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding Park.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ActivitiesVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding ActivitiesVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding Park.Activities}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="m:Activity">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
                 <!-- Directions -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
