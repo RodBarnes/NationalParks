@@ -282,7 +282,7 @@
                                   IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="m:Topic">
-                                    <Label Text="{Binding Name}"
+                                    <Label Text="{Binding .}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -310,7 +310,7 @@
                                   IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="m:Activity">
-                                    <Label Text="{Binding Name}"
+                                    <Label Text="{Binding .}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
