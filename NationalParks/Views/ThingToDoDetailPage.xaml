@@ -201,6 +201,62 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
+                <!-- Topics -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding TopicsVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding TopicsVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding ThingToDo.Topics}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="m:Topic">
+                                    <Label Text="{Binding .}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Activities -->
+                <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding ThingToDo.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding ActivitiesVM.Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                            <Label Text="{Binding ActivitiesVM.Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+                        </HorizontalStackLayout>
+                        <CollectionView ItemsSource="{Binding ThingToDo.Activities}"
+                                  SelectionMode="None"
+                                  IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="m:Activity">
+                                    <Label Text="{Binding .}"
+                                           Style="{StaticResource LabelMedium}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

@@ -40,6 +40,8 @@ public class ThingToDo : BaseModel
     public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
     public bool HasAmenities => (Amenities is not null) && Amenities.Count > 0;
+    public bool HasTopics => (Topics is not null) && Topics.Count > 0;
+    public bool HasActivities => (Activities is not null) && Activities.Count > 0;
 
     #endregion
 }
