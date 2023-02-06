@@ -374,7 +374,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Weather -->
-                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" IsVisible="{Binding Campground.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}" />
+                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <!-- Reservations -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Campground.HasReservations, Converter={StaticResource BoolToTrueFalseConverter}}">

@@ -10,7 +10,8 @@
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame Style="{StaticResource CollapsibleView}" >
+    <Frame Style="{StaticResource CollapsibleView}"
+           IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}" >
         <VerticalStackLayout>
             <HorizontalStackLayout>
                 <HorizontalStackLayout.GestureRecognizers>

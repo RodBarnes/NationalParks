@@ -33,9 +33,8 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public async void PopulateData()
     {
-        var x = campground.HasWeather;
-        var y = campground.WeatherOverview;
         WeatherVM.Text = campground.WeatherOverview;
+        WeatherVM.HasContent = campground.HasWeather;
     }
 
 }

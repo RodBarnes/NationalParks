@@ -3,6 +3,7 @@
     [ObservableObject]
     public partial class CollapsibleTextVM
     {
+        [ObservableProperty] bool hasContent;
         [ObservableProperty] string text;
 
         private readonly string openIcon = "arrow_down_green";

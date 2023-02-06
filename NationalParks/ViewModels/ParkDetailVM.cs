@@ -34,7 +34,9 @@ public partial class ParkDetailVM : DetailVM
     {
         await GetAlerts(park);
         HasAlerts = park.HasAlerts;
+
         WeatherVM.Text = park.WeatherInfo;
+        WeatherVM.HasContent = park.HasWeather;
     }
 
     static async Task GetAlerts(Park park)

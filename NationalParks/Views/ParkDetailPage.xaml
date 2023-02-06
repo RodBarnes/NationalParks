@@ -342,7 +342,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Weather -->
-                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" IsVisible="{Binding Park.HasWeather, Converter={StaticResource BoolToTrueFalseConverter}}" />
+                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
