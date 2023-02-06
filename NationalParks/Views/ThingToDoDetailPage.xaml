@@ -152,33 +152,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Amenities -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasAmenities, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AmenitiesVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding AmenitiesVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding AmenitiesVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding ThingToDo.Amenities}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding AmenitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <Label Text="{Binding .}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
                 <!-- Topics -->
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
                 <!-- Activities -->
