@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:WebcamDetailVM"
              x:Class="NationalParks.Views.WebcamDetailPage"
              Title="{Binding Webcam.Title}">
+    <ContentPage.Behaviors>
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -61,49 +65,7 @@
                     <Label Text="{Binding Webcam.StatusMessage}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
                 <!-- Related Parks -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Webcam.HasRelatedParks, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RelatedParksVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding RelatedParksVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding RelatedParksVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Webcam.RelatedParks}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding RelatedParksVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Park">
-                                    <VerticalStackLayout Margin="5">
-                                        <HorizontalStackLayout>
-                                            <Label Text="{Binding Name}" 
-                                                   Style="{StaticResource LabelMediumBold}" 
-                                                   VerticalOptions="Center" 
-                                                   Margin="5"/>
-                                            <Image Source="tree_reverse_green"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"
-                                                    Aspect="AspectFill"
-                                                    HeightRequest="30">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WebcamDetailVM}}, Path=GoToParkFromParkCodeCommand}"
-                                                                      CommandParameter="{Binding ParkCode}" />
-                                                </Image.GestureRecognizers>
-                                            </Image>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

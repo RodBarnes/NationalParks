@@ -4,7 +4,7 @@
 public partial class PersonDetailVM : DetailVM
 {
     [ObservableProperty] Person person;
-    [ObservableProperty] CollapsibleViewVM relatedParksVM;
+    [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
     [ObservableProperty] CollapsibleViewVM organizationsVM;
     [ObservableProperty] CollapsibleListVM quickFactsVM;
@@ -13,7 +13,7 @@ public partial class PersonDetailVM : DetailVM
     public PersonDetailVM(IMap map) : base(map)
     {
         Title = "Person";
-        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
+        RelatedParksVM = new RelatedParksVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
         QuickFactsVM = new CollapsibleListVM("Quick Facts", false);
@@ -23,10 +23,12 @@ public partial class PersonDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        TagsVM.HasContent = person.HasTags;
-        TagsVM.Items = person.Tags.ToList<object>();
-        QuickFactsVM.HasContent = person.HasQuickFacts;
-        QuickFactsVM.Items = person.QuickFacts.ToList<object>();
+        RelatedParksVM.HasContent = Person.HasRelatedParks;
+        RelatedParksVM.Items = Person.RelatedParks;
+        TagsVM.HasContent = Person.HasTags;
+        TagsVM.Items = Person.Tags.ToList<object>();
+        QuickFactsVM.HasContent = Person.HasQuickFacts;
+        QuickFactsVM.Items = Person.QuickFacts.ToList<object>();
     }
 
 }

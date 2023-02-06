@@ -57,49 +57,7 @@
                 </HorizontalStackLayout>
                 <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
                 <!-- Related Parks -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Person.HasRelatedParks, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RelatedParksVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding RelatedParksVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding RelatedParksVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Person.RelatedParks}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding RelatedParksVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Park">
-                                    <VerticalStackLayout Margin="5">
-                                        <HorizontalStackLayout>
-                                            <Label Text="{Binding Name}" 
-                                                   Style="{StaticResource LabelMediumBold}" 
-                                                   VerticalOptions="Center" 
-                                                   Margin="5"/>
-                                            <Image Source="tree_reverse_green"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"
-                                                    Aspect="AspectFill"
-                                                    HeightRequest="30">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PersonDetailVM}}, Path=GoToParkFromParkCodeCommand}"
-                                                                      CommandParameter="{Binding ParkCode}" />
-                                                </Image.GestureRecognizers>
-                                            </Image>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <!-- Body Text -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Person.HasBodyText, Converter={StaticResource BoolToTrueFalseConverter}}">

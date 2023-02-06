@@ -6,7 +6,7 @@ namespace NationalParks.ViewModels;
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;
-    [ObservableProperty] CollapsibleViewVM relatedParksVM;
+    [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
     [ObservableProperty] CollapsibleViewVM organizationsVM;
     [ObservableProperty] CollapsibleViewVM multimediaVM;
@@ -17,7 +17,7 @@ public partial class PlaceDetailVM : DetailVM
     public PlaceDetailVM(IMap map) : base(map)
     {
         Title = "Place";
-        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
+        RelatedParksVM = new RelatedParksVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
         OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
@@ -29,11 +29,13 @@ public partial class PlaceDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        TagsVM.HasContent = place.HasTags;
-        TagsVM.Items = place.Tags.ToList<object>();
-        QuickFactsVM.HasContent = place.HasQuickFacts;
-        QuickFactsVM.Items = place.QuickFacts.ToList<object>();
-        AmenitiesVM.HasContent = place.HasAmenities;
-        AmenitiesVM.Items = place.Amenities.ToList<object>();
+        RelatedParksVM.HasContent = Place.HasRelatedParks;
+        RelatedParksVM.Items = Place.RelatedParks;
+        TagsVM.HasContent = Place.HasTags;
+        TagsVM.Items = Place.Tags.ToList<object>();
+        QuickFactsVM.HasContent = Place.HasQuickFacts;
+        QuickFactsVM.Items = Place.QuickFacts.ToList<object>();
+        AmenitiesVM.HasContent = Place.HasAmenities;
+        AmenitiesVM.Items = Place.Amenities.ToList<object>();
     }
 }

@@ -4,7 +4,7 @@
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
-    [ObservableProperty] CollapsibleViewVM relatedParksVM;
+    [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM fullDescriptionVM;
     [ObservableProperty] CollapsibleViewVM organizationsVM;
     [ObservableProperty] CollapsibleListVM amenitiesVM;
@@ -15,7 +15,7 @@ public partial class ThingToDoDetailVM : DetailVM
     public ThingToDoDetailVM(IMap map) : base(map)
     {
         Title = "Things To Do";
-        RelatedParksVM = new CollapsibleViewVM("Related Parks", false);
+        RelatedParksVM = new RelatedParksVM("Related Parks", false);
         FullDescriptionVM = new CollapsibleViewVM("Full Description", false);
         OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
         AmenitiesVM = new CollapsibleListVM("Amenities", false);
@@ -27,13 +27,15 @@ public partial class ThingToDoDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        RelatedParksVM.HasContent = ThingToDo.HasRelatedParks;
+        RelatedParksVM.Items = ThingToDo.RelatedParks;
         AmenitiesVM.HasContent = ThingToDo.HasAmenities;
-        AmenitiesVM.Items = thingToDo.Amenities.ToList<object>();
-        TagsVM.HasContent = thingToDo.HasTags;
-        TagsVM.Items = thingToDo.Tags.ToList<object>();
-        TopicsVM.HasContent = thingToDo.HasTopics;
-        TopicsVM.Items = thingToDo.Topics.ToList<object>();
-        ActivitiesVM.HasContent = thingToDo.HasActivities;
-        ActivitiesVM.Items = thingToDo.Activities.ToList<object>();
+        AmenitiesVM.Items = ThingToDo.Amenities.ToList<object>();
+        TagsVM.HasContent = ThingToDo.HasTags;
+        TagsVM.Items = ThingToDo.Tags.ToList<object>();
+        TopicsVM.HasContent = ThingToDo.HasTopics;
+        TopicsVM.Items = ThingToDo.Topics.ToList<object>();
+        ActivitiesVM.HasContent = ThingToDo.HasActivities;
+        ActivitiesVM.Items = ThingToDo.Activities.ToList<object>();
     }
 }
