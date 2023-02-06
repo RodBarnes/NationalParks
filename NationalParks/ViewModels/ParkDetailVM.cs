@@ -36,7 +36,7 @@ public partial class ParkDetailVM : DetailVM
         HasAlerts = park.HasAlerts;
 
         DirectionsVM.HasContent = park.HasDirections;
-        DirectionsVM.PhysicalAddress = park.PhysicalAddress.ToString();
+        DirectionsVM.PhysicalAddress = park.PhysicalAddress?.ToString();
         DirectionsVM.Directions = park.DirectionsInfo;
         WeatherVM.HasContent = park.HasWeather;
         WeatherVM.Text = park.WeatherInfo;

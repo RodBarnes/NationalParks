@@ -34,7 +34,7 @@ public partial class CampgroundDetailVM : DetailVM
     public void PopulateData()
     {
         DirectionsVM.HasContent = campground.HasDirections;
-        DirectionsVM.PhysicalAddress = campground.PhysicalAddress.ToString();
+        DirectionsVM.PhysicalAddress = campground.PhysicalAddress?.ToString();
         DirectionsVM.Directions = campground.DirectionsOverview;
         WeatherVM.Text = campground.WeatherOverview;
         WeatherVM.HasContent = campground.HasWeather;
