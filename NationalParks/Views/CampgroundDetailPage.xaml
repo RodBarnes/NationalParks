@@ -350,29 +350,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Directions -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Campground.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DirectionsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding DirectionsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding DirectionsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding Campground.PhysicalAddress}" 
-                               Style="{StaticResource LabelMedium}"
-                               IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                        <Label Text="{Binding Campground.DirectionsOverview}"
-                                Style="{StaticResource LabelMedium}"
-                                IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
                 <!-- Weather -->
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <!-- Reservations -->

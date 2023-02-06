@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             x:DataType="vm:DirectionsVM"
+             x:Class="NationalParks.Views.DirectionsView">
+    <Frame Style="{StaticResource CollapsibleView}"
+                        IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToggleCommand}" />
+                </HorizontalStackLayout.GestureRecognizers>
+                <Image Source="{Binding Icon}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill"
+                                HeightRequest="20" />
+                <Label Text="{Binding Title}"
+                                Style="{StaticResource LabelLargeBold}" />
+            </HorizontalStackLayout>
+            <Label Text="{Binding PhysicalAddress}" 
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+            <Label Text="{Binding Directions}"
+                                Style="{StaticResource LabelMedium}"
+                                IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+        </VerticalStackLayout>
+    </Frame>
+</ContentView>

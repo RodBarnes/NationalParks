@@ -10,7 +10,7 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM combinedFeesVM;
     [ObservableProperty] CollapsibleViewVM operatingHoursVM;
     [ObservableProperty] CollapsibleViewVM contactsVM;
-    [ObservableProperty] CollapsibleViewVM directionsVM;
+    [ObservableProperty] DirectionsVM directionsVM;
     [ObservableProperty] CollapsibleListVM topicsVM;
     [ObservableProperty] CollapsibleListVM activitiesVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
@@ -23,7 +23,7 @@ public partial class ParkDetailVM : DetailVM
         CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
         OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
         ContactsVM = new CollapsibleViewVM("Contacts", false);
-        DirectionsVM = new CollapsibleViewVM("Directions", false);
+        DirectionsVM = new DirectionsVM("Directions", false);
         TopicsVM = new CollapsibleListVM("Topics", false);
         ActivitiesVM = new CollapsibleListVM("Activities", false);
         WeatherVM = new CollapsibleTextVM("Weather", false);
@@ -35,6 +35,9 @@ public partial class ParkDetailVM : DetailVM
         await GetAlerts(park);
         HasAlerts = park.HasAlerts;
 
+        DirectionsVM.HasContent = park.HasDirections;
+        DirectionsVM.PhysicalAddress = park.PhysicalAddress.ToString();
+        DirectionsVM.Directions = park.DirectionsInfo;
         WeatherVM.HasContent = park.HasWeather;
         WeatherVM.Text = park.WeatherInfo;
         TopicsVM.HasContent = park.HasTopics;

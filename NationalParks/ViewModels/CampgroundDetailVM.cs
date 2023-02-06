@@ -10,7 +10,7 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
     [ObservableProperty] CollapsibleViewVM amenitiesVM;
     [ObservableProperty] CollapsibleViewVM accessibilityVM;
-    [ObservableProperty] CollapsibleViewVM directionsVM;
+    [ObservableProperty] DirectionsVM directionsVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
     [ObservableProperty] CollapsibleViewVM reservationsVM;
     [ObservableProperty] CollapsibleViewVM regulationsVM;
@@ -24,15 +24,18 @@ public partial class CampgroundDetailVM : DetailVM
         CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
         AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
-        DirectionsVM = new CollapsibleViewVM("Directions", false);
+        DirectionsVM = new DirectionsVM("Directions", false);
         WeatherVM = new CollapsibleTextVM("Weather", false);
         ReservationsVM = new CollapsibleViewVM("Reservations", false);
         RegulationsVM = new CollapsibleViewVM("Regulations", false);
     }
 
     [RelayCommand]
-    public async void PopulateData()
+    public void PopulateData()
     {
+        DirectionsVM.HasContent = campground.HasDirections;
+        DirectionsVM.PhysicalAddress = campground.PhysicalAddress.ToString();
+        DirectionsVM.Directions = campground.DirectionsOverview;
         WeatherVM.Text = campground.WeatherOverview;
         WeatherVM.HasContent = campground.HasWeather;
     }
