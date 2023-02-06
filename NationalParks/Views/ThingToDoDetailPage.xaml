@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ThingToDoDetailVM"
              x:Class="NationalParks.Views.ThingToDoDetailPage"
              Title="{Binding ThingToDo.Title}">
+    <ContentPage.Behaviors>
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -202,61 +206,9 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Topics -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasTopics, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TopicsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding TopicsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding TopicsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding ThingToDo.Topics}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding TopicsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Topic">
-                                    <Label Text="{Binding .}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
                 <!-- Activities -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasActivities, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ActivitiesVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding ActivitiesVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding ActivitiesVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding ThingToDo.Activities}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding ActivitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Activity">
-                                    <Label Text="{Binding .}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

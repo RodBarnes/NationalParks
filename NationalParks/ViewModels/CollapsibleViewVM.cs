@@ -3,6 +3,8 @@
     [ObservableObject]
     public partial class CollapsibleViewVM
     {
+        [ObservableProperty] bool hasContent;
+
         private readonly string openIcon = "arrow_down_green";
         private readonly string closeIcon= "arrow_up_green";
 
