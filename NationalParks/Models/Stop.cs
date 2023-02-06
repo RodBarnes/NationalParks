@@ -11,4 +11,9 @@ public class Stop
     public string DirectionsToNextStop { get; set; }
     public string AudioTranscript { get; set; }
     public string AudioFileUrl { get; set; }
+
+    public override string ToString()
+    {
+        return AssetName;
+    }
 }

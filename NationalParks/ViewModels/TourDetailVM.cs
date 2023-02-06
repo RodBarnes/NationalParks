@@ -6,7 +6,7 @@ namespace NationalParks.ViewModels;
 public partial class TourDetailVM : DetailVM
 {
     [ObservableProperty] Tour tour;
-    [ObservableProperty] CollapsibleViewVM stopsVM;
+    [ObservableProperty] CollapsibleListVM stopsVM;
     [ObservableProperty] CollapsibleListVM tagsVM;
     [ObservableProperty] CollapsibleListVM topicsVM;
     [ObservableProperty] CollapsibleListVM activitiesVM;
@@ -14,7 +14,7 @@ public partial class TourDetailVM : DetailVM
     public TourDetailVM(IMap map) : base(map)
     {
         Title = "Tour";
-        StopsVM = new CollapsibleViewVM("Stops", false);
+        StopsVM = new CollapsibleListVM("Stops", false);
         TagsVM = new CollapsibleListVM("Tags", false);
         TopicsVM = new CollapsibleListVM("Topics", false);
         ActivitiesVM = new CollapsibleListVM("Activities", false);
@@ -23,6 +23,8 @@ public partial class TourDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        StopsVM.HasContent = tour.HasStops;
+        StopsVM.Items = tour.Stops.ToList<object>();
         TagsVM.HasContent = tour.HasTags;
         TagsVM.Items = tour.Tags.ToList<object>();
         TopicsVM.HasContent = tour.HasTopics;
