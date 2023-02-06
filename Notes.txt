@@ -2,7 +2,7 @@ Status
 ------
 Added CollapsibleText(View/VM) and have it working for WeatherVM in ParkDetail.
 Adding it to CampgroundDetail(View/VM) for WeatherVM.  But, for some reason, it displays the view even when the bound propert for IsVisible is false.
-Next: need a CollapsibleItems(View/VM) or else combine into a single Collapsible(View/VM) that can handle either one.
+Added CollapsibleListVM but haven't used it yet; still needs fleshed out.  Not sure if these will have to be separate (probably) or if I can combine them into one -- maybe with separate sections (CollectionView or Label) depending upon the type of the content specified?  What about the datatemplate in the CollectionView?
 
 
 Todo & Ideas
