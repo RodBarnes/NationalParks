@@ -67,29 +67,7 @@
                     </Image>
                 </HorizontalStackLayout>
                 <!-- Tags -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Tour.HasTags, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TagsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding TagsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding TagsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <!--<CollectionView ItemsSource="{Binding Tour.Tags}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding TagsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                                <Label Text="Tag"
-                                        Style="{StaticResource LabelMedium}"/>
-                        </CollectionView>-->
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <!-- Stops -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Tour.HasStops, Converter={StaticResource BoolToTrueFalseConverter}}">

@@ -8,6 +8,7 @@ public partial class PersonDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
     [ObservableProperty] CollapsibleViewVM organizationsVM;
     [ObservableProperty] CollapsibleViewVM quickFactsVM;
+    [ObservableProperty] CollapsibleListVM tagsVM;
 
     public PersonDetailVM(IMap map) : base(map)
     {
@@ -16,5 +17,14 @@ public partial class PersonDetailVM : DetailVM
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
         QuickFactsVM = new CollapsibleViewVM("Quick Facts", false);
+        TagsVM = new CollapsibleListVM("Tags", false);
     }
+
+    [RelayCommand]
+    public void PopulateData()
+    {
+        TagsVM.HasContent = person.HasTags;
+        TagsVM.Items = person.Tags.ToList<object>();
+    }
+
 }

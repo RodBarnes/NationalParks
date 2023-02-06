@@ -122,33 +122,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <!-- Tags -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasTags, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TagsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding TagsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding TagsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding ThingToDo.Tags}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding TagsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <Label Text="{Binding .}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <!-- Related Organizations -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding ThingToDo.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
