@@ -153,37 +153,7 @@
                 <!-- Tags -->
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <!-- Quick Facts -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Person.HasQuickFacts, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding QuickFactsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding QuickFactsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding QuickFactsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Person.QuickFacts}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding QuickFactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:QuickFact">
-                                    <VerticalStackLayout Margin="5">
-                                        <Label Text="{Binding Name}"
-                                           Style="{StaticResource LabelMediumBold}"/>
-                                        <Label Text="{Binding Value}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

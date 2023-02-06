@@ -121,8 +121,6 @@
                                IsVisible="{Binding FullDescriptionVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Tags -->
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <!-- Related Organizations -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding ThingToDo.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -151,6 +149,8 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
+                <!-- Tags -->
+                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <!-- Amenities -->
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
                 <!-- Topics -->

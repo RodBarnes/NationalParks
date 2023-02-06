@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:PlaceDetailVM"
              x:Class="NationalParks.Views.PlaceDetailPage"
              Title="{Binding Title}">
@@ -121,34 +122,6 @@
                                IsVisible="{Binding BodyTextVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Tags -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Place.HasTags, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TagsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding TagsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding TagsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.Tags}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding TagsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <Label Text="{Binding .}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
                 <!-- Related Organizations -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Place.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -171,66 +144,6 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="m:Organization">
                                     <Label Text="{Binding Name}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Quick Facts -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Place.HasQuickFacts, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding QuickFactsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding QuickFactsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding QuickFactsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.QuickFacts}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding QuickFactsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:QuickFact">
-                                    <VerticalStackLayout Margin="5">
-                                        <Label Text="{Binding Name}"
-                                           Style="{StaticResource LabelMediumBold}"/>
-                                        <Label Text="{Binding Value}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Amenities -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Place.HasAmenities, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AmenitiesVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding AmenitiesVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding AmenitiesVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.Amenities}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding AmenitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <Label Text="{Binding .}"
                                            Style="{StaticResource LabelMedium}"/>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -270,6 +183,12 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
+                <!-- Tags -->
+                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
+                <!-- Quick Facts -->
+                <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
+                <!-- Amenities -->
+                <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
