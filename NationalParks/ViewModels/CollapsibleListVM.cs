@@ -4,7 +4,7 @@
     public partial class CollapsibleListVM
     {
         [ObservableProperty] bool hasContent;
-        [ObservableProperty] string text;
+        [ObservableProperty] List<Models.Activity> items;
 
         private readonly string openIcon = "arrow_down_green";
         private readonly string closeIcon= "arrow_up_green";
