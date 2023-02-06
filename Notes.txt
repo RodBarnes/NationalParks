@@ -1,6 +1,6 @@
 Status
 ------
-Working on ThingToDoDetail
+Added CollapsibleText(View/VM) and have it working for WeatherVM in ParkDetail.  Now need a CollapsibleItems(View/VM) or else combine into a single Collapsible(View/VM) that can handle either one.
 
 
 Todo & Ideas
