@@ -1,6 +1,8 @@
 Status
 ------
-Added CollapsibleText(View/VM) and have it working for WeatherVM in ParkDetail.  Now need a CollapsibleItems(View/VM) or else combine into a single Collapsible(View/VM) that can handle either one.
+Added CollapsibleText(View/VM) and have it working for WeatherVM in ParkDetail.
+Adding it to CampgroundDetail(View/VM) for WeatherVM.  But, for some reason, it displays the view even when the bound propert for IsVisible is false.
+Next: need a CollapsibleItems(View/VM) or else combine into a single Collapsible(View/VM) that can handle either one.
 
 
 Todo & Ideas
