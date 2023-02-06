@@ -261,10 +261,6 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Topics -->
-                <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <!-- Activities -->
-                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
                 <!-- Directions -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Park.HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -289,6 +285,10 @@
                                 IsVisible="{Binding DirectionsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
+                <!-- Topics -->
+                <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
+                <!-- Activities -->
+                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
                 <!-- Weather -->
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
             </VerticalStackLayout>
