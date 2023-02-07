@@ -66,13 +66,9 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
-                <!-- Tags -->
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <!-- Stops -->
                 <v:CollapsibleListView BindingContext="{Binding StopsVM}" />
-                <!-- Topics -->
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <!-- Activities -->
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
             </VerticalStackLayout>
         </ScrollView>

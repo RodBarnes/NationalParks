@@ -64,11 +64,8 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
-                <!-- Fees -->
                 <v:FeesView BindingContext="{Binding FeesVM}" />
-                <!-- Operating Hours -->
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
-                <!-- Contacts -->
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
                 <!-- Campsite Info -->
                 <Frame Style="{StaticResource CollapsibleView}">
@@ -205,9 +202,7 @@
                         </Grid>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Directions -->
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
-                <!-- Weather -->
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <!-- Reservations -->
                 <Frame Style="{StaticResource CollapsibleView}"
