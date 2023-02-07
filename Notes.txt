@@ -2,6 +2,7 @@ Status
 ------
 Working to create subclasses from CollapsibleView.  All seem to be working great -- except, the IsVisible doesn't seem to be working?  The section appears even if it has no content.
 
+These are done: Tour, Webcam, Park
 
 Todo & Ideas
 ------------
