@@ -53,44 +53,7 @@
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 </HorizontalStackLayout>
-                <!-- Alerts -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding HasAlerts, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AlertsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding AlertsVM.Icon}"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    Aspect="AspectFill"
-                                    HeightRequest="20" />
-                            <Label Text="{Binding AlertsVM.Title}"
-                                   Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Park.Alerts}"
-                              SelectionMode="None"
-                              IsVisible="{Binding AlertsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Alert">
-                                    <VerticalStackLayout >
-                                        <Label Text="{Binding Title}"
-                                            Style="{StaticResource LabelMediumBold}"/>
-                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                            <Label Text="{Binding Category}"
-                                               Grid.Column="0"
-                                           Style="{StaticResource LabelMedium}"/>
-                                            <Label Text="{Binding Description}"
-                                               Grid.Column="1"
-                                           Style="{StaticResource LabelMedium}"/>
-                                        </Grid>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:AlertsView BindingContext="{Binding AlertsVM}" />
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
