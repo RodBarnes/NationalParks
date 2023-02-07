@@ -91,75 +91,12 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Entrance Fees -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Park.HasFees, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CombinedFeesVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding CombinedFeesVM.Icon}"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    Aspect="AspectFill"
-                                    HeightRequest="20" />
-                            <Label Text="{Binding CombinedFeesVM.Title}"
-                                   Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Park.EntranceFees}"
-                              SelectionMode="None"
-                              IsVisible="{Binding CombinedFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Fee">
-                                    <VerticalStackLayout >
-                                        <Label Text="{Binding Title}"
-                                            Style="{StaticResource LabelMediumBold}"/>
-                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                            <Label Text="{Binding Cost, StringFormat='${0}'}"
-                                               Grid.Column="0"
-                                           Style="{StaticResource LabelMedium}"/>
-                                            <Label Text="{Binding Description}"
-                                               Grid.Column="1"
-                                           Style="{StaticResource LabelMedium}"/>
-                                        </Grid>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                        <CollectionView ItemsSource="{Binding Park.EntrancePasses}"
-                              SelectionMode="None"
-                              IsVisible="{Binding CombinedFeesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Fee">
-                                    <VerticalStackLayout >
-                                        <Label Text="{Binding Title}"
-                                            Style="{StaticResource LabelMediumBold}"/>
-                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                            <Label Text="{Binding Cost, StringFormat='${0}'}"
-                                               Grid.Column="0"
-                                           Style="{StaticResource LabelMedium}"/>
-                                            <Label Text="{Binding Description}"
-                                               Grid.Column="1"
-                                           Style="{StaticResource LabelMedium}"/>
-                                        </Grid>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Operating Hours -->
+                <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
-                <!-- Contacts -->
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
-                <!-- Directions -->
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
-                <!-- Topics -->
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <!-- Activities -->
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
-                <!-- Weather -->
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
             </VerticalStackLayout>
         </ScrollView>

@@ -4,7 +4,7 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
-    [ObservableProperty] CollapsibleViewVM feesVM;
+    [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
     [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
@@ -18,7 +18,7 @@ public partial class CampgroundDetailVM : DetailVM
     public CampgroundDetailVM(IMap map) : base(map)
     {
         Title = "Campground";
-        FeesVM = new CollapsibleViewVM("Fees", false);
+        FeesVM = new FeesVM("Fees", false);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
         ContactsVM = new ContactsVM("Contacts", false);
         CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
@@ -33,6 +33,8 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        FeesVM.HasContent = Campground.HasFees;
+        FeesVM.Fees = Campground.Fees;
         OperatingHoursVM.HasContent = Campground.HasOperatingHours;
         OperatingHoursVM.OperatingHours = Campground.OperatingHours;
         ContactsVM.HasContent = Campground.HasContacts;

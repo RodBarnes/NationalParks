@@ -105,6 +105,9 @@
 	  <Compile Update="Views\EventListPage.xaml.cs">
 	    <DependentUpon>EventListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\FeesView.xaml.cs">
+	    <DependentUpon>FeesView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PersonListPage.xaml.cs">
 	    <DependentUpon>PersonListPage.xaml</DependentUpon>
 	  </Compile>
@@ -172,6 +175,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EventListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FeesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FilterView.xaml">

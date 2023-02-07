@@ -7,7 +7,7 @@ public partial class ParkDetailVM : DetailVM
 {
     [ObservableProperty] Park park;
     [ObservableProperty] CollapsibleViewVM alertsVM;
-    [ObservableProperty] CollapsibleViewVM combinedFeesVM;
+    [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
     [ObservableProperty] DirectionsVM directionsVM;
@@ -20,7 +20,7 @@ public partial class ParkDetailVM : DetailVM
     {
         Title = "Park";
         AlertsVM = new CollapsibleViewVM("Alerts", false);
-        CombinedFeesVM = new CollapsibleViewVM("Entrance Fees", false);
+        FeesVM = new FeesVM("Entrance Fees", false);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
         ContactsVM = new ContactsVM("Contacts", false);
         DirectionsVM = new DirectionsVM("Directions", false);
@@ -35,6 +35,8 @@ public partial class ParkDetailVM : DetailVM
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
 
+        FeesVM.HasContent = Park.HasFees;
+        FeesVM.Fees = Park.EntranceFees;
         OperatingHoursVM.HasContent = Park.HasOperatingHours;
         OperatingHoursVM.OperatingHours = Park.OperatingHours;
         ContactsVM.HasContent = Park.HasContacts;
