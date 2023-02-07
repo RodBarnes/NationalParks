@@ -23,13 +23,13 @@ public partial class TourDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        StopsVM.HasContent = tour.HasStops;
-        StopsVM.Items = tour.Stops.ToList<object>();
-        TagsVM.HasContent = tour.HasTags;
-        TagsVM.Items = tour.Tags.ToList<object>();
-        TopicsVM.HasContent = tour.HasTopics;
-        TopicsVM.Items = tour.Topics.ToList<object>();
-        ActivitiesVM.HasContent = tour.HasActivities;
-        ActivitiesVM.Items = tour.Activities.ToList<object>();
+        StopsVM.HasContent = Tour.HasStops;
+        StopsVM.Items = Tour.Stops.ToList<object>();
+        TagsVM.HasContent = Tour.HasTags;
+        TagsVM.Items = Tour.Tags.ToList<object>();
+        TopicsVM.HasContent = Tour.HasTopics;
+        TopicsVM.Items = Tour.Topics.ToList<object>();
+        ActivitiesVM.HasContent = Tour.HasActivities;
+        ActivitiesVM.Items = Tour.Activities.ToList<object>();
     }
 }
