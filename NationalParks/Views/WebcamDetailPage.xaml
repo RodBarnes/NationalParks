@@ -64,7 +64,9 @@
                     <Label Text="Message: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding Webcam.StatusMessage}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
+                
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
+                
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

@@ -64,9 +64,11 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
+                    
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
+                    
                 <!-- Campsite Info -->
                 <Frame Style="{StaticResource CollapsibleView}">
                     <VerticalStackLayout >
@@ -202,8 +204,10 @@
                         </Grid>
                     </VerticalStackLayout>
                 </Frame>
+                    
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
+                    
                 <!-- Reservations -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Campground.HasReservations, Converter={StaticResource BoolToTrueFalseConverter}}">

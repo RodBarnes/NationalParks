@@ -79,11 +79,13 @@
                                IsVisible="{Binding FullDescriptionVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
+                
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
+                
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

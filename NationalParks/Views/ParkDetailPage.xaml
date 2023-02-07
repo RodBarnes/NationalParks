@@ -53,6 +53,7 @@
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 </HorizontalStackLayout>
+                
                 <v:AlertsView BindingContext="{Binding AlertsVM}" />
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
@@ -61,6 +62,7 @@
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
+                
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

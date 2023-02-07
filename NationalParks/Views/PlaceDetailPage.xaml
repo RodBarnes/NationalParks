@@ -116,9 +116,11 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
+                
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
+                
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
