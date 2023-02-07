@@ -2,6 +2,11 @@ Status
 ------
 Working to create subclasses from CollapsibleView.  All seem to be working great -- except, the IsVisible doesn't seem to be working?  The section appears even if it has no content.
 
+Thoughts:
+	- I could probably add an IsHtml flag in CollapsibleTextView and let it serve for BodyText sections, as well.
+	- Probably should extract every collapsible section still explicit in a DetailPage just so everything is consistent.
+	- Shouldn't I be able to make the various properties of a CollapsibleView (and subclasses) as properties of the view itself so they can be set/bound in the XAML oage rather in the VM?
+
 These are done: Tour, Webcam, Park
 
 Todo & Ideas
