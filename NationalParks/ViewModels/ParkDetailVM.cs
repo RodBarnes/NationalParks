@@ -6,7 +6,7 @@ namespace NationalParks.ViewModels;
 public partial class ParkDetailVM : DetailVM
 {
     [ObservableProperty] Park park;
-    [ObservableProperty] CollapsibleViewVM alertsVM;
+    [ObservableProperty] AlertsVM alertsVM;
     [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
@@ -19,7 +19,7 @@ public partial class ParkDetailVM : DetailVM
     public ParkDetailVM(IMap map) : base(map)
     {
         Title = "Park";
-        AlertsVM = new CollapsibleViewVM("Alerts", false);
+        AlertsVM = new AlertsVM("Alerts", false);
         FeesVM = new FeesVM("Entrance Fees", false);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
         ContactsVM = new ContactsVM("Contacts", false);
@@ -35,6 +35,8 @@ public partial class ParkDetailVM : DetailVM
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
 
+        AlertsVM.HasContent = Park.HasAlerts;
+        AlertsVM.Alerts = Park.Alerts;
         FeesVM.HasContent = Park.HasFees;
         FeesVM.Fees = Park.EntranceFees;
         OperatingHoursVM.HasContent = Park.HasOperatingHours;
