@@ -5,8 +5,8 @@ public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
     [ObservableProperty] CollapsibleViewVM feesVM;
-    [ObservableProperty] CollapsibleViewVM operatingHoursVM;
-    [ObservableProperty] CollapsibleViewVM contactsVM;
+    [ObservableProperty] OperatingHoursVM operatingHoursVM;
+    [ObservableProperty] ContactsVM contactsVM;
     [ObservableProperty] CollapsibleViewVM campsiteInfoVM;
     [ObservableProperty] CollapsibleViewVM amenitiesVM;
     [ObservableProperty] CollapsibleViewVM accessibilityVM;
@@ -19,8 +19,8 @@ public partial class CampgroundDetailVM : DetailVM
     {
         Title = "Campground";
         FeesVM = new CollapsibleViewVM("Fees", false);
-        OperatingHoursVM = new CollapsibleViewVM("Operating Hours", false);
-        ContactsVM = new CollapsibleViewVM("Contacts", false);
+        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
+        ContactsVM = new ContactsVM("Contacts", false);
         CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
         AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
@@ -33,11 +33,16 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        DirectionsVM.HasContent = campground.HasDirections;
-        DirectionsVM.PhysicalAddress = campground.PhysicalAddress?.ToString();
-        DirectionsVM.Directions = campground.DirectionsOverview;
-        WeatherVM.Text = campground.WeatherOverview;
-        WeatherVM.HasContent = campground.HasWeather;
+        OperatingHoursVM.HasContent = Campground.HasOperatingHours;
+        OperatingHoursVM.OperatingHours = Campground.OperatingHours;
+        ContactsVM.HasContent = Campground.HasContacts;
+        ContactsVM.PhoneContacts = Campground.Contacts.PhoneNumbers;
+        ContactsVM.EmailContacts = Campground.Contacts.EmailAddresses;
+        DirectionsVM.HasContent = Campground.HasDirections;
+        DirectionsVM.PhysicalAddress = Campground.PhysicalAddress?.ToString();
+        DirectionsVM.Directions = Campground.DirectionsOverview;
+        WeatherVM.HasContent = Campground.HasWeather;
+        WeatherVM.Text = Campground.WeatherOverview;
     }
 
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             x:DataType="vm:ContactsVM"
+             x:Class="NationalParks.Views.ContactsView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Frame Style="{StaticResource CollapsibleView}"
+           IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToggleCommand}" />
+                </HorizontalStackLayout.GestureRecognizers>
+                <Image Source="{Binding Icon}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Aspect="AspectFill"
+                       HeightRequest="20" />
+                <Label Text="{Binding Title}"
+                       Style="{StaticResource LabelLargeBold}" />
+            </HorizontalStackLayout>
+            <CollectionView ItemsSource="{Binding PhoneContacts}"
+                            SelectionMode="None"
+                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:PhoneContact">
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Type, StringFormat='{0}:'}"
+                                       Style="{StaticResource LabelMedium}"
+                                       Margin="0,0,5,0"/>
+                                <ctrl:HyperlinkLabel Text="{Binding PhoneNumber}"
+                                                     Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
+                                                     Style="{StaticResource LabelMedium}"/>
+                                <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
+                                       Style="{StaticResource LabelMedium}"
+                                       IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                            </HorizontalStackLayout>
+                            <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView ItemsSource="{Binding EmailContacts}"
+                            SelectionMode="None"
+                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:EmailContact">
+                        <HorizontalStackLayout>
+                            <Label Text="Email"
+                                   Style="{StaticResource LabelMedium}"
+                                   Margin="0,0,5,0"/>
+                            <ctrl:HyperlinkLabel Text="{Binding EmailAddress}"
+                                                 Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
+                                                 Style="{StaticResource LabelMedium}"/>
+                            <!--<Label Text="{Binding Description}"
+                                           Style="{StaticResource LabelMedium}"/>-->
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </Frame>
+</ContentView>
