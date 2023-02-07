@@ -59,7 +59,6 @@
                            Style="{StaticResource LabelMedium}"
                            VerticalOptions="Center"/>
                 </HorizontalStackLayout>
-                <!-- Related Parks -->
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <!-- Body Text -->
                 <Frame Style="{StaticResource CollapsibleView}"
@@ -83,34 +82,7 @@
                                IsVisible="{Binding BodyTextVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Related Organizations -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Place.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OrganizationsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding OrganizationsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding OrganizationsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.RelatedOrganizations}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding OrganizationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Organization">
-                                    <Label Text="{Binding Name}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
                 <!-- Multimedia -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Place.HasMultiMedia, Converter={StaticResource BoolToTrueFalseConverter}}">
@@ -144,11 +116,8 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Tags -->
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <!-- Quick Facts -->
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
-                <!-- Amenities -->
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
             </VerticalStackLayout>
         </ScrollView>

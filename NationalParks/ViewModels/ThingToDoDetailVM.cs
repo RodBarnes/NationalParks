@@ -6,7 +6,7 @@ public partial class ThingToDoDetailVM : DetailVM
     [ObservableProperty] ThingToDo thingToDo;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM fullDescriptionVM;
-    [ObservableProperty] CollapsibleViewVM organizationsVM;
+    [ObservableProperty] CollapsibleListVM organizationsVM;
     [ObservableProperty] CollapsibleListVM amenitiesVM;
     [ObservableProperty] CollapsibleListVM tagsVM;
     [ObservableProperty] CollapsibleListVM topicsVM;
@@ -17,7 +17,7 @@ public partial class ThingToDoDetailVM : DetailVM
         Title = "Things To Do";
         RelatedParksVM = new RelatedParksVM("Related Parks", false);
         FullDescriptionVM = new CollapsibleViewVM("Full Description", false);
-        OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
+        OrganizationsVM = new CollapsibleListVM("Related Organizations", false);
         AmenitiesVM = new CollapsibleListVM("Amenities", false);
         TagsVM = new CollapsibleListVM("Tags", false);
         TopicsVM = new CollapsibleListVM("Topics", false);
@@ -27,6 +27,8 @@ public partial class ThingToDoDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        OrganizationsVM.HasContent = ThingToDo.HasRelatedOrganizations;
+        OrganizationsVM.Items = ThingToDo.RelatedOrganizations.ToList<object>();
         RelatedParksVM.HasContent = ThingToDo.HasRelatedParks;
         RelatedParksVM.Items = ThingToDo.RelatedParks;
         AmenitiesVM.HasContent = ThingToDo.HasAmenities;

@@ -79,41 +79,10 @@
                                IsVisible="{Binding FullDescriptionVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <!-- Related Organizations -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasRelatedOrganizations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OrganizationsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding OrganizationsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding OrganizationsVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding ThingToDo.RelatedOrganizations}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding OrganizationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Organization">
-                                    <Label Text="{Binding Name}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Tags -->
+                <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <!-- Amenities -->
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
-                <!-- Topics -->
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <!-- Activities -->
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
             </VerticalStackLayout>
         </ScrollView>

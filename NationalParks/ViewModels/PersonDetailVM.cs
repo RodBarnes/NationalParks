@@ -1,4 +1,6 @@
-﻿namespace NationalParks.ViewModels;
+﻿using NationalParks.Views;
+
+namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Person), "Model")]
 public partial class PersonDetailVM : DetailVM
@@ -6,7 +8,7 @@ public partial class PersonDetailVM : DetailVM
     [ObservableProperty] Person person;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
-    [ObservableProperty] CollapsibleViewVM organizationsVM;
+    [ObservableProperty] CollapsibleListVM organizationsVM;
     [ObservableProperty] CollapsibleListVM quickFactsVM;
     [ObservableProperty] CollapsibleListVM tagsVM;
 
@@ -15,7 +17,7 @@ public partial class PersonDetailVM : DetailVM
         Title = "Person";
         RelatedParksVM = new RelatedParksVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
-        OrganizationsVM = new CollapsibleViewVM("Related Organizations", false);
+        OrganizationsVM = new CollapsibleListVM("Related Organizations", false);
         QuickFactsVM = new CollapsibleListVM("Quick Facts", false);
         TagsVM = new CollapsibleListVM("Tags", false);
     }
@@ -25,6 +27,8 @@ public partial class PersonDetailVM : DetailVM
     {
         RelatedParksVM.HasContent = Person.HasRelatedParks;
         RelatedParksVM.Items = Person.RelatedParks;
+        OrganizationsVM.HasContent = Person.HasRelatedOrganizations;
+        OrganizationsVM.Items = Person.RelatedOrganizations.ToList<object>();
         TagsVM.HasContent = Person.HasTags;
         TagsVM.Items = Person.Tags.ToList<object>();
         QuickFactsVM.HasContent = Person.HasQuickFacts;
