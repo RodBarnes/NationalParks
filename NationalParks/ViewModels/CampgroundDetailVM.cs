@@ -26,12 +26,14 @@ public partial class CampgroundDetailVM : DetailVM
         CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
         AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
+
+        WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
+        ReservationsVM = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
+        RegulationsVM = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
+
         DirectionsVM = new DirectionsVM("Directions", false, Campground.PhysicalAddress?.ToString(), Campground.DirectionsOverview);
         ContactsVM = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
         FeesVM = new FeesVM("Fees", false, Campground.Fees);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Campground.OperatingHours);
-        WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
-        ReservationsVM = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
-        RegulationsVM = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
     }
 }

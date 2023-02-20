@@ -27,14 +27,16 @@ public partial class ParkDetailVM : DetailVM
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
 
+        WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
+
+        TopicsVM = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
+        ActivitiesVM = new CollapsibleListVM("Activities", false, Park.Activities.ToList<object>());
+
         DirectionsVM = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
         ContactsVM = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
         AlertsVM = new AlertsVM("Alerts", false, Park.Alerts);
         FeesVM = new FeesVM("Entrance Fees", false, Park.EntranceFees);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
-        TopicsVM = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
-        ActivitiesVM = new CollapsibleListVM("Activities", false, Park.Activities.ToList<object>());
-        WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
     }
 
     static async Task GetAlerts(Park park)

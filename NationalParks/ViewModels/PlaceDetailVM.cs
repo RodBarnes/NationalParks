@@ -24,10 +24,12 @@ public partial class PlaceDetailVM : DetailVM
     {
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
+
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
         TagsVM = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());
         QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Place.QuickFacts.ToList<object>());
         AmenitiesVM = new CollapsibleListVM("Amenities", false, Place.Amenities.ToList<object>());
+
+        RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
     }
 }
