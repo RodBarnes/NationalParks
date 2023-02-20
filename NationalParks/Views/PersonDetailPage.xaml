@@ -56,35 +56,10 @@
                                          VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
-                <!-- Related Parks -->
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <!-- Body Text -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Person.HasBodyText, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BodyTextVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding BodyTextVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding BodyTextVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding Person.BodyText}"
-                               TextType="Html"
-                               Style="{StaticResource LabelMedium}"
-                               IsVisible="{Binding BodyTextVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Related Organizations -->
+                <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <!-- Tags -->
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <!-- Quick Facts -->
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
             </VerticalStackLayout>
         </ScrollView>

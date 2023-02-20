@@ -20,7 +20,7 @@ public partial class PersonDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        BodyTextVM = new CollapsibleViewVM("Full Description", false);
+        BodyTextVM = new CollapsibleTextVM("Full Description", false, Person.BodyText);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Person.RelatedOrganizations.ToList<object>());
         QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Person.QuickFacts.ToList<object>());
