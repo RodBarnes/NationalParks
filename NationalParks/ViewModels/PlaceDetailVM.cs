@@ -22,8 +22,9 @@ public partial class PlaceDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        BodyTextVM = new CollapsibleViewVM("Full Description", false);
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
+
+        BodyTextVM = new CollapsibleTextVM("Full Description", false, Place.BodyText);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
         TagsVM = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());
