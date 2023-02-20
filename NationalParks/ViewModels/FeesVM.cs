@@ -2,7 +2,7 @@
 
 public partial class FeesVM : CollapsibleViewVM
 {
-    [ObservableProperty] List<Fee> fees;
+    [ObservableProperty] List<Fee> items;
 
     public FeesVM(string title, bool isOpen) : base(title, isOpen)
     {

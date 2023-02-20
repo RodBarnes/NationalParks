@@ -34,7 +34,7 @@ public partial class CampgroundDetailVM : DetailVM
     public void PopulateData()
     {
         FeesVM.HasContent = Campground.HasFees;
-        FeesVM.Fees = Campground.Fees;
+        FeesVM.Items = Campground.Fees;
         OperatingHoursVM.HasContent = Campground.HasOperatingHours;
         OperatingHoursVM.OperatingHours = Campground.OperatingHours;
         ContactsVM.HasContent = Campground.HasContacts;
