@@ -47,9 +47,11 @@ public partial class CampgroundDetailVM : DetailVM
         WeatherVM.Text = Campground.WeatherOverview;
         ReservationsVM.HasUrl = Campground.HasReservationUrl;
         ReservationsVM.Url = Campground.ReservationUrl;
+        ReservationsVM.HasContent = Campground.HasReservations;
         ReservationsVM.Text = Campground.ReservationInfo;
         RegulationsVM.HasUrl = Campground.HasRegulationsUrl;
         RegulationsVM.Url = Campground.RegulationsUrl;
+        RegulationsVM.HasContent = Campground.HasRegulations;
         RegulationsVM.Text = Campground.RegulationsOverview;
     }
 }
