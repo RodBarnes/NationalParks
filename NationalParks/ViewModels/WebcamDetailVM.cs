@@ -11,10 +11,10 @@ public partial class WebcamDetailVM : DetailVM
         Title = "Webcam";
         RelatedParksVM = new RelatedParksVM("Related Parks", false);
     }
+
     [RelayCommand]
     public void PopulateData()
     {
-        RelatedParksVM.HasContent = Webcam.HasRelatedParks;
         RelatedParksVM.Items = Webcam.RelatedParks;
     }
 }

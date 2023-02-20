@@ -207,64 +207,8 @@
                     
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
-                    
-                <!-- Reservations -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Campground.HasReservations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ReservationsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding ReservationsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding ReservationsVM.Title, StringFormat='{0}'} "
-                                   Style="{StaticResource LabelLargeBold}"
-                                   Margin="0,0,5,0"/>
-                            <ctrl:HyperlinkLabel Text="(link)"
-                                                    Url="{Binding Campground.ReservationUrl}"
-                                                    IsVisible="{Binding Campground.HasReservationUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                                    VerticalOptions="Center"
-                                                    Style="{StaticResource LabelMedium}"/>
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding Campground.ReservationInfo}" 
-                                Style="{StaticResource LabelMedium}"
-                                TextType="Html"
-                                Padding="0,0,5,5"
-                                IsVisible="{Binding ReservationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <!-- Regulations -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Campground.HasRegulations, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RegulationsVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding RegulationsVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding RegulationsVM.Title, StringFormat='{0} '} "
-                                   Style="{StaticResource LabelLargeBold}"
-                                   Margin="0,0,5,0"/>
-                            <ctrl:HyperlinkLabel Text="(link)"
-                                                    Url="{Binding Campground.RegulationsUrl}"
-                                                    IsVisible="{Binding Campground.HasRegulationsUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                                    VerticalOptions="Center"
-                                                    Style="{StaticResource LabelMedium}"/>
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding Campground.RegulationsOverview}" 
-                                Style="{StaticResource LabelMedium}" 
-                                TextType="Html"
-                                IsVisible="{Binding RegulationsVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}" />
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CollapsibleTextView BindingContext="{Binding ReservationsVM}" />
+                <v:CollapsibleTextView BindingContext="{Binding RegulationsVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout

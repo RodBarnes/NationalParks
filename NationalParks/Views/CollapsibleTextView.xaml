@@ -2,6 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:CollapsibleTextVM"
              x:Class="NationalParks.Views.CollapsibleTextView">
@@ -18,16 +19,23 @@
                     <TapGestureRecognizer Command="{Binding ToggleCommand}" />
                 </HorizontalStackLayout.GestureRecognizers>
                 <Image Source="{Binding Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Aspect="AspectFill"
+                       HeightRequest="20" />
                 <Label Text="{Binding Title}"
-                                Style="{StaticResource LabelLargeBold}" />
+                       Style="{StaticResource LabelLargeBold}"
+                       Margin="0,0,5,0"/>
+                <ctrl:HyperlinkLabel Text="(link)"
+                                     Url="{Binding Url}"
+                                     IsVisible="{Binding HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     VerticalOptions="Center"
+                                     Style="{StaticResource LabelMedium}"/>
             </HorizontalStackLayout>
             <Label Text="{Binding Text}"
-                                Style="{StaticResource LabelMedium}"
-                                IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                   Style="{StaticResource LabelMedium}"
+                   TextType="Html"
+                   IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
         </VerticalStackLayout>
     </Frame>
 </ContentView>

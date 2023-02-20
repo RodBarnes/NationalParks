@@ -12,8 +12,8 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty] CollapsibleViewVM accessibilityVM;
     [ObservableProperty] DirectionsVM directionsVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
-    [ObservableProperty] CollapsibleViewVM reservationsVM;
-    [ObservableProperty] CollapsibleViewVM regulationsVM;
+    [ObservableProperty] CollapsibleTextVM reservationsVM;
+    [ObservableProperty] CollapsibleTextVM regulationsVM;
 
     public CampgroundDetailVM(IMap map) : base(map)
     {
@@ -26,8 +26,8 @@ public partial class CampgroundDetailVM : DetailVM
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
         DirectionsVM = new DirectionsVM("Directions", false);
         WeatherVM = new CollapsibleTextVM("Weather", false);
-        ReservationsVM = new CollapsibleViewVM("Reservations", false);
-        RegulationsVM = new CollapsibleViewVM("Regulations", false);
+        ReservationsVM = new CollapsibleTextVM("Reservations", false);
+        RegulationsVM = new CollapsibleTextVM("Regulations", false);
     }
 
     [RelayCommand]
@@ -45,6 +45,11 @@ public partial class CampgroundDetailVM : DetailVM
         DirectionsVM.Directions = Campground.DirectionsOverview;
         WeatherVM.HasContent = Campground.HasWeather;
         WeatherVM.Text = Campground.WeatherOverview;
+        ReservationsVM.HasUrl = Campground.HasReservationUrl;
+        ReservationsVM.Url = Campground.ReservationUrl;
+        ReservationsVM.Text = Campground.ReservationInfo;
+        RegulationsVM.HasUrl = Campground.HasRegulationsUrl;
+        RegulationsVM.Url = Campground.RegulationsUrl;
+        RegulationsVM.Text = Campground.RegulationsOverview;
     }
-
 }
