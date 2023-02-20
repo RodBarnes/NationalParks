@@ -62,7 +62,6 @@
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <!-- Multimedia -->
                 <Frame Style="{StaticResource CollapsibleView}"
                         IsVisible="{Binding Place.HasMultiMedia, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <VerticalStackLayout>
@@ -95,11 +94,9 @@
                         </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
-                
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
