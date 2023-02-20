@@ -4,6 +4,9 @@
     public partial class CollapsibleViewVM
     {
         [ObservableProperty] bool hasContent;
+        [ObservableProperty] string icon;
+        [ObservableProperty] string title;
+        [ObservableProperty] bool isOpen;
 
         private readonly string openIcon = "arrow_down_green";
         private readonly string closeIcon= "arrow_up_green";
@@ -14,12 +17,6 @@
             IsOpen = isOpen;
             Icon = (IsOpen) ? closeIcon : openIcon;
         }
-
-        [ObservableProperty] string icon;
-
-        [ObservableProperty] string title;
-
-        [ObservableProperty] bool isOpen;
 
         [RelayCommand]
         public void Toggle()
