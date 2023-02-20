@@ -22,7 +22,7 @@
                 <Label Text="{Binding Title}"
                                 Style="{StaticResource LabelLargeBold}" />
             </HorizontalStackLayout>
-            <CollectionView ItemsSource="{Binding OperatingHours}"
+            <CollectionView ItemsSource="{Binding Items}"
                                   SelectionMode="None"
                                   IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>

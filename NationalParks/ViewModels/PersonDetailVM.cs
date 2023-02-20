@@ -15,24 +15,18 @@ public partial class PersonDetailVM : DetailVM
     public PersonDetailVM(IMap map) : base(map)
     {
         Title = "Person";
-        RelatedParksVM = new RelatedParksVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false);
-        QuickFactsVM = new CollapsibleListVM("Quick Facts", false);
-        TagsVM = new CollapsibleListVM("Tags", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
         RelatedParksVM.HasContent = Person.HasRelatedParks;
-        RelatedParksVM.Items = Person.RelatedParks;
-        OrganizationsVM.HasContent = Person.HasRelatedOrganizations;
-        OrganizationsVM.Items = Person.RelatedOrganizations.ToList<object>();
-        TagsVM.HasContent = Person.HasTags;
-        TagsVM.Items = Person.Tags.ToList<object>();
-        QuickFactsVM.HasContent = Person.HasQuickFacts;
-        QuickFactsVM.Items = Person.QuickFacts.ToList<object>();
+
+        RelatedParksVM = new RelatedParksVM("Related Parks", false, Person.RelatedParks);
+        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Person.RelatedOrganizations.ToList<object>());
+        QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Person.QuickFacts.ToList<object>());
+        TagsVM = new CollapsibleListVM("Tags", false, Person.Tags.ToList<object>());
     }
 
 }

@@ -19,14 +19,6 @@ public partial class ParkDetailVM : DetailVM
     public ParkDetailVM(IMap map) : base(map)
     {
         Title = "Park";
-        AlertsVM = new AlertsVM("Alerts", false);
-        FeesVM = new FeesVM("Entrance Fees", false);
-        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
-        ContactsVM = new ContactsVM("Contacts", false);
-        DirectionsVM = new DirectionsVM("Directions", false);
-        TopicsVM = new CollapsibleListVM("Topics", false);
-        ActivitiesVM = new CollapsibleListVM("Activities", false);
-        WeatherVM = new CollapsibleTextVM("Weather", false);
     }
 
     [RelayCommand]
@@ -35,24 +27,14 @@ public partial class ParkDetailVM : DetailVM
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
 
-        AlertsVM.HasContent = Park.HasAlerts;
-        AlertsVM.Alerts = Park.Alerts;
-        FeesVM.HasContent = Park.HasFees;
-        FeesVM.Fees = Park.EntranceFees;
-        OperatingHoursVM.HasContent = Park.HasOperatingHours;
-        OperatingHoursVM.OperatingHours = Park.OperatingHours;
-        ContactsVM.HasContent = Park.HasContacts;
-        ContactsVM.PhoneContacts = Park.Contacts.PhoneNumbers;
-        ContactsVM.EmailContacts = Park.Contacts.EmailAddresses;
-        DirectionsVM.HasContent = Park.HasDirections;
-        DirectionsVM.PhysicalAddress = Park.PhysicalAddress?.ToString();
-        DirectionsVM.Directions = Park.DirectionsInfo;
-        WeatherVM.HasContent = Park.HasWeather;
-        WeatherVM.Text = Park.WeatherInfo;
-        TopicsVM.HasContent = Park.HasTopics;
-        TopicsVM.Items = Park.Topics.ToList<object>();
-        ActivitiesVM.HasContent = Park.HasActivities;
-        ActivitiesVM.Items = Park.Activities.ToList<object>();
+        DirectionsVM = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
+        ContactsVM = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
+        AlertsVM = new AlertsVM("Alerts", false, Park.Alerts);
+        FeesVM = new FeesVM("Entrance Fees", false, Park.EntranceFees);
+        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
+        TopicsVM = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
+        ActivitiesVM = new CollapsibleListVM("Activities", false, Park.Activities.ToList<object>());
+        WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
     }
 
     static async Task GetAlerts(Park park)

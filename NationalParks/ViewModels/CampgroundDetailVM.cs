@@ -18,40 +18,20 @@ public partial class CampgroundDetailVM : DetailVM
     public CampgroundDetailVM(IMap map) : base(map)
     {
         Title = "Campground";
-        FeesVM = new FeesVM("Fees", false);
-        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false);
-        ContactsVM = new ContactsVM("Contacts", false);
         CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
         AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
-        DirectionsVM = new DirectionsVM("Directions", false);
-        WeatherVM = new CollapsibleTextVM("Weather", false);
-        ReservationsVM = new CollapsibleTextVM("Reservations", false);
-        RegulationsVM = new CollapsibleTextVM("Regulations", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
-        FeesVM.HasContent = Campground.HasFees;
-        FeesVM.Items = Campground.Fees;
-        OperatingHoursVM.HasContent = Campground.HasOperatingHours;
-        OperatingHoursVM.OperatingHours = Campground.OperatingHours;
-        ContactsVM.HasContent = Campground.HasContacts;
-        ContactsVM.PhoneContacts = Campground.Contacts.PhoneNumbers;
-        ContactsVM.EmailContacts = Campground.Contacts.EmailAddresses;
-        DirectionsVM.HasContent = Campground.HasDirections;
-        DirectionsVM.PhysicalAddress = Campground.PhysicalAddress?.ToString();
-        DirectionsVM.Directions = Campground.DirectionsOverview;
-        WeatherVM.HasContent = Campground.HasWeather;
-        WeatherVM.Text = Campground.WeatherOverview;
-        ReservationsVM.HasUrl = Campground.HasReservationUrl;
-        ReservationsVM.Url = Campground.ReservationUrl;
-        ReservationsVM.HasContent = Campground.HasReservations;
-        ReservationsVM.Text = Campground.ReservationInfo;
-        RegulationsVM.HasUrl = Campground.HasRegulationsUrl;
-        RegulationsVM.Url = Campground.RegulationsUrl;
-        RegulationsVM.HasContent = Campground.HasRegulations;
-        RegulationsVM.Text = Campground.RegulationsOverview;
+        DirectionsVM = new DirectionsVM("Directions", false, Campground.PhysicalAddress?.ToString(), Campground.DirectionsOverview);
+        ContactsVM = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
+        FeesVM = new FeesVM("Fees", false, Campground.Fees);
+        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Campground.OperatingHours);
+        WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
+        ReservationsVM = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
+        RegulationsVM = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
     }
 }

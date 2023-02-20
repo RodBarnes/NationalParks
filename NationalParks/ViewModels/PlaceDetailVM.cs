@@ -17,27 +17,17 @@ public partial class PlaceDetailVM : DetailVM
     public PlaceDetailVM(IMap map) : base(map)
     {
         Title = "Place";
-        RelatedParksVM = new RelatedParksVM("Related Parks", false);
         BodyTextVM = new CollapsibleViewVM("Full Description", false);
         MultimediaVM = new CollapsibleViewVM("Multimedia", false);
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false);
-        TagsVM = new CollapsibleListVM("Tags", false);
-        QuickFactsVM = new CollapsibleListVM("Quick Facts", false);
-        AmenitiesVM = new CollapsibleListVM("Amenities", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
-        RelatedParksVM.HasContent = Place.HasRelatedParks;
-        RelatedParksVM.Items = Place.RelatedParks;
-        OrganizationsVM.HasContent = Place.HasRelatedOrganizations;
-        OrganizationsVM.Items = Place.RelatedOrganizations.ToList<object>();
-        TagsVM.HasContent = Place.HasTags;
-        TagsVM.Items = Place.Tags.ToList<object>();
-        QuickFactsVM.HasContent = Place.HasQuickFacts;
-        QuickFactsVM.Items = Place.QuickFacts.ToList<object>();
-        AmenitiesVM.HasContent = Place.HasAmenities;
-        AmenitiesVM.Items = Place.Amenities.ToList<object>();
+        RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
+        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
+        TagsVM = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());
+        QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Place.QuickFacts.ToList<object>());
+        AmenitiesVM = new CollapsibleListVM("Amenities", false, Place.Amenities.ToList<object>());
     }
 }

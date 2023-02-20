@@ -19,12 +19,14 @@
                 <Label Text="{Binding Title}"
                                 Style="{StaticResource LabelLargeBold}" />
             </HorizontalStackLayout>
-            <Label Text="{Binding PhysicalAddress}" 
+            <VerticalStackLayout IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                <Label Text="{Binding PhysicalAddress}" 
                                Style="{StaticResource LabelMedium}"
-                               IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-            <Label Text="{Binding Directions}"
+                               IsVisible="{Binding HasAddress, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                <Label Text="{Binding Directions}"
                                 Style="{StaticResource LabelMedium}"
-                                IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                                IsVisible="{Binding HasDirections, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </Frame>
 </ContentView>

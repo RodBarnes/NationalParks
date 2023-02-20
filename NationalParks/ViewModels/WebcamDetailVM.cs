@@ -9,12 +9,11 @@ public partial class WebcamDetailVM : DetailVM
     public WebcamDetailVM(IMap map) : base(map)
     {
         Title = "Webcam";
-        RelatedParksVM = new RelatedParksVM("Related Parks", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
-        RelatedParksVM.Items = Webcam.RelatedParks;
+        RelatedParksVM = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);
     }
 }

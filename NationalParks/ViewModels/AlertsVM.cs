@@ -2,10 +2,11 @@
 
 public partial class AlertsVM : CollapsibleViewVM
 {
-    [ObservableProperty] List<Alert> alerts;
+    [ObservableProperty] List<Alert> items;
 
-    public AlertsVM(string title, bool isOpen) : base(title, isOpen)
+    public AlertsVM(string title, bool isOpen, List<Alert> items) : base(title, isOpen)
     {
-
+        Items = items;
+        HasContent = Items?.Count > 0;
     }
 }
