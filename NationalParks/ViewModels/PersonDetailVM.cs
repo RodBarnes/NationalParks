@@ -15,14 +15,12 @@ public partial class PersonDetailVM : DetailVM
     public PersonDetailVM(IMap map) : base(map)
     {
         Title = "Person";
-        BodyTextVM = new CollapsibleViewVM("Full Description", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
-        RelatedParksVM.HasContent = Person.HasRelatedParks;
-
+        BodyTextVM = new CollapsibleViewVM("Full Description", false);
         RelatedParksVM = new RelatedParksVM("Related Parks", false, Person.RelatedParks);
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Person.RelatedOrganizations.ToList<object>());
         QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Person.QuickFacts.ToList<object>());

@@ -17,13 +17,13 @@ public partial class PlaceDetailVM : DetailVM
     public PlaceDetailVM(IMap map) : base(map)
     {
         Title = "Place";
-        BodyTextVM = new CollapsibleViewVM("Full Description", false);
-        MultimediaVM = new CollapsibleViewVM("Multimedia", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
+        BodyTextVM = new CollapsibleViewVM("Full Description", false);
+        MultimediaVM = new CollapsibleViewVM("Multimedia", false);
         RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
         TagsVM = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());

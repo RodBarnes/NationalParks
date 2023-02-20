@@ -18,14 +18,14 @@ public partial class CampgroundDetailVM : DetailVM
     public CampgroundDetailVM(IMap map) : base(map)
     {
         Title = "Campground";
-        CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
-        AmenitiesVM = new CollapsibleViewVM("Amenities", false);
-        AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
+        CampsiteInfoVM = new CollapsibleViewVM("Campsite Info", false);
+        AmenitiesVM = new CollapsibleViewVM("Amenities", false);
+        AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
         DirectionsVM = new DirectionsVM("Directions", false, Campground.PhysicalAddress?.ToString(), Campground.DirectionsOverview);
         ContactsVM = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
         FeesVM = new FeesVM("Fees", false, Campground.Fees);

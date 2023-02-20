@@ -15,12 +15,12 @@ public partial class ThingToDoDetailVM : DetailVM
     public ThingToDoDetailVM(IMap map) : base(map)
     {
         Title = "Things To Do";
-        FullDescriptionVM = new CollapsibleViewVM("Full Description", false);
     }
 
     [RelayCommand]
     public void PopulateData()
     {
+        FullDescriptionVM = new CollapsibleViewVM("Full Description", false);
         RelatedParksVM = new RelatedParksVM("Related Parks", false, ThingToDo.RelatedParks);
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, ThingToDo.RelatedOrganizations.ToList<object>());
         AmenitiesVM = new CollapsibleListVM("Amenities", false, ThingToDo.Amenities.ToList<object>());
