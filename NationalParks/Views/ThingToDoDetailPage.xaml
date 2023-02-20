@@ -57,29 +57,7 @@
                                          Style="{StaticResource LabelMedium}"/>
                 <!-- Related Parks -->
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <!-- Full Description -->
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding ThingToDo.HasLongDescription, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FullDescriptionVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding FullDescriptionVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding FullDescriptionVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Label Text="{Binding ThingToDo.LongDescription}"
-                               TextType="Html"
-                               Style="{StaticResource LabelMedium}"
-                               IsVisible="{Binding FullDescriptionVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                    </VerticalStackLayout>
-                </Frame>
-                
+                <v:CollapsibleTextView BindingContext="{Binding FullDescriptionVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
