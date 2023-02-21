@@ -1,7 +1,5 @@
 Status
 ------
-The IsVisible doesn't seem to be working on the CollapsibleView?  A section appears even if it has no content.
-
 Multimedia for Place doesn't display (e.g., Stones River Cemetary)
 
 
