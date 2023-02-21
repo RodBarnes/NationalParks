@@ -6,9 +6,14 @@
              xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:FeesVM"
-             x:Class="NationalParks.Views.FeesView">
-    <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+             x:Class="NationalParks.Views.FeesView"
+             IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Frame Style="{StaticResource CollapsibleView}">
         <VerticalStackLayout >
             <HorizontalStackLayout>
                 <HorizontalStackLayout.GestureRecognizers>

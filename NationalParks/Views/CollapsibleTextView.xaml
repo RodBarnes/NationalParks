@@ -5,14 +5,14 @@
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:CollapsibleTextVM"
-             x:Class="NationalParks.Views.CollapsibleTextView">
+             x:Class="NationalParks.Views.CollapsibleTextView"
+             IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
     <ContentView.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame Style="{StaticResource CollapsibleView}"
-           IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}" >
+    <Frame Style="{StaticResource CollapsibleView}" >
         <VerticalStackLayout>
             <HorizontalStackLayout>
                 <HorizontalStackLayout.GestureRecognizers>
