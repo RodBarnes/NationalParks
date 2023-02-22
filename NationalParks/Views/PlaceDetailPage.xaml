@@ -62,38 +62,7 @@
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <Frame Style="{StaticResource CollapsibleView}"
-                        IsVisible="{Binding Place.HasMultiMedia, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MultimediaVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding MultimediaVM.Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
-                            <Label Text="{Binding MultimediaVM.Title}"
-                                Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.Multimedia}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding MultimediaVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="m:Multimedia">
-                                    <VerticalStackLayout Margin="5">
-                                        <Label Text="{Binding Title}"
-                                           Style="{StaticResource LabelMediumBold}"/>
-                                        <ctrl:HyperlinkLabel Text="{Binding Type}"
-                                                                 Url="{Binding Url}"
-                                           Style="{StaticResource LabelMedium}"/>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:MultimediaView BindingContext="{Binding MultimediaVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />

@@ -8,7 +8,7 @@ public partial class PlaceDetailVM : DetailVM
     [ObservableProperty] Place place;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
-    [ObservableProperty] CollapsibleViewVM multimediaVM;
+    [ObservableProperty] MultimediaVM multimediaVM;
     [ObservableProperty] CollapsibleListVM organizationsVM;
     [ObservableProperty] CollapsibleListVM tagsVM;
     [ObservableProperty] CollapsibleListVM quickFactsVM;
@@ -22,8 +22,6 @@ public partial class PlaceDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        MultimediaVM = new CollapsibleViewVM("Multimedia", false);
-
         BodyTextVM = new CollapsibleTextVM("Full Description", false, Place.BodyText);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
@@ -32,5 +30,6 @@ public partial class PlaceDetailVM : DetailVM
         AmenitiesVM = new CollapsibleListVM("Amenities", false, Place.Amenities.ToList<object>());
 
         RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
+        MultimediaVM = new MultimediaVM("Multimedia", false, Place.Multimedia);
     }
 }
