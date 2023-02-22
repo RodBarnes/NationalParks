@@ -1,6 +1,5 @@
 Status
 ------
-Finished AvatarVM.  Can I do the same with the Detail Buttons -- move them into DetailButtonVM?  But that would also include moving the OpenMap and Images RelayCommands into the DetailButtonVM.
 
 
 Todo & Ideas
@@ -61,3 +60,6 @@ Can I change Related Parks so that it shows an element like Campground when ther
 
 Can the x:DataType of the DetailPages be set to just DetailVM?
 	- No, because DetailVM does not have a reference to the model that is required by several of the elements.
+
+Can I do the same with the Detail Buttons as I did with the Avatar image; i.e., move them into DetailButtonVM?  But that would also include moving the OpenMap and Images RelayCommands into the DetailButtonVM.
+	- No, I attempted this but the buttons didn't recognize the tap.
