@@ -102,7 +102,7 @@
 	  <Compile Update="Views\CollapsibleTextView.xaml.cs">
 	    <DependentUpon>CollapsibleTextView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\EventListPage.xaml.cs">
+	  <Compile Update="Pages\EventListPage.xaml.cs">
 	    <DependentUpon>EventListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\FeesView.xaml.cs">
@@ -111,40 +111,40 @@
 	  <Compile Update="Views\MultimediaView.xaml.cs">
 	    <DependentUpon>MultimediaView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PersonListPage.xaml.cs">
+	  <Compile Update="Pages\PersonListPage.xaml.cs">
 	    <DependentUpon>PersonListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PersonFilterPage.xaml.cs">
+	  <Compile Update="Pages\PersonFilterPage.xaml.cs">
 	    <DependentUpon>PersonFilterPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PersonDetailPage.xaml.cs">
+	  <Compile Update="Pages\PersonDetailPage.xaml.cs">
 	    <DependentUpon>PersonDetailPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\CollapsibleLinkView.xaml.cs">
 	    <DependentUpon>CollapsibleLinkView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ThingToDoListPage.xaml.cs">
+	  <Compile Update="Pages\ThingToDoListPage.xaml.cs">
 	    <DependentUpon>ThingToDoListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\TourListPage.xaml.cs">
+	  <Compile Update="Pages\TourListPage.xaml.cs">
 	    <DependentUpon>TourListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\TourDetailPage.xaml.cs">
+	  <Compile Update="Pages\TourDetailPage.xaml.cs">
 	    <DependentUpon>TourDetailPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ParkListPage.xaml.cs">
+	  <Compile Update="Pages\ParkListPage.xaml.cs">
 	    <DependentUpon>ParkListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ParkDetailPage.xaml.cs">
+	  <Compile Update="Pages\ParkDetailPage.xaml.cs">
 	    <DependentUpon>ParkDetailPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ParkFilterPage.xaml.cs">
+	  <Compile Update="Pages\ParkFilterPage.xaml.cs">
 	    <DependentUpon>ParkFilterPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AboutPage.xaml">
+	  <MauiXaml Update="Pages\AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ActivityView.xaml">
@@ -153,13 +153,13 @@
 	  <MauiXaml Update="Views\AlertsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CampgroundDetailPage.xaml">
+	  <MauiXaml Update="Pages\CampgroundDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CampgroundFilterPage.xaml">
+	  <MauiXaml Update="Pages\CampgroundFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CampgroundListPage.xaml">
+	  <MauiXaml Update="Pages\CampgroundListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CollapsibleListView.xaml">
@@ -171,19 +171,19 @@
 	  <MauiXaml Update="Views\ContactsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DataTesterPage.xaml">
+	  <MauiXaml Update="Pages\DataTesterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DirectionsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EventDetailPage.xaml">
+	  <MauiXaml Update="Pages\EventDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EventFilterPage.xaml">
+	  <MauiXaml Update="Pages\EventFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EventListPage.xaml">
+	  <MauiXaml Update="Pages\EventListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FeesView.xaml">
@@ -192,7 +192,7 @@
 	  <MauiXaml Update="Views\FilterView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ImageListPage.xaml">
+	  <MauiXaml Update="Pages\ImageListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ListView.xaml">
@@ -201,34 +201,34 @@
 	  <MauiXaml Update="Views\MultimediaView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewsReleaseDetailPage.xaml">
+	  <MauiXaml Update="Pages\NewsReleaseDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewsReleaseFilterPage.xaml">
+	  <MauiXaml Update="Pages\NewsReleaseFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewsReleaseListPage.xaml">
+	  <MauiXaml Update="Pages\NewsReleaseListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\OperatingHoursView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PersonDetailPage.xaml">
+	  <MauiXaml Update="Pages\PersonDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PersonFilterPage.xaml">
+	  <MauiXaml Update="Pages\PersonFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PersonListPage.xaml">
+	  <MauiXaml Update="Pages\PersonListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PlaceDetailPage.xaml">
+	  <MauiXaml Update="Pages\PlaceDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PlaceFilterPage.xaml">
+	  <MauiXaml Update="Pages\PlaceFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PlaceListPage.xaml">
+	  <MauiXaml Update="Pages\PlaceListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ProgressBarView.xaml">
@@ -240,34 +240,34 @@
 	  <MauiXaml Update="Views\RelatedParksView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ThingToDoListPage.xaml">
+	  <MauiXaml Update="Pages\ThingToDoListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ThingToDoDetailPage.xaml">
+	  <MauiXaml Update="Pages\ThingToDoDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ThingToDoFilterPage.xaml">
+	  <MauiXaml Update="Pages\ThingToDoFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TourFilterPage.xaml">
+	  <MauiXaml Update="Pages\TourFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TourListPage.xaml">
+	  <MauiXaml Update="Pages\TourListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TourDetailPage.xaml">
+	  <MauiXaml Update="Pages\TourDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ParkFilterPage.xaml">
+	  <MauiXaml Update="Pages\ParkFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\WebcamDetailPage.xaml">
+	  <MauiXaml Update="Pages\WebcamDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\WebcamFilterPage.xaml">
+	  <MauiXaml Update="Pages\WebcamFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\WebcamListPage.xaml">
+	  <MauiXaml Update="Pages\WebcamListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
