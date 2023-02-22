@@ -1,7 +1,6 @@
 ﻿namespace NationalParks.ViewModels
 {
-    [ObservableObject]
-    public partial class CollapsibleViewVM
+    public partial class CollapsibleViewVM : ObservableObject
     {
         [ObservableProperty] bool hasContent;
         [ObservableProperty] string icon;

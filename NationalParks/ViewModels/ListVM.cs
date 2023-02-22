@@ -91,7 +91,7 @@ public partial class ListVM : BaseVM
             // Populate the list
             result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
             TotalItems = result.Total;
-            switch (term)
+            switch (Term)
             {
                 case ResultParks.Term:
                     ResultParks resultParks = (ResultParks)result;
@@ -171,7 +171,7 @@ public partial class ListVM : BaseVM
                     }
                     break;
                 default:
-                    throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");
+                    throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");
             }
             IsPopulated = true;
         }
