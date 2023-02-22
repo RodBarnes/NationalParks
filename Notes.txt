@@ -12,8 +12,6 @@ Add Articles? Should this be a section in ParkDetail?  Should it be its own list
 
 I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe... What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
 
-Does Community.Toolkit have an HTML label link?
-
 If a filter selection is made and it is lower down in the list it isn't visible when returning to edit the filter.  Should it automatically scroll to the top selected position?  Or...?
 
 Splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list might be helpful.  Location is only needed when either:
