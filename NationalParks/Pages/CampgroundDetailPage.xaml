@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:v="clr-namespace:NationalParks.Views"
-             xmlns:m="clr-namespace:NationalParks.Models"
-             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:CampgroundDetailVM"
              x:Class="NationalParks.Views.CampgroundDetailPage"
              Title="{Binding Campground.Title}">
@@ -69,53 +69,8 @@
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
                 <v:CampsitesView BindingContext="{Binding CampsitesVM}" />
-
-                <Frame Style="{StaticResource CollapsibleView}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AmenitiesVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding AmenitiesVM.Icon}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Aspect="AspectFill"
-                                   HeightRequest="20" />
-                            <Label Text="{Binding AmenitiesVM.Title}" 
-                                   Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Grid ColumnDefinitions="*,*"
-                              Margin="10,0"
-                              IsVisible="{Binding AmenitiesVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <VerticalStackLayout Grid.Column="0">
-                                <Label Text="{Binding Campground.Amenities.Amphitheater, StringFormat='Amphitheater: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.FirewoodForSale, StringFormat='Fire Wood: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.IceAvailableForSale, StringFormat='Ice: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.CampStore, StringFormat='Camp Store: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.FoodStorageLockers, StringFormat='Food Lockers: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                            <VerticalStackLayout Grid.Column="1">
-                                <Label Text="{Binding Campground.Amenities.DumpStation, StringFormat='Dump Station: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.Laundry, StringFormat='Laundry: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.InternetConnectivity, StringFormat='Internet: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Amenities.CellPhoneReception, StringFormat='Cellular: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:AmenitiesView BindingContext="{Binding AmenitiesVM}" />
+                
                 <Frame Style="{StaticResource CollapsibleView}">
                     <VerticalStackLayout >
                         <HorizontalStackLayout>

@@ -8,7 +8,7 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
     [ObservableProperty] CampsitesVM campsitesVM;
-    [ObservableProperty] CollapsibleViewVM amenitiesVM;
+    [ObservableProperty] AmenitiesVM amenitiesVM;
     [ObservableProperty] CollapsibleViewVM accessibilityVM;
     [ObservableProperty] DirectionsVM directionsVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
@@ -23,7 +23,6 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
-        AmenitiesVM = new CollapsibleViewVM("Amenities", false);
         AccessibilityVM = new CollapsibleViewVM("Accessibility", false);
 
         WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
@@ -34,7 +33,7 @@ public partial class CampgroundDetailVM : DetailVM
         ContactsVM = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
         FeesVM = new FeesVM("Fees", false, Campground.Fees);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Campground.OperatingHours);
-
         CampsitesVM = new CampsitesVM("Campsites", false, Campground);
+        AmenitiesVM = new AmenitiesVM("Amenities", false, Campground);
     }
 }

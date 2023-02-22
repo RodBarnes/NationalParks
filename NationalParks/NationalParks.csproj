@@ -165,6 +165,9 @@
 	  <MauiXaml Update="Pages\CampgroundListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\AmenitiesView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CampsitesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
