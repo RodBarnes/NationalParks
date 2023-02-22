@@ -70,50 +70,7 @@
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
                 <v:CampsitesView BindingContext="{Binding CampsitesVM}" />
                 <v:AmenitiesView BindingContext="{Binding AmenitiesVM}" />
-                
-                <Frame Style="{StaticResource CollapsibleView}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AccessibilityVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding AccessibilityVM.Icon}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Aspect="AspectFill"
-                                   HeightRequest="20" />
-                            <Label Text="{Binding AccessibilityVM.Title}" 
-                                   Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Grid ColumnDefinitions="*,*"
-                              Margin="10,0"
-                              IsVisible="{Binding AccessibilityVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <VerticalStackLayout Grid.Column="0">
-                                <Label Text="{Binding Campground.Accessibility.RvInfo, StringFormat='RV Info: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.RvAllowed, StringFormat='RV Allowed: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.CellPhoneInfo, StringFormat='Cellular: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.InternetInfo, StringFormat='Internet: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.AdaInfo, StringFormat='ADA Info: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                            <VerticalStackLayout Grid.Column="1">
-                                <Label Text="{Binding Campground.Accessibility.RvMaxLength, StringFormat='RV Max Ln: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.TrailerAllowed, StringFormat='Trailer Allowed: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.TrailerMaxLength, StringFormat='Trailer Max Ln: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Accessibility.WheelchairAccess, StringFormat='Wheelchair: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </VerticalStackLayout>
-                </Frame>
-
+                <v:AccessibilityView BindingContext="{Binding AccessibilityVM}" />
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding ReservationsVM}" />
