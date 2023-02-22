@@ -20,8 +20,6 @@ Splitting the retrieval of Tour and Place location to another time instead of ge
 	- Tapping [Location] from the detail page -- so it could just be retrieved there if it is missing.
 	- Tapping [Closest] from the list page -- so it could just be retrieved there if it is missing.  But this also means getting it not just for those yet to be retrieved but those already in the list.  I tried implenting this and it makes GetClosest for Tours very, very slow.  Whereas, the orignal way (that gets the location when loading the items) takes a little hit per item but really not that much.  Overall, the original seems faster.
 
-Review the whole IsPopulated mechanism and need.  Maybe this isn't needed?  Maybe it should be done differently?
-
 Settings?
 	- User determined states by which to always filter?
 	- Which list to display as the default page?  Probably would use the CurrentItem property of <Shell>? And update the name of the new item based to that name based upon user selection?
