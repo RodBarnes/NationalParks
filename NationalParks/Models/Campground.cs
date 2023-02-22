@@ -23,7 +23,7 @@ public class Campground : BaseModel
     public string WeatherOverview { get; set; }
     public string NumberOfSitesReservable { get; set; }
     public string NumberOfSitesFirstComeFirstServe { get; set; }
-    public Campsite Campsites { get; set; }
+    public Campsites Campsites { get; set; }
     public Accessibility Accessibility { get; set; }
     public List<Multimedia> Multimedia { get; set; }
     public string LastIndexDate { get; set; }

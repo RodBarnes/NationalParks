@@ -99,6 +99,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\CampsitesView.xaml.cs">
+	    <DependentUpon>CampsitesView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\CollapsibleTextView.xaml.cs">
 	    <DependentUpon>CollapsibleTextView.xaml</DependentUpon>
 	  </Compile>
@@ -160,6 +163,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CampgroundListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CampsitesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CollapsibleListView.xaml">

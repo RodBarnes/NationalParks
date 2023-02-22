@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.Models;
 
-public class Campsite
+public class Campsites
 {
     public string TotalSites { get; set; }
     public string Group { get; set; }

@@ -68,50 +68,8 @@
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
-                <Frame Style="{StaticResource CollapsibleView}">
-                    <VerticalStackLayout >
-                        <HorizontalStackLayout>
-                            <HorizontalStackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CampsiteInfoVM.ToggleCommand}" />
-                            </HorizontalStackLayout.GestureRecognizers>
-                            <Image Source="{Binding CampsiteInfoVM.Icon}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Aspect="AspectFill"
-                                   HeightRequest="20" />
-                            <Label Text="{Binding CampsiteInfoVM.Title}" 
-                                   Style="{StaticResource LabelLargeBold}" />
-                        </HorizontalStackLayout>
-                        <Grid ColumnDefinitions="*,*"
-                              Margin="10,0"
-                              IsVisible="{Binding CampsiteInfoVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
-                            <VerticalStackLayout Grid.Column="0">
-                                <Label Text="{Binding Campground.Campsites.TotalSites, StringFormat='Total Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.NumberOfSitesReservable, StringFormat='Sites (reserve): {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.NumberOfSitesFirstComeFirstServe, StringFormat='Sites (non-reserve): {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.Horse, StringFormat='Horse Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.RvOnly, StringFormat='RV-only Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                            <VerticalStackLayout Grid.Column="1">
-                                <Label Text="{Binding Campground.Campsites.Group, StringFormat='Group Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.TentOnly, StringFormat='Tent-only Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.WalkBoatTo, StringFormat='Boat-access Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.ElectricalHookup, StringFormat='Electric Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                                <Label Text="{Binding Campground.Campsites.Other, StringFormat='Other Sites: {0}'}"
-                                       Style="{StaticResource LabelMedium}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </VerticalStackLayout>
-                </Frame>
+                <v:CampsitesView BindingContext="{Binding CampsitesVM}" />
+
                 <Frame Style="{StaticResource CollapsibleView}">
                     <VerticalStackLayout >
                         <HorizontalStackLayout>
