@@ -1,5 +1,6 @@
 Status
 ------
+Finished AvatarVM.  Can I do the same with the Detail Buttons -- move them into DetailButtonVM?  But that would also include moving the OpenMap and Images RelayCommands into the DetailButtonVM.
 
 
 Todo & Ideas
