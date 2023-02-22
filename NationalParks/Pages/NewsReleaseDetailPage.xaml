@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:m="clr-namespace:NationalParks.Models"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:NewsReleaseDetailVM"
              x:Class="NationalParks.Views.NewsReleaseDetailPage"
              Title="{Binding NewsRelease.Title}">
+    <ContentPage.Behaviors>
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -15,28 +19,7 @@
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="Auto,*,Auto">
-        <BoxView BackgroundColor="{StaticResource Primary}"
-                 Grid.Row="0"
-                 Grid.ColumnSpan="3"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Fill"/>
-        <Border StrokeShape="RoundRectangle 10"
-                Grid.Row="0"
-                Grid.Column="1"
-                Stroke="White"
-                StrokeThickness="6"
-                HeightRequest="175"
-                WidthRequest="175"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Margin="0,0,0,8">
-            <Image Source="{Binding NewsRelease.MainImage}"
-                   Aspect="AspectFill"
-                   HeightRequest="160"
-                   WidthRequest="160"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Border>
+        <v:AvatarView Grid.Row="0" Grid.ColumnSpan="3" BindingContext="{Binding AvatarVM}" />
         <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">

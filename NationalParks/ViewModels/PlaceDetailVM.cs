@@ -6,6 +6,7 @@ namespace NationalParks.ViewModels;
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;
+    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM bodyTextVM;
     [ObservableProperty] MultimediaVM multimediaVM;
@@ -22,6 +23,8 @@ public partial class PlaceDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        AvatarVM = new AvatarVM(Place.MainImage);
+
         BodyTextVM = new CollapsibleTextVM("Full Description", false, Place.BodyText);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());

@@ -4,6 +4,7 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
+    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
@@ -23,6 +24,8 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        AvatarVM = new AvatarVM(Campground.MainImage);
+
         WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
         ReservationsVM = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
         RegulationsVM = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
