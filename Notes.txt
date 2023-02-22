@@ -1,6 +1,6 @@
 Status
 ------
-
+From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release version to the emulator
 
 Todo & Ideas
 ------------
