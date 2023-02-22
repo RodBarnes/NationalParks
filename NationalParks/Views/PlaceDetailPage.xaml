@@ -77,7 +77,7 @@
                             <Label Text="{Binding MultimediaVM.Title}"
                                 Style="{StaticResource LabelLargeBold}" />
                         </HorizontalStackLayout>
-                        <CollectionView ItemsSource="{Binding Place.QuickFacts}"
+                        <CollectionView ItemsSource="{Binding Place.Multimedia}"
                                   SelectionMode="None"
                                   IsVisible="{Binding MultimediaVM.IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                             <CollectionView.ItemTemplate>

@@ -1,6 +1,5 @@
 Status
 ------
-Multimedia for Place doesn't display (e.g., Stones River Cemetary)
 
 
 Todo & Ideas
