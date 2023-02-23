@@ -4,7 +4,6 @@
 public partial class WebcamDetailVM : DetailVM
 {
     [ObservableProperty] Webcam webcam;
-    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] RelatedParksVM relatedParksVM;
 
     public WebcamDetailVM(IMap map) : base(map)
@@ -16,8 +15,6 @@ public partial class WebcamDetailVM : DetailVM
     public void PopulateData()
     {
         Model = Webcam;
-
-        AvatarVM = new AvatarVM(Webcam.MainImage);
 
         RelatedParksVM = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);
     }

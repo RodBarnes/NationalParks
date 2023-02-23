@@ -4,7 +4,6 @@
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
-    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleViewVM fullDescriptionVM;
     [ObservableProperty] CollapsibleListVM organizationsVM;
@@ -22,8 +21,6 @@ public partial class ThingToDoDetailVM : DetailVM
     public void PopulateData()
     {
         Model = ThingToDo;
-
-        AvatarVM = new AvatarVM(ThingToDo.MainImage);
 
         FullDescriptionVM = new CollapsibleTextVM("Full Description", false, ThingToDo.LongDescription);
 

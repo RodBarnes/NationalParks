@@ -19,7 +19,7 @@
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="Auto,*,Auto">
-        <v:AvatarView Grid.Row="0" Grid.ColumnSpan="3" BindingContext="{Binding AvatarVM}" />
+        <v:AvatarView Grid.Row="0" Grid.ColumnSpan="3" />
         <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">

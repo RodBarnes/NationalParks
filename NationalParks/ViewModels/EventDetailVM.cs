@@ -4,7 +4,6 @@
 public partial class EventDetailVM : DetailVM
 {
     [ObservableProperty] Event npsEvent;
-    [ObservableProperty] AvatarVM avatarVM;
 
     public EventDetailVM(IMap map) : base(map)
     {
@@ -15,7 +14,5 @@ public partial class EventDetailVM : DetailVM
     public void PopulateData()
     {
         Model = NpsEvent;
-
-        AvatarVM = new AvatarVM(NpsEvent.MainImage);
     }
 }

@@ -4,7 +4,6 @@
 public partial class NewsReleaseDetailVM : DetailVM
 {
     [ObservableProperty] NewsRelease newsRelease;
-    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] RelatedParksVM relatedParksVM;
     [ObservableProperty] CollapsibleListVM organizationsVM;
 
@@ -17,8 +16,6 @@ public partial class NewsReleaseDetailVM : DetailVM
     public void PopulateData()
     {
         Model = NewsRelease;
-
-        AvatarVM = new AvatarVM(NewsRelease.MainImage);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, NewsRelease.RelatedOrganizations.ToList<object>());
 

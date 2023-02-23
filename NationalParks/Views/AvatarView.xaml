@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             x:DataType="vm:AvatarVM"
+             x:DataType="vm:DetailVM"
              x:Class="NationalParks.Views.AvatarView"
              BackgroundColor="{StaticResource Primary}">
     <VerticalStackLayout>
@@ -14,7 +14,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 Margin="0,0,0,8">
-            <Image Source="{Binding Image}"
+            <Image Source="{Binding Model.MainImage}"
                    Aspect="AspectFill"
                    HeightRequest="160"
                    WidthRequest="160"

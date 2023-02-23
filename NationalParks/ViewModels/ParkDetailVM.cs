@@ -6,7 +6,6 @@ namespace NationalParks.ViewModels;
 public partial class ParkDetailVM : DetailVM
 {
     [ObservableProperty] Park park;
-    [ObservableProperty] AvatarVM avatarVM;
     [ObservableProperty] AlertsVM alertsVM;
     [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
@@ -29,8 +28,6 @@ public partial class ParkDetailVM : DetailVM
 
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
-
-        AvatarVM = new AvatarVM(Park.MainImage);
 
         WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
