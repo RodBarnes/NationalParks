@@ -16,6 +16,8 @@ public partial class NewsReleaseDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = NewsRelease;
+
         AvatarVM = new AvatarVM(NewsRelease.MainImage);
 
         OrganizationsVM = new CollapsibleListVM("Related Organizations", false, NewsRelease.RelatedOrganizations.ToList<object>());

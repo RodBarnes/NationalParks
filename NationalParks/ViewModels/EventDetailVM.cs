@@ -14,6 +14,8 @@ public partial class EventDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = NpsEvent;
+
         AvatarVM = new AvatarVM(NpsEvent.MainImage);
     }
 }

@@ -32,24 +32,6 @@
                                          Style="{StaticResource LabelMedium}"/>
             </VerticalStackLayout>
         </ScrollView>
-        <HorizontalStackLayout
-            Grid.ColumnSpan="3"
-            Grid.Row="2"
-            HorizontalOptions="CenterAndExpand">
-            <Button Text="Location" 
-                    Command="{Binding OpenMapCommand}"
-                    CommandParameter="{Binding NpsEvent}"
-                    HorizontalOptions="StartAndExpand" 
-                    WidthRequest="175" 
-                    Margin="8"
-                    Style="{StaticResource ButtonOutline}"/>
-            <Button Text="Images" 
-                    Command="{Binding GoToImagesCommand}"
-                    CommandParameter="{Binding NpsEvent.Images}"
-                    HorizontalOptions="EndAndExpand" 
-                    WidthRequest="175" 
-                    Margin="8"
-                    Style="{StaticResource ButtonOutline}"/>
-        </HorizontalStackLayout>
+        <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />
     </Grid>
 </ContentPage>

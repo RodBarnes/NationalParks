@@ -24,6 +24,8 @@ public partial class CampgroundDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = Campground;
+
         AvatarVM = new AvatarVM(Campground.MainImage);
 
         WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);

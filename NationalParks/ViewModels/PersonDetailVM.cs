@@ -21,6 +21,8 @@ public partial class PersonDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = Person;
+
         AvatarVM = new AvatarVM(Person.MainImage);
 
         BodyTextVM = new CollapsibleTextVM("Full Description", false, Person.BodyText);

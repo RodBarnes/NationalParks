@@ -15,6 +15,8 @@ public partial class WebcamDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = Webcam;
+
         AvatarVM = new AvatarVM(Webcam.MainImage);
 
         RelatedParksVM = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);

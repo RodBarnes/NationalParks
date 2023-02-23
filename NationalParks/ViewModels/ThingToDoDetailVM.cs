@@ -21,6 +21,8 @@ public partial class ThingToDoDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = ThingToDo;
+
         AvatarVM = new AvatarVM(ThingToDo.MainImage);
 
         FullDescriptionVM = new CollapsibleTextVM("Full Description", false, ThingToDo.LongDescription);

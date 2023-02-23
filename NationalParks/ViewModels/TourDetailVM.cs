@@ -20,6 +20,8 @@ public partial class TourDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = Tour;
+
         AvatarVM = new AvatarVM(Tour.MainImage);
 
         StopsVM = new CollapsibleListVM("Stops", false, Tour.Stops.ToList<object>());

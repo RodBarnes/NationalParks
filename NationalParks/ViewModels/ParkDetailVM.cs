@@ -25,6 +25,8 @@ public partial class ParkDetailVM : DetailVM
     [RelayCommand]
     public async void PopulateData()
     {
+        Model = Park;
+
         await GetAlerts(Park);
         HasAlerts = Park.HasAlerts;
 

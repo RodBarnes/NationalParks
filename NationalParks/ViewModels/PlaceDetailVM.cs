@@ -23,6 +23,8 @@ public partial class PlaceDetailVM : DetailVM
     [RelayCommand]
     public void PopulateData()
     {
+        Model = Place;
+
         AvatarVM = new AvatarVM(Place.MainImage);
 
         BodyTextVM = new CollapsibleTextVM("Full Description", false, Place.BodyText);

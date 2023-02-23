@@ -5,6 +5,7 @@ namespace NationalParks.ViewModels;
 public partial class DetailVM : BaseVM
 {
     readonly IMap map;
+    [ObservableProperty] BaseModel model;
 
     public DetailVM(IMap map)
     {
