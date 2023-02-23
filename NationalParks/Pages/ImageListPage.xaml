@@ -25,12 +25,11 @@
                     <Frame Style="{StaticResource ViewCard}">
                         <VerticalStackLayout>
                             <Image Source="{Binding Url}"
-                               Aspect="AspectFill"
-                               HorizontalOptions="CenterAndExpand">
+                                   Aspect="AspectFill">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImageListVM}}, Path=GoToImageCommand}"
-                            CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImageListVM}}, Path=GoToImageCommand}"
+                                        CommandParameter="{Binding .}"/>
                                 </Image.GestureRecognizers>
                             </Image>
                         </VerticalStackLayout>
