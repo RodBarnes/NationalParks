@@ -88,7 +88,7 @@
                 <Setter Property="BorderColor" Value="#DDDDDD" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
                 <Setter Property="Padding" Value="10" />
-                <Setter Property="Background" Value="{StaticResource Background}" />
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="HeightRequest" Value="100" />
                 <Setter Property="WidthRequest" Value="350" />
