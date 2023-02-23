@@ -1,3 +1,10 @@
+Issue
+-----
+Flight 93 Memorial (Parks). The images list keeps causing the app to crash.
+	- Error: Java.Lang.RuntimeException Message=Canvas: trying to use a recycled bitmap android.graphics.Bitmap@5d9bccf
+	- I removed the HeightOptions attribute and it stopped the error (in both debug and release) to the emulator but it still happens with a debug or release version to phone.
+
+
 Status
 ------
 From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.
