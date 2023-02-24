@@ -7,6 +7,7 @@ public partial class ParkDetailVM : DetailVM
 {
     [ObservableProperty] Park park;
     [ObservableProperty] AlertsVM alertsVM;
+    [ObservableProperty] ParkingLotsVM parkingLotsVM;
     [ObservableProperty] FeesVM feesVM;
     [ObservableProperty] OperatingHoursVM operatingHoursVM;
     [ObservableProperty] ContactsVM contactsVM;
@@ -28,6 +29,9 @@ public partial class ParkDetailVM : DetailVM
         if (Park.Alerts?.Count == 0)
             await GetParkProperties(Park, "alerts");
 
+        if (Park.ParkingLots?.Count == 0)
+            await GetParkProperties(Park, "parkinglots");
+
         WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
         TopicsVM = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
@@ -36,6 +40,7 @@ public partial class ParkDetailVM : DetailVM
         DirectionsVM = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
         ContactsVM = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
         AlertsVM = new AlertsVM("Alerts", false, Park.Alerts);
+        ParkingLotsVM = new ParkingLotsVM("Parking Lots", false, Park.ParkingLots);
         FeesVM = new FeesVM("Entrance Fees", false, Park.EntranceFees);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }
@@ -59,6 +64,12 @@ public partial class ParkDetailVM : DetailVM
                         startItems += resultAlerts.Data.Count;
                         foreach (var item in resultAlerts.Data)
                             park.Alerts.Add(item);
+                        break;
+                    case ResultParkingLots.Term:
+                        ResultParkingLots resultLots = (ResultParkingLots)result;
+                        startItems += resultLots.Data.Count;
+                        foreach (var item in resultLots.Data)
+                            park.ParkingLots.Add(item);
                         break;
                     default:
                         throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");

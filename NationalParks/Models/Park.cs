@@ -6,6 +6,7 @@ public class Park : BaseModel
     public string ParkCode { get; set; }
     public string LatLong { get; set; }
     public List<Alert> Alerts { get; set; } = new();
+    public List<ParkingLot> ParkingLots { get; set; } = new();
     public List<Activity> Activities { get; set; } = new();
     public List<Topic> Topics { get; set; } = new();
     public string States { get; set; }

@@ -34,6 +34,7 @@
                 </HorizontalStackLayout>
                 
                 <v:AlertsView BindingContext="{Binding AlertsVM}" />
+                <v:ParkingLotsView BindingContext="{Binding ParkingLotsVM}" />
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />

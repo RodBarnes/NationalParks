@@ -249,6 +249,9 @@
 	  <MauiXaml Update="Pages\PlaceListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ParkingLotsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ProgressBarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
