@@ -14,6 +14,12 @@ public class ParkingLot : BaseModel
     public List<OperatingHours> OperatingHours { get; set; }
     public ParkingAccessibility Accessibility { get; set; }
     public ParkingLivestatus LiveStatus { get; set; }
+
+    #region Derived Properties
+
+    public bool HasWebcamUrl => !String.IsNullOrEmpty(WebcamUrl);
+
+    #endregion
 }
 
 public class ParkingAccessibility
