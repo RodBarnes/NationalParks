@@ -1,4 +1,6 @@
-﻿namespace NationalParks.Models;
+﻿using Kotlin.Contracts;
+
+namespace NationalParks.Models;
 
 public partial class BaseModel
 {
@@ -20,7 +22,19 @@ public partial class BaseModel
 
     public ImageSource MainImage => GetMainImage();
     public double DLatitude => double.TryParse(Latitude?.ToString(), out double d) ? d : -1;
-    public double DLongitude => double.TryParse(Longitude?.ToString(), out double d) ? d : -1;
+    public double DLongitude
+    {
+        get
+        {
+            var x = double.TryParse(Longitude?.ToString(), out double d) ? d : -1;
+            // This is ugly but necessary because some of the longitude data appears with positive
+            // values putting them in Asia somewhere!  Since these are all, by definition, National
+            // Parks in the U.S.A, force them to negative values if they are positive.
+            if (x > 0)
+                x = -x;
+            return x;
+        }
+    }
     public bool HasUrl => !String.IsNullOrEmpty(Url);
 
     #endregion
