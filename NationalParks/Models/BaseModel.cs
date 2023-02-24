@@ -20,7 +20,7 @@ public partial class BaseModel
 
     #region Derived Properties
 
-    public ImageSource MainImage => GetMainImage();
+    public ImageSource MainImage => GetMainImageFromImageList();
     public double DLatitude => double.TryParse(Latitude?.ToString(), out double d) ? d : -1;
     public double DLongitude
     {
@@ -39,7 +39,7 @@ public partial class BaseModel
 
     #endregion
 
-    private ImageSource GetMainImage()
+    private ImageSource GetMainImageFromImageList()
     {
         ImageSource source = null;
 

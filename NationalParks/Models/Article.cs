@@ -10,7 +10,23 @@ public class Article : BaseModel
 
     #region Derived Properties
 
-    public new ImageSource MainImage => ImageSource.FromUri(new Uri(ListingImage.Url));
+    public new ImageSource MainImage => GetMainImageFromListingImage();
 
     #endregion
+
+    private ImageSource GetMainImageFromListingImage()
+    {
+        ImageSource source = null;
+
+        if (!String.IsNullOrEmpty(ListingImage.Url))
+        {
+            source = ImageSource.FromUri(new Uri(ListingImage.Url));
+        }
+        else
+        {
+            source = ImageSource.FromFile("nps");
+        }
+
+        return source;
+    }
 }
