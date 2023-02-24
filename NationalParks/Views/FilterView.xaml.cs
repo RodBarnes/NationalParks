@@ -22,6 +22,7 @@ public partial class FilterView : ContentView
 
     private void AdjustRegionHeight(double pageHeight)
 	{
+        // This method determines the height of each section based upon the number of sections that are visible.
         double frameHeight;
         double bottomSpace = 44; 
 
