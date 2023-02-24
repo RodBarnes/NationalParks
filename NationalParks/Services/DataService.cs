@@ -30,7 +30,7 @@ public class DataService
         {
             paramList += $"&activities%3D{activities}";
         }
-        var url = $"{DomainUrl}{term}?api_key={Config.ApiKey}{paramList}";
+        var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
 
         // Retrieve data
         var response = await httpClient.GetAsync(url);
@@ -102,7 +102,7 @@ public class DataService
     {
         Result result = new();
 
-        var url = $"{DomainUrl}{term}?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
+        var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -128,7 +128,7 @@ public class DataService
     {
         ResultParks result = new();
 
-        var url = $"{DomainUrl}parks?api_key={Config.ApiKey}&parkCode={parkCode}";
+        var url = $"{DomainUrl}parks?api_key={Config.NpsApiKey}&parkCode={parkCode}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
