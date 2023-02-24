@@ -33,16 +33,20 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:ParkingLot">
                         <VerticalStackLayout >
-                            <Label Text="{Binding Title}"
-                                   Style="{StaticResource LabelMediumBold}"/>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Title}"
+                                   Style="{StaticResource LabelMediumBold}"
+                                       Margin="0,0,5,0"/>
+                                <Label Text="{Binding ManagedByOrganization,StringFormat='({0})'}"
+                                           Style="{StaticResource LabelMedium}"/>
+                            </HorizontalStackLayout>
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkingLotsVM}}, Path=GoToParkingLotCommand}"
-                                        CommandParameter="{Binding .}"/>
+                                    CommandParameter="{Binding .}"/>
                                 </Grid.GestureRecognizers>
-                                <Label Text="{Binding ManagedByOrganization}"
-                                       Grid.Column="0"
-                                       Style="{StaticResource LabelMedium}"/>
+                                <Image Grid.Column="0"
+                                        Source="arrow_right_green.png" HeightRequest="20" />
                                 <Label Text="{Binding Description}"
                                        Grid.Column="1"
                                        Style="{StaticResource LabelMedium}"/>
