@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
-             x:Class="NationalParks.Views.ImageListPage"
+             x:Class="NationalParks.Pages.ImageListPage"
              x:DataType="vm:ImageListVM"
              Title="{Binding Title}">
     <CollectionView ItemsSource="{Binding Images}"

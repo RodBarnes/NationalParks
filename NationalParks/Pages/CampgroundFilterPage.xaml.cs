@@ -1,4 +1,4 @@
-namespace NationalParks.Views;
+namespace NationalParks.Pages;
 
 public partial class CampgroundFilterPage : ContentPage
 {

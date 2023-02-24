@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              x:DataType="vm:DataTesterVM"
-             x:Class="NationalParks.Views.DataTesterPage"
+             x:Class="NationalParks.Pages.DataTesterPage"
              Title="{Binding Title}">
     <VerticalStackLayout>
         <Grid ColumnDefinitions="*,*,*">

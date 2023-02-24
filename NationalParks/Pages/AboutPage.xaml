@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:NationalParks.Models"
              xmlns:controls="clr-namespace:NationalParks.Controls"
              x:DataType="vm:AboutVM"
-             x:Class="NationalParks.Views.AboutPage"
+             x:Class="NationalParks.Pages.AboutPage"
              Title="{Binding Title}">
     <VerticalStackLayout>
         <Frame Style="{StaticResource ViewCard}"
