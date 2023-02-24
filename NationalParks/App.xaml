@@ -12,6 +12,9 @@
             <Color x:Key="Background">#EAFAEA</Color>
             <Color x:Key="BackgroundDark">Black</Color>
 
+            <Color x:Key="FrameBorder">Green</Color>
+            <Color x:Key="FrameBorderDark">#CAFACA</Color>
+            
             <Color x:Key="CardBackground">#CAFACA</Color>
             <Color x:Key="CardBackgroundDark">#1C1C1E</Color>
 
@@ -76,9 +79,18 @@
             </Style>
 
             <Style TargetType="Frame" x:Key="ViewCard">
-                <Setter Property="BorderColor" Value="#DDDDDD" />
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorder}, Dark={StaticResource FrameBorderDark}}" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
                 <Setter Property="Padding" Value="0" />
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
+            <Style TargetType="Frame" x:Key="ViewFrame">
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorder}, Dark={StaticResource FrameBorderDark}}" />
+                <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
+                <Setter Property="Padding" Value="10" />
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}" />
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="IsClippedToBounds" Value="True"/>

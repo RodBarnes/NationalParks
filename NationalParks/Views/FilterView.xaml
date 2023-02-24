@@ -21,8 +21,8 @@
                        Style="{StaticResource LabelLargeBold}"
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
-                <Frame x:Name="StatesFrame" 
-                       BorderColor="{StaticResource Primary}"
+                <Frame x:Name="StatesFrame"
+                       Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.StateSelections}}"
@@ -47,7 +47,7 @@
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
                 <Frame x:Name="TopicsFrame" 
-                       BorderColor="{StaticResource Primary}"
+                       Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.TopicSelections}}"
@@ -72,7 +72,7 @@
                        HorizontalOptions="Center"
                        Padding="0,0,0,5"/>
                 <Frame x:Name="ActivitiesFrame" 
-                       BorderColor="{StaticResource Primary}"
+                       Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
                        HeightRequest="170">
                     <CollectionView ItemsSource="{Binding Source={x:Static vm:ListVM.ActivitySelections}}"

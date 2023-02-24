@@ -7,7 +7,7 @@
     <Frame Style="{StaticResource ProgressBar}" >
         <VerticalStackLayout>
             <Label Text="{Binding ProgressText}"
-                       Style="{StaticResource LabelMedium}"/>
+                   Style="{StaticResource LabelMedium}"/>
             <ProgressBar ProgressColor="Green"
                          Progress="{Binding ProgressClosest}" />
             <Button Text="Cancel"

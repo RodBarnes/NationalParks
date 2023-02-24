@@ -5,12 +5,12 @@ Added Article Detail.
 Added Article Filter but it also produces an exception when an attempt is made to redisplay the list.
 Following the links to the NPS Site, none of the "Series" links work; they all come up with an mostly-empty page.
 
-From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.  Later, restarting the app on the phone no longer fixed this.
+From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.  Later, restarting the app on the phone no longer fixed this.
 
 
 Release Issues
 --------------
-FilterView -- nothing appears in the lists on my phone.  Works fine in emulator.
+FilterView -- Nothing appears in the lists on my phone.  Works fine in emulator.
 ListView -- Description does not appear for Parks (and a couple others) but does for Campgrounds.
 
 
