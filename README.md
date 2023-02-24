@@ -13,7 +13,7 @@ namespace NationalParks
 {
     public static class Config
     {
-        public static string ApiKey { get => "YOUR_API_KEY"; }
+        public static string NpsApiKey { get => "YOUR_API_KEY"; }
     }
 }
 ```
