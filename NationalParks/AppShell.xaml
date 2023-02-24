@@ -65,7 +65,7 @@
     <FlyoutItem Title="News Releases" Icon="newspaper_green">
         <ShellContent ContentTemplate="{DataTemplate p:NewsReleaseListPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Articles" Icon="ball_green">
+    <FlyoutItem Title="Articles" Icon="article_green">
         <ShellContent ContentTemplate="{DataTemplate p:ArticleListPage}" />
     </FlyoutItem>
     <!--<FlyoutItem Title="Events" Icon="event_green">
