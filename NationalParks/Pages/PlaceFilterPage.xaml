@@ -6,6 +6,6 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Pages.PlaceFilterPage"
-             Title="PlaceFilterPage">
+             Title="{Binding Title}">
     <v:FilterView />
 </ContentPage>
