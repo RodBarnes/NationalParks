@@ -35,20 +35,27 @@
                         <VerticalStackLayout >
                             <HorizontalStackLayout>
                                 <Label Text="{Binding Title}"
-                                   Style="{StaticResource LabelMediumBold}"
+                                       Style="{StaticResource LabelMediumBold}"
                                        Margin="0,0,5,0"/>
                                 <Label Text="{Binding ManagedByOrganization,StringFormat='({0})'}"
-                                           Style="{StaticResource LabelMedium}"/>
+                                       Style="{StaticResource LabelMedium}"/>
                             </HorizontalStackLayout>
-                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="20,*" ColumnSpacing="10">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkingLotsVM}}, Path=GoToParkingLotCommand}"
                                     CommandParameter="{Binding .}"/>
                                 </Grid.GestureRecognizers>
-                                <Image Grid.Column="0"
+                                <Image Grid.Column="0" Grid.RowSpan="2"
                                         Source="arrow_right_green.png" HeightRequest="20" />
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
+                                    <Label Text="{Binding Accessibility.TotalSpaces, StringFormat='Total Spaces: {0}, '}" 
+                                           Style="{StaticResource LabelMedium}"
+                                           Margin="0,0,5,0"/>
+                                    <Label Text="{Binding Accessibility.NumberofAdaSpaces, StringFormat='ADA Spaces: {0}'}" 
+                                           Style="{StaticResource LabelMedium}" />
+                                </HorizontalStackLayout>
                                 <Label Text="{Binding Description}"
-                                       Grid.Column="1"
+                                       Grid.Column="1" Grid.Row="1"
                                        Style="{StaticResource LabelMedium}"/>
                             </Grid>
                         </VerticalStackLayout>
