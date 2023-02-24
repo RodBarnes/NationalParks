@@ -95,6 +95,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<ArticleListVM>();
         builder.Services.AddSingleton<ArticleListPage>();
+        builder.Services.AddTransient<ArticleDetailVM>();
+        builder.Services.AddTransient<ArticleDetailPage>();
 
         return builder.Build();
 	}

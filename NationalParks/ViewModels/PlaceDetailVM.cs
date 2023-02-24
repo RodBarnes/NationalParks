@@ -1,6 +1,4 @@
-﻿using NationalParks.Services;
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Models.Place), "Model")]
 public partial class PlaceDetailVM : DetailVM

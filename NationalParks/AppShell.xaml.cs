@@ -36,5 +36,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(WebcamDetailPage), typeof(WebcamDetailPage));
         Routing.RegisterRoute(nameof(WebcamFilterPage), typeof(WebcamFilterPage));
+
+        Routing.RegisterRoute(nameof(ArticleDetailPage), typeof(ArticleDetailPage));
     }
 }
