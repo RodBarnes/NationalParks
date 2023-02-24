@@ -177,7 +177,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
         }
         finally
         {
@@ -241,7 +241,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
         }
         finally
         {
@@ -387,7 +387,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
         }
     }
     static async Task GetAllActivitiesAsync()
@@ -412,7 +412,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
         }
     }
     static async Task ReadStates()

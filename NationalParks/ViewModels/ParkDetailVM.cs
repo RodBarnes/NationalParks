@@ -80,7 +80,7 @@ public partial class ParkDetailVM : DetailVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"{ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ParkDetailVM: {ex.Source}--{ex.Message}", "OK");
         }
     }
 }
