@@ -5,6 +5,7 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Models.Park), "Model")]
 public partial class ParkDetailVM : DetailVM
 {
+    readonly IMap map;
     [ObservableProperty] Park park;
     [ObservableProperty] AlertsVM alertsVM;
     [ObservableProperty] ParkingLotsVM parkingLotsVM;
@@ -18,6 +19,7 @@ public partial class ParkDetailVM : DetailVM
 
     public ParkDetailVM(IMap map) : base(map)
     {
+        this.map = map;
         Title = "Park";
     }
 
@@ -40,7 +42,7 @@ public partial class ParkDetailVM : DetailVM
         DirectionsVM = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
         ContactsVM = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
         AlertsVM = new AlertsVM("Alerts", false, Park.Alerts);
-        ParkingLotsVM = new ParkingLotsVM("Parking Lots", false, Park.ParkingLots);
+        ParkingLotsVM = new ParkingLotsVM(map, "Parking Lots", false, Park.ParkingLots);
         FeesVM = new FeesVM("Entrance Fees", false, Park.EntranceFees);
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }

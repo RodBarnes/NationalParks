@@ -36,6 +36,10 @@
                             <Label Text="{Binding Title}"
                                    Style="{StaticResource LabelMediumBold}"/>
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParkingLotsVM}}, Path=GoToParkingLotCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
                                 <Label Text="{Binding ManagedByOrganization}"
                                        Grid.Column="0"
                                        Style="{StaticResource LabelMedium}"/>
