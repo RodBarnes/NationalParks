@@ -14,7 +14,6 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM topicsVM;
     [ObservableProperty] CollapsibleListVM activitiesVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
-    [ObservableProperty] bool hasAlerts;
 
     public ParkDetailVM(IMap map) : base(map)
     {
@@ -26,8 +25,8 @@ public partial class ParkDetailVM : DetailVM
     {
         Model = Park;
 
-        await GetAlerts(Park);
-        HasAlerts = Park.HasAlerts;
+        if (Park.Alerts?.Count == 0)
+            await GetParkProperties(Park, "alerts");
 
         WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
@@ -41,24 +40,29 @@ public partial class ParkDetailVM : DetailVM
         OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }
 
-    static async Task GetAlerts(Park park)
+    static async Task GetParkProperties(Park park, string term)
     {
-        if (park.Alerts?.Count > 0)
-            return;
-
         try
         {
-            int startAlerts = 0;
-            int totalAlerts = 1;
-            int limitAlerts = 20;
+            int startItems = 0;
+            int totalItems = 1;
+            int limitItems = 20;
 
-            while (totalAlerts > startAlerts)
+            while (totalItems > startItems)
             {
-                var result = await DataService.GetAlertsForParkCodeAsync(park.ParkCode, startAlerts, limitAlerts);
-                totalAlerts = result.Total;
-                startAlerts += result.Data.Count;
-                foreach (var alert in result.Data)
-                    park.Alerts.Add(alert);
+                var result = await DataService.GetPropertiesForParkCodeAsync(term, park.ParkCode, startItems, limitItems);
+                totalItems = result.Total;
+                switch (term)
+                {
+                    case ResultAlerts.Term:
+                        ResultAlerts resultAlerts = (ResultAlerts)result;
+                        startItems += resultAlerts.Data.Count;
+                        foreach (var item in resultAlerts.Data)
+                            park.Alerts.Add(item);
+                        break;
+                    default:
+                        throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");
+                }
             }
         }
         catch (Exception ex)

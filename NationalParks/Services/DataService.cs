@@ -94,29 +94,27 @@ public class DataService
         return result;
     }
 
-    public static async Task<ResultAlerts> GetAlertsForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
+    public static async Task<Result> GetPropertiesForParkCodeAsync(string term, string parkCode, int start = 0, int limit = 20)
     {
-        ResultAlerts result = new();
+        Result result = new();
 
-        var url = $"{DomainUrl}alerts?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
+        var url = $"{DomainUrl}{term}?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
-            result = await response.Content.ReadFromJsonAsync<ResultAlerts>();
-        }
-
-        return result;
-    }
-
-    public static async Task<ResultParkingLots> GetParkingForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
-    {
-        ResultParkingLots result = new();
-
-        var url = $"{DomainUrl}parkinglots?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
-        var response = await httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadFromJsonAsync<ResultParkingLots>();
+            switch(term)
+            {
+                case ResultAlerts.Term:
+                    ResultAlerts resultAlerts = await response.Content.ReadFromJsonAsync<ResultAlerts>();
+                    result = resultAlerts;
+                    break;
+                case ResultParkingLots.Term:
+                    ResultParkingLots resultLots = await response.Content.ReadFromJsonAsync<ResultParkingLots>();
+                    result = resultLots;
+                    break;
+                default:
+                    throw new Exception($"DataService.GetPropertiesForParkCodeAsync -- No idea what that means: {term}");
+            }
         }
 
         return result;
