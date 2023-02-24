@@ -170,6 +170,11 @@ public partial class ListVM : BaseVM
                         Items.Add(item);
                     }
                     break;
+                case ResultArticles.Term:
+                    ResultArticles resultArticles = (ResultArticles)result;
+                    foreach (var item in resultArticles.Data)
+                        Items.Add(item);
+                    break;
                 default:
                     throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");
             }

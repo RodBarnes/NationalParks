@@ -1,8 +1,7 @@
-﻿global using System.Collections.ObjectModel;
-global using System.Diagnostics;
-global using CommunityToolkit.Mvvm.ComponentModel;
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using NationalParks.Models;
-global using NationalParks.Views;
 global using NationalParks.Pages;
 global using NationalParks.ViewModels;
+global using System.Collections.ObjectModel;
+global using System.Diagnostics;
