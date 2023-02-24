@@ -108,6 +108,20 @@ public class DataService
         return result;
     }
 
+    public static async Task<ResultParkingLots> GetParkingForParkCodeAsync(string parkCode, int start = 0, int limit = 20)
+    {
+        ResultParkingLots result = new();
+
+        var url = $"{DomainUrl}parkinglots?api_key={Config.ApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultParkingLots>();
+        }
+
+        return result;
+    }
+
     public static async Task<ResultParks> GetParkForParkCodeAsync(string parkCode)
     {
         ResultParks result = new();
