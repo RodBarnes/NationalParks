@@ -7,6 +7,7 @@ From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the 
 Release Issues
 --------------
 ListView -- Description does not appear for Parks (and a couple others) but does for Campgrounds.
+App Icon -- Windows fails to compile because it says it can't find it.
 
 
 Todo & Ideas
@@ -14,7 +15,6 @@ Todo & Ideas
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
 
 Add Multimedia? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
-Add Articles? Should this be a section in ParkDetail?  Should it be its own list with a RelatedParks section?
 
 I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe... What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
 
