@@ -17,7 +17,6 @@ public partial class ListVM : BaseVM
     [ObservableProperty] string progressText;
     [ObservableProperty] bool isFindingClosest;
     [ObservableProperty] string term;
-    [ObservableProperty] string filterName;
 
     private string baseTitle;
     protected string BaseTitle
@@ -316,6 +315,7 @@ public partial class ListVM : BaseVM
     protected string ActivitiesFilter;
 
     // Whether to hide/show each filter section
+    [ObservableProperty] string filterName;
     [ObservableProperty] bool allowFilterStates;
     [ObservableProperty] bool allowFilterTopics;
     [ObservableProperty] bool allowFilterActivities;
