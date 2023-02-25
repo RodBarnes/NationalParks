@@ -38,6 +38,12 @@ public partial class DetailVM : BaseVM
     [RelayCommand]
     static async Task GoToImages(List<Models.Image> images)
     {
+        if (images is null || images.Count == 0)
+        {
+            await Shell.Current.DisplayAlert("No images", "No images were found.", "OK");
+            return;
+        }
+
         await Shell.Current.GoToAsync(nameof(ImageListPage), true, new Dictionary<string, object>
         {
             { "Images", images }
