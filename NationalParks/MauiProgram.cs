@@ -101,9 +101,10 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<VideoListVM>();
         builder.Services.AddSingleton<VideoListPage>();
-
         builder.Services.AddSingleton<AudioListVM>();
         builder.Services.AddSingleton<AudioListPage>();
+        builder.Services.AddTransient<MultimediaDetailVM>();
+        builder.Services.AddTransient<MultimediaDetailPage>();
 
         return builder.Build();
 	}
