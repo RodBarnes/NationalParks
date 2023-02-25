@@ -11,6 +11,7 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty] AmenitiesVM amenitiesVM;
     [ObservableProperty] AccessibilityVM accessibilityVM;
     [ObservableProperty] DirectionsVM directionsVM;
+    [ObservableProperty] MultimediaVM multimediaVM;
     [ObservableProperty] CollapsibleTextVM weatherVM;
     [ObservableProperty] CollapsibleTextVM reservationsVM;
     [ObservableProperty] CollapsibleTextVM regulationsVM;
@@ -36,5 +37,6 @@ public partial class CampgroundDetailVM : DetailVM
         CampsitesVM = new CampsitesVM("Campsites", false, Campground);
         AmenitiesVM = new AmenitiesVM("Amenities", false, Campground);
         AccessibilityVM = new AccessibilityVM("Accessibility", false, Campground);
+        MultimediaVM = new MultimediaVM("Multimedia", false, Campground.Multimedia);
     }
 }
