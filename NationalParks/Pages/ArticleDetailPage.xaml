@@ -24,13 +24,11 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <VerticalStackLayout x:DataType="m:Article">
-                    <Label Text="{Binding ListingDescription}" Style="{StaticResource LabelMedium}" />
-                    <ctrl:HyperlinkLabel Text="NPS Site"
-                                         Url="{Binding Url}"
-                                         IsVisible="{Binding HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
-                </VerticalStackLayout>
+                <Label Text="{Binding Article.ListingDescription}" Style="{StaticResource LabelMedium}" />
+                <ctrl:HyperlinkLabel Text="NPS Site"
+                                     Url="{Binding Article.Url}"
+                                     IsVisible="{Binding Article.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     Style="{StaticResource LabelMedium}"/>
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
             </VerticalStackLayout>
         </ScrollView>
