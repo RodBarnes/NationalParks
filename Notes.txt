@@ -14,6 +14,8 @@ Todo & Ideas
 ------------
 Should I change the List<> to Array[] in the models?  If I am not using the List.Add() and other methods?
 
+Can I deleted AvatarVM?  I do not think anything is using it.
+
 Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
