@@ -23,16 +23,17 @@
         <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
-            <VerticalStackLayout>
-                <VerticalStackLayout Padding="10" Spacing="10" x:DataType="m:Multimedia">
+            <VerticalStackLayout  Padding="10" Spacing="10">
+                <VerticalStackLayout x:DataType="m:Multimedia">
                     <Label Text="{Binding Description}" Style="{StaticResource LabelMedium}" />
                     <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding Url}"
                                          IsVisible="{Binding HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 </VerticalStackLayout>
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
+                <v:MultimediaVersionsView BindingContext="{Binding MultimediaVersionsVM}" />
+                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

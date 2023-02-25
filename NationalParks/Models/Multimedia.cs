@@ -18,7 +18,7 @@ public partial class Multimedia : BaseModel
     public bool HasOpenCaptions { get; set; }
     public bool IsBRoll { get; set; }
     public List<Captionfile> CaptionFiles { get; set; }
-    public List<Specifications> Versions { get; set; }
+    public List<Specification> Versions { get; set; }
 
     #region Derived Properties
 
@@ -55,7 +55,7 @@ public class Captionfile
     public string Url { get; set; }
 }
 
-public class Specifications
+public class Specification
 {
     public float? FileSizeKb { get; set; }
     public string FileType { get; set; }
@@ -63,4 +63,10 @@ public class Specifications
     public int HeightPixels { get; set; }
     public string Url { get; set; }
     public int WidthPixels { get; set; }
+
+    #region Derived Properties
+
+    public string Size => $"{HeightPixels}x{WidthPixels}";
+
+    #endregion
 }
