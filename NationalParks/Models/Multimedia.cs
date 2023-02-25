@@ -24,6 +24,8 @@ public partial class Multimedia : BaseModel
 
     public new ImageSource MainImage => GetMainImageFromListingImage();
 
+    public string Duration => GetDuration(DurationMs);
+
     #endregion
 
     private ImageSource GetMainImageFromListingImage()
@@ -40,6 +42,25 @@ public partial class Multimedia : BaseModel
         }
 
         return source;
+    }
+
+    private static string GetDuration(int? ms)
+    {
+        if (ms is null || ms < 0)
+            return "0";
+
+        if (!int.TryParse(ms.ToString(), out int mss))
+        {
+            mss = 0;
+        }
+        double hrd = mss / 1000d / 60d / 60d;
+        int hr = (int)hrd;
+        double mnd = (hrd - hr) * 60d;
+        int mn = (int)mnd;
+        double scd = (mnd - mn) * 60d;
+        int sc = (int)scd;
+
+        return $"{hr:00}:{mn:00}:{sc:00}";
     }
 }
 
