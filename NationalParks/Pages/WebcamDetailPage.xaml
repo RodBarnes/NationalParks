@@ -29,9 +29,9 @@
                            Style="{StaticResource LabelLarge}"
                            Margin="0,0,5,0"/>
                     <ctrl:HyperlinkLabel Text="(link)"
-                                     Url="{Binding Webcam.Url}"
-                                     IsVisible="{Binding Webcam.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                     Style="{StaticResource LabelMedium}"
+                                         Url="{Binding Webcam.Url}"
+                                         IsVisible="{Binding Webcam.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                         Style="{StaticResource LabelMedium}"
                                          VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <Label Text="{Binding Webcam.Description}" Style="{StaticResource LabelMedium}" />
@@ -39,11 +39,6 @@
                     <Label Text="Status: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding Webcam.Status}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Message: " Style="{StaticResource LabelMediumBold}" />
-                    <Label Text="{Binding Webcam.StatusMessage}" Style="{StaticResource LabelMedium}" />
-                </HorizontalStackLayout>
-                
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
             </VerticalStackLayout>
         </ScrollView>
