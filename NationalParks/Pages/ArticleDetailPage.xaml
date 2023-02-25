@@ -23,8 +23,8 @@
         <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
-            <VerticalStackLayout>
-                <VerticalStackLayout Padding="10" Spacing="10" x:DataType="m:Article">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <VerticalStackLayout x:DataType="m:Article">
                     <Label Text="{Binding ListingDescription}" Style="{StaticResource LabelMedium}" />
                     <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding Url}"

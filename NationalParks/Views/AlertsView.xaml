@@ -32,7 +32,7 @@
                             IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Alert">
-                        <VerticalStackLayout >
+                        <VerticalStackLayout>
                             <Label Text="{Binding Title}"
                                    Style="{StaticResource LabelMediumBold}"/>
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
