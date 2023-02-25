@@ -1,6 +1,4 @@
-﻿using Kotlin.Contracts;
-
-namespace NationalParks.Models;
+﻿namespace NationalParks.Models;
 
 public partial class BaseModel
 {
