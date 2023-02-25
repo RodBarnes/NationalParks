@@ -1,6 +1,5 @@
 Status
 ------
-Working to add Multimedia/Videos and Multimedia/Audio
 
 From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.  Later, restarting the app on the phone no longer fixed this.
 
@@ -14,6 +13,8 @@ App Icon -- Windows fails to compile because it says it can't find it.
 Todo & Ideas
 ------------
 Should I change the List<> to Array[] in the models?  If I am not using the List.Add() and other methods?
+
+Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
 
