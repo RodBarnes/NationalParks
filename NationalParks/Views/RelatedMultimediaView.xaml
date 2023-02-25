@@ -5,8 +5,8 @@
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             x:DataType="vm:MultimediaVM"
-             x:Class="NationalParks.Views.MultimediaView"
+             x:DataType="vm:RelatedMultimediaVM"
+             x:Class="NationalParks.Views.RelatedMultimediaView"
              IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -31,7 +31,7 @@
                             SelectionMode="None"
                             IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:Multimedia">
+                    <DataTemplate x:DataType="m:RelatedMultimedia">
                         <VerticalStackLayout Margin="5">
                             <Label Text="{Binding Title}"
                                    Style="{StaticResource LabelMediumBold}"/>

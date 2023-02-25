@@ -24,7 +24,7 @@ public class Place : BaseModel
     public string Location { get; set; }
     public string LocationDescription { get; set; }
     public string Credit { get; set; }
-    public List<Multimedia> Multimedia { get; set; }
+    public List<RelatedMultimedia> Multimedia { get; set; }
 
     #region Derived Properties
 

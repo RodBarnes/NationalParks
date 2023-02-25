@@ -41,7 +41,7 @@
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <v:MultimediaView BindingContext="{Binding MultimediaVM}" />
+                <v:RelatedMultimediaView BindingContext="{Binding MultimediaVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />

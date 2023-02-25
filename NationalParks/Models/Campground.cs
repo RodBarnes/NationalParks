@@ -25,7 +25,7 @@ public class Campground : BaseModel
     public string NumberOfSitesFirstComeFirstServe { get; set; }
     public Campsites Campsites { get; set; }
     public Accessibility Accessibility { get; set; }
-    public List<Multimedia> Multimedia { get; set; }
+    public List<RelatedMultimedia> Multimedia { get; set; }
     public string LastIndexDate { get; set; }
 
     #region Derived Properties

@@ -50,7 +50,7 @@
                 <v:AmenitiesView BindingContext="{Binding AmenitiesVM}" />
                 <v:AccessibilityView BindingContext="{Binding AccessibilityVM}" />
                 <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
-                <v:MultimediaView BindingContext="{Binding MultimediaVM}" />
+                <v:RelatedMultimediaView BindingContext="{Binding MultimediaVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding ReservationsVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding RegulationsVM}" />
