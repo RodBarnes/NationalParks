@@ -175,6 +175,16 @@ public partial class ListVM : BaseVM
                     foreach (var item in resultArticles.Data)
                         Items.Add(item);
                     break;
+                case ResultVideos.Term:
+                    ResultVideos resultVideos = (ResultVideos)result;
+                    foreach (var item in resultVideos.Data)
+                        Items.Add(item);
+                    break;
+                case ResultAudios.Term:
+                    ResultAudios resultAudios = (ResultAudios)result;
+                    foreach (var item in resultAudios.Data)
+                        Items.Add(item);
+                    break;
                 default:
                     throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");
             }

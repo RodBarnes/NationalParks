@@ -99,6 +99,12 @@ public static class MauiProgram
         builder.Services.AddTransient<ArticleDetailVM>();
         builder.Services.AddTransient<ArticleDetailPage>();
 
+        builder.Services.AddSingleton<VideoListVM>();
+        builder.Services.AddSingleton<VideoListPage>();
+
+        builder.Services.AddSingleton<AudioListVM>();
+        builder.Services.AddSingleton<AudioListPage>();
+
         return builder.Build();
 	}
 }

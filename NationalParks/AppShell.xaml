@@ -68,6 +68,12 @@
     <FlyoutItem Title="Articles" Icon="article_green">
         <ShellContent ContentTemplate="{DataTemplate p:ArticleListPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Videos" Icon="ball_green">
+        <ShellContent ContentTemplate="{DataTemplate p:VideoListPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Audios" Icon="ball_green">
+        <ShellContent ContentTemplate="{DataTemplate p:AudioListPage}" />
+    </FlyoutItem>
     <!--<FlyoutItem Title="Events" Icon="event_green">
         <ShellContent ContentTemplate="{DataTemplate p:EventListPage}" />
     </FlyoutItem>-->
