@@ -19,32 +19,32 @@
                     <TapGestureRecognizer Command="{Binding ToggleCommand}" />
                 </HorizontalStackLayout.GestureRecognizers>
                 <Image Source="{Binding Icon}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFill"
-                                HeightRequest="20" />
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Aspect="AspectFill"
+                       HeightRequest="20" />
                 <Label Text="{Binding Title}"
-                                Style="{StaticResource LabelLargeBold}" />
+                       Style="{StaticResource LabelLargeBold}" />
             </HorizontalStackLayout>
             <CollectionView ItemsSource="{Binding Items}"
-                                  SelectionMode="None"
-                                  IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            SelectionMode="None"
+                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Park">
                         <VerticalStackLayout Margin="5">
                             <HorizontalStackLayout>
-                                <Label Text="{Binding Name}" 
-                                                   Style="{StaticResource LabelMediumBold}" 
-                                                   VerticalOptions="Center" 
-                                                   Margin="5"/>
+                                <Label Text="{Binding Name}"
+                                       Style="{StaticResource LabelMediumBold}"
+                                       VerticalOptions="Center"
+                                       Margin="5"/>
                                 <Image Source="tree_reverse_green"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"
-                                                    Aspect="AspectFill"
-                                                    HeightRequest="30">
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Aspect="AspectFill"
+                                       HeightRequest="30">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThingToDoDetailVM}}, Path=GoToParkFromParkCodeCommand}"
-                                                                      CommandParameter="{Binding ParkCode}" />
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DetailVM}}, Path=GoToParkFromParkCodeCommand}"
+                                                              CommandParameter="{Binding ParkCode}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </HorizontalStackLayout>
