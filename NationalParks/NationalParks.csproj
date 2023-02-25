@@ -102,6 +102,9 @@
 	  <Compile Update="Pages\MultimediaDetailPage.xaml.cs">
 	    <DependentUpon>MultimediaDetailPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\VideoFilterPage.xaml.cs">
+	    <DependentUpon>VideoFilterPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\CampsitesView.xaml.cs">
 	    <DependentUpon>CampsitesView.xaml</DependentUpon>
 	  </Compile>
@@ -162,10 +165,16 @@
 	  <MauiXaml Update="Pages\ArticleListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\AudioFilterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MultimediaDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\AudioListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\VideoFilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\VideoListPage.xaml">

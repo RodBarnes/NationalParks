@@ -41,5 +41,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ArticleFilterPage), typeof(ArticleFilterPage));
 
         Routing.RegisterRoute(nameof(MultimediaDetailPage), typeof(MultimediaDetailPage));
+        Routing.RegisterRoute(nameof(VideoFilterPage), typeof(VideoFilterPage));
+        Routing.RegisterRoute(nameof(AudioFilterPage), typeof(AudioFilterPage));
     }
 }
