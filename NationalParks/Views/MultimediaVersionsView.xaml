@@ -43,9 +43,11 @@
                                 <Label Text="{Binding FileType}" Grid.Column="1"
                                        Style="{StaticResource LabelMediumBold}"/>
                                 <Label Text="{Binding Size}" Grid.Column="2"
-                                        Style="{StaticResource LabelMedium}"/>
+                                       Style="{StaticResource LabelMedium}"
+                                       IsVisible="{Binding HasSize, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                                 <Label Text="{Binding AspectRatio}" Grid.Column="3"
-                                       Style="{StaticResource LabelMedium}"/>
+                                       Style="{StaticResource LabelMedium}"
+                                       IsVisible="{Binding HasAspect, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                             </Grid>
                         </VerticalStackLayout>
                     </DataTemplate>

@@ -27,7 +27,6 @@ public partial class Multimedia : BaseModel
     public string Duration => GetDuration(DurationMs);
 
     public bool HasCredit => !String.IsNullOrEmpty(Credit);
-
     #endregion
 
     private ImageSource GetMainImageFromListingImage()
@@ -90,6 +89,8 @@ public class Specification
     #region Derived Properties
 
     public string Size => $"{HeightPixels}x{WidthPixels}";
+    public bool HasSize => HeightPixels > 0 && WidthPixels > 0;
+    public bool HasAspect => AspectRatio > 0;
 
     #endregion
 }
