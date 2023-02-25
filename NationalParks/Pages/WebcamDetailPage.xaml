@@ -45,7 +45,6 @@
                 </HorizontalStackLayout>
                 
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

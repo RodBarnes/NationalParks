@@ -43,7 +43,6 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
-
                 <v:FeesView BindingContext="{Binding FeesVM}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
                 <v:ContactsView BindingContext="{Binding ContactsVM}" />
@@ -54,7 +53,6 @@
                 <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding ReservationsVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding RegulationsVM}" />
-
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

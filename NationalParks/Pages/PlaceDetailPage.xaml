@@ -38,7 +38,6 @@
                            Style="{StaticResource LabelMedium}"
                            VerticalOptions="Center"/>
                 </HorizontalStackLayout>
-
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
@@ -46,7 +45,6 @@
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
-
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

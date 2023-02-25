@@ -34,7 +34,6 @@
                                          Url="{Binding ThingToDo.Url}"
                                          IsVisible="{Binding ThingToDo.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
-
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:CollapsibleTextView BindingContext="{Binding FullDescriptionVM}" />
                 <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
@@ -42,7 +41,6 @@
                 <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
                 <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
                 <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
-                
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />
