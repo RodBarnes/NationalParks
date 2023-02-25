@@ -19,6 +19,28 @@ public partial class Multimedia : BaseModel
     public bool IsBRoll { get; set; }
     public List<Captionfile> CaptionFiles { get; set; }
     public List<Specifications> Versions { get; set; }
+
+    #region Derived Properties
+
+    public new ImageSource MainImage => GetMainImageFromListingImage();
+
+    #endregion
+
+    private ImageSource GetMainImageFromListingImage()
+    {
+        ImageSource source = null;
+
+        if (!String.IsNullOrEmpty(SplashImage.Url))
+        {
+            source = ImageSource.FromUri(new Uri(SplashImage.Url));
+        }
+        else
+        {
+            source = ImageSource.FromFile("nps");
+        }
+
+        return source;
+    }
 }
 
 public class Splashimage
