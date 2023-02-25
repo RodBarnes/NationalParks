@@ -26,6 +26,8 @@ public partial class Multimedia : BaseModel
 
     public string Duration => GetDuration(DurationMs);
 
+    public bool HasCredit => !String.IsNullOrEmpty(Credit);
+
     #endregion
 
     private ImageSource GetMainImageFromListingImage()

@@ -29,12 +29,17 @@
                     <Label Text="Duration:" Style="{StaticResource LabelMediumBold}" Margin="0,0,5,0" />
                     <Label Text="{Binding Multimedia.Duration}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding Multimedia.HasCredit, Converter={StaticResource BoolToTrueFalseConverter}}">
+                    <Label Text="Credit:" Style="{StaticResource LabelMediumBold}" Margin="0,0,5,0" />
+                    <Label Text="{Binding Multimedia.Credit}" Style="{StaticResource LabelMedium}" />
+                </HorizontalStackLayout>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding Multimedia.Url}"
                                      IsVisible="{Binding Multimedia.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                      Style="{StaticResource LabelMedium}"/>
                 <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
                 <v:MultimediaVersionsView BindingContext="{Binding MultimediaVersionsVM}" />
+                <v:CollapsibleTextView BindingContext="{Binding Transcript}" />
                 <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
             </VerticalStackLayout>
         </ScrollView>
