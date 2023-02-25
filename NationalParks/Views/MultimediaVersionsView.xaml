@@ -33,14 +33,18 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Specification">
                         <VerticalStackLayout>
-                            <Label Text="{Binding FileType}"
-                                   Style="{StaticResource LabelMediumBold}"/>
-                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                                <Label Text="{Binding AspectRatio}"
-                                       Grid.Column="0"
-                                       Style="{StaticResource LabelMedium}"/>
-                                <Label Text="{Binding Size}"
-                                       Grid.Column="1"
+                            <Grid ColumnDefinitions="20,*,*,*" ColumnSpacing="10">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MultimediaVersionsVM}}, Path=GoToMultimediaCommand}"
+                                                          CommandParameter="{Binding Url}"/>
+                                </Grid.GestureRecognizers>
+                                <Image Grid.Column="0"
+                                        Source="arrow_right_green.png" HeightRequest="20" />
+                                <Label Text="{Binding FileType}" Grid.Column="1"
+                                       Style="{StaticResource LabelMediumBold}"/>
+                                <Label Text="{Binding Size}" Grid.Column="2"
+                                        Style="{StaticResource LabelMedium}"/>
+                                <Label Text="{Binding AspectRatio}" Grid.Column="3"
                                        Style="{StaticResource LabelMedium}"/>
                             </Grid>
                         </VerticalStackLayout>

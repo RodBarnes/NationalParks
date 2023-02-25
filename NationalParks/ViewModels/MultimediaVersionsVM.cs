@@ -9,4 +9,11 @@ public partial class MultimediaVersionsVM : CollapsibleViewVM
         Items = items;
         HasContent = Items?.Count > 0;
     }
+
+    [RelayCommand]
+    async Task GoToMultimedia(string url)
+    {
+        await Launcher.OpenAsync(url);
+
+    }
 }
