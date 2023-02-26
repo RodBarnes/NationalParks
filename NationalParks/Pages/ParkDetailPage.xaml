@@ -32,15 +32,15 @@
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                          Style="{StaticResource LabelMedium}"/>
                 </HorizontalStackLayout>
-                <v:AlertsView BindingContext="{Binding AlertsVM}" />
-                <v:ParkingLotsView BindingContext="{Binding ParkingLotsVM}" />
-                <v:FeesView BindingContext="{Binding FeesVM}" />
-                <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
-                <v:ContactsView BindingContext="{Binding ContactsVM}" />
-                <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
+                <v:AlertsView BindingContext="{Binding Alerts}" />
+                <v:ParkingLotsView BindingContext="{Binding ParkingLots}" />
+                <v:FeesView BindingContext="{Binding Fees}" />
+                <v:OperatingHoursView BindingContext="{Binding OperatingHours}" />
+                <v:ContactsView BindingContext="{Binding Contacts}" />
+                <v:DirectionsView BindingContext="{Binding Directions}" />
+                <v:CollapsibleListView BindingContext="{Binding Topics}" />
+                <v:CollapsibleListView BindingContext="{Binding Activities}" />
+                <v:CollapsibleTextView BindingContext="{Binding Weather}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

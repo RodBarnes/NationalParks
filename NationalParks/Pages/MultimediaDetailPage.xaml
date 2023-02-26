@@ -37,10 +37,10 @@
                                      Url="{Binding Multimedia.Url}"
                                      IsVisible="{Binding Multimedia.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                      Style="{StaticResource LabelMedium}"/>
-                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <v:MultimediaVersionsView BindingContext="{Binding MultimediaVersionsVM}" />
+                <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
+                <v:MultimediaVersionsView BindingContext="{Binding MultimediaVersions}" />
                 <v:CollapsibleTextView BindingContext="{Binding Transcript}" />
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
+                <v:CollapsibleListView BindingContext="{Binding Tags}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

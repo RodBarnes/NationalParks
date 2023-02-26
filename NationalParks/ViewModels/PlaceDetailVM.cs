@@ -4,13 +4,13 @@
 public partial class PlaceDetailVM : DetailVM
 {
     [ObservableProperty] Place place;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
-    [ObservableProperty] CollapsibleViewVM bodyTextVM;
-    [ObservableProperty] RelatedMultimediaVM multimediaVM;
-    [ObservableProperty] CollapsibleListVM organizationsVM;
-    [ObservableProperty] CollapsibleListVM tagsVM;
-    [ObservableProperty] CollapsibleListVM quickFactsVM;
-    [ObservableProperty] CollapsibleListVM amenitiesVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] CollapsibleViewVM bodyText;
+    [ObservableProperty] RelatedMultimediaVM multimedia;
+    [ObservableProperty] CollapsibleListVM organizations;
+    [ObservableProperty] CollapsibleListVM tags;
+    [ObservableProperty] CollapsibleListVM quickFacts;
+    [ObservableProperty] CollapsibleListVM amenities;
 
     public PlaceDetailVM(IMap map) : base(map)
     {
@@ -22,14 +22,14 @@ public partial class PlaceDetailVM : DetailVM
     {
         Model = Place;
 
-        BodyTextVM = new CollapsibleTextVM("Full Description", false, Place.BodyText);
+        BodyText = new CollapsibleTextVM("Full Description", false, Place.BodyText);
 
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
-        TagsVM = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());
-        QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Place.QuickFacts.ToList<object>());
-        AmenitiesVM = new CollapsibleListVM("Amenities", false, Place.Amenities.ToList<object>());
+        Organizations = new CollapsibleListVM("Related Organizations", false, Place.RelatedOrganizations.ToList<object>());
+        Tags = new CollapsibleListVM("Tags", false, Place.Tags.ToList<object>());
+        QuickFacts = new CollapsibleListVM("Quick Facts", false, Place.QuickFacts.ToList<object>());
+        Amenities = new CollapsibleListVM("Amenities", false, Place.Amenities.ToList<object>());
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
-        MultimediaVM = new RelatedMultimediaVM("Multimedia", false, Place.Multimedia);
+        RelatedParks = new RelatedParksVM("Related Parks", false, Place.RelatedParks);
+        Multimedia = new RelatedMultimediaVM("Multimedia", false, Place.Multimedia);
     }
 }

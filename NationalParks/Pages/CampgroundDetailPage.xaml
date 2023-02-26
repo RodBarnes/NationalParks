@@ -43,17 +43,17 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
-                <v:FeesView BindingContext="{Binding FeesVM}" />
-                <v:OperatingHoursView BindingContext="{Binding OperatingHoursVM}" />
-                <v:ContactsView BindingContext="{Binding ContactsVM}" />
-                <v:CampsitesView BindingContext="{Binding CampsitesVM}" />
-                <v:AmenitiesView BindingContext="{Binding AmenitiesVM}" />
-                <v:AccessibilityView BindingContext="{Binding AccessibilityVM}" />
-                <v:DirectionsView BindingContext="{Binding DirectionsVM}" />
-                <v:RelatedMultimediaView BindingContext="{Binding MultimediaVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding WeatherVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding ReservationsVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding RegulationsVM}" />
+                <v:FeesView BindingContext="{Binding Fees}" />
+                <v:OperatingHoursView BindingContext="{Binding OperatingHours}" />
+                <v:ContactsView BindingContext="{Binding Contacts}" />
+                <v:CampsitesView BindingContext="{Binding Campsites}" />
+                <v:AmenitiesView BindingContext="{Binding Amenities}" />
+                <v:AccessibilityView BindingContext="{Binding Accessibility}" />
+                <v:DirectionsView BindingContext="{Binding Directions}" />
+                <v:RelatedMultimediaView BindingContext="{Binding Multimedia}" />
+                <v:CollapsibleTextView BindingContext="{Binding Weather}" />
+                <v:CollapsibleTextView BindingContext="{Binding Reservations}" />
+                <v:CollapsibleTextView BindingContext="{Binding Regulations}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

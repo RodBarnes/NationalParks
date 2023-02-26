@@ -45,10 +45,10 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </HorizontalStackLayout>
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding StopsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding TopicsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding ActivitiesVM}" />
+                <v:CollapsibleListView BindingContext="{Binding Tags}" />
+                <v:CollapsibleListView BindingContext="{Binding Stops}" />
+                <v:CollapsibleListView BindingContext="{Binding Topics}" />
+                <v:CollapsibleListView BindingContext="{Binding Activities}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

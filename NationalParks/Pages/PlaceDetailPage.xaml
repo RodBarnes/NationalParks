@@ -38,13 +38,13 @@
                            Style="{StaticResource LabelMedium}"
                            VerticalOptions="Center"/>
                 </HorizontalStackLayout>
-                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
-                <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <v:RelatedMultimediaView BindingContext="{Binding MultimediaVM}" />
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding AmenitiesVM}" />
+                <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
+                <v:CollapsibleTextView BindingContext="{Binding BodyText}" />
+                <v:CollapsibleListView BindingContext="{Binding Organizations}" />
+                <v:RelatedMultimediaView BindingContext="{Binding Multimedia}" />
+                <v:CollapsibleListView BindingContext="{Binding Tags}" />
+                <v:CollapsibleListView BindingContext="{Binding QuickFacts}" />
+                <v:CollapsibleListView BindingContext="{Binding Amenities}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

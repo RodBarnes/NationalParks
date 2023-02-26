@@ -4,9 +4,9 @@
 public partial class MultimediaDetailVM : DetailVM
 {
     [ObservableProperty] Multimedia multimedia;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
-    [ObservableProperty] MultimediaVersionsVM multimediaVersionsVM;
-    [ObservableProperty] CollapsibleListVM tagsVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] MultimediaVersionsVM multimediaVersions;
+    [ObservableProperty] CollapsibleListVM tags;
     [ObservableProperty] CollapsibleTextVM transcript;
 
     public MultimediaDetailVM(IMap map) : base(map)
@@ -19,9 +19,9 @@ public partial class MultimediaDetailVM : DetailVM
     {
         Model = Multimedia;
 
-        TagsVM = new CollapsibleListVM("Tags", false, Multimedia.Tags.ToList<object>());
-        MultimediaVersionsVM = new MultimediaVersionsVM("Versions", false, Multimedia.Versions);
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Multimedia.RelatedParks);
+        Tags = new CollapsibleListVM("Tags", false, Multimedia.Tags.ToList<object>());
+        MultimediaVersions = new MultimediaVersionsVM("Versions", false, Multimedia.Versions);
+        RelatedParks = new RelatedParksVM("Related Parks", false, Multimedia.RelatedParks);
         Transcript = new CollapsibleTextVM("Transcript", false, Multimedia.Transcript);
     }
 }

@@ -4,7 +4,7 @@
 public partial class ArticleDetailVM : DetailVM
 {
     [ObservableProperty] Article article;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
 
     public ArticleDetailVM(IMap map) : base(map)
     {
@@ -16,6 +16,6 @@ public partial class ArticleDetailVM : DetailVM
     {
         Model = Article;
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Article.RelatedParks);
+        RelatedParks = new RelatedParksVM("Related Parks", false, Article.RelatedParks);
     }
 }

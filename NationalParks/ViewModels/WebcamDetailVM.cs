@@ -4,7 +4,7 @@
 public partial class WebcamDetailVM : DetailVM
 {
     [ObservableProperty] Webcam webcam;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
 
     public WebcamDetailVM(IMap map) : base(map)
     {
@@ -16,6 +16,6 @@ public partial class WebcamDetailVM : DetailVM
     {
         Model = Webcam;
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);
+        RelatedParks = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);
     }
 }

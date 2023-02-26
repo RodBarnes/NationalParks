@@ -4,17 +4,17 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
-    [ObservableProperty] FeesVM feesVM;
-    [ObservableProperty] OperatingHoursVM operatingHoursVM;
-    [ObservableProperty] ContactsVM contactsVM;
-    [ObservableProperty] CampsitesVM campsitesVM;
-    [ObservableProperty] AmenitiesVM amenitiesVM;
-    [ObservableProperty] AccessibilityVM accessibilityVM;
-    [ObservableProperty] DirectionsVM directionsVM;
-    [ObservableProperty] RelatedMultimediaVM multimediaVM;
-    [ObservableProperty] CollapsibleTextVM weatherVM;
-    [ObservableProperty] CollapsibleTextVM reservationsVM;
-    [ObservableProperty] CollapsibleTextVM regulationsVM;
+    [ObservableProperty] FeesVM fees;
+    [ObservableProperty] OperatingHoursVM operatingHours;
+    [ObservableProperty] ContactsVM contacts;
+    [ObservableProperty] CampsitesVM campsites;
+    [ObservableProperty] AmenitiesVM amenities;
+    [ObservableProperty] AccessibilityVM accessibility;
+    [ObservableProperty] DirectionsVM directions;
+    [ObservableProperty] RelatedMultimediaVM multimedia;
+    [ObservableProperty] CollapsibleTextVM weather;
+    [ObservableProperty] CollapsibleTextVM reservations;
+    [ObservableProperty] CollapsibleTextVM regulations;
 
     public CampgroundDetailVM(IMap map) : base(map)
     {
@@ -26,17 +26,17 @@ public partial class CampgroundDetailVM : DetailVM
     {
         Model = Campground;
 
-        WeatherVM = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
-        ReservationsVM = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
-        RegulationsVM = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
+        Weather = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
+        Reservations = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);
+        Regulations = new CollapsibleTextVM("Regulations", false, Campground.RegulationsOverview, Campground.RegulationsUrl);
 
-        DirectionsVM = new DirectionsVM("Directions", false, Campground.PhysicalAddress?.ToString(), Campground.DirectionsOverview);
-        ContactsVM = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
-        FeesVM = new FeesVM("Fees", false, Campground.Fees);
-        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Campground.OperatingHours);
-        CampsitesVM = new CampsitesVM("Campsites", false, Campground);
-        AmenitiesVM = new AmenitiesVM("Amenities", false, Campground);
-        AccessibilityVM = new AccessibilityVM("Accessibility", false, Campground);
-        MultimediaVM = new RelatedMultimediaVM("Multimedia", false, Campground.Multimedia);
+        Directions = new DirectionsVM("Directions", false, Campground.PhysicalAddress?.ToString(), Campground.DirectionsOverview);
+        Contacts = new ContactsVM("Contacts", false, Campground.Contacts.PhoneNumbers, Campground.Contacts.EmailAddresses);
+        Fees = new FeesVM("Fees", false, Campground.Fees);
+        OperatingHours = new OperatingHoursVM("Operating Hours", false, Campground.OperatingHours);
+        Campsites = new CampsitesVM("Campsites", false, Campground);
+        Amenities = new AmenitiesVM("Amenities", false, Campground);
+        Accessibility = new AccessibilityVM("Accessibility", false, Campground);
+        Multimedia = new RelatedMultimediaVM("Multimedia", false, Campground.Multimedia);
     }
 }

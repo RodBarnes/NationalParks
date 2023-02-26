@@ -4,13 +4,13 @@
 public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
-    [ObservableProperty] CollapsibleViewVM fullDescriptionVM;
-    [ObservableProperty] CollapsibleListVM organizationsVM;
-    [ObservableProperty] CollapsibleListVM amenitiesVM;
-    [ObservableProperty] CollapsibleListVM tagsVM;
-    [ObservableProperty] CollapsibleListVM topicsVM;
-    [ObservableProperty] CollapsibleListVM activitiesVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] CollapsibleViewVM fullDescription;
+    [ObservableProperty] CollapsibleListVM organizations;
+    [ObservableProperty] CollapsibleListVM amenities;
+    [ObservableProperty] CollapsibleListVM tags;
+    [ObservableProperty] CollapsibleListVM topics;
+    [ObservableProperty] CollapsibleListVM activities;
 
     public ThingToDoDetailVM(IMap map) : base(map)
     {
@@ -22,14 +22,14 @@ public partial class ThingToDoDetailVM : DetailVM
     {
         Model = ThingToDo;
 
-        FullDescriptionVM = new CollapsibleTextVM("Full Description", false, ThingToDo.LongDescription);
+        FullDescription = new CollapsibleTextVM("Full Description", false, ThingToDo.LongDescription);
 
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, ThingToDo.RelatedOrganizations.ToList<object>());
-        AmenitiesVM = new CollapsibleListVM("Amenities", false, ThingToDo.Amenities.ToList<object>());
-        TagsVM = new CollapsibleListVM("Tags", false, ThingToDo.Tags.ToList<object>());
-        TopicsVM = new CollapsibleListVM("Topics", false, ThingToDo.Topics.ToList<object>());
-        ActivitiesVM = new CollapsibleListVM("Activities", false, ThingToDo.Activities.ToList<object>());
+        Organizations = new CollapsibleListVM("Related Organizations", false, ThingToDo.RelatedOrganizations.ToList<object>());
+        Amenities = new CollapsibleListVM("Amenities", false, ThingToDo.Amenities.ToList<object>());
+        Tags = new CollapsibleListVM("Tags", false, ThingToDo.Tags.ToList<object>());
+        Topics = new CollapsibleListVM("Topics", false, ThingToDo.Topics.ToList<object>());
+        Activities = new CollapsibleListVM("Activities", false, ThingToDo.Activities.ToList<object>());
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, ThingToDo.RelatedParks);
+        RelatedParks = new RelatedParksVM("Related Parks", false, ThingToDo.RelatedParks);
     }
 }

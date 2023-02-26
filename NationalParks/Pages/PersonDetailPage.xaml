@@ -35,11 +35,11 @@
                                          VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
-                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <v:CollapsibleTextView BindingContext="{Binding BodyTextVM}" />
-                <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding TagsVM}" />
-                <v:CollapsibleListView BindingContext="{Binding QuickFactsVM}" />
+                <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
+                <v:CollapsibleTextView BindingContext="{Binding BodyText}" />
+                <v:CollapsibleListView BindingContext="{Binding Organizations}" />
+                <v:CollapsibleListView BindingContext="{Binding Tags}" />
+                <v:CollapsibleListView BindingContext="{Binding QuickFacts}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

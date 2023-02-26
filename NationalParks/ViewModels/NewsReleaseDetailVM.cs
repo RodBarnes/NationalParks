@@ -4,8 +4,8 @@
 public partial class NewsReleaseDetailVM : DetailVM
 {
     [ObservableProperty] NewsRelease newsRelease;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
-    [ObservableProperty] CollapsibleListVM organizationsVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] CollapsibleListVM organizations;
 
     public NewsReleaseDetailVM(IMap map) : base(map)
     {
@@ -17,8 +17,8 @@ public partial class NewsReleaseDetailVM : DetailVM
     {
         Model = NewsRelease;
 
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, NewsRelease.RelatedOrganizations.ToList<object>());
+        Organizations = new CollapsibleListVM("Related Organizations", false, NewsRelease.RelatedOrganizations.ToList<object>());
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, NewsRelease.RelatedParks);
+        RelatedParks = new RelatedParksVM("Related Parks", false, NewsRelease.RelatedParks);
     }
 }

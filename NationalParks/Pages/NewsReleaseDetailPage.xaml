@@ -39,8 +39,8 @@
                     <Label Text="Released: " Style="{StaticResource LabelMediumBold}" Margin="5,0"/>
                     <Label Text="{Binding NewsRelease.ReleaseDate}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
-                <v:RelatedParksView BindingContext="{Binding RelatedParksVM}" />
-                <v:CollapsibleListView BindingContext="{Binding OrganizationsVM}" />
+                <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
+                <v:CollapsibleListView BindingContext="{Binding Organizations}" />
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

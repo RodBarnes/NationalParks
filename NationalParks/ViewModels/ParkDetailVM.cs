@@ -7,15 +7,15 @@ public partial class ParkDetailVM : DetailVM
 {
     readonly IMap map;
     [ObservableProperty] Park park;
-    [ObservableProperty] AlertsVM alertsVM;
-    [ObservableProperty] ParkingLotsVM parkingLotsVM;
-    [ObservableProperty] FeesVM feesVM;
-    [ObservableProperty] OperatingHoursVM operatingHoursVM;
-    [ObservableProperty] ContactsVM contactsVM;
-    [ObservableProperty] DirectionsVM directionsVM;
-    [ObservableProperty] CollapsibleListVM topicsVM;
-    [ObservableProperty] CollapsibleListVM activitiesVM;
-    [ObservableProperty] CollapsibleTextVM weatherVM;
+    [ObservableProperty] AlertsVM alerts;
+    [ObservableProperty] ParkingLotsVM parkingLots;
+    [ObservableProperty] FeesVM fees;
+    [ObservableProperty] OperatingHoursVM operatingHours;
+    [ObservableProperty] ContactsVM contacts;
+    [ObservableProperty] DirectionsVM directions;
+    [ObservableProperty] CollapsibleListVM topics;
+    [ObservableProperty] CollapsibleListVM activities;
+    [ObservableProperty] CollapsibleTextVM weather;
 
     public ParkDetailVM(IMap map) : base(map)
     {
@@ -34,17 +34,17 @@ public partial class ParkDetailVM : DetailVM
         if (Park.ParkingLots?.Count == 0)
             await GetParkProperties(Park, "parkinglots");
 
-        WeatherVM = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
+        Weather = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
-        TopicsVM = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
-        ActivitiesVM = new CollapsibleListVM("Activities", false, Park.Activities.ToList<object>());
+        Topics = new CollapsibleListVM("Topics", false, Park.Topics.ToList<object>());
+        Activities = new CollapsibleListVM("Activities", false, Park.Activities.ToList<object>());
 
-        DirectionsVM = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
-        ContactsVM = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
-        AlertsVM = new AlertsVM("Alerts", false, Park.Alerts);
-        ParkingLotsVM = new ParkingLotsVM(map, "Parking Lots", false, Park.ParkingLots);
-        FeesVM = new FeesVM("Entrance Fees", false, Park.EntranceFees);
-        OperatingHoursVM = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
+        Directions = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
+        Contacts = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
+        Alerts = new AlertsVM("Alerts", false, Park.Alerts);
+        ParkingLots = new ParkingLotsVM(map, "Parking Lots", false, Park.ParkingLots);
+        Fees = new FeesVM("Entrance Fees", false, Park.EntranceFees);
+        OperatingHours = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }
 
     static async Task GetParkProperties(Park park, string term)

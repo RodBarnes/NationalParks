@@ -6,11 +6,11 @@ namespace NationalParks.ViewModels;
 public partial class PersonDetailVM : DetailVM
 {
     [ObservableProperty] Person person;
-    [ObservableProperty] RelatedParksVM relatedParksVM;
-    [ObservableProperty] CollapsibleViewVM bodyTextVM;
-    [ObservableProperty] CollapsibleListVM organizationsVM;
-    [ObservableProperty] CollapsibleListVM quickFactsVM;
-    [ObservableProperty] CollapsibleListVM tagsVM;
+    [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] CollapsibleViewVM bodyText;
+    [ObservableProperty] CollapsibleListVM organizations;
+    [ObservableProperty] CollapsibleListVM quickFacts;
+    [ObservableProperty] CollapsibleListVM tags;
 
     public PersonDetailVM(IMap map) : base(map)
     {
@@ -22,13 +22,13 @@ public partial class PersonDetailVM : DetailVM
     {
         Model = Person;
 
-        BodyTextVM = new CollapsibleTextVM("Full Description", false, Person.BodyText);
+        BodyText = new CollapsibleTextVM("Full Description", false, Person.BodyText);
 
-        OrganizationsVM = new CollapsibleListVM("Related Organizations", false, Person.RelatedOrganizations.ToList<object>());
-        QuickFactsVM = new CollapsibleListVM("Quick Facts", false, Person.QuickFacts.ToList<object>());
-        TagsVM = new CollapsibleListVM("Tags", false, Person.Tags.ToList<object>());
+        Organizations = new CollapsibleListVM("Related Organizations", false, Person.RelatedOrganizations.ToList<object>());
+        QuickFacts = new CollapsibleListVM("Quick Facts", false, Person.QuickFacts.ToList<object>());
+        Tags = new CollapsibleListVM("Tags", false, Person.Tags.ToList<object>());
 
-        RelatedParksVM = new RelatedParksVM("Related Parks", false, Person.RelatedParks);
+        RelatedParks = new RelatedParksVM("Related Parks", false, Person.RelatedParks);
     }
 
 }
