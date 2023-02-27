@@ -7,8 +7,9 @@ public partial class ParkListVM : ListVM
         BaseTitle = "Parks";
         Term = ResultParks.Term;
         FilterName = "Park";
-        AllowFilterActivities = true;
-        AllowFilterTopics = true;
         AllowFilterStates = true;
+        // Commenting these since it appears the data cannot be filtered this way
+        //AllowFilterActivities = true;
+        //AllowFilterTopics = true;
     }
 }
