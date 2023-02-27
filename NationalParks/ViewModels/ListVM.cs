@@ -301,7 +301,7 @@ public partial class ListVM : BaseVM
         ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
         if (resultPark.Data.Count == 1)
         {
-            var park = resultPark.Data.First();
+            var park = resultPark.Data[0];
             item.Latitude = park.Latitude;
             item.Longitude = park.Longitude;
         }

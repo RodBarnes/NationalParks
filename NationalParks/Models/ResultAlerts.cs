@@ -3,5 +3,5 @@
 public class ResultAlerts : Result
 {
     public const string Term = "alerts";
-    public ICollection<Alert> Data { get; set; }
+    public List<Alert> Data { get; set; }
 }

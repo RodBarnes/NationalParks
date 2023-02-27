@@ -3,5 +3,5 @@
 internal class ResultNewsReleases : Result
 {
     public const string Term = "newsreleases";
-    public ICollection<NewsRelease> Data { get; set; }
+    public List<NewsRelease> Data { get; set; }
 }

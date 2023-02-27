@@ -3,5 +3,5 @@
 public class ResultParkingLots : Result
 {
     public const string Term = "parkinglots";
-    public ICollection<ParkingLot> Data { get; set; }
+    public List<ParkingLot> Data { get; set; }
 }

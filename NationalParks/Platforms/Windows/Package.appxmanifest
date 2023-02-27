@@ -31,22 +31,22 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="$placeholder$"
-        Description="$placeholder$"
+        DisplayName="NPS Icon"
+        Description="NPS Icon"
         BackgroundColor="transparent"
-        Square150x150Logo="$placeholder$.png"
-        Square44x44Logo="$placeholder$.png">
+        Square150x150Logo="appiconMediumTile.png"
+        Square44x44Logo="appiconLogo.png">
         <uap:DefaultTile
-          Wide310x150Logo="$placeholder$.png"
-          Square71x71Logo="$placeholder$.png"
-          Square310x310Logo="$placeholder$.png"
-          ShortName="$placeholder$.png">
+          Wide310x150Logo="appiconWideTile.png"
+          Square71x71Logo="appiconSmallTile.png"
+          Square310x310Logo="appiconLargeTile.png"
+          ShortName="NPS Info">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo"/>
             <uap:ShowOn Tile="wide310x150Logo"/>
           </uap:ShowNameOnTiles>
         </uap:DefaultTile >
-        <uap:SplashScreen Image="$placeholder$.png" />
+        <uap:SplashScreen Image="Resources/nps_splash.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
