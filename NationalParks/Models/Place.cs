@@ -3,28 +3,28 @@
 public class Place : BaseModel
 {
     public string ListingDescription { get; set; }
-    public List<RelatedPark> RelatedParks { get; set; }
-    public List<Organization> RelatedOrganizations { get; set; }
-    public List<string> Tags { get; set; }
+    public ICollection<RelatedPark> RelatedParks { get; set; }
+    public ICollection<Organization> RelatedOrganizations { get; set; }
+    public ICollection<string> Tags { get; set; }
     public string LatLong { get; set; }
     public string BodyText { get; set; }
     public string AudioDescription { get; set; }
     public int IsPassportStampLocation { get; set; }
     public string PassportStampLocationDescription { get; set; }
-    public List<Image> PassportStampImages { get; set; }
+    public ICollection<Image> PassportStampImages { get; set; }
     public string ManagedByUrl { get; set; }
     public int IsOpenToPublic { get; set; }
     public int IsMapPinHidden { get; set; }
     public string NpmapId { get; set; }
     public string GeometryPoiId { get; set; }
     public int IsManagedByNps { get; set; }
-    public List<string> Amenities { get; set; }
+    public ICollection<string> Amenities { get; set; }
     public string ManagedByOrg { get; set; }
-    public List<QuickFact> QuickFacts { get; set; }
+    public ICollection<QuickFact> QuickFacts { get; set; }
     public string Location { get; set; }
     public string LocationDescription { get; set; }
     public string Credit { get; set; }
-    public List<RelatedMultimedia> Multimedia { get; set; }
+    public ICollection<RelatedMultimedia> Multimedia { get; set; }
 
     #region Derived Properties
 

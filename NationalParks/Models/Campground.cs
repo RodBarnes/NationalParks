@@ -6,7 +6,7 @@ public class Campground : BaseModel
     public string AudioDescription { get; set; }
     public string IsPassportStampLocation { get; set; }
     public string PassportStampLocationDescription { get; set; }
-    public List<object> PassportStampImages { get; set; }
+    public IEnumerable<object> PassportStampImages { get; set; }
     public string GeometryPoiId { get; set; }
     public string ReservationInfo { get; set; }
     public string ReservationUrl { get; set; }
@@ -14,18 +14,18 @@ public class Campground : BaseModel
     public string RegulationsOverview { get; set; }
     public Amenities Amenities { get; set; }
     public Contacts Contacts { get; set; }
-    public List<Fee> Fees { get; set; }
+    public ICollection<Fee> Fees { get; set; }
     public string DirectionsOverview { get; set; }
     public string DirectionsUrl { get; set; }
-    public List<OperatingHours> OperatingHours { get; set; }
-    public List<Address> Addresses { get; set; }
+    public ICollection<OperatingHours> OperatingHours { get; set; }
+    public ICollection<Address> Addresses { get; set; }
     public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
     public string WeatherOverview { get; set; }
     public string NumberOfSitesReservable { get; set; }
     public string NumberOfSitesFirstComeFirstServe { get; set; }
     public Campsites Campsites { get; set; }
     public Accessibility Accessibility { get; set; }
-    public List<RelatedMultimedia> Multimedia { get; set; }
+    public ICollection<RelatedMultimedia> Multimedia { get; set; }
     public string LastIndexDate { get; set; }
 
     #region Derived Properties

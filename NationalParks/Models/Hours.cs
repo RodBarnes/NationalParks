@@ -27,7 +27,7 @@ public class Hours
 
         // Key is the value; e.g., "Closed"
         // Value is list of abbreviated property names; e.g., Mon
-        var dict = new Dictionary<string, List<string>>();
+        var dict = new Dictionary<string, ICollection<string>>();
 
         CheckForDailyHours(dict, MonAbbrv, Monday);
         CheckForDailyHours(dict, TueAbbrv, Tuesday);
@@ -58,7 +58,7 @@ public class Hours
         return sbKeys.ToString();
     }
 
-    private static void CheckForDailyHours(Dictionary<string, List<string>> dict, string dayName, string value)
+    private static void CheckForDailyHours(Dictionary<string, ICollection<string>> dict, string dayName, string value)
     {
         if (!string.IsNullOrEmpty(value))
         {
@@ -95,7 +95,7 @@ public class Hours
         }
     }
 
-    private static void AddDayName(string dayName, string prevName, List<string> dayNames)
+    private static void AddDayName(string dayName, string prevName, ICollection<string> dayNames)
     {
         // Left this as a separate method in case later decision is made to try and use '-'
         // to separate contigous list; i.e., Mon-Thu instead of Mon,Tue,Wed,Thu.

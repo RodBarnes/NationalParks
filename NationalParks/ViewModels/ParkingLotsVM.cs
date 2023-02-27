@@ -3,9 +3,9 @@
 public partial class ParkingLotsVM : CollapsibleViewVM
 {
     readonly IMap map;
-    [ObservableProperty] List<ParkingLot> items;
+    [ObservableProperty] ICollection<ParkingLot> items;
 
-    public ParkingLotsVM(IMap map, string title, bool isOpen, List<ParkingLot> items) : base(title, isOpen)
+    public ParkingLotsVM(IMap map, string title, bool isOpen, ICollection<ParkingLot> items) : base(title, isOpen)
     {
         this.map = map;
         Items = items;

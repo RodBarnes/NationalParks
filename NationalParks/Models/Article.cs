@@ -5,7 +5,7 @@ public class Article : BaseModel
     public string GeometryPoiId { get; set; }
     public string ListingDescription { get; set; }
     public Image ListingImage { get; set; }
-    public List<RelatedPark> RelatedParks { get; set; }
+    public ICollection<RelatedPark> RelatedParks { get; set; }
     public string LatLong { get; set; }
 
     #region Derived Properties

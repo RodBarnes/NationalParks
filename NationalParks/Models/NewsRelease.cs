@@ -5,8 +5,8 @@ public partial class NewsRelease : BaseModel
     public string ParkCode { get; set; }
     public string Abstract { get; set; }
     public Image Image { get; set; }
-    public List<RelatedPark> RelatedParks { get; set; }
-    public List<Organization> RelatedOrganizations { get; set; }
+    public ICollection<RelatedPark> RelatedParks { get; set; }
+    public ICollection<Organization> RelatedOrganizations { get; set; }
     public string GeometryPoiId { get; set; }
     public string ReleaseDate { get; set; }
     public string Credit { get; set; }

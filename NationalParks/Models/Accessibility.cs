@@ -13,8 +13,8 @@ public class Accessibility
     public string TrailerAllowed { get; set; }
     public string TrailerMaxLength { get; set;}
     public string AdditionalInfo { get; set; }
-    public List<string> AccessRoads { get; set;}
-    public List<string> Classifications { get; set;}
+    public ICollection<string> AccessRoads { get; set;}
+    public ICollection<string> Classifications { get; set;}
 
     #region Derived Properties
 

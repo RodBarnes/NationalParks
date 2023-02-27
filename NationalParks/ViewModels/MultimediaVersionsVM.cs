@@ -2,9 +2,9 @@
 
 public partial class MultimediaVersionsVM : CollapsibleViewVM
 {
-    [ObservableProperty] List<Specification> items;
+    [ObservableProperty] ICollection<Specification> items;
 
-    public MultimediaVersionsVM(string title, bool isOpen, List<Specification> items) : base(title, isOpen)
+    public MultimediaVersionsVM(string title, bool isOpen, ICollection<Specification> items) : base(title, isOpen)
     {
         Items = items;
         HasContent = Items?.Count > 0;

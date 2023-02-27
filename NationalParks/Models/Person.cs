@@ -3,16 +3,16 @@
 public partial class Person : BaseModel
 {
     public string ListingDescription { get; set; }
-    public List<RelatedPark> RelatedParks { get; set; }
-    public List<Organization> RelatedOrganizations { get; set; }
-    public List<string> Tags { get; set; }
+    public ICollection<RelatedPark> RelatedParks { get; set; }
+    public ICollection<Organization> RelatedOrganizations { get; set; }
+    public ICollection<string> Tags { get; set; }
     public string LatLong { get; set; }
     public string BodyText { get; set; }
     public string GeometryPoiId { get; set; }
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
     public string LastName { get; set; }
-    public List<QuickFact> QuickFacts { get; set; }
+    public ICollection<QuickFact> QuickFacts { get; set; }
     public string Credit { get; set; }
 
     #region Derived Properties

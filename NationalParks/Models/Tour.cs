@@ -4,13 +4,13 @@
 public class Tour : BaseModel
 {
     public RelatedPark Park { get; set; }
-    public List<string> Tags { get; set; }
-    public List<Activity> Activities { get; set; }
-    public List<Topic> Topics { get; set; }
+    public ICollection<string> Tags { get; set; }
+    public ICollection<Activity> Activities { get; set; }
+    public ICollection<Topic> Topics { get; set; }
     public int DurationMin { get; set; }
     public int DurationMax { get; set; }
     public string DurationUnit { get; set; }
-    public List<Stop> Stops { get; set; }
+    public ICollection<Stop> Stops { get; set; }
 
     #region Derived Properties
 

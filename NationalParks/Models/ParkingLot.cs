@@ -4,14 +4,14 @@
 public class ParkingLot : BaseModel
 {
     public string AltName { get; set; }
-    public List<RelatedPark> RelatedParks { get; set; }
+    public ICollection<RelatedPark> RelatedParks { get; set; }
     public string GeometryPoiId { get; set; }
     public string ManagedByOrganization { get; set; }
     public string TimeZone { get; set; }
     public string WebcamUrl { get; set; }
     public Contacts Contacts { get; set; }
-    public List<Fee> Fees { get; set; }
-    public List<OperatingHours> OperatingHours { get; set; }
+    public ICollection<Fee> Fees { get; set; }
+    public ICollection<OperatingHours> OperatingHours { get; set; }
     public ParkingAccessibility Accessibility { get; set; }
     public ParkingLivestatus LiveStatus { get; set; }
 

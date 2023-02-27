@@ -109,7 +109,7 @@ public partial class ListVM : BaseVM
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
                             // Place is missing location so use first related park location
-                            string parkCode = item.RelatedParks[0].ParkCode;
+                            string parkCode = item.RelatedParks.First().ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
                         Items.Add(item);
@@ -163,7 +163,7 @@ public partial class ListVM : BaseVM
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
                             // Person is missing location so use first related park location
-                            string parkCode = item.RelatedParks[0].ParkCode;
+                            string parkCode = item.RelatedParks.First().ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
                         Items.Add(item);
