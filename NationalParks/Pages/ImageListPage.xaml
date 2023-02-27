@@ -25,8 +25,7 @@
                     <Frame Style="{StaticResource ViewCard}">
                         <VerticalStackLayout>
                             <Image Source="{Binding Url}"
-                                   Aspect="AspectFill"
-                                   HeightRequest="274">
+                                   Aspect="AspectFill">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ImageListVM}}, Path=GoToImageCommand}"
