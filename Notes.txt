@@ -12,9 +12,7 @@ App Icon -- Windows fails to compile because it says it can't find it.
 
 Todo & Ideas
 ------------
-Can I delete AvatarVM?  I do not think anything is using it.
-
-Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.
+Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.  But if this just ends up being State, then they could be.
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
 
