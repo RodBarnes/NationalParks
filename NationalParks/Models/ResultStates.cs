@@ -2,5 +2,5 @@
 
 public class ResultStates
 {
-    public List<State> Data { get; set; }
+    public ICollection<State> Data { get; set; }
 }
