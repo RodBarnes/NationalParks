@@ -338,6 +338,9 @@ public partial class ListVM : BaseVM
 
     static string GetStatesFilter(ICollection<object> states)
     {
+        if (states.Count == 0)
+            return "";
+
         string filter = "";
 
         foreach (State state in states)
