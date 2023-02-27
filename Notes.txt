@@ -16,6 +16,10 @@ Is it possible to consolidate all the *FilterPages into a single FilterPage?  Th
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
 
+Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.
+	- How would this work given the case where not all the items have been retrieved?  And some are not retrieved alphabetically.
+	- I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
+
 I could add a list of "Related Campgrounds" to Park -- but this would mean getting them as I do with Alerts.  Maybe... What about the ability to go back and forth between things -- Park to Campground to Place to Park.  What does this do to the routing?
 
 Splitting the retrieval of Tour and Place location to another time instead of getting it regardless while populating the list might be helpful.  Location is only needed when either:
@@ -25,10 +29,6 @@ Splitting the retrieval of Tour and Place location to another time instead of ge
 Settings?
 	- User determined states by which to always filter?
 	- Which list to display as the default page?  Probably would use the CurrentItem property of <Shell>? And update the name of the new item based to that name based upon user selection?
-
-Need a quick search (alphabet thumb?) or some other means of quickly locating a specific Park or Campground.
-	- How would this work given the case where not all the items have been retrieved?  And some are not retrieved alphabetically.
-	- I could add a search button for now...  Or maybe a search at the top of the list that limits the list as values are entered?  Maybe could use the UserStoppedTypingBehavior from the Maui.Toolkit?
 
 EllipsisLabel control to display an elipsis at the end of too-long-to-display text?  I think this page might have some related guidance: https://swharden.com/blog/2021-10-16-maui-graphics-measurestring/
 
