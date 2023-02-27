@@ -74,7 +74,7 @@
                 <HorizontalStackLayout HorizontalOptions="Center"
                                        Padding="0,0,0,5">
                     <Label Text="Activity" Style="{StaticResource LabelLargeBold}"/>
-                    <Label Text="{Binding SelectedTopics.Count, StringFormat=' ({0})'}"
+                    <Label Text="{Binding SelectedActivities.Count, StringFormat=' ({0})'}"
                            Style="{StaticResource LabelLarge}" />
                 </HorizontalStackLayout>
                 <Frame x:Name="ActivitiesFrame" 

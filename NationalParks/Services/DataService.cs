@@ -24,17 +24,17 @@ public class DataService
         }
         if (!String.IsNullOrEmpty(topics))
         {
-            paramList += $"&parkCode%3D{topics}";
+            paramList += $"&parkCode={topics}";
         }
         if (!String.IsNullOrEmpty(activities))
         {
             if (!String.IsNullOrEmpty(topics))
             {
-                paramList += $"%2D{activities}";
+                paramList += $",{activities}";
             }
             else
             {
-                paramList += $"&parkCode%3D{activities}";
+                paramList += $"&parkCode={activities}";
             }
         }
         var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
@@ -153,29 +153,29 @@ public class DataService
         return result;
     }
 
-    public static async Task<ResultRelatedParks> GetRelatedParkForTopicsAsync(string idList)
+    public static async Task<ResultTopics> GetTopicsForIds(string idList)
     {
-        ResultRelatedParks result = new();
+        ResultTopics result = new();
 
         var url = $"{DomainUrl}topics/parks?api_key={Config.NpsApiKey}&id={idList}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
-            result = await response.Content.ReadFromJsonAsync<ResultRelatedParks>();
+            result = await response.Content.ReadFromJsonAsync<ResultTopics>();
         }
 
         return result;
     }
 
-    public static async Task<ResultRelatedParks> GetRelatedParkForActivitiesAsync(string idList)
+    public static async Task<ResultActivities> GetActivitiesForIds(string idList)
     {
-        ResultRelatedParks result = new();
+        ResultActivities result = new();
 
         var url = $"{DomainUrl}activities/parks?api_key={Config.NpsApiKey}&id={idList}";
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
-            result = await response.Content.ReadFromJsonAsync<ResultRelatedParks>();
+            result = await response.Content.ReadFromJsonAsync<ResultActivities>();
         }
 
         return result;

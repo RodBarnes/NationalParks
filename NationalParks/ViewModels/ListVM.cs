@@ -364,20 +364,23 @@ public partial class ListVM : BaseVM
         {
             if (idList.Length > 0)
             {
-                idList += "%2D";
+                idList += ",";
             }
             idList += topic.Id;
         }
 
         // Get the list of related parks for the Ids
-        ResultRelatedParks result = await DataService.GetRelatedParkForTopicsAsync(idList);
-        foreach (RelatedPark park in result.Data)
+        ResultTopics result = await DataService.GetTopicsForIds(idList);
+        foreach (Topic topic in result.Data)
         {
-            if (filter.Length > 0)
+            foreach (RelatedPark park in topic.Parks)
             {
-                filter += "%2D";
+                if (filter.Length > 0)
+                {
+                    filter += ",";
+                }
+                filter += park.ParkCode;
             }
-            filter += park.ParkCode;
         }
 
         return filter;
@@ -395,20 +398,23 @@ public partial class ListVM : BaseVM
         {
             if (idList.Length > 0)
             {
-                idList += "%2D";
+                idList += ",";
             }
             idList += activity.Id;
         }
 
         // Get the list of related parks for the Ids
-        ResultRelatedParks result = await DataService.GetRelatedParkForActivitiesAsync(idList);
-        foreach (RelatedPark park in result.Data)
+        ResultActivities result = await DataService.GetActivitiesForIds(idList);
+        foreach (Models.Activity activity in result.Data)
         {
-            if (filter.Length > 0)
+            foreach (RelatedPark park in activity.Parks)
             {
-                filter += "%2D";
+                if (filter.Length > 0)
+                {
+                    filter += ",";
+                }
+                filter += park.ParkCode;
             }
-            filter += park.ParkCode;
         }
 
         return filter;
