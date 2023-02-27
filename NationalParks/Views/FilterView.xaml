@@ -17,10 +17,12 @@
             <VerticalStackLayout x:Name="StatesFilter" 
                                  IsVisible="{Binding AllowFilterStates}"
                                  Padding="10,10,10,0">
-                <Label Text="State"
-                       Style="{StaticResource LabelLargeBold}"
-                       HorizontalOptions="Center"
-                       Padding="0,0,0,5"/>
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Padding="0,0,0,5">
+                    <Label Text="State" Style="{StaticResource LabelLargeBold}" />
+                    <Label Text="{Binding SelectedStates.Count, StringFormat=' ({0})'}"
+                           Style="{StaticResource LabelLarge}" />
+                </HorizontalStackLayout>
                 <Frame x:Name="StatesFrame"
                        Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
@@ -42,10 +44,12 @@
             <VerticalStackLayout x:Name="TopicsFilter" 
                                  IsVisible="{Binding AllowFilterTopics}"
                                  Padding="10,10,10,0">
-                <Label Text="Topic"
-                       Style="{StaticResource LabelLargeBold}"
-                       HorizontalOptions="Center"
-                       Padding="0,0,0,5"/>
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Padding="0,0,0,5">
+                    <Label Text="Topic" Style="{StaticResource LabelLargeBold}"/>
+                    <Label Text="{Binding SelectedTopics.Count, StringFormat=' ({0})'}" 
+                           Style="{StaticResource LabelLarge}" />
+                </HorizontalStackLayout>
                 <Frame x:Name="TopicsFrame" 
                        Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
@@ -67,10 +71,12 @@
             <VerticalStackLayout x:Name="ActivitiesFilter" 
                                  IsVisible="{Binding AllowFilterActivities}"
                                  Padding="10,10,10,0">
-                <Label Text="Activity"
-                       Style="{StaticResource LabelLargeBold}"
-                       HorizontalOptions="Center"
-                       Padding="0,0,0,5"/>
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Padding="0,0,0,5">
+                    <Label Text="Activity" Style="{StaticResource LabelLargeBold}"/>
+                    <Label Text="{Binding SelectedTopics.Count, StringFormat=' ({0})'}"
+                           Style="{StaticResource LabelLarge}" />
+                </HorizontalStackLayout>
                 <Frame x:Name="ActivitiesFrame" 
                        Style="{StaticResource ViewFrame}"
                        CornerRadius="12"
