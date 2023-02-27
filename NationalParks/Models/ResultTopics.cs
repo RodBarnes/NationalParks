@@ -3,5 +3,5 @@
 public partial class ResultTopics : Result
 {
     public const string Term = "topics";
-    public List<Topic> Data { get; set; }
+    public ICollection<Topic> Data { get; set; }
 }
