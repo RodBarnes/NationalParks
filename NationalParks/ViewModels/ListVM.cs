@@ -335,7 +335,7 @@ public partial class ListVM : BaseVM
                 SelectedTopics.Count > 0 ||
                 SelectedActivities.Count > 0);
 
-    static string GetStatesFilter(ObservableCollection<object> states)
+    static string GetStatesFilter(ICollection<object> states)
     {
         string filter = "";
 
@@ -350,7 +350,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    static string GetTopicsFilter(ObservableCollection<object> topics)
+    static string GetTopicsFilter(ICollection<object> topics)
     {
         string filter = "";
 
@@ -365,7 +365,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    static string GetActivitiesFilter(ObservableCollection<object> activities)
+    static string GetActivitiesFilter(ICollection<object> activities)
     {
         string filter = "";
 

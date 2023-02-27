@@ -1,5 +1,11 @@
 Status
 ------
+Working on Topics and Activities filtering for Parks.  All items can be filtered by State but there are Topics/Parks and Activities/Parks which will allow additional filtering Parks by those items.  It means:
+	1. Selecting an item; i.e., Topic or Activity instance
+	2. Deriving a comma-delimited string of associated ParkCodes
+	3. Passing the topic-filter string and the activity-filter string in along with the state-filter string
+But the topics and activities include states in them.  Conflicts should be handled as: Parks in SelectedStates PLUS Parks for SelectedTopics PLUS Parks for SelectedActivities.
+
 
 From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.  Later, restarting the app on the phone no longer fixed this.
 
