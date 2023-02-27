@@ -1,4 +1,5 @@
-﻿using NationalParks.Services;
+﻿using CommunityToolkit.Maui.Converters;
+using NationalParks.Services;
 using System.Text.Json;
 
 namespace NationalParks.ViewModels;
@@ -85,7 +86,7 @@ public partial class ListVM : BaseVM
             }
 
             IsBusy = true;
-            BuildFilterSelections();
+            await BuildFilterSelections();
 
             // Populate the list
             result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
@@ -270,11 +271,11 @@ public partial class ListVM : BaseVM
         IsFindingClosest = false;
     }
 
-    private void BuildFilterSelections()
+    private async Task BuildFilterSelections()
     {
         StatesFilter = GetStatesFilter(SelectedStates);
-        TopicsFilter = GetTopicsFilter(SelectedTopics);
-        ActivitiesFilter = GetActivitiesFilter(SelectedActivities);
+        TopicsFilter = await GetTopicsFilter(SelectedTopics);
+        ActivitiesFilter = await GetActivitiesFilter(SelectedActivities);
     }
     public void ClearData()
     {
@@ -350,32 +351,64 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
-    static string GetTopicsFilter(ICollection<object> topics)
+    static async Task<string> GetTopicsFilter(ICollection<object> topics)
     {
-        string filter = "";
+        if (topics.Count == 0)
+            return "";
 
-        foreach (Topic topic in topics)
+        string filter = "";
+        string idList = "";
+
+        // Build the list of Ids for the selected topics
+        foreach (Models.Topic topic in topics)
+        {
+            if (idList.Length > 0)
+            {
+                idList += "%2D";
+            }
+            idList += topic.Id;
+        }
+
+        // Get the list of related parks for the Ids
+        ResultRelatedParks result = await DataService.GetRelatedParkForTopicsAsync(idList);
+        foreach (RelatedPark park in result.Data)
         {
             if (filter.Length > 0)
             {
                 filter += "%2D";
             }
-            filter += topic.Id;
+            filter += park.ParkCode;
         }
 
         return filter;
     }
-    static string GetActivitiesFilter(ICollection<object> activities)
+    static async Task<string> GetActivitiesFilter(ICollection<object> activities)
     {
-        string filter = "";
+        if (activities.Count == 0)
+            return "";
 
+        string filter = "";
+        string idList = "";
+
+        // Build the list of Ids for the selected Activities
         foreach (Models.Activity activity in activities)
+        {
+            if (idList.Length > 0)
+            {
+                idList += "%2D";
+            }
+            idList += activity.Id;
+        }
+
+        // Get the list of related parks for the Ids
+        ResultRelatedParks result = await DataService.GetRelatedParkForActivitiesAsync(idList);
+        foreach (RelatedPark park in result.Data)
         {
             if (filter.Length > 0)
             {
                 filter += "%2D";
             }
-            filter += activity.Id;
+            filter += park.ParkCode;
         }
 
         return filter;

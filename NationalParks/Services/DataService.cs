@@ -24,11 +24,18 @@ public class DataService
         }
         if (!String.IsNullOrEmpty(topics))
         {
-            paramList += $"&topic%3D{topics}";
+            paramList += $"&parkCode%3D{topics}";
         }
         if (!String.IsNullOrEmpty(activities))
         {
-            paramList += $"&activities%3D{activities}";
+            if (!String.IsNullOrEmpty(topics))
+            {
+                paramList += $"%2D{activities}";
+            }
+            else
+            {
+                paramList += $"&parkCode%3D{activities}";
+            }
         }
         var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
 
@@ -141,6 +148,34 @@ public class DataService
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadFromJsonAsync<ResultParks>();
+        }
+
+        return result;
+    }
+
+    public static async Task<ResultRelatedParks> GetRelatedParkForTopicsAsync(string idList)
+    {
+        ResultRelatedParks result = new();
+
+        var url = $"{DomainUrl}topics/parks?api_key={Config.NpsApiKey}&id={idList}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultRelatedParks>();
+        }
+
+        return result;
+    }
+
+    public static async Task<ResultRelatedParks> GetRelatedParkForActivitiesAsync(string idList)
+    {
+        ResultRelatedParks result = new();
+
+        var url = $"{DomainUrl}activities/parks?api_key={Config.NpsApiKey}&id={idList}";
+        var response = await httpClient.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            result = await response.Content.ReadFromJsonAsync<ResultRelatedParks>();
         }
 
         return result;
