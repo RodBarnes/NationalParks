@@ -1,6 +1,6 @@
 Status
 ------
-From commit 1ab1a1a2... on 2023/02/22, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.  On my phone, killing the app and reopening it fixed this.  On the emulator, I couldn't fix it.  Later, restarting the app on the phone no longer fixed this.
+From commit bce431d8... on 2023/02/27, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.
 
 
 Release Issues
@@ -11,7 +11,7 @@ App Icon -- Windows fails to compile because it says it can't find it.
 
 Todo & Ideas
 ------------
-Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.  But if this just ends up being State, then they could be.
+Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.  But if this just ends up being State, then they could be.  Or, maybe state is always enabled as part of ListVM?  Then the only special one would be those that enable others; e.g., ParkList.
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
 
@@ -41,16 +41,11 @@ Add a tap gesture on the AdvApp section of the About page to go to the AdvApp si
 
 Allow setting radious in miles and presenting list of Parks within that radius.
 
-The NPS API provides for "Parks with Activity", "Parks for Topic", "Parks with Amenity", etc. but not combinations.  The "Parks" supports a query "q" but isn't clear what is the format.
-
 Maybe need a string handler that recognizes URLs in text (e.g., weather descriptions) and turns those into clickable links.
 
 Still unsure what to do with the ExceptionHours and whether to display the StandardHours since they are often (alway?) included as text in the description.
 
 And maybe Activity should be NpsActivity to eliminate the ambiguity with System...Activity?
-
-What about Amenities, Events, Park Places?  Are there others?  Are these just additional pages in the swipe-set planned for the Hours and Images?
-
 
 
 Fixed Issues
