@@ -4,7 +4,7 @@ Status
 
 Todo & Ideas
 ------------
-Topics and Activities in the release version FilterPage are blank.
+Explore Entry options
 
 Add an additional property (e.g., TileDescription?) to BaseModel specifically for display in the list tile.  For Park, this would be populated by Designation so that could be used in the tile.  For the others, it might only be a duplicate of Description.
 
