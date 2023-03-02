@@ -2,14 +2,10 @@ Status
 ------
 
 
-Release Issues
---------------
-ListView -- Description does not appear for Parks (and a couple others) but does for Campgrounds.
-App Icon -- Windows fails to compile because it says it can't find it.
-
-
 Todo & Ideas
 ------------
+Are there any derived properties in the models that need to reference a BaseModel property as I fixed Description?
+
 Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.  But if this just ends up being State, then they could be.  Or, maybe state is always enabled as part of ListVM?  Then the only special one would be those that enable others; e.g., ParkList.
 
 Determine how to get a snapshot of the webcam and display that in the webcam list as the image.  Would this help: https://stackoverflow.com/questions/15702031/get-thumbnail-image-of-video-file-in-c-sharp
