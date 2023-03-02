@@ -4,7 +4,7 @@ Status
 
 Todo & Ideas
 ------------
-Explore Entry options
+Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
 Add an additional property (e.g., TileDescription?) to BaseModel specifically for display in the list tile.  For Park, this would be populated by Designation so that could be used in the tile.  For the others, it might only be a duplicate of Description.
 

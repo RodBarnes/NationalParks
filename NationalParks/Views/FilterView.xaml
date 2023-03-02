@@ -20,8 +20,10 @@
                        VerticalOptions="Center" 
                        Margin="0,0,5,0" />
                 <Entry Text="{Binding QueryFilter}" 
-                       WidthRequest="500" 
-                       HeightRequest="40"/>
+                       WidthRequest="300" 
+                       HeightRequest="40"
+                       ClearButtonVisibility="WhileEditing"
+                       />
             </HorizontalStackLayout>
         </Frame>
         <VerticalStackLayout Grid.Row ="1" Grid.ColumnSpan="2">
