@@ -1,5 +1,9 @@
 Status
 ------
+Need to prepare for release
+	- Change the splash icon to the AdvApp icon.
+	- Change start page
+	- Validate all page displays
 
 
 Todo & Ideas
@@ -28,8 +32,6 @@ Need to find phone in midst of text and turn into link to call.  This may be as 
 
 Does it make sense to have the Webcams as a separate aspect/list?  Or should the webcams be just part of the ParkDetail?  Or maybe both?
 
-Change the splash icon to the AdvApp icon.
-
 Add a tap gesture on the AdvApp section of the About page to go to the AdvApp site?
 
 Allow setting radious in miles and presenting list of Parks within that radius.
@@ -39,16 +41,6 @@ Maybe need a string handler that recognizes URLs in text (e.g., weather descript
 Still unsure what to do with the ExceptionHours and whether to display the StandardHours since they are often (alway?) included as text in the description.
 
 And maybe Activity should be NpsActivity to eliminate the ambiguity with System...Activity?
-
-
-Fixed Issues
-------------
-The images list keeps causing the app to crash.  Examples from Parks: Adams, Flight 93 Memorial. 
-	- Error: Java.Lang.RuntimeException Message=Canvas: trying to use a recycled bitmap android.graphics.Bitmap@5d9bccf
-	- I removed the HeightOptions attribute and it stopped the error (in both debug and release) to the emulator but it still happens with a debug or release version to phone.
-	- I added a HeightRequest and this fixed it for all.  Created an issue https://github.com/dotnet/maui/issues/13534
-
-Implmented filtering of Topics and Activities for Parks.  The API is determining how to address merging the pieces with State; i.e., State overrides anything in Topics or Activities.
 
 
 Failed Ideas
