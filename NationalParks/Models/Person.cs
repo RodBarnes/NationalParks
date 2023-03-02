@@ -2,7 +2,17 @@
 
 public partial class Person : BaseModel
 {
-    public string ListingDescription { get; set; }
+    public string ListingDescription
+    {
+        get
+        {
+            return base.Description;
+        }
+        set
+        {
+            base.Description = value;
+        }
+    }
     public ICollection<RelatedPark> RelatedParks { get; set; }
     public ICollection<Organization> RelatedOrganizations { get; set; }
     public ICollection<string> Tags { get; set; }
@@ -17,7 +27,6 @@ public partial class Person : BaseModel
 
     #region Derived Properties
 
-    public new string Description { get => ListingDescription; }
     public string FullName { get => $"{FirstName} {MiddleName} {LastName}"; }
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
     public bool HasQuickFacts => (QuickFacts is not null) && QuickFacts.Count > 0;
