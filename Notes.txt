@@ -1,7 +1,9 @@
 Status
 ------
 Need to prepare for release
+	- Filter [Apply] and [Clear] are not working
 	- Change the splash icon to the AdvApp icon.
+	- Add placeholder text to Terms Entry explaining what to do
 	- Change start page
 	- Validate all page displays
 
