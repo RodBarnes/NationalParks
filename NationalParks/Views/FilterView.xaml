@@ -22,6 +22,7 @@
                 <Entry Text="{Binding QueryFilter}" 
                        WidthRequest="300" 
                        HeightRequest="40"
+                       Placeholder="One or more words, space delimited"
                        ClearButtonVisibility="WhileEditing"
                        />
             </HorizontalStackLayout>
