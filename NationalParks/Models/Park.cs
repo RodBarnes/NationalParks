@@ -24,7 +24,6 @@ public class Park : BaseModel
 
     #region Derived Properties
 
-    //public new string Description { get => Designation; }
     public bool HasAlerts => (Alerts is not null) && Alerts.Count > 0;
     public bool HasTopics => (Topics is not null) && Topics.Count > 0;
     public bool HasActivities => (Activities is not null) && Activities.Count > 0;

@@ -4,14 +4,8 @@ public partial class Person : BaseModel
 {
     public string ListingDescription
     {
-        get
-        {
-            return base.Description;
-        }
-        set
-        {
-            base.Description = value;
-        }
+        get { return Description; }
+        set { Description = value; }
     }
     public ICollection<RelatedPark> RelatedParks { get; set; }
     public ICollection<Organization> RelatedOrganizations { get; set; }

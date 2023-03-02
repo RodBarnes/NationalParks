@@ -2,7 +2,11 @@
 
 public class Place : BaseModel
 {
-    public string ListingDescription { get; set; }
+    public string ListingDescription
+    {
+        get { return Description; }
+        set { Description = value; }
+    }
     public ICollection<RelatedPark> RelatedParks { get; set; }
     public ICollection<Organization> RelatedOrganizations { get; set; }
     public ICollection<string> Tags { get; set; }
@@ -28,7 +32,6 @@ public class Place : BaseModel
 
     #region Derived Properties
 
-    public new string Description { get => ListingDescription; }
     public string ManagedBy => IsManagedByNps == 1 ? "National Park Service" : ManagedByOrg;
     public bool HasBodyText => !String.IsNullOrEmpty(BodyText);
     public bool HasTags => (Tags is not null) && Tags.Count > 0;

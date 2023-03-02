@@ -2,7 +2,11 @@
 
 public class ThingToDo : BaseModel
 {
-    public string ShortDescription { get; set; }
+    public string ShortDescription
+    {
+        get { return Description; }
+        set { Description = value; }
+    }
     public ICollection<RelatedPark> RelatedParks { get; set; }
     public ICollection<Organization> RelatedOrganizations { get; set; }
     public ICollection<string> Tags { get; set; }
@@ -34,7 +38,6 @@ public class ThingToDo : BaseModel
 
     #region Derived Properties
 
-    public new string Description { get => ShortDescription; }
     public bool HasLongDescription => !String.IsNullOrEmpty(LongDescription);
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
     public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
