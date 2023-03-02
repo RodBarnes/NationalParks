@@ -88,7 +88,7 @@ public partial class ListVM : BaseVM
             await BuildFilterSelections();
 
             // Populate the list
-            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter);
+            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
             TotalItems = result.Total;
             switch (Term)
             {
@@ -319,6 +319,7 @@ public partial class ListVM : BaseVM
     [ObservableProperty] bool allowFilterStates;
     [ObservableProperty] bool allowFilterTopics;
     [ObservableProperty] bool allowFilterActivities;
+    [ObservableProperty] string queryFilter;
 
     // Available selections
     public static ObservableCollection<State> StateSelections { get; } = new();
@@ -512,6 +513,7 @@ public partial class ListVM : BaseVM
         SelectedTopics.Clear();
         SelectedActivities.Clear();
         SelectedStates.Clear();
+        QueryFilter = "";
 
         Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
     }

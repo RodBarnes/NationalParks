@@ -12,7 +12,7 @@ public class DataService
         httpClient = new HttpClient();
     }
 
-    public static async Task<Result> GetItemsAsync(string term, int start = 0, int limit = 10, string states = "", string topics = "", string activities = "")
+    public static async Task<Result> GetItemsAsync(string term, int start = 0, int limit = 10, string states = "", string topics = "", string activities = "", string query = "")
     {
         Result result = new();
 
@@ -36,6 +36,10 @@ public class DataService
             {
                 paramList += $"&parkCode={activities}";
             }
+        }
+        if (!String.IsNullOrEmpty(query))
+        {
+            paramList += $"&q={query}";
         }
         var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
 

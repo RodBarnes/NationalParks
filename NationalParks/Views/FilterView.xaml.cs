@@ -23,16 +23,15 @@ public partial class FilterView : ContentView
     private void AdjustRegionHeight(double pageHeight)
 	{
         // This method determines the height of each section based upon the number of sections that are visible.
-        double frameHeight;
-        double bottomSpace = 44; 
+        double offset = 44;
 
         int cnt = 0;
 		cnt += (StatesFilter.IsVisible) ? 1 : 0;
         cnt += (TopicsFilter.IsVisible) ? 1 : 0;
         cnt += (ActivitiesFilter.IsVisible) ? 1 : 0;
 
-        double fullHeight = pageHeight - ButtonArea.Height.Value;
-        frameHeight = (fullHeight / cnt) - bottomSpace;
+        double fullHeight = pageHeight - ButtonArea.Height.Value - TermsArea.Height.Value;
+        double frameHeight = (fullHeight / cnt) - offset;
 
 		StatesFrame.HeightRequest = (StatesFilter.IsVisible) ? frameHeight : 0;
         TopicsFrame.HeightRequest = (TopicsFilter.IsVisible) ? frameHeight : 0;

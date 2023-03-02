@@ -4,7 +4,11 @@ Status
 
 Todo & Ideas
 ------------
-Are there any derived properties in the models that need to reference a BaseModel property as I fixed Description?
+Topics and Activities in the release version FilterPage are blank.
+
+Add an additional property (e.g., TileDescription?) to BaseModel specifically for display in the list tile.  For Park, this would be populated by Designation so that could be used in the tile.  For the others, it might only be a duplicate of Description.
+
+Do I need to do something different with MainImage as I had to correct with Description; i.e., referencing the base property rather than implementing a new property to replace it?
 
 Is it possible to consolidate all the *FilterPages into a single FilterPage?  The only hang-up would seem to be the need to specify which filters to display based upon the list.  But if this just ends up being State, then they could be.  Or, maybe state is always enabled as part of ListVM?  Then the only special one would be those that enable others; e.g., ParkList.
 
