@@ -8,5 +8,5 @@ public class Image
     public string AltText { get; set; }
     public string Description { get; set; }
     public string Caption { get; set; }
-    public MediaCrop[] Crops { get; set; }
+    public ICollection<MediaCrop> Crops { get; set; }
 }
