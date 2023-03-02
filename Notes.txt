@@ -1,6 +1,5 @@
 Status
 ------
-From commit bce431d8... on 2023/02/27, I successfully deployed a Release to the emulator and to my Samsung S10+.  However:  On both targets, the release was missing the Park Description (e.g., National Park) and the Topics and Activities would open the right size but not display anything.
 
 
 Release Issues
