@@ -1,15 +1,18 @@
 Status
 ------
 Need to prepare for release
-	- Description on detail page is not wrapping.
 	- Change the splash icon to the AdvApp icon.
-	- Add placeholder text to Terms Entry explaining what to do
-	- Change start page
+	- Fix RefreshView issue
+	- Add AdvApp icon to About page
+	- Help page?  Would this be the start page?
+	- Fix icon colors
 	- Validate all page displays
 
 
 Todo & Ideas
 ------------
+Can I manually remove maccatalyst from the csproj file?
+
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
 Maybe add an additional property (e.g., TileDescription?) to BaseModel specifically for display in the list tile.  For Park, this would be populated by Designation so that could be used in the tile.  For the others, it might only be a duplicate of Description.
