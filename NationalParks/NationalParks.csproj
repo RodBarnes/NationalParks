@@ -69,7 +69,7 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_nps.svg" TintColor="White" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\nps_splash.png" Color="Green" />
+		<MauiSplashScreen Include="Resources\advapp_splash.png" Color="#0A465A" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -82,17 +82,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Models\EntranceFee.cs" />
-	  <Compile Remove="Models\EntrancePass.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\advapp_splash.png" />
+	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Raw\appicon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -327,5 +324,9 @@
 	  <MauiXaml Update="Pages\WebcamListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\nps_splash.png" Color="Green" />
 	</ItemGroup>
 </Project>
