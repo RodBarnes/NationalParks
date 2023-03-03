@@ -4,6 +4,7 @@ Need to prepare for release
 	- Release version:
 		- Image list has no image in Article, Multimedia, NewsRelease, Person
 		- Related parks has no title in Article no image, no park titles, Multimediam, NewsRelease, Person, Place, ThingToDo, Webcam
+	- Make the splash screen logo larger
 	- Change from CollapsibleView of video list to single video link?
 	- Fix RefreshView issue
 	- Help page?  Would this be the start page?
