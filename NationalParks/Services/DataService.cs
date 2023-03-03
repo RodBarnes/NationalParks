@@ -44,6 +44,9 @@ public class DataService
         var url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
 
         // Retrieve data
+        if (httpClient is null)
+            httpClient = new HttpClient();
+
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
