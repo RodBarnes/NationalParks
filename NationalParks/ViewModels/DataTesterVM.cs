@@ -98,7 +98,7 @@ public partial class DataTesterVM : ListVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"DataTesterVM: {ex.Source}: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"DataTesterVM.GetAllItems: {ex.Source}: {ex.Message}", "OK");
         }
         finally
         {

@@ -17,7 +17,7 @@ public partial class ParkingLotsVM : CollapsibleViewVM
     {
         if (lot.DLatitude < 0)
         {
-            await Shell.Current.DisplayAlert("No location", "Location coordinates are not provided.  Review the description for possible directions or related landmarks.", "OK");
+            await Shell.Current.DisplayAlert("No location", $"{lot.Title} does not provide any location coordinates.  Review the description for possible directions or related landmarks.", "OK");
             return;
         }
 
@@ -31,7 +31,7 @@ public partial class ParkingLotsVM : CollapsibleViewVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error, no Maps app!", ex.Message, "OK");
+            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {ex.Message}.", "OK");
         }
     }
 }

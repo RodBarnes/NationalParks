@@ -1,4 +1,5 @@
 ﻿using NationalParks.Services;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace NationalParks.ViewModels;
@@ -191,7 +192,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetItems: {ex.Source}--{ex.Message}", "OK");
         }
         finally
         {
@@ -255,7 +256,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetClosest: {ex.Source}--{ex.Message}", "OK");
         }
         finally
         {
@@ -298,12 +299,19 @@ public partial class ListVM : BaseVM
     }
     private static async Task FillLocationFromPark(BaseModel item, string parkCode)
     {
-        ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
-        if (resultPark.Data.Count == 1)
+        try
         {
-            var park = resultPark.Data.First();
-            item.Latitude = park.Latitude;
-            item.Longitude = park.Longitude;
+            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
+            if (resultPark.Data.Count == 1)
+            {
+                var park = resultPark.Data.First();
+                item.Latitude = park.Latitude;
+                item.Longitude = park.Longitude;
+            }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.FillLocationFromPark: {ex.Source}--{ex.Message}", "OK");
         }
     }
 
@@ -372,18 +380,25 @@ public partial class ListVM : BaseVM
             idList += topic.Id;
         }
 
-        // Get the list of related parks for the Ids
-        ResultTopics result = await DataService.GetTopicsForIds(idList);
-        foreach (Topic topic in result.Data)
+        try
         {
-            foreach (RelatedPark park in topic.Parks)
+            // Get the list of related parks for the Ids
+            ResultTopics result = await DataService.GetTopicsForIds(idList);
+            foreach (Topic topic in result.Data)
             {
-                if (filter.Length > 0)
+                foreach (RelatedPark park in topic.Parks)
                 {
-                    filter += ",";
+                    if (filter.Length > 0)
+                    {
+                        filter += ",";
+                    }
+                    filter += park.ParkCode;
                 }
-                filter += park.ParkCode;
             }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetTopicsFilter: {ex.Source}--{ex.Message}", "OK");
         }
 
         return filter;
@@ -406,18 +421,25 @@ public partial class ListVM : BaseVM
             idList += activity.Id;
         }
 
-        // Get the list of related parks for the Ids
-        ResultActivities result = await DataService.GetActivitiesForIds(idList);
-        foreach (Models.Activity activity in result.Data)
+        try
         {
-            foreach (RelatedPark park in activity.Parks)
+            // Get the list of related parks for the Ids
+            ResultActivities result = await DataService.GetActivitiesForIds(idList);
+            foreach (Models.Activity activity in result.Data)
             {
-                if (filter.Length > 0)
+                foreach (RelatedPark park in activity.Parks)
                 {
-                    filter += ",";
+                    if (filter.Length > 0)
+                    {
+                        filter += ",";
+                    }
+                    filter += park.ParkCode;
                 }
-                filter += park.ParkCode;
             }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetActivitiesFilter: {ex.Source}--{ex.Message}", "OK");
         }
 
         return filter;
@@ -444,7 +466,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetAllTopicsAsync: {ex.Source}--{ex.Message}", "OK");
         }
     }
     static async Task GetAllActivitiesAsync()
@@ -469,7 +491,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"ListVM: {ex.Source}--{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetAllActivitiesAsync: {ex.Source}--{ex.Message}", "OK");
         }
     }
     static async Task ReadStates()
