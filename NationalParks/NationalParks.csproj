@@ -90,6 +90,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\nps_splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -324,9 +325,5 @@
 	  <MauiXaml Update="Pages\WebcamListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Resources\nps_splash.png" Color="Green" />
 	</ItemGroup>
 </Project>
