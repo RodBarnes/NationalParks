@@ -11,9 +11,9 @@
         <Frame Style="{StaticResource ViewCard}"
                Padding="10">
             <Grid ColumnDefinitions="100,*">
-                <Image Source="no_image_green"
+                <Image Source="advapp_w_background"
                        Grid.Column="0"
-                       Aspect="AspectFill" />
+                       Aspect="AspectFill"/>
                 <VerticalStackLayout Grid.Column="1">
                     <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
                     <HorizontalStackLayout
