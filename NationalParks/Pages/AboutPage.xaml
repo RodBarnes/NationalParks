@@ -27,7 +27,7 @@
                       Style="{StaticResource LabelMediumBold}"
                       VerticalOptions="Center"
                       HorizontalOptions="Center" />
-                    <Label Text="Copyright © 2022"
+                    <Label Text="Copyright © 2022,2023"
                        Style="{StaticResource LabelSmall}"
                        HorizontalOptions="Center"/>
                 </VerticalStackLayout>
