@@ -30,7 +30,7 @@
                             SelectionMode="None"
                             IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:Park">
+                    <DataTemplate x:DataType="m:RelatedPark">
                         <VerticalStackLayout Margin="5">
                             <HorizontalStackLayout>
                                 <Label Text="{Binding Name}"

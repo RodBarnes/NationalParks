@@ -1,13 +1,12 @@
 Status
 ------
 Need to prepare for release
-	- Related parks has no title in Article no image, no park titles, Multimediam, NewsRelease, Person, Place, ThingToDo, Webcam
+	- Image not displayed on detail page when going to Park from RelatedPark
 	- Change from CollapsibleView of video list to single video link?
 	- Fix RefreshView issue
 	- Help page?  Would this be the start page?
 	- Fix flyout icon colors
 	- Validate all page displays
-	- Move FillMainImage() into Result*?
 
 Possible text for help page:
 	- This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks.
