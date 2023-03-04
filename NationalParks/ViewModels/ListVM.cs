@@ -96,12 +96,18 @@ public partial class ListVM : BaseVM
                 case ResultParks.Term:
                     ResultParks resultParks = (ResultParks)result;
                     foreach (var item in resultParks.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultCampgrounds.Term:
                     ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
                     foreach (var item in resultCampgrounds.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultPlaces.Term:
                     ResultPlaces resultPlaces = (ResultPlaces)result;
@@ -113,6 +119,7 @@ public partial class ListVM : BaseVM
                             string parkCode = item.RelatedParks.First().ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
+                        item.FillMainImage();
                         Items.Add(item);
                     }
                     break;
@@ -126,6 +133,7 @@ public partial class ListVM : BaseVM
                             string parkCode = item.Park.ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
+                        item.FillMainImage();
                         Items.Add(item);
                     }
                     break;
@@ -139,23 +147,33 @@ public partial class ListVM : BaseVM
                             string parkCode = item.ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
+                        item.FillMainImage();
                         Items.Add(item);
                     }
                     break;
                 case ResultThingsToDo.Term:
                     ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
                     foreach (var item in resultThingsToDo.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultWebcams.Term:
                     ResultWebcams resultWebcams = (ResultWebcams)result;
                     foreach (var item in resultWebcams.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultEvents.Term:
                     ResultEvents resultEvents = (ResultEvents)result;
                     foreach (var item in resultEvents.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultPeople.Term:
                     ResultPeople resultPeople = (ResultPeople)result;
@@ -167,23 +185,33 @@ public partial class ListVM : BaseVM
                             string parkCode = item.RelatedParks.First().ParkCode;
                             await FillLocationFromPark(item, parkCode);
                         }
+                        item.FillMainImage();
                         Items.Add(item);
                     }
                     break;
                 case ResultArticles.Term:
                     ResultArticles resultArticles = (ResultArticles)result;
                     foreach (var item in resultArticles.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultVideos.Term:
                     ResultVideos resultVideos = (ResultVideos)result;
                     foreach (var item in resultVideos.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 case ResultAudios.Term:
                     ResultAudios resultAudios = (ResultAudios)result;
                     foreach (var item in resultAudios.Data)
+                    {
+                        item.FillMainImage();
                         Items.Add(item);
+                    }
                     break;
                 default:
                     throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");

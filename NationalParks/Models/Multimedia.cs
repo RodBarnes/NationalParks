@@ -22,27 +22,21 @@ public partial class Multimedia : BaseModel
 
     #region Derived Properties
 
-    public new ImageSource MainImage => GetMainImageFromListingImage();
-
     public string Duration => GetDuration(DurationMs);
 
     public bool HasCredit => !String.IsNullOrEmpty(Credit);
     #endregion
 
-    private ImageSource GetMainImageFromListingImage()
+    public new void FillMainImage()
     {
-        ImageSource source = null;
-
         if (!String.IsNullOrEmpty(SplashImage.Url))
         {
-            source = ImageSource.FromUri(new Uri(SplashImage.Url));
+            MainImage = ImageSource.FromUri(new Uri(SplashImage.Url));
         }
         else
         {
-            source = ImageSource.FromFile("nps");
+            MainImage = ImageSource.FromFile("nps");
         }
-
-        return source;
     }
 
     private static string GetDuration(int? ms)

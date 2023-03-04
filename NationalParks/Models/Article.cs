@@ -12,25 +12,15 @@ public class Article : BaseModel
     public ICollection<RelatedPark> RelatedParks { get; set; }
     public string LatLong { get; set; }
 
-    #region Derived Properties
-
-    public new ImageSource MainImage => GetMainImageFromListingImage();
-
-    #endregion
-
-    private ImageSource GetMainImageFromListingImage()
+    public new void FillMainImage()
     {
-        ImageSource source = null;
-
         if (!String.IsNullOrEmpty(ListingImage.Url))
         {
-            source = ImageSource.FromUri(new Uri(ListingImage.Url));
+            MainImage = ImageSource.FromUri(new Uri(ListingImage.Url));
         }
         else
         {
-            source = ImageSource.FromFile("nps");
+            MainImage = ImageSource.FromFile("nps");
         }
-
-        return source;
     }
 }
