@@ -1,5 +1,4 @@
 ﻿using NationalParks.Services;
-using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace NationalParks.ViewModels;
