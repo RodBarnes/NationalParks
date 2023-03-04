@@ -1,5 +1,4 @@
-
-namespace NationalParks.ViewModels;
+﻿namespace NationalParks.ViewModels;
 
 [QueryProperty(nameof(Images), "Images")]
 public partial class ImageListVM : BaseVM

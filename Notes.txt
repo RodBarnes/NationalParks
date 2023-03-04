@@ -1,22 +1,29 @@
 Status
 ------
 Need to prepare for release
-	- Release version:
-		- Image list has no image in NewsRelease
-		- Related parks has no title in Article no image, no park titles, Multimediam, NewsRelease, Person, Place, ThingToDo, Webcam
+	- Related parks has no title in Article no image, no park titles, Multimediam, NewsRelease, Person, Place, ThingToDo, Webcam
 	- Make the splash screen logo larger
 	- Change from CollapsibleView of video list to single video link?
 	- Fix RefreshView issue
 	- Help page?  Would this be the start page?
 	- Fix flyout icon colors
 	- Validate all page displays
+	- Move FillMainImage() into Result*?
 
 Possible text for help page:
 	- This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks.
 
 
-Todo & Ideas
-------------
+Issues & Ideas
+--------------
+For now, commenting out access to NewsRelease because it does not the images in Release version.
+	- All ListPages display using ListView and ListVM.
+	- No difference in code values between Release and Debug. :-(
+	- Article (which works) and NewsRelease use essentially identical code to populate MainImage.
+	- Confirmed (by replacing Title with MainImage.Id) that all items are getting a MainImage.
+	- So why don't they display under release?
+
+
 Can I manually remove maccatalyst from the csproj file?
 
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
