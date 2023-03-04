@@ -5,7 +5,7 @@ public partial class MultimediaDetailVM : DetailVM
 {
     [ObservableProperty] Multimedia multimedia;
     [ObservableProperty] RelatedParksVM relatedParks;
-    [ObservableProperty] MultimediaVersionsVM multimediaVersions;
+    //[ObservableProperty] MultimediaVersionsVM multimediaVersions;
     [ObservableProperty] CollapsibleListVM tags;
     [ObservableProperty] CollapsibleTextVM transcript;
 
@@ -20,8 +20,15 @@ public partial class MultimediaDetailVM : DetailVM
         Model = Multimedia;
 
         Tags = new CollapsibleListVM("Tags", false, Multimedia.Tags.ToList<object>());
-        MultimediaVersions = new MultimediaVersionsVM("Versions", false, Multimedia.Versions);
+        //MultimediaVersions = new MultimediaVersionsVM("Versions", false, Multimedia.Versions);
         RelatedParks = new RelatedParksVM("Related Parks", false, Multimedia.RelatedParks);
         Transcript = new CollapsibleTextVM("Transcript", false, Multimedia.Transcript);
+    }
+
+    [RelayCommand]
+    async Task GoToMultimedia(string url)
+    {
+        await Launcher.OpenAsync(url);
+
     }
 }

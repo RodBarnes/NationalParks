@@ -22,6 +22,20 @@ public partial class Multimedia : BaseModel
 
     #region Derived Properties
 
+    public Specification MainVersion
+    {
+        get
+        {
+            if (Versions.Count > 0)
+            {
+                return Versions.OrderByDescending(v => v.HeightPixels).First();
+            }
+            else
+            {
+                return Versions.First();
+            }
+        }
+    }
     public string Duration => GetDuration(DurationMs);
 
     public bool HasCredit => !String.IsNullOrEmpty(Credit);
