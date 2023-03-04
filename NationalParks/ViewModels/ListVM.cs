@@ -137,6 +137,10 @@ public partial class ListVM : BaseVM
                     }
                     break;
                 case ResultNewsReleases.Term:
+
+                    //var fileName = @"E:\nps_log (release, MainImage.Id).txt";
+                    //var stream = new StreamWriter(fileName);
+
                     ResultNewsReleases resultReleases = (ResultNewsReleases)result;
                     foreach (var item in resultReleases.Data)
                     {
@@ -148,7 +152,25 @@ public partial class ListVM : BaseVM
                         }
                         item.FillMainImage();
                         Items.Add(item);
+
+                        //var output = "";
+                        //if (ImageSource.IsNullOrEmpty(item.MainImage))
+                        //{
+                        //    output = "MainImage is null or empty";
+                        //}
+                        //else if (item.MainImage.Id == Guid.Empty)
+                        //{
+                        //    output = "MainImage.Id is Empty";
+                        //}
+                        //else
+                        //{
+                        //    output = item.MainImage.Id.ToString();
+                        //}
+                        //stream.Write($"{item.Title} [{output}]\n");
+                        //item.Description = output;
                     }
+                    //stream.Close();
+
                     break;
                 case ResultThingsToDo.Term:
                     ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
