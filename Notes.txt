@@ -2,7 +2,6 @@ Status
 ------
 Need to prepare for release
 	- Change from CollapsibleView of video list to single video link?
-	- Fix RefreshView issue
 	- Help page?  Would this be the start page?
 	- Fix flyout icon colors
 	- Validate all page displays

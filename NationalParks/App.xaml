@@ -65,10 +65,6 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
-            <Style TargetType="RefreshView" ApplyToDerivedTypes="True">
-                <Setter Property="RefreshColor" Value="{StaticResource Primary}" />
-            </Style>
-
             <Style TargetType="Button" x:Key="ButtonOutline">
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ButtonBackground}, Dark={StaticResource ButtonBackgroundDark}}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
