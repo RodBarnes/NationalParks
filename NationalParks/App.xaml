@@ -98,8 +98,6 @@
                 <Setter Property="Padding" Value="10" />
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
                 <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="HeightRequest" Value="100" />
-                <Setter Property="WidthRequest" Value="350" />
                 <Setter Property="IsClippedToBounds" Value="True"/>
             </Style>
 

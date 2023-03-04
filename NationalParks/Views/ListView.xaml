@@ -64,6 +64,8 @@
         <v:ActivityView Grid.RowSpan="2" Grid.ColumnSpan="2"
                         IsVisible="{Binding IsBusy}"/>
         <v:ProgressBarView Grid.RowSpan="2" Grid.ColumnSpan="2"
+                           HeightRequest="100"
+                           WidthRequest="350"
                            IsVisible="{Binding IsFindingClosest}"/>
     </Grid>
 </ContentView>

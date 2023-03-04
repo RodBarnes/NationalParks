@@ -2,7 +2,6 @@ Status
 ------
 Need to prepare for release
 	- Help page?  Would this be the start page?
-	- Fix flyout icon colors
 	- Validate all page displays
 
 Possible text for help page:
@@ -18,6 +17,7 @@ For now, commenting out access to NewsRelease because it does not the images in 
 	- Confirmed (by replacing Title with MainImage.Id) that all items are getting a MainImage.
 	- So why don't they display under release?
 
+Without <RefreshView> the <CollectionView.EmptyView> does not display
 
 Can I manually remove maccatalyst from the csproj file?
 
