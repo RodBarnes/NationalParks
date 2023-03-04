@@ -28,20 +28,20 @@
                 <Label Text="{Binding Campground.Description}" 
                        Style="{StaticResource LabelMedium}" />
                 <HorizontalStackLayout>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
+                                                  CommandParameter="{Binding Campground.ParkCode}"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="arrow_right_green"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Aspect="AspectFill"
+                            HeightRequest="25">
+                    </Image>
                     <Label Text="Related Park" 
                            Style="{StaticResource LabelMediumBold}" 
                            VerticalOptions="Center" 
                            Margin="5"/>
-                    <Image Source="tree_reverse_green"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"
-                            Aspect="AspectFill"
-                            HeightRequest="30">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
-                                                  CommandParameter="{Binding Campground.ParkCode}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
                 </HorizontalStackLayout>
                 <v:FeesView BindingContext="{Binding Fees}" />
                 <v:OperatingHoursView BindingContext="{Binding OperatingHours}" />

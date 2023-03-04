@@ -44,15 +44,18 @@
                                                   CommandParameter="{Binding Multimedia.MainVersion.Url}"/>
                         </Grid.GestureRecognizers>
                         <Image Grid.Column="0"
-                                        Source="arrow_right_green.png" HeightRequest="20" />
-                        <Label Text="{Binding Multimedia.MainVersion.FileType}" Grid.Column="1"
-                                       Style="{StaticResource LabelMediumBold}"/>
-                        <Label Text="{Binding Multimedia.MainVersion.Size}" Grid.Column="2"
-                                       Style="{StaticResource LabelMedium}"
-                                       IsVisible="{Binding Multimedia.MainVersion.HasSize, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                        <Label Text="{Binding Multimedia.MainVersion.AspectRatio}" Grid.Column="3"
-                                       Style="{StaticResource LabelMedium}"
-                                       IsVisible="{Binding Multimedia.MainVersion.HasAspect, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                               Source="arrow_right_green" HeightRequest="25" />
+                        <Label Text="{Binding Multimedia.MainVersion.FileType}"
+                               Grid.Column="1"
+                               Style="{StaticResource LabelMediumBold}"/>
+                        <Label Text="{Binding Multimedia.MainVersion.Size}"
+                               Grid.Column="2"
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding Multimedia.MainVersion.HasSize, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                        <Label Text="{Binding Multimedia.MainVersion.AspectRatio}"
+                               Grid.Column="3"
+                               Style="{StaticResource LabelMedium}"
+                               IsVisible="{Binding Multimedia.MainVersion.HasAspect, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </Grid>
                 </VerticalStackLayout>
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />

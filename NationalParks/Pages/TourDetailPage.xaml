@@ -30,20 +30,20 @@
                     <Label Text="{Binding Tour.Duration}" Style="{StaticResource LabelMedium}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}" 
+                                                  CommandParameter="{Binding Tour.Park.ParkCode}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="arrow_right_green"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Aspect="AspectFill"
+                            HeightRequest="25">
+                    </Image>
                     <Label Text="{Binding Tour.Park.Name}" 
                            Style="{StaticResource LabelMediumBold}" 
                            VerticalOptions="Center" 
                            Margin="5"/>
-                    <Image Source="tree_reverse_green"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"
-                            Aspect="AspectFill"
-                            HeightRequest="30">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}" 
-                                                  CommandParameter="{Binding Tour.Park.ParkCode}" />
-                        </Image.GestureRecognizers>
-                    </Image>
                 </HorizontalStackLayout>
                 <v:CollapsibleListView BindingContext="{Binding Tags}" />
                 <v:CollapsibleListView BindingContext="{Binding Stops}" />

@@ -39,7 +39,7 @@
                                                           CommandParameter="{Binding Url}"/>
                                 </Grid.GestureRecognizers>
                                 <Image Grid.Column="0"
-                                        Source="arrow_right_green.png" HeightRequest="20" />
+                                        Source="arrow_right_green" HeightRequest="20" />
                                 <Label Text="{Binding FileType}" Grid.Column="1"
                                        Style="{StaticResource LabelMediumBold}"/>
                                 <Label Text="{Binding Size}" Grid.Column="2"

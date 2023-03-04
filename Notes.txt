@@ -1,7 +1,6 @@
 Status
 ------
 Need to prepare for release
-	- Change from reverse tree icon to standard right-arrow icon for tappable related park
 	- Help page?  Would this be the start page?
 	- Fix flyout icon colors
 	- Validate all page displays
