@@ -1,7 +1,6 @@
 Status
 ------
 Need to prepare for release
-	- Image not displayed on detail page when going to Park from RelatedPark
 	- Change from CollapsibleView of video list to single video link?
 	- Fix RefreshView issue
 	- Help page?  Would this be the start page?

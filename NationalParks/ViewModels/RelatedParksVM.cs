@@ -21,6 +21,7 @@ public partial class RelatedParksVM : CollapsibleViewVM
         if (result.Data.Count > 0)
         {
             park = result.Data.First();
+            park.FillMainImage();
             await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
                 {
                     {"Model", park }
