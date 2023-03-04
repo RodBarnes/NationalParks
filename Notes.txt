@@ -1,6 +1,7 @@
 Status
 ------
 Need to prepare for release
+	- Error in Getting Closest for Tour, maybe half-way through or so?  ListVM.FillLocationFromPark and cannot clear it or it keeps popping up. After killing the app then getting GetItems Arg_InvalidCastException at start up.
 	- Help page?  Would this be the start page?
 	- Validate all page displays
 
