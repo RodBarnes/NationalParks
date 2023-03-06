@@ -55,19 +55,26 @@ public partial class DetailVM : BaseVM
     {
         Park park;
 
-        ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
-        if (result.Data.Count > 0)
+        try
         {
-            park = result.Data.First();
-            park.FillMainImage();
-            await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
+            ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
+            if (result.Data.Count > 0)
+            {
+                park = result.Data.First();
+                park.FillMainImage();
+                await Shell.Current.GoToAsync(nameof(ParkDetailPage), true, new Dictionary<string, object>
                 {
                     {"Model", park }
                 });
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get park for {parkCode}!", "OK");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"Unable to get park for {parkCode}!", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"DetailVM.GoToParkFromParkCode: {ex.Source}--{ex.Message}", "OK");
         }
     }
 }
