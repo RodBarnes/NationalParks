@@ -346,12 +346,12 @@ public partial class ListVM : BaseVM
 
         return tmp;
     }
-    private static async Task FillLocationFromPark(BaseModel item, string parkCode)
+    protected static async Task FillLocationFromPark(BaseModel item, string parkCode)
     {
         try
         {
             ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
-            if (resultPark.Data.Count == 1)
+            if (resultPark.Data.Count > 0)
             {
                 var park = resultPark.Data.First();
                 item.Latitude = park.Latitude;
