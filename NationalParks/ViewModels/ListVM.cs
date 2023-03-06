@@ -138,6 +138,9 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultNewsReleases.Term:
 
+                    // The commendted code (below) was being used to investigate why NewsRelease would
+                    // not display the images in the Release version.
+
                     //var fileName = @"E:\nps_log (release, MainImage.Id).txt";
                     //var stream = new StreamWriter(fileName);
 
