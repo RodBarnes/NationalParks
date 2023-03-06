@@ -14,6 +14,7 @@ public partial class DataTesterVM : ListVM
 
     [ObservableProperty] bool isPopulated = false;
 
+    [ObservableProperty] string selectedType;
     [ObservableProperty] string currentState;
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
@@ -39,6 +40,12 @@ public partial class DataTesterVM : ListVM
     [RelayCommand]
     async Task StartActionAsync()
     {
+        if (String.IsNullOrEmpty(SelectedType))
+        {
+            await Shell.Current.DisplayAlert("Error", "First pick a data type...", "OK");
+            return;
+        }
+
         if (IsBusy)
             return;
 
@@ -62,27 +69,125 @@ public partial class DataTesterVM : ListVM
         CurrentCount = MatchCount = TotalCount = 0;
     }
 
+    partial void OnSelectedTypeChanged(string value)
+    {
+        ClearAllData();
+    }
+
     async Task GetAllItems()
     {
-        Title = $"Checking {nameof(ResultTours)}";
+        Title = $"Checking {SelectedType}";
 
         try
         {
             while (totalItems > startItems)
             {
-                Result result = await DataService.GetItemsAsync(ResultTours.Term, startItems, 20);
-                ResultTours resultDerived = (ResultTours)result;
-                startItems += resultDerived.Data.Count();
-                foreach (var item in resultDerived.Data)
+                Result result = null;
+
+                switch (SelectedType)
                 {
-                    //if (item.DLatitude < 0)
-                    //{
-                    //    // Tour is missing location so use park location
-                    //    string parkCode = item.Park.ParkCode;
-                    //    await FillLocationFromPark(item, parkCode);
-                    //}
-                    item.FillMainImage();
-                    Items.Add(item);
+                    case "Parks":
+                        result = await DataService.GetItemsAsync(ResultParks.Term, startItems, 500);
+                        ResultParks resultParks = (ResultParks)result;
+                        startItems += resultParks.Data.Count();
+                        foreach (var item in resultParks.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Campgrounds":
+                        result = await DataService.GetItemsAsync(ResultCampgrounds.Term, startItems, 500);
+                        ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
+                        startItems += resultCampgrounds.Data.Count();
+                        foreach (var item in resultCampgrounds.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Tours":
+                        result = await DataService.GetItemsAsync(ResultTours.Term, startItems, 500);
+                        ResultTours resultTours = (ResultTours)result;
+                        startItems += resultTours.Data.Count();
+                        foreach (var item in resultTours.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "People":
+                        result = await DataService.GetItemsAsync(ResultPeople.Term, startItems, 500);
+                        ResultPeople resultPeople = (ResultPeople)result;
+                        startItems += resultPeople.Data.Count();
+                        foreach (var item in resultPeople.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Places":
+                        result = await DataService.GetItemsAsync(ResultPlaces.Term, startItems, 500);
+                        ResultPlaces resultPlaces = (ResultPlaces)result;
+                        startItems += resultPlaces.Data.Count();
+                        foreach (var item in resultPlaces.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "NewsReleases":
+                        result = await DataService.GetItemsAsync(ResultNewsReleases.Term, startItems, 500);
+                        ResultNewsReleases resultNewsReleases = (ResultNewsReleases)result;
+                        startItems += resultNewsReleases.Data.Count();
+                        foreach (var item in resultNewsReleases.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "ThingsToDo":
+                        result = await DataService.GetItemsAsync(ResultThingsToDo.Term, startItems, 500);
+                        ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
+                        startItems += resultThingsToDo.Data.Count();
+                        foreach (var item in resultThingsToDo.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Videos":
+                        result = await DataService.GetItemsAsync(ResultVideos.Term, startItems, 500);
+                        ResultVideos resultVideos = (ResultVideos)result;
+                        startItems += resultVideos.Data.Count();
+                        foreach (var item in resultVideos.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Audios":
+                        result = await DataService.GetItemsAsync(ResultAudios.Term, startItems, 500);
+                        ResultAudios resultAudios = (ResultAudios)result;
+                        startItems += resultAudios.Data.Count();
+                        foreach (var item in resultAudios.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Webcam":
+                        result = await DataService.GetItemsAsync(ResultWebcams.Term, startItems, 500);
+                        ResultWebcams resultWebcams = (ResultWebcams)result;
+                        startItems += resultWebcams.Data.Count();
+                        foreach (var item in resultWebcams.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 totalItems = result.Total;
                 IsPopulated = true;

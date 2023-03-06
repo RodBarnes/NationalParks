@@ -27,6 +27,23 @@
                     Margin="5"
                     Grid.Column="2"/>
         </Grid>
+        <Picker Title="Select Data Type" Margin="5,5,5,5" FontSize="16"
+                SelectedItem="{Binding SelectedType}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Parks</x:String>
+                    <x:String>Campgrounds</x:String>
+                    <x:String>Tours</x:String>
+                    <x:String>People</x:String>
+                    <x:String>Places</x:String>
+                    <x:String>NewsReleases</x:String>
+                    <x:String>ThingsToDo</x:String>
+                    <x:String>Videos</x:String>
+                    <x:String>Audios</x:String>
+                    <x:String>Webcam</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <Grid ColumnDefinitions="*,*,*,*"
               RowDefinitions="*,*"
               Padding="5">
