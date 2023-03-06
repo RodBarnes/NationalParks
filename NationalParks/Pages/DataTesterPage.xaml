@@ -55,6 +55,5 @@
                    Grid.Column="3" Grid.Row="1"
                    Style="{StaticResource LabelMedium}"/>
         </Grid>
-        <v:ListView />
     </VerticalStackLayout>
 </ContentPage>
