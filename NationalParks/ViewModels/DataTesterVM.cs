@@ -9,7 +9,6 @@ public partial class DataTesterVM : ListVM
     IGeolocation geolocation;
 
     private int startItems = 0;
-    private int limitItems = 500;
     private int totalItems = 1;
     private bool okToContinue = false;
 
@@ -40,6 +39,10 @@ public partial class DataTesterVM : ListVM
     [RelayCommand]
     async Task StartActionAsync()
     {
+        if (IsBusy)
+            return;
+
+        IsBusy = true;
         okToContinue = true;
         CurrentState = "Running...";
         await GetAllItems();
@@ -53,7 +56,7 @@ public partial class DataTesterVM : ListVM
     [RelayCommand]
     public void ClearAllData()
     {
-        ClearData();
+        Items.Clear();
         startItems = 0;
         CurrentState = "Cleared";
         CurrentCount = MatchCount = TotalCount = 0;
@@ -61,35 +64,31 @@ public partial class DataTesterVM : ListVM
 
     async Task GetAllItems()
     {
-        ResultThingsToDo resultDerived;
-        Title = $"Checking {nameof(ResultThingsToDo)}";
-        Term = "thingstodo";
+        Title = $"Checking {nameof(ResultTours)}";
 
         try
         {
-            IsBusy = true;
-
             while (totalItems > startItems)
             {
-                Result result = await DataService.GetItemsAsync(Term, startItems, limitItems);
-                resultDerived = (ResultThingsToDo)result;
-                startItems += resultDerived.Data.Count;
+                Result result = await DataService.GetItemsAsync(ResultTours.Term, startItems, 20);
+                ResultTours resultDerived = (ResultTours)result;
+                startItems += resultDerived.Data.Count();
                 foreach (var item in resultDerived.Data)
                 {
-                    if (item.RelatedParks.Count > 1)
-                    {
-                        Items.Add(item);
-                    }
+                    //if (item.DLatitude < 0)
+                    //{
+                    //    // Tour is missing location so use park location
+                    //    string parkCode = item.Park.ParkCode;
+                    //    await FillLocationFromPark(item, parkCode);
+                    //}
+                    item.FillMainImage();
+                    Items.Add(item);
                 }
                 totalItems = result.Total;
                 IsPopulated = true;
                 TotalCount = totalItems;
                 MatchCount = Items.Count;
                 CurrentCount = startItems;
-                //ManagedByOrgCount = Places.Where(p => !String.IsNullOrEmpty(p.ManagedByOrg)).Count();
-                //IsManagedByNpsCount = Places.Where(p => p.IsManagedByNps == 1).Count();
-                //IsOpenToPublicCount = Places.Where(p => p.IsOpenToPublic == 1).Count();
-                //IsMapPinHiddenCount = Places.Where(p => p.IsMapPinHidden == 1).Count();
                 if (!okToContinue)
                 {
                     break;
