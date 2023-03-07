@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:MultimediaDetailVM"
              x:Class="NationalParks.Pages.MultimediaDetailPage"
-             Title="{Binding Title}">
+             Title="{Binding Multimedia.Title}">
     <ContentPage.Behaviors>
         <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
     </ContentPage.Behaviors>

@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ArticleDetailVM"
              x:Class="NationalParks.Pages.ArticleDetailPage"
-             Title="{Binding Title}">
+             Title="{Binding Article.Title}">
     <ContentPage.Behaviors>
         <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
     </ContentPage.Behaviors>
