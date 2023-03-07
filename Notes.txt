@@ -1,7 +1,31 @@
 Status
 ------
+Error in Getting Closest for Tour, maybe half-way through or so?  ListVM.FillLocationFromPark and cannot clear it or it keeps popping up. After killing the app then getting GetItems Arg_InvalidCastException at start up. Hmmm...
+	- Started fresh then Used [Closest] on Parks, Campgrounds, Tours and they all were succesful. Then ran on People and it failed with the error about 1/3 of the way. Close the app, then restarted it, and got the error ""Specified case is not valid" almost immediately after selecting Parks.
+	- So not sure what is going on. Seems like a memory issue; i.e., running out of space?
+	- Possible a consideration for testing:  Tour, Place, People, and NewsRelease all rely upon the parkcode to get the location. Maybe try avoiding those and see if the same issue occurs?
+	- Using DataTester, I ran a test going through all 10 datatypes and it read all successfully including FillImage().  It was not getting the Location and it was clearing the Items after each one.
+	- Factory reset the emulator and deployed.  Still got the invalid cast error and continue to get it.
+	- Closed VS and the emulator then ran the kill script, then opened VS and deployed. Took a really long time to deploy so I killed the emulator. Then it fired up immediately and began deploying; still took a while. Still got the invalid cast error and continue to get it.
+	- Uninstalled NPS Info, closed the emulator. Closed VS. Ran the kill script. Opened VS. Cleaned the solution (failed three times, finally succeeded). Build the solution. Did factory reset on both emulators.  Deployed then got interrupted. Came back about 20 minutes later and ran it. Still got the invalid cast error and continue to get it.
+	- Closed VS then opened it again. Selected API 33 emulator.  Cleaned, rebuilt, deployed (it had been previously factory reset).  No error appeared -- which was expected given I'd not deployed to this in a long time and it had been factory reset. Stopped the debug, closed the API 33 emulator.
+	- Selected API 31 emulator. Cleaned, rebuilt, deployed (it had been previously factory reset).  No error this time.
+	- So what is the difference? What is causing the error?  Why does it continue to appear even after restarting, reset, etc? What is ListVM doing that DataTesterVM is not doing?
+	- Stopped the debug session then started a new one.  Clicked on each of the 10 sections (from the flyout) and all appeared fine.  (I did not get more data on each, just the initial).  Did [Closest] on Parks, Campgrounds, Tours, Webcams, Audios, and no error appeared. Did Videos and the error appeared "Specified case is not valid."
+	- After a bit it seemed to settle.  I could go to any of them and it would just display the list now with no error.
+	- Went to People and got "FillLocationFromPark:Object reference not set to an instance of an object" three times.
+	"F"
+	- Updated DataTesterVM to get location for Places.  Ran Places and no error.  Ran the other nine and still no error.
+	- Updated DataTesterVM to get location for Tour and no error.  Ran Parks and got "Specified case is not valid." error almost immediately.  Cleared, ran Campgrounds, and same thing; error almost immediately.  Maybe it is still gettiong location data for Tours since it is so slow?
+		+ Can I run a newtork monitor (wireshark?) and watch what client is receiving data?
+		+ Decided to wait and let things settle then see if I can do Places again without error.
+			+ But after about 10 minutes, running the app, selecting Parks in DataTester still produced error.
+			+ Closed VS, closed Emulator, ran kill script. Went and had lunch.  Came back and DataTester Parks is now fine.
+		+ Maybe get Data as a ICollection<object>  Then test it against the various models?
+		+ Try putting an exception catch in lower-level places (e.g., DataServices) just to capture it and track from where the error is coming.
+
+
 Need to prepare for release
-	- Error in Getting Closest for Tour, maybe half-way through or so?  ListVM.FillLocationFromPark and cannot clear it or it keeps popping up. After killing the app then getting GetItems Arg_InvalidCastException at start up.
 	- Help page?  Would this be the start page?
 	- Validate all page displays
 
@@ -11,6 +35,8 @@ Possible text for help page:
 
 Issues & Ideas
 --------------
+Probably should only get the location when it is needed; i.e., using [Closest] or [Location].
+
 For now, commenting out access to NewsRelease because it does not the images in Release version.
 	- All ListPages display using ListView and ListVM.
 	- No difference in code values between Release and Debug. :-(

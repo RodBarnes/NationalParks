@@ -31,7 +31,8 @@ public partial class DetailVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {ex.Message}.", "OK");
+            var msg = Utility.ParseException(ex);
+            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {msg}.", "OK");
         }
     }
 
@@ -74,7 +75,8 @@ public partial class DetailVM : BaseVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"DetailVM.GoToParkFromParkCode: {ex.Source}--{ex.Message}", "OK");
+            var msg = Utility.ParseException(ex);
+            await Shell.Current.DisplayAlert("Error!", $"DetailVM.GoToParkFromParkCode: {msg}", "OK");
         }
     }
 }

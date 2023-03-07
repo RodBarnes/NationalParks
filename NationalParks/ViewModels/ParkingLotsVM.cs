@@ -31,7 +31,8 @@ public partial class ParkingLotsVM : CollapsibleViewVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {ex.Message}.", "OK");
+            var msg = Utility.ParseException(ex);
+            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {msg}.", "OK");
         }
     }
 }

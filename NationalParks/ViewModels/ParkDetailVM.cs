@@ -80,7 +80,8 @@ public partial class ParkDetailVM : DetailVM
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error!", $"ParkDetailVM.GetParkProperties: {ex.Source}--{ex.Message}", "OK");
+            var msg = Utility.ParseException(ex);
+            await Shell.Current.DisplayAlert("Error!", $"ParkDetailVM.GetParkProperties: {msg}", "OK");
         }
     }
 }
