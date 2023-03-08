@@ -220,7 +220,7 @@ public partial class DataTesterVM : ListVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"DataTesterVM.GetAllItems: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"DataTesterVM.GetAllItems: {msg} for {Term}", "OK");
         }
         finally
         {
