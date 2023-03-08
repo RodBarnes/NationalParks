@@ -87,7 +87,7 @@ public partial class DataTesterVM : ListVM
                     case "Parks":
                         ResultParks resultParks = await DataService.GetItemsAsync<ResultParks>(ResultParks.Term, startItems, 500);
                         startItems += resultParks.Data.Count;
-                        foreach (var item in resultParks.Data)
+                        foreach (Park item in resultParks.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -97,7 +97,7 @@ public partial class DataTesterVM : ListVM
                     case "Campgrounds":
                         ResultCampgrounds resultCampgrounds = await DataService.GetItemsAsync<ResultCampgrounds>(ResultCampgrounds.Term, startItems, 500);
                         startItems += resultCampgrounds.Data.Count;
-                        foreach (var item in resultCampgrounds.Data)
+                        foreach (Campground item in resultCampgrounds.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -107,7 +107,7 @@ public partial class DataTesterVM : ListVM
                     case "Tours":
                         ResultTours resultTours = await DataService.GetItemsAsync<ResultTours>(ResultTours.Term, startItems, 500);
                         startItems += resultTours.Data.Count;
-                        foreach (var item in resultTours.Data)
+                        foreach (Tour item in resultTours.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -117,7 +117,7 @@ public partial class DataTesterVM : ListVM
                     case "People":
                         ResultPeople resultPeople = await DataService.GetItemsAsync<ResultPeople>(ResultPeople.Term, startItems, 500);
                         startItems += resultPeople.Data.Count;
-                        foreach (var item in resultPeople.Data)
+                        foreach (Person item in resultPeople.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -127,7 +127,7 @@ public partial class DataTesterVM : ListVM
                     case "Places":
                         ResultPlaces resultPlaces = await DataService.GetItemsAsync<ResultPlaces>(ResultPlaces.Term, startItems, 500);
                         startItems += resultPlaces.Data.Count;
-                        foreach (var item in resultPlaces.Data)
+                        foreach (Place item in resultPlaces.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -137,7 +137,7 @@ public partial class DataTesterVM : ListVM
                     case "NewsReleases":
                         ResultNewsReleases resultNewsReleases = await DataService.GetItemsAsync<ResultNewsReleases>(ResultNewsReleases.Term, startItems, 500);
                         startItems += resultNewsReleases.Data.Count;
-                        foreach (var item in resultNewsReleases.Data)
+                        foreach (NewsRelease item in resultNewsReleases.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -147,7 +147,7 @@ public partial class DataTesterVM : ListVM
                     case "Events":
                         ResultEvents resultEvents = await DataService.GetItemsAsync<ResultEvents>(ResultEvents.Term, startItems, 500);
                         startItems += resultEvents.Data.Count;
-                        foreach (var item in resultEvents.Data)
+                        foreach (Event item in resultEvents.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -157,7 +157,7 @@ public partial class DataTesterVM : ListVM
                     case "Articles":
                         ResultArticles resultArticles = await DataService.GetItemsAsync<ResultArticles>(ResultArticles.Term, startItems, 500);
                         startItems += resultArticles.Data.Count;
-                        foreach (var item in resultArticles.Data)
+                        foreach (Article item in resultArticles.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -167,7 +167,7 @@ public partial class DataTesterVM : ListVM
                     case "ThingsToDo":
                         ResultThingsToDo resultThingsToDo = await DataService.GetItemsAsync<ResultThingsToDo>(ResultThingsToDo.Term, startItems, 500);
                         startItems += resultThingsToDo.Data.Count;
-                        foreach (var item in resultThingsToDo.Data)
+                        foreach (ThingToDo item in resultThingsToDo.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -177,7 +177,7 @@ public partial class DataTesterVM : ListVM
                     case "Videos":
                         ResultVideos resultVideos = await DataService.GetItemsAsync<ResultVideos>(ResultVideos.Term, startItems, 500);
                         startItems += resultVideos.Data.Count;
-                        foreach (var item in resultVideos.Data)
+                        foreach (Multimedia item in resultVideos.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -187,7 +187,7 @@ public partial class DataTesterVM : ListVM
                     case "Audios":
                         ResultAudios resultAudios = await DataService.GetItemsAsync<ResultAudios>(ResultAudios.Term, startItems, 500);
                         startItems += resultAudios.Data.Count;
-                        foreach (var item in resultAudios.Data)
+                        foreach (Multimedia item in resultAudios.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
@@ -197,7 +197,7 @@ public partial class DataTesterVM : ListVM
                     case "Webcam":
                         ResultWebcams resultWebcams = await DataService.GetItemsAsync<ResultWebcams>(ResultWebcams.Term, startItems, 500);
                         startItems += resultWebcams.Data.Count;
-                        foreach (var item in resultWebcams.Data)
+                        foreach (Webcam item in resultWebcams.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);

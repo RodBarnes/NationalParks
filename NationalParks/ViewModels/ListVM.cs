@@ -99,7 +99,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultCampgrounds.Term:
                     ResultCampgrounds resultCampgrounds = await DataService.GetItemsAsync<ResultCampgrounds>(ResultCampgrounds.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultCampgrounds.Data)
+                    foreach (Campground item in resultCampgrounds.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -108,7 +108,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultPlaces.Term:
                     ResultPlaces resultPlaces = await DataService.GetItemsAsync<ResultPlaces>(ResultPlaces.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultPlaces.Data)
+                    foreach (Place item in resultPlaces.Data)
                     {
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
@@ -123,7 +123,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultTours.Term:
                     ResultTours resultTours = await DataService.GetItemsAsync<ResultTours>(ResultTours.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultTours.Data)
+                    foreach (Tour item in resultTours.Data)
                     {
                         if (item.DLatitude < 0)
                         {
@@ -145,7 +145,7 @@ public partial class ListVM : BaseVM
                     //var stream = new StreamWriter(fileName);
 
                     ResultNewsReleases resultReleases = await DataService.GetItemsAsync<ResultNewsReleases>(ResultNewsReleases.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultReleases.Data)
+                    foreach (NewsRelease item in resultReleases.Data)
                     {
                         if (item.DLatitude < 0)
                         {
@@ -178,7 +178,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultThingsToDo.Term:
                     ResultThingsToDo resultThingsToDo = await DataService.GetItemsAsync<ResultThingsToDo>(ResultThingsToDo.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultThingsToDo.Data)
+                    foreach (ThingToDo item in resultThingsToDo.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -187,7 +187,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultWebcams.Term:
                     ResultWebcams resultWebcams = await DataService.GetItemsAsync<ResultWebcams>(ResultWebcams.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultWebcams.Data)
+                    foreach (Webcam item in resultWebcams.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -196,7 +196,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultEvents.Term:
                     ResultEvents resultEvents = await DataService.GetItemsAsync<ResultEvents>(ResultEvents.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultEvents.Data)
+                    foreach (Event item in resultEvents.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -205,7 +205,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultPeople.Term:
                     ResultPeople resultPeople = await DataService.GetItemsAsync<ResultPeople>(ResultPeople.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultPeople.Data)
+                    foreach (Person item in resultPeople.Data)
                     {
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
                         {
@@ -220,7 +220,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultArticles.Term:
                     ResultArticles resultArticles = await DataService.GetItemsAsync<ResultArticles>(ResultArticles.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultArticles.Data)
+                    foreach (Article item in resultArticles.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -229,7 +229,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultVideos.Term:
                     ResultVideos resultVideos = await DataService.GetItemsAsync<ResultVideos>(ResultVideos.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultVideos.Data)
+                    foreach (Multimedia item in resultVideos.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
@@ -238,7 +238,7 @@ public partial class ListVM : BaseVM
                     break;
                 case ResultAudios.Term:
                     ResultAudios resultAudios = await DataService.GetItemsAsync<ResultAudios>(ResultAudios.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-                    foreach (var item in resultAudios.Data)
+                    foreach (Multimedia item in resultAudios.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
