@@ -73,8 +73,6 @@ public partial class ListVM : BaseVM
         if (IsBusy)
             return;
 
-        Result result;
-
         try
         {
             if (connectivity.NetworkAccess != NetworkAccess.Internet)
