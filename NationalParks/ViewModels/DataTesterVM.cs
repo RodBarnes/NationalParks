@@ -146,6 +146,26 @@ public partial class DataTesterVM : ListVM
                             Items.Add(item);
                         }
                         break;
+                    case "Events":
+                        result = await DataService.GetItemsAsync(ResultEvents.Term, startItems, 500);
+                        ResultEvents resultEvents = (ResultEvents)result;
+                        startItems += resultEvents.Data.Count();
+                        foreach (var item in resultEvents.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
+                    case "Articles":
+                        result = await DataService.GetItemsAsync(ResultArticles.Term, startItems, 500);
+                        ResultArticles resultArticles = (ResultArticles)result;
+                        startItems += resultArticles.Data.Count();
+                        foreach (var item in resultArticles.Data)
+                        {
+                            item.FillMainImage();
+                            Items.Add(item);
+                        }
+                        break;
                     case "ThingsToDo":
                         result = await DataService.GetItemsAsync(ResultThingsToDo.Term, startItems, 500);
                         ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;

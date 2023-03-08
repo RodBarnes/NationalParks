@@ -17,8 +17,10 @@
                     <x:String>Tours</x:String>
                     <x:String>People</x:String>
                     <x:String>Places</x:String>
+                    <x:String>Events</x:String>
                     <x:String>NewsReleases</x:String>
                     <x:String>ThingsToDo</x:String>
+                    <x:String>Articles</x:String>
                     <x:String>Videos</x:String>
                     <x:String>Audios</x:String>
                     <x:String>Webcam</x:String>
