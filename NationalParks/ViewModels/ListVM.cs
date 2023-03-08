@@ -246,14 +246,14 @@ public partial class ListVM : BaseVM
                     TotalItems = resultAudios.Total;
                     break;
                 default:
-                    throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");
+                    throw new Exception($"{this.GetType()}.GetItems -- No idea what that means: {Term}");
             }
             IsPopulated = true;
         }
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetItems: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.GetItems: {msg}", "OK");
         }
         finally
         {
@@ -318,7 +318,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetClosest: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.GetClosest: {msg}", "OK");
         }
         finally
         {
