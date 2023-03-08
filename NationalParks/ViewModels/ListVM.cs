@@ -88,28 +88,28 @@ public partial class ListVM : BaseVM
             await BuildFilterSelections();
 
             // Populate the list
-            result = await DataService.GetItemsAsync(Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
-            TotalItems = result.Total;
             switch (Term)
             {
                 case ResultParks.Term:
-                    ResultParks resultParks = (ResultParks)result;
-                    foreach (var item in resultParks.Data)
+                    ResultParks resultParks = await DataService.GetItemsAsync<ResultParks>(ResultParks.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
+                    foreach (Park item in resultParks.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultParks.Total;
                     break;
                 case ResultCampgrounds.Term:
-                    ResultCampgrounds resultCampgrounds = (ResultCampgrounds)result;
+                    ResultCampgrounds resultCampgrounds = await DataService.GetItemsAsync<ResultCampgrounds>(ResultCampgrounds.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultCampgrounds.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultCampgrounds.Total;
                     break;
                 case ResultPlaces.Term:
-                    ResultPlaces resultPlaces = (ResultPlaces)result;
+                    ResultPlaces resultPlaces = await DataService.GetItemsAsync<ResultPlaces>(ResultPlaces.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultPlaces.Data)
                     {
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
@@ -121,9 +121,10 @@ public partial class ListVM : BaseVM
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultPlaces.Total;
                     break;
                 case ResultTours.Term:
-                    ResultTours resultTours = (ResultTours)result;
+                    ResultTours resultTours = await DataService.GetItemsAsync<ResultTours>(ResultTours.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultTours.Data)
                     {
                         if (item.DLatitude < 0)
@@ -135,6 +136,7 @@ public partial class ListVM : BaseVM
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultTours.Total;
                     break;
                 case ResultNewsReleases.Term:
 
@@ -144,7 +146,7 @@ public partial class ListVM : BaseVM
                     //var fileName = @"E:\nps_log (release, MainImage.Id).txt";
                     //var stream = new StreamWriter(fileName);
 
-                    ResultNewsReleases resultReleases = (ResultNewsReleases)result;
+                    ResultNewsReleases resultReleases = await DataService.GetItemsAsync<ResultNewsReleases>(ResultNewsReleases.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultReleases.Data)
                     {
                         if (item.DLatitude < 0)
@@ -174,33 +176,37 @@ public partial class ListVM : BaseVM
                     }
                     //stream.Close();
 
+                    TotalItems = resultReleases.Total;
                     break;
                 case ResultThingsToDo.Term:
-                    ResultThingsToDo resultThingsToDo = (ResultThingsToDo)result;
+                    ResultThingsToDo resultThingsToDo = await DataService.GetItemsAsync<ResultThingsToDo>(ResultThingsToDo.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultThingsToDo.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultThingsToDo.Total;
                     break;
                 case ResultWebcams.Term:
-                    ResultWebcams resultWebcams = (ResultWebcams)result;
+                    ResultWebcams resultWebcams = await DataService.GetItemsAsync<ResultWebcams>(ResultWebcams.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultWebcams.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultWebcams.Total;
                     break;
                 case ResultEvents.Term:
-                    ResultEvents resultEvents = (ResultEvents)result;
+                    ResultEvents resultEvents = await DataService.GetItemsAsync<ResultEvents>(ResultEvents.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultEvents.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultEvents.Total;
                     break;
                 case ResultPeople.Term:
-                    ResultPeople resultPeople = (ResultPeople)result;
+                    ResultPeople resultPeople = await DataService.GetItemsAsync<ResultPeople>(ResultPeople.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultPeople.Data)
                     {
                         if (item.DLatitude < 0 && item.RelatedParks.Count > 0)
@@ -212,30 +218,34 @@ public partial class ListVM : BaseVM
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultPeople.Total;
                     break;
                 case ResultArticles.Term:
-                    ResultArticles resultArticles = (ResultArticles)result;
+                    ResultArticles resultArticles = await DataService.GetItemsAsync<ResultArticles>(ResultArticles.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultArticles.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultArticles.Total;
                     break;
                 case ResultVideos.Term:
-                    ResultVideos resultVideos = (ResultVideos)result;
+                    ResultVideos resultVideos = await DataService.GetItemsAsync<ResultVideos>(ResultVideos.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultVideos.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultVideos.Total;
                     break;
                 case ResultAudios.Term:
-                    ResultAudios resultAudios = (ResultAudios)result;
+                    ResultAudios resultAudios = await DataService.GetItemsAsync<ResultAudios>(ResultAudios.Term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
                     foreach (var item in resultAudios.Data)
                     {
                         item.FillMainImage();
                         Items.Add(item);
                     }
+                    TotalItems = resultAudios.Total;
                     break;
                 default:
                     throw new Exception($"ListVM.GetItems -- No idea what that means: {Term}");
@@ -513,8 +523,7 @@ public partial class ListVM : BaseVM
 
             while (totalTopics > startTopics)
             {
-                var resultBase = await DataService.GetItemsAsync(ResultTopics.Term, startTopics);
-                ResultTopics resultTopics = (ResultTopics)resultBase;
+                ResultTopics resultTopics = await DataService.GetItemsAsync<ResultTopics>(ResultTopics.Term, startTopics);
                 totalTopics = resultTopics.Total;
                 startTopics += resultTopics.Data.Count;
                 foreach (var topic in resultTopics.Data)
@@ -539,8 +548,7 @@ public partial class ListVM : BaseVM
 
             while (totalActivities > startActivities)
             {
-                var resultBase = await DataService.GetItemsAsync(ResultActivities.Term, startActivities);
-                ResultActivities resultActivities = (ResultActivities)resultBase;
+                ResultActivities resultActivities = await DataService.GetItemsAsync<ResultActivities>(ResultActivities.Term, startActivities);
                 totalActivities = resultActivities.Total;
                 startActivities += resultActivities.Data.Count;
                 foreach (var activity in resultActivities.Data)
