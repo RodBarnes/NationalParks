@@ -5,19 +5,19 @@ public class Park : BaseModel
     public string FullName { get; set; }
     public string ParkCode { get; set; }
     public string LatLong { get; set; }
-    public ICollection<Alert> Alerts { get; set; }
-    public ICollection<ParkingLot> ParkingLots { get; set; }
-    public ICollection<Activity> Activities { get; set; }
-    public ICollection<Topic> Topics { get; set; }
+    public List<Alert> Alerts { get; set; }
+    public List<ParkingLot> ParkingLots { get; set; }
+    public List<Activity> Activities { get; set; }
+    public List<Topic> Topics { get; set; }
     public string States { get; set; }
     public Contacts Contacts { get; set; }
-    public ICollection<Fee> EntranceFees { get; set; }
-    public ICollection<Fee> EntrancePasses { get; set; }
-    public ICollection<Fee> Fees { get; set; }
+    public List<Fee> EntranceFees { get; set; }
+    public List<Fee> EntrancePasses { get; set; }
+    public List<Fee> Fees { get; set; }
     public string DirectionsInfo { get; set; }
     public string DirectionsUrl { get; set; }
-    public ICollection<OperatingHours> OperatingHours { get; set; }
-    public ICollection<Address> Addresses { get; set; }
+    public List<OperatingHours> OperatingHours { get; set; }
+    public List<Address> Addresses { get; set; }
     public Address PhysicalAddress { get => Addresses.Where(a => a.Type == "Physical").FirstOrDefault(); }
     public string WeatherInfo { get; set; }
     public string Designation { get; set; }

@@ -3,5 +3,5 @@
 public partial class ResultParks : Result
 {
     public const string Term = "parks";
-    public ICollection<Park> Data { get; set; }
+    public List<Park> Data { get; set; }
 }

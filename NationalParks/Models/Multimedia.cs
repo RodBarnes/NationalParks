@@ -4,8 +4,8 @@ public partial class Multimedia : BaseModel
 {
     public string PermalinkUrl { get; set; }
     public Splashimage SplashImage { get; set; }
-    public ICollection<RelatedPark> RelatedParks { get; set; }
-    public ICollection<string> Tags { get; set; }
+    public List<RelatedPark> RelatedParks { get; set; }
+    public List<string> Tags { get; set; }
     public string AudioDescription { get; set; }
     public string AudioDescriptionUrl { get; set; }
     public string GeometryPoiId { get; set; }
@@ -17,8 +17,8 @@ public partial class Multimedia : BaseModel
     public bool AudioDescribedBuiltIn { get; set; }
     public bool HasOpenCaptions { get; set; }
     public bool IsBRoll { get; set; }
-    public ICollection<Captionfile> CaptionFiles { get; set; }
-    public ICollection<Specification> Versions { get; set; }
+    public List<Captionfile> CaptionFiles { get; set; }
+    public List<Specification> Versions { get; set; }
 
     #region Derived Properties
 

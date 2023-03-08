@@ -3,5 +3,5 @@
 public class ResultThingsToDo : Result
 {
     public const string Term = "thingstodo";
-    public ICollection<ThingToDo> Data { get; set; }
+    public List<ThingToDo> Data { get; set; }
 }

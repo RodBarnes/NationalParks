@@ -9,7 +9,7 @@ public class Article : BaseModel
         set { Description = value; }
     }
     public Image ListingImage { get; set; }
-    public ICollection<RelatedPark> RelatedParks { get; set; }
+    public List<RelatedPark> RelatedParks { get; set; }
     public string LatLong { get; set; }
 
     public new void FillMainImage()

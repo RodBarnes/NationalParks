@@ -3,5 +3,5 @@
 public class ResultEvents : Result
 {
     public const string Term = "events";
-    public ICollection<Event> Data { get; set; }
+    public List<Event> Data { get; set; }
 }

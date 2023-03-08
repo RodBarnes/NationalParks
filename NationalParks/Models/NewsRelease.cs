@@ -9,8 +9,8 @@ public partial class NewsRelease : BaseModel
         set { Description = value; }
     }
     public Image Image { get; set; }
-    public ICollection<RelatedPark> RelatedParks { get; set; }
-    public ICollection<Organization> RelatedOrganizations { get; set; }
+    public List<RelatedPark> RelatedParks { get; set; }
+    public List<Organization> RelatedOrganizations { get; set; }
     public string GeometryPoiId { get; set; }
     public string ReleaseDate { get; set; }
     public string Credit { get; set; }

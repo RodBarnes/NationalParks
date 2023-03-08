@@ -2,9 +2,9 @@
 
 public partial class RelatedMultimediaVM : CollapsibleViewVM
 {
-    [ObservableProperty] ICollection<RelatedMultimedia> items;
+    [ObservableProperty] List<RelatedMultimedia> items;
 
-    public RelatedMultimediaVM(string title, bool isOpen, ICollection<RelatedMultimedia> items) : base(title, isOpen)
+    public RelatedMultimediaVM(string title, bool isOpen, List<RelatedMultimedia> items) : base(title, isOpen)
     {
         Items = items;
         HasContent = Items?.Count > 0;

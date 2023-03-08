@@ -14,7 +14,7 @@ public partial class BaseModel
     public string Url { get; set; }
     public object Latitude { get; set; }
     public object Longitude { get; set; }
-    public ICollection<Image> Images { get; set; }
+    public List<Image> Images { get; set; }
 
     #region Derived Properties
 

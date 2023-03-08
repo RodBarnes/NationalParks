@@ -11,7 +11,7 @@ public class Event : BaseModel
     public string IsRecurring { get; set; }
     public string DateTimeUpdated { get; set; }
     public string PortalName { get; set; }
-    public ICollection<string> Types { get; set; }
+    public List<string> Types { get; set; }
     public string CreateUser { get; set; }
     public string IsFree { get; set; }
     public string ContactEmailAddress { get; set; }
@@ -24,7 +24,7 @@ public class Event : BaseModel
     public string DateEnd { get; set; }
     public string SiteCode { get; set; }
     public string InfoUrl { get; set; }
-    public ICollection<Time> Times { get; set; }
+    public List<Time> Times { get; set; }
     public string RegresInfo { get; set; }
     public string TimeInfo { get; set; }
     public string CategoryId { get; set; }
@@ -35,8 +35,8 @@ public class Event : BaseModel
     public string SiteType { get; set; }
     public string FeeInfo { get; set; }
     public string RecurrenceRule { get; set; }
-    public ICollection<string> Dates { get; set; }
+    public List<string> Dates { get; set; }
     public string DateTimeCreated { get; set; }
     public string SubjectName { get; set; }
-    public ICollection<string> Tags { get; set; }
+    public List<string> Tags { get; set; }
 }

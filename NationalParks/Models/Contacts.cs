@@ -2,6 +2,6 @@
 
 public class Contacts
 {
-    public ICollection<PhoneContact> PhoneNumbers { get; set; }
-    public ICollection<EmailContact> EmailAddresses { get; set; }
+    public List<PhoneContact> PhoneNumbers { get; set; }
+    public List<EmailContact> EmailAddresses { get; set; }
 }

@@ -2,9 +2,9 @@
 
 public partial class FeesVM : CollapsibleViewVM
 {
-    [ObservableProperty] ICollection<Fee> items;
+    [ObservableProperty] List<Fee> items;
 
-    public FeesVM(string title, bool isOpen, ICollection<Fee> items) : base(title, isOpen)
+    public FeesVM(string title, bool isOpen, List<Fee> items) : base(title, isOpen)
     {
         Items = items;
         HasContent = Items?.Count > 0;

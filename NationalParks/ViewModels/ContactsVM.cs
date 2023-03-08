@@ -2,10 +2,10 @@
 
 public partial class ContactsVM : CollapsibleViewVM
 {
-    [ObservableProperty] ICollection<PhoneContact> phoneContacts;
-    [ObservableProperty] ICollection<EmailContact> emailContacts;
+    [ObservableProperty] List<PhoneContact> phoneContacts;
+    [ObservableProperty] List<EmailContact> emailContacts;
 
-    public ContactsVM(string title, bool isOpen, ICollection<PhoneContact> phoneList = null, ICollection<EmailContact> emailList = null) : base(title, isOpen)
+    public ContactsVM(string title, bool isOpen, List<PhoneContact> phoneList = null, List<EmailContact> emailList = null) : base(title, isOpen)
     {
         PhoneContacts = phoneList;
         EmailContacts = emailList;

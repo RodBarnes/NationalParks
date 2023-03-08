@@ -3,5 +3,5 @@
 public class ResultTours : Result
 {
     public const string Term = "tours";
-    public ICollection<Tour> Data { get; set; }
+    public List<Tour> Data { get; set; }
 }
