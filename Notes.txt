@@ -1,5 +1,12 @@
 Status
 ------
+Working to split out ListVM GetItems().  The base class should not know about details of a subclass.
+	- Maybe generic GetItems<T> in ListVM then [RelayCommand] in ParkListVM that invokes it?
+	- Set <v:ListView BindingContext = "{Binding .}" /> in ParkListPage.xaml?
+	- Or split up ListView into multiple views that can be used within a subclassListPage?
+	- NOPE: Implement a Test() command and see if it can be invoked from ListView.xaml
+
+
 Working to figure out cause of "Specified cast is no valid" error.
 	- It seems to happen only while deserializing and only after a number of API calls have been made.
 	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
