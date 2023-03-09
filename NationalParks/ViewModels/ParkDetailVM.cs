@@ -28,10 +28,14 @@ public partial class ParkDetailVM : DetailVM
     {
         Model = Park;
 
-        if (Park.Alerts?.Count == 0)
+        if (Park.Alerts == null)
+            Park.Alerts = new();
+        if (Park.Alerts.Count == 0)
             await GetParkProperties(Park, "alerts");
 
-        if (Park.ParkingLots?.Count == 0)
+        if (Park.ParkingLots == null)
+            Park.ParkingLots = new();
+        if (Park.ParkingLots.Count == 0)
             await GetParkProperties(Park, "parkinglots");
 
         Weather = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
@@ -64,6 +68,7 @@ public partial class ParkDetailVM : DetailVM
                         foreach (Alert item in resultAlerts.Data)
                             park.Alerts.Add(item);
                         totalItems = resultAlerts.Total;
+                        startItems = park.Alerts.Count;
                         break;
                     case ResultParkingLots.Term:
                         ResultParkingLots resultLots = await DataService.GetItemsForParkCodeAsync<ResultParkingLots>(ResultParkingLots.Term, park.ParkCode, startItems, limitItems);
@@ -71,6 +76,7 @@ public partial class ParkDetailVM : DetailVM
                         foreach (ParkingLot item in resultLots.Data)
                             park.ParkingLots.Add(item);
                         totalItems = resultLots.Total;
+                        startItems = park.ParkingLots.Count;
                         break;
                     default:
                         throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");
