@@ -3,6 +3,11 @@ Status
 Working to figure out cause of "Specified cast is no valid" error.
 	- It seems to happen only while deserializing and only after a number of API calls have been made.
 	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
+	- Try running pages with Filter stuff commented out.
+	- What is difference?  Why can I use DataTester without the error but encounter it in the list pages?
+		+ Does having ListVM as a base class present some common thing that spills over?  It shouldn't, right?  A base class is not shared; it is just a common structure that is shared but the instances are different.
+
+
 
 Error in Getting Closest for Tour, maybe half-way through or so?  ListVM.FillLocationFromPark and cannot clear it or it keeps popping up. After killing the app then getting GetItems Arg_InvalidCastException at start up. Hmmm...
 	- Started fresh then Used [Closest] on Parks, Campgrounds, Tours and they all were succesful. Then ran on People and it failed with the error about 1/3 of the way. Close the app, then restarted it, and got the error ""Specified case is not valid" almost immediately after selecting Parks.

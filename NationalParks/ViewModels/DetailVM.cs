@@ -58,7 +58,7 @@ public partial class DetailVM : BaseVM
 
         try
         {
-            ResultParks result = await DataService.GetParkForParkCodeAsync(parkCode);
+            ResultParks result = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
             if (result.Data.Count > 0)
             {
                 park = result.Data.First();

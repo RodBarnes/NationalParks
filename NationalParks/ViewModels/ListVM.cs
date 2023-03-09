@@ -363,7 +363,7 @@ public partial class ListVM : BaseVM
     {
         try
         {
-            ResultParks resultPark = await DataService.GetParkForParkCodeAsync(parkCode);
+            ResultParks resultPark = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
             if (resultPark.Data.Count > 0)
             {
                 var park = resultPark.Data.First();
@@ -446,7 +446,7 @@ public partial class ListVM : BaseVM
         try
         {
             // Get the list of related parks for the Ids
-            ResultTopics result = await DataService.GetTopicsForIds(idList);
+            ResultTopics result = await DataService.GetItemsForIdsAsync<ResultTopics>(ResultTopics.Term, idList);
             foreach (Topic topic in result.Data)
             {
                 foreach (RelatedPark park in topic.Parks)
@@ -488,7 +488,7 @@ public partial class ListVM : BaseVM
         try
         {
             // Get the list of related parks for the Ids
-            ResultActivities result = await DataService.GetActivitiesForIds(idList);
+            ResultActivities result = await DataService.GetItemsForIdsAsync<ResultActivities>(ResultActivities.Term, idList);
             foreach (Models.Activity activity in result.Data)
             {
                 foreach (RelatedPark park in activity.Parks)

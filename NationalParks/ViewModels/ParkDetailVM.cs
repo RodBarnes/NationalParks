@@ -57,21 +57,20 @@ public partial class ParkDetailVM : DetailVM
 
             while (totalItems > startItems)
             {
-                var result = await DataService.GetPropertiesForParkCodeAsync(term, park.ParkCode, startItems, limitItems);
-                totalItems = result.Total;
                 switch (term)
                 {
                     case ResultAlerts.Term:
-                        ResultAlerts resultAlerts = (ResultAlerts)result;
-                        startItems += resultAlerts.Data.Count;
-                        foreach (var item in resultAlerts.Data)
+                        ResultAlerts resultAlerts = await DataService.GetItemsForParkCodeAsync<ResultAlerts>(ResultAlerts.Term, park.ParkCode, startItems, limitItems);
+                        foreach (Alert item in resultAlerts.Data)
                             park.Alerts.Add(item);
+                        totalItems = resultAlerts.Total;
                         break;
                     case ResultParkingLots.Term:
-                        ResultParkingLots resultLots = (ResultParkingLots)result;
+                        ResultParkingLots resultLots = await DataService.GetItemsForParkCodeAsync<ResultParkingLots>(ResultParkingLots.Term, park.ParkCode, startItems, limitItems);
                         startItems += resultLots.Data.Count;
-                        foreach (var item in resultLots.Data)
+                        foreach (ParkingLot item in resultLots.Data)
                             park.ParkingLots.Add(item);
+                        totalItems = resultLots.Total;
                         break;
                     default:
                         throw new Exception($"ListVM.GetItems -- No idea what that means: {term}");
