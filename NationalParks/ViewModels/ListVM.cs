@@ -8,8 +8,8 @@ public partial class ListVM : BaseVM
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
 
-    protected int LimitItems = 20;
-    protected int TotalItems = 0;
+    int LimitItems = 20;
+    int TotalItems = 0;
 
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
