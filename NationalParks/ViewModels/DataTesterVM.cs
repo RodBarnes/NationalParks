@@ -18,7 +18,6 @@ public partial class DataTesterVM : ListVM
     [ObservableProperty] string currentState;
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
-    [ObservableProperty] int matchCount;
 
     public DataTesterVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
@@ -66,7 +65,7 @@ public partial class DataTesterVM : ListVM
         Items.Clear();
         startItems = 0;
         CurrentState = "Cleared";
-        CurrentCount = MatchCount = TotalCount = 0;
+        CurrentCount = TotalCount = 0;
     }
 
     partial void OnSelectedTypeChanged(string value)
@@ -209,7 +208,6 @@ public partial class DataTesterVM : ListVM
                 }
                 IsPopulated = true;
                 TotalCount = totalItems;
-                MatchCount = Items.Count;
                 CurrentCount = startItems;
                 if (!okToContinue)
                 {

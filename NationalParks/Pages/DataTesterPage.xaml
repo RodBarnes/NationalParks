@@ -46,7 +46,7 @@
                     Margin="5"
                     Grid.Column="2"/>
         </Grid>
-        <Grid ColumnDefinitions="*,*,*,*"
+        <Grid ColumnDefinitions="*,*,*"
               RowDefinitions="*,*"
               Padding="5">
             <Label Text="Status:"
@@ -66,12 +66,6 @@
                    Style="{StaticResource LabelMediumBold}"/>
             <Label Text="{Binding CurrentCount}"
                    Grid.Column="2" Grid.Row="1"
-                   Style="{StaticResource LabelMedium}"/>
-            <Label Text="Match:"
-                   Grid.Column="3" Grid.Row="0"
-                   Style="{StaticResource LabelMediumBold}"/>
-            <Label Text="{Binding MatchCount}"
-                   Grid.Column="3" Grid.Row="1"
                    Style="{StaticResource LabelMedium}"/>
         </Grid>
     </VerticalStackLayout>
