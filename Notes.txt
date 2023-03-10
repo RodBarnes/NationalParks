@@ -1,10 +1,12 @@
 Status
 ------
-Working to split out ListVM GetItems().  The base class should not know about details of a subclass.
-	- Maybe generic GetItems<T> in ListVM then [RelayCommand] in ParkListVM that invokes it?
-	- Set <v:ListView BindingContext = "{Binding .}" /> in ParkListPage.xaml?
-	- Or split up ListView into multiple views that can be used within a subclassListPage?
-	- NOPE: Implement a Test() command and see if it can be invoked from ListView.xaml
+Working to split out ListVM GetItems().  The base class should not know about details of a subclass.  But if I move GetItems to the ParkListVM subclass, it cannot be seen by ListView.
+	- Fundamental issues:
+		- Desire to use a single view referenced in each page and not duplicate that XAML code.  This requires that the single view be able to do GetItems() for the Collection but it cannot know what type is being displayed in the list.
+		- Desire to use a single base VM referenced by each page VM and not duplicate C# code.  But the page VM is the only one that knows the actual result/model class.  The base VM 
+	- Try composition where ListVM is some class to which each current subclass (e.g, ParkListVM) has a reference.
+	+ This would provide the same code-reuse capability but let the page VM do all the work instead of handing off to a base VM.
+	+ But ListView would still not work because it 
 
 
 Working to figure out cause of "Specified cast is no valid" error.
