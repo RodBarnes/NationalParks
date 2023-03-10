@@ -22,6 +22,13 @@ public class DataService
         {
             // This will return true even if it receives the "over rate limit" error.
             // Although, a typical user will never encounter that, right?
+            //    {
+            //        "error": {
+            //            "code": "OVER_RATE_LIMIT",
+            //            "message": "You have exceeded your rate limit. Try again later or contact us at https://developer.nps.gov:443/contact/ for assistance"
+            //        }
+            //    }
+
             result = await response.Content.ReadFromJsonAsync<T>();
             if (result is null)
             {
