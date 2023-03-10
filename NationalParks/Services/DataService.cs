@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 
 namespace NationalParks.Services;
 
@@ -8,7 +7,7 @@ public class DataService
     private static HttpClient httpClient;
     private const string DomainUrl = "https://developer.nps.gov/api/v1/";
 
-    public DataService()
+    static DataService()
     {
         httpClient = new HttpClient();
     }
