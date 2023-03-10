@@ -24,5 +24,11 @@
         {
             AppInfo.ShowSettingsUI();
         }
+
+        [RelayCommand]
+        public async Task GoToDataTester()
+        {
+            await Shell.Current.GoToAsync($"DataTesterPage", true);
+        }
     }
 }

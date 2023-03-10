@@ -10,6 +10,8 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(ImageListPage), typeof(ImageListPage));
 
+        Routing.RegisterRoute(nameof(DataTesterPage), typeof(DataTesterPage));
+
         Routing.RegisterRoute(nameof(CampgroundDetailPage), typeof(CampgroundDetailPage));
         Routing.RegisterRoute(nameof(CampgroundFilterPage), typeof(CampgroundFilterPage));
 

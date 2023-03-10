@@ -51,10 +51,17 @@
                 </VerticalStackLayout>
             </Grid>
         </Frame>
-        <Button Text="App Info"
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="App Info"
                 Margin="10"
                 WidthRequest="120"
                 Command="{Binding GoToAppInfoCommand}"
                 Style="{StaticResource ButtonOutline}"/>
+            <Button Text="Tester"
+                Margin="10"
+                WidthRequest="120"
+                Command="{Binding GoToDataTesterCommand}"
+                Style="{StaticResource ButtonOutline}"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

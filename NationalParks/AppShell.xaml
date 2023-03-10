@@ -45,7 +45,8 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem Title="Parks" Icon="tree_green">
-        <ShellContent ContentTemplate="{DataTemplate p:ParkListPage}" />
+        <ShellContent ContentTemplate="{DataTemplate p:ParkListPage}"
+                      x:Name="StartItem" />
     </FlyoutItem>
     <FlyoutItem Title="Campgrounds" Icon="campfire_green">
         <ShellContent ContentTemplate="{DataTemplate p:CampgroundListPage}" />
@@ -83,8 +84,7 @@
     <FlyoutItem Title="About" Icon="info_fancy_green">
         <ShellContent ContentTemplate="{DataTemplate p:AboutPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Tester" Icon="question_green">
-        <ShellContent ContentTemplate="{DataTemplate p:DataTesterPage}"
-                      x:Name="StartItem" />
-    </FlyoutItem>
+    <!--<FlyoutItem Title="Tester" Icon="question_green">
+        <ShellContent ContentTemplate="{DataTemplate p:DataTesterPage}" />
+    </FlyoutItem>-->
 </Shell>
