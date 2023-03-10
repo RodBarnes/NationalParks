@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using Microsoft.VisualBasic;
+using System.Net.Http.Json;
 
 namespace NationalParks.Services;
 
@@ -20,7 +21,20 @@ public class DataService
         var response = await httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
+            // This will return true even if it receives the "over rate limit" error.
+            // Although, a typical user will never encounter that, right?
             result = await response.Content.ReadFromJsonAsync<T>();
+            if (result is null)
+            {
+                // Try to get the error that may've been sent
+                string msg = $"Result was 'null' for type '{typeof(T)}'";
+                ResultError errresult = await response.Content.ReadFromJsonAsync<ResultError>();
+                if (errresult != null)
+                {
+                    msg += $"\n[{errresult.Error.Code}--{errresult.Error.Message}";
+                }
+                throw new Exception(msg);
+            }
         }
 
         return result;
