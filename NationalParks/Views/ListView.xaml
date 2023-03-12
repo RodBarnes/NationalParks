@@ -4,7 +4,6 @@
              xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:v="clr-namespace:NationalParks.Views"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.ListView">
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5"
@@ -66,6 +65,6 @@
         <v:ProgressBarView Grid.RowSpan="2" Grid.ColumnSpan="2"
                            HeightRequest="100"
                            WidthRequest="350"
-                           IsVisible="{Binding IsFindingClosest}"/>
+                           IsVisible="{Binding ShowClosestProgress}"/>
     </Grid>
 </ContentView>

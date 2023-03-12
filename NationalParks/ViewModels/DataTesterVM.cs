@@ -5,8 +5,6 @@ namespace NationalParks.ViewModels;
 public partial class DataTesterVM : ListVM
 {
     DataService dataService;
-    IConnectivity connectivity;
-    IGeolocation geolocation;
 
     private int startItems = 0;
     private int totalItems = 1;
@@ -23,8 +21,6 @@ public partial class DataTesterVM : ListVM
     {
         Title = "Tester";
         this.dataService = dataService;
-        this.connectivity = connectivity;
-        this.geolocation = geolocation;
 
         CurrentState = "Waiting...";
     }
