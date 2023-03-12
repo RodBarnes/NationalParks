@@ -150,11 +150,6 @@ public partial class ListVM : BaseVM
         TopicsFilter = await GetTopicsFilter(SelectedTopics);
         ActivitiesFilter = await GetActivitiesFilter(SelectedActivities);
     }
-    private void ClearData()
-    {
-        Items.Clear();
-        IsPopulated = false;
-    }
     protected string GetTitle()
     {
         string tmp = $"{BaseTitle}";
@@ -187,6 +182,11 @@ public partial class ListVM : BaseVM
             var msg = Utility.ParseException(ex);
             await Shell.Current.DisplayAlert("Error!", $"ListVM.FillLocationFromPark: {msg}", "OK");
         }
+    }
+    private void ClearData()
+    {
+        Items.Clear();
+        IsPopulated = false;
     }
 
     #region Filter
