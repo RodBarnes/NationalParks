@@ -1,5 +1,38 @@
 Status
 ------
+Colors
+	Dark
+		1 	007B00 (icon color)
+		2	CAFACA
+		3	1C1C1E
+		4	1F1F1F
+
+	Light	
+		1	007B00 (icon color)
+		2	007B00
+		3	White
+		4	CAFACA
+		5	007B00
+		6	1F1F1F
+
+							Light	Dark
+	Page Background				1	4
+	Page TitleBar Background	2	1
+	Page TitleBar Text			3	5
+	Frame Background			4	3
+	Frame Border				5	5
+	List Label Text				6	2
+	Button Text					5	2
+	Button Border				5	1
+	Button Panel Background		4	3
+	Flyout Background			1	3
+	Flyout TitleBar Background	2	1
+	Entry Text					6	2
+	Filter List Background		4	3
+	Filter List Text			6	2
+	Filter Title Text			6	2
+
+
 Need to prepare for release
 	- Make colors consistent for all elements for both light and dark themes
 	- Help page?  Would this be the start page?
