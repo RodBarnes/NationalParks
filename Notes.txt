@@ -22,6 +22,8 @@ Issues & Ideas
 
 Try using HttpClient.BaseAddress = DomainUrl;
 
+Would still like to move PopulateData and GetClosest into ListVM since the code is identical for all list VMs.  But the issue is both of these have to call GetItems() that resides in subclass (since it is the only one that knows the model type).
+
 Probably should only get the location when it is needed; i.e., using [Closest] or [Location].
 
 For now, commenting out access to NewsRelease because it does not the images in Release version.
