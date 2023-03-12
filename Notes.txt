@@ -1,15 +1,7 @@
 Status
 ------
-Working to figure out cause of "Specified cast is no valid" error.
-	- It seems to happen only while deserializing and only after a number of API calls have been made.
-	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
-	- Try running pages with Filter stuff commented out.
-	- Differences between using DataTester and the 12 separate pages:
-		+ DataTester is a single VM that inherits from ListVM.  Does having ListVM as a base class present some common thing that spills over?  It shouldn't, right?  A base class is not shared; it is just a common structure that is shared but the instances are different of the base class is different for each subclass.
-	- Can I release just all those that have their own location?
-		+ This seems to be working pretty well but I encountered a Null in Articles.  I had gone through doing [Closest] twice on everything and then went in to playing with Filter on each of them.  After clearing filter on Article, did [Closest] and result was null about halfway through the list.  See notes at top...
-
 Need to prepare for release
+	- Make colors consistent for all elements for both light and dark themes
 	- Help page?  Would this be the start page?
 	- Validate all page displays
 
@@ -19,6 +11,14 @@ Possible text for help page:
 
 Issues & Ideas
 --------------
+"Specified case is not valid" error
+	- It seems to happen only while deserializing and only after a number of API calls have been made.
+	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
+	- Try running pages with Filter stuff commented out.
+	- Differences between using DataTester and the 12 separate pages:
+		+ DataTester is a single VM that inherits from ListVM.  Does having ListVM as a base class present some common thing that spills over?  It shouldn't, right?  A base class is not shared; it is just a common structure that is shared but the instances are different of the base class is different for each subclass.
+	- Can I release just all those that have their own location?
+		+ This seems to be working pretty well but I encountered a Null in Articles.  I had gone through doing [Closest] twice on everything and then went in to playing with Filter on each of them.  After clearing filter on Article, did [Closest] and result was null about halfway through the list.  See notes at top...
 
 Try using HttpClient.BaseAddress = DomainUrl;
 
