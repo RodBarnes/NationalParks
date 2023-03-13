@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.ProgressBarView">
-    <Frame Style="{StaticResource ViewFrame}" >
+    <Frame Style="{StaticResource ProgressBar}" >
         <VerticalStackLayout>
             <Label Text="{Binding ProgressText}"
                    Style="{StaticResource LabelMedium}"/>

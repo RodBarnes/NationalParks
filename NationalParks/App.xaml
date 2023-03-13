@@ -7,22 +7,18 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#007B23</Color>
-            <Color x:Key="PrimaryDark">#5ABA5A</Color>
 
-            <Color x:Key="Background">#CAFACA</Color>
-            <Color x:Key="BackgroundDark">#1F1F1F</Color>
+            <Color x:Key="Background">#CDFACD</Color>
+            <Color x:Key="BackgroundDark">#303030</Color>
 
-            <Color x:Key="FrameBorder">#007B23</Color>
-            <Color x:Key="FrameBorderDark">#5ABA5A</Color>
-            
-            <Color x:Key="ViewCardBackground">#B0FAB0</Color>
-            <Color x:Key="ViewCardBackgroundDark">#1C1C1E</Color>
-
-            <Color x:Key="ButtonBackground">#B0FAB0</Color>
-            <Color x:Key="ButtonBackgroundDark">#1C1C1E</Color>
+            <Color x:Key="ElementBackground">#B0FAB0</Color>
+            <Color x:Key="ElementBackgroundDark">#1C1C1C</Color>
 
             <Color x:Key="LabelText">#1F1F1F</Color>
             <Color x:Key="LabelTextDark">#EAFAEA</Color>
+
+            <Color x:Key="PanelBackground">#CDFACD</Color>
+            <Color x:Key="PanelBackgroundDark">#303030</Color>
 
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
@@ -61,19 +57,19 @@
 
             
             <Style TargetType="Button" x:Key="ButtonOutline">
-                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ButtonBackground}, Dark={StaticResource ButtonBackgroundDark}}" />
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
-                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ElementBackground}, Dark={StaticResource ElementBackgroundDark}}" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="BorderColor" Value="{StaticResource Primary}" />
                 <Setter Property="BorderWidth" Value="2" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="CornerRadius" Value="12" />
             </Style>
 
             <Style TargetType="Frame" x:Key="ViewFrame">
-                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorder}, Dark={StaticResource FrameBorderDark}}" />
+                <Setter Property="BorderColor" Value="{StaticResource Primary}" />
                 <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
                 <Setter Property="Padding" Value="10" />
-                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ViewCardBackground}, Dark={StaticResource ViewCardBackgroundDark}}" />
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ElementBackground}, Dark={StaticResource ElementBackgroundDark}}" />
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="IsClippedToBounds" Value="True"/>
             </Style>
@@ -82,22 +78,11 @@
                 <Setter Property="Padding" Value="0" />
             </Style>
 
-            <Style TargetType="Frame" x:Key="ProgressBar">
-                <Setter Property="BorderColor" Value="#DDDDDD" />
-                <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
-                <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="IsClippedToBounds" Value="True"/>
+            <Style TargetType="Frame" x:Key="ProgressBar" BasedOn="{StaticResource ViewFrame}">
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource PanelBackground}, Dark={StaticResource PanelBackgroundDark}}" />
             </Style>
 
-            <Style TargetType="Frame" x:Key="CollapsibleView">
-                <Setter Property="BorderColor" Value="{StaticResource Primary}" />
-                <Setter Property="HasShadow" Value="{OnPlatform iOS=false, MacCatalyst=false, Default=true}" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ViewCardBackground}, Dark={StaticResource ViewCardBackgroundDark}}" />
-                <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="IsClippedToBounds" Value="True"/>
+            <Style TargetType="Frame" x:Key="CollapsibleView" BasedOn="{StaticResource ViewFrame}">
             </Style>
 
             <Style TargetType="Frame" x:Key="FrameRounded">
