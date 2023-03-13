@@ -52,6 +52,7 @@ public partial class Multimedia : BaseModel
             MainImage = ImageSource.FromFile("nps");
         }
     }
+    public string Credits => Credit.Replace(',', '\n');
 
     private static string GetDuration(int? ms)
     {

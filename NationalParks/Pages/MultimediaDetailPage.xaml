@@ -31,7 +31,7 @@
                 </HorizontalStackLayout>
                 <HorizontalStackLayout IsVisible="{Binding Multimedia.HasCredit, Converter={StaticResource BoolToTrueFalseConverter}}">
                     <Label Text="Credit:" Style="{StaticResource LabelMediumBold}" Margin="0,0,5,0" />
-                    <Label Text="{Binding Multimedia.Credit}" Style="{StaticResource LabelMedium}" />
+                    <Label Text="{Binding Multimedia.Credits}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding Multimedia.Url}"
@@ -52,10 +52,6 @@
                                Grid.Column="2"
                                Style="{StaticResource LabelMedium}"
                                IsVisible="{Binding Multimedia.MainVersion.HasSize, Converter={StaticResource BoolToTrueFalseConverter}}"/>
-                        <Label Text="{Binding Multimedia.MainVersion.AspectRatio}"
-                               Grid.Column="3"
-                               Style="{StaticResource LabelMedium}"
-                               IsVisible="{Binding Multimedia.MainVersion.HasAspect, Converter={StaticResource BoolToTrueFalseConverter}}"/>
                     </Grid>
                 </VerticalStackLayout>
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
