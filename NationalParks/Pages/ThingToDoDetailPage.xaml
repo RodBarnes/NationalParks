@@ -27,6 +27,8 @@
                 <HorizontalStackLayout>
                     <Label Text="Duration: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding ThingToDo.Duration}" Style="{StaticResource LabelMedium}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
                     <Label Text="Age: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding ThingToDo.Age}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
