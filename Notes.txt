@@ -10,6 +10,8 @@ Possible text for help page:
 
 Issues & Ideas
 --------------
+Images is now breaking??
+
 Where is "colors.xml" being used?
 
 "Specified case is not valid" error
