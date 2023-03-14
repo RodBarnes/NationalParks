@@ -20,7 +20,7 @@
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="Auto,*,Auto">
         <v:AvatarView Grid.Row="0" Grid.ColumnSpan="3" />
-        <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
+        <ScrollView Style="{StaticResource ScrollRegion}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">

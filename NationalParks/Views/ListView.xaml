@@ -9,7 +9,7 @@
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
           RowSpacing="0"
-          BackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
+          Style="{StaticResource ScrollRegion}">
         <CollectionView ItemsSource="{Binding Items}" Grid.Row="0" Grid.ColumnSpan="2"
                 SelectionMode="None"
                 RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"

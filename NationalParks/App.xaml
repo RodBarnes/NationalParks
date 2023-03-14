@@ -24,6 +24,14 @@
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
             </Style>
 
+            <Style TargetType="ScrollView" x:Key="ScrollRegion">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
+            </Style>
+
+            <Style TargetType="Grid" x:Key="GridRegion">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
+            </Style>
+
             <Style TargetType="Label" x:Key="LabelBase">
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelText}, Dark={StaticResource LabelTextDark}}" />
