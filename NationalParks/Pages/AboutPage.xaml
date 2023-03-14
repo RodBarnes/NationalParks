@@ -39,14 +39,15 @@
         </Frame>
         <Frame Style="{StaticResource ViewCard}"
                Padding="10"
-               HeightRequest="150">
+               HeightRequest="270">
             <Grid ColumnDefinitions="100,*">
                 <Image Source="nps"
                        Grid.Column="0"
-                       Aspect="AspectFill" />
+                       Aspect="AspectFill"
+                       HeightRequest="100"/>
                 <VerticalStackLayout Grid.Column="1"
                                      VerticalOptions="Center">
-                    <Label Text="This app uses the API provided by the National Park Service."
+                    <Label Text="This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks."
                            Style="{StaticResource LabelMedium}"/>
                     <controls:HyperlinkLabel Text="NPS Developer Resources"
                                             Url="{Binding NpsUrl}"
