@@ -6,7 +6,7 @@ Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dot
 
 Issues & Ideas
 --------------
-"Specified case is not valid" error
+"Specified cast is not valid" error
 	- It seems to happen only while deserializing and only after a number of API calls have been made.
 	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
 	- Try running pages with Filter stuff commented out.
