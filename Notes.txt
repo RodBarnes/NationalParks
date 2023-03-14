@@ -1,8 +1,6 @@
 Status
 ------
-Images is now breaking??  See ImageListIssue.md
-	- I just tested it again and now it is just displaying an empty image page.
-
+Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 
 Need to prepare for release
 	- Change logo with background to use same color as splash page?

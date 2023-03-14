@@ -36,6 +36,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<DataTesterVM>();
         builder.Services.AddSingleton<DataTesterPage>();
 
+        builder.Services.AddSingleton<TestVM>();
+        builder.Services.AddSingleton<TestPage>();
+
         builder.Services.AddSingleton<ImageListVM>();
         builder.Services.AddSingleton<ImageListPage>();
 
