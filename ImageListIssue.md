@@ -13,7 +13,6 @@ I initially assumed that something was weird with the data being supplied in `Im
 
 **Again**, _this was working fine for months and this happened only today during testing.  No changes were made to this code anytime recently and was working fine for a while and then just started throwing the Exception._
 
-Yet, a similar call used to move from 
 **Interesting note:**  When I debug the Windows version, it does **not** throw this Exception but, instead, falls into this code in `App.g.i.cs` and stops on the `System.Diagnostics.Debugger.Break()` within the if `DEBUG && !DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION`:
 
 ```
@@ -72,5 +71,26 @@ Yet, the other uses of `GoToAsync()` succeed with no Exception.  All of these ac
 - Menu > tap any page from flyout.
 - Menu > tap About, then tap [Tester].
 - Menu > tap any page from flyout, then tap [Filter].
+
+NOTE: The styles used in the ImageListPage are used by several other pages.
+
+
+# Updates
+I just tried this again -- with the QueryParameter code commented out -- and it didn't throw the Exception but displayed a blank ImageListPage.  So, I put the code back, and the Exception was thrown.  I commented the code again, and it still threw the Exception.
+
+I went to a completely different system (my laptop) and cloned the repo.  Cleaned, build; debug session in light mode and the error did not appear.  Switched to dark mode and the error appeared.  Switched to light mode and the error continued to appear.
+
+The next morning, did clean & build and ran with emulator in light mode.  It all worked find without an error.  I then closed the app, switched the emulator to dark mode, ran a debug session -- and the error appeared.  I then closed the app, switched the emulator to light mode, ran a debug session -- and the errror still appeared.
+
+Removed the frame style from ImageListPage and did a test in light mode:  Error still appears.
+Switched to API 33 emulator, clean & build; debug session in light mode: No error.
+API 33 emulator; debug session in dark mode: Error appeared
+API 33 emulator; debug session in light mode: Error continues to appear.
+Removed the lable style.
+API 31 emulator; debug session in light mode (Note: Emulator reset):  Error appeared.
+Manually did a factory reset on the API 31 emulator, started the emulator from the Device Manager; debug session in light mode: Error still appears.
+Restored the frame and lable styles to ImageListPage.
+Closed the emulator, closed VS, restarted my computer.
+Clean & rebuild, factory reset API 31 emulator; debug session in light mode: Error occurred.
 
 
