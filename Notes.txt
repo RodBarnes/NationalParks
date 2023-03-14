@@ -1,9 +1,9 @@
 Status
 ------
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
+Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
 Need to prepare for release
-	- Change logo with background to use same color as splash page?
 	- Help page?  Would this be the start page?
 	- Possible text for help page: "This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks."
 
@@ -36,7 +36,6 @@ Without <RefreshView> the <CollectionView.EmptyView> does not display
 
 Can I manually remove maccatalyst from the csproj file?
 
-Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
 Maybe add an additional property (e.g., TileDescription?) to BaseModel specifically for display in the list tile.  For Park, this would be populated by Designation so that could be used in the tile.  For the others, it might only be a duplicate of Description.
 
