@@ -3,10 +3,6 @@ Status
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
-Need to prepare for release
-	- Help page?  Would this be the start page?
-	- Possible text for help page: "This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks."
-
 
 Issues & Ideas
 --------------
