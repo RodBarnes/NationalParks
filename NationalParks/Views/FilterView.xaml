@@ -34,7 +34,7 @@
                                  Padding="10,10,10,0">
                 <HorizontalStackLayout HorizontalOptions="Center"
                                        Padding="0,0,0,5">
-                    <Label Text="State" Style="{StaticResource LabelLargeBold}" />
+                    <Label Text="Location" Style="{StaticResource LabelLargeBold}" />
                     <Label Text="{Binding SelectedStates.Count, StringFormat=' ({0})'}"
                            Style="{StaticResource LabelLarge}" />
                 </HorizontalStackLayout>
