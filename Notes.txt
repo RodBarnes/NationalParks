@@ -3,6 +3,8 @@ Status
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
+Add a release notes section available from About page?
+
 
 Issues & Ideas
 --------------
