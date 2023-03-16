@@ -415,7 +415,7 @@ public partial class ListVM : BaseVM
         SelectedStates.Clear();
         QueryFilter = "";
 
-        Message.ShowMessage("All filter values have been cleared.");
+        Message.Show("All filter values have been cleared.");
     }
 
     #endregion

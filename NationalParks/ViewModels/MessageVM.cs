@@ -5,16 +5,16 @@ public partial class MessageVM : ObservableObject
     [ObservableProperty] string messageText;
     [ObservableProperty] string buttonText;
 
-    [ObservableProperty] bool show;
+    [ObservableProperty] bool isVisible;
 
     public MessageVM()
     {
-        Show = false;
+        IsVisible = false;
         ButtonText = "OK";
         MessageText = "Message";
     }
 
-    public void ShowMessage(string msg = "", string button = "")
+    public void Show(string msg = "", string button = "")
     {
         if (!String.IsNullOrEmpty(msg))
         {
@@ -24,12 +24,12 @@ public partial class MessageVM : ObservableObject
         {
             ButtonText = button;
         }
-        Show = true;
+        IsVisible = true;
     }
 
     [RelayCommand]
     public void HideMessage()
     {
-        Show = false;
+        IsVisible = false;
     }
 }

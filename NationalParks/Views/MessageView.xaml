@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:MessageVM"
              x:Class="NationalParks.Views.MessageView">
-    <Frame Style="{StaticResource MessagPanel}" VerticalOptions="Center" IsVisible="{Binding Show}" >
+    <Frame Style="{StaticResource MessagPanel}" VerticalOptions="Center" IsVisible="{Binding IsVisible}" >
         <VerticalStackLayout>
             <Label Text="{Binding MessageText}"
                    Style="{StaticResource LabelMediumBold}"
