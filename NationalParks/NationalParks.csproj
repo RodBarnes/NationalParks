@@ -238,6 +238,9 @@
 	  <MauiXaml Update="Views\ListView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\MessageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\MultimediaVersionsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

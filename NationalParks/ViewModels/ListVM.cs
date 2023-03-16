@@ -17,6 +17,8 @@ public partial class ListVM : BaseVM
     [ObservableProperty] string progressText;
     [ObservableProperty] bool showClosestProgress;
     [ObservableProperty] string term;
+    
+    [ObservableProperty] MessageVM message = new();
 
     private string baseTitle;
     protected string BaseTitle
@@ -413,7 +415,7 @@ public partial class ListVM : BaseVM
         SelectedStates.Clear();
         QueryFilter = "";
 
-        Shell.Current.DisplayAlert("Filter", "All filter values have been cleared.", "OK");
+        Message.ShowMessage("All filter values have been cleared.");
     }
 
     #endregion

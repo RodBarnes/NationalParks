@@ -126,5 +126,9 @@
             Command="{Binding ClearFilterCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"/>
+        <v:MessageView Grid.RowSpan="3" Grid.ColumnSpan="2"
+                       HeightRequest="90"
+                       WidthRequest="350"
+                       BindingContext="{Binding Message}" />
     </Grid>
 </ContentView>

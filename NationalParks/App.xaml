@@ -90,6 +90,10 @@
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource PanelBackground}, Dark={StaticResource PanelBackgroundDark}}" />
             </Style>
 
+            <Style TargetType="Frame" x:Key="MessagPanel" BasedOn="{StaticResource ViewFrame}">
+                <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource PanelBackground}, Dark={StaticResource PanelBackgroundDark}}" />
+            </Style>
+
             <Style TargetType="Frame" x:Key="CollapsibleView" BasedOn="{StaticResource ViewFrame}">
             </Style>
 
