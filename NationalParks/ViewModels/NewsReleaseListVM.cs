@@ -1,4 +1,5 @@
 ﻿using NationalParks.Models;
+using System.Reflection;
 
 namespace NationalParks.ViewModels;
 
@@ -25,14 +26,23 @@ public partial class NewsReleaseListVM : ListVM
         if (IsBusy)
             return;
 
-        ResultNewsReleases result = await GetItems<ResultNewsReleases>(ResultNewsReleases.Term);
-        foreach (NewsRelease item in result.Data)
+        try
         {
-            item.FillMainImage();
-            Items.Add(item);
+            ResultNewsReleases result = await GetItems<ResultNewsReleases>(ResultNewsReleases.Term);
+            foreach (NewsRelease item in result.Data)
+            {
+                item.FillMainImage();
+                Items.Add(item);
+            }
+            TotalItems = result.Total;
+            IsPopulated = true;
         }
-        TotalItems = result.Total;
-        IsPopulated = true;
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+        }
     }
 
     [RelayCommand]

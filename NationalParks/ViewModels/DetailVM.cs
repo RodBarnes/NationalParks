@@ -1,4 +1,5 @@
 ﻿using NationalParks.Services;
+using System.Reflection;
 
 namespace NationalParks.ViewModels;
 
@@ -32,7 +33,8 @@ public partial class DetailVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"Unable to open Maps: {msg}.", "OK");
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
         }
     }
 
@@ -76,7 +78,8 @@ public partial class DetailVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
         }
     }
 }

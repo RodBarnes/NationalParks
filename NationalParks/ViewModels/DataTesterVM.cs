@@ -1,4 +1,5 @@
 ﻿using NationalParks.Services;
+using System.Reflection;
 
 namespace NationalParks.ViewModels;
 
@@ -215,7 +216,8 @@ public partial class DataTesterVM : ListVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
         }
         finally
         {
