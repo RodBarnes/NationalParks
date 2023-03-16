@@ -41,24 +41,24 @@ public partial class ParkListVM : ListVM
         if (IsBusy)
             return;
 
-        ShowClosestProgress = true;
+        Progress.IsVisible = true;
 
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
             LimitItems = 50;
-            while (TotalItems > Items.Count && ShowClosestProgress)
+            while (TotalItems > Items.Count && Progress.IsVisible)
             {
-                ProgressClosest = (double)Items.Count / (double)TotalItems;
+                Progress.Position = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
             LimitItems = 20;
         }
 
-        if (ShowClosestProgress)
+        if (Progress.IsVisible)
         {
             await base.GetClosest();
-            ShowClosestProgress = false;
+            Progress.IsVisible = false;
         }
 
         IsBusy = false;

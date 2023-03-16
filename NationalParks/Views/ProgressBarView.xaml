@@ -2,17 +2,18 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
-             x:DataType="vm:ListVM"
-             x:Class="NationalParks.Views.ProgressBarView">
+             x:DataType="vm:ProgressVM"
+             x:Class="NationalParks.Views.ProgressBarView"
+             IsVisible="{Binding IsVisible}">
     <Frame Style="{StaticResource ProgressBar}" >
         <VerticalStackLayout>
-            <Label Text="{Binding ProgressText}"
+            <Label Text="{Binding Text}"
                    Style="{StaticResource LabelMedium}"/>
             <ProgressBar ProgressColor="Green"
-                         Progress="{Binding ProgressClosest}" />
+                         Progress="{Binding Position}" />
             <Button Text="Cancel"
                     Style="{StaticResource ButtonOutline}"
-                    Command="{Binding CancelGetClosestCommand}"/>
+                    Command="{Binding CancelProgressCommand}"/>
         </VerticalStackLayout>
     </Frame>
 </ContentView>

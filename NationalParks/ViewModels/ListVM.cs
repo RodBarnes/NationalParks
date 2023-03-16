@@ -15,12 +15,8 @@ public partial class ListVM : BaseVM
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] string term;
 
-    // Progress bar
-    [ObservableProperty] double progressClosest;
-    [ObservableProperty] string progressText;
-    [ObservableProperty] bool showClosestProgress;
+    [ObservableProperty] ProgressVM progress = new();
 
-    // Message panel
     [ObservableProperty] MessageVM message = new();
 
     private string baseTitle;
@@ -30,7 +26,7 @@ public partial class ListVM : BaseVM
         set
         {
             baseTitle = value;
-            ProgressText = $"Retrieving all {BaseTitle}...";
+            Progress.Text = $"Retrieving all {BaseTitle}...";
         }
     }
 
@@ -70,12 +66,6 @@ public partial class ListVM : BaseVM
         {
             {"Model", model}
         });
-    }
-
-    [RelayCommand]
-    public void CancelGetClosest()
-    {
-        ShowClosestProgress = false;
     }
 
     protected async Task GetClosest()

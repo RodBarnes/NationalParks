@@ -39,22 +39,26 @@ public partial class PersonListVM : ListVM
         if (IsBusy)
             return;
 
-        ShowClosestProgress = true;
+        Progress.IsVisible = true;
 
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
             LimitItems = 50;
-            while (TotalItems > Items.Count)
+            while (TotalItems > Items.Count && Progress.IsVisible)
             {
-                ProgressClosest = (double)Items.Count / (double)TotalItems;
+                Progress.Position = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
             LimitItems = 20;
         }
 
-        await base.GetClosest();
+        if (Progress.IsVisible)
+        {
+            await base.GetClosest();
+            Progress.IsVisible = false;
+        }
 
-        ShowClosestProgress = false;
+        Progress.IsVisible = false;
     }
 }
