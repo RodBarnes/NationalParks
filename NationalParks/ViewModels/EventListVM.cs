@@ -50,26 +50,26 @@ public partial class EventListVM : ListVM
         if (IsBusy)
             return;
 
-        Progress.IsVisible = true;
+        ProgressBar.IsVisible = true;
 
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
             LimitItems = 50;
-            while (TotalItems > Items.Count && Progress.IsVisible)
+            while (TotalItems > Items.Count && ProgressBar.IsVisible)
             {
-                Progress.Position = (double)Items.Count / (double)TotalItems;
+                ProgressBar.Position = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
             LimitItems = 20;
         }
 
-        if (Progress.IsVisible)
+        if (ProgressBar.IsVisible)
         {
             await base.GetClosest();
-            Progress.IsVisible = false;
+            ProgressBar.IsVisible = false;
         }
 
-        Progress.IsVisible = false;
+        ProgressBar.IsVisible = false;
     }
 }

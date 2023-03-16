@@ -1,6 +1,6 @@
 ﻿namespace NationalParks.ViewModels;
 
-public partial class ProgressVM : ObservableObject
+public partial class ProgressBarVM : ObservableObject
 {
     [ObservableProperty] double position;
     [ObservableProperty] string text;
