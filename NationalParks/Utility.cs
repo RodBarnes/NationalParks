@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace NationalParks;
 
@@ -17,5 +18,14 @@ public static class Utility
         }
 
         return sb.ToString();
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static string GetCurrentMethod()
+    {
+        var st = new StackTrace();
+        var sf = st.GetFrame(1);
+
+        return sf.GetMethod().Name;
     }
 }

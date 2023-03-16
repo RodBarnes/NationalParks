@@ -86,7 +86,7 @@ public partial class ParkDetailVM : DetailVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ParkDetailVM.GetParkProperties: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
     }
 }

@@ -93,7 +93,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.GetClosest: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
         finally
         {
@@ -121,7 +121,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.GetItems: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
         finally
         {
@@ -175,7 +175,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.FillLocationFromPark: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
     }
     private void ClearData()
@@ -268,7 +268,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetTopicsFilter: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
 
         return filter;
@@ -310,7 +310,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetActivitiesFilter: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
 
         return filter;
@@ -337,7 +337,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetAllTopicsAsync: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
     }
     protected static async Task GetAllActivitiesAsync()
@@ -362,7 +362,7 @@ public partial class ListVM : BaseVM
         catch (Exception ex)
         {
             var msg = Utility.ParseException(ex);
-            await Shell.Current.DisplayAlert("Error!", $"ListVM.GetAllActivitiesAsync: {msg}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"{this.GetType()}.{Utility.GetCurrentMethod()}: {msg}", "OK");
         }
     }
     protected static async Task ReadStates()
