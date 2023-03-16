@@ -6,8 +6,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ListVM"
              x:Class="NationalParks.Views.FilterView">
-    <Grid
-        ColumnDefinitions="*,*">
+    <Grid ColumnDefinitions="*,*">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="TermsArea" Height="66" />
             <RowDefinition x:Name="MainArea" Height="*" />
@@ -23,8 +22,7 @@
                        WidthRequest="300" 
                        HeightRequest="40"
                        Placeholder="One or more words, space delimited"
-                       ClearButtonVisibility="WhileEditing"
-                       />
+                       ClearButtonVisibility="WhileEditing"/>
             </HorizontalStackLayout>
         </Frame>
         <VerticalStackLayout Grid.Row ="1" Grid.ColumnSpan="2">
