@@ -7,8 +7,10 @@
              x:DataType="vm:DataTesterVM"
              x:Class="NationalParks.Pages.DataTesterPage"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Picker Title="Select Data Type" Margin="5,5,5,5" FontSize="16"
+    <Grid RowDefinitions="50,50,50,*">
+        <Picker Grid.Row="0"
+                Title="Select Data Type"
+                Margin="5,5,5,5" FontSize="16"
                 SelectedItem="{Binding SelectedType}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -27,7 +29,8 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Grid ColumnDefinitions="*,*,*">
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*">
             <Button Text="Start"
                     Command="{Binding StartActionCommand}"
                     Style="{StaticResource ButtonOutline}"
@@ -46,7 +49,8 @@
                     Margin="5"
                     Grid.Column="2"/>
         </Grid>
-        <Grid ColumnDefinitions="*,*,*"
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*,*"
               RowDefinitions="*,*"
               Padding="5">
             <Label Text="Status:"
@@ -68,5 +72,9 @@
                    Grid.Column="2" Grid.Row="1"
                    Style="{StaticResource LabelMedium}"/>
         </Grid>
-    </VerticalStackLayout>
+        <v:MessageView Grid.RowSpan="4"
+                       HeightRequest="90"
+                       WidthRequest="350"
+                       BindingContext="{Binding Message}" />
+    </Grid>
 </ContentPage>

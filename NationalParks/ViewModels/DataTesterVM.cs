@@ -16,6 +16,7 @@ public partial class DataTesterVM : ListVM
     [ObservableProperty] string currentState;
     [ObservableProperty] int currentCount;
     [ObservableProperty] int totalCount;
+    [ObservableProperty] MessageVM message = new();
 
     public DataTesterVM(DataService dataService, IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
@@ -37,7 +38,7 @@ public partial class DataTesterVM : ListVM
     {
         if (String.IsNullOrEmpty(SelectedType))
         {
-            await Shell.Current.DisplayAlert("Error", "First pick a data type...", "OK");
+            Message.Show("First pick a data type...");
             return;
         }
 
