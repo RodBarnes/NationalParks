@@ -2,7 +2,7 @@
 
 public partial class MessageVM : ObservableObject
 {
-    [ObservableProperty] string messageText;
+    [ObservableProperty] string text;
     [ObservableProperty] string buttonText;
 
     [ObservableProperty] bool isVisible;
@@ -11,14 +11,14 @@ public partial class MessageVM : ObservableObject
     {
         IsVisible = false;
         ButtonText = "OK";
-        MessageText = "Message";
+        Text = "Message";
     }
 
     public void Show(string msg = "", string button = "")
     {
         if (!String.IsNullOrEmpty(msg))
         {
-            MessageText = msg;
+            Text = msg;
         }
         if (!String.IsNullOrEmpty(button))
         {

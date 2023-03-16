@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:MessageVM"
-             x:Class="NationalParks.Views.MessageView">
-    <Frame Style="{StaticResource MessagPanel}" VerticalOptions="Center" IsVisible="{Binding IsVisible}" >
+             x:Class="NationalParks.Views.MessageView"
+             IsVisible="{Binding IsVisible}">
+    <Frame Style="{StaticResource MessagPanel}" VerticalOptions="Center" >
         <VerticalStackLayout>
-            <Label Text="{Binding MessageText}"
+            <Label Text="{Binding Text}"
                    Style="{StaticResource LabelMediumBold}"
                    HorizontalTextAlignment="Center"
                    Margin="0,0,0,5"/>
