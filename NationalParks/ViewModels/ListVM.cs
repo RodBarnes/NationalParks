@@ -13,11 +13,14 @@ public partial class ListVM : BaseVM
 
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
+    [ObservableProperty] string term;
+
+    // Progress bar
     [ObservableProperty] double progressClosest;
     [ObservableProperty] string progressText;
     [ObservableProperty] bool showClosestProgress;
-    [ObservableProperty] string term;
-    
+
+    // Message panel
     [ObservableProperty] MessageVM message = new();
 
     private string baseTitle;
