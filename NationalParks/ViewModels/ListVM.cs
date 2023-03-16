@@ -109,7 +109,6 @@ public partial class ListVM : BaseVM
         try
         {
             IsBusy = true;
-            await BuildFilterSelections();
 
             if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
@@ -118,6 +117,7 @@ public partial class ListVM : BaseVM
                 return result;
             }
 
+            await BuildFilterSelections();
             result = await DataService.GetItemsAsync<T>(term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
         }
         catch (Exception ex)
