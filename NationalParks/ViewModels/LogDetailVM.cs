@@ -8,7 +8,7 @@ public partial class LogDetailVM : BaseVM
     [ObservableProperty] CollapsibleListVM log1;
     [ObservableProperty] CollapsibleListVM log2;
     [ObservableProperty] CollapsibleListVM log3;
-    [ObservableProperty] bool noLogs;
+    [ObservableProperty] bool noData;
 
     readonly List<object>[] lists = new List<object>[3];
 
@@ -36,12 +36,12 @@ public partial class LogDetailVM : BaseVM
             if (files.Length > 0)
             {
                 Log1 = new CollapsibleListVM($"{Path.GetFileName(files[0])}", false, lists[0]);
-                NoLogs = false;
+                NoData = false;
             }
             else
             {
                 Log1 = new CollapsibleListVM("", false, new List<object>());
-                NoLogs = true;
+                NoData = true;
             }
 
             if (files.Length > 1)

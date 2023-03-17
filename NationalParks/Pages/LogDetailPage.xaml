@@ -26,7 +26,7 @@
                WidthRequest="160"
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               IsVisible="{Binding NoLogs}"/>
+               IsVisible="{Binding NoData}"/>
         <Button Text="Copy Logs"
                 Grid.Row="1"
                 Grid.Column="0"
