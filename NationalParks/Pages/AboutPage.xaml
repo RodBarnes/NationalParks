@@ -65,7 +65,7 @@
             <Button Text="View Log"
                     Margin="10"
                     WidthRequest="90"
-                    Command="{Binding ReadAllLogCommand}"
+                    Command="{Binding GoToLogDetailCommand}"
                     Style="{StaticResource ButtonOutline}"/>
             <Button Text="Tester"
                     Margin="10"

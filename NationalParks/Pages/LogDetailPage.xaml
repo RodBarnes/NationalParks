@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:v="clr-namespace:NationalParks.Views"
+             xmlns:vm="clr-namespace:NationalParks.ViewModels"
+             x:DataType="vm:LogDetailVM"
+             x:Class="NationalParks.Pages.LogDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
+    </ContentPage.Behaviors>
+    <ScrollView  Style="{StaticResource ScrollRegion}">
+        <VerticalStackLayout>
+            <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
+            <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
+            <v:CollapsibleListView BindingContext="{Binding Log3}" Padding="5"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

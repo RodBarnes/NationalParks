@@ -8,6 +8,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         Routing.RegisterRoute(nameof(ImageListPage), typeof(ImageListPage));
+        Routing.RegisterRoute(nameof(LogDetailPage), typeof(LogDetailPage));
         Routing.RegisterRoute(nameof(DataTesterPage), typeof(DataTesterPage));
         Routing.RegisterRoute(nameof(TestPage), typeof(TestPage));
 

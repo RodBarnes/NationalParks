@@ -3,11 +3,11 @@ Status
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
-Need to decide format of log entries and how to display them.
-	- Currently just a list of strings delimited by double new-line.
-	- Need to allow the user to somehow email the log file?  Copy the text?
+Need to allow the user to somehow email the log file?  Copy the text?
 
 Add a release notes section available from About page?
+
+Do I still need to the Bool Converter?  The IsVisible for Message is working without using it.
 
 
 Issues & Ideas

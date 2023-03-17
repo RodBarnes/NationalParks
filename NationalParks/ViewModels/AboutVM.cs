@@ -34,17 +34,9 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
-        public async Task ReadAllLog()
+        public async Task GoToLogDetail()
         {
-            try
-            {
-                var content = await Logger.ReadLog();
-                await Shell.Current.DisplayAlert("Log", content, "OK");
-            }
-            catch (Exception ex)
-            {
-                await Toast.Make(ex.Message).Show();
-            }
+            await Shell.Current.GoToAsync($"LogDetailPage", true);
         }
 
         [RelayCommand]
