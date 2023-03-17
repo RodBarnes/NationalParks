@@ -4,10 +4,12 @@ namespace NationalParks;
 
 public static class Logger
 {
-    private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
     public static int LogsToKeep { get; set; } = 2;
+    public static string LogPath { get; set; } = FileSystem.Current.AppDataDirectory;
+    public static string LogName { get; set; } = AppInfo.Name.Replace(' ', '_');
 
-    public static string Filename { get; set; } = $"{Path.Combine(FileSystem.Current.AppDataDirectory, AppInfo.Name.Replace(' ','_'))}_{Timestamp}_log";
+    private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
+    private static string Filename { get; set; } = $"{Path.Combine(LogPath, LogName)}_{Timestamp}_log";
     
     public static async Task WriteLogEntry(string entry, string path = "")
     {
