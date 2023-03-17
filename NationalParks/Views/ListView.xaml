@@ -10,17 +10,13 @@
           RowDefinitions="*,Auto"
           RowSpacing="0"
           Style="{StaticResource ScrollRegion}">
-        <CollectionView ItemsSource="{Binding Items}" Grid.Row="0" Grid.ColumnSpan="2"
-                SelectionMode="None"
-                RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
-                RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}">
-            <CollectionView.EmptyView>
-                <Image Source="data_loading_green"
-                    HeightRequest="160"
-                    WidthRequest="160"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-            </CollectionView.EmptyView>
+        <CollectionView ItemsSource="{Binding Items}"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        SelectionMode="None"
+                        RemainingItemsThreshold="{Binding ItemsRefreshThreshold}"
+                        RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}"
+                        IsVisible="{Binding HasData}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:BaseModel">
                     <Grid Padding="10,5" HorizontalOptions="Fill">
@@ -47,6 +43,14 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Image Source="data_loading_green"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               HeightRequest="160"
+               WidthRequest="160"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               IsVisible="{Binding NoData}"/>
         <Button Text="Closest"
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"

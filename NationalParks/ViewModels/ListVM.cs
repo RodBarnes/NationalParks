@@ -16,6 +16,8 @@ public partial class ListVM : BaseVM
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] string term;
+    [ObservableProperty] bool noData;
+    [ObservableProperty] bool hasData;
 
     [ObservableProperty] ProgressBarVM progressPanel = new();
     [ObservableProperty] MessageVM message = new();
@@ -119,6 +121,7 @@ public partial class ListVM : BaseVM
 
             await BuildFilterSelections();
             result = await DataService.GetItemsAsync<T>(term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
+            SetVisibleElements(result != null);
         }
         catch (Exception ex)
         {
@@ -187,7 +190,11 @@ public partial class ListVM : BaseVM
         Items.Clear();
         IsPopulated = false;
     }
-
+    private void SetVisibleElements(bool value)
+    {
+        HasData = value;
+        NoData = !value;
+    }
     #region Filter
 
     // Filters created from the selections
