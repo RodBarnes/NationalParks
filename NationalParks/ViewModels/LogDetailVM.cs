@@ -1,4 +1,7 @@
-﻿namespace NationalParks.ViewModels;
+﻿using System.Reflection;
+using System.Text;
+
+namespace NationalParks.ViewModels;
 
 public partial class LogDetailVM : BaseVM
 {
@@ -17,63 +20,107 @@ public partial class LogDetailVM : BaseVM
     [RelayCommand]
     public async Task PopulateData()
     {
-        var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-        var nbr = files.Length;
-        for (int i = 0; i < nbr; i++)
+        try
         {
-            var content = await Logger.ReadLog(files[i]);
-            var array = content.Split('\n');
-            var list = array.ToList();
+            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+            var nbr = files.Length;
+            for (int i = 0; i < nbr; i++)
+            {
+                var content = await Logger.ReadLog(files[i]);
+                var array = content.Split('\n');
+                var list = array.ToList();
 
-            lists[i] = list.ToList<object>();
-        }
+                lists[i] = list.ToList<object>();
+            }
 
-        if (files.Length > 0)
-        {
-            Log1 = new CollapsibleListVM($"{Path.GetFileName(files[0])}", false, lists[0]);
-            NoLogs = false;
-        }
-        else
-        {
-            Log1 = new CollapsibleListVM("", false, new List<object>());
-            NoLogs = true;
-        }
+            if (files.Length > 0)
+            {
+                Log1 = new CollapsibleListVM($"{Path.GetFileName(files[0])}", false, lists[0]);
+                NoLogs = false;
+            }
+            else
+            {
+                Log1 = new CollapsibleListVM("", false, new List<object>());
+                NoLogs = true;
+            }
 
-        if (files.Length > 1)
-        {
-            Log2 = new CollapsibleListVM($"{Path.GetFileName(files[1])}", false, lists[1]);
-        }
-        else
-        {
-            Log2 = new CollapsibleListVM("", false, new List<object>());
-        }
+            if (files.Length > 1)
+            {
+                Log2 = new CollapsibleListVM($"{Path.GetFileName(files[1])}", false, lists[1]);
+            }
+            else
+            {
+                Log2 = new CollapsibleListVM("", false, new List<object>());
+            }
 
-        if (files.Length > 2)
-        {
-            Log3 = new CollapsibleListVM($"{Path.GetFileName(files[2])}", false, lists[2]);
+            if (files.Length > 2)
+            {
+                Log3 = new CollapsibleListVM($"{Path.GetFileName(files[2])}", false, lists[2]);
+            }
+            else
+            {
+                Log3 = new CollapsibleListVM("", false, new List<object>());
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Log3 = new CollapsibleListVM("", false, new List<object>());
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
 
     [RelayCommand]
-    public void DeleteLogs()
+    public async Task DeleteLogs()
     {
-        var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-        var nbr = files.Length;
-        for (int i = 0; i < nbr; i++)
+        try
         {
-            Logger.DeleteLog(files[i]);
-        }
+            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+            var nbr = files.Length;
+            for (int i = 0; i < nbr; i++)
+            {
+                Logger.DeleteLog(files[i]);
+            }
 
-        PopulateData();
+            await PopulateData();
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
     }
 
     [RelayCommand]
-    public void EmailLogs()
+    public async Task CopyLogs()
     {
-        Shell.Current.DisplayAlert("Email", "On their way...", "OK");
+        try
+        {
+            StringBuilder sb = new();
+
+            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+            var nbr = files.Length;
+            for (int i = 0; i < nbr; i++)
+            {
+                sb.Append($"Logname: {Path.GetFileName(files[i])}");
+                var content = await Logger.ReadLog(files[i]);
+                sb.Append($"Content: {content}");
+            }
+
+            // Clear the clipboard
+            await Clipboard.Default.SetTextAsync(null);
+
+            // Put the contents in the clipboard
+            await Clipboard.Default.SetTextAsync(sb.ToString());
+
+            await Shell.Current.DisplayAlert("Copied", "Content was copied to the clipboard.  Open an email and paste into the body of the email.", "OK");
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
     }
 }

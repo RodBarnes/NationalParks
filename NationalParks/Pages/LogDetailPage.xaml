@@ -27,13 +27,13 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"
                IsVisible="{Binding NoLogs}"/>
-        <Button Text="Email Logs"
+        <Button Text="Copy Logs"
                 Grid.Row="1"
                 Grid.Column="0"
                 Margin="10"
                 WidthRequest="120"
                 VerticalOptions="End"
-                Command="{Binding EmailLogsCommand}"
+                Command="{Binding CopyLogsCommand}"
                 Style="{StaticResource ButtonOutline}"/>
         <Button Text="Delete Logs"
                 Grid.Row="1"
