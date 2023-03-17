@@ -17,7 +17,7 @@ public partial class ListVM : BaseVM
     [ObservableProperty] int itemsRefreshThreshold = -1;
     [ObservableProperty] string term;
 
-    [ObservableProperty] ProgressBarVM progressBar = new();
+    [ObservableProperty] ProgressBarVM progressPanel = new();
     [ObservableProperty] MessageVM message = new();
 
     private string baseTitle;
@@ -27,7 +27,7 @@ public partial class ListVM : BaseVM
         set
         {
             baseTitle = value;
-            ProgressBar.Text = $"Retrieving all {BaseTitle}...";
+            ProgressPanel.Text = $"Retrieving all {BaseTitle}...";
         }
     }
 

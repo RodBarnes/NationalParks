@@ -51,26 +51,26 @@ public partial class TourListVM : ListVM
         if (IsBusy)
             return;
 
-        ProgressBar.IsVisible = true;
+        ProgressPanel.IsVisible = true;
 
         if (Items.Count < TotalItems)
         {
             // Get the rest of the items
             LimitItems = 50;
-            while (TotalItems > Items.Count && ProgressBar.IsVisible)
+            while (TotalItems > Items.Count && ProgressPanel.IsVisible)
             {
-                ProgressBar.Position = (double)Items.Count / (double)TotalItems;
+                ProgressPanel.Position = (double)Items.Count / (double)TotalItems;
                 await GetItems();
             }
             LimitItems = 20;
         }
 
-        if (ProgressBar.IsVisible)
+        if (ProgressPanel.IsVisible)
         {
             await base.GetClosest();
-            ProgressBar.IsVisible = false;
+            ProgressPanel.IsVisible = false;
         }
 
-        ProgressBar.IsVisible = false;
+        ProgressPanel.IsVisible = false;
     }
 }
