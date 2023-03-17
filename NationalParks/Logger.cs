@@ -5,7 +5,7 @@ namespace NationalParks;
 public static class Logger
 {
     public static int LogsToKeep { get; set; } = 2;
-    public static string LogPath { get; set; } = FileSystem.Current.AppDataDirectory;
+    public static string LogPath { get; set; } = FileSystem.Current.CacheDirectory;
     public static string LogName { get; set; } = AppInfo.Name.Replace(' ', '_');
 
     private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
@@ -31,7 +31,7 @@ public static class Logger
 
         if (File.Exists(path))
         {
-            using StreamReader reader = new StreamReader(path);
+            using StreamReader reader = new(path);
             content = await reader.ReadToEndAsync();
         }
         else
@@ -45,7 +45,7 @@ public static class Logger
     public static void RotateLogs(int nbrToKeep = -1)
     {
         // Delete all but the last 'N' logs
-        var files = Directory.GetFiles(FileSystem.Current.AppDataDirectory, $"{AppInfo.Name.Replace(' ', '_')}*");
+        var files = Directory.GetFiles(LogPath, $"{LogName}*");
         var i = 0;
 
         if (nbrToKeep == -1)
