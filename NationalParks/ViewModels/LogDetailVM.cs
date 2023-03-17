@@ -9,6 +9,7 @@ public partial class LogDetailVM : BaseVM
     [ObservableProperty] CollapsibleListVM log2;
     [ObservableProperty] CollapsibleListVM log3;
     [ObservableProperty] bool noData;
+    [ObservableProperty] bool hasData;
 
     readonly List<object>[] lists = new List<object>[3];
 
@@ -36,12 +37,10 @@ public partial class LogDetailVM : BaseVM
             if (files.Length > 0)
             {
                 Log1 = new CollapsibleListVM($"{Path.GetFileName(files[0])}", false, lists[0]);
-                NoData = false;
             }
             else
             {
                 Log1 = new CollapsibleListVM("", false, new List<object>());
-                NoData = true;
             }
 
             if (files.Length > 1)
@@ -61,6 +60,8 @@ public partial class LogDetailVM : BaseVM
             {
                 Log3 = new CollapsibleListVM("", false, new List<object>());
             }
+
+            SetVisibleElements(Log1.Items.Count > 0);
         }
         catch (Exception ex)
         {
@@ -122,5 +123,11 @@ public partial class LogDetailVM : BaseVM
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
             await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
+    }
+
+    private void SetVisibleElements(bool value)
+    {
+        HasData = value;
+        NoData = !value;
     }
 }

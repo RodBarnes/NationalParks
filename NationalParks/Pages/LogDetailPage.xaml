@@ -12,7 +12,10 @@
     </ContentPage.Behaviors>
     <Grid RowDefinitions="*,62"
           ColumnDefinitions="*,*">
-        <ScrollView Grid.Row="0" Grid.ColumnSpan="2">
+        <ScrollView Style="{StaticResource ScrollRegion}" 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2"
+                    IsVisible="{Binding HasData}">
             <VerticalStackLayout>
                 <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
                 <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
