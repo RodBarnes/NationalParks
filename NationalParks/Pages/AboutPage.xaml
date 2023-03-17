@@ -59,17 +59,17 @@
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="App Info"
                     Margin="10"
-                    WidthRequest="90"
+                    WidthRequest="100"
                     Command="{Binding GoToAppInfoCommand}"
                     Style="{StaticResource ButtonOutline}"/>
-            <Button Text="View Log"
+            <Button Text="View Logs"
                     Margin="10"
-                    WidthRequest="90"
+                    WidthRequest="100"
                     Command="{Binding GoToLogDetailCommand}"
                     Style="{StaticResource ButtonOutline}"/>
             <Button Text="Tester"
                     Margin="10"
-                    WidthRequest="90"
+                    WidthRequest="100"
                     Command="{Binding GoToDataTesterCommand}"
                     Style="{StaticResource ButtonOutline}"/>
         </HorizontalStackLayout>

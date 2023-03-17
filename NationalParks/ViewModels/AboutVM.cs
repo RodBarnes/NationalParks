@@ -38,11 +38,5 @@ namespace NationalParks.ViewModels
         {
             await Shell.Current.GoToAsync($"LogDetailPage", true);
         }
-
-        [RelayCommand]
-        public void DeleteLog()
-        {
-            Logger.DeleteLog();
-        }
     }
 }
