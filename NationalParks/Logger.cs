@@ -4,7 +4,10 @@ namespace NationalParks;
 
 public static class Logger
 {
-    public static string Filename { get; set; } = $"{Path.Combine(FileSystem.Current.AppDataDirectory, AppInfo.Name.Replace(' ','_'))}_log";
+    private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
+    public static int LogsToKeep { get; set; } = 2;
+
+    public static string Filename { get; set; } = $"{Path.Combine(FileSystem.Current.AppDataDirectory, AppInfo.Name.Replace(' ','_'))}_{Timestamp}_log";
     
     public static async Task WriteLogEntry(string entry, string path = "")
     {
@@ -35,6 +38,28 @@ public static class Logger
         }
 
         return content;
+    }
+
+    public static void RotateLogs(int nbrToKeep = -1)
+    {
+        // Delete all but the last 'N' logs
+        var files = Directory.GetFiles(FileSystem.Current.AppDataDirectory, $"{AppInfo.Name.Replace(' ', '_')}*");
+        var i = 0;
+
+        if (nbrToKeep == -1)
+            nbrToKeep = LogsToKeep;
+
+        foreach(var file in files)
+        {
+            if (i < nbrToKeep)
+            {
+                i++;
+            }
+            else
+            {
+                File.Delete(file);
+            }
+        }
     }
 
     public static void DeleteLog(string path = "")
