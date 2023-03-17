@@ -10,11 +10,11 @@
     <ContentPage.Behaviors>
         <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
     </ContentPage.Behaviors>
-    <ScrollView  Style="{StaticResource ScrollRegion}">
+    <ScrollView>
         <VerticalStackLayout>
-            <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
-            <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
-            <v:CollapsibleListView BindingContext="{Binding Log3}" Padding="5"/>
+        <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
+        <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
+        <v:CollapsibleListView BindingContext="{Binding Log3}" Padding="5"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
