@@ -34,7 +34,7 @@ public partial class DetailVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
 
@@ -79,7 +79,7 @@ public partial class DetailVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
 }

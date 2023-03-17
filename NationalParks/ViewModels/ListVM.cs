@@ -94,7 +94,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
         finally
         {
@@ -123,7 +123,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
         finally
         {
@@ -178,7 +178,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
     private void ClearData()
@@ -272,7 +272,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
 
         return filter;
@@ -315,7 +315,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
 
         return filter;
@@ -343,7 +343,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
     protected static async Task GetAllActivitiesAsync()
@@ -369,7 +369,7 @@ public partial class ListVM : BaseVM
         {
             var msg = Utility.ParseException(ex);
             var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Shell.Current.DisplayAlert("Error!", $"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}", "OK");
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
         }
     }
     protected static async Task ReadStates()

@@ -1,4 +1,6 @@
-﻿namespace NationalParks.ViewModels
+﻿using CommunityToolkit.Maui.Alerts;
+
+namespace NationalParks.ViewModels
 {
     public partial class AboutVM : BaseVM
     {
@@ -29,6 +31,26 @@
         public async Task GoToDataTester()
         {
             await Shell.Current.GoToAsync($"DataTesterPage", true);
+        }
+
+        [RelayCommand]
+        public async Task ReadAllLog()
+        {
+            try
+            {
+                var content = await Logger.ReadLog();
+                await Shell.Current.DisplayAlert("Log", content, "OK");
+            }
+            catch (Exception ex)
+            {
+                await Toast.Make(ex.Message).Show();
+            }
+        }
+
+        [RelayCommand]
+        public void DeleteLog()
+        {
+            Logger.DeleteLog();
         }
     }
 }

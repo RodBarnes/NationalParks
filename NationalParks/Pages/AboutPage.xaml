@@ -58,15 +58,20 @@
         </Frame>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="App Info"
-                Margin="10"
-                WidthRequest="120"
-                Command="{Binding GoToAppInfoCommand}"
-                Style="{StaticResource ButtonOutline}"/>
+                    Margin="10"
+                    WidthRequest="90"
+                    Command="{Binding GoToAppInfoCommand}"
+                    Style="{StaticResource ButtonOutline}"/>
+            <Button Text="View Log"
+                    Margin="10"
+                    WidthRequest="90"
+                    Command="{Binding ReadAllLogCommand}"
+                    Style="{StaticResource ButtonOutline}"/>
             <Button Text="Tester"
-                Margin="10"
-                WidthRequest="120"
-                Command="{Binding GoToDataTesterCommand}"
-                Style="{StaticResource ButtonOutline}"/>
+                    Margin="10"
+                    WidthRequest="90"
+                    Command="{Binding GoToDataTesterCommand}"
+                    Style="{StaticResource ButtonOutline}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

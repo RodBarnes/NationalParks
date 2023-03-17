@@ -3,7 +3,7 @@ Status
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
-Replace Shell.Current.DisplayAlert() with MessageVM.Show in non-exception instances.
+Need to decide format of log entries and how to display them.  Currently just a list of strings delimited by double new-line.
 
 Add a release notes section available from About page?
 
