@@ -10,11 +10,38 @@
     <ContentPage.Behaviors>
         <tk:EventToCommandBehavior EventName="Appearing" Command="{Binding PopulateDataCommand}" />
     </ContentPage.Behaviors>
-    <ScrollView>
-        <VerticalStackLayout>
-        <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
-        <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
-        <v:CollapsibleListView BindingContext="{Binding Log3}" Padding="5"/>
-        </VerticalStackLayout>
-    </ScrollView>
+    <Grid RowDefinitions="*,62"
+          ColumnDefinitions="*,*">
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="2">
+            <VerticalStackLayout>
+                <v:CollapsibleListView BindingContext="{Binding Log1}" Padding="5"/>
+                <v:CollapsibleListView BindingContext="{Binding Log2}" Padding="5"/>
+                <v:CollapsibleListView BindingContext="{Binding Log3}" Padding="5"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Image Source="data_loading_green"
+               Grid.RowSpan="1"
+               Grid.ColumnSpan="2"
+               HeightRequest="160"
+               WidthRequest="160"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               IsVisible="{Binding NoLogs}"/>
+        <Button Text="Email Logs"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="10"
+                WidthRequest="120"
+                VerticalOptions="End"
+                Command="{Binding EmailLogsCommand}"
+                Style="{StaticResource ButtonOutline}"/>
+        <Button Text="Delete Logs"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="10"
+                WidthRequest="120"
+                VerticalOptions="End"
+                Command="{Binding DeleteLogsCommand}"
+                Style="{StaticResource ButtonOutline}"/>
+    </Grid>
 </ContentPage>

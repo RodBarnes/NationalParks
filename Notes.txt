@@ -12,6 +12,10 @@ Do I still need to the Bool Converter?  The IsVisible for Message is working wit
 
 Issues & Ideas
 --------------
+Images breaking issue
+	- Maybe its the csproj?  Start with a clean project and add all the modules to it?
+	- Try copying source to new location, open that solution and change to reference the source projects for CommunityToolkit.MVVM and CommunityToolkit.Maui to determine whether/where the error occurs in them?
+
 "Specified cast is not valid" error
 	- It seems to happen only while deserializing and only after a number of API calls have been made.
 	- I can run DataTester through each of the 12 (except Events which is hobbled at 10/request) x6 without ever encountering the error.
