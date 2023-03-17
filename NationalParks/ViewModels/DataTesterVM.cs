@@ -1,4 +1,5 @@
-﻿using NationalParks.Services;
+﻿using CommunityToolkit.Maui.Alerts;
+using NationalParks.Services;
 using System.Reflection;
 
 namespace NationalParks.ViewModels;
@@ -39,7 +40,7 @@ public partial class DataTesterVM : ListVM
     {
         if (String.IsNullOrEmpty(SelectedType))
         {
-            Message.Show("First pick a data type...");
+            await Toast.Make("First pick a data type...").Show();
             return;
         }
 

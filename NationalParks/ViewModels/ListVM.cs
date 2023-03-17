@@ -1,4 +1,5 @@
-﻿using NationalParks.Services;
+﻿using CommunityToolkit.Maui.Alerts;
+using NationalParks.Services;
 using System.Reflection;
 using System.Text.Json;
 
@@ -407,7 +408,7 @@ public partial class ListVM : BaseVM
     }
 
     [RelayCommand]
-    public void ClearFilter()
+    public async void ClearFilter()
     {
         // Clear the selections
         SelectedTopics.Clear();
@@ -415,7 +416,7 @@ public partial class ListVM : BaseVM
         SelectedStates.Clear();
         QueryFilter = "";
 
-        Message.Show("All filter values have been cleared.");
+        await Toast.Make("All filter values have been cleared.").Show();
     }
 
     #endregion
