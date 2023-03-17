@@ -17,7 +17,6 @@ public partial class ListVM : BaseVM
     [ObservableProperty] string term;
 
     [ObservableProperty] ProgressBarVM progressBar = new();
-
     [ObservableProperty] MessageVM message = new();
 
     private string baseTitle;
