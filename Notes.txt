@@ -3,8 +3,6 @@ Status
 Images is now breaking??  Submitted issue https://github.com/dotnet/maui/issues/13932
 Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dotnet/maui/issues/13659
 
-Add device ID to log send?
-
 Add a release notes section available from About page?
 
 Do I still need to the Bool Converter?  The IsVisible for Message is working without using it.
