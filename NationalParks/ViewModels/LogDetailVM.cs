@@ -104,7 +104,7 @@ public partial class LogDetailVM : BaseVM
             var nbr = files.Length;
             for (int i = 0; i < nbr; i++)
             {
-                sb.Append($"Logname: {Path.GetFileName(files[i])}");
+                sb.Append($"Logname: {Path.GetFileName(files[i])}\n");
                 var content = await Logger.ReadLog(files[i]);
                 sb.Append($"Content: {content}");
             }
