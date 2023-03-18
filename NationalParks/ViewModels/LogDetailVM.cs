@@ -77,10 +77,9 @@ public partial class LogDetailVM : BaseVM
         try
         {
             var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-            var nbr = files.Length;
-            for (int i = 0; i < nbr; i++)
+            foreach(var file in files)
             {
-                Logger.DeleteLog(files[i]);
+                Logger.DeleteLog(file);
             }
 
             await PopulateData();
@@ -98,29 +97,32 @@ public partial class LogDetailVM : BaseVM
     {
         try
         {
-            StringBuilder sb = new();
+            StringBuilder logInfo = new();
 
             var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-            var nbr = files.Length;
-            for (int i = 0; i < nbr; i++)
+            foreach(var file in files)
             {
-                sb.Append($"Logname: {Path.GetFileName(files[i])}\n");
-                var content = await Logger.ReadLog(files[i]);
-                sb.Append($"Content: {content}");
+                logInfo.Append($"Logname: {Path.GetFileName(file)}\n");
+                var content = await Logger.ReadLog(file);
+                logInfo.Append($"Content: {content}");
             }
 
-            // Clear the clipboard
-            await Clipboard.Default.SetTextAsync(null);
+            var devInfo = $"Mfg: {DeviceInfo.Current.Manufacturer}\n" +
+                $"Model: {DeviceInfo.Current.Model}\n" +
+                $"Platform: {DeviceInfo.Platform}\n" +
+                $"OS Version: {DeviceInfo.Current.Version}\n" +
+                $"Name: {DeviceInfo.Current.Name}\n";
 
-            // Put the contents in the clipboard
-            await Clipboard.Default.SetTextAsync(sb.ToString());
+            var appInfo = $"Name: {AppInfo.Current.Name}\n" +
+                $"Version: {AppInfo.Current.VersionString}\n" +
+                $"Build: {AppInfo.Current.BuildString}\n";
 
-            var address = Config.SupportEmailAddress;
             var subject = "NPS Info Logs";
-            var body = sb.ToString();
-
-            var recipients = new List<string>();
-            recipients.Add(address);
+            var body = $"App Info\n{appInfo}\nDevice Info\n{devInfo}\n{logInfo}";
+            var recipients = new List<string>
+            {
+                Config.SupportEmailAddress
+            };
 
             var message = new EmailMessage
             {
