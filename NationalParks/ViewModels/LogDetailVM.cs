@@ -94,7 +94,7 @@ public partial class LogDetailVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task EmailLogs()
+    public async Task SendLogs()
     {
         try
         {
@@ -115,8 +115,8 @@ public partial class LogDetailVM : BaseVM
             // Put the contents in the clipboard
             await Clipboard.Default.SetTextAsync(sb.ToString());
 
-            var address = "support@advappsw.com";
-            var subject = "NPS Info";
+            var address = Config.SupportEmailAddress;
+            var subject = "NPS Info Logs";
             var body = sb.ToString();
 
             var recipients = new List<string>();
