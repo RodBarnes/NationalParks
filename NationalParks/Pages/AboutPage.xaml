@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
+             xmlns:local="clr-namespace:NationalParks"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              xmlns:controls="clr-namespace:NationalParks.Controls"
@@ -34,6 +36,11 @@
                     <Label Text="Copyright © 2022,2023"
                        Style="{StaticResource LabelSmall}"
                        HorizontalOptions="Center"/>
+                    <ctrl:HyperlinkLabel
+                        Text="{Binding Source={x:Static local:Config.SupportEmailAddress}}"
+                                         Url="{Binding SupportUrl}"
+                                         HorizontalOptions="Center"
+                                         Style="{StaticResource LabelSmall}"/>
                 </VerticalStackLayout>
             </Grid>
         </Frame>

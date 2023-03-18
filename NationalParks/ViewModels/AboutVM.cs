@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-
-namespace NationalParks.ViewModels
+﻿namespace NationalParks.ViewModels
 {
     public partial class AboutVM : BaseVM
     {
@@ -10,6 +8,7 @@ namespace NationalParks.ViewModels
         [ObservableProperty] string package;
         [ObservableProperty] string buildString;
         [ObservableProperty] Version version;
+        [ObservableProperty] string supportUrl;
 
         public AboutVM()
         {
@@ -19,6 +18,8 @@ namespace NationalParks.ViewModels
             Package = AppInfo.Current.PackageName;
             BuildString = AppInfo.Current.BuildString;
             Name = AppInfo.Name;
+            SupportUrl = $"mailto:{Config.SupportEmailAddress}";
+
         }
 
         [RelayCommand]
