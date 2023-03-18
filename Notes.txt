@@ -11,8 +11,13 @@ Do I still need to the Bool Converter?  The IsVisible for Message is working wit
 Issues & Ideas
 --------------
 Images breaking issue
-	- Maybe its the csproj?  Start with a clean project and add all the modules to it?
-	- Try copying source to new location, open that solution and change to reference the source projects for CommunityToolkit.MVVM and CommunityToolkit.Maui to determine whether/where the error occurs in them?
+	- Try copying source to new location, open that solution and change to reference the source projects for CommunityToolkit.MVVM and CommunityToolkit.Maui to determine whether/where the error occurs in them?  Did this mostly but didn't see an improvement beyond initially getting it to work in light mode after switching CommunityToolkit.Maui and, first, building without the project references and, then, adding the project references and then building and running.
+	- So, maybe try this all again and use the NoDark repo?
+
+	- Maybe its the csproj?
+		- Start with a clean project and add all the modules to it?
+		- Or a new app with a main page and the ImageList page?
+
 
 "Specified cast is not valid" error
 	- It seems to happen only while deserializing and only after a number of API calls have been made.
