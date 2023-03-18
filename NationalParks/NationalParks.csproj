@@ -67,6 +67,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_nps.svg" TintColor="White" />
+		<MauiIcon Include="Resources\appiconfg_nps.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\advapp_splash.png" Color="#0A465A" />
