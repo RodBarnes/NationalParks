@@ -5,9 +5,6 @@ Entry.ClearButtonVisibility is not working.  Opened issue https://github.com/dot
 
 Add a release notes section available from About page?
 
-The "CopyLogs" message should direct them to go to their email, paste into the body, and send it to advappsw@gmail.com
-	- Can I draft the email and paste the logs into it? And then direct them to go to their email to send it?
-
 Do I still need to the Bool Converter?  The IsVisible for Message is working without using it.
 
 

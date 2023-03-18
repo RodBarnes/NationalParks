@@ -94,7 +94,7 @@ public partial class LogDetailVM : BaseVM
     }
 
     [RelayCommand]
-    public async Task CopyLogs()
+    public async Task EmailLogs()
     {
         try
         {
@@ -115,7 +115,22 @@ public partial class LogDetailVM : BaseVM
             // Put the contents in the clipboard
             await Clipboard.Default.SetTextAsync(sb.ToString());
 
-            await Shell.Current.DisplayAlert("Copied", "Content was copied to the clipboard.  Open an email and paste into the body of the email.", "OK");
+            var address = "support@advappsw.com";
+            var subject = "NPS Info";
+            var body = sb.ToString();
+
+            var recipients = new List<string>();
+            recipients.Add(address);
+
+            var message = new EmailMessage
+            {
+                Subject = subject,
+                Body = body,
+                BodyFormat = EmailBodyFormat.PlainText,
+                To = new List<string>(recipients)
+            };
+
+            await Email.Default.ComposeAsync(message);
         }
         catch (Exception ex)
         {
