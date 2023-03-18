@@ -11,11 +11,14 @@ public partial class LogDetailVM : BaseVM
     [ObservableProperty] bool noData;
     [ObservableProperty] bool hasData;
 
+    IGetDeviceInfo getDeviceInfo;
+
     readonly List<object>[] lists = new List<object>[3];
 
-    public LogDetailVM()
+    public LogDetailVM(IGetDeviceInfo getDeviceInfo)
     {
         Title = "Logs";
+        this.getDeviceInfo = getDeviceInfo;
     }
 
     [RelayCommand]
@@ -111,7 +114,8 @@ public partial class LogDetailVM : BaseVM
                 $"Model: {DeviceInfo.Current.Model}\n" +
                 $"Platform: {DeviceInfo.Platform}\n" +
                 $"OS Version: {DeviceInfo.Current.Version}\n" +
-                $"Name: {DeviceInfo.Current.Name}\n";
+                $"Name: {DeviceInfo.Current.Name}\n" +
+                $"ID: {getDeviceInfo.GetDeviceID()}\n";
 
             var appInfo = $"Name: {AppInfo.Current.Name}\n" +
                 $"Version: {AppInfo.Current.VersionString}\n" +

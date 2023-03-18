@@ -323,4 +323,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <EditorConfigFiles Remove="E:\Source\GitHub\NationalParks\NationalParks\Platforms\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="E:\Source\GitHub\NationalParks\NationalParks\Platforms\.editorconfig" />
+	</ItemGroup>
 </Project>
