@@ -1,5 +1,7 @@
-﻿namespace NationalParks.ViewModels
-{
+﻿using CommunityToolkit.Maui.Alerts;
+
+namespace NationalParks.ViewModels;
+
     public partial class CollapsibleViewVM : ObservableObject
     {
         [ObservableProperty] bool hasContent;
@@ -31,5 +33,12 @@
                 Icon = closeIcon;
             }
         }
+
+    [RelayCommand]
+    public async Task Copy(object obj)
+    {
+        // Put the contents in the clipboard
+        await Clipboard.Default.SetTextAsync(obj.ToString());
+        await Toast.Make("Text copied to clipboard.").Show();
     }
 }
