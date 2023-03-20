@@ -47,7 +47,7 @@ public partial class DetailVM : BaseVM
             return;
         }
 
-        await Shell.Current.GoToAsync(nameof(TestPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(ImageListPage), true, new Dictionary<string, object>
         {
             { "Images", images }
         });
