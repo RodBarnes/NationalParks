@@ -65,10 +65,19 @@ public partial class ListVM : BaseVM
         if (model == null)
             return;
 
-        await Shell.Current.GoToAsync($"{model.GetType().Name}DetailPage", true, new Dictionary<string, object>
+        try
         {
-            {"Model", model}
-        });
+            await Shell.Current.GoToAsync($"{model.GetType().Name}DetailPage", true, new Dictionary<string, object>
+            {
+                {"Model", model}
+            });
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
     }
 
     protected async Task GetClosest()
@@ -400,18 +409,37 @@ public partial class ListVM : BaseVM
     [RelayCommand]
     public async Task GoToFilter(string pageType)
     {
-        await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
+        try
         {
-            {"VM", this }
-        });
+            await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
+            {
+                {"VM", this }
+            });
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
     }
 
     [RelayCommand]
     public async Task ApplyFilter()
     {
-        // Clear the list
-        ClearData();
-        await Shell.Current.GoToAsync("..", true);
+        try
+        {
+            // Clear the list
+            ClearData();
+
+            await Shell.Current.GoToAsync("..", true);
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
     }
 
     [RelayCommand]

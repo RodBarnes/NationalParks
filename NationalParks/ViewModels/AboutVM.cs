@@ -1,4 +1,6 @@
-﻿namespace NationalParks.ViewModels
+﻿using System.Reflection;
+
+namespace NationalParks.ViewModels
 {
     public partial class AboutVM : BaseVM
     {
@@ -31,13 +33,31 @@
         [RelayCommand]
         public async Task GoToDataTester()
         {
-            await Shell.Current.GoToAsync($"DataTesterPage", true);
+            try
+            {
+                await Shell.Current.GoToAsync($"DataTesterPage", true);
+            }
+            catch (Exception ex)
+            {
+                var msg = Utility.ParseException(ex);
+                var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+                await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            }
         }
 
         [RelayCommand]
         public async Task GoToLogDetail()
         {
-            await Shell.Current.GoToAsync($"LogDetailPage", true);
+            try
+            {
+                await Shell.Current.GoToAsync($"LogDetailPage", true);
+            }
+            catch (Exception ex)
+            {
+                var msg = Utility.ParseException(ex);
+                var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+                await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            }
         }
     }
 }
