@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ctrl="clr-namespace:NationalParks.Controls"
-             xmlns:local="clr-namespace:NationalParks"
+             xmlns:advapp="clr-namespace:AdvApp"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              xmlns:model="clr-namespace:NationalParks.Models"
              xmlns:controls="clr-namespace:NationalParks.Controls"
@@ -37,7 +37,7 @@
                        Style="{StaticResource LabelSmall}"
                        HorizontalOptions="Center"/>
                     <ctrl:HyperlinkLabel
-                        Text="{Binding Source={x:Static local:Config.SupportEmailAddress}}"
+                        Text="{Binding Source={x:Static advapp:Config.SupportEmailAddress}}"
                                          Url="{Binding SupportUrl}"
                                          HorizontalOptions="Center"
                                          Style="{StaticResource LabelSmall}"/>
