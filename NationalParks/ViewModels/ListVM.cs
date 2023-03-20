@@ -400,41 +400,9 @@ public partial class ListVM : BaseVM
     [RelayCommand]
     public async Task GoToFilter(string pageType)
     {
-        var images = new List<Models.Image>
+        await Shell.Current.GoToAsync($"{pageType}FilterPage", true, new Dictionary<string, object>
         {
-            new Models.Image {
-                Credit = "NPS Photo",
-                Title = "The Memorial Building with fall colors",
-                AltText = "The Memorial Building surrounded by fall colors",
-                Caption = "Over 200,000 people a year come to walk up the steps of the Memorial Building to visit the site where Abraham Lincoln was born",
-                Url = "https://www.nps.gov/common/uploads/structured_data/3C861078-1DD8-B71B-0B774A242EF6A706.jpg"
-            },
-            new Models.Image {
-                Credit = "NPS Photo",
-                Title = "The Memorial Building",
-                AltText = "The first memorial erected to honor Abraham Lincoln",
-                Caption = "The Memorial Building constructed on the traditional site of the birth of Abraham Lincoln.",
-                Url = "https://www.nps.gov/common/uploads/structured_data/3C861263-1DD8-B71B-0B71EF9B95F9644F.jpg"
-            },
-            new Models.Image {
-                Credit = "NPS Photo",
-                Title = "The Symbolic Birth Cabin of Abraham Lincoln",
-                AltText = "The symbolic birth cabin on the traditional site of the birth of Abraham Lincoln.",
-                Caption = "The symbolic birth cabin of Abraham Lincoln.",
-                Url = "https://www.nps.gov/common/uploads/structured_data/3C86137D-1DD8-B71B-0B978BACD7EBAEF1.jpg"
-            },
-            new Models.Image {
-                Credit = "NPS Photo",
-                Title = "Statue of the Lincoln Family in the Visitor Center",
-                AltText = "Statue of the Lincoln family in the park's Visitor Center",
-                Caption = "Visitors to the park can view the statue of the Lincoln family.",
-                Url = "https://www.nps.gov/common/uploads/structured_data/3C8614D1-1DD8-B71B-0B1AF72CA452B051.jpg"
-            }
-        };
-
-        await Shell.Current.GoToAsync($"ImageListPage", true, new Dictionary<string, object>
-        {
-            {"Images", images }
+            {"VM", this }
         });
     }
 
