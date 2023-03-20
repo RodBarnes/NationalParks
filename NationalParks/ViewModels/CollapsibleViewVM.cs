@@ -2,37 +2,37 @@
 
 namespace NationalParks.ViewModels;
 
-    public partial class CollapsibleViewVM : ObservableObject
+public partial class CollapsibleViewVM : ObservableObject
+{
+    [ObservableProperty] bool hasContent;
+    [ObservableProperty] string icon;
+    [ObservableProperty] string title;
+    [ObservableProperty] bool isOpen;
+
+    private readonly string openIcon = "arrow_down_green";
+    private readonly string closeIcon= "arrow_up_green";
+
+    public CollapsibleViewVM(string title, bool isOpen)
     {
-        [ObservableProperty] bool hasContent;
-        [ObservableProperty] string icon;
-        [ObservableProperty] string title;
-        [ObservableProperty] bool isOpen;
+        Title = title;
+        IsOpen = isOpen;
+        Icon = (IsOpen) ? closeIcon : openIcon;
+    }
 
-        private readonly string openIcon = "arrow_down_green";
-        private readonly string closeIcon= "arrow_up_green";
-
-        public CollapsibleViewVM(string title, bool isOpen)
+    [RelayCommand]
+    public void Toggle()
+    {
+        if (IsOpen)
         {
-            Title = title;
-            IsOpen = isOpen;
-            Icon = (IsOpen) ? closeIcon : openIcon;
+            IsOpen = false;
+            Icon = openIcon;
         }
-
-        [RelayCommand]
-        public void Toggle()
+        else
         {
-            if (IsOpen)
-            {
-                IsOpen = false;
-                Icon = openIcon;
-            }
-            else
-            {
-                IsOpen = true;
-                Icon = closeIcon;
-            }
+            IsOpen = true;
+            Icon = closeIcon;
         }
+    }
 
     [RelayCommand]
     public async Task Copy(object obj)
