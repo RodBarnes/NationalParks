@@ -3,8 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:p="clr-namespace:NationalParks.Pages"
        x:Class="NationalParks.AppShell"
-       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}"
-       CurrentItem="{x:Reference StartItem}">
+       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -44,12 +43,11 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Parks" Icon="tree_green">
-        <ShellContent ContentTemplate="{DataTemplate p:ParkListPage}"
-                      x:Name="StartItem" />
-    </FlyoutItem>
     <FlyoutItem Title="Campgrounds" Icon="campfire_green">
         <ShellContent ContentTemplate="{DataTemplate p:CampgroundListPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Parks" Icon="tree_green">
+        <ShellContent ContentTemplate="{DataTemplate p:ParkListPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Things To Do" Icon="eye_green">
         <ShellContent ContentTemplate="{DataTemplate p:ThingToDoListPage}" />
