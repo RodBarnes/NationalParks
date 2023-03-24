@@ -15,13 +15,6 @@ public partial class ParkListVM : ListVM
     }
 
     [RelayCommand]
-    public new async Task PopulateData()
-    {
-        await GetItems();
-        await base.PopulateData();
-    }
-
-    [RelayCommand]
     public async Task GetItems()
     {
         if (IsBusy)
@@ -49,6 +42,9 @@ public partial class ParkListVM : ListVM
     [RelayCommand]
     public new async Task GetClosest()
     {
+        await Shell.Current.DisplayAlert("Test", $"Items.Count={Items.Count}", "OK");
+        return;
+
         if (IsBusy)
             return;
 
@@ -73,5 +69,11 @@ public partial class ParkListVM : ListVM
         }
 
         IsBusy = false;
+    }
+
+    public new async Task PopulateData()
+    {
+        await GetItems();
+        await base.PopulateData();
     }
 }

@@ -13,13 +13,6 @@ public partial class ThingToDoListVM : ListVM
     }
 
     [RelayCommand]
-    public new async Task PopulateData()
-    {
-        await GetItems();
-        await base.PopulateData();
-    }
-
-    [RelayCommand]
     public async Task GetItems()
     {
         if (IsBusy)
@@ -71,5 +64,11 @@ public partial class ThingToDoListVM : ListVM
         }
 
         ProgressPanel.IsVisible = false;
+    }
+
+    public new async Task PopulateData()
+    {
+        await GetItems();
+        await base.PopulateData();
     }
 }

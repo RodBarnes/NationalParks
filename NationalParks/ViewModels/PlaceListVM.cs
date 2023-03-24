@@ -14,13 +14,6 @@ public partial class PlaceListVM : ListVM
     }
 
     [RelayCommand]
-    public new async Task PopulateData()
-    {
-        await GetItems();
-        await base.PopulateData();
-    }
-
-    [RelayCommand]
     public async Task GetItems()
     {
         if (IsBusy)
@@ -72,5 +65,11 @@ public partial class PlaceListVM : ListVM
         }
 
         ProgressPanel.IsVisible = false;
+    }
+
+    public new async Task PopulateData()
+    {
+        await GetItems();
+        await base.PopulateData();
     }
 }
