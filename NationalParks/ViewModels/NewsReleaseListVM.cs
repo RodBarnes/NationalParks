@@ -39,37 +39,13 @@ public partial class NewsReleaseListVM : ListVM
     }
 
     [RelayCommand]
-    public new async Task GetClosest()
+    public async Task GetClosest()
     {
-        if (IsBusy)
-            return;
-
-        ProgressPanel.IsVisible = true;
-
-        if (Items.Count < TotalItems)
-        {
-            // Get the rest of the items
-            LimitItems = 50;
-            while (TotalItems > Items.Count && ProgressPanel.IsVisible)
-            {
-                ProgressPanel.Position = (double)Items.Count / (double)TotalItems;
-                await GetItems();
-            }
-            LimitItems = 20;
-        }
-
-        if (ProgressPanel.IsVisible)
-        {
-            await base.GetClosest();
-            ProgressPanel.IsVisible = false;
-        }
-
-        ProgressPanel.IsVisible = false;
+        await GetClosest(GetItems);
     }
 
-    public new async Task PopulateData()
+    public async Task PopulateData()
     {
-        await GetItems();
-        await base.PopulateData();
+        await PopulateData(GetItems);
     }
 }

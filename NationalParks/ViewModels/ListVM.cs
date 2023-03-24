@@ -80,39 +80,6 @@ public partial class ListVM : BaseVM
         }
     }
 
-    protected async Task GetClosest()
-    {
-        try
-        {
-            // Get cached location, else get real location.
-            var location = await geolocation.GetLastKnownLocationAsync();
-            if (location == null)
-            {
-                location = await geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-            }
-
-            // Find closest item to us
-            var first = Items.OrderBy(m => location.CalculateDistance(
-                new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
-                .FirstOrDefault();
-
-            await GoToDetail(first);
-        }
-        catch (Exception ex)
-        {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-    }
     protected async Task<T> GetItems<T>(string term)
     {
         T result = default;
@@ -145,14 +112,72 @@ public partial class ListVM : BaseVM
 
         return result;
     }
-    protected async Task PopulateData()
+    protected async Task PopulateData(Func<Task> loadData)
     {
         Title = GetTitle();
+        await loadData();
 
         // Populate the available selections
         await ReadStates();
         await GetAllActivitiesAsync();
         await GetAllTopicsAsync();
+    }
+    protected async Task GetClosest(Func<Task> closest)
+    {
+        try
+        {
+            if (IsBusy)
+                return;
+
+            ProgressPanel.IsVisible = true;
+
+            if (Items.Count < TotalItems)
+            {
+                // Get the rest of the items
+                LimitItems = 50;
+                while (TotalItems > Items.Count && ProgressPanel.IsVisible)
+                {
+                    ProgressPanel.Position = (double)Items.Count / (double)TotalItems;
+                    await closest();
+                }
+                LimitItems = 20;
+            }
+
+            if (ProgressPanel.IsVisible)
+            {
+                // Get cached location, else get real location.
+                var location = await geolocation.GetLastKnownLocationAsync();
+                if (location == null)
+                {
+                    location = await geolocation.GetLocationAsync(new GeolocationRequest
+                    {
+                        DesiredAccuracy = GeolocationAccuracy.Medium,
+                        Timeout = TimeSpan.FromSeconds(30)
+                    });
+                }
+
+                // Find closest item to us
+                var first = Items.OrderBy(m => location.CalculateDistance(
+                    new Location(m.DLatitude, m.DLongitude), DistanceUnits.Miles))
+                    .FirstOrDefault();
+
+                await GoToDetail(first);
+                ProgressPanel.IsVisible = false;
+            }
+
+            IsBusy = false;
+
+        }
+        catch (Exception ex)
+        {
+            var msg = Utility.ParseException(ex);
+            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
+            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
     }
     protected async Task BuildFilterSelections()
     {
@@ -204,6 +229,7 @@ public partial class ListVM : BaseVM
         HasData = value;
         NoData = !value;
     }
+
     #region Filter
 
     // Filters created from the selections
