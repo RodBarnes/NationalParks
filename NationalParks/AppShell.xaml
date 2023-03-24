@@ -43,11 +43,11 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Campgrounds" Icon="campfire_green">
-        <ShellContent ContentTemplate="{DataTemplate p:CampgroundListPage}" />
-    </FlyoutItem>
     <FlyoutItem Title="Parks" Icon="tree_green">
         <ShellContent ContentTemplate="{DataTemplate p:ParkListPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Campgrounds" Icon="campfire_green">
+        <ShellContent ContentTemplate="{DataTemplate p:CampgroundListPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Things To Do" Icon="eye_green">
         <ShellContent ContentTemplate="{DataTemplate p:ThingToDoListPage}" />
