@@ -12,37 +12,42 @@
     <VerticalStackLayout>
         <Frame Style="{StaticResource ViewCard}"
                Padding="10">
-            <Grid ColumnDefinitions="100,*">
-                <Frame Grid.Column="0"
-                       CornerRadius="90"
+            <HorizontalStackLayout>
+                <Frame CornerRadius="90"
                        BackgroundColor="#0a465a"
-                       Padding="0">
+                       HeightRequest="120"
+                       WidthRequest="120"
+                       Margin="10,0,30,0">
                     <Image Source="advapp"
-                       Aspect="AspectFill"/>
+                           Aspect="AspectFill"
+                           HeightRequest="120"/>
                 </Frame>
-                <VerticalStackLayout Grid.Column="1">
-                    <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
-                    <HorizontalStackLayout
-                      VerticalOptions="Center"
-                      HorizontalOptions="Center"
-                    Margin="0,0,0,10">
-                        <Label Text="{Binding VersionString, StringFormat='Version {0}'}" Style="{StaticResource LabelSmall}"/>
-                        <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelSmall}"/>
-                    </HorizontalStackLayout>
-                    <Label Text="Advanced Applications"
-                      Style="{StaticResource LabelMediumBold}"
-                      VerticalOptions="Center"
-                      HorizontalOptions="Center" />
-                    <Label Text="Copyright © 2022 Rod Barnes"
-                       Style="{StaticResource LabelSmall}"
-                       HorizontalOptions="Center"/>
-                    <ctrl:HyperlinkLabel
-                        Text="{Binding Source={x:Static advapp:Config.SupportEmailAddress}}"
-                                         Url="{Binding SupportUrl}"
-                                         HorizontalOptions="Center"
-                                         Style="{StaticResource LabelSmall}"/>
+                <VerticalStackLayout>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
+                        <HorizontalStackLayout
+                        Margin="0,0,0,10">
+                            <Label Text="{Binding VersionString, StringFormat='Version {0}'}" Style="{StaticResource LabelSmall}"/>
+                            <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelSmall}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout>
+                        <Label Text="Advanced Applications"
+                               Style="{StaticResource LabelMediumBold}"
+                               HorizontalOptions="Center" />
+                        <Label Text="Copyright © 2022 Rod Barnes"
+                               Style="{StaticResource LabelSmall}"
+                               HorizontalOptions="Center"/>
+                        <Button
+                            Text="Supoprt Contact"
+                            HorizontalOptions="Center"
+                            Margin="10"
+                            Padding="8"
+                            Style="{StaticResource ButtonOutline}"
+                            Command="{Binding ComposeSupportRequestCommand}"/>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
-            </Grid>
+            </HorizontalStackLayout>
         </Frame>
         <Frame Style="{StaticResource ViewCard}"
                Padding="10"
@@ -51,7 +56,8 @@
                 <Image Source="nps"
                        Grid.Column="0"
                        Aspect="AspectFill"
-                       HeightRequest="100"/>
+                       HeightRequest="130"
+                       Margin="0,0,5,0"/>
                 <VerticalStackLayout Grid.Column="1"
                                      VerticalOptions="Center">
                     <Label Text="This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks."

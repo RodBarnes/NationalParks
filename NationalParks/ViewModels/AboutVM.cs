@@ -25,6 +25,12 @@ namespace NationalParks.ViewModels
         }
 
         [RelayCommand]
+        public async Task ComposeSupportRequest()
+        {
+            await Shell.Current.DisplayAlert("Email", "Sendign email", "OK");
+        }
+
+        [RelayCommand]
         public void GoToAppInfo()
         {
             AppInfo.ShowSettingsUI();
