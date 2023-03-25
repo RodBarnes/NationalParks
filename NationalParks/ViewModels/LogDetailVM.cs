@@ -96,41 +96,7 @@ public partial class LogDetailVM : BaseVM
     {
         try
         {
-            var devInfo = $"Mfg: {DeviceInfo.Current.Manufacturer}\n" +
-                $"Model: {DeviceInfo.Current.Model}\n" +
-                $"Platform: {DeviceInfo.Platform}\n" +
-                $"OS Version: {DeviceInfo.Current.Version}\n" +
-                $"Name: {DeviceInfo.Current.Name}\n";
-
-            var appInfo = $"Name: {AppInfo.Current.Name}\n" +
-                $"Version: {AppInfo.Current.VersionString}\n" +
-                $"Build: {AppInfo.Current.BuildString}\n";
-
-            var subject = "NPS Info Logs";
-            var body = $"App Info\n{appInfo}\nDevice Info\n{devInfo}";
-            var recipients = new List<string>
-            {
-                Config.SupportEmailAddress
-            };
-
-            var attachments = new List<EmailAttachment>();
-            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-            foreach (var file in files)
-            {
-                var attachment = new EmailAttachment(file, "text/plain");
-                attachments.Add(attachment);
-            }
-
-            var message = new EmailMessage
-            {
-                Subject = subject,
-                Body = body,
-                BodyFormat = EmailBodyFormat.PlainText,
-                To = new List<string>(recipients),
-                Attachments = attachments
-            };
-
-            await Email.Default.ComposeAsync(message);
+            await Utility.SupportMessage("NPS Info Logs", true, true);
         }
         catch (Exception ex)
         {
