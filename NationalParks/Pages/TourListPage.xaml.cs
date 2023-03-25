@@ -10,11 +10,14 @@ public partial class TourListPage : ContentPage
         BindingContext = _vm = vm;
     }
 
-    protected override void OnBindingContextChanged()
+    protected override void OnAppearing()
     {
-        base.OnBindingContextChanged();
+        base.OnAppearing();
+        if (!_vm.IsPopulated)
+        {
 #pragma warning disable 4014
-        _vm.PopulateData();
+            _vm.PopulateData();
 #pragma warning restore 4014
+        }
     }
 }
