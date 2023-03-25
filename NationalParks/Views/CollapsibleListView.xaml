@@ -29,7 +29,7 @@
                             SelectionMode="None"
                             IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
+                    <DataTemplate x:DataType="x:Object">
                         <Label Text="{Binding .}"
                                Style="{StaticResource LabelMedium}">
                             <Label.GestureRecognizers>
