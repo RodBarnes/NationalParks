@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-
-namespace NationalParks;
+﻿namespace NationalParks;
 
 public static class Logger
 {
@@ -44,8 +42,6 @@ public static class Logger
             await streamWriter.WriteAsync($"{entry}\n\n");
             CurrentLogDirty = true;
         }
-
-        await Toast.Make("Exception written to log.").Show();
     }
 
     public static async Task<string> ReadLog(string filename = "")

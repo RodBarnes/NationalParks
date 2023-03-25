@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CommunityToolkit.Maui.Alerts;
+using System.Text;
 
 namespace NationalParks;
 
@@ -17,6 +18,14 @@ public static class Utility
         }
 
         return sb.ToString();
+    }
+
+    public static async Task HandleException(Exception ex, CodeInfo codeInfo)
+    {
+        var msg = Utility.ParseException(ex);
+        await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+
+        await Toast.Make("Exception written to log.").Show();
     }
 
     public static async Task SupportMessage(string subject, bool includeLogs)

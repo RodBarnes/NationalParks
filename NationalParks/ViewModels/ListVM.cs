@@ -74,9 +74,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
 
@@ -101,9 +99,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
         finally
         {
@@ -170,9 +166,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
         finally
         {
@@ -214,9 +208,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
     private void ClearData()
@@ -313,9 +305,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
 
         return filter;
@@ -356,9 +346,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
 
         return filter;
@@ -384,9 +372,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
     protected static async Task GetAllActivitiesAsync()
@@ -410,9 +396,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
     protected static async Task ReadStates()
@@ -444,9 +428,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
 
@@ -462,9 +444,7 @@ public partial class ListVM : BaseVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
 

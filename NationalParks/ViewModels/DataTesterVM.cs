@@ -216,9 +216,7 @@ public partial class DataTesterVM : ListVM
         }
         catch (Exception ex)
         {
-            var msg = Utility.ParseException(ex);
-            var codeInfo = new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType);
-            await Logger.WriteLogEntry($"{codeInfo.ObjectName}.{codeInfo.MethodName}: {msg}");
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
         finally
         {
