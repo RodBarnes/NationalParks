@@ -9,7 +9,7 @@ public static class Logger
     public static string LogName { get; set; } = AppInfo.Name.Replace(' ', '_');
 
     private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
-    private static string Filename { get; set; } = $"{Path.Combine(LogPath, LogName)}_{Timestamp}_log";
+    private static string Filename { get; set; } = $"{Path.Combine(LogPath, LogName)}_{Timestamp}";
     
     public static async Task WriteLogEntry(string entry, string path = "")
     {

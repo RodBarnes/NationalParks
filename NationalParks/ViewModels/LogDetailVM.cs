@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Text;
 
 namespace NationalParks.ViewModels;
 
@@ -97,16 +96,6 @@ public partial class LogDetailVM : BaseVM
     {
         try
         {
-            StringBuilder logInfo = new();
-
-            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
-            foreach(var file in files)
-            {
-                logInfo.Append($"Logname: {Path.GetFileName(file)}\n");
-                var content = await Logger.ReadLog(file);
-                logInfo.Append($"Content: {content}");
-            }
-
             var devInfo = $"Mfg: {DeviceInfo.Current.Manufacturer}\n" +
                 $"Model: {DeviceInfo.Current.Model}\n" +
                 $"Platform: {DeviceInfo.Platform}\n" +
@@ -118,18 +107,27 @@ public partial class LogDetailVM : BaseVM
                 $"Build: {AppInfo.Current.BuildString}\n";
 
             var subject = "NPS Info Logs";
-            var body = $"App Info\n{appInfo}\nDevice Info\n{devInfo}\n{logInfo}";
+            var body = $"App Info\n{appInfo}\nDevice Info\n{devInfo}";
             var recipients = new List<string>
             {
                 Config.SupportEmailAddress
             };
+
+            var attachments = new List<EmailAttachment>();
+            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+            foreach (var file in files)
+            {
+                var attachment = new EmailAttachment(file, "text/plain");
+                attachments.Add(attachment);
+            }
 
             var message = new EmailMessage
             {
                 Subject = subject,
                 Body = body,
                 BodyFormat = EmailBodyFormat.PlainText,
-                To = new List<string>(recipients)
+                To = new List<string>(recipients),
+                Attachments = attachments
             };
 
             await Email.Default.ComposeAsync(message);
