@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:ContactsVM"
              x:Class="NationalParks.Views.ContactsView"
-             IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+             IsVisible="{Binding HasContent}">
     <ContentView.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -29,7 +29,7 @@
             </HorizontalStackLayout>
             <CollectionView ItemsSource="{Binding PhoneContacts}"
                             SelectionMode="None"
-                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            IsVisible="{Binding IsOpen}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:PhoneContact">
                         <VerticalStackLayout>
@@ -52,7 +52,7 @@
             </CollectionView>
             <CollectionView ItemsSource="{Binding EmailContacts}"
                             SelectionMode="None"
-                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            IsVisible="{Binding IsOpen}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:EmailContact">
                         <HorizontalStackLayout>

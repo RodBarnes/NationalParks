@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:ctrl="clr-namespace:NationalParks.Controls"
              xmlns:m="clr-namespace:NationalParks.Models"
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:AlertsVM"
              x:Class="NationalParks.Views.AlertsView"
-             IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
-        </ResourceDictionary>
-    </ContentView.Resources>
+             IsVisible="{Binding HasContent}">
     <Frame Style="{StaticResource CollapsibleView}" >
         <VerticalStackLayout >
             <HorizontalStackLayout>
@@ -29,7 +22,7 @@
             </HorizontalStackLayout>
             <CollectionView ItemsSource="{Binding Items}"
                             SelectionMode="None"
-                            IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}">
+                            IsVisible="{Binding IsOpen}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Alert">
                         <VerticalStackLayout>

@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:NationalParks.ViewModels"
              x:DataType="vm:CollapsibleTextVM"
              x:Class="NationalParks.Views.CollapsibleTextView"
-             IsVisible="{Binding HasContent, Converter={StaticResource BoolToTrueFalseConverter}}">
+             IsVisible="{Binding HasContent}">
     <ContentView.Resources>
         <ResourceDictionary>
             <tk:BoolToObjectConverter x:Key="BoolToTrueFalseConverter" TrueObject="True" FalseObject="False" />
@@ -35,7 +35,7 @@
             <Label Text="{Binding Text}"
                    Style="{StaticResource LabelMedium}"
                    TextType="Html"
-                   IsVisible="{Binding IsOpen, Converter={StaticResource BoolToTrueFalseConverter}}"/>
+                   IsVisible="{Binding IsOpen}"/>
         </VerticalStackLayout>
     </Frame>
 </ContentView>
