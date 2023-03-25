@@ -27,7 +27,15 @@ namespace NationalParks.ViewModels
         [RelayCommand]
         public async Task ComposeSupportRequest()
         {
-            await Shell.Current.DisplayAlert("Email", "Sendign email", "OK");
+            try
+            {
+                await Logger.WriteLogEntry("*** Support Request ***");
+                await Utility.SupportMessage("Support Request", true);
+            }
+            catch (Exception ex)
+            {
+                await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+            }
         }
 
         [RelayCommand]
