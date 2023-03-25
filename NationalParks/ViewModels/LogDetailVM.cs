@@ -96,7 +96,7 @@ public partial class LogDetailVM : BaseVM
     {
         try
         {
-            await Utility.SupportMessage("NPS Info Logs", true, true);
+            await Utility.SupportMessage("NPS Info Logs", true);
         }
         catch (Exception ex)
         {

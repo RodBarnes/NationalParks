@@ -10,6 +10,7 @@ public static class Logger
 
     private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
     private static string Filename { get; set; } = $"{Path.Combine(LogPath, LogName)}_{Timestamp}";
+    private static bool CurrentLogDirty;
     
     public static async Task WriteLogEntry(string entry, string filename = "")
     {
@@ -23,7 +24,25 @@ public static class Logger
 
         using StreamWriter streamWriter = new(path, true);
         {
+            if (!CurrentLogDirty)
+            {
+                // Only write the device and app info at the top of the log
+                // when first writing to the log.
+                var info =
+                    $"Device Mfg: {DeviceInfo.Current.Manufacturer}\n" +
+                    $"Device Model: {DeviceInfo.Current.Model}\n" +
+                    $"Device Platform: {DeviceInfo.Platform}\n" +
+                    $"Device OS Version: {DeviceInfo.Current.Version}\n" +
+                    $"Device Name: {DeviceInfo.Current.Name}\n" +
+                    $"App Name: {AppInfo.Current.Name}\n" +
+                    $"App Version: {AppInfo.Current.VersionString}\n" +
+                    $"App Build: {AppInfo.Current.BuildString}\n";
+
+                await streamWriter.WriteAsync($"{info}\n\n");
+            }
+
             await streamWriter.WriteAsync($"{entry}\n\n");
+            CurrentLogDirty = true;
         }
 
         await Toast.Make("Exception written to log.").Show();
