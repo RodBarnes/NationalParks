@@ -11,25 +11,36 @@ public static class Logger
     private static string Timestamp { get => DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'"); }
     private static string Filename { get; set; } = $"{Path.Combine(LogPath, LogName)}_{Timestamp}";
     
-    public static async Task WriteLogEntry(string entry, string path = "")
+    public static async Task WriteLogEntry(string entry, string filename = "")
     {
-        if (String.IsNullOrEmpty(path))
-            path = Filename;
+        string path = Filename;
+
+        if (!String.IsNullOrEmpty(filename))
+        {
+            // Read from a specifid log file
+            path = $"{Path.Combine(LogPath, filename)}";
+        }
 
         using StreamWriter streamWriter = new(path, true);
-        await streamWriter.WriteAsync($"{entry}\n\n");
+        {
+            await streamWriter.WriteAsync($"{entry}\n\n");
+        }
 
         await Toast.Make("Exception written to log.").Show();
     }
 
-    public static async Task<string> ReadLog(string path = "")
+    public static async Task<string> ReadLog(string filename = "")
     {
         string content = "";
+        string path = Filename;
 
-        if (String.IsNullOrEmpty(path))
-            path = Filename;
+        if (!String.IsNullOrEmpty(filename))
+        {
+            // Read from a specifid log file
+            path = $"{Path.Combine(LogPath, filename)}";
+        }
 
-        if (File.Exists(path))
+        if (File.Exists(filename))
         {
             using StreamReader reader = new(path);
             content = await reader.ReadToEndAsync();
@@ -64,11 +75,8 @@ public static class Logger
         }
     }
 
-    public static void DeleteLog(string path = "")
+    public static void DeleteLog(string path)
     {
-        if (String.IsNullOrEmpty(path))
-            path = Filename;
-
         if (File.Exists(path))
         {
             File.Delete(path);

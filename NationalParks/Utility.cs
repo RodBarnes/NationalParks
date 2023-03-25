@@ -28,16 +28,17 @@ public static class Utility
 
         if (includeInfo)
         {
-            var devInfo = $"Mfg: {DeviceInfo.Current.Manufacturer}\n" +
-                $"Model: {DeviceInfo.Current.Model}\n" +
-                $"Platform: {DeviceInfo.Platform}\n" +
-                $"OS Version: {DeviceInfo.Current.Version}\n" +
-                $"Name: {DeviceInfo.Current.Name}\n";
+            var info = 
+                $"Device Mfg: {DeviceInfo.Current.Manufacturer}\n" +
+                $"Device Model: {DeviceInfo.Current.Model}\n" +
+                $"Device Platform: {DeviceInfo.Platform}\n" +
+                $"Device OS Version: {DeviceInfo.Current.Version}\n" +
+                $"Device Name: {DeviceInfo.Current.Name}\n" +
+                $"App Name: {AppInfo.Current.Name}\n" +
+                $"App Version: {AppInfo.Current.VersionString}\n" +
+                $"App Build: {AppInfo.Current.BuildString}\n";
 
-            var appInfo = $"Name: {AppInfo.Current.Name}\n" +
-                $"Version: {AppInfo.Current.VersionString}\n" +
-                $"Build: {AppInfo.Current.BuildString}\n";
-
+            await Logger.WriteLogEntry(info);
         }
 
         var message = new EmailMessage
