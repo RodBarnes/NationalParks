@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Advanced Applications
+Copyright (c) 2022,2023 Advanced Applications
 
 All rights reserved.
 
