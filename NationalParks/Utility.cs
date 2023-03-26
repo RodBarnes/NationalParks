@@ -30,6 +30,9 @@ public static class Utility
 
     public static async Task SupportMessage(string subject, bool includeLogs)
     {
+        var filename = "log.txt";
+        var filepath = Path.Combine(Logger.LogPath, filename);
+
         var recipients = new List<string>
         {
             Config.SupportEmailAddress
@@ -42,15 +45,39 @@ public static class Utility
             To = new List<string>(recipients)
         };
 
-        if (includeLogs)
+        var info =
+            $"Device Mfg: {DeviceInfo.Current.Manufacturer}\n" +
+            $"Device Model: {DeviceInfo.Current.Model}\n" +
+            $"Device Platform: {DeviceInfo.Platform}\n" +
+            $"Device OS Version: {DeviceInfo.Current.Version}\n" +
+            $"Device Name: {DeviceInfo.Current.Name}\n" +
+            $"App Name: {AppInfo.Current.Name}\n" +
+            $"App Version: {AppInfo.Current.VersionString}\n" +
+            $"App Build: {AppInfo.Current.BuildString}\n\n";
+
+        var attachments = new List<EmailAttachment>();
+
+        var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+        if (includeLogs && files.Length > 0)
         {
-            var attachments = new List<EmailAttachment>();
-            var files = Directory.GetFiles(Logger.LogPath, $"{Logger.LogName}*");
+            if (File.Exists(filepath))
+            {
+                // Delete any existing send file
+                Logger.DeleteLog(filename);
+            }
+
+            await Logger.WriteLogEntry(info, filename);
+
             foreach (var file in files)
             {
-                var attachment = new EmailAttachment(file, "text/plain");
-                attachments.Add(attachment);
+                await Logger.WriteLogEntry(Path.GetFileName(file), filename);
+                var log = await Logger.ReadLog(file);
+                await Logger.WriteLogEntry($"{log}\n\n", filename);
             }
+
+            var attachment = new EmailAttachment(filepath, "text/plain");
+            attachments.Add(attachment);
+
             if (attachments.Count > 0)
             {
                 message.Attachments = attachments;
