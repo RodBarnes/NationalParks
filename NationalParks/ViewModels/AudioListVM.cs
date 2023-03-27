@@ -6,7 +6,7 @@ public partial class AudioListVM : ListVM
 {
     public AudioListVM(IConnectivity connectivity, IGeolocation geolocation) : base(connectivity, geolocation)
     {
-        BaseTitle = "Audios";
+        BaseTitle = "Audio";
         FilterName = "Audio";
         AllowFilterStates = true;
     }
@@ -19,7 +19,7 @@ public partial class AudioListVM : ListVM
 
         try
         {
-            ResultAudios result = await GetItems<ResultAudios>(ResultAudios.Term);
+            ResultAudio result = await GetItems<ResultAudio>(ResultAudio.Term);
             foreach (Multimedia item in result.Data)
             {
                 item.FillMainImage();

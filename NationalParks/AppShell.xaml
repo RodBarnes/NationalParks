@@ -70,7 +70,7 @@
     <FlyoutItem Title="Videos" Icon="video_green">
         <ShellContent ContentTemplate="{DataTemplate p:VideoListPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Audios" Icon="audio_green">
+    <FlyoutItem Title="Audio" Icon="audio_green">
         <ShellContent ContentTemplate="{DataTemplate p:AudioListPage}" />
     </FlyoutItem>
     <!--<FlyoutItem Title="Events" Icon="calendar_green">

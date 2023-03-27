@@ -24,7 +24,7 @@
                     <x:String>ThingsToDo</x:String>
                     <x:String>Articles</x:String>
                     <x:String>Videos</x:String>
-                    <x:String>Audios</x:String>
+                    <x:String>Audio</x:String>
                     <x:String>Webcam</x:String>
                 </x:Array>
             </Picker.ItemsSource>

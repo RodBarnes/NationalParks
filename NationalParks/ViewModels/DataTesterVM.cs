@@ -182,15 +182,15 @@ public partial class DataTesterVM : ListVM
                         }
                         totalItems = resultVideos.Total;
                         break;
-                    case "Audios":
-                        ResultAudios resultAudios = await DataService.GetItemsAsync<ResultAudios>(ResultAudios.Term, startItems, 500);
-                        startItems += resultAudios.Data.Count;
-                        foreach (Multimedia item in resultAudios.Data)
+                    case "Audio":
+                        ResultAudio resultAudio = await DataService.GetItemsAsync<ResultAudio>(ResultAudio.Term, startItems, 500);
+                        startItems += resultAudio.Data.Count;
+                        foreach (Multimedia item in resultAudio.Data)
                         {
                             item.FillMainImage();
                             Items.Add(item);
                         }
-                        totalItems = resultAudios.Total;
+                        totalItems = resultAudio.Total;
                         break;
                     case "Webcam":
                         ResultWebcams resultWebcams = await DataService.GetItemsAsync<ResultWebcams>(ResultWebcams.Term, startItems, 500);
