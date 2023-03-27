@@ -39,7 +39,7 @@
                                     CommandParameter="{Binding .}"/>
                                 </Grid.GestureRecognizers>
                                 <Image Grid.Column="0" Grid.RowSpan="2"
-                                        Source="arrow_right_green" HeightRequest="20" />
+                                        Source="map_green" HeightRequest="30" />
                                 <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
                                     <Label Text="{Binding Accessibility.TotalSpaces, StringFormat='Total Spaces: {0}, '}" 
                                            Style="{StaticResource LabelMedium}"
