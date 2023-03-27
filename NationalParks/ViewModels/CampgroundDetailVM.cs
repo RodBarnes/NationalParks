@@ -4,6 +4,7 @@
 public partial class CampgroundDetailVM : DetailVM
 {
     [ObservableProperty] Campground campground;
+    [ObservableProperty] string parkName;
     [ObservableProperty] FeesVM fees;
     [ObservableProperty] OperatingHoursVM operatingHours;
     [ObservableProperty] ContactsVM contacts;
@@ -22,9 +23,11 @@ public partial class CampgroundDetailVM : DetailVM
     }
 
     [RelayCommand]
-    public void PopulateData()
+    public async Task PopulateData()
     {
         Model = Campground;
+
+        ParkName = await GetNameFromParkCode(Campground.ParkCode);
 
         Weather = new CollapsibleTextVM("Weather", false, Campground.WeatherOverview);
         Reservations = new CollapsibleTextVM("Reservations", false, Campground.ReservationInfo, Campground.ReservationUrl);

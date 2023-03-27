@@ -26,7 +26,7 @@
                         <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
                                                   CommandParameter="{Binding Campground.ParkCode}"/>
                     </HorizontalStackLayout.GestureRecognizers>
-                    <Label Text="Related Park" 
+                    <Label Text="{Binding ParkName}" 
                            Style="{StaticResource LabelMediumBold}" 
                            VerticalOptions="Center" 
                            Margin="5"/>

@@ -85,4 +85,26 @@ public partial class DetailVM : BaseVM
             await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
+
+
+    protected async Task<string> GetNameFromParkCode(string parkCode)
+    {
+        string name = "";
+
+        try
+        {
+            ResultParks result = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
+            if (result.Data.Count > 0)
+            {
+                var park = result.Data.First();
+                name = park.Name;
+            }
+        }
+        catch (Exception ex)
+        {
+            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+        }
+
+        return name;
+    }
 }
