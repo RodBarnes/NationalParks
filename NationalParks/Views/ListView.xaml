@@ -51,14 +51,14 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"
                IsVisible="{Binding NoData}"/>
-        <Button Text="Closest"
+        <!--<Button Text="Closest"
                 Grid.Row="1" Grid.Column="0"
                 Margin="8"
                 Command="{Binding GetClosestCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Style="{StaticResource ButtonOutline}" />
+                Style="{StaticResource ButtonOutline}" />-->
         <Button Text="Filter" 
-                Grid.Row="1" Grid.Column="1"
+                Grid.Row="1" Grid.ColumnSpan="2"
                 Margin="8"
                 Command="{Binding GoToFilterCommand}"
                 CommandParameter="{Binding FilterName}"
