@@ -41,17 +41,13 @@ public partial class BaseModel
     {
         if (Images?.Count > 0)
         {
-            foreach (var image in Images)
-            {
-                if (!String.IsNullOrEmpty(image.Url))
-                {
-                    MainImage = ImageSource.FromUri(new Uri(image.Url));
-                    break;
-                }
-            }
+            var image = Images.First();
+            MainImage = ImageSource.FromUri(new Uri(image.Url));
         }
-
-        MainImage ??= ImageSource.FromFile("nps");
+        else
+        {
+            MainImage = ImageSource.FromFile("nps");
+        }
     }
 }
 
