@@ -27,9 +27,10 @@
                 <Label Text="{Binding NpsEvent.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
                 <Label Text="{Binding NpsEvent.Description}" Style="{StaticResource LabelMedium}" />
                 <ctrl:HyperlinkLabel Text="NPS Site"
-                                         Url="{Binding NpsEvent.InfoUrl}"
-                                         IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
+                                     Url="{Binding NpsEvent.InfoUrl}"
+                                     IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                     Style="{StaticResource HyperlinkLabelMedium}"/>
             </VerticalStackLayout>
         </ScrollView>
         <v:DetailButtonView Grid.ColumnSpan="3" Grid.Row="2" />

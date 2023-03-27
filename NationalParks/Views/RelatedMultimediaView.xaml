@@ -31,7 +31,8 @@
                                    Style="{StaticResource LabelMediumBold}"/>
                             <ctrl:HyperlinkLabel Text="{Binding Type}"
                                                  Url="{Binding Url}"
-                                                 Style="{StaticResource LabelMedium}"/>
+                                                 TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                                 Style="{StaticResource HyperlinkLabelMedium}"/>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

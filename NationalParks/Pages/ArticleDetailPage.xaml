@@ -27,8 +27,9 @@
                 <Label Text="{Binding Article.ListingDescription}" Style="{StaticResource LabelMedium}" />
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding Article.Url}"
+                                     TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
                                      IsVisible="{Binding Article.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                     Style="{StaticResource LabelMedium}"/>
+                                     Style="{StaticResource HyperlinkLabelMedium}"/>
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
             </VerticalStackLayout>
         </ScrollView>

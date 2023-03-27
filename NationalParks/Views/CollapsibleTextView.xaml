@@ -30,7 +30,8 @@
                                      Url="{Binding Url}"
                                      IsVisible="{Binding HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
                                      VerticalOptions="Center"
-                                     Style="{StaticResource LabelMedium}"/>
+                                     TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                     Style="{StaticResource HyperlinkLabelMedium}"/>
             </HorizontalStackLayout>
             <Label Text="{Binding Text}"
                    Style="{StaticResource LabelMedium}"

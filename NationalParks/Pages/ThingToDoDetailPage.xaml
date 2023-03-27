@@ -33,9 +33,10 @@
                     <Label Text="{Binding ThingToDo.Age}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
                 <ctrl:HyperlinkLabel Text="NPS Site"
-                                         Url="{Binding ThingToDo.Url}"
-                                         IsVisible="{Binding ThingToDo.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
+                                     Url="{Binding ThingToDo.Url}"
+                                     IsVisible="{Binding ThingToDo.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                     Style="{StaticResource HyperlinkLabelMedium}"/>
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
                 <v:CollapsibleTextView BindingContext="{Binding FullDescription}" />
                 <v:CollapsibleListView BindingContext="{Binding Organizations}" />

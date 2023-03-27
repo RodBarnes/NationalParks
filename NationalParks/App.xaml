@@ -3,6 +3,7 @@
     x:Class="NationalParks.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctrl="clr-namespace:NationalParks.Controls"
     xmlns:local="clr-namespace:NationalParks">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +17,9 @@
 
             <Color x:Key="LabelText">#1F1F1F</Color>
             <Color x:Key="LabelTextDark">#EAFAEA</Color>
+
+            <Color x:Key="HyperlinkLabelText">Blue</Color>
+            <Color x:Key="HyperlinkLabelTextDark">#0099FF</Color>
 
             <Color x:Key="PanelBackground">#CDFACD</Color>
             <Color x:Key="PanelBackgroundDark">#203020</Color>
@@ -63,7 +67,10 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
-            
+            <Style TargetType="ctrl:HyperlinkLabel" x:Key="HyperlinkLabelMedium" BasedOn="{StaticResource LabelMedium}">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}" />
+            </Style>
+
             <Style TargetType="Button" x:Key="ButtonOutline">
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource ElementBackground}, Dark={StaticResource ElementBackgroundDark}}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />

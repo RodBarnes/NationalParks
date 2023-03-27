@@ -26,9 +26,9 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <Label Text="{Binding Place.ListingDescription}" Style="{StaticResource LabelMedium}" />
                 <ctrl:HyperlinkLabel Text="NPS Site"
-                                         Url="{Binding Place.Url}"
-                                         IsVisible="{Binding Place.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
+                                     Url="{Binding Place.Url}"
+                                     IsVisible="{Binding Place.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
+                                     Style="{StaticResource HyperlinkLabelMedium}"/>
                 <HorizontalStackLayout>
                     <Label Text="Managed By:"
                            Style="{StaticResource LabelMediumBold}"

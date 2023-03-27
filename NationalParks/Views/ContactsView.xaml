@@ -39,7 +39,8 @@
                                        Margin="0,0,5,0"/>
                                 <ctrl:HyperlinkLabel Text="{Binding PhoneNumber}"
                                                      Url="{Binding PhoneNumber, StringFormat='tel://{0}'}"
-                                                     Style="{StaticResource LabelMedium}"/>
+                                                     TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                                     Style="{StaticResource HyperlinkLabelMedium}"/>
                                 <Label Text="{Binding Extension, StringFormat=', ext {0}'}"
                                        Style="{StaticResource LabelMedium}"
                                        IsVisible="{Binding HasExtension, Converter={StaticResource BoolToTrueFalseConverter}}"/>
@@ -61,7 +62,8 @@
                                    Margin="0,0,5,0"/>
                             <ctrl:HyperlinkLabel Text="{Binding EmailAddress}"
                                                  Url="{Binding EmailAddress, StringFormat='mailto://{0}'}"
-                                                 Style="{StaticResource LabelMedium}"/>
+                                                 TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                                 Style="{StaticResource HyperlinkLabelMedium}"/>
                             <!--<Label Text="{Binding Description}"
                                            Style="{StaticResource LabelMedium}"/>-->
                         </HorizontalStackLayout>

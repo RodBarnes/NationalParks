@@ -29,7 +29,8 @@
                     <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding Park.Url}"
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"/>
+                                         TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"
+                                         Style="{StaticResource HyperlinkLabelMedium}"/>
                 <v:AlertsView BindingContext="{Binding Alerts}" />
                 <v:ParkingLotsView BindingContext="{Binding ParkingLots}" />
                 <v:FeesView BindingContext="{Binding Fees}" />
