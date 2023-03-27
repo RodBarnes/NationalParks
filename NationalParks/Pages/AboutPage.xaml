@@ -30,6 +30,9 @@
                         <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
                         <HorizontalStackLayout
                         Margin="0,0,0,10">
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToDataTesterCommand}" />
+                            </HorizontalStackLayout.GestureRecognizers>
                             <Label Text="{Binding VersionString, StringFormat='Version {0}'}" Style="{StaticResource LabelSmall}"/>
                             <Label Text="{Binding BuildString, StringFormat=' (Build {0})'}" Style="{StaticResource LabelSmall}"/>
                         </HorizontalStackLayout>
@@ -75,18 +78,13 @@
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="App Info"
                     Margin="10"
-                    WidthRequest="100"
+                    WidthRequest="120"
                     Command="{Binding GoToAppInfoCommand}"
                     Style="{StaticResource ButtonOutline}"/>
             <Button Text="View Logs"
                     Margin="10"
-                    WidthRequest="100"
+                    WidthRequest="120"
                     Command="{Binding GoToLogDetailCommand}"
-                    Style="{StaticResource ButtonOutline}"/>
-            <Button Text="Tester"
-                    Margin="10"
-                    WidthRequest="100"
-                    Command="{Binding GoToDataTesterCommand}"
                     Style="{StaticResource ButtonOutline}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
