@@ -9,16 +9,16 @@
             <Color x:Key="Primary">#007B23</Color>
 
             <Color x:Key="Background">#CDFACD</Color>
-            <Color x:Key="BackgroundDark">#303030</Color>
+            <Color x:Key="BackgroundDark">#203020</Color>
 
             <Color x:Key="ElementBackground">#B0FAB0</Color>
-            <Color x:Key="ElementBackgroundDark">#1C1C1C</Color>
+            <Color x:Key="ElementBackgroundDark">#0C1C0C</Color>
 
             <Color x:Key="LabelText">#1F1F1F</Color>
             <Color x:Key="LabelTextDark">#EAFAEA</Color>
 
             <Color x:Key="PanelBackground">#CDFACD</Color>
-            <Color x:Key="PanelBackgroundDark">#303030</Color>
+            <Color x:Key="PanelBackgroundDark">#203020</Color>
 
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource BackgroundDark}}" />
