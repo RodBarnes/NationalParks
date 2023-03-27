@@ -108,6 +108,7 @@ public partial class ListVM : BaseVM
 
         return result;
     }
+
     protected async Task PopulateData(Func<Task> loadData)
     {
         Title = GetTitle();
@@ -118,6 +119,7 @@ public partial class ListVM : BaseVM
         await GetAllActivitiesAsync();
         await GetAllTopicsAsync();
     }
+
     protected async Task GetClosest(Func<Task> closest)
     {
         try
@@ -173,12 +175,14 @@ public partial class ListVM : BaseVM
             IsBusy = false;
         }
     }
+
     protected async Task BuildFilterSelections()
     {
         StatesFilter = GetStatesFilter(SelectedStates);
         TopicsFilter = await GetTopicsFilter(SelectedTopics);
         ActivitiesFilter = await GetActivitiesFilter(SelectedActivities);
     }
+
     protected string GetTitle()
     {
         string tmp = $"{BaseTitle}";
@@ -194,6 +198,7 @@ public partial class ListVM : BaseVM
 
         return tmp;
     }
+
     protected static async Task FillLocationFromPark(BaseModel item, string parkCode)
     {
         try
@@ -211,11 +216,13 @@ public partial class ListVM : BaseVM
             await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
+
     private void ClearData()
     {
         Items.Clear();
         IsPopulated = false;
     }
+
     private void SetVisibleElements(bool value)
     {
         HasData = value;
