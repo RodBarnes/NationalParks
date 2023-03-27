@@ -39,9 +39,9 @@ public partial class BaseModel
 
     public void FillMainImage()
     {
-        if (Images?.Count > 0)
+        var image = Images.FirstOrDefault();
+        if (image != null && !String.IsNullOrEmpty(image.Url))
         {
-            var image = Images.First();
             MainImage = ImageSource.FromUri(new Uri(image.Url));
         }
         else
