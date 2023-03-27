@@ -25,14 +25,13 @@
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
                 <HorizontalStackLayout>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToWebcamCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
                     <Label Text="{Binding Webcam.Title}"
                            Style="{StaticResource LabelLarge}"
                            Margin="0,0,5,0"/>
-                    <ctrl:HyperlinkLabel Text="(link)"
-                                         Url="{Binding Webcam.Url}"
-                                         IsVisible="{Binding Webcam.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"
-                                         Style="{StaticResource LabelMedium}"
-                                         VerticalOptions="Center"/>
+                    <Image Source="play_green" HeightRequest="25" />
                 </HorizontalStackLayout>
                 <Label Text="{Binding Webcam.Description}" Style="{StaticResource LabelMedium}" />
                 <HorizontalStackLayout>

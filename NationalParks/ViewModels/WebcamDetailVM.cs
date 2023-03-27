@@ -18,4 +18,10 @@ public partial class WebcamDetailVM : DetailVM
 
         RelatedParks = new RelatedParksVM("Related Parks", false, Webcam.RelatedParks);
     }
+
+    [RelayCommand]
+    public async Task GoToWebcam()
+    {
+        await Launcher.OpenAsync(Webcam.Url);
+    }
 }
