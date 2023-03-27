@@ -82,7 +82,4 @@
     <FlyoutItem Title="About" Icon="info_fancy_green">
         <ShellContent ContentTemplate="{DataTemplate p:AboutPage}" />
     </FlyoutItem>
-    <!--<FlyoutItem Title="Tester" Icon="question_green">
-        <ShellContent ContentTemplate="{DataTemplate p:DataTesterPage}" />
-    </FlyoutItem>-->
 </Shell>
