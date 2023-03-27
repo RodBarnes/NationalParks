@@ -14,7 +14,7 @@ public class Article : BaseModel
 
     public new void FillMainImage()
     {
-        if (!String.IsNullOrEmpty(ListingImage.Url))
+        if (ListingImage != null && !String.IsNullOrEmpty(ListingImage.Url))
         {
             MainImage = ImageSource.FromUri(new Uri(ListingImage.Url));
         }

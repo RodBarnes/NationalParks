@@ -43,7 +43,7 @@ public partial class Multimedia : BaseModel
 
     public new void FillMainImage()
     {
-        if (!String.IsNullOrEmpty(SplashImage.Url))
+        if (SplashImage != null && !String.IsNullOrEmpty(SplashImage.Url))
         {
             MainImage = ImageSource.FromUri(new Uri(SplashImage.Url));
         }
@@ -52,6 +52,7 @@ public partial class Multimedia : BaseModel
             MainImage = ImageSource.FromFile("nps");
         }
     }
+
     public string Credits => Credit.Replace(',', '\n');
 
     private static string GetDuration(int? ms)

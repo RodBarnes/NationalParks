@@ -25,7 +25,7 @@ public partial class NewsRelease : BaseModel
 
     public new void FillMainImage()
     {
-        if (!String.IsNullOrEmpty(Image.Url))
+        if (Image != null && !String.IsNullOrEmpty(Image.Url))
         {
             MainImage = ImageSource.FromUri(new Uri(Image.Url));
         }
