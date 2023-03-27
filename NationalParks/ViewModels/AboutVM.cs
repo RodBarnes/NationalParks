@@ -69,5 +69,11 @@ namespace NationalParks.ViewModels
                 await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
             }
         }
+
+        [RelayCommand]
+        public async Task GoToWebsite()
+        {
+            await Launcher.OpenAsync(Config.Website);
+        }
     }
 }
