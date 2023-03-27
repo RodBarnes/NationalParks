@@ -52,15 +52,15 @@
     <FlyoutItem Title="Things To Do" Icon="eye_green">
         <ShellContent ContentTemplate="{DataTemplate p:ThingToDoListPage}" />
     </FlyoutItem>
-    <!--<FlyoutItem Title="Tours" Icon="tour_green">
+    <FlyoutItem Title="Tours" Icon="tour_green">
         <ShellContent ContentTemplate="{DataTemplate p:TourListPage}" />
-    </FlyoutItem>-->
-    <!--<FlyoutItem Title="People" Icon="person_green">
+    </FlyoutItem>
+    <FlyoutItem Title="People" Icon="person_green">
         <ShellContent ContentTemplate="{DataTemplate p:PersonListPage}" />
-    </FlyoutItem>-->
-    <!--<FlyoutItem Title="Places" Icon="location_green">
+    </FlyoutItem>
+    <FlyoutItem Title="Places" Icon="location_green">
         <ShellContent ContentTemplate="{DataTemplate p:PlaceListPage}" />
-    </FlyoutItem>-->
+    </FlyoutItem>
     <FlyoutItem Title="News Releases" Icon="newspaper_green">
         <ShellContent ContentTemplate="{DataTemplate p:NewsReleaseListPage}" />
     </FlyoutItem>
