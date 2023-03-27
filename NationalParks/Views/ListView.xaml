@@ -18,7 +18,7 @@
                         RemainingItemsThresholdReachedCommand="{Binding GetItemsCommand}"
                         IsVisible="{Binding HasData}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:BaseModel">
+                <DataTemplate>
                     <Grid Padding="10,5" HorizontalOptions="Fill">
                         <Frame HeightRequest="125" 
                         Style="{StaticResource ViewCard}">
