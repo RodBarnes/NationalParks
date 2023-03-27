@@ -15,7 +15,6 @@ public partial class ListVM : BaseVM
 
     [ObservableProperty] ObservableCollection<BaseModel> items = new();
     [ObservableProperty] int itemsRefreshThreshold = -1;
-    [ObservableProperty] string term;
     [ObservableProperty] bool noData;
     [ObservableProperty] bool hasData;
 
@@ -276,6 +275,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
+
     protected static async Task<string> GetTopicsFilter(ICollection<object> topics)
     {
         if (topics.Count == 0)
@@ -317,6 +317,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
+
     protected static async Task<string> GetActivitiesFilter(ICollection<object> activities)
     {
         if (activities.Count == 0)
@@ -358,6 +359,7 @@ public partial class ListVM : BaseVM
 
         return filter;
     }
+
     protected static async Task GetAllTopicsAsync()
     {
         if (TopicSelections?.Count > 0)
@@ -382,6 +384,7 @@ public partial class ListVM : BaseVM
             await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
+
     protected static async Task GetAllActivitiesAsync()
     {
         if (ActivitySelections?.Count > 0)
@@ -406,6 +409,7 @@ public partial class ListVM : BaseVM
             await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
         }
     }
+
     protected static async Task ReadStates()
     {
         if (StateSelections?.Count > 0)
