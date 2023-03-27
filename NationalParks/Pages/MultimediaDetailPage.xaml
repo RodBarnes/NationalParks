@@ -44,7 +44,7 @@
                                                   CommandParameter="{Binding Multimedia.MainVersion.Url}"/>
                         </Grid.GestureRecognizers>
                         <Image Grid.Column="0"
-                               Source="arrow_right_green" HeightRequest="25" />
+                               Source="play_green" HeightRequest="25" />
                         <Label Text="{Binding Multimedia.MainVersion.FileType}"
                                Grid.Column="1"
                                Style="{StaticResource LabelMediumBold}"/>
