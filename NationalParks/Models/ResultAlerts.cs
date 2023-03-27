@@ -2,6 +2,6 @@
 
 public class ResultAlerts : Result
 {
-    public const string Term = "alerts";
+    public const Terms Term = Terms.alerts;
     public List<Alert> Data { get; set; }
 }

@@ -32,12 +32,12 @@ public partial class ParkDetailVM : DetailVM
         if (Park.Alerts == null)
             Park.Alerts = new();
         if (Park.Alerts.Count == 0)
-            await GetParkProperties(Park, "alerts");
+            await GetParkProperties(Park, Terms.alerts);
 
         if (Park.ParkingLots == null)
             Park.ParkingLots = new();
         if (Park.ParkingLots.Count == 0)
-            await GetParkProperties(Park, "parkinglots");
+            await GetParkProperties(Park, Terms.parkinglots);
 
         Weather = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
@@ -52,7 +52,7 @@ public partial class ParkDetailVM : DetailVM
         OperatingHours = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }
 
-    static async Task GetParkProperties(Park park, string term)
+    static async Task GetParkProperties(Park park, Terms term)
     {
         try
         {

@@ -12,7 +12,7 @@ public class DataService
         httpClient = new HttpClient();
     }
 
-    public static async Task<T> GetItemsAsync<T>(string term, int start = 0, int limit = 10, string states = "", string topics = "", string activities = "", string query = "")
+    public static async Task<T> GetItemsAsync<T>(Terms term, int start = 0, int limit = 10, string states = "", string topics = "", string activities = "", string query = "")
     {
         T result = default;
         string url = BuildUrlWithFilter(term, start, limit, states, topics, activities, query);
@@ -46,8 +46,10 @@ public class DataService
         return result;
     }
 
-    private static string BuildUrlWithFilter(string term, int start, int limit, string states, string topics, string activities, string query)
+    private static string BuildUrlWithFilter(Terms term, int start, int limit, string states, string topics, string activities, string query)
     {
+        string strTerm = "";
+
         // Build URL
         string paramList = $"&start={start}&limit={limit}";
         if (!String.IsNullOrEmpty(states))
@@ -74,10 +76,23 @@ public class DataService
             paramList += $"&q={query}";
         }
 
-        return $"{DomainUrl}{term}?api_key={Config.NpsApiKey}{paramList}";
+        switch (term)
+        {
+            case Terms.videos:
+                strTerm = $"multimedia/{term}";
+                break;
+            case Terms.audio:
+                strTerm = $"multimedia/{term}";
+                break;
+            default:
+                strTerm = term.ToString();
+                break;
+        }
+
+        return $"{DomainUrl}{strTerm}?api_key={Config.NpsApiKey}{paramList}";
     }
 
-    public static async Task<T> GetItemsForParkCodeAsync<T>(string term, string parkCode, int start = 0, int limit = 20)
+    public static async Task<T> GetItemsForParkCodeAsync<T>(Terms term, string parkCode, int start = 0, int limit = 20)
     {
         T result = default;
         string url = $"{DomainUrl}{term}?api_key={Config.NpsApiKey}&start={start}&limit={limit}&parkCode={parkCode}";
@@ -91,7 +106,7 @@ public class DataService
         return result;
     }
 
-    public static async Task<T> GetItemsForIdsAsync<T>(string term, string idList)
+    public static async Task<T> GetItemsForIdsAsync<T>(Terms term, string idList)
     {
         T result = default;
 

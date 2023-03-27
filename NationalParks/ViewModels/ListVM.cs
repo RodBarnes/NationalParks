@@ -77,7 +77,7 @@ public partial class ListVM : BaseVM
         }
     }
 
-    protected async Task<T> GetItems<T>(string term)
+    protected async Task<T> GetItems<T>(Terms term)
     {
         T result = default;
 

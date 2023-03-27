@@ -2,6 +2,6 @@
 
 public partial class ResultAudios : Result
 {
-    public const string Term = "multimedia/audio";
+    public const Terms Term = Terms.audio;
     public List<Multimedia> Data { get; set; }
 }

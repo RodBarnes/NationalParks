@@ -2,6 +2,6 @@
 
 public partial class ResultActivities : Result
 {
-    public const string Term = "activities";
+    public const Terms Term = Terms.activities;
     public List<Activity> Data { get; set; }
 }

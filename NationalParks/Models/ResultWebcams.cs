@@ -2,6 +2,6 @@
 
 public partial class ResultWebcams : Result
 {
-    public const string Term = "webcams";
+    public const Terms Term = Terms.webcams;
     public List<Webcam> Data { get; set; }
 }

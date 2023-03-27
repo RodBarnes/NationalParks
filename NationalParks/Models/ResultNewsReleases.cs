@@ -2,6 +2,6 @@
 
 internal class ResultNewsReleases : Result
 {
-    public const string Term = "newsreleases";
+    public const Terms Term = Terms.newsreleases;
     public List<NewsRelease> Data { get; set; }
 }

@@ -2,6 +2,6 @@
 
 public class ResultParkingLots : Result
 {
-    public const string Term = "parkinglots";
+    public const Terms Term = Terms.parkinglots;
     public List<ParkingLot> Data { get; set; }
 }

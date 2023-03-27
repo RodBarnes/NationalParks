@@ -2,6 +2,6 @@
 
 public class ResultEvents : Result
 {
-    public const string Term = "events";
+    public const Terms Term = Terms.events;
     public List<Event> Data { get; set; }
 }

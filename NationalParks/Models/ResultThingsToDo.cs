@@ -2,6 +2,6 @@
 
 public class ResultThingsToDo : Result
 {
-    public const string Term = "thingstodo";
+    public const Terms Term = Terms.thingstodo;
     public List<ThingToDo> Data { get; set; }
 }

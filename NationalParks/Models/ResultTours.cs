@@ -2,6 +2,6 @@
 
 public class ResultTours : Result
 {
-    public const string Term = "tours";
+    public const Terms Term = Terms.tours;
     public List<Tour> Data { get; set; }
 }
