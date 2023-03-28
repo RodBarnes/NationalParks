@@ -48,12 +48,17 @@ public static class Utility
         var info =
             $"Device Mfg: {DeviceInfo.Current.Manufacturer}\n" +
             $"Device Model: {DeviceInfo.Current.Model}\n" +
+            $"Device Idiom: {DeviceInfo.Current.Idiom}\n" +
+            $"Device Type: {DeviceInfo.Current.DeviceType}\n" +
             $"Device Platform: {DeviceInfo.Platform}\n" +
-            $"Device OS Version: {DeviceInfo.Current.Version}\n" +
+            $"Device OS Version: {DeviceInfo.Current.VersionString}\n" +
             $"Device Name: {DeviceInfo.Current.Name}\n" +
             $"App Name: {AppInfo.Current.Name}\n" +
+            $"App Package: {AppInfo.Current.PackageName}\n" +
             $"App Version: {AppInfo.Current.VersionString}\n" +
-            $"App Build: {AppInfo.Current.BuildString}\n\n";
+            $"App Build: {AppInfo.Current.BuildString}\n" +
+            $"App Theme: {AppInfo.Current.RequestedTheme}\n" +
+            $"App Layout: {AppInfo.Current.RequestedLayoutDirection}\n\n";
 
         var attachments = new List<EmailAttachment>();
 
