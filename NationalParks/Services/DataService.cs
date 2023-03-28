@@ -29,17 +29,32 @@ public class DataService
             //        }
             //    }
 
-            result = await response.Content.ReadFromJsonAsync<T>();
-            if (result is null)
+            try
+            {
+                result = await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch (InvalidCastException)
             {
                 // Try to get the error that may've been sent
-                string msg = $"Result was 'null' for type '{typeof(T)}'";
+                string msg = $"Result was unexpected for type '{typeof(T)}'";
                 ResultError errresult = await response.Content.ReadFromJsonAsync<ResultError>();
                 if (errresult != null)
                 {
-                    msg += $"\n[{errresult.Error.Code}--{errresult.Error.Message}";
+                    msg += $"\nServer responded: {errresult.Error.Code}--{errresult.Error.Message}";
                 }
-                throw new Exception(msg);
+
+                await Logger.WriteLogEntry(msg);
+
+                switch (errresult.Error.Code)
+                {
+                    case "OVER_RATE_LIMIT":
+                        msg = "that you are trying to do too much, too quickly.  Wait a while for it to recover from your repeated access.";
+                        break;
+                    default:
+                        msg = $"with this: {errresult.Error.Code}--{errresult.Error.Message}";
+                        break;
+                }
+                await Shell.Current.DisplayAlert("Server Error", $"The server replied {msg}", "OK");
             }
         }
 
