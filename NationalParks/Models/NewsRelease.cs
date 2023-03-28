@@ -19,7 +19,6 @@ public partial class NewsRelease : BaseModel
     #region Derived Properties
 
     public bool HasCredit { get => !String.IsNullOrEmpty(Credit); }
-    public new ImageSource MainImage { get; protected set; }
 
     #endregion
 
