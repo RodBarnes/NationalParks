@@ -51,7 +51,7 @@ public class DataService
                         msg = "that you are trying to do too much, too quickly.  Wait a while for it to recover from your repeated access.";
                         break;
                     default:
-                        msg = $"with this: {errresult.Error.Code}--{errresult.Error.Message}";
+                        msg = $"with this: {errresult.Error.Code}--{errresult.Error.Message}.  An entry was written to the logs.";
                         break;
                 }
                 await Shell.Current.DisplayAlert("Server Error", $"The server replied {msg}", "OK");
