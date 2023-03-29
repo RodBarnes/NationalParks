@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using CommunityToolkit.Maui.Alerts;
+using System.Net.Http.Json;
 using System.Reflection;
 
 namespace NationalParks.Services;
@@ -30,38 +31,23 @@ public class DataService
             //        }
             //    }
 
-            try
+            result = await response.Content.ReadFromJsonAsync<T>();
+            if (result == null)
             {
-                result = await response.Content.ReadFromJsonAsync<T>();
-            }
-            catch (InvalidCastException ex)
-            {
-                // THIS CODE HAS NOT BEEN TESTED
-                // IT WAS IMPLEMENTED IN AN ATTEMPT TO CATCH THE "Specified cast is not valid" exception resulting
-                // from (I believe) hitting the server too much.  But this only happens doing the [Closest] so, just
-                // removing access to that for now.
+                // Recored the data that was received
+                string msg = $"Result was 'null' for type '{typeof(T)}'";
+                var content = await response.Content.ReadAsStringAsync();
+                await Logger.WriteLogEntry($"{msg}\nContent:{content}");
 
-                await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
-
-                // Try to get the error that may've been sent
-                string msg = $"Result was unexpected for type '{typeof(T)}'";
-                ResultError errresult = await response.Content.ReadFromJsonAsync<ResultError>();
-                if (errresult != null)
+                // Attempt to get the error that may've been sent
+                ResultError erresult = await response.Content.ReadFromJsonAsync<ResultError>();
+                if (erresult != null)
                 {
-                    msg += $"\nServer responded: {errresult.Error.Code}--{errresult.Error.Message}";
+                    msg += $"{erresult.Error.Code}--{erresult.Error.Message}";
+                    await Logger.WriteLogEntry($"Server respone:{msg}");
                 }
-                await Logger.WriteLogEntry(msg);
 
-                switch (errresult.Error.Code)
-                {
-                    case "OVER_RATE_LIMIT":
-                        msg = "that you are trying to do too much, too quickly.  Wait a while for it to recover from your repeated access.";
-                        break;
-                    default:
-                        msg = $"with this: {errresult.Error.Code}--{errresult.Error.Message}.  An entry was written to the logs.";
-                        break;
-                }
-                await Shell.Current.DisplayAlert("Server Error", $"The server replied {msg}", "OK");
+                await Toast.Make("Exception written to log.").Show();
             }
         }
 
