@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using System.Reflection;
 
 namespace NationalParks.Services;
 
@@ -33,8 +34,15 @@ public class DataService
             {
                 result = await response.Content.ReadFromJsonAsync<T>();
             }
-            catch (InvalidCastException)
+            catch (InvalidCastException ex)
             {
+                // THIS CODE HAS NOT BEEN TESTED
+                // IT WAS IMPLEMENTED IN AN ATTEMPT TO CATCH THE "Specified cast is not valid" exception resulting
+                // from (I believe) hitting the server too much.  But this only happens doing the [Closest] so, just
+                // removing access to that for now.
+
+                await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+
                 // Try to get the error that may've been sent
                 string msg = $"Result was unexpected for type '{typeof(T)}'";
                 ResultError errresult = await response.Content.ReadFromJsonAsync<ResultError>();
@@ -42,7 +50,6 @@ public class DataService
                 {
                     msg += $"\nServer responded: {errresult.Error.Code}--{errresult.Error.Message}";
                 }
-
                 await Logger.WriteLogEntry(msg);
 
                 switch (errresult.Error.Code)
