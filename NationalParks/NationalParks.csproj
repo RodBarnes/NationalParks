@@ -70,7 +70,7 @@
 		<MauiIcon Include="Resources\appiconfg_nps.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\advapp_splash.png" Color="#0A465A" />
+		<MauiSplashScreen Include="Resources\advapp_no_background_256.svg" Color="#0A465A" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
