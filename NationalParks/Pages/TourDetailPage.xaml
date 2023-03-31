@@ -18,25 +18,25 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Tour.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Tour.Description}" Style="{StaticResource LabelMedium}" TextType="Html"/>
                 <HorizontalStackLayout>
                     <Label Text="Duration:" Style="{StaticResource LabelMediumBold}" Padding="5" VerticalOptions="Center" />
                     <Label Text="{Binding Tour.Duration}" Style="{StaticResource LabelMedium}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}" 
-                                                  CommandParameter="{Binding Tour.Park.ParkCode}" />
+                        <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"
+                                              CommandParameter="{Binding Tour.Park.ParkCode}" />
                     </HorizontalStackLayout.GestureRecognizers>
                     <Label Text="{Binding Tour.Park.Name}" 
                            Style="{StaticResource LabelMediumBold}" 
                            VerticalOptions="Center" 
                            Margin="5"/>
                     <Image Source="tree_reverse_green"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"
-                            Aspect="AspectFill"
-                            HeightRequest="30">
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="30">
                     </Image>
                 </HorizontalStackLayout>
                 <v:CollapsibleListView BindingContext="{Binding Tags}" />
