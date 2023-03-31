@@ -5,6 +5,7 @@ public partial class ThingToDoDetailVM : DetailVM
 {
     [ObservableProperty] ThingToDo thingToDo;
     [ObservableProperty] RelatedParksVM relatedParks;
+    [ObservableProperty] CollapsibleViewVM locationDescription;
     [ObservableProperty] CollapsibleViewVM fullDescription;
     [ObservableProperty] CollapsibleListVM organizations;
     [ObservableProperty] CollapsibleListVM amenities;
@@ -22,6 +23,7 @@ public partial class ThingToDoDetailVM : DetailVM
     {
         Model = ThingToDo;
 
+        LocationDescription = new CollapsibleTextVM("Directions", false, ThingToDo.LocationDescription);
         FullDescription = new CollapsibleTextVM("Full Description", false, ThingToDo.LongDescription);
 
         Organizations = new CollapsibleListVM("Related Organizations", false, ThingToDo.RelatedOrganizations.ToList<object>());

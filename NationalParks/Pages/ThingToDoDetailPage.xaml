@@ -24,11 +24,12 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <HorizontalStackLayout>
+                <Label Text="{Binding ThingToDo.ActivityDescription}" Style="{StaticResource LabelMedium}" TextType="Html" IsVisible="{Binding ThingToDo.HasActivityDescription}" />
+                <HorizontalStackLayout IsVisible="{Binding ThingToDo.HasDuration}">
                     <Label Text="Duration: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding ThingToDo.Duration}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
-                <HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding ThingToDo.HasAge}">
                     <Label Text="Age: " Style="{StaticResource LabelMediumBold}" />
                     <Label Text="{Binding ThingToDo.Age}" Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
@@ -39,6 +40,7 @@
                                      Style="{StaticResource HyperlinkLabelMedium}"/>
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
                 <v:CollapsibleTextView BindingContext="{Binding FullDescription}" />
+                <v:CollapsibleTextView BindingContext="{Binding LocationDescription}" />
                 <v:CollapsibleListView BindingContext="{Binding Organizations}" />
                 <v:CollapsibleListView BindingContext="{Binding Tags}" />
                 <v:CollapsibleListView BindingContext="{Binding Amenities}" />

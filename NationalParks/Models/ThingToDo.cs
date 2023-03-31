@@ -38,7 +38,10 @@ public class ThingToDo : BaseModel
 
     #region Derived Properties
 
+    public bool HasActivityDescription => !String.IsNullOrEmpty(ActivityDescription);
     public bool HasLongDescription => !String.IsNullOrEmpty(LongDescription);
+    public bool HasDuration => !String.IsNullOrEmpty(Duration);
+    public bool HasAge => !String.IsNullOrEmpty(Age);
     public bool HasRelatedParks => (RelatedParks is not null) && RelatedParks.Count > 0;
     public bool HasRelatedOrganizations => (RelatedOrganizations is not null) && RelatedOrganizations.Count > 0;
     public bool HasTags => (Tags is not null) && Tags.Count > 0;
