@@ -24,8 +24,12 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Park.FullName}" Style="{StaticResource LabelLargeBold}"/>
-                    <Label Text="{Binding Park.Description}" Style="{StaticResource LabelMedium}" Margin="0,0,5,0"/>
+                <Label Text="{Binding Park.FullName}"
+                       Style="{StaticResource LabelLargeBold}"/>
+                    <Label Text="{Binding Park.Description}"
+                           Style="{StaticResource LabelMedium}"
+                           TextType="Html"
+                           Margin="0,0,5,0"/>
                     <ctrl:HyperlinkLabel Text="NPS Site"
                                          Url="{Binding Park.Url}"
                                          IsVisible="{Binding Park.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"

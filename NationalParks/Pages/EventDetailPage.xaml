@@ -24,8 +24,11 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding NpsEvent.ParkFullname}" Style="{StaticResource LabelLargeBold}"/>
-                <Label Text="{Binding NpsEvent.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding NpsEvent.ParkFullname}"
+                       Style="{StaticResource LabelLargeBold}"/>
+                <Label Text="{Binding NpsEvent.Description}"
+                       Style="{StaticResource LabelMedium}"
+                       TextType="Html"/>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding NpsEvent.InfoUrl}"
                                      IsVisible="{Binding NpsEvent.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"

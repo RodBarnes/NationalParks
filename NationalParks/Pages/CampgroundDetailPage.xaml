@@ -20,7 +20,8 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <!-- Description -->
                 <Label Text="{Binding Campground.Description}" 
-                       Style="{StaticResource LabelMedium}" />
+                       Style="{StaticResource LabelMedium}"
+                       TextType="Html"/>
                 <HorizontalStackLayout>
                     <HorizontalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToParkFromParkCodeCommand}"

@@ -26,7 +26,8 @@
             <VerticalStackLayout Padding="10" Spacing="10">
                 <!-- Description -->
                 <Label Text="{Binding NewsRelease.Description}" 
-                       Style="{StaticResource LabelMedium}" />
+                       Style="{StaticResource LabelMedium}"
+                       TextType="Html"/>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding NewsRelease.Url}"
                                      IsVisible="{Binding NewsRelease.HasUrl, Converter={StaticResource BoolToTrueFalseConverter}}"

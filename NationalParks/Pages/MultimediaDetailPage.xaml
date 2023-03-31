@@ -24,14 +24,22 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout  Padding="10" Spacing="10">
-                <Label Text="{Binding Multimedia.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Multimedia.Description}" 
+                       Style="{StaticResource LabelMedium}"
+                       TextType="Html"/>
                 <HorizontalStackLayout>
-                    <Label Text="Duration:" Style="{StaticResource LabelMediumBold}" Margin="0,0,5,0" />
-                    <Label Text="{Binding Multimedia.Duration}" Style="{StaticResource LabelMedium}" />
+                    <Label Text="Duration:" 
+                           Style="{StaticResource LabelMediumBold}"
+                           Margin="0,0,5,0" />
+                    <Label Text="{Binding Multimedia.Duration}"
+                           Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout IsVisible="{Binding Multimedia.HasCredit, Converter={StaticResource BoolToTrueFalseConverter}}">
-                    <Label Text="Credit:" Style="{StaticResource LabelMediumBold}" Margin="0,0,5,0" />
-                    <Label Text="{Binding Multimedia.Credits}" Style="{StaticResource LabelMedium}" />
+                    <Label Text="Credit:"
+                           Style="{StaticResource LabelMediumBold}"
+                           Margin="0,0,5,0" />
+                    <Label Text="{Binding Multimedia.Credits}"
+                           Style="{StaticResource LabelMedium}" />
                 </HorizontalStackLayout>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding Multimedia.Url}"

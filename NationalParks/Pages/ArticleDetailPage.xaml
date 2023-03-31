@@ -24,7 +24,9 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3">
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Article.ListingDescription}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Article.ListingDescription}"
+                       Style="{StaticResource LabelMedium}"
+                       TextType="Html"/>
                 <ctrl:HyperlinkLabel Text="NPS Site"
                                      Url="{Binding Article.Url}"
                                      TextColor="{AppThemeBinding Light={StaticResource HyperlinkLabelText}, Dark={StaticResource HyperlinkLabelTextDark}}"

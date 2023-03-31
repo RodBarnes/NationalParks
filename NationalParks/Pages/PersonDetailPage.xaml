@@ -35,7 +35,9 @@
                                          Style="{StaticResource HyperlinkLabelMedium}"
                                          VerticalOptions="Center"/>
                 </HorizontalStackLayout>
-                <Label Text="{Binding Person.Description}" Style="{StaticResource LabelMedium}" />
+                <Label Text="{Binding Person.Description}" 
+                       Style="{StaticResource LabelMedium}" 
+                       TextType="Html" />
                 <v:RelatedParksView BindingContext="{Binding RelatedParks}" />
                 <v:CollapsibleTextView BindingContext="{Binding BodyText}" />
                 <v:CollapsibleListView BindingContext="{Binding Organizations}" />
