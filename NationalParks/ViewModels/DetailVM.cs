@@ -9,11 +9,14 @@ namespace NationalParks.ViewModels;
 
 public partial class DetailVM : BaseVM
 {
+    readonly IConnectivity connectivity;
     readonly IMap map;
+
     [ObservableProperty] BaseModel model;
 
-    public DetailVM(IMap map)
+    public DetailVM(IConnectivity connectivity, IMap map)
     {
+        this.connectivity = connectivity;
         this.map = map;
     }
 
@@ -69,6 +72,15 @@ public partial class DetailVM : BaseVM
 
         try
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("No internet connection!",
+                    $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+                return;
+            }
+
             ResultParks result = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
             if (result.Data.Count > 0)
             {
@@ -97,6 +109,15 @@ public partial class DetailVM : BaseVM
 
         try
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("No internet connection!",
+                    $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+                return name;
+            }
+
             ResultParks result = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
             if (result.Data.Count > 0)
             {
