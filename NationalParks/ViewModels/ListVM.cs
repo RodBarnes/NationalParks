@@ -89,15 +89,6 @@ public partial class ListVM : BaseVM
         {
             IsBusy = true;
 
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
-                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
-                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
-                return result;
-            }
-
             await BuildFilterSelections();
             result = await DataService.GetItemsAsync<T>(term, Items.Count, LimitItems, StatesFilter, TopicsFilter, ActivitiesFilter, QueryFilter);
             SetVisibleElements(result != null);
@@ -116,6 +107,15 @@ public partial class ListVM : BaseVM
 
     protected async Task PopulateData(Func<Task> loadData)
     {
+        if (connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            await Shell.Current.DisplayAlert("No internet connection!",
+                $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
+            var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+            await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+            return;
+        }
+
         Title = GetTitle();
         await loadData();
 
@@ -134,8 +134,11 @@ public partial class ListVM : BaseVM
 
             if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
+                await Shell.Current.DisplayAlert("No internet connection!",
+                    $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
                 var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
-                throw new Exception(msg);
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+                return;
             }
 
             ProgressPanel.IsVisible = true;
@@ -378,20 +381,13 @@ public partial class ListVM : BaseVM
         return filter;
     }
 
-    protected async Task GetAllTopicsAsync()
+    protected static async Task GetAllTopicsAsync()
     {
         if (TopicSelections?.Count > 0)
             return;
 
         try
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
-                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
-                return;
-            }
-
             int startTopics = 0;
             int totalTopics = 1;
 
@@ -410,20 +406,13 @@ public partial class ListVM : BaseVM
         }
     }
 
-    protected async Task GetAllActivitiesAsync()
+    protected static async Task GetAllActivitiesAsync()
     {
         if (ActivitySelections?.Count > 0)
             return;
 
         try
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
-                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
-                return;
-            }
-
             int startActivities = 0;
             int totalActivities = 1;
 
