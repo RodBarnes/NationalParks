@@ -21,7 +21,7 @@ public partial class CampgroundDetailVM : DetailVM
     [ObservableProperty] CollapsibleTextVM reservations;
     [ObservableProperty] CollapsibleTextVM regulations;
 
-    public CampgroundDetailVM(IMap map) : base(map)
+    public CampgroundDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Campground";
     }

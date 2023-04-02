@@ -11,7 +11,7 @@ public partial class NewsReleaseDetailVM : DetailVM
     [ObservableProperty] RelatedParksVM relatedParks;
     [ObservableProperty] CollapsibleListVM organizations;
 
-    public NewsReleaseDetailVM(IMap map) : base(map)
+    public NewsReleaseDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "News Release";
     }

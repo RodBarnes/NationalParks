@@ -10,7 +10,7 @@ public partial class WebcamDetailVM : DetailVM
     [ObservableProperty] Webcam webcam;
     [ObservableProperty] RelatedParksVM relatedParks;
 
-    public WebcamDetailVM(IMap map) : base(map)
+    public WebcamDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Webcam";
     }

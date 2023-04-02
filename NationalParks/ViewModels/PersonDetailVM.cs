@@ -16,7 +16,7 @@ public partial class PersonDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM quickFacts;
     [ObservableProperty] CollapsibleListVM tags;
 
-    public PersonDetailVM(IMap map) : base(map)
+    public PersonDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Person";
     }

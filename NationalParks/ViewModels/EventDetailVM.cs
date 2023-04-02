@@ -9,7 +9,7 @@ public partial class EventDetailVM : DetailVM
 {
     [ObservableProperty] Event npsEvent;
 
-    public EventDetailVM(IMap map) : base(map)
+    public EventDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Events";
     }

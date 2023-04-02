@@ -15,7 +15,7 @@ public partial class TourDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM topics;
     [ObservableProperty] CollapsibleListVM activities;
 
-    public TourDetailVM(IMap map) : base(map)
+    public TourDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Tour";
     }

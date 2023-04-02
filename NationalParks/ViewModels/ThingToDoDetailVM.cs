@@ -17,7 +17,7 @@ public partial class ThingToDoDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM topics;
     [ObservableProperty] CollapsibleListVM activities;
 
-    public ThingToDoDetailVM(IMap map) : base(map)
+    public ThingToDoDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Things To Do";
     }

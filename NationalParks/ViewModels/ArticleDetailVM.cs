@@ -10,7 +10,7 @@ public partial class ArticleDetailVM : DetailVM
     [ObservableProperty] Article article;
     [ObservableProperty] RelatedParksVM relatedParks;
 
-    public ArticleDetailVM(IMap map) : base(map)
+    public ArticleDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Article";
     }

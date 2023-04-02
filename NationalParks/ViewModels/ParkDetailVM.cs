@@ -25,7 +25,7 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM activities;
     [ObservableProperty] CollapsibleTextVM weather;
 
-    public ParkDetailVM(IConnectivity connectivity, IMap map) : base(map)
+    public ParkDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         this.map = map;
         this.connectivity = connectivity;

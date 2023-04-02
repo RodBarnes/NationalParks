@@ -16,7 +16,7 @@ public partial class PlaceDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM quickFacts;
     [ObservableProperty] CollapsibleListVM amenities;
 
-    public PlaceDetailVM(IMap map) : base(map)
+    public PlaceDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Place";
     }

@@ -13,7 +13,7 @@ public partial class MultimediaDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM tags;
     [ObservableProperty] CollapsibleTextVM transcript;
 
-    public MultimediaDetailVM(IMap map) : base(map)
+    public MultimediaDetailVM(IConnectivity connectivity, IMap map) : base(connectivity, map)
     {
         Title = "Multimedia";
     }
