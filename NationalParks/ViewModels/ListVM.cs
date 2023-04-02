@@ -213,29 +213,29 @@ public partial class ListVM : BaseVM
         return tmp;
     }
 
-    protected async Task FillLocationFromPark(BaseModel item, string parkCode)
-    {
-        try
-        {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
-                throw new Exception(msg);
-            }
+    //protected async Task FillLocationFromPark(BaseModel item, string parkCode)
+    //{
+    //    try
+    //    {
+    //        if (connectivity.NetworkAccess != NetworkAccess.Internet)
+    //        {
+    //            var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+    //            throw new Exception(msg);
+    //        }
 
-            ResultParks resultPark = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
-            if (resultPark.Data.Count > 0)
-            {
-                var park = resultPark.Data.First();
-                item.Latitude = park.Latitude;
-                item.Longitude = park.Longitude;
-            }
-        }
-        catch (Exception ex)
-        {
-            await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
-        }
-    }
+    //        ResultParks resultPark = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
+    //        if (resultPark.Data.Count > 0)
+    //        {
+    //            var park = resultPark.Data.First();
+    //            item.Latitude = park.Latitude;
+    //            item.Longitude = park.Longitude;
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await Utility.HandleException(ex, new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+    //    }
+    //}
 
     private void ClearData()
     {
