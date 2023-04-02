@@ -92,7 +92,9 @@ public partial class ListVM : BaseVM
             if (connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 await Shell.Current.DisplayAlert("No connectivity!",
-                    $"Please check internet and try again.", "OK");
+                    $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
                 return result;
             }
 
