@@ -2,7 +2,8 @@
  * Copyright (c) 2022 Rod Barnes
  * See the LICENSE.txt file in the project root for specific restrictions.
  */
-﻿using NationalParks.Services;
+using Microsoft.Maui.Networking;
+using NationalParks.Services;
 using System.Reflection;
 
 namespace NationalParks.ViewModels;
@@ -10,7 +11,9 @@ namespace NationalParks.ViewModels;
 [QueryProperty(nameof(Models.Park), "Model")]
 public partial class ParkDetailVM : DetailVM
 {
+    readonly IConnectivity connectivity;
     readonly IMap map;
+
     [ObservableProperty] Park park;
     [ObservableProperty] AlertsVM alerts;
     [ObservableProperty] ParkingLotsVM parkingLots;
@@ -22,9 +25,10 @@ public partial class ParkDetailVM : DetailVM
     [ObservableProperty] CollapsibleListVM activities;
     [ObservableProperty] CollapsibleTextVM weather;
 
-    public ParkDetailVM(IMap map) : base(map)
+    public ParkDetailVM(IConnectivity connectivity, IMap map) : base(map)
     {
         this.map = map;
+        this.connectivity = connectivity;
         Title = "Park";
     }
 
@@ -33,15 +37,28 @@ public partial class ParkDetailVM : DetailVM
     {
         Model = Park;
 
-        if (Park.Alerts == null)
-            Park.Alerts = new();
-        if (Park.Alerts.Count == 0)
-            await GetParkProperties(Park, Terms.alerts);
+        if (connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            await Shell.Current.DisplayAlert("No internet connection!",
+                $"Please check that either Mobile Data is enabled or WiFi is connected; then try again.", "OK");
+            var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+            await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+        }
+        else
+        {
+            if (Park.Alerts == null)
+                Park.Alerts = new();
 
-        if (Park.ParkingLots == null)
-            Park.ParkingLots = new();
-        if (Park.ParkingLots.Count == 0)
-            await GetParkProperties(Park, Terms.parkinglots);
+            if (Park.Alerts.Count == 0)
+                await GetParkProperties(Park, Terms.alerts);
+            Alerts = new AlertsVM("Alerts", false, Park.Alerts);
+
+            if (Park.ParkingLots == null)
+                Park.ParkingLots = new();
+            if (Park.ParkingLots.Count == 0)
+                await GetParkProperties(Park, Terms.parkinglots);
+            ParkingLots = new ParkingLotsVM(map, "Parking Lots", false, Park.ParkingLots);
+        }
 
         Weather = new CollapsibleTextVM("Weather", false, Park.WeatherInfo);
 
@@ -50,16 +67,15 @@ public partial class ParkDetailVM : DetailVM
 
         Directions = new DirectionsVM("Directions", false, Park.PhysicalAddress?.ToString(), Park.DirectionsInfo);
         Contacts = new ContactsVM("Contacts", false, Park.Contacts.PhoneNumbers, Park.Contacts.EmailAddresses);
-        Alerts = new AlertsVM("Alerts", false, Park.Alerts);
-        ParkingLots = new ParkingLotsVM(map, "Parking Lots", false, Park.ParkingLots);
         Fees = new FeesVM("Entrance Fees", false, Park.EntranceFees);
         OperatingHours = new OperatingHoursVM("Operating Hours", false, Park.OperatingHours);
     }
 
-    static async Task GetParkProperties(Park park, Terms term)
+    async Task GetParkProperties(Park park, Terms term)
     {
         try
         {
+
             int startItems = 0;
             int totalItems = 1;
             int limitItems = 20;
