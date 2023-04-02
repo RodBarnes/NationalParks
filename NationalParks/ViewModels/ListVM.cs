@@ -132,6 +132,12 @@ public partial class ListVM : BaseVM
             if (IsBusy)
                 return;
 
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                throw new Exception(msg);
+            }
+
             ProgressPanel.IsVisible = true;
 
             if (Items.Count < TotalItems)
@@ -204,10 +210,16 @@ public partial class ListVM : BaseVM
         return tmp;
     }
 
-    protected static async Task FillLocationFromPark(BaseModel item, string parkCode)
+    protected async Task FillLocationFromPark(BaseModel item, string parkCode)
     {
         try
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                throw new Exception(msg);
+            }
+
             ResultParks resultPark = await DataService.GetItemsForParkCodeAsync<ResultParks>(ResultParks.Term, parkCode);
             if (resultPark.Data.Count > 0)
             {
@@ -366,13 +378,20 @@ public partial class ListVM : BaseVM
         return filter;
     }
 
-    protected static async Task GetAllTopicsAsync()
+    protected async Task GetAllTopicsAsync()
     {
         if (TopicSelections?.Count > 0)
             return;
 
         try
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+                return;
+            }
+
             int startTopics = 0;
             int totalTopics = 1;
 
@@ -391,13 +410,20 @@ public partial class ListVM : BaseVM
         }
     }
 
-    protected static async Task GetAllActivitiesAsync()
+    protected async Task GetAllActivitiesAsync()
     {
         if (ActivitySelections?.Count > 0)
             return;
 
         try
         {
+            if (connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                var msg = $"Connectivity.NetworkAccess=={connectivity.NetworkAccess}";
+                await Utility.HandleException(new Exception(msg), new CodeInfo(MethodBase.GetCurrentMethod().DeclaringType));
+                return;
+            }
+
             int startActivities = 0;
             int totalActivities = 1;
 
