@@ -32,8 +32,7 @@
                 <VerticalStackLayout>
                     <VerticalStackLayout>
                         <Label Text="{Binding Name}" Style="{StaticResource LabelMediumBold}" HorizontalOptions="Center"/>
-                        <HorizontalStackLayout
-                        Margin="0,0,0,10">
+                        <HorizontalStackLayout Margin="0,0,0,10">
                             <HorizontalStackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoToDataTesterCommand}" />
                             </HorizontalStackLayout.GestureRecognizers>
@@ -70,12 +69,14 @@
                        Margin="0,0,5,0"/>
                 <VerticalStackLayout Grid.Column="1"
                                      VerticalOptions="Center">
-                    <Label Text="This app relies upon data supplied by the National Park Service API which is publically available.  It provides information on Parks, Campgrounds, and other facilities, as well as news releases, articles, and multimedia produced by the National Park Service about the events and activities available at various national parks."
+                    <Label Text="The data and images appearing in this app are the sole property of the National Park Service (NPS) and are supplied via the public API maintained by NPS."
                            Style="{StaticResource LabelMedium}"/>
-                    <controls:HyperlinkLabel Text="NPS Developer Resources"
+                    <Label Text="Advanced Applications is not affiliated with NPS nor does this app represent NPS.  The app is provided as a public service to access the information provided by NPS."
+                           Style="{StaticResource LabelMediumBold}" Margin="0,10,0,0"/>
+                    <!--<controls:HyperlinkLabel Text="NPS Developer Resources"
                                             Url="{Binding NpsUrl}"
                                             VerticalOptions="Center"
-                                            Style="{StaticResource LabelMedium}"/>
+                                            Style="{StaticResource LabelMedium}"/>-->
                 </VerticalStackLayout>
             </Grid>
         </Frame>
